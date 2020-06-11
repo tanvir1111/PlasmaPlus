@@ -44,7 +44,7 @@
 
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/lebel_phone_number"
-        android:textColor="@color/colorAccent"
+        android:textColor="#FF217A"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/login_phone_number_edittext"
         app:layout_constraintEnd_toEndOf="@+id/login_phone_number_edittext"
@@ -63,7 +63,8 @@
             android:background="@drawable/edit_text_dark"
             android:hint="017xxxxxxxx"
             android:padding="15dp"
-
+            android:gravity="center_vertical"
+            android:textColor="@color/textColorDark"
             android:fontFamily="@font/raleway_bold"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="@+id/login_request_textview"
@@ -97,7 +98,9 @@
             android:fontFamily="@font/raleway_bold"
             android:inputType="textPassword"
             android:background="@drawable/edit_text_dark"
+            android:textColor="@color/textColorDark"
             android:hint="*****"
+            android:gravity="center_vertical"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="@+id/login_phone_number_edittext"
             app:layout_constraintStart_toStartOf="@+id/login_phone_number_edittext"

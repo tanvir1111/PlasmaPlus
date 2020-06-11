@@ -27,7 +27,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-16dp"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/textColorDark"
 
 
         android:layout_marginTop="16dp"
@@ -45,8 +45,9 @@
         android:layout_width="wrap_content"
 
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/textColorDark"
         android:text="@string/label_name"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/bld_req_name_edittext"
@@ -62,6 +63,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
         android:background="@drawable/edit_text_dark"
+        android:textColor="@color/textColorDark"
 
         android:fontFamily="@font/montserrat"
         android:hint="Enter Your Name"
@@ -81,10 +83,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-
+        android:textColor="@color/textColorDark"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/lebel_phone_number"
+
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/bld_req_date"
         app:layout_constraintHorizontal_bias="0.004"
@@ -101,6 +104,8 @@
         android:background="@drawable/edit_text_dark"
         android:fontFamily="@font/montserrat"
         android:hint="017xxxxxxxx"
+        android:textColor="@color/textColorDark"
+
         android:paddingStart="25dp"
         android:paddingTop="10dp"
         android:paddingEnd="25dp"
@@ -114,7 +119,7 @@
         android:id="@+id/bld_req_label_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/textColorDark"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Gender"
@@ -150,7 +155,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-
+        android:textColor="@color/textColorDark"
         android:fontFamily="@font/montserrat_bold"
         android:text="Select Blood Group"
         android:textSize="16sp"
@@ -166,7 +171,7 @@
 
         android:background="@drawable/blood_grp_not_selected"
         android:fontFamily="@font/montserrat"
-
+        android:textColor="@color/textColorGrey"
 
         android:textAlignment="center"
         android:gravity="center"
@@ -180,7 +185,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-
+        android:textColor="@color/textColorGrey"
         android:background="@drawable/blood_grp_not_selected"
         android:fontFamily="@font/montserrat"
 
@@ -198,7 +203,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-
+        android:textColor="@color/textColorGrey"
         android:background="@drawable/blood_grp_not_selected"
         android:fontFamily="@font/montserrat"
 
@@ -216,7 +221,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-
+        android:textColor="@color/textColorGrey"
         android:background="@drawable/blood_grp_not_selected"
         android:fontFamily="@font/montserrat"
 
@@ -234,7 +239,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
-
+        android:textColor="@color/textColorGrey"
         android:background="@drawable/blood_grp_not_selected"
         android:fontFamily="@font/montserrat"
 
@@ -253,7 +258,7 @@
         android:layout_height="50dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="32dp"
-
+        android:textColor="@color/textColorGrey"
         android:background="@drawable/blood_grp_not_selected"
         android:fontFamily="@font/montserrat"
         android:gravity="center"
@@ -273,7 +278,7 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginTop="16dp"
-
+        android:textColor="@color/textColorGrey"
         android:background="@drawable/blood_grp_not_selected"
         android:fontFamily="@font/montserrat"
    android:textAlignment="center"
@@ -291,7 +296,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:background="@drawable/blood_grp_not_selected"
-
+        android:textColor="@color/textColorGrey"
         android:fontFamily="@font/montserrat"
         android:paddingLeft="10dp"
         android:paddingTop="15dp"
@@ -309,7 +314,7 @@
         android:id="@+id/bld_req_label_hospital"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/textColorDark"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Hostpital"
@@ -330,6 +335,9 @@
         android:layout_marginEnd="32dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
+        android:textColor="@color/textColorDark"
+        android:gravity="center_vertical"
+        android:hint="Rajshahi Medical College"
 
         app:layout_constraintEnd_toEndOf="@+id/bld_req_label_hospital"
         app:layout_constraintHorizontal_bias="0.0"
@@ -340,7 +348,7 @@
         android:id="@+id/bld_req_label_spinner_district"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/textColorDark"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="District"
@@ -374,7 +382,7 @@
         android:layout_marginEnd="32dp"
         android:background="@drawable/edit_text_white"
         android:hint="Enter Date"
-
+        android:textColor="@color/textColorDark"
         android:minHeight="40dp"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
@@ -386,7 +394,7 @@
         android:id="@+id/bld_req_label_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
+        android:textColor="@color/textColorDark"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Date [when needed?]"
@@ -404,6 +412,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/montserrat"
+        android:textColor="@color/textColorDark"
         android:text="Need plasma  [for plasma therapy]"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/bld_req_phone_number_edittext"

@@ -10,10 +10,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="-16dp"
-
         android:fontFamily="@font/montserrat_bold"
         android:text="Find Donor"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/textColorDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/search_donor_back_button"
         app:layout_constraintStart_toEndOf="@+id/search_donor_back_button"
@@ -38,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
         android:fontFamily="@font/montserrat_bold"
+        android:textColor="@color/textColorDark"
         android:text="Blood group"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/search_donor_bld_grp"
@@ -48,11 +48,11 @@
     <TextView
         android:id="@+id/search_donor_label_district"
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="District"
+        android:textColor="@color/textColorDark"
         android:textSize="16sp"
         app:layout_constraintBottom_toTopOf="@+id/search_donor_district_spinner"
         app:layout_constraintEnd_toEndOf="@+id/search_donor_district_spinner"

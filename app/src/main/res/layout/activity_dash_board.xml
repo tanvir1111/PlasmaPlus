@@ -4,29 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background_colored"
     tools:context=".DashBoard">
+
     <TextView
         android:id="@+id/dashboard_header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="-16dp"
 
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="245dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="DashBoard"
-        android:textColor="@color/colorAccent"
+        android:textColor="#ffffff"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@+id/dashboard_back_button"
-        app:layout_constraintStart_toEndOf="@+id/dashboard_back_button"
-        app:layout_constraintTop_toTopOf="@+id/dashboard_back_button" />
-
-    <ImageView
-        android:id="@+id/dashboard_back_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-
-        android:layout_marginTop="16dp"
-        android:padding="15dp"
-        android:src="@drawable/back_button"
+        app:layout_constraintEnd_toStartOf="@+id/dashboard_profile_btn"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,12 +28,12 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginEnd="16dp"
-        android:background="@drawable/button_style_colored"
+        android:background="@drawable/button_style_white"
         android:elevation="10dp"
         android:padding="5dp"
         android:textSize="18sp"
         android:text="T"
-        android:textColor="#ffffff"
+        android:textColor="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/dashboard_header"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/dashboard_header" />
@@ -62,7 +55,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_style_colored">
+            android:background="#ffffff">
 
 
             <TextView
@@ -71,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="5"
-                android:textColor="#ffffff"
+                android:textColor="@color/colorAccent"
 
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +83,7 @@
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Requests"
 
-                android:textColor="#ffffff"
+                android:textColor="@color/colorAccent"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/dashboard_number_of_requests"
@@ -120,13 +113,12 @@
     </androidx.cardview.widget.CardView>
 
 
-
     <androidx.cardview.widget.CardView
         android:id="@+id/donors_cardview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="32dp"
         app:cardCornerRadius="30dp"
         app:cardElevation="10dp"
@@ -137,7 +129,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_style_colored">
+            >
 
 
             <TextView
@@ -146,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_bold"
                 android:text="5"
-                android:textColor="#ffffff"
+                android:textColor="@color/colorAccent"
 
                 android:textSize="30sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -165,7 +157,7 @@
                 android:fontFamily="@font/montserrat_bold"
                 android:text="Donors"
 
-                android:textColor="#ffffff"
+                android:textColor="@color/colorAccent"
                 android:textSize="18sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/dashboard_number_of_donors"

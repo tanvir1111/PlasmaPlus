@@ -14,7 +14,7 @@
         android:layout_marginStart="-16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="Requests"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/textColorDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/requests_back_button"
         app:layout_constraintStart_toEndOf="@+id/requests_back_button"

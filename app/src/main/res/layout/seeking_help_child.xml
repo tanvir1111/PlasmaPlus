@@ -40,17 +40,18 @@
 
         <TextView
             android:id="@+id/seeking_help_child_bld_grp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="16dp"
+            android:gravity="center"
 
-            android:background="@drawable/blood_grp_selected"
+            android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
             android:padding="15dp"
             android:text="AB+"
-            android:textColor="#ffffff"
+            android:textColor="@color/colorAccent"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -72,7 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="28dp"
-            android:fontFamily="@font/raleway_bold"
+            android:textColor="@color/textColorDark"
+            android:fontFamily="@font/montserrat"
             android:text="Tanvir Ahmmad"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/seeking_help_child_profile_image"
@@ -87,10 +89,11 @@
             android:fontFamily="@font/raleway_bold"
             android:paddingLeft="20dp"
 
+
             android:paddingRight="20dp"
             android:text="Plasma"
             android:textColor="#ffffff"
-            android:textSize="12sp"
+            android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -98,7 +101,7 @@
             android:id="@+id/seeking_help_child_location_image"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:scaleType="fitXY"
             android:src="@drawable/location_icon"
             app:layout_constraintEnd_toEndOf="@+id/seeking_help_name"
@@ -111,10 +114,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-
+            android:textColor="@color/textColorGrey"
             android:fontFamily="@font/raleway"
             android:text="Jessore"
-            android:textSize="14sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/seeking_help_child_location_image"
             app:layout_constraintStart_toEndOf="@+id/seeking_help_child_location_image"
             app:layout_constraintTop_toTopOf="@+id/seeking_help_child_location_image" />

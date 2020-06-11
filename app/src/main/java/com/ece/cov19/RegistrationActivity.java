@@ -3,6 +3,7 @@ package com.ece.cov19;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -102,8 +103,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             case R.id.reg_bld_o_negative:
             case R.id.reg_bld_ab_negative:
                 selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_not_selected);
+                selectedBldGrp.setTextColor(getColor(R.color.textColorGrey));
                 selectedBldGrp = findViewById(v.getId());
                 selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_selected);
+                selectedBldGrp.setTextColor(Color.WHITE);
                 bloodGroup = selectedBldGrp.getText().toString();
                 break;
 

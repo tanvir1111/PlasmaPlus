@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="-16dp"
-            android:textColor="@color/colorAccent"
+            android:textColor="@color/textColorDark"
 
 
             android:fontFamily="@font/montserrat_bold"
@@ -42,19 +42,20 @@
             app:layout_constraintTop_toTopOf="@+id/reg_back_button" />
 
 
-    <TextView
-        android:id="@+id/reg_label_name"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/reg_label_name"
+            android:layout_width="wrap_content"
 
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="@string/label_name"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
-        app:layout_constraintTop_toBottomOf="@+id/reg_heading_textview" />
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/label_name"
+            android:textColor="@color/textColorDark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_heading_textview" />
 
     <EditText
         android:id="@+id/reg_name_edittext"
@@ -69,7 +70,7 @@
         android:background="@drawable/edit_text_dark"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/montserrat"
-        android:textSize="15sp"
+        android:textSize="12sp"
         android:hint="Enter Your Name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -82,8 +83,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/lebel_phone_number"
-
-
+            android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintBottom_toTopOf="@+id/reg_phone_number_edittext"
             app:layout_constraintEnd_toEndOf="@+id/reg_phone_number_edittext"
@@ -105,7 +105,7 @@
             android:layout_marginTop="48dp"
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/montserrat"
-            android:textSize="15sp"
+            android:textSize="12sp"
             android:hint="017xxxxxxxx"
             app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
             app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
@@ -121,6 +121,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="Gender"
             android:textSize="16sp"
+            android:textColor="@color/textColorDark"
             app:layout_constraintEnd_toEndOf="@+id/reg_phone_number_edittext"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
@@ -152,6 +153,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textColor="@color/textColorDark"
+
 
         android:fontFamily="@font/montserrat_bold"
         android:text="Select Blood Group"
@@ -165,11 +168,9 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
-
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
-
-
+            android:textColor="@color/textColorGrey"
             android:textAlignment="center"
             android:gravity="center"
             android:text="A+"
@@ -182,11 +183,9 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
-
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
-
-
+            android:textColor="@color/textColorGrey"
             android:textAlignment="center"
             android:gravity="center"
             android:text="A-"
@@ -200,7 +199,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
-
+            android:textColor="@color/textColorGrey"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
 
@@ -218,7 +217,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
-
+            android:textColor="@color/textColorGrey"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
 
@@ -236,7 +235,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
-
+            android:textColor="@color/textColorGrey"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
 
@@ -255,7 +254,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="32dp"
-
+            android:textColor="@color/textColorGrey"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
 
@@ -275,7 +274,7 @@
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-
+            android:textColor="@color/textColorGrey"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
             android:textAlignment="center"
@@ -292,7 +291,7 @@
             android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/blood_grp_not_selected"
-
+            android:textColor="@color/textColorGrey"
             android:fontFamily="@font/montserrat"
             android:textAlignment="center"
             android:gravity="center"
@@ -311,6 +310,7 @@
         android:fontFamily="@font/montserrat_bold"
         android:text="Division"
         android:textSize="16sp"
+        android:textColor="@color/textColorDark"
         app:layout_constraintEnd_toEndOf="@+id/reg_label_blood_grp"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/reg_label_blood_grp"
@@ -341,6 +341,7 @@
         android:fontFamily="@font/montserrat_bold"
         android:text="District"
         android:textSize="16sp"
+        android:textColor="@color/textColorDark"
         app:layout_constraintEnd_toEndOf="@+id/reg_division_spinner"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/reg_division_spinner"
@@ -368,7 +369,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat_bold"
-
+            android:textColor="@color/textColorDark"
             android:text="Thana"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_district_spinner"
@@ -390,7 +391,7 @@
             android:inputType="textPassword"
             android:minHeight="40dp"
             android:padding="15dp"
-            android:textSize="15sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_label_thana"
             app:layout_constraintStart_toStartOf="@+id/reg_label_thana"
             app:layout_constraintTop_toBottomOf="@+id/reg_label_thana" />
@@ -404,7 +405,7 @@
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/montserrat"
             android:text="I am a donor"
-            android:textSize="16sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_age_edittext"
             app:layout_constraintStart_toStartOf="@+id/reg_age_edittext"
             app:layout_constraintTop_toBottomOf="@+id/reg_age_edittext" />
@@ -419,7 +420,7 @@
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/montserrat"
             android:text="I can donate plasma  [check this if you have recovered from covid-19]"
-            android:textSize="16sp"
+            android:textSize="12sp"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="@+id/reg_donor_checkbox"
             app:layout_constraintStart_toStartOf="@+id/reg_donor_checkbox"
@@ -431,7 +432,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="96dp"
             android:fontFamily="@font/montserrat_bold"
-
+            android:textColor="@color/textColorDark"
             android:text="@string/lebel_password"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_donor_checkbox"
@@ -452,7 +453,7 @@
         android:fontFamily="@font/raleway_bold"
         android:inputType="textPassword"
         android:minHeight="40dp"
-        android:textSize="15sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/reg_label_password"
         app:layout_constraintStart_toStartOf="@+id/reg_label_password"
         app:layout_constraintTop_toBottomOf="@+id/reg_label_password" />
@@ -462,9 +463,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/montserrat_bold"
-
-
+        android:fontFamily="@font/montserrat_bold"   
+        android:textColor="@color/textColorDark"
         android:text="Confirm Password"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/reg_password_edittext"
@@ -485,7 +485,7 @@
         android:fontFamily="@font/raleway_bold"
         android:inputType="textPassword"
         android:minHeight="40dp"
-        android:textSize="15sp"
+        android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="@+id/reg_label_confirm_passord"
         app:layout_constraintHorizontal_bias="0.29"
         app:layout_constraintStart_toStartOf="@+id/reg_label_confirm_passord"
@@ -501,6 +501,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:text="Age"
             android:textSize="16sp"
+            android:textColor="@color/textColorDark"
             app:layout_constraintEnd_toEndOf="@+id/reg_police_station_edittext"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/reg_police_station_edittext"
@@ -519,7 +520,7 @@
             android:inputType="number"
             android:minHeight="40dp"
             android:padding="15dp"
-            android:textSize="15sp"
+            android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_label_age"
             app:layout_constraintStart_toStartOf="@+id/reg_label_age"
             app:layout_constraintTop_toBottomOf="@+id/reg_label_age" />
