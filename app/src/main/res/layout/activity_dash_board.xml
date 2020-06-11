@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DashBoard">
+    <TextView
+        android:id="@+id/dashboard_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-16dp"
+
+        android:fontFamily="@font/montserrat_bold"
+        android:text="DashBoard"
+        android:textColor="@color/colorAccent"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/dashboard_back_button"
+        app:layout_constraintStart_toEndOf="@+id/dashboard_back_button"
+        app:layout_constraintTop_toTopOf="@+id/dashboard_back_button" />
+
+    <ImageView
+        android:id="@+id/dashboard_back_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:layout_marginTop="16dp"
+        android:padding="15dp"
+        android:src="@drawable/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/dashboard_profile_btn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/button_style_colored"
+        android:elevation="10dp"
+        android:padding="5dp"
+        android:textSize="18sp"
+        android:text="T"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="@+id/dashboard_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/dashboard_header" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/dashboard_cardView_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="148dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style_colored">
+
+
+            <TextView
+                android:id="@+id/dashboard_number_of_requests"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="5"
+                android:textColor="#ffffff"
+
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.192"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3" />
+
+            <TextView
+                android:id="@+id/dashboard_request_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Requests"
+
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/dashboard_number_of_requests"
+                app:layout_constraintStart_toStartOf="@+id/dashboard_number_of_requests"
+                app:layout_constraintTop_toBottomOf="@+id/dashboard_number_of_requests" />
+
+            <Button
+                android:id="@+id/dashboard_see_requests_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_style_white"
+                android:elevation="10dp"
+                android:padding="15dp"
+                android:text="see Requests"
+                android:textColor="@color/colorAccent"
+
+
+                app:layout_constraintBottom_toBottomOf="@+id/dashboard_request_textview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.67"
+                app:layout_constraintStart_toEndOf="@+id/dashboard_number_of_requests"
+                app:layout_constraintTop_toTopOf="@+id/dashboard_number_of_requests" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/donors_cardview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="30dp"
+        app:cardElevation="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/dashboard_cardView_1"
+        app:layout_constraintStart_toStartOf="@+id/dashboard_cardView_1"
+        app:layout_constraintTop_toBottomOf="@+id/dashboard_cardView_1">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_style_colored">
+
+
+            <TextView
+                android:id="@+id/dashboard_number_of_donors"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="5"
+                android:textColor="#ffffff"
+
+                android:textSize="30sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.192"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.3" />
+
+            <TextView
+                android:id="@+id/dashboard_donor_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="Donors"
+
+                android:textColor="#ffffff"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/dashboard_number_of_donors"
+                app:layout_constraintStart_toStartOf="@+id/dashboard_number_of_donors"
+                app:layout_constraintTop_toBottomOf="@+id/dashboard_number_of_donors" />
+
+            <Button
+                android:id="@+id/dashboard_find_donor_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_style_white"
+                android:elevation="10dp"
+                android:padding="15dp"
+                android:text="Find Donor"
+                android:textColor="@color/colorAccent"
+
+
+                app:layout_constraintBottom_toBottomOf="@+id/dashboard_donor_textview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.67"
+                app:layout_constraintStart_toEndOf="@+id/dashboard_number_of_donors"
+                app:layout_constraintTop_toTopOf="@+id/dashboard_number_of_donors" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".LoginActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/login_top_img"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+
+            android:src="@drawable/upper_back"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/login_request_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/login_request"
+            android:textAlignment="center"
+            android:textColor="#1D2226"
+
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="@+id/login_top_img"
+            app:layout_constraintStart_toStartOf="@+id/login_top_img"
+            app:layout_constraintTop_toBottomOf="@+id/login_top_img" />
+
+
+    <TextView
+        android:id="@+id/login_label_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/lebel_phone_number"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/login_phone_number_edittext"
+        app:layout_constraintEnd_toEndOf="@+id/login_phone_number_edittext"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/login_phone_number_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/login_request_textview" />
+
+        <EditText
+            android:id="@+id/login_phone_number_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="60dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_dark"
+            android:hint="017xxxxxxxx"
+            android:padding="15dp"
+
+            android:fontFamily="@font/raleway_bold"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/login_request_textview"
+            app:layout_constraintStart_toStartOf="@+id/login_request_textview"
+            app:layout_constraintTop_toBottomOf="@+id/login_request_textview" />
+
+    <TextView
+        android:id="@+id/login_label_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/lebel_password"
+        android:textColor="@color/colorAccent"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/login_password_edittext"
+        app:layout_constraintEnd_toEndOf="@+id/login_password_edittext"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/login_password_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/login_phone_number_edittext"
+        app:layout_constraintVertical_bias="0.93" />
+
+        <EditText
+            android:id="@+id/login_password_edittext" 
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="40dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="32dp"
+            android:padding="15dp"
+            android:fontFamily="@font/raleway_bold"
+            android:inputType="textPassword"
+            android:background="@drawable/edit_text_dark"
+            android:hint="*****"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/login_phone_number_edittext"
+            app:layout_constraintStart_toStartOf="@+id/login_phone_number_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/login_phone_number_edittext" />
+
+        <ImageView
+            android:id="@+id/show_password_icon"
+            android:layout_width="26dp"
+            android:layout_height="32dp"
+
+            android:src="@drawable/icon_feather_eye_off"
+            app:layout_constraintBottom_toBottomOf="@+id/login_password_edittext"
+            app:layout_constraintEnd_toEndOf="@+id/login_password_edittext"
+            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintStart_toStartOf="@+id/login_password_edittext"
+            app:layout_constraintTop_toTopOf="@+id/login_password_edittext" />
+
+    <TextView
+        android:id="@+id/login_forgot_password_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/raleway"
+        android:text="@string/forgot_password"
+        android:textColor="@color/colorAccent"
+        android:textSize="13sp"
+        app:layout_constraintEnd_toEndOf="@+id/login_password_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/login_password_edittext" />
+
+    <Button
+        android:id="@+id/login_sign_in_button"
+        android:maxWidth="350dp"
+        android:minWidth="320dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/button_style_colored"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/sign_in"
+        android:textColor="#ffffff"
+        android:elevation="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_forgot_password_textview" />
+
+    <TextView
+        android:id="@+id/login_no_account_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/raleway_bold"
+        android:text="@string/no_account"
+        android:textAlignment="center"
+
+        android:textColor="#1D2226"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/login_top_img"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/login_top_img"
+        app:layout_constraintTop_toBottomOf="@+id/login_sign_in_button" />
+
+        <Button
+            android:id="@+id/login_sign_up_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/button_style_white"
+            android:fontFamily="@font/montserrat_bold"
+            android:elevation="10dp"
+
+
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/sign_up"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/login_no_account_textview" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+</ScrollView>

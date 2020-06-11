@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+
+    android:id="@+id/dashboard_cardView_1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="32dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="32dp"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+
+        <TextView
+            android:id="@+id/donor_child_bld_grp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/blood_grp_selected"
+
+
+            android:fontFamily="@font/montserrat"
+            android:padding="15dp"
+            android:text="AB+"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/donor_location"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/donor_name" />
+
+        <ImageView
+            android:id="@+id/donor_child_profile_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="8dp"
+            android:src="@drawable/profile_icon_male"
+            app:layout_constraintBottom_toBottomOf="@+id/donor_location"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/donor_name" />
+
+        <TextView
+            android:id="@+id/donor_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+
+            android:layout_marginTop="48dp"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Tanvir Ahmmad"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/donor_child_profile_image"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/donor_child_location_image"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:layout_marginTop="16dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/location_icon"
+            app:layout_constraintEnd_toEndOf="@+id/donor_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/donor_name"
+            app:layout_constraintTop_toBottomOf="@+id/donor_name" />
+
+        <TextView
+            android:id="@+id/donor_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+
+            android:fontFamily="@font/raleway"
+            android:text="Jessore"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/donor_child_location_image"
+            app:layout_constraintStart_toEndOf="@+id/donor_child_location_image"
+            app:layout_constraintTop_toTopOf="@+id/donor_child_location_image" />
+        <Button
+            android:id="@+id/donor_child_details_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/button_style_white"
+            android:elevation="10dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Ask for Help"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/donor_location" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

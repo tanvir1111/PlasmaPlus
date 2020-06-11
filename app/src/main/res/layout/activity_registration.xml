@@ -1,0 +1,547 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    tools:context=".RegistrationActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/reg_back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:padding="15dp"
+            android:src="@drawable/back_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/reg_heading_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-16dp"
+            android:textColor="@color/colorAccent"
+
+
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Donor Registration"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/reg_back_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/reg_back_button"
+            app:layout_constraintTop_toTopOf="@+id/reg_back_button" />
+
+
+    <TextView
+        android:id="@+id/reg_label_name"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/label_name"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/reg_heading_textview" />
+
+    <EditText
+        android:id="@+id/reg_name_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingStart="25dp"
+        android:paddingEnd="20dp"
+
+        android:layout_marginStart="32dp"
+        android:background="@drawable/edit_text_dark"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/montserrat"
+        android:textSize="15sp"
+        android:hint="Enter Your Name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/reg_label_name" />
+
+    <TextView
+        android:id="@+id/reg_label_phone_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/lebel_phone_number"
+
+
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/reg_phone_number_edittext"
+            app:layout_constraintEnd_toEndOf="@+id/reg_phone_number_edittext"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/reg_phone_number_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_name_edittext"
+            app:layout_constraintVertical_bias="0.93" />
+
+        <EditText
+            android:id="@+id/reg_phone_number_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edit_text_dark"
+            android:paddingStart="25dp"
+            android:paddingEnd="25dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/montserrat"
+            android:textSize="15sp"
+            android:hint="017xxxxxxxx"
+            app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
+            app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_name_edittext" />
+
+
+        <TextView
+            android:id="@+id/reg_label_gender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Gender"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_phone_number_edittext"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_phone_number_edittext" />
+
+        <ImageView
+            android:id="@+id/reg_male_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/male_icon"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reg_label_gender" />
+
+        <ImageView
+            android:id="@+id/reg_female_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="96dp"
+            android:src="@drawable/female_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/reg_male_icon"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/reg_male_icon"
+            app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/reg_label_blood_grp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Select Blood Group"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/reg_label_gender"
+        app:layout_constraintTop_toBottomOf="@+id/reg_male_icon" />
+
+
+        <TextView
+            android:id="@+id/reg_bld_a_positive"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+
+            android:background="@drawable/blood_grp_not_selected"
+            android:fontFamily="@font/montserrat"
+
+
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="A+"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@+id/reg_label_blood_grp"
+            app:layout_constraintTop_toBottomOf="@+id/reg_label_blood_grp" />
+
+        <TextView
+            android:id="@+id/reg_bld_a_negative"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+
+            android:background="@drawable/blood_grp_not_selected"
+            android:fontFamily="@font/montserrat"
+
+
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="A-"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/reg_bld_a_positive"
+            app:layout_constraintStart_toEndOf="@+id/reg_bld_a_positive"
+            app:layout_constraintTop_toTopOf="@+id/reg_bld_a_positive" />
+
+        <TextView
+            android:id="@+id/reg_bld_b_positive"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+
+            android:background="@drawable/blood_grp_not_selected"
+            android:fontFamily="@font/montserrat"
+
+
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="B+"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/reg_bld_a_negative"
+            app:layout_constraintStart_toEndOf="@+id/reg_bld_a_negative"
+            app:layout_constraintTop_toTopOf="@+id/reg_bld_a_negative" />
+
+        <TextView
+            android:id="@+id/reg_bld_b_negative"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+
+            android:background="@drawable/blood_grp_not_selected"
+            android:fontFamily="@font/montserrat"
+
+
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="B-"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/reg_bld_b_positive"
+            app:layout_constraintStart_toEndOf="@+id/reg_bld_b_positive"
+            app:layout_constraintTop_toTopOf="@+id/reg_bld_b_positive" />
+
+        <TextView
+            android:id="@+id/reg_bld_o_positive"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+
+            android:background="@drawable/blood_grp_not_selected"
+            android:fontFamily="@font/montserrat"
+
+
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="O+"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/reg_bld_b_negative"
+            app:layout_constraintStart_toEndOf="@+id/reg_bld_b_negative"
+            app:layout_constraintTop_toTopOf="@+id/reg_bld_b_negative" />
+
+        <TextView
+            android:id="@+id/reg_bld_o_negative"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="32dp"
+
+            android:background="@drawable/blood_grp_not_selected"
+            android:fontFamily="@font/montserrat"
+
+
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="O-"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/reg_bld_o_positive"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/reg_bld_o_positive"
+            app:layout_constraintTop_toTopOf="@+id/reg_bld_o_positive" />
+
+        <TextView
+            android:id="@+id/reg_bld_ab_positive"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+
+            android:background="@drawable/blood_grp_not_selected"
+            android:fontFamily="@font/montserrat"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="AB+"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_bld_a_positive"
+            app:layout_constraintStart_toStartOf="@+id/reg_bld_a_positive"
+            app:layout_constraintTop_toBottomOf="@+id/reg_bld_a_positive" />
+
+        <TextView
+            android:id="@+id/reg_bld_ab_negative"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/blood_grp_not_selected"
+
+            android:fontFamily="@font/montserrat"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:text="AB-"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="@+id/reg_bld_ab_positive"
+            app:layout_constraintStart_toEndOf="@+id/reg_bld_ab_positive"
+            app:layout_constraintTop_toTopOf="@+id/reg_bld_ab_positive" />
+
+    <TextView
+        android:id="@+id/reg_label_spinner_division"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Division"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/reg_label_blood_grp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/reg_label_blood_grp"
+        app:layout_constraintTop_toBottomOf="@+id/reg_bld_ab_positive" />
+
+    <Spinner
+        android:id="@+id/reg_division_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:minHeight="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+
+
+        app:layout_constraintEnd_toEndOf="@+id/reg_label_spinner_division"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/reg_label_spinner_division"
+        app:layout_constraintTop_toBottomOf="@+id/reg_label_spinner_division" />
+
+    <TextView
+        android:id="@+id/reg_label_spinner_district"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="District"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/reg_division_spinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/reg_division_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/reg_division_spinner" />
+
+    <Spinner
+        android:id="@+id/reg_district_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+
+        android:minHeight="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/reg_division_spinner"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/reg_division_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/reg_label_spinner_district" />
+
+
+        <TextView
+            android:id="@+id/reg_label_thana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat_bold"
+
+            android:text="Thana"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_district_spinner"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/reg_district_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/reg_district_spinner" />
+
+        <EditText
+            android:id="@+id/reg_police_station_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:hint="Boalia"
+
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_dark"
+            android:fontFamily="@font/raleway_bold"
+            android:inputType="textPassword"
+            android:minHeight="40dp"
+            android:padding="15dp"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_label_thana"
+            app:layout_constraintStart_toStartOf="@+id/reg_label_thana"
+            app:layout_constraintTop_toBottomOf="@+id/reg_label_thana" />
+        <CheckBox
+            android:id="@+id/reg_donor_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/montserrat"
+            android:text="I am a donor"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_age_edittext"
+            app:layout_constraintStart_toStartOf="@+id/reg_age_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_age_edittext" />
+
+        <CheckBox
+            android:id="@+id/reg_plasma_checkbox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="64dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:fontFamily="@font/montserrat"
+            android:text="I can donate plasma  [check this if you have recovered from covid-19]"
+            android:textSize="16sp"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="@+id/reg_donor_checkbox"
+            app:layout_constraintStart_toStartOf="@+id/reg_donor_checkbox"
+            app:layout_constraintTop_toBottomOf="@+id/reg_donor_checkbox" />
+
+        <TextView
+            android:id="@+id/reg_label_password"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="96dp"
+            android:fontFamily="@font/montserrat_bold"
+
+            android:text="@string/lebel_password"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_donor_checkbox"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/reg_donor_checkbox"
+            app:layout_constraintTop_toTopOf="@+id/reg_plasma_checkbox" />
+
+    <EditText
+        android:id="@+id/reg_password_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:padding="15dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_dark"
+        android:hint="*******"
+        android:fontFamily="@font/raleway_bold"
+        android:inputType="textPassword"
+        android:minHeight="40dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/reg_label_password"
+        app:layout_constraintStart_toStartOf="@+id/reg_label_password"
+        app:layout_constraintTop_toBottomOf="@+id/reg_label_password" />
+
+    <TextView
+        android:id="@+id/reg_label_confirm_passord"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+
+
+        android:text="Confirm Password"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/reg_password_edittext"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/reg_password_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/reg_password_edittext" />
+
+    <EditText
+        android:id="@+id/reg_confirm_password_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:padding="15dp"
+        android:hint="*********"
+        android:background="@drawable/edit_text_dark"
+        android:fontFamily="@font/raleway_bold"
+        android:inputType="textPassword"
+        android:minHeight="40dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/reg_label_confirm_passord"
+        app:layout_constraintHorizontal_bias="0.29"
+        app:layout_constraintStart_toStartOf="@+id/reg_label_confirm_passord"
+        app:layout_constraintTop_toBottomOf="@+id/reg_label_confirm_passord" />
+
+        <TextView
+            android:id="@+id/reg_label_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Age"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_police_station_edittext"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/reg_police_station_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_police_station_edittext" />
+
+        <EditText
+            android:id="@+id/reg_age_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_dark"
+            android:fontFamily="@font/raleway_bold"
+            android:hint="Enter Age"
+            android:inputType="number"
+            android:minHeight="40dp"
+            android:padding="15dp"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_label_age"
+            app:layout_constraintStart_toStartOf="@+id/reg_label_age"
+            app:layout_constraintTop_toBottomOf="@+id/reg_label_age" />
+
+        <Button
+            android:id="@+id/reg_sign_up_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/button_style_colored"
+            android:fontFamily="@font/montserrat_bold"
+            android:maxWidth="350dp"
+            android:minWidth="320dp"
+            android:text="@string/sign_up"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/reg_confirm_password_edittext"
+            app:layout_constraintHorizontal_bias="0.494"
+            app:layout_constraintStart_toStartOf="@+id/reg_confirm_password_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_confirm_password_edittext"
+            app:layout_constraintVertical_bias="0.16000003" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

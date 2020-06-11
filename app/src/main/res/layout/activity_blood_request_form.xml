@@ -1,0 +1,433 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BloodRequestForm">
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/bld_req_back_button"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+
+        android:layout_marginStart="8dp"
+        android:padding="15dp"
+        android:src="@drawable/back_button"
+        app:layout_constraintBottom_toBottomOf="@+id/bld_req_heading_textview"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bld_req_heading_textview" />
+
+    <TextView
+        android:id="@+id/bld_req_heading_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="-16dp"
+        android:textColor="@color/colorAccent"
+
+
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Blood Request form"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/bld_req_back_button"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/bld_req_label_name"
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/label_name"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_name_edittext"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_name_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_heading_textview" />
+
+    <EditText
+        android:id="@+id/bld_req_name_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_dark"
+
+        android:fontFamily="@font/montserrat"
+        android:hint="Enter Your Name"
+        android:paddingStart="25dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="10dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_label_name" />
+
+
+    <TextView
+        android:id="@+id/bld_req_label_phone_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/lebel_phone_number"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_date"
+        app:layout_constraintHorizontal_bias="0.004"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_date"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_date" />
+
+    <EditText
+        android:id="@+id/bld_req_phone_number_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_dark"
+        android:fontFamily="@font/montserrat"
+        android:hint="017xxxxxxxx"
+        android:paddingStart="25dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="25dp"
+        android:paddingBottom="10dp"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_label_phone_number"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_label_phone_number" />
+
+    <TextView
+        android:id="@+id/bld_req_label_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Gender"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_name_edittext"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_name_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_name_edittext" />
+
+    <ImageView
+        android:id="@+id/bld_req_male_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/male_icon"
+        app:layout_constraintStart_toEndOf="@+id/bld_req_label_gender"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_label_gender" />
+
+    <ImageView
+        android:id="@+id/bld_req_female_icon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:src="@drawable/female_icon"
+        app:layout_constraintBottom_toBottomOf="@+id/bld_req_male_icon"
+        app:layout_constraintStart_toEndOf="@+id/bld_req_male_icon"
+        app:layout_constraintTop_toTopOf="@+id/bld_req_male_icon"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/bld_req_label_blood_grp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Select Blood Group"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_label_gender"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_male_icon" />
+
+
+    <TextView
+        android:id="@+id/bld_req_bld_a_positive"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="8dp"
+
+        android:background="@drawable/blood_grp_not_selected"
+        android:fontFamily="@font/montserrat"
+
+
+        android:textAlignment="center"
+        android:gravity="center"
+        android:text="A+"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_label_blood_grp"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_label_blood_grp" />
+
+    <TextView
+        android:id="@+id/bld_req_bld_a_negative"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+
+        android:background="@drawable/blood_grp_not_selected"
+        android:fontFamily="@font/montserrat"
+
+
+        android:gravity="center"
+        android:text="A-"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bld_req_bld_a_positive"
+        app:layout_constraintStart_toEndOf="@+id/bld_req_bld_a_positive"
+        app:layout_constraintTop_toTopOf="@+id/bld_req_bld_a_positive" />
+
+    <TextView
+        android:id="@+id/bld_req_bld_b_positive"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+
+        android:background="@drawable/blood_grp_not_selected"
+        android:fontFamily="@font/montserrat"
+
+
+        android:gravity="center"
+        android:text="B+"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bld_req_bld_a_negative"
+        app:layout_constraintStart_toEndOf="@+id/bld_req_bld_a_negative"
+        app:layout_constraintTop_toTopOf="@+id/bld_req_bld_a_negative" />
+
+    <TextView
+        android:id="@+id/bld_req_bld_b_negative"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+
+        android:background="@drawable/blood_grp_not_selected"
+        android:fontFamily="@font/montserrat"
+
+
+        android:gravity="center"
+        android:text="B-"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bld_req_bld_b_positive"
+        app:layout_constraintStart_toEndOf="@+id/bld_req_bld_b_positive"
+        app:layout_constraintTop_toTopOf="@+id/bld_req_bld_b_positive" />
+
+    <TextView
+        android:id="@+id/bld_req_bld_o_positive"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+
+        android:background="@drawable/blood_grp_not_selected"
+        android:fontFamily="@font/montserrat"
+
+
+        android:gravity="center"
+        android:text="O+"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bld_req_bld_b_negative"
+        app:layout_constraintStart_toEndOf="@+id/bld_req_bld_b_negative"
+        app:layout_constraintTop_toTopOf="@+id/bld_req_bld_b_negative" />
+
+    <TextView
+        android:id="@+id/bld_req_bld_o_negative"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+
+        android:background="@drawable/blood_grp_not_selected"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+
+
+        android:text="O-"
+        android:textAlignment="center"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bld_req_bld_o_positive"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bld_req_bld_o_positive"
+        app:layout_constraintTop_toTopOf="@+id/bld_req_bld_o_positive"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/bld_req_bld_ab_positive"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="16dp"
+
+        android:background="@drawable/blood_grp_not_selected"
+        android:fontFamily="@font/montserrat"
+   android:textAlignment="center"
+        android:gravity="center"
+
+        android:text="AB+"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_bld_a_positive"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_bld_a_positive"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_bld_a_positive" />
+
+    <TextView
+        android:id="@+id/bld_req_bld_ab_negative"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/blood_grp_not_selected"
+
+        android:fontFamily="@font/montserrat"
+        android:paddingLeft="10dp"
+        android:paddingTop="15dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="15dp"
+
+
+        android:text="AB-"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bld_req_bld_ab_positive"
+        app:layout_constraintStart_toEndOf="@+id/bld_req_bld_ab_positive"
+        app:layout_constraintTop_toTopOf="@+id/bld_req_bld_ab_positive" />
+
+    <TextView
+        android:id="@+id/bld_req_label_hospital"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="24dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Hostpital"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_label_blood_grp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_label_blood_grp"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_bld_ab_positive" />
+
+    <EditText
+        android:id="@+id/bld_req_hospital_edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/edit_text_white"
+        android:minHeight="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_label_hospital"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_label_hospital"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_label_hospital" />
+
+    <TextView
+        android:id="@+id/bld_req_label_spinner_district"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="District"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_hospital_edittext"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_label_blood_grp"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_hospital_edittext" />
+
+    <Spinner
+        android:id="@+id/bld_req_district_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:minHeight="40dp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_hospital_edittext"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_hospital_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_label_spinner_district" />
+
+
+    <EditText
+        android:id="@+id/bld_req_date"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_white"
+        android:hint="Enter Date"
+
+        android:minHeight="40dp"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_label_date"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_label_date"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_label_date" />
+
+    <TextView
+        android:id="@+id/bld_req_label_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Date [when needed?]"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_district_spinner"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_district_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_district_spinner" />
+
+    <RadioButton
+        android:id="@+id/bld_req_plasma_radio_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:fontFamily="@font/montserrat"
+        android:text="Need plasma  [for plasma therapy]"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_phone_number_edittext"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_phone_number_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_phone_number_edittext" />
+
+    <Button
+        android:id="@+id/bld_req_request_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_style_colored"
+        android:fontFamily="@font/montserrat_bold"
+        android:maxWidth="350dp"
+        android:minWidth="320dp"
+        android:text="Submit"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_plasma_radio_button"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_plasma_radio_button"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_plasma_radio_button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
