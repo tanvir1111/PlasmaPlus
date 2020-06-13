@@ -325,8 +325,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="32dp"
-
-
+        android:entries="@array/division"
         app:layout_constraintEnd_toEndOf="@+id/reg_label_spinner_division"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/reg_label_spinner_division"
@@ -340,6 +339,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="District"
+
         android:textSize="16sp"
         android:textColor="@color/textColorDark"
         app:layout_constraintEnd_toEndOf="@+id/reg_division_spinner"
@@ -378,7 +378,7 @@
             app:layout_constraintTop_toBottomOf="@+id/reg_district_spinner" />
 
         <EditText
-            android:id="@+id/reg_police_station_edittext"
+            android:id="@+id/reg_thana_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
@@ -502,10 +502,10 @@
             android:text="Age"
             android:textSize="16sp"
             android:textColor="@color/textColorDark"
-            app:layout_constraintEnd_toEndOf="@+id/reg_police_station_edittext"
+            app:layout_constraintEnd_toEndOf="@+id/reg_thana_edittext"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/reg_police_station_edittext"
-            app:layout_constraintTop_toBottomOf="@+id/reg_police_station_edittext" />
+            app:layout_constraintStart_toStartOf="@+id/reg_thana_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_thana_edittext" />
 
         <EditText
             android:id="@+id/reg_age_edittext"

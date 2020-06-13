@@ -9,13 +9,16 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
-    private String bloodGroup, gender;
+    private EditText nameEditText,ageEditText,thanaEditText,passwordEditText,confPasswordEditText;
+
+    private String  bloodGroup, gender,donorInfo;
     private ImageView genderMale, genderFemale;
     private Button singUp;
 
@@ -26,6 +29,14 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+//        all editTexts
+        nameEditText=findViewById(R.id.reg_name_edittext);
+        ageEditText=findViewById(R.id.reg_age_edittext);
+        thanaEditText=findViewById(R.id.reg_thana_edittext);
+        passwordEditText=findViewById(R.id.reg_password_edittext);
+        confPasswordEditText=findViewById(R.id.reg_confirm_password_edittext);
+
+//      buttons
         singUp=findViewById(R.id.reg_sign_up_btn);
         isDonorBtn=findViewById(R.id.reg_donor_checkbox);
         isPlasmaDonor=findViewById(R.id.reg_plasma_checkbox);
@@ -59,30 +70,53 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         abNegative.setOnClickListener(this);
         genderMale.setOnClickListener(this);
         genderFemale.setOnClickListener(this);
-
         singUp.setOnClickListener(this);
 
-        isDonorBtn.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isDonorBtn.isChecked()){
-                    isPlasmaDonor.setVisibility(View.VISIBLE);
+//        donorcheckbox setting donor info blood/plasma/na
+        isDonorBtn.setOnCheckedChangeListener(
+                new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        if(isChecked){
+                            donorInfo="Blood";
+                            isPlasmaDonor.setVisibility(View.VISIBLE);
+                            isPlasmaDonor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                                    if(isChecked){
+                                        donorInfo="Plasma";
 
-                }
-                else
-                {
-                    isPlasmaDonor.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
+                                    }
+                                    else {
+                                        donorInfo="Blood";
+                                    }
+                                    Toast.makeText(RegistrationActivity.this, donorInfo, Toast.LENGTH_SHORT).show();
+
+
+                                }
+                            });
+
+                        }
+                        else
+                        {
+                            donorInfo="na";
+                            isPlasmaDonor.setVisibility(View.INVISIBLE);
+                        }
+                        Toast.makeText(RegistrationActivity.this, donorInfo, Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+
+
+
 
 
     }
 
+
+
     @Override
     public void onClick(View v) {
-
-
         switch (v.getId()) {
             case R.id.reg_male_icon:
                 genderFemale.setImageResource(R.drawable.female_icon);
@@ -111,8 +145,33 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 break;
 
             case R.id.reg_sign_up_btn:
+
+                verifyData();
                 Intent login=new Intent(RegistrationActivity.this,LoginActivity.class);
                 startActivity(login);
+                break;
         }
+    }
+
+    private void verifyData() {
+        String name,phone,division,district,thana,age,password;
+        name=nameEditText.getText().toString();
+        thana=thanaEditText.getText().toString();
+        age=ageEditText.getText().toString();
+        password=passwordEditText.getText().toString();
+        division="";
+        district="";
+        Intent i=getIntent();
+        phone=i.getExtras().get("phone").toString();
+        if(password==confPasswordEditText.getText().toString()){
+//            retro operations
+
+        }
+        else {
+            Toast.makeText(this, "password doesn't match", Toast.LENGTH_SHORT).show();
+        }
+
+
+
     }
 }

@@ -20,4 +20,39 @@
         <item>Chittagong</item>
     </string-array>
 
+
+    <string-array name="Dhaka">
+
+    </string-array>
+
+    <string-array name="Rajshahi">
+
+    </string-array>
+
+    <string-array name="Rangpur">
+
+    </string-array>
+
+    <string-array name="Sylhet">
+
+    </string-array>
+
+    <string-array name="Khulna">
+
+    </string-array>
+
+    <string-array name="Mymensingh">
+
+    </string-array>
+
+    <string-array name="Barisal">
+
+    </string-array>
+
+    <string-array name="Chittagong">
+
+
+    </string-array>
+
+
 </resources>

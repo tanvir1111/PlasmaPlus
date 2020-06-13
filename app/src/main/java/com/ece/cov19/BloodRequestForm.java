@@ -86,8 +86,12 @@ public class BloodRequestForm extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.bld_req_request_btn:
+
                 Intent dashboardIntent=new Intent(BloodRequestForm.this,DashBoard.class);
+
                 startActivity(dashboardIntent);
+
+
         }
     }
 }

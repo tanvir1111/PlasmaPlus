@@ -50,6 +50,7 @@ public class Phone_verification extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent registration=new Intent(Phone_verification.this,RegistrationActivity.class);
+                registration.putExtra("phone",phoneInput.getText().toString());
                 startActivity(registration);
             }
         });
