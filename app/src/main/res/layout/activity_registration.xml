@@ -77,55 +77,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/reg_label_name" />
 
-    <TextView
-        android:id="@+id/reg_label_phone_number"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/lebel_phone_number"
-            android:textColor="@color/textColorDark"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toTopOf="@+id/reg_phone_number_edittext"
-            app:layout_constraintEnd_toEndOf="@+id/reg_phone_number_edittext"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/reg_phone_number_edittext"
-            app:layout_constraintTop_toBottomOf="@+id/reg_name_edittext"
-            app:layout_constraintVertical_bias="0.93" />
-
-        <EditText
-            android:id="@+id/reg_phone_number_edittext"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/edit_text_dark"
-            android:paddingStart="25dp"
-            android:paddingEnd="25dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="48dp"
-            android:layout_marginEnd="32dp"
-            android:fontFamily="@font/montserrat"
-            android:textSize="12sp"
-            android:hint="017xxxxxxxx"
-            app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
-            app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
-            app:layout_constraintTop_toBottomOf="@+id/reg_name_edittext" />
-
 
         <TextView
             android:id="@+id/reg_label_gender"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
 
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="Gender"
-            android:textSize="16sp"
             android:textColor="@color/textColorDark"
-            app:layout_constraintEnd_toEndOf="@+id/reg_phone_number_edittext"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
-            app:layout_constraintTop_toBottomOf="@+id/reg_phone_number_edittext" />
+            app:layout_constraintTop_toBottomOf="@+id/reg_name_edittext" />
 
         <ImageView
             android:id="@+id/reg_male_icon"
@@ -388,7 +354,6 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/raleway_bold"
-            android:inputType="textPassword"
             android:minHeight="40dp"
             android:padding="15dp"
             android:textSize="12sp"

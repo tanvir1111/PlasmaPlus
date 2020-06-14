@@ -6,21 +6,35 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.ece.cov19.DataModels.RegDataModel;
+import com.ece.cov19.RetroServices.RetroInstance;
+import com.ece.cov19.RetroServices.RetroInterface;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
     private EditText nameEditText,ageEditText,thanaEditText,passwordEditText,confPasswordEditText;
-
-    private String  bloodGroup, gender,donorInfo;
+    private String  bloodGroup, gender,donorInfo="na";
     private ImageView genderMale, genderFemale;
     private Button singUp;
+    private Spinner divisionSpinner,districtSpinner;
+    int divisionIds[]={R.array.Dhaka,R.array.Rajshahi,R.array.Rangpur,R.array.Khulna,R.array.Chittagong,R.array.Mymensingh,
+
+    R.array.Barisal,R.array.Sylhet};
 
     private CheckBox isPlasmaDonor,isDonorBtn;
 
@@ -40,6 +54,27 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         singUp=findViewById(R.id.reg_sign_up_btn);
         isDonorBtn=findViewById(R.id.reg_donor_checkbox);
         isPlasmaDonor=findViewById(R.id.reg_plasma_checkbox);
+//        spinners
+        divisionSpinner=findViewById(R.id.reg_division_spinner);
+        districtSpinner=findViewById(R.id.reg_district_spinner);
+
+        divisionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ArrayAdapter<String> adpter = new ArrayAdapter<String>(
+                        RegistrationActivity.this,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        getResources().getStringArray(divisionIds[position]));
+                districtSpinner.setAdapter(adpter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
 
         /*blood group textviews*/
         aPositive = findViewById(R.id.reg_bld_a_positive);
@@ -57,6 +92,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
         /* just a random one to avoid nullPoint Exception*/
         selectedBldGrp = aPositive;
+
 
 
 //        all OnclickListeners
@@ -147,31 +183,82 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             case R.id.reg_sign_up_btn:
 
                 verifyData();
-                Intent login=new Intent(RegistrationActivity.this,LoginActivity.class);
-                startActivity(login);
+
                 break;
         }
     }
 
     private void verifyData() {
-        String name,phone,division,district,thana,age,password;
+        String name,phone,division,district,thana,age,password,emptyfield="all ok";
         name=nameEditText.getText().toString();
         thana=thanaEditText.getText().toString();
         age=ageEditText.getText().toString();
         password=passwordEditText.getText().toString();
-        division="";
-        district="";
+        division=divisionSpinner.getSelectedItem().toString();
+        district=districtSpinner.getSelectedItem().toString();
         Intent i=getIntent();
         phone=i.getExtras().get("phone").toString();
-        if(password==confPasswordEditText.getText().toString()){
+
+
+//        checking empty Fields
+
+        if (name.isEmpty()) {
+            emptyfield="name";
+        } else if (thana.isEmpty()) {
+            emptyfield="thana";
+        } else if (age.isEmpty()) {
+            emptyfield="age";
+        } else if (password.isEmpty()) {
+            emptyfield="password";
+        } else if (division.isEmpty()) {
+            emptyfield="division";
+        } else if (district.isEmpty()) {
+            emptyfield="district";
+        } else if (bloodGroup==null) {
+            emptyfield="bloodGroup";
+        } else if (gender==null) {
+            emptyfield="gender";
+        }
+
+        if(emptyfield.equals("all ok")) {
+            if (password.equals(confPasswordEditText.getText().toString())) {
 //            retro operations
 
-        }
-        else {
-            Toast.makeText(this, "password doesn't match", Toast.LENGTH_SHORT).show();
+                registerUser(name, phone, division, district, thana, age, password);
+
+
+            } else {
+                Toast.makeText(this, "password doesn't match", Toast.LENGTH_SHORT).show();
+            }
+        }else {
+            Toast.makeText(this, "Enter "+emptyfield, Toast.LENGTH_SHORT).show();
         }
 
 
+
+    }
+
+    private void registerUser(String name, String phone, String division, String district, String thana, String age, String password) {
+
+       RetroInterface retroinstance = RetroInstance.getRetro();
+        Call<RegDataModel> sendingData = retroinstance.sendData(name,phone,gender,bloodGroup,division,district,thana,age,donorInfo,password);
+        sendingData.enqueue(new Callback<RegDataModel>() {
+            @Override
+            public void onResponse(Call<RegDataModel> call, Response<RegDataModel> response) {
+                if( response.body().getServerMsg()=="Success")
+                Toast.makeText(RegistrationActivity.this,"Registration successful", Toast.LENGTH_SHORT).show();
+
+//              going to login activity
+                Intent intent=new Intent(RegistrationActivity.this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
+
+            @Override
+            public void onFailure(Call<RegDataModel> call, Throwable t) {
+                Toast.makeText(RegistrationActivity.this, "failed to register! try again", Toast.LENGTH_SHORT).show();
+            }
+        });
 
     }
 }

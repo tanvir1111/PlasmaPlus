@@ -13,46 +13,68 @@
         <item>Dhaka</item>
         <item>Rajshahi</item>
         <item>Rangpur</item>
-        <item>Sylhet</item>
         <item>Khulna</item>
-        <item>Barisal</item>
-        <item>Mymensingh</item>
         <item>Chittagong</item>
+        <item>Mymensingh</item>
+        <item>Barisal</item>
+         <item>Sylhet</item>
     </string-array>
 
 
     <string-array name="Dhaka">
+        <item>Dhds1</item>
+        <item>dhds2</item>
 
     </string-array>
 
     <string-array name="Rajshahi">
+        <item>rjds1</item>
+        <item>rjds2</item>
+
 
     </string-array>
 
     <string-array name="Rangpur">
+        <item>rnds1</item>
+        <item>rnds2</item>
 
-    </string-array>
-
-    <string-array name="Sylhet">
 
     </string-array>
 
     <string-array name="Khulna">
+        <item>khds1</item>
+        <item>khds2</item>
 
-    </string-array>
-
-    <string-array name="Mymensingh">
-
-    </string-array>
-
-    <string-array name="Barisal">
 
     </string-array>
 
     <string-array name="Chittagong">
+        <item>ch ds 1</item>
+        <item>ch ds 2</item>
+    </string-array>
+    <string-array name="Mymensingh">
+        <item>my ds 1</item>
+        <item>my ds 2</item>
 
 
     </string-array>
+
+    <string-array name="Barisal">
+        <item>br ds 1</item>
+        <item>br ds 2</item>
+
+    </string-array>
+
+    <string-array name="Sylhet">
+        <item>sy ds 1</item>
+        <item>sy ds 2</item>
+
+
+    </string-array>
+
+
+
+
 
 
 </resources>
