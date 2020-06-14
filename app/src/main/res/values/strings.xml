@@ -22,52 +22,101 @@
 
 
     <string-array name="Dhaka">
-        <item>Dhds1</item>
-        <item>dhds2</item>
+        <item>Dhaka </item>
+        <item>Narsingdi </item>
+        <item>Gazipur </item>
+        <item>Shariatpur </item>
+        <item>Narayanganj </item>
+        <item>Tangail </item>
+        <item>Kishoreganj </item>
+        <item>Manikganj </item>
+        <item>Munshiganj </item>
+        <item>Rajbari </item>
+        <item>Madaripur </item>
+        <item>Gopalganj </item>
+        <item>Faridpur </item>
 
     </string-array>
 
     <string-array name="Rajshahi">
-        <item>rjds1</item>
-        <item>rjds2</item>
+        <item>Rajshahi</item>
+        <item>Sirajganj</item>
+        <item>Pabna</item>
+        <item>Bogra</item>
+        <item>Natore</item>
+        <item>Joypurhat</item>
+        <item>Chapainawabganj</item>
+        <item>Naogaon</item>
 
 
     </string-array>
 
     <string-array name="Rangpur">
-        <item>rnds1</item>
-        <item>rnds2</item>
+        <item>Rangpur </item>
+        <item>Panchagarh </item>
+        <item>Dinajpur </item>
+        <item>Lalmonirhat </item>
+        <item>Nilphamari </item>
+        <item>Gaibandha </item>
+        <item>Thakurgaon </item>
+        <item>Kurigram </item>
 
 
     </string-array>
 
     <string-array name="Khulna">
-        <item>khds1</item>
-        <item>khds2</item>
+
+        <item>Khulna</item>
+        <item>Jessore </item>
+        <item>Satkhira </item>
+        <item>Meherpur </item>
+        <item>Narail </item>
+        <item>Chuadanga </item>
+        <item>kushtia </item>
+        <item>Magura </item>
+        <item>Khulna </item>
+        <item>Bagerhat </item>
+        <item>Jhenaidah </item>
 
 
     </string-array>
 
     <string-array name="Chittagong">
-        <item>ch ds 1</item>
-        <item>ch ds 2</item>
+        <item>Chittagong</item>
+        <item>Comilla  </item>
+        <item>Feni </item>
+        <item>Brahmanbaria </item>
+        <item>Rangamati </item>
+        <item>Noakhali </item>
+        <item>Chandpur </item>
+        <item>Lakshmipur </item>
+        <item>Coxbazar  </item>
+        <item>Khagrachhari </item>
+        <item>Bandarban </item>
     </string-array>
     <string-array name="Mymensingh">
-        <item>my ds 1</item>
-        <item>my ds 2</item>
-
+        <item>Mymensingh </item>
+        <item>Sherpur </item>
+        <item>Jamalpur </item>
+        <item>Netrokona </item>
 
     </string-array>
 
     <string-array name="Barisal">
-        <item>br ds 1</item>
-        <item>br ds 2</item>
+        <item>Barisal</item>
+        <item>Jhalakathi </item>
+        <item>Patuakhali </item>
+        <item>Pirojpur </item>
+        <item>Bhola </item>
+        <item>Barguna </item>
 
     </string-array>
 
     <string-array name="Sylhet">
-        <item>sy ds 1</item>
-        <item>sy ds 2</item>
+        <item>Sylhet </item>
+        <item>moulvibazar </item>
+        <item>Habiganj </item>
+        <item>Sunamganj </item>
 
 
     </string-array>
