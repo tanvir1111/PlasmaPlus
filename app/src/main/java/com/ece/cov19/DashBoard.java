@@ -7,8 +7,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
+
 public class DashBoard extends AppCompatActivity {
     private Button profileBtn,seeRequestBtn,findDonorBtn;
+    private String[] nameSplit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,6 +20,9 @@ public class DashBoard extends AppCompatActivity {
         profileBtn=findViewById(R.id.dashboard_profile_btn);
         seeRequestBtn=findViewById(R.id.dashboard_see_requests_btn);
         findDonorBtn=findViewById(R.id.dashboard_find_donor_btn);
+        nameSplit = loggedInUserName.split("");
+
+        profileBtn.setText(nameSplit[0]);
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

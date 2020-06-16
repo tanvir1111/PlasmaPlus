@@ -16,7 +16,7 @@ public interface RetroInterface {
                                             @Field("donor") String donorInfo, @Field("password") String password);
 
     @FormUrlEncoded
-    @POST("Login.php")
+    @POST("login.php")
     Call<UserDataModel> loginRetroMethod(@Field("phone") String phone,@Field("password") String password);
 
 }

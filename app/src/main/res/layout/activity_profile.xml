@@ -85,7 +85,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/profile_gender_icon" />
 
             <TextView
-                android:id="@+id/profile_age"
+                android:id="@+id/profile_label_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
@@ -94,58 +94,124 @@
 
                 android:text="Age : "
                 android:textColor="@color/colorAccent"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/profile_name" />
+
+            <TextView
+                android:id="@+id/profile_age"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Age "
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_label_age"
+                app:layout_constraintStart_toEndOf="@+id/profile_label_blood_group"
+                app:layout_constraintTop_toTopOf="@+id/profile_label_age"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/profile_label_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Address :"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/profile_label_age"
+                app:layout_constraintTop_toBottomOf="@+id/profile_label_age" />
 
             <TextView
                 android:id="@+id/profile_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Address : Thana,District"
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:text=" Thana,District"
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_label_address"
                 app:layout_constraintStart_toStartOf="@+id/profile_age"
-                app:layout_constraintTop_toBottomOf="@+id/profile_age" />
+                app:layout_constraintTop_toTopOf="@+id/profile_label_address"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/profile_label_donor_role"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Donor Role :"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/profile_label_phone"
+                app:layout_constraintTop_toBottomOf="@+id/profile_label_blood_group"
+                app:layout_constraintVertical_bias="1.0" />
 
             <TextView
                 android:id="@+id/profile_donor_role"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="32dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Donor Role : Blood / plasma"
+                android:text=" Blood / plasma"
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_label_donor_role"
+                app:layout_constraintStart_toStartOf="@+id/profile_blood_group"
+                app:layout_constraintTop_toTopOf="@+id/profile_label_donor_role" />
+
+            <TextView
+                android:id="@+id/profile_label_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Phone : "
                 android:textColor="@color/colorAccent"
-                android:textSize="18sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/profile_phone"
-                app:layout_constraintTop_toBottomOf="@+id/profile_phone" />
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/profile_label_address"
+                app:layout_constraintTop_toBottomOf="@+id/profile_address" />
 
             <TextView
                 android:id="@+id/profile_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="32dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Phone : "
-                android:textColor="@color/colorAccent"
-                android:textSize="18sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                android:text="Phone "
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_label_phone"
                 app:layout_constraintStart_toStartOf="@+id/profile_address"
-                app:layout_constraintTop_toBottomOf="@+id/profile_address" />
+                app:layout_constraintTop_toTopOf="@+id/profile_label_phone" />
+
+            <TextView
+                android:id="@+id/profile_label_blood_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat"
+                android:text="Blood Group : "
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="@+id/profile_label_phone"
+                app:layout_constraintTop_toBottomOf="@+id/profile_label_phone" />
+
+            <TextView
+                android:id="@+id/profile_blood_group"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/montserrat"
+                android:text="A+"
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_label_blood_group"
+                app:layout_constraintStart_toStartOf="@+id/profile_phone"
+                app:layout_constraintTop_toTopOf="@+id/profile_label_blood_group" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
