@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import retrofit2.http.Field;
 
-public class RegDataModel {
+public class UserDataModel {
     @SerializedName("name")
     @Expose
     private String name;
@@ -35,15 +35,13 @@ public class RegDataModel {
     private String donor;
     @SerializedName("password")
     @Expose
-    private String password;
-
-
+    private String password; 
     @SerializedName("serverMsg")
     @Expose
     private String serverMsg;
 
-    public RegDataModel(String name, String phone, String gender, String bloodGroup,
-                        String division, String district, String thana, String age, String donor, String password) {
+    public UserDataModel(String name, String phone, String gender, String bloodGroup,
+                         String division, String district, String thana, String age, String donor, String password) {
         this.name = name;
         this.phone = phone;
         this.gender = gender;

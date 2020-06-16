@@ -17,7 +17,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.ece.cov19.DataModels.RegDataModel;
+import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -27,16 +27,16 @@ import retrofit2.Response;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
-    private EditText nameEditText,ageEditText,thanaEditText,passwordEditText,confPasswordEditText;
-    private String  bloodGroup, gender,donorInfo="na";
+    private EditText nameEditText, ageEditText, thanaEditText, passwordEditText, confPasswordEditText;
+    private String bloodGroup, gender, donorInfo = "na";
     private ImageView genderMale, genderFemale;
     private Button singUp;
-    private Spinner divisionSpinner,districtSpinner;
-    int divisionIds[]={R.array.Dhaka,R.array.Rajshahi,R.array.Rangpur,R.array.Khulna,R.array.Chittagong,R.array.Mymensingh,
+    private Spinner divisionSpinner, districtSpinner;
+    private int divisionIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
 
-    R.array.Barisal,R.array.Sylhet};
+            R.array.Barisal, R.array.Sylhet};
 
-    private CheckBox isPlasmaDonor,isDonorBtn;
+    private CheckBox isPlasmaDonor, isDonorBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,36 +44,19 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         setContentView(R.layout.activity_registration);
 
 //        all editTexts
-        nameEditText=findViewById(R.id.reg_name_edittext);
-        ageEditText=findViewById(R.id.reg_age_edittext);
-        thanaEditText=findViewById(R.id.reg_thana_edittext);
-        passwordEditText=findViewById(R.id.reg_password_edittext);
-        confPasswordEditText=findViewById(R.id.reg_confirm_password_edittext);
+        nameEditText = findViewById(R.id.reg_name_edittext);
+        ageEditText = findViewById(R.id.reg_age_edittext);
+        thanaEditText = findViewById(R.id.reg_thana_edittext);
+        passwordEditText = findViewById(R.id.reg_password_edittext);
+        confPasswordEditText = findViewById(R.id.reg_confirm_password_edittext);
 
 //      buttons
-        singUp=findViewById(R.id.reg_sign_up_btn);
-        isDonorBtn=findViewById(R.id.reg_donor_checkbox);
-        isPlasmaDonor=findViewById(R.id.reg_plasma_checkbox);
+        singUp = findViewById(R.id.reg_sign_up_btn);
+        isDonorBtn = findViewById(R.id.reg_donor_checkbox);
+        isPlasmaDonor = findViewById(R.id.reg_plasma_checkbox);
 //        spinners
-        divisionSpinner=findViewById(R.id.reg_division_spinner);
-        districtSpinner=findViewById(R.id.reg_district_spinner);
-
-        divisionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ArrayAdapter<String> adpter = new ArrayAdapter<String>(
-                        RegistrationActivity.this,
-                        android.R.layout.simple_spinner_dropdown_item,
-                        getResources().getStringArray(divisionIds[position]));
-                districtSpinner.setAdapter(adpter);
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
+        divisionSpinner = findViewById(R.id.reg_division_spinner);
+        districtSpinner = findViewById(R.id.reg_district_spinner);
 
 
         /*blood group textviews*/
@@ -94,7 +77,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         selectedBldGrp = aPositive;
 
 
-
 //        all OnclickListeners
         aPositive.setOnClickListener(this);
         bPositive.setOnClickListener(this);
@@ -108,23 +90,41 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         genderFemale.setOnClickListener(this);
         singUp.setOnClickListener(this);
 
+
+//      Districts spinner as per selected division
+        divisionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ArrayAdapter<String> adpter = new ArrayAdapter<String>(
+                        RegistrationActivity.this,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        getResources().getStringArray(divisionIds[position]));
+                districtSpinner.setAdapter(adpter);
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
 //        donorcheckbox setting donor info blood/plasma/na
         isDonorBtn.setOnCheckedChangeListener(
                 new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if(isChecked){
-                            donorInfo="Blood";
+                        if (isChecked) {
+                            donorInfo = "Blood";
                             isPlasmaDonor.setVisibility(View.VISIBLE);
                             isPlasmaDonor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                                 @Override
                                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                    if(isChecked){
-                                        donorInfo="Plasma";
+                                    if (isChecked) {
+                                        donorInfo = "Plasma";
 
-                                    }
-                                    else {
-                                        donorInfo="Blood";
+                                    } else {
+                                        donorInfo = "Blood";
                                     }
                                     Toast.makeText(RegistrationActivity.this, donorInfo, Toast.LENGTH_SHORT).show();
 
@@ -132,10 +132,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                                 }
                             });
 
-                        }
-                        else
-                        {
-                            donorInfo="na";
+                        } else {
+                            donorInfo = "na";
                             isPlasmaDonor.setVisibility(View.INVISIBLE);
                         }
                         Toast.makeText(RegistrationActivity.this, donorInfo, Toast.LENGTH_SHORT).show();
@@ -143,14 +141,9 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 });
 
 
-
-
-
-
     }
 
-
-
+    //  onclickListening
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -188,39 +181,41 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         }
     }
 
+
+    //    checking valid data or empty fields
     private void verifyData() {
-        String name,phone,division,district,thana,age,password,emptyfield="all ok";
-        name=nameEditText.getText().toString();
-        thana=thanaEditText.getText().toString();
-        age=ageEditText.getText().toString();
-        password=passwordEditText.getText().toString();
-        division=divisionSpinner.getSelectedItem().toString();
-        district=districtSpinner.getSelectedItem().toString();
-        Intent i=getIntent();
-        phone=i.getExtras().get("phone").toString();
+        String name, phone, division, district, thana, age, password, emptyfield = "all ok";
+        name = nameEditText.getText().toString();
+        thana = thanaEditText.getText().toString();
+        age = ageEditText.getText().toString();
+        password = passwordEditText.getText().toString();
+        division = divisionSpinner.getSelectedItem().toString();
+        district = districtSpinner.getSelectedItem().toString();
+        Intent i = getIntent();
+        phone = i.getExtras().get("phone").toString();
 
 
 //        checking empty Fields
 
         if (name.isEmpty()) {
-            emptyfield="name";
+            emptyfield = "name";
         } else if (thana.isEmpty()) {
-            emptyfield="thana";
+            emptyfield = "thana";
         } else if (age.isEmpty()) {
-            emptyfield="age";
+            emptyfield = "age";
         } else if (password.isEmpty()) {
-            emptyfield="password";
+            emptyfield = "password";
         } else if (division.isEmpty()) {
-            emptyfield="division";
+            emptyfield = "division";
         } else if (district.isEmpty()) {
-            emptyfield="district";
-        } else if (bloodGroup==null) {
-            emptyfield="bloodGroup";
-        } else if (gender==null) {
-            emptyfield="gender";
+            emptyfield = "district";
+        } else if (bloodGroup == null) {
+            emptyfield = "bloodGroup";
+        } else if (gender == null) {
+            emptyfield = "gender";
         }
 
-        if(emptyfield.equals("all ok")) {
+        if (emptyfield.equals("all ok")) {
             if (password.equals(confPasswordEditText.getText().toString())) {
 //            retro operations
 
@@ -230,33 +225,36 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             } else {
                 Toast.makeText(this, "password doesn't match", Toast.LENGTH_SHORT).show();
             }
-        }else {
-            Toast.makeText(this, "Enter "+emptyfield, Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(this, "Enter " + emptyfield, Toast.LENGTH_SHORT).show();
         }
-
 
 
     }
 
+//    database operations
+
     private void registerUser(String name, String phone, String division, String district, String thana, String age, String password) {
 
-       RetroInterface retroinstance = RetroInstance.getRetro();
-        Call<RegDataModel> sendingData = retroinstance.sendData(name,phone,gender,bloodGroup,division,district,thana,age,donorInfo,password);
-        sendingData.enqueue(new Callback<RegDataModel>() {
+        RetroInterface retroinstance = RetroInstance.getRetro();
+        Call<UserDataModel> sendingData = retroinstance.registerRetroMethod(name, phone, gender, bloodGroup, division, district, thana, age, donorInfo, password);
+        sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
-            public void onResponse(Call<RegDataModel> call, Response<RegDataModel> response) {
-                if( response.body().getServerMsg()=="Success")
-                Toast.makeText(RegistrationActivity.this,"Registration successful", Toast.LENGTH_SHORT).show();
+            public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+                if (response.body().getServerMsg().equals("Success")) {
+                    Toast.makeText(RegistrationActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
 
 //              going to login activity
-                Intent intent=new Intent(RegistrationActivity.this,LoginActivity.class);
-                startActivity(intent);
-                finish();
+                    Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+
             }
 
             @Override
-            public void onFailure(Call<RegDataModel> call, Throwable t) {
-                Toast.makeText(RegistrationActivity.this, "failed to register! try again", Toast.LENGTH_SHORT).show();
+            public void onFailure(Call<UserDataModel> call, Throwable t) {
+                Toast.makeText(RegistrationActivity.this, "failed to register! Check your connection and try again.", Toast.LENGTH_SHORT).show();
             }
         });
 
