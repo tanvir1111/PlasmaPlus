@@ -3,6 +3,7 @@ package com.ece.cov19;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -24,9 +25,12 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 
 public class LoginActivity extends AppCompatActivity {
 
-    EditText phoneNumberEditText, passwordEditText;
-    ImageView showPasswordIcon;
-    Button signUpButton, signInbtn;
+    private EditText phoneNumberEditText, passwordEditText;
+    private ImageView showPasswordIcon;
+    private Button signUpButton, signInbtn;
+    public static final String LOGIN_SHARED_PREFS="login_pref";
+    public static final String LOGIN_USER_PHONE="login_phone";
+    public static final String LOGIN_USER_PASS="login_pass";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+//      showing and hiding password
         showPasswordIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +76,8 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
+
+
 
     private void verifyData() {
         String phone, password, emptyfield = "all ok";
@@ -108,14 +115,25 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 if (response.body().getServerMsg().equals("Success")) {
 
-                    Toast.makeText(LoginActivity.this, "Logged in successfully", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Welcome "+response.body().getName(), Toast.LENGTH_SHORT).show();
 
-//              setting all logged in info and going to Dashboard
+//                  Storing phone and password to shared preferences
+                    SharedPreferences loginSharedPrefs=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
+                    SharedPreferences.Editor loginPrefsEditor = loginSharedPrefs.edit();
+                    loginPrefsEditor.putString(LOGIN_USER_PHONE,response.body().getPhone());
+                    loginPrefsEditor.putString(LOGIN_USER_PASS,response.body().getPassword());
+                    loginPrefsEditor.apply();
+
+
+
+//              setting all logged in info
                     new LoggedInUserData(response.body().getName(),response.body().getPhone(),
                             response.body().getGender(),response.body().getBloodGroup(),
                             response.body().getDivision(),response.body().getDistrict(),
                             response.body().getThana(),response.body().getAge(),response.body().getDonor());
 
+
+//                  going to Dashboard
                     Intent intent = new Intent(LoginActivity.this, DashBoard.class);
                     startActivity(intent);
                     finish();
@@ -128,7 +146,7 @@ public class LoginActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                Toast.makeText(LoginActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(LoginActivity.this, "An error occurred! Check your connection and try again", Toast.LENGTH_SHORT).show();
             }
         });
 
