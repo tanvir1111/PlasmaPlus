@@ -31,9 +31,6 @@
             android:name=".BloodRequestForm"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".Phone_verification"
-            android:screenOrientation="nosensor" />
-        <activity
             android:name=".RegistrationActivity"
             android:screenOrientation="nosensor" />
         <activity
