@@ -27,6 +27,7 @@ public class Phone_verification extends AppCompatActivity {
         //there
         //test
         //me
+        //!!!
         labelPhone=findViewById(R.id.phn_ver_phone_text);
         countryCode=findViewById(R.id.phn_ver_countryCode);
         getOtpBtn=findViewById(R.id.phn_ver_get_otp_button);
