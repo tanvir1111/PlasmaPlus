@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent phonever = new Intent(LoginActivity.this, Phone_verification.class);
+                Intent phonever = new Intent(LoginActivity.this, PhoneVerificationActivity1.class);
                 startActivity(phonever);
             }
         });
@@ -116,8 +116,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void loginUser(String phone, String password) {
 
-        RetroInterface retroinstance = RetroInstance.getRetro();
-        Call<UserDataModel> sendingData = retroinstance.loginRetroMethod(phone, password);
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Call<UserDataModel> sendingData = retroInterface.loginRetroMethod(phone, password);
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {

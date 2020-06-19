@@ -155,8 +155,8 @@ public class UpdateInfoActivity extends AppCompatActivity {
     }
 
     private void updateUserInfo(final String name, final String division, final String district, final String thana,final String age, final String donorInfo) {
-        RetroInterface retroinstance = RetroInstance.getRetro();
-        Call<UserDataModel> sendingData = retroinstance.updateUser(loggedInUserPhone,name, division, district, thana, age, donorInfo);
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Call<UserDataModel> sendingData = retroInterface.updateUser(loggedInUserPhone,name, division, district, thana, age, donorInfo);
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {

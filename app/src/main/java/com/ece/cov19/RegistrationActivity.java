@@ -243,8 +243,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     private void registerUser(String name, String phone, String division, String district, String thana, String age, String password) {
 
-        RetroInterface retroinstance = RetroInstance.getRetro();
-        Call<UserDataModel> sendingData = retroinstance.registerRetroMethod(name, phone, gender, bloodGroup, division, district, thana, age, donorInfo, password);
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Call<UserDataModel> sendingData = retroInterface.registerRetroMethod(name, phone, gender, bloodGroup, division, district, thana, age, donorInfo, password);
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {

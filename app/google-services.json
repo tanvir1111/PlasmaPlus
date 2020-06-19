@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "760918962999",
+    "firebase_url": "https://ece-covidapp.firebaseio.com",
+    "project_id": "ece-covidapp",
+    "storage_bucket": "ece-covidapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760918962999:android:46391f3c9b77121148e0b2",
+        "android_client_info": {
+          "package_name": "com.ece.cov19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760918962999-2aegfae3iddn93b5u58jmhj81pccdns7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZnaOynxxLs3icnKLytcLedJKM91KkJjM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760918962999-2aegfae3iddn93b5u58jmhj81pccdns7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
