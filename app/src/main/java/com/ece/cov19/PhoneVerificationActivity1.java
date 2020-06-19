@@ -1,7 +1,5 @@
 package com.ece.cov19;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,7 +8,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Phone_verification extends AppCompatActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+public class PhoneVerificationActivity1 extends AppCompatActivity {
     TextView labelPhone,otp,countryCode;
     EditText otpInput,phoneInput;
     Button verifyBtn,getOtpBtn;
@@ -20,14 +20,13 @@ public class Phone_verification extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_phone_verification);
+        setContentView(R.layout.activity_phone_verification_1);
 
         backBtn=findViewById(R.id.phn_ver_back_button);
         labelPhone=findViewById(R.id.phn_ver_phone_text);
         countryCode=findViewById(R.id.phn_ver_countryCode);
         getOtpBtn=findViewById(R.id.phn_ver_get_otp_button);
         phoneInput=findViewById(R.id.phn_ver_phone_input);
-
         otp=findViewById(R.id.phn_ver_otp_textview);
         verifyBtn=findViewById(R.id.phn_ver_verify_button);
         otpInput=findViewById(R.id.phn_ver_otp_edittext);
@@ -35,7 +34,10 @@ public class Phone_verification extends AppCompatActivity {
         getOtpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                makeOtpDialogeVisible();
+                //makeOtpDialogeVisible();
+                Intent registration=new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
+                registration.putExtra("phone",countryCode.getText().toString()+phoneInput.getText().toString());
+                startActivity(registration);
             }
         });
         backBtn.setOnClickListener(new View.OnClickListener() {
@@ -48,8 +50,8 @@ public class Phone_verification extends AppCompatActivity {
         verifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registration=new Intent(Phone_verification.this,RegistrationActivity.class);
-                registration.putExtra("phone",phoneInput.getText().toString());
+                Intent registration=new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
+                registration.putExtra("phone",countryCode.getText().toString()+phoneInput.getText().toString());
                 startActivity(registration);
             }
         });

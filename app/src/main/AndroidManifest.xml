@@ -7,9 +7,9 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/coronavirus"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/coronavirus"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
@@ -30,8 +30,12 @@
         <activity
             android:name=".BloodRequestForm"
             android:screenOrientation="nosensor" />
+        <activity android:name=".PhoneVerificationActivity1"
+            android:screenOrientation="nosensor"/>
+        <activity android:name=".PhoneVerificationActivity2"
+            android:screenOrientation="nosensor"/>
         <activity
-            android:name=".Phone_verification"
+            android:name=".ForgotPasswordActivity"
             android:screenOrientation="nosensor" />
         <activity
             android:name=".RegistrationActivity"
