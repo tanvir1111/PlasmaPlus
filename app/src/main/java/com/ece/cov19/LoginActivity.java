@@ -64,7 +64,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent phonever = new Intent(LoginActivity.this, Phone_verification.class);
+                Intent phonever = new Intent(LoginActivity.this, PhoneVerificationActivity1.class);
                 startActivity(phonever);
             }
         });
