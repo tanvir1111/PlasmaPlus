@@ -19,4 +19,11 @@ public interface RetroInterface {
     @POST("login.php")
     Call<UserDataModel> loginRetroMethod(@Field("phone") String phone,@Field("password") String password);
 
+    @FormUrlEncoded
+    @POST("updateUserInfo.php")
+    Call<UserDataModel> updateUser(@Field("phone")String phone,@Field("name") String name,@Field("division") String division,@Field("district") String district,@Field("thana") String thana,@Field("age") String age,@Field("donor") String donorInfo);
+
+    @FormUrlEncoded
+    @POST("updateUserPassword.php")
+    Call<UserDataModel> updatePassword(@Field("phone") String loggedInUserPhone,@Field("password") String password);
 }

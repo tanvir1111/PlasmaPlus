@@ -32,7 +32,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private ImageView genderMale, genderFemale;
     private Button singUp;
     private Spinner divisionSpinner, districtSpinner;
-    private int divisionIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
+    public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
 
             R.array.Barisal, R.array.Sylhet};
 
@@ -49,6 +49,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         thanaEditText = findViewById(R.id.reg_thana_edittext);
         passwordEditText = findViewById(R.id.reg_password_edittext);
         confPasswordEditText = findViewById(R.id.reg_confirm_password_edittext);
+
 
 //      buttons
         singUp = findViewById(R.id.reg_sign_up_btn);
@@ -92,13 +93,14 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 
 //      Districts spinner as per selected division
+
         divisionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ArrayAdapter<String> adpter = new ArrayAdapter<String>(
                         RegistrationActivity.this,
                         android.R.layout.simple_spinner_dropdown_item,
-                        getResources().getStringArray(divisionIds[position]));
+                        getResources().getStringArray(divisionResourceIds[position]));
                 districtSpinner.setAdapter(adpter);
             }
 
@@ -215,15 +217,20 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             emptyfield = "gender";
         }
 
+
         if (emptyfield.equals("all ok")) {
-            if (password.equals(confPasswordEditText.getText().toString())) {
+            if (password.length() < 6) {
+                Toast.makeText(this, "password must be of at least 6 characters", Toast.LENGTH_SHORT).show();
+            } else {
+                if (password.equals(confPasswordEditText.getText().toString())) {
 //            retro operations
 
-                registerUser(name, phone, division, district, thana, age, password);
+                    registerUser(name, phone, division, district, thana, age, password);
 
 
-            } else {
-                Toast.makeText(this, "password doesn't match", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(this, "password doesn't match", Toast.LENGTH_SHORT).show();
+                }
             }
         } else {
             Toast.makeText(this, "Enter " + emptyfield, Toast.LENGTH_SHORT).show();
@@ -248,6 +255,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                     Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
+                } else {
+                    Toast.makeText(RegistrationActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
                 }
 
             }

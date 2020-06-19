@@ -17,7 +17,7 @@
         <item>Chittagong</item>
         <item>Mymensingh</item>
         <item>Barisal</item>
-         <item>Sylhet</item>
+        <item>Sylhet</item>
     </string-array>
 
 
@@ -120,10 +120,6 @@
 
 
     </string-array>
-
-
-
-
 
 
 </resources>

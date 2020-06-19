@@ -21,16 +21,25 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserAge;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDistrict;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDivision;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDonorInfo;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText phoneNumberEditText, passwordEditText;
     private ImageView showPasswordIcon;
     private Button signUpButton, signInbtn;
-    public static final String LOGIN_SHARED_PREFS="login_pref";
-    public static final String LOGIN_USER_PHONE="login_phone";
-    public static final String LOGIN_USER_PASS="login_pass";
+    public static final String LOGIN_SHARED_PREFS = "login_pref";
+    public static final String LOGIN_USER_PHONE = "login_phone";
+    public static final String LOGIN_USER_PASS = "login_pass";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,7 +87,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
 
-
     private void verifyData() {
         String phone, password, emptyfield = "all ok";
 
@@ -90,7 +98,7 @@ public class LoginActivity extends AppCompatActivity {
 //        checking empty Fields
 
         if (phone.isEmpty()) {
-            emptyfield = "name";
+            emptyfield = "phone";
         } else if (password.isEmpty()) {
             emptyfield = "password";
         }
@@ -115,30 +123,33 @@ public class LoginActivity extends AppCompatActivity {
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 if (response.body().getServerMsg().equals("Success")) {
 
-                    Toast.makeText(LoginActivity.this, "Welcome "+response.body().getName(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Welcome " + response.body().getName(), Toast.LENGTH_SHORT).show();
 
 //                  Storing phone and password to shared preferences
-                    SharedPreferences loginSharedPrefs=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
+                    SharedPreferences loginSharedPrefs = getSharedPreferences(LOGIN_SHARED_PREFS, MODE_PRIVATE);
                     SharedPreferences.Editor loginPrefsEditor = loginSharedPrefs.edit();
-                    loginPrefsEditor.putString(LOGIN_USER_PHONE,response.body().getPhone());
-                    loginPrefsEditor.putString(LOGIN_USER_PASS,response.body().getPassword());
+                    loginPrefsEditor.putString(LOGIN_USER_PHONE, response.body().getPhone());
+                    loginPrefsEditor.putString(LOGIN_USER_PASS, response.body().getPassword());
                     loginPrefsEditor.apply();
 
-
-
 //              setting all logged in info
-                    new LoggedInUserData(response.body().getName(),response.body().getPhone(),
-                            response.body().getGender(),response.body().getBloodGroup(),
-                            response.body().getDivision(),response.body().getDistrict(),
-                            response.body().getThana(),response.body().getAge(),response.body().getDonor());
+                    loggedInUserName = response.body().getName();
+                    loggedInUserPhone = response.body().getPhone();
+                    loggedInUserGender = response.body().getGender();
+                    loggedInUserBloodGroup = response.body().getBloodGroup();
+                    loggedInUserDivision = response.body().getDivision();
+                    loggedInUserDistrict = response.body().getDistrict();
+                    loggedInUserThana = response.body().getThana();
+                    loggedInUserAge = response.body().getAge();
+                    loggedInUserDonorInfo = response.body().getDonor();
+                    loggedInUserPass = response.body().getPassword();
 
 
 //                  going to Dashboard
                     Intent intent = new Intent(LoginActivity.this, DashBoard.class);
                     startActivity(intent);
                     finish();
-                }
-                else{
+                } else {
                     Toast.makeText(LoginActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
                 }
 

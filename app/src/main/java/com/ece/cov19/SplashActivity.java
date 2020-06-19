@@ -19,6 +19,16 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserAge;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDistrict;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDivision;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDonorInfo;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
 import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PASS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PHONE;
@@ -46,7 +56,6 @@ handler.postDelayed(new Runnable() {
             loginUser(userPhone, userPass);
 
         } else {
-
             Intent login = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(login);
             finish();
@@ -71,11 +80,16 @@ handler.postDelayed(new Runnable() {
 
 
 //              setting all logged in info
-                    new LoggedInUserData(response.body().getName(), response.body().getPhone(),
-                            response.body().getGender(), response.body().getBloodGroup(),
-                            response.body().getDivision(), response.body().getDistrict(),
-                            response.body().getThana(), response.body().getAge(), response.body().getDonor());
-
+                    loggedInUserName = response.body().getName();
+                    loggedInUserPhone = response.body().getPhone();
+                    loggedInUserGender = response.body().getGender();
+                    loggedInUserBloodGroup = response.body().getBloodGroup();
+                    loggedInUserDivision = response.body().getDivision();
+                    loggedInUserDistrict = response.body().getDistrict();
+                    loggedInUserThana = response.body().getThana();
+                    loggedInUserAge = response.body().getAge();
+                    loggedInUserDonorInfo = response.body().getDonor();
+                    loggedInUserPass = response.body().getPassword();
 
 //                  going to Dashboard
                     Intent intent = new Intent(SplashActivity.this, DashBoard.class);

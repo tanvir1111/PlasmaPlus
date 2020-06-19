@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UpdateInfoActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <ImageView
+            android:id="@+id/update_back_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:padding="15dp"
+            android:src="@drawable/back_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/update_heading_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-16dp"
+            android:textColor="@color/textColorDark"
+
+
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Update Info"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/update_back_button"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/update_back_button"
+            app:layout_constraintTop_toTopOf="@+id/update_back_button" />
+
+
+        <TextView
+            android:id="@+id/update_label_name"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/label_name"
+            android:textColor="@color/textColorDark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/update_name_edittext"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/update_name_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/update_heading_textview" />
+
+        <EditText
+            android:id="@+id/update_name_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_dark"
+            android:fontFamily="@font/montserrat"
+
+            android:hint="Enter Your Name"
+            android:paddingStart="25dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_label_name" />
+
+
+        <TextView
+            android:id="@+id/update_label_spinner_division"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Division"
+            android:textColor="@color/textColorDark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/update_label_name"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/update_label_name"
+            app:layout_constraintTop_toBottomOf="@+id/update_name_edittext" />
+
+        <Spinner
+            android:id="@+id/update_division_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:minHeight="50dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:entries="@array/division"
+            app:layout_constraintEnd_toEndOf="@+id/update_label_spinner_division"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/update_label_spinner_division"
+            app:layout_constraintTop_toBottomOf="@+id/update_label_spinner_division" />
+
+        <TextView
+            android:id="@+id/update_label_spinner_district"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="District"
+
+            android:textSize="16sp"
+            android:textColor="@color/textColorDark"
+            app:layout_constraintEnd_toEndOf="@+id/update_division_spinner"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/update_division_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/update_division_spinner" />
+
+        <Spinner
+            android:id="@+id/update_district_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
+
+            android:minHeight="50dp"
+            app:layout_constraintEnd_toEndOf="@+id/update_division_spinner"
+            app:layout_constraintHorizontal_bias="0.49"
+            app:layout_constraintStart_toStartOf="@+id/update_division_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/update_label_spinner_district" />
+
+
+        <TextView
+            android:id="@+id/update_label_thana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="@color/textColorDark"
+            android:text="Thana"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/update_district_spinner"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/update_district_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/update_district_spinner" />
+
+        <EditText
+            android:id="@+id/update_thana_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:hint="Boalia"
+
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_dark"
+            android:fontFamily="@font/raleway_bold"
+            android:minHeight="40dp"
+            android:padding="15dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/update_label_thana"
+            app:layout_constraintStart_toStartOf="@+id/update_label_thana"
+            app:layout_constraintTop_toBottomOf="@+id/update_label_thana" />
+        <TextView
+            android:id="@+id/update_label_age"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="Age"
+            android:textSize="16sp"
+            android:textColor="@color/textColorDark"
+            app:layout_constraintEnd_toEndOf="@+id/update_thana_edittext"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/update_thana_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/update_thana_edittext" />
+
+        <EditText
+            android:id="@+id/update_age_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_dark"
+            android:fontFamily="@font/raleway_bold"
+            android:hint="Enter Age"
+            android:inputType="number"
+            android:maxLength="2"
+            android:minHeight="40dp"
+            android:padding="15dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/update_label_age"
+            app:layout_constraintStart_toStartOf="@+id/update_label_age"
+            app:layout_constraintTop_toBottomOf="@+id/update_label_age" />
+
+        <TextView
+            android:id="@+id/update_label_donor_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/raleway_bold"
+            android:text="Donor Role"
+            android:textColor="@color/textColorDark"
+
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/update_age_edittext"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/update_age_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/update_age_edittext" />
+
+        <RadioGroup
+            android:id="@+id/update_donor_role_radio_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.24"
+            app:layout_constraintStart_toStartOf="@+id/update_label_donor_role"
+            app:layout_constraintTop_toBottomOf="@+id/update_label_donor_role">
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Blood"
+
+                />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Plasma" />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="None"
+
+                />
+
+
+        </RadioGroup>
+
+
+        <Button
+            android:id="@+id/update_update_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/button_style_colored"
+            android:fontFamily="@font/montserrat_bold"
+            android:maxWidth="350dp"
+            android:minWidth="320dp"
+            android:text="update"
+            android:textColor="#ffffff"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/update_age_edittext"
+            app:layout_constraintStart_toStartOf="@+id/update_age_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/update_donor_role_radio_group" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
