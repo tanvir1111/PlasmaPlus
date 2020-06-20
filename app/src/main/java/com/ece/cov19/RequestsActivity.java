@@ -18,7 +18,7 @@ public class RequestsActivity extends AppCompatActivity {
         addRequestsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent bldReqIntent=new Intent(RequestsActivity.this,BloodRequestForm.class);
+                Intent bldReqIntent=new Intent(RequestsActivity.this, BloodRequestFormActivity.class);
                 startActivity(bldReqIntent);
             }
         });

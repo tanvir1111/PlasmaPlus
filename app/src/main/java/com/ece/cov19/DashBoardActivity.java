@@ -9,7 +9,7 @@ import android.widget.Button;
 
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 
-public class DashBoard extends AppCompatActivity {
+public class DashBoardActivity extends AppCompatActivity {
     private Button profileBtn,seeRequestBtn,findDonorBtn;
     private String[] nameSplit;
 
@@ -26,7 +26,7 @@ public class DashBoard extends AppCompatActivity {
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent profileIntent=new Intent(DashBoard.this,ProfileActivity.class);
+                Intent profileIntent=new Intent(DashBoardActivity.this,ProfileActivity.class);
                 startActivity(profileIntent);
             }
         });
@@ -34,14 +34,14 @@ public class DashBoard extends AppCompatActivity {
         seeRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent seeRequstsIntent=new Intent(DashBoard.this,RequestsActivity.class);
+                Intent seeRequstsIntent=new Intent(DashBoardActivity.this,RequestsActivity.class);
                 startActivity(seeRequstsIntent);
             }
         });
         findDonorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent searchDonorIntent=new Intent(DashBoard.this,SearchDonorActivity.class);
+                Intent searchDonorIntent=new Intent(DashBoardActivity.this,SearchDonorActivity.class);
                 startActivity(searchDonorIntent);
             }
         });

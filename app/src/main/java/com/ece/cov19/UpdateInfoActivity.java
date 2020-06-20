@@ -27,7 +27,6 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDistrict;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDivision;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDonorInfo;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
 
@@ -173,7 +172,7 @@ public class UpdateInfoActivity extends AppCompatActivity {
 
 
 //              going to login activity
-                    Intent intent = new Intent(UpdateInfoActivity.this, DashBoard.class);
+                    Intent intent = new Intent(UpdateInfoActivity.this, DashBoardActivity.class);
                     startActivity(intent);
                     finish();
                 }

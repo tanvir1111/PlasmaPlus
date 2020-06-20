@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".UpdatePasswordActivity"></activity>
+        <activity android:name=".UpdatePasswordActivity" />
         <activity android:name=".UpdateInfoActivity" />
         <activity
             android:name=".RequestsActivity"
@@ -22,13 +22,13 @@
             android:name=".SearchDonorActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".DashBoard"
+            android:name=".DashBoardActivity"
             android:screenOrientation="nosensor" />
         <activity
             android:name=".ProfileActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".BloodRequestForm"
+            android:name=".BloodRequestFormActivity"
             android:screenOrientation="nosensor" />
         <activity
             android:name=".Phone_verification"

@@ -1,5 +1,6 @@
 package com.ece.cov19.RetroServices;
 
+import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
 
 import retrofit2.Call;
@@ -26,4 +27,13 @@ public interface RetroInterface {
     @FormUrlEncoded
     @POST("updateUserPassword.php")
     Call<UserDataModel> updatePassword(@Field("phone") String loggedInUserPhone,@Field("password") String password);
+
+
+    @FormUrlEncoded
+    @POST("patientData.php")
+    Call<PatientDataModel> registerPatientRetro(@Field("name") String name, @Field("age") String age, @Field("gender") String gender,
+                                                @Field("blood_group") String bloodGroup, @Field("hospital") String hospital,
+                                                @Field("division") String division, @Field("district") String district,
+                                                @Field("date") String date, @Field("need") String need,
+                                                @Field("phone") String phone);
 }
