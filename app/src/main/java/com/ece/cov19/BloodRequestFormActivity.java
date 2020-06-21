@@ -5,17 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,10 +22,9 @@ import android.widget.Toast;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
-
+import com.ece.cov19.Functions.FormFieldsFeatures;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -36,16 +34,17 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class BloodRequestFormActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
-    private TextView selectDate;
-    private String bloodGroup, gender,date;
+    private TextView selectDate,labelBloodGroup,labelGender,labelDate;
+    private String  gender="not selected",date="not selected";
     private ImageView genderMale, genderFemale;
-    private RadioButton needRadioBtn;
+    private CheckBox needCheckbox;
     private Button submitBtn;
     private EditText nameEditText,ageEditText,hospitalEditText;
     private Spinner divisionSpinner, districtSpinner;
     public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
 
             R.array.Barisal, R.array.Sylhet};
+    FormFieldsFeatures formFieldsFeatures =new FormFieldsFeatures();
 
 
     @Override
@@ -64,11 +63,13 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         districtSpinner = findViewById(R.id.bld_req_district_spinner);
 
 
-        needRadioBtn=findViewById(R.id.bld_req_plasma_radio_button);
+        needCheckbox =findViewById(R.id.bld_req_plasma_checkbox);
 
-
+//      Date section
+        labelDate=findViewById(R.id.bld_req_label_date);
         selectDate=findViewById(R.id.bld_req_date_textview);
         /*blood group textviews*/
+        labelBloodGroup=findViewById(R.id.bld_req_label_blood_grp);
         aPositive = findViewById(R.id.bld_req_bld_a_positive);
         bPositive = findViewById(R.id.bld_req_bld_b_positive);
         oPositive = findViewById(R.id.bld_req_bld_o_positive);
@@ -79,11 +80,11 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         abNegative = findViewById(R.id.bld_req_bld_ab_negative);
 
         /*        Gender Imageviews*/
+        labelGender=findViewById(R.id.bld_req_label_gender);
         genderMale = findViewById(R.id.bld_req_male_icon);
         genderFemale = findViewById(R.id.bld_req_female_icon);
 
-        /* just a random one to avoid nullPoint Exception*/
-        selectedBldGrp = aPositive;
+
 
 
         //      Districts spinner as per selected division
@@ -144,9 +145,9 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                             @SuppressLint("SimpleDateFormat")
                             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                             calendar.set(year, month, dayOfMonth);
-                            String dateString = sdf.format(calendar.getTime());
+                             date = sdf.format(calendar.getTime());
 
-                            selectDate.setText(dateString); // set the date
+                            selectDate.setText(date); // set the date
                         }
                     }, year, month, day); // set date picker to current date
 
@@ -184,12 +185,10 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
             case R.id.bld_req_bld_b_negative:
             case R.id.bld_req_bld_o_negative:
             case R.id.bld_req_bld_ab_negative:
-                selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_not_selected);
-                selectedBldGrp.setTextColor(getColor(R.color.textColorGrey));
-                selectedBldGrp = findViewById(v.getId());
-                selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_selected);
-                selectedBldGrp.setTextColor(Color.WHITE);
-                bloodGroup = selectedBldGrp.getText().toString();
+
+                selectedBldGrp = formFieldsFeatures.bloodGroupSelection(this, (TextView) v, selectedBldGrp);
+
+
                 break;
 
             case R.id.bld_req_request_btn:
@@ -202,47 +201,38 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
     }
 
     private void verifydata() {
-    String name, phone, division, district, hospital,need="blood",date, age, emptyfield = "all ok";
+    String name, phone, division, district,bloodGroup="not selected", hospital,need, age;
     name = nameEditText.getText().toString();
     age = ageEditText.getText().toString();
     division = divisionSpinner.getSelectedItem().toString();
     district = districtSpinner.getSelectedItem().toString();
     hospital=hospitalEditText.getText().toString();
+    if(selectedBldGrp!=null) {
+        bloodGroup = selectedBldGrp.getText().toString();
+    }
     phone = loggedInUserPhone;
-    date=selectDate.getText().toString();
-        Toast.makeText(this, name+age+gender+bloodGroup+division+district+hospital+phone+date, Toast.LENGTH_SHORT).show();
 
-//        checking empty Fields
-
-        if (name.isEmpty()) {
-        emptyfield = "name";
-    } else if (age.isEmpty()) {
-        emptyfield = "age";
-    } else if (bloodGroup == null) {
-        emptyfield = "bloodGroup";
-    } else if (gender == null) {
-        emptyfield = "gender";
-    }
-        else if(hospital.isEmpty()){
-            emptyfield="hospital";
-        }
-
-
-        if(needRadioBtn.isChecked()){
+        if(needCheckbox.isChecked()){
             need="plasma";
+       }
+        else {
+            need="blood";
         }
 
+//
 
-        if (emptyfield.equals("all ok")) {
 
-           registerPatient(name, age,gender,bloodGroup,hospital,division,district,date,need,phone);
+        if (!formFieldsFeatures.checkIfEmpty(nameEditText) && !formFieldsFeatures.checkIfEmpty(ageEditText)
+                && !formFieldsFeatures.checkIfEmpty(hospitalEditText) && !formFieldsFeatures.checkIfEmpty(this,labelBloodGroup, bloodGroup)
+                && !formFieldsFeatures.checkIfEmpty(this,labelGender, gender) && !formFieldsFeatures.checkIfEmpty(this,labelDate,date)) {
 
-    } else {
-        Toast.makeText(this, "Enter " + emptyfield, Toast.LENGTH_SHORT).show();
+            registerPatient(name, age,gender,bloodGroup,hospital,division,district,date,need,phone);}
+
+
     }
 
 
-}
+
 
     //    database operations
     private void registerPatient(String name, String age, String gender, String bloodGroup, String hospital, String division, String district, String date, String need, String phone) {

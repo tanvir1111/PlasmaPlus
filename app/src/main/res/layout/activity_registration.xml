@@ -57,25 +57,26 @@
             app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
             app:layout_constraintTop_toBottomOf="@+id/reg_heading_textview" />
 
-    <EditText
-        android:id="@+id/reg_name_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-       android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingStart="25dp"
-        android:paddingEnd="20dp"
+        <EditText
+            android:id="@+id/reg_name_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_dark"
 
-        android:layout_marginStart="32dp"
-        android:background="@drawable/edit_text_dark"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/montserrat"
-        android:textSize="12sp"
-        android:hint="Enter Your Name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/reg_label_name" />
+            android:fontFamily="@font/montserrat"
+            android:hint="Enter Your Name"
+            android:paddingStart="25dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="10dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/reg_label_name" />
 
 
         <TextView
@@ -88,10 +89,10 @@
             android:text="Gender"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
+            app:layout_constraintEnd_toEndOf="@+id/reg_age_edittext"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
-            app:layout_constraintTop_toBottomOf="@+id/reg_name_edittext" />
+            app:layout_constraintStart_toStartOf="@+id/reg_age_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_age_edittext" />
 
         <ImageView
             android:id="@+id/reg_male_icon"
@@ -360,20 +361,21 @@
             app:layout_constraintEnd_toEndOf="@+id/reg_label_thana"
             app:layout_constraintStart_toStartOf="@+id/reg_label_thana"
             app:layout_constraintTop_toBottomOf="@+id/reg_label_thana" />
+
         <CheckBox
             android:id="@+id/reg_donor_checkbox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
 
             android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/montserrat"
             android:text="I am a donor"
             android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/reg_age_edittext"
-            app:layout_constraintStart_toStartOf="@+id/reg_age_edittext"
-            app:layout_constraintTop_toBottomOf="@+id/reg_age_edittext" />
+            app:layout_constraintEnd_toEndOf="@+id/reg_thana_edittext"
+            app:layout_constraintStart_toStartOf="@+id/reg_thana_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_thana_edittext" />
 
         <CheckBox
             android:id="@+id/reg_plasma_checkbox"
@@ -466,12 +468,12 @@
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="Age"
-            android:textSize="16sp"
             android:textColor="@color/textColorDark"
-            app:layout_constraintEnd_toEndOf="@+id/reg_thana_edittext"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/reg_thana_edittext"
-            app:layout_constraintTop_toBottomOf="@+id/reg_thana_edittext" />
+            app:layout_constraintStart_toStartOf="@+id/reg_name_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_name_edittext" />
 
         <EditText
             android:id="@+id/reg_age_edittext"

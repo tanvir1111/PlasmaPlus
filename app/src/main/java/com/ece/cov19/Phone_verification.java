@@ -56,16 +56,22 @@ public class Phone_verification extends AppCompatActivity {
     }
 
     private void makPhoneInputVisible() {
-        labelPhone.setVisibility(View.VISIBLE);
-        countryCode.setVisibility(View.VISIBLE);
-        getOtpBtn.setVisibility(View.VISIBLE);
-        phoneInput.setVisibility(View.VISIBLE);
-        otp.setVisibility(View.INVISIBLE);
-        verifyBtn.setVisibility(View.INVISIBLE);
-        otpInput.setVisibility(View.INVISIBLE);
+
+            labelPhone.setVisibility(View.VISIBLE);
+            countryCode.setVisibility(View.VISIBLE);
+            getOtpBtn.setVisibility(View.VISIBLE);
+            phoneInput.setVisibility(View.VISIBLE);
+            otp.setVisibility(View.INVISIBLE);
+            verifyBtn.setVisibility(View.INVISIBLE);
+            otpInput.setVisibility(View.INVISIBLE);
+
     }
 
     private void makeOtpDialogeVisible() {
+        if(phoneInput.getText().toString().length()!=11){
+            phoneInput.setError("invalid number");
+        }
+        else {
         labelPhone.setVisibility(View.INVISIBLE);
         countryCode.setVisibility(View.INVISIBLE);
         getOtpBtn.setVisibility(View.INVISIBLE);
@@ -74,5 +80,7 @@ public class Phone_verification extends AppCompatActivity {
         verifyBtn.setVisibility(View.VISIBLE);
         otpInput.setVisibility(View.VISIBLE);
         otpInput.setText("");
+        }
+
     }
 }
