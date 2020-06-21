@@ -40,6 +40,12 @@
             android:name=".LoginActivity"
             android:screenOrientation="nosensor" />
         <activity
+            android:name=".ViewDonorProfileActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ViewPatientProfileActivity"
+            android:screenOrientation="nosensor" />
+        <activity
             android:name=".SplashActivity"
             android:screenOrientation="nosensor"
             android:theme="@style/Theme.AppCompat.NoActionBar">

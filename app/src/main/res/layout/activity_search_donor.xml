@@ -49,45 +49,46 @@
         android:id="@+id/search_donor_label_district"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="District"
         android:textColor="@color/textColorDark"
         android:textSize="16sp"
-        app:layout_constraintBottom_toTopOf="@+id/search_donor_district_spinner"
-        app:layout_constraintEnd_toEndOf="@+id/search_donor_district_spinner"
+        app:layout_constraintBottom_toBottomOf="@+id/search_donor_label_bld_grp"
+        app:layout_constraintEnd_toEndOf="@+id/search_donor_district_edittext"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/search_donor_district_spinner" />
+        app:layout_constraintStart_toStartOf="@+id/search_donor_district_edittext"
+        app:layout_constraintTop_toTopOf="@+id/search_donor_label_bld_grp" />
 
-    <Spinner
-        android:id="@+id/search_donor_district_spinner"
+    <EditText
+        android:id="@+id/search_donor_district_edittext"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
-
-        style="@style/Widget.AppCompat.Spinner.Underlined"
-
+        android:entries="@array/Dhaka"
+        android:background="@drawable/edit_text_dark"
         android:minHeight="40dp"
+        android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="@+id/search_donor_bld_grp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/search_donor_bld_grp"
         app:layout_constraintTop_toTopOf="@+id/search_donor_bld_grp" />
 
 
-
     <Spinner
         android:id="@+id/search_donor_bld_grp"
+        style="@style/Widget.AppCompat.Spinner.Underlined"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
 
-        style="@style/Widget.AppCompat.Spinner.Underlined"
+        android:layout_marginEnd="16dp"
+        android:entries="@array/BloodGroup"
         android:minHeight="40dp"
-        app:layout_constraintEnd_toStartOf="@+id/search_donor_district_spinner"
+        app:layout_constraintEnd_toStartOf="@+id/search_donor_district_edittext"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_donor_label_bld_grp" />
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -97,6 +98,21 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_donor_bld_grp"
         app:layout_constraintVertical_bias="0.060000002">
+
+        <ProgressBar
+            android:id="@+id/search_donor_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:elevation="20dp"
+            android:indeterminateDrawable="@drawable/progress_bar_style"
+            app:layout_constraintBottom_toBottomOf="@+id/search_donor_recyclerview"
+
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/search_donor_recyclerview" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/search_donor_recyclerview"
