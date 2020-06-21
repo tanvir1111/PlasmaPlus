@@ -6,14 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.MediaParser;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,7 +25,6 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
 import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
-import static com.ece.cov19.LoginActivity.LOGIN_USER_PASS;
 
 public class ProfileActivity extends AppCompatActivity {
     private TextView nameTextView, phoneTextView, bloodGroupTextView, addressTextView, ageTextView, donorInfoTextView;
@@ -42,12 +39,12 @@ public class ProfileActivity extends AppCompatActivity {
         nameTextView = findViewById(R.id.profile_name);
         phoneTextView = findViewById(R.id.profile_phone);
         bloodGroupTextView = findViewById(R.id.profile_blood_group);
-        addressTextView = findViewById(R.id.profile_address);
+        addressTextView = findViewById(R.id.profile_hospital);
         ageTextView = findViewById(R.id.profile_age);
-        donorInfoTextView = findViewById(R.id.profile_donor_role);
+        donorInfoTextView = findViewById(R.id.profile_type);
         genderImageView = findViewById(R.id.profile_gender_icon);
         logoutBtn=findViewById(R.id.profile_logout_btn);
-        updateInfoBtn=findViewById(R.id.profile_update_btn);
+        updateInfoBtn=findViewById(R.id.go_back_btn);
         updatePasswordBtn=findViewById(R.id.profile_change_password_btn);
         
 //      setting logged in user info
@@ -78,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int id) {
                         SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
                         sharedPreferences.edit().clear().apply();
-                        Intent login= new Intent(ProfileActivity.this,LoginActivity.class);
+                        Intent login= new Intent(ProfileActivity.this, LoginActivity.class);
                         startActivity(login);
                         finish();
 
@@ -102,7 +99,7 @@ public class ProfileActivity extends AppCompatActivity {
         updateInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ProfileActivity.this,UpdateInfoActivity.class);
+                Intent intent=new Intent(ProfileActivity.this, UpdateInfoActivity.class);
                 showAlertDialog(intent);
 
 
@@ -112,7 +109,7 @@ public class ProfileActivity extends AppCompatActivity {
         updatePasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(ProfileActivity.this,UpdatePasswordActivity.class);
+                Intent intent= new Intent(ProfileActivity.this, UpdatePasswordActivity.class);
 
                 showAlertDialog(intent);
 

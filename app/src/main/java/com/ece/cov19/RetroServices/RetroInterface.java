@@ -3,9 +3,12 @@ package com.ece.cov19.RetroServices;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
 
+import java.util.ArrayList;
+
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface RetroInterface {
@@ -18,15 +21,15 @@ public interface RetroInterface {
 
     @FormUrlEncoded
     @POST("login.php")
-    Call<UserDataModel> loginRetroMethod(@Field("phone") String phone,@Field("password") String password);
+    Call<UserDataModel> loginRetroMethod(@Field("phone") String phone, @Field("password") String password);
 
     @FormUrlEncoded
     @POST("updateUserInfo.php")
-    Call<UserDataModel> updateUser(@Field("phone")String phone,@Field("name") String name,@Field("division") String division,@Field("district") String district,@Field("thana") String thana,@Field("age") String age,@Field("donor") String donorInfo);
+    Call<UserDataModel> updateUser(@Field("phone") String phone, @Field("name") String name, @Field("division") String division, @Field("district") String district, @Field("thana") String thana, @Field("age") String age, @Field("donor") String donorInfo);
 
     @FormUrlEncoded
     @POST("updateUserPassword.php")
-    Call<UserDataModel> updatePassword(@Field("phone") String loggedInUserPhone,@Field("password") String password);
+    Call<UserDataModel> updatePassword(@Field("phone") String loggedInUserPhone, @Field("password") String password);
 
 
     @FormUrlEncoded
@@ -36,4 +39,11 @@ public interface RetroInterface {
                                                 @Field("division") String division, @Field("district") String district,
                                                 @Field("date") String date, @Field("need") String need,
                                                 @Field("phone") String phone);
+
+
+    @GET("searchDonor.php") Call<ArrayList<UserDataModel>> searchDonor();
+    @GET("seeRequest.php") Call<ArrayList<PatientDataModel>> seeRequest();
+
 }
+
+
