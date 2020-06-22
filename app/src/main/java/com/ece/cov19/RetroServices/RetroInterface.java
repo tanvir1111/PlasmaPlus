@@ -1,5 +1,6 @@
 package com.ece.cov19.RetroServices;
 
+import com.ece.cov19.DataModels.DashBoardNumberModel;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
 
@@ -50,6 +51,9 @@ public interface RetroInterface {
     @FormUrlEncoded
     @POST("searchPatients.php")
     Call<ArrayList<PatientDataModel>> searchPatients(@Field("bloodGroup") String bloodgroup,@Field("district") String district);
+
+    @GET("dashBoardNumbers.php")
+    Call<DashBoardNumberModel> getDashBoardNumbers();
 
 
 }

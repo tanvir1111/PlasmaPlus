@@ -7,6 +7,36 @@
     android:background="@drawable/background_colored"
     tools:context=".DashBoardActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:elevation="20dp"
+        android:background="#ffffff">
+
+        <ProgressBar
+        android:id="@+id/dashboard_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Loading Data"
+            android:textSize="20sp"
+            android:textColor="@color/colorAccent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_progress_bar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
     <TextView
         android:id="@+id/dashboard_header"
         android:layout_width="wrap_content"
