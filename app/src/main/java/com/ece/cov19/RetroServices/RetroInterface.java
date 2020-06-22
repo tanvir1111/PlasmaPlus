@@ -44,7 +44,13 @@ public interface RetroInterface {
     @FormUrlEncoded
     @POST("searchDonor.php")
     Call<ArrayList<UserDataModel>> searchDonor(@Field("bloodGroup") String bloodgroup,@Field("district") String district);
+
     @GET("seeRequest.php") Call<ArrayList<PatientDataModel>> seeRequest();
+
+    @FormUrlEncoded
+    @POST("searchPatients.php")
+    Call<ArrayList<PatientDataModel>> searchPatients(@Field("bloodGroup") String bloodgroup,@Field("district") String district);
+
 
 }
 

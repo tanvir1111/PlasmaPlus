@@ -42,6 +42,7 @@ public class DonorAdapter extends RecyclerView.Adapter<DonorViewHolder>{
         holder.nameTextView.setText(userDataModel.getName());
         holder.locationTextView.setText(userDataModel.getDistrict());
         holder.bloodTextView.setText(userDataModel.getBloodGroup());
+        holder.donortype.setText(userDataModel.getDonor());
         if(userDataModel.getGender().equals("male")) {
             holder.donorImageView.setImageResource(R.drawable.profile_icon_male);
         } else {

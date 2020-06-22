@@ -14,19 +14,21 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     private TextView nameTextView, phoneTextView, bloodGroupTextView, addressTextView, ageTextView, donorInfoTextView;
     private ImageView genderImageView;
     private Button updateInfoButton;
+    private ImageView backbtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donor_profile);
 
-        nameTextView = findViewById(R.id.profile_name);
-        phoneTextView = findViewById(R.id.profile_phone);
-        bloodGroupTextView = findViewById(R.id.profile_blood_group);
-        addressTextView = findViewById(R.id.profile_hospital);
-        ageTextView = findViewById(R.id.profile_age);
-        donorInfoTextView = findViewById(R.id.profile_type);
-        genderImageView = findViewById(R.id.profile_gender_icon);
+        nameTextView = findViewById(R.id.donor_profile_name);
+        phoneTextView = findViewById(R.id.donor_profile_phone);
+        bloodGroupTextView = findViewById(R.id.donor_profile_blood_group);
+        addressTextView = findViewById(R.id.donor_profile_hospital);
+        ageTextView = findViewById(R.id.donor_profile_age);
+        donorInfoTextView = findViewById(R.id.donor_profile_type);
+        genderImageView = findViewById(R.id.donor_profile_gender_icon);
         updateInfoButton=findViewById(R.id.go_back_btn);
+        backbtn=findViewById(R.id.donor_profile_back_button);
 
         Intent intent = getIntent();
 
@@ -43,6 +45,12 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             genderImageView.setImageResource(R.drawable.female_icon);
 
         }
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
         updateInfoButton.setOnClickListener(new View.OnClickListener() {
             @Override

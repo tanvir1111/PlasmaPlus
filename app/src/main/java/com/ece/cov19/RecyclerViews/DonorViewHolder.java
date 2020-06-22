@@ -19,7 +19,7 @@ import java.util.ArrayList;
 
 public class DonorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    TextView nameTextView, locationTextView, bloodTextView;
+    TextView nameTextView, locationTextView, bloodTextView,donortype;
     ImageView donorImageView, locationImageView;
     Button askButton;
     UserDataModel userDataModel;
@@ -34,6 +34,7 @@ public class DonorViewHolder extends RecyclerView.ViewHolder implements View.OnC
         bloodTextView = itemView.findViewById(R.id.donor_child_bld_grp);
         donorImageView = itemView.findViewById(R.id.donor_child_profile_image);
         locationImageView = itemView.findViewById(R.id.donor_child_location_image);
+        donortype=itemView.findViewById(R.id.donor_child_donor_type);
         askButton = itemView.findViewById(R.id.donor_child_details_btn);
 
         itemView.setOnClickListener(this);

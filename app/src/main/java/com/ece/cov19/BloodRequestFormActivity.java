@@ -23,6 +23,7 @@ import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 import com.ece.cov19.Functions.FormFieldsFeatures;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -34,17 +35,17 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class BloodRequestFormActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
-    private TextView selectDate,labelBloodGroup,labelGender,labelDate;
-    private String  gender="not selected",date="not selected";
-    private ImageView genderMale, genderFemale;
+    private TextView selectDate, labelBloodGroup, labelGender, labelDate;
+    private String gender = "not selected", date = "not selected";
+    private ImageView genderMale, backbtn, genderFemale;
     private CheckBox needCheckbox;
     private Button submitBtn;
-    private EditText nameEditText,ageEditText,hospitalEditText;
+    private EditText nameEditText, ageEditText, hospitalEditText;
     private Spinner divisionSpinner, districtSpinner;
     public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
 
             R.array.Barisal, R.array.Sylhet};
-    FormFieldsFeatures formFieldsFeatures =new FormFieldsFeatures();
+    FormFieldsFeatures formFieldsFeatures = new FormFieldsFeatures();
 
 
     @Override
@@ -52,24 +53,25 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_blood_request_form);
 
-        submitBtn=findViewById(R.id.bld_req_request_btn);
+        submitBtn = findViewById(R.id.bld_req_request_btn);
+        backbtn = findViewById(R.id.bld_req_back_button);
 //      editTexts
-        nameEditText=findViewById(R.id.bld_req_name_edittext);
-        ageEditText=findViewById(R.id.bld_req_age_edittext);
-        hospitalEditText=findViewById(R.id.bld_req_hospital_edittext);
+        nameEditText = findViewById(R.id.bld_req_name_edittext);
+        ageEditText = findViewById(R.id.bld_req_age_edittext);
+        hospitalEditText = findViewById(R.id.bld_req_hospital_edittext);
 
         //        spinners
         divisionSpinner = findViewById(R.id.bld_req_division_spinner);
         districtSpinner = findViewById(R.id.bld_req_district_spinner);
 
 
-        needCheckbox =findViewById(R.id.bld_req_plasma_checkbox);
+        needCheckbox = findViewById(R.id.bld_req_plasma_checkbox);
 
 //      Date section
-        labelDate=findViewById(R.id.bld_req_label_date);
-        selectDate=findViewById(R.id.bld_req_date_textview);
+        labelDate = findViewById(R.id.bld_req_label_date);
+        selectDate = findViewById(R.id.bld_req_date_textview);
         /*blood group textviews*/
-        labelBloodGroup=findViewById(R.id.bld_req_label_blood_grp);
+        labelBloodGroup = findViewById(R.id.bld_req_label_blood_grp);
         aPositive = findViewById(R.id.bld_req_bld_a_positive);
         bPositive = findViewById(R.id.bld_req_bld_b_positive);
         oPositive = findViewById(R.id.bld_req_bld_o_positive);
@@ -80,11 +82,9 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         abNegative = findViewById(R.id.bld_req_bld_ab_negative);
 
         /*        Gender Imageviews*/
-        labelGender=findViewById(R.id.bld_req_label_gender);
+        labelGender = findViewById(R.id.bld_req_label_gender);
         genderMale = findViewById(R.id.bld_req_male_icon);
         genderFemale = findViewById(R.id.bld_req_female_icon);
-
-
 
 
         //      Districts spinner as per selected division
@@ -109,10 +109,9 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         selectDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               chooseDate();
+                chooseDate();
             }
         });
-
 
 
 //        all OnclickListeners
@@ -127,39 +126,40 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         genderMale.setOnClickListener(this);
         genderFemale.setOnClickListener(this);
         submitBtn.setOnClickListener(this);
+        backbtn.setOnClickListener(this);
     }
 
 //    datepicker for choosing date
 
-        private void chooseDate() {
-            final Calendar calendar = Calendar.getInstance();
-            final int year = calendar.get(Calendar.YEAR);
-            final int month = calendar.get(Calendar.MONTH);
-            final int day = calendar.get(Calendar.DAY_OF_MONTH);
-            DatePickerDialog datePicker =
-                    new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(final DatePicker view, final int year, final int month,
-                                              final int dayOfMonth) {
+    private void chooseDate() {
+        final Calendar calendar = Calendar.getInstance();
+        final int year = calendar.get(Calendar.YEAR);
+        final int month = calendar.get(Calendar.MONTH);
+        final int day = calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePicker =
+                new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(final DatePicker view, final int year, final int month,
+                                          final int dayOfMonth) {
 
-                            @SuppressLint("SimpleDateFormat")
-                            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-                            calendar.set(year, month, dayOfMonth);
-                             date = sdf.format(calendar.getTime());
+                        @SuppressLint("SimpleDateFormat")
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        calendar.set(year, month, dayOfMonth);
+                        date = sdf.format(calendar.getTime());
 
-                            selectDate.setText(date); // set the date
-                        }
-                    }, year, month, day); // set date picker to current date
+                        selectDate.setText(date); // set the date
+                    }
+                }, year, month, day); // set date picker to current date
 
-            datePicker.show();
+        datePicker.show();
 
-            datePicker.setOnCancelListener(new DialogInterface.OnCancelListener() {
-                @Override
-                public void onCancel(final DialogInterface dialog) {
-                    dialog.dismiss();
-                }
-            });
-        }
+        datePicker.setOnCancelListener(new DialogInterface.OnCancelListener() {
+            @Override
+            public void onCancel(final DialogInterface dialog) {
+                dialog.dismiss();
+            }
+        });
+    }
 
 
     @Override
@@ -191,47 +191,48 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
                 break;
 
+
             case R.id.bld_req_request_btn:
-                 verifydata();
-
-
+                verifydata();
+                break;
+            case R.id.reg_back_button:
+                finish();
+                break;
 
 
         }
     }
 
     private void verifydata() {
-    String name, phone, division, district,bloodGroup="not selected", hospital,need, age;
-    name = nameEditText.getText().toString();
-    age = ageEditText.getText().toString();
-    division = divisionSpinner.getSelectedItem().toString();
-    district = districtSpinner.getSelectedItem().toString();
-    hospital=hospitalEditText.getText().toString();
-    if(selectedBldGrp!=null) {
-        bloodGroup = selectedBldGrp.getText().toString();
-    }
-    phone = loggedInUserPhone;
+        String name, phone, division, district, bloodGroup = "not selected", hospital, need, age;
+        name = nameEditText.getText().toString();
+        age = ageEditText.getText().toString();
+        division = divisionSpinner.getSelectedItem().toString();
+        district = districtSpinner.getSelectedItem().toString();
+        hospital = hospitalEditText.getText().toString();
+        if (selectedBldGrp != null) {
+            bloodGroup = selectedBldGrp.getText().toString();
+        }
+        phone = loggedInUserPhone;
 
-        if(needCheckbox.isChecked()){
-            need="plasma";
-       }
-        else {
-            need="blood";
+        if (needCheckbox.isChecked()) {
+            need = "plasma";
+        } else {
+            need = "blood";
         }
 
 //
 
 
         if (!formFieldsFeatures.checkIfEmpty(nameEditText) && !formFieldsFeatures.checkIfEmpty(ageEditText)
-                && !formFieldsFeatures.checkIfEmpty(hospitalEditText) && !formFieldsFeatures.checkIfEmpty(this,labelBloodGroup, bloodGroup)
-                && !formFieldsFeatures.checkIfEmpty(this,labelGender, gender) && !formFieldsFeatures.checkIfEmpty(this,labelDate,date)) {
+                && !formFieldsFeatures.checkIfEmpty(hospitalEditText) && !formFieldsFeatures.checkIfEmpty(this, labelBloodGroup, bloodGroup)
+                && !formFieldsFeatures.checkIfEmpty(this, labelGender, gender) && !formFieldsFeatures.checkIfEmpty(this, labelDate, date)) {
 
-            registerPatient(name, age,gender,bloodGroup,hospital,division,district,date,need,phone);}
+            registerPatient(name, age, gender, bloodGroup, hospital, division, district, date, need, phone);
+        }
 
 
     }
-
-
 
 
     //    database operations
@@ -241,11 +242,10 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         sendingData.enqueue(new Callback<PatientDataModel>() {
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
-                if(response.body().getServerMsg().equals("Success")) {
+                if (response.body().getServerMsg().equals("Success")) {
                     Toast.makeText(BloodRequestFormActivity.this, "Patient Added", Toast.LENGTH_SHORT).show();
 
-                }
-                else {
+                } else {
                     Toast.makeText(BloodRequestFormActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
                 }
             }

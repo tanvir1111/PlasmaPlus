@@ -28,7 +28,7 @@ import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 
 public class ProfileActivity extends AppCompatActivity {
     private TextView nameTextView, phoneTextView, bloodGroupTextView, addressTextView, ageTextView, donorInfoTextView;
-    private ImageView genderImageView;
+    private ImageView genderImageView,backbtn;
     private Button logoutBtn,updateInfoBtn,updatePasswordBtn;
 
     @Override
@@ -43,6 +43,7 @@ public class ProfileActivity extends AppCompatActivity {
         ageTextView = findViewById(R.id.profile_age);
         donorInfoTextView = findViewById(R.id.profile_type);
         genderImageView = findViewById(R.id.profile_gender_icon);
+        backbtn=findViewById(R.id.profile_back_button);
         logoutBtn=findViewById(R.id.profile_logout_btn);
         updateInfoBtn=findViewById(R.id.go_back_btn);
         updatePasswordBtn=findViewById(R.id.profile_change_password_btn);
@@ -64,6 +65,12 @@ public class ProfileActivity extends AppCompatActivity {
         } else if (loggedInUserGender.toLowerCase().equals("male")) {
             genderImageView.setImageResource(R.drawable.profile_icon_female);
         }
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         logoutBtn.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
                         SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
                         sharedPreferences.edit().clear().apply();
                         Intent login= new Intent(ProfileActivity.this, LoginActivity.class);
+                       login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(login);
                         finish();
 

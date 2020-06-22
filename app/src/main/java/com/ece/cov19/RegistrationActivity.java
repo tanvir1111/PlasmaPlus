@@ -31,7 +31,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private TextView labelGender,labelBloodGroup;
     private EditText nameEditText, ageEditText, thanaEditText, passwordEditText, confPasswordEditText;
     private String  gender="not selected", donorInfo = "na";
-    private ImageView genderMale, genderFemale;
+    private ImageView genderMale, genderFemale,backbtn;
     private Button singUp;
     private Spinner divisionSpinner, districtSpinner;
     FormFieldsFeatures formFieldsFeatures =new FormFieldsFeatures();
@@ -46,6 +46,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+
 //        all editTexts
         nameEditText = findViewById(R.id.reg_name_edittext);
         ageEditText = findViewById(R.id.reg_age_edittext);
@@ -55,6 +56,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 
 //      buttons
+        backbtn=findViewById(R.id.reg_back_button);
         singUp = findViewById(R.id.reg_sign_up_btn);
         isDonorBtn = findViewById(R.id.reg_donor_checkbox);
         isPlasmaDonor = findViewById(R.id.reg_plasma_checkbox);
@@ -95,6 +97,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         genderMale.setOnClickListener(this);
         genderFemale.setOnClickListener(this);
         singUp.setOnClickListener(this);
+        backbtn.setOnClickListener(this);
 
 
 //      Districts spinner as per selected division
@@ -175,6 +178,10 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
                 selectedBldGrp = formFieldsFeatures.bloodGroupSelection(this, (TextView) v, selectedBldGrp);
 
+                break;
+
+            case R.id.reg_back_button:
+                finish();
                 break;
 
             case R.id.reg_sign_up_btn:
