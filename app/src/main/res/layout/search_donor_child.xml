@@ -6,9 +6,9 @@
     android:id="@+id/dashboard_cardView_1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="32dp"
+    android:layout_marginLeft="16dp"
     android:layout_marginTop="8dp"
-    android:layout_marginRight="32dp"
+    android:layout_marginRight="16dp"
     android:layout_marginBottom="10dp"
     app:cardCornerRadius="30dp"
     app:cardElevation="10dp">
@@ -38,9 +38,10 @@
 
         <TextView
             android:id="@+id/donor_child_bld_grp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
 
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
@@ -49,10 +50,10 @@
             android:text="AB+"
             android:textColor="@color/colorAccent"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/donor_child_details_btn"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/donor_child_donor_type"
-            app:layout_constraintVertical_bias="0.48000002" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/donor_child_profile_image"
@@ -70,10 +71,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:textColor="@color/textColorDark"
-            android:layout_marginTop="48dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/montserrat"
             android:text="Tanvir Ahmmad"
+            android:textColor="@color/textColorDark"
             android:textSize="14sp"
             app:layout_constraintStart_toEndOf="@+id/donor_child_profile_image"
             app:layout_constraintTop_toTopOf="parent" />
@@ -103,24 +104,26 @@
             app:layout_constraintBottom_toBottomOf="@+id/donor_child_location_image"
             app:layout_constraintStart_toEndOf="@+id/donor_child_location_image"
             app:layout_constraintTop_toTopOf="@+id/donor_child_location_image" />
+
         <Button
             android:id="@+id/donor_child_details_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginBottom="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/button_style_white"
             android:elevation="10dp"
             android:fontFamily="@font/montserrat_bold"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:textSize="12sp"
             android:text="Ask for Help"
             android:textColor="@color/colorAccent"
+            android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/donor_location" />
+            app:layout_constraintTop_toBottomOf="@+id/donor_location"
+            app:layout_constraintVertical_bias="0.47000003" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

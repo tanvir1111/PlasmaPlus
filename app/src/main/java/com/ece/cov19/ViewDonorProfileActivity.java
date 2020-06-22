@@ -27,7 +27,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         ageTextView = findViewById(R.id.donor_profile_age);
         donorInfoTextView = findViewById(R.id.donor_profile_type);
         genderImageView = findViewById(R.id.donor_profile_gender_icon);
-        updateInfoButton=findViewById(R.id.go_back_btn);
+        updateInfoButton=findViewById(R.id.donor_ask_for_help_button);
         backbtn=findViewById(R.id.donor_profile_back_button);
 
         Intent intent = getIntent();

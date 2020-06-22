@@ -220,7 +220,7 @@
 
 
     <Button
-        android:id="@+id/go_back_btn"
+        android:id="@+id/donor_ask_for_help_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="148dp"

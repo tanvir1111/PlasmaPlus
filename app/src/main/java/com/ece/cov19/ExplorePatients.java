@@ -15,9 +15,8 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.DataModels.UserDataModel;
-import com.ece.cov19.RecyclerViews.DonorAdapter;
 import com.ece.cov19.RecyclerViews.PatientAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -28,26 +27,34 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
+
 public class ExplorePatients extends AppCompatActivity {
 
-    ArrayList<PatientDataModel> patientDataModels;
-    private RecyclerView recyclerView;
+
+    private RecyclerView yourPatientsRecyclerView, explorePatientsRecyclerView;
     private Spinner bloodgrpSpinner;
     private EditText districtEditText;
-    private ProgressBar progressBar;
-    private PatientAdapter patientAdapter;
+    private ProgressBar yourPatientsProgressBar, progressBar;
+
     private ImageView backbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_explore_patients);
-        recyclerView = findViewById(R.id.explore_patients_recyclerview);
+
+        yourPatientsRecyclerView = findViewById(R.id.your_patients_recyclerview);
+        yourPatientsProgressBar = findViewById(R.id.your_patients_progress_bar);
+
+        explorePatientsRecyclerView = findViewById(R.id.explore_patients_recyclerview);
         bloodgrpSpinner=findViewById(R.id.explore_patients_bld_grp);
         districtEditText=findViewById(R.id.explore_patients_district_edittext);
         progressBar=findViewById(R.id.explore_patients_progress_bar);
         backbtn=findViewById(R.id.explore_patients_back_button);
-        patientDataModels = new ArrayList<>();
+
+
+        ownPatientsSearch();
 
 
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -59,7 +66,7 @@ public class ExplorePatients extends AppCompatActivity {
         bloodgrpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                patientSearch();
+                allPatientsSearch();
             }
 
             @Override
@@ -76,7 +83,7 @@ public class ExplorePatients extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                patientSearch();
+                allPatientsSearch();
             }
 
             @Override
@@ -87,9 +94,60 @@ public class ExplorePatients extends AppCompatActivity {
         });
     }
 
-    private void patientSearch() {
+    private void ownPatientsSearch(){
+        yourPatientsProgressBar.setVisibility(View.VISIBLE);
+
+        ArrayList<PatientDataModel> patientDataModels;
+        PatientAdapter patientAdapter;
+        patientDataModels = new ArrayList<>();
+        patientAdapter = new PatientAdapter(getApplicationContext(), patientDataModels);
+
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Call<ArrayList<PatientDataModel>> searchDonor = retroInterface.ownPatients(loggedInUserPhone);
+        searchDonor.enqueue(new Callback<ArrayList<PatientDataModel>>() {
+            @Override
+            public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
+
+
+
+
+                yourPatientsProgressBar.setVisibility(View.GONE);
+                patientDataModels.clear();
+                if(response.isSuccessful()){
+                    ArrayList<PatientDataModel> initialModels = response.body();
+                    for(PatientDataModel initialDataModel : initialModels){
+
+                        patientDataModels.add(initialDataModel);
+
+                    }
+
+
+
+                    yourPatientsRecyclerView.setAdapter(patientAdapter);
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                    yourPatientsRecyclerView.setLayoutManager(linearLayoutManager);
+                }
+
+                else{
+                    Toast.makeText(ExplorePatients.this, "No Response", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
+                Toast.makeText(ExplorePatients.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+    }
+
+    private void allPatientsSearch() {
         progressBar.setVisibility(View.VISIBLE);
-        patientDataModels.clear();
+        ArrayList<PatientDataModel> patientDataModels;
+        PatientAdapter patientAdapter;
+        patientDataModels = new ArrayList<>();
+        patientAdapter = new PatientAdapter(getApplicationContext(), patientDataModels);
 
         String bloodgroup = bloodgrpSpinner.getSelectedItem().toString();
         String district;
@@ -102,24 +160,27 @@ public class ExplorePatients extends AppCompatActivity {
         }
 
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<ArrayList<PatientDataModel>> searchDonor = retroInterface.searchPatients(bloodgroup,district);
+        Call<ArrayList<PatientDataModel>> searchDonor = retroInterface.searchPatients(bloodgroup,district,loggedInUserPhone);
         searchDonor.enqueue(new Callback<ArrayList<PatientDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
                 progressBar.setVisibility(View.GONE);
+                patientDataModels.clear();
+
+
                 if(response.isSuccessful()){
                     ArrayList<PatientDataModel> initialModels = response.body();
                     for(PatientDataModel initialDataModel : initialModels){
 
-                            patientDataModels.add(initialDataModel);
+                        patientDataModels.add(initialDataModel);
 
                     }
 
-                    patientAdapter = new PatientAdapter(getApplicationContext(), patientDataModels);
 
-                    recyclerView.setAdapter(patientAdapter);
+
+                    explorePatientsRecyclerView.setAdapter(patientAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-                    recyclerView.setLayoutManager(linearLayoutManager);
+                    explorePatientsRecyclerView.setLayoutManager(linearLayoutManager);
                 }
 
                 else{

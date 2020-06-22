@@ -45,9 +45,9 @@ public class ProfileActivity extends AppCompatActivity {
         genderImageView = findViewById(R.id.profile_gender_icon);
         backbtn=findViewById(R.id.profile_back_button);
         logoutBtn=findViewById(R.id.profile_logout_btn);
-        updateInfoBtn=findViewById(R.id.go_back_btn);
+        updateInfoBtn=findViewById(R.id.profile_update_button);
         updatePasswordBtn=findViewById(R.id.profile_change_password_btn);
-        
+
 //      setting logged in user info
         nameTextView.setText(loggedInUserName);
         phoneTextView.setText(loggedInUserPhone);
@@ -56,7 +56,7 @@ public class ProfileActivity extends AppCompatActivity {
         ageTextView.setText(loggedInUserAge);
         if(loggedInUserDonorInfo.equals("na")) {
             donorInfoTextView.setText("Not a donor");
-            }
+        }
         else{
             donorInfoTextView.setText(loggedInUserDonorInfo+" Donor");
         }
@@ -83,7 +83,7 @@ public class ProfileActivity extends AppCompatActivity {
                         SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
                         sharedPreferences.edit().clear().apply();
                         Intent login= new Intent(ProfileActivity.this, LoginActivity.class);
-                       login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(login);
                         finish();
 

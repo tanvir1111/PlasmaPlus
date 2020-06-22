@@ -195,7 +195,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
             case R.id.bld_req_request_btn:
                 verifydata();
                 break;
-            case R.id.reg_back_button:
+            case R.id.bld_req_back_button:
                 finish();
                 break;
 
