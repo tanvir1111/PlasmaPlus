@@ -12,11 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.DashBoardNumberModel;
-import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;

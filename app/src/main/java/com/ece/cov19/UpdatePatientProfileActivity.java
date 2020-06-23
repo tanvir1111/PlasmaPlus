@@ -33,8 +33,6 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDistrict;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDivision;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class UpdatePatientProfileActivity extends AppCompatActivity implements View.OnClickListener {

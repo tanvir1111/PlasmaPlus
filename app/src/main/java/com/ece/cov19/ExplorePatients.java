@@ -15,7 +15,6 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.RecyclerViews.PatientAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
