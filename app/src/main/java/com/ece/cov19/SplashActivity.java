@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -76,7 +75,7 @@ handler.postDelayed(new Runnable() {
                 if (response.body().getServerMsg().equals("Success")) {
 
                     progressBar.setVisibility(View.GONE);
-                    Toast.makeText(SplashActivity.this, "Welcome " + response.body().getName(), Toast.LENGTH_SHORT).show();
+
 
 
 //              setting all logged in info
@@ -90,9 +89,10 @@ handler.postDelayed(new Runnable() {
                     loggedInUserAge = response.body().getAge();
                     loggedInUserDonorInfo = response.body().getDonor();
                     loggedInUserPass = response.body().getPassword();
+                    Toast.makeText(SplashActivity.this, "Welcome " + loggedInUserName, Toast.LENGTH_SHORT).show();
 
 //                  going to Dashboard
-                    Intent intent = new Intent(SplashActivity.this, DashBoard.class);
+                    Intent intent = new Intent(SplashActivity.this, DashBoardActivity.class);
                     startActivity(intent);
                     finish();
                 } else {

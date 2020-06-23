@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -146,7 +145,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
 //                  going to Dashboard
-                    Intent intent = new Intent(LoginActivity.this, DashBoard.class);
+                    Intent intent = new Intent(LoginActivity.this, DashBoardActivity.class);
                     startActivity(intent);
                     finish();
                 } else {

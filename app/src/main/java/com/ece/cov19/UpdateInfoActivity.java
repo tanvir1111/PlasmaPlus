@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
@@ -27,7 +28,6 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDistrict;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDivision;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDonorInfo;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
 
@@ -37,6 +37,7 @@ public class UpdateInfoActivity extends AppCompatActivity {
     private RadioGroup bloodRadioGroup;
     private Spinner divisionSpinner, districtSpinner;
     private String donorInfo;
+    private ImageView backbtn;
     private boolean dischanged=false;
     private int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
             R.array.Barisal, R.array.Sylhet};
@@ -53,7 +54,14 @@ public class UpdateInfoActivity extends AppCompatActivity {
         divisionSpinner = findViewById(R.id.update_division_spinner);
         districtSpinner = findViewById(R.id.update_district_spinner);
         bloodRadioGroup = findViewById(R.id.update_donor_role_radio_group);
+        backbtn=findViewById(R.id.update_back_button);
         updateBtn=findViewById(R.id.update_update_btn);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 //     setting up current data
         nameEditText.setText(loggedInUserName);
@@ -88,9 +96,7 @@ public class UpdateInfoActivity extends AppCompatActivity {
                         getResources().getStringArray(divisionResourceIds[position]));
                 districtSpinner.setAdapter(adpter);
 
-                if(!dischanged) {
                     districtSpinner.setSelection(adpter.getPosition(loggedInUserDistrict));
-                }
             }
 
             @Override
@@ -173,7 +179,7 @@ public class UpdateInfoActivity extends AppCompatActivity {
 
 
 //              going to login activity
-                    Intent intent = new Intent(UpdateInfoActivity.this, DashBoard.class);
+                    Intent intent = new Intent(UpdateInfoActivity.this, DashBoardActivity.class);
                     startActivity(intent);
                     finish();
                 }

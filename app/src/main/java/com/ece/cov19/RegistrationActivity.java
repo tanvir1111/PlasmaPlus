@@ -3,7 +3,6 @@ package com.ece.cov19;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -18,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.FormFieldsFeatures;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -27,11 +27,13 @@ import retrofit2.Response;
 
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
+    private TextView labelGender,labelBloodGroup;
     private EditText nameEditText, ageEditText, thanaEditText, passwordEditText, confPasswordEditText;
-    private String bloodGroup, gender, donorInfo = "na";
-    private ImageView genderMale, genderFemale;
+    private String  gender="not selected", donorInfo = "na";
+    private ImageView genderMale, genderFemale,backbtn;
     private Button singUp;
     private Spinner divisionSpinner, districtSpinner;
+    FormFieldsFeatures formFieldsFeatures =new FormFieldsFeatures();
     public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
 
             R.array.Barisal, R.array.Sylhet};
@@ -43,6 +45,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
+
 //        all editTexts
         nameEditText = findViewById(R.id.reg_name_edittext);
         ageEditText = findViewById(R.id.reg_age_edittext);
@@ -52,6 +55,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 
 //      buttons
+        backbtn=findViewById(R.id.reg_back_button);
         singUp = findViewById(R.id.reg_sign_up_btn);
         isDonorBtn = findViewById(R.id.reg_donor_checkbox);
         isPlasmaDonor = findViewById(R.id.reg_plasma_checkbox);
@@ -61,6 +65,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 
         /*blood group textviews*/
+        labelBloodGroup=findViewById(R.id.reg_label_blood_grp);
         aPositive = findViewById(R.id.reg_bld_a_positive);
         bPositive = findViewById(R.id.reg_bld_b_positive);
         oPositive = findViewById(R.id.reg_bld_o_positive);
@@ -71,11 +76,12 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         abNegative = findViewById(R.id.reg_bld_ab_negative);
 
         /*        Gender Imageviews*/
+        labelGender=findViewById(R.id.reg_label_gender);
         genderMale = findViewById(R.id.reg_male_icon);
         genderFemale = findViewById(R.id.reg_female_icon);
 
         /* just a random one to avoid nullPoint Exception*/
-        selectedBldGrp = aPositive;
+
 
 
 //        all OnclickListeners
@@ -90,6 +96,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         genderMale.setOnClickListener(this);
         genderFemale.setOnClickListener(this);
         singUp.setOnClickListener(this);
+        backbtn.setOnClickListener(this);
 
 
 //      Districts spinner as per selected division
@@ -167,12 +174,13 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             case R.id.reg_bld_b_negative:
             case R.id.reg_bld_o_negative:
             case R.id.reg_bld_ab_negative:
-                selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_not_selected);
-                selectedBldGrp.setTextColor(getColor(R.color.textColorGrey));
-                selectedBldGrp = findViewById(v.getId());
-                selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_selected);
-                selectedBldGrp.setTextColor(Color.WHITE);
-                bloodGroup = selectedBldGrp.getText().toString();
+
+                selectedBldGrp = formFieldsFeatures.bloodGroupSelection(this, (TextView) v, selectedBldGrp);
+
+                break;
+
+            case R.id.reg_back_button:
+                finish();
                 break;
 
             case R.id.reg_sign_up_btn:
@@ -186,54 +194,45 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
     //    checking valid data or empty fields
     private void verifyData() {
-        String name, phone, division, district, thana, age, password, emptyfield = "all ok";
+        String name, phone, division,bloodGroup="not selected", district, thana, age, password;
         name = nameEditText.getText().toString();
         thana = thanaEditText.getText().toString();
         age = ageEditText.getText().toString();
         password = passwordEditText.getText().toString();
         division = divisionSpinner.getSelectedItem().toString();
         district = districtSpinner.getSelectedItem().toString();
+        if(selectedBldGrp!=null) {
+            bloodGroup = selectedBldGrp.getText().toString();
+        }
+
         Intent i = getIntent();
         phone = i.getExtras().get("phone").toString();
 
 
 //        checking empty Fields
 
-        if (name.isEmpty()) {
-            emptyfield = "name";
-        } else if (thana.isEmpty()) {
-            emptyfield = "thana";
-        } else if (age.isEmpty()) {
-            emptyfield = "age";
-        } else if (password.isEmpty()) {
-            emptyfield = "password";
-        } else if (division.isEmpty()) {
-            emptyfield = "division";
-        } else if (district.isEmpty()) {
-            emptyfield = "district";
-        } else if (bloodGroup == null) {
-            emptyfield = "bloodGroup";
-        } else if (gender == null) {
-            emptyfield = "gender";
-        }
 
 
-        if (emptyfield.equals("all ok")) {
+        if (!formFieldsFeatures.checkIfEmpty(nameEditText) && !formFieldsFeatures.checkIfEmpty(ageEditText)
+                && !formFieldsFeatures.checkIfEmpty(this,labelGender, gender)
+                && !formFieldsFeatures.checkIfEmpty(this,labelBloodGroup, bloodGroup)
+                && !formFieldsFeatures.checkIfEmpty(thanaEditText)
+                && !formFieldsFeatures.checkIfEmpty(passwordEditText)) {
+
             if (password.length() < 6) {
                 Toast.makeText(this, "password must be of at least 6 characters", Toast.LENGTH_SHORT).show();
             } else {
                 if (password.equals(confPasswordEditText.getText().toString())) {
 //            retro operations
 
-                    registerUser(name, phone, division, district, thana, age, password);
+                    registerUser(name, phone, division, district,bloodGroup ,thana, age, password);
 
 
                 } else {
-                    Toast.makeText(this, "password doesn't match", Toast.LENGTH_SHORT).show();
+                    confPasswordEditText.setError("password doesn't match");
+                    confPasswordEditText.requestFocus();
                 }
             }
-        } else {
-            Toast.makeText(this, "Enter " + emptyfield, Toast.LENGTH_SHORT).show();
         }
 
 
@@ -241,7 +240,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 //    database operations
 
-    private void registerUser(String name, String phone, String division, String district, String thana, String age, String password) {
+    private void registerUser(String name, String phone, String division, String district,String bloodGroup, String thana, String age, String password) {
 
         RetroInterface retroinstance = RetroInstance.getRetro();
         Call<UserDataModel> sendingData = retroinstance.registerRetroMethod(name, phone, gender, bloodGroup, division, district, thana, age, donorInfo, password);

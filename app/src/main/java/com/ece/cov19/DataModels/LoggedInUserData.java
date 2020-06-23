@@ -1,7 +1,7 @@
 package com.ece.cov19.DataModels;
 
 public class LoggedInUserData {
-    public static String loggedInUserName;
+    public static String loggedInUserName="Didn't Load";
     public static String loggedInUserPhone;
     public static String loggedInUserGender;
     public static String loggedInUserBloodGroup;

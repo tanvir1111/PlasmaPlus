@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
@@ -26,6 +27,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
     private EditText passwordEditText,confPasswordEditText;
     private String password;
     private Button updatePassBtn;
+    private ImageView backbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,13 @@ public class UpdatePasswordActivity extends AppCompatActivity {
         passwordEditText=findViewById(R.id.update_password_password_edittext);
         confPasswordEditText=findViewById(R.id.update_password_confirm_password_edittext);
         updatePassBtn=findViewById(R.id.update_password_update_btn);
+        backbtn=findViewById(R.id.update_password_back_button);
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         updatePassBtn.setOnClickListener(new View.OnClickListener() {
