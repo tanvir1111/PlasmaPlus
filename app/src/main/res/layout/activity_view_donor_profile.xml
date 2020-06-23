@@ -62,6 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
+
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:src="@drawable/profile_icon_male"
@@ -130,6 +131,7 @@
                 android:id="@+id/donor_profile_hospital"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:maxWidth="172dp"
                 android:fontFamily="@font/montserrat"
                 android:text=" Thana,District"
                 android:textColor="@color/textColorDark"

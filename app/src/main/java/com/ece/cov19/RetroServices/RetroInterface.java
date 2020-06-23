@@ -58,6 +58,26 @@ public interface RetroInterface {
     @FormUrlEncoded
     @POST("ownPatients.php")
     Call<ArrayList<PatientDataModel>> ownPatients(@Field("phone") String phone);
+
+    @FormUrlEncoded
+    @POST("updatePatientProfile.php")
+    Call<PatientDataModel> updatePatientProfile(@Field("name") String name, @Field("age") String age, @Field("blood_group") String bloodGroup, @Field("phone") String phone,
+
+
+                                                @Field("newname") String newName, @Field("newage") String newaAge, @Field("newgender") String newGender,
+                                                @Field("newblood_group") String newBloodGroup, @Field("newhospital") String newHospital,
+                                                @Field("newdivision") String newDivision, @Field("newdistrict") String newDistrict,
+                                                @Field("newdate") String newDate, @Field("newneed") String newNeed);
+
+    @FormUrlEncoded
+    @POST("deletePatientProfile.php")
+    Call<PatientDataModel> deletePatientProfile(@Field("name") String name, @Field("age") String age, @Field("gender") String gender,
+                                                @Field("blood_group") String bloodGroup, @Field("hospital") String hospital,
+                                                @Field("division") String division, @Field("district") String district,
+                                                @Field("date") String date, @Field("need") String need,
+                                                @Field("phone") String phone);
+
+
 }
 
 

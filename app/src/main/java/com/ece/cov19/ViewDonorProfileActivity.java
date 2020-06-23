@@ -39,10 +39,10 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         ageTextView.setText(intent.getStringExtra("age"));
         donorInfoTextView.setText(intent.getStringExtra("donorinfo"));
         if(intent.getStringExtra("gender").equals("male")){
-            genderImageView.setImageResource(R.drawable.male_icon);
+            genderImageView.setImageResource(R.drawable.profile_icon_male);
         }
         else {
-            genderImageView.setImageResource(R.drawable.female_icon);
+            genderImageView.setImageResource(R.drawable.profile_icon_female);
 
         }
         backbtn.setOnClickListener(new View.OnClickListener() {

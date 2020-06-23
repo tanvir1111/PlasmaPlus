@@ -96,9 +96,7 @@ public class UpdateInfoActivity extends AppCompatActivity {
                         getResources().getStringArray(divisionResourceIds[position]));
                 districtSpinner.setAdapter(adpter);
 
-                if(!dischanged) {
                     districtSpinner.setSelection(adpter.getPosition(loggedInUserDistrict));
-                }
             }
 
             @Override

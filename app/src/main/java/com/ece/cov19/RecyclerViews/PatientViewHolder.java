@@ -51,11 +51,14 @@ public class PatientViewHolder extends RecyclerView.ViewHolder implements View.O
 
         intent.putExtra("name",patientDataModel.getName());
         intent.putExtra("phone",patientDataModel.getPhone());
-        intent.putExtra("blood",patientDataModel.getBloodGroup());
+        intent.putExtra("blood_group",patientDataModel.getBloodGroup());
         intent.putExtra("hospital",patientDataModel.getHospital());
         intent.putExtra("age",patientDataModel.getAge());
-        intent.putExtra("type",patientDataModel.getNeed());
+        intent.putExtra("need",patientDataModel.getNeed());
         intent.putExtra("gender",patientDataModel.getGender());
+        intent.putExtra("date",patientDataModel.getDate());
+        intent.putExtra("district",patientDataModel.getDistrict());
+        intent.putExtra("division",patientDataModel.getDivision());
 
         c.startActivity(intent);
     }

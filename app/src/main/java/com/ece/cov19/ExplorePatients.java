@@ -159,13 +159,15 @@ public class ExplorePatients extends AppCompatActivity {
             district=districtEditText.getText().toString();
         }
 
+        patientDataModels.clear();
         RetroInterface retroInterface = RetroInstance.getRetro();
+        Toast.makeText(this, bloodgroup+district+loggedInUserPhone, Toast.LENGTH_SHORT).show();
         Call<ArrayList<PatientDataModel>> searchDonor = retroInterface.searchPatients(bloodgroup,district,loggedInUserPhone);
         searchDonor.enqueue(new Callback<ArrayList<PatientDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
                 progressBar.setVisibility(View.GONE);
-                patientDataModels.clear();
+
 
 
                 if(response.isSuccessful()){

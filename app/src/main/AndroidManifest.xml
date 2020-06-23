@@ -13,9 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ExplorePatients"></activity>
-        <activity android:name=".UpdatePasswordActivity" />
-        <activity android:name=".UpdateInfoActivity" />
+        <activity android:name=".ExplorePatients"
+            android:screenOrientation="nosensor"
+            />
+        <activity android:name=".UpdatePasswordActivity"
+            android:screenOrientation="nosensor"/>
+        <activity android:name=".UpdateInfoActivity"
+            android:screenOrientation="nosensor"
+            />
         <activity
             android:name=".RequestsActivity"
             android:screenOrientation="nosensor" />
@@ -46,6 +51,8 @@
         <activity
             android:name=".ViewPatientProfileActivity"
             android:screenOrientation="nosensor" />
+        <activity android:name=".UpdatePatientProfileActivity"
+            android:screenOrientation="nosensor"/>
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="nosensor"
