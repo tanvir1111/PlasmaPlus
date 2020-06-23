@@ -13,29 +13,29 @@ import com.ece.cov19.R;
 
 import java.util.ArrayList;
 
-public class PatientAdapter extends RecyclerView.Adapter<PatientViewHolder> {
+public class ExplorePatientAdapter extends RecyclerView.Adapter<ExplorePatientViewHolder> {
 
     public Context context;
     public PatientDataModel patientDataModel;
     public ArrayList<PatientDataModel> patientDataModels;
 
-    public PatientAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
+    public ExplorePatientAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
         this.context = context;
         this.patientDataModels = patientDataModels;
     }
 
     @NonNull
     @Override
-    public PatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ExplorePatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.seeking_help_child, parent, false);
-        PatientViewHolder patientViewHolder = new PatientViewHolder(view, patientDataModels);
-        return patientViewHolder;
+        ExplorePatientViewHolder explorePatientViewHolder = new ExplorePatientViewHolder(view, patientDataModels);
+        return explorePatientViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PatientViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ExplorePatientViewHolder holder, int position) {
 
         patientDataModel = patientDataModels.get(position);
 

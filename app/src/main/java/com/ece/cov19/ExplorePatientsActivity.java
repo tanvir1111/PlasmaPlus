@@ -17,7 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.RecyclerViews.PatientAdapter;
+import com.ece.cov19.RecyclerViews.ExplorePatientAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -99,9 +99,9 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         yourPatientsProgressBar.setVisibility(View.VISIBLE);
 
         ArrayList<PatientDataModel> patientDataModels;
-        PatientAdapter patientAdapter;
+        ExplorePatientAdapter explorePatientAdapter;
         patientDataModels = new ArrayList<>();
-        patientAdapter = new PatientAdapter(getApplicationContext(), patientDataModels);
+        explorePatientAdapter = new ExplorePatientAdapter(getApplicationContext(), patientDataModels);
 
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<ArrayList<PatientDataModel>> searchDonor = retroInterface.ownPatients(loggedInUserPhone);
@@ -128,7 +128,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
                         yourPatientsTextView.setVisibility(View.VISIBLE);
 
                     }
-                    yourPatientsRecyclerView.setAdapter(patientAdapter);
+                    yourPatientsRecyclerView.setAdapter(explorePatientAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     yourPatientsRecyclerView.setLayoutManager(linearLayoutManager);
                 }
@@ -150,9 +150,9 @@ public class ExplorePatientsActivity extends AppCompatActivity {
     private void allPatientsSearch() {
         progressBar.setVisibility(View.VISIBLE);
         ArrayList<PatientDataModel> patientDataModels;
-        PatientAdapter patientAdapter;
+        ExplorePatientAdapter explorePatientAdapter;
         patientDataModels = new ArrayList<>();
-        patientAdapter = new PatientAdapter(getApplicationContext(), patientDataModels);
+        explorePatientAdapter = new ExplorePatientAdapter(getApplicationContext(), patientDataModels);
 
         String bloodgroup = bloodgrpSpinner.getSelectedItem().toString();
         String district;
@@ -184,7 +184,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
 
 
 
-                    explorePatientsRecyclerView.setAdapter(patientAdapter);
+                    explorePatientsRecyclerView.setAdapter(explorePatientAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     explorePatientsRecyclerView.setLayoutManager(linearLayoutManager);
                 }

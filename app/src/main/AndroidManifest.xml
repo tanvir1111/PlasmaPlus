@@ -28,6 +28,9 @@
             android:name=".SearchDonorActivity"
             android:screenOrientation="nosensor" />
         <activity
+            android:name=".FindDonorActivity"
+            android:screenOrientation="nosensor" />
+        <activity
             android:name=".DashboardActivity"
             android:screenOrientation="nosensor" />
         <activity

@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.RecyclerViews.PatientAdapter;
+import com.ece.cov19.RecyclerViews.ExplorePatientAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -27,7 +27,7 @@ public class RequestsActivity extends AppCompatActivity {
     private Button addRequestsBtn;
     private PatientDataModel patientDataModel;
     private ArrayList<PatientDataModel> patientDataModels;
-    private PatientAdapter patientAdapter;
+    private ExplorePatientAdapter explorePatientAdapter;
     private RecyclerView recyclerView;
     private ImageView backbtn;
 
@@ -71,8 +71,8 @@ public class RequestsActivity extends AppCompatActivity {
                             patientDataModels.add(initialDataModel);
                         }
                     }
-                    patientAdapter = new PatientAdapter(getApplicationContext(), patientDataModels);
-                    recyclerView.setAdapter(patientAdapter);
+                    explorePatientAdapter = new ExplorePatientAdapter(getApplicationContext(), patientDataModels);
+                    recyclerView.setAdapter(explorePatientAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
                 }

@@ -22,7 +22,7 @@ import retrofit2.Response;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 
 public class DashboardActivity extends AppCompatActivity {
-    private Button profileBtn,seeRequestBtn,findDonorBtn, seePatientsbtn;
+    private Button profileBtn,seeRequestBtn,findDonorBtn, allDonorBtn, seePatientsbtn;
     private String[] nameSplit;
     private TextView numberOfPatients,numberOfDonors,numberOfRequests;
     private ProgressBar progressBar;
@@ -37,6 +37,7 @@ public class DashboardActivity extends AppCompatActivity {
         profileBtn=findViewById(R.id.dashboard_profile_btn);
         seeRequestBtn=findViewById(R.id.dashboard_see_requests_btn);
         findDonorBtn=findViewById(R.id.dashboard_find_donor_btn);
+        allDonorBtn=findViewById(R.id.dashboard_all_donor_btn);
         seePatientsbtn =findViewById(R.id.dashboard_see_patients_btn);
         numberOfDonors=findViewById(R.id.dashboard_number_of_donors);
         numberOfPatients=findViewById(R.id.dashboard_number_of_patients);
@@ -63,8 +64,16 @@ public class DashboardActivity extends AppCompatActivity {
         findDonorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent searchDonorIntent=new Intent(DashboardActivity.this,SearchDonorActivity.class);
-                startActivity(searchDonorIntent);
+                Intent findDonorIntent=new Intent(DashboardActivity.this,FindDonorActivity.class);
+                startActivity(findDonorIntent);
+            }
+        });
+
+        allDonorBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent allDonorIntent = new Intent(DashboardActivity.this,SearchDonorActivity.class);
+                startActivity(allDonorIntent);
             }
         });
 
