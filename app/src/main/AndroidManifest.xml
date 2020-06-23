@@ -13,12 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ExplorePatients"
+        <activity android:name=".ExplorePatientsActivity"
             android:screenOrientation="nosensor"
             />
         <activity android:name=".UpdatePasswordActivity"
             android:screenOrientation="nosensor"/>
-        <activity android:name=".UpdateInfoActivity"
+        <activity android:name=".UpdateUserProfileActivity"
             android:screenOrientation="nosensor"
             />
         <activity
@@ -28,16 +28,16 @@
             android:name=".SearchDonorActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".DashBoardActivity"
+            android:name=".DashboardActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".ProfileActivity"
+            android:name=".ViewUserProfileActivity"
             android:screenOrientation="nosensor" />
         <activity
             android:name=".BloodRequestFormActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".Phone_verification"
+            android:name=".PhoneVerificationActivity"
             android:screenOrientation="nosensor" />
         <activity
             android:name=".RegistrationActivity"

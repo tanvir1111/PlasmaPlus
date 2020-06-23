@@ -26,7 +26,7 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
 import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 
-public class ProfileActivity extends AppCompatActivity {
+public class ViewUserProfileActivity extends AppCompatActivity {
     private TextView nameTextView, phoneTextView, bloodGroupTextView, addressTextView, ageTextView, donorInfoTextView;
     private ImageView genderImageView,backbtn;
     private Button logoutBtn,updateInfoBtn,updatePasswordBtn;
@@ -34,7 +34,7 @@ public class ProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profile);
+        setContentView(R.layout.activity_view_user_profile);
 
         nameTextView = findViewById(R.id.profile_name);
         phoneTextView = findViewById(R.id.profile_phone);
@@ -52,7 +52,7 @@ public class ProfileActivity extends AppCompatActivity {
         nameTextView.setText(loggedInUserName);
         phoneTextView.setText(loggedInUserPhone);
         bloodGroupTextView.setText(loggedInUserBloodGroup);
-        addressTextView.setText(String.format("%s,%s", loggedInUserThana, loggedInUserDistrict));
+        addressTextView.setText(String.format("%s, %s", loggedInUserThana, loggedInUserDistrict));
         ageTextView.setText(loggedInUserAge);
         if(loggedInUserDonorInfo.equals("na")) {
             donorInfoTextView.setText("Not a donor");
@@ -76,13 +76,13 @@ public class ProfileActivity extends AppCompatActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
                 builder.setMessage("Are you Sure?");
                 builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
                         sharedPreferences.edit().clear().apply();
-                        Intent login= new Intent(ProfileActivity.this, LoginActivity.class);
+                        Intent login= new Intent(ViewUserProfileActivity.this, LoginActivity.class);
                         login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                         startActivity(login);
                         finish();
@@ -107,7 +107,7 @@ public class ProfileActivity extends AppCompatActivity {
         updateInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(ProfileActivity.this, UpdateInfoActivity.class);
+                Intent intent=new Intent(ViewUserProfileActivity.this, UpdateUserProfileActivity.class);
                 showAlertDialog(intent);
 
 
@@ -117,7 +117,7 @@ public class ProfileActivity extends AppCompatActivity {
         updatePasswordBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent= new Intent(ProfileActivity.this, UpdatePasswordActivity.class);
+                Intent intent= new Intent(ViewUserProfileActivity.this, UpdatePasswordActivity.class);
 
                 showAlertDialog(intent);
 
@@ -130,11 +130,11 @@ public class ProfileActivity extends AppCompatActivity {
     private void showAlertDialog(final Intent intent) {
 
 //                asking password with alertdialog
-        final AlertDialog.Builder builder = new AlertDialog.Builder(ProfileActivity.this);
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage("Enter Password");
 
 // Set up the input
-        final EditText pass = new EditText(ProfileActivity.this);
+        final EditText pass = new EditText(ViewUserProfileActivity.this);
 
         float density = getResources().getDisplayMetrics().density;
         int paddingDp = (int)(12* density);
@@ -155,7 +155,7 @@ public class ProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(ProfileActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();;
+                    Toast.makeText(ViewUserProfileActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();;
                 }
             }
         });

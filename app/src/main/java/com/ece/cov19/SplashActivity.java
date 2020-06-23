@@ -67,8 +67,8 @@ handler.postDelayed(new Runnable() {
 
     private void loginUser(String phone, String password) {
 
-        RetroInterface retroinstance = RetroInstance.getRetro();
-        Call<UserDataModel> sendingData = retroinstance.loginRetroMethod(phone, password);
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Call<UserDataModel> sendingData = retroInterface.loginRetroMethod(phone, password);
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -92,7 +92,7 @@ handler.postDelayed(new Runnable() {
                     Toast.makeText(SplashActivity.this, "Welcome " + loggedInUserName, Toast.LENGTH_SHORT).show();
 
 //                  going to Dashboard
-                    Intent intent = new Intent(SplashActivity.this, DashBoardActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, DashboardActivity.class);
                     startActivity(intent);
                     finish();
                 } else {

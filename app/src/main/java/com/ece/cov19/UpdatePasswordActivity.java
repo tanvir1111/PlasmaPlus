@@ -71,7 +71,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
 
     private void updatePassword(String password) {
 
-        RetroInterface retroInterface=RetroInstance.getRetro();
+        RetroInterface retroInterface= RetroInstance.getRetro();
         Call<UserDataModel> updatePass = retroInterface.updatePassword(loggedInUserPhone, password);
         updatePass.enqueue(new Callback<UserDataModel>() {
             @Override
@@ -85,10 +85,8 @@ public class UpdatePasswordActivity extends AppCompatActivity {
                     sharedPreferences.edit().clear().apply();
 //                    going to login Activity
                     Intent intent=new Intent(UpdatePasswordActivity.this,LoginActivity.class);
+                    finishAffinity();
                     startActivity(intent);
-                    finish();
-
-
                 }
             }
 

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,9 +20,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.Functions.FormFieldsFeatures;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
-import com.ece.cov19.Functions.FormFieldsFeatures;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -215,9 +216,9 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         phone = loggedInUserPhone;
 
         if (needCheckbox.isChecked()) {
-            need = "plasma";
+            need = "Plasma";
         } else {
-            need = "blood";
+            need = "Blood";
         }
 
 //
@@ -236,14 +237,15 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
     //    database operations
     private void registerPatient(String name, String age, String gender, String bloodGroup, String hospital, String division, String district, String date, String need, String phone) {
-        RetroInterface retroinstance = RetroInstance.getRetro();
-        Call<PatientDataModel> sendingData = retroinstance.registerPatientRetro(name, age, gender, bloodGroup, hospital, division, district, date, need, phone);
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Call<PatientDataModel> sendingData = retroInterface.registerPatientRetro(name, age, gender, bloodGroup, hospital, division, district, date, need, phone);
         sendingData.enqueue(new Callback<PatientDataModel>() {
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
                 if (response.body().getServerMsg().equals("Success")) {
                     Toast.makeText(BloodRequestFormActivity.this, "Patient Added", Toast.LENGTH_SHORT).show();
-
+                    Intent intent = new Intent(BloodRequestFormActivity.this, RequestsActivity.class);
+                    finish();
                 } else {
                     Toast.makeText(BloodRequestFormActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
                 }

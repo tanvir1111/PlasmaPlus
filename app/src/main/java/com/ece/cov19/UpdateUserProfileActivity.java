@@ -31,7 +31,7 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
 
-public class UpdateInfoActivity extends AppCompatActivity {
+public class UpdateUserProfileActivity extends AppCompatActivity {
 
     private EditText nameEditText, thanaEditText, ageEditText;
     private RadioGroup bloodRadioGroup;
@@ -46,7 +46,7 @@ public class UpdateInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_update_info);
+        setContentView(R.layout.activity_update_user_profile);
         nameEditText = findViewById(R.id.update_name_edittext);
         thanaEditText = findViewById(R.id.update_thana_edittext);
         ageEditText = findViewById(R.id.update_age_edittext);
@@ -91,7 +91,7 @@ public class UpdateInfoActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 ArrayAdapter<String> adpter = new ArrayAdapter<String>(
-                        UpdateInfoActivity.this,
+                        UpdateUserProfileActivity.this,
                         android.R.layout.simple_spinner_dropdown_item,
                         getResources().getStringArray(divisionResourceIds[position]));
                 districtSpinner.setAdapter(adpter);
@@ -161,13 +161,13 @@ public class UpdateInfoActivity extends AppCompatActivity {
     }
 
     private void updateUserInfo(final String name, final String division, final String district, final String thana,final String age, final String donorInfo) {
-        RetroInterface retroinstance = RetroInstance.getRetro();
-        Call<UserDataModel> sendingData = retroinstance.updateUser(loggedInUserPhone,name, division, district, thana, age, donorInfo);
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Call<UserDataModel> sendingData = retroInterface.updateUser(loggedInUserPhone,name, division, district, thana, age, donorInfo);
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(UpdateInfoActivity.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateUserProfileActivity.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
 //                    update logged in Data
                     loggedInUserName=name;
                     loggedInUserDivision=division;
@@ -179,19 +179,19 @@ public class UpdateInfoActivity extends AppCompatActivity {
 
 
 //              going to login activity
-                    Intent intent = new Intent(UpdateInfoActivity.this, DashBoardActivity.class);
+                    Intent intent = new Intent(UpdateUserProfileActivity.this, DashboardActivity.class);
+                    finishAffinity();
                     startActivity(intent);
-                    finish();
                 }
                 else {
-                    Toast.makeText(UpdateInfoActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateUserProfileActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                Toast.makeText(UpdateInfoActivity.this, "failed to update! Check your connection and try again.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateUserProfileActivity.this, "failed to update! Check your connection and try again.", Toast.LENGTH_SHORT).show();
             }
         });
 

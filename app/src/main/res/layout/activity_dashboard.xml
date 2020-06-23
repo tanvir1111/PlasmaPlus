@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_colored"
-    tools:context=".DashBoardActivity">
+    tools:context=".DashboardActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/loadingView"

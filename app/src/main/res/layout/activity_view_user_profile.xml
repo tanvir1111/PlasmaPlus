@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#ffffff"
 
-    tools:context=".ProfileActivity">
+    tools:context=".ViewUserProfileActivity">
 
     <Button
         android:id="@+id/profile_change_password_btn"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-16dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Your profile"
+        android:text="My Profile"
 
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
@@ -282,7 +282,7 @@
         android:gravity="center"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:text="Update your info"
+        android:text="Update Profile"
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textSize="10sp"

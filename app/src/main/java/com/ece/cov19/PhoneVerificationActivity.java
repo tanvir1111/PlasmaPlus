@@ -10,7 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Phone_verification extends AppCompatActivity {
+public class PhoneVerificationActivity extends AppCompatActivity {
     TextView labelPhone,otp,countryCode;
     EditText otpInput,phoneInput;
     Button verifyBtn,getOtpBtn;
@@ -48,7 +48,7 @@ public class Phone_verification extends AppCompatActivity {
         verifyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent registration=new Intent(Phone_verification.this,RegistrationActivity.class);
+                Intent registration=new Intent(PhoneVerificationActivity.this,RegistrationActivity.class);
                 registration.putExtra("phone",phoneInput.getText().toString());
                 startActivity(registration);
             }

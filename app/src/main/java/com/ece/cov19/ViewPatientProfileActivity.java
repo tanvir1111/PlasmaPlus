@@ -27,7 +27,7 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 
 public class ViewPatientProfileActivity extends AppCompatActivity {
 
-    private TextView nameTextView, phoneTextView, bloodGroupTextView, hospitalTextView, ageTextView, typeTextView;
+    private TextView nameTextView, phoneTextView, bloodGroupTextView, hospitalTextView, ageTextView, needTextView;
     private ImageView genderImageView,backbtn;
     Button updateButton, deleteButton;
     String name, age, gender, bloodGroup, hospital, division, district, date, need, phone;
@@ -42,7 +42,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         bloodGroupTextView = findViewById(R.id.patient_profile_blood_group);
         hospitalTextView = findViewById(R.id.patient_profile_hospital);
         ageTextView = findViewById(R.id.patient_profile_age);
-        typeTextView = findViewById(R.id.patient_profile_type);
+        needTextView = findViewById(R.id.patient_profile_need);
         genderImageView = findViewById(R.id.patient_profile_gender_icon);
         backbtn=findViewById(R.id.patient_profile_back_button);
         updateButton = findViewById(R.id.patient_profile_update_button);
@@ -68,7 +68,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         bloodGroupTextView.setText(bloodGroup);
         hospitalTextView.setText(hospital);
         ageTextView.setText(age);
-        typeTextView.setText(need);
+        needTextView.setText(need);
 
 
         if(intent.getStringExtra("gender").equals("male")){
@@ -112,7 +112,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ViewPatientProfileActivity.this, ExplorePatients.class);
+                Intent intent = new Intent(ViewPatientProfileActivity.this, ExplorePatientsActivity.class);
                 deleteAlertDialog(intent);
             }
         });

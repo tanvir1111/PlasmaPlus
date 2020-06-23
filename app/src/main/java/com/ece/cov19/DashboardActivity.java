@@ -21,7 +21,7 @@ import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 
-public class DashBoardActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity {
     private Button profileBtn,seeRequestBtn,findDonorBtn, seePatientsbtn;
     private String[] nameSplit;
     private TextView numberOfPatients,numberOfDonors,numberOfRequests;
@@ -31,7 +31,7 @@ public class DashBoardActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dash_board);
+        setContentView(R.layout.activity_dashboard);
         progressBar=findViewById(R.id.dashboard_progress_bar);
 
         profileBtn=findViewById(R.id.dashboard_profile_btn);
@@ -48,7 +48,7 @@ public class DashBoardActivity extends AppCompatActivity {
         profileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent profileIntent=new Intent(DashBoardActivity.this,ProfileActivity.class);
+                Intent profileIntent=new Intent(DashboardActivity.this, ViewUserProfileActivity.class);
                 startActivity(profileIntent);
             }
         });
@@ -56,14 +56,14 @@ public class DashBoardActivity extends AppCompatActivity {
         seeRequestBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent seeRequstsIntent=new Intent(DashBoardActivity.this,RequestsActivity.class);
+                Intent seeRequstsIntent=new Intent(DashboardActivity.this,RequestsActivity.class);
                 startActivity(seeRequstsIntent);
             }
         });
         findDonorBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent searchDonorIntent=new Intent(DashBoardActivity.this,SearchDonorActivity.class);
+                Intent searchDonorIntent=new Intent(DashboardActivity.this,SearchDonorActivity.class);
                 startActivity(searchDonorIntent);
             }
         });
@@ -71,7 +71,7 @@ public class DashBoardActivity extends AppCompatActivity {
         seePatientsbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent seePatientsIntent=new Intent(DashBoardActivity.this,ExplorePatients.class);
+                Intent seePatientsIntent=new Intent(DashboardActivity.this, ExplorePatientsActivity.class);
                 startActivity(seePatientsIntent);
             }
         });
@@ -88,7 +88,7 @@ public class DashBoardActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                Toast.makeText(DashBoardActivity.this, "failed to get numbers", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DashboardActivity.this, "failed to get numbers", Toast.LENGTH_SHORT).show();
 
             }
         });

@@ -151,7 +151,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="32dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Type:"
+                android:text="Need:"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -160,7 +160,7 @@
                 app:layout_constraintVertical_bias="1.0" />
 
             <TextView
-                android:id="@+id/patient_profile_type"
+                android:id="@+id/patient_profile_need"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
@@ -229,7 +229,6 @@
         android:id="@+id/patient_profile_update_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="60dp"
         android:layout_marginBottom="136dp"
         android:background="@drawable/button_style_blue"
         android:elevation="10dp"
@@ -237,21 +236,20 @@
         android:gravity="center"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:text="Update Patient"
+        android:text="Update Profile"
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textSize="10sp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.69" />
+        app:layout_constraintVertical_bias="0.704" />
 
     <Button
         android:id="@+id/patient_profile_delete_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="220dp"
         android:layout_marginBottom="136dp"
         android:background="@drawable/button_style_colored"
         android:elevation="10dp"
@@ -259,13 +257,13 @@
         android:gravity="center"
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:text="Delete Patient"
+        android:text="Delete Profile"
         android:textAlignment="center"
         android:textColor="#ffffff"
         android:textSize="10sp"
-        android:visibility="gone"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.69" />
 

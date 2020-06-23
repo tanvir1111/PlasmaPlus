@@ -13,6 +13,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.PatientDataModel;
@@ -28,14 +29,14 @@ import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
-public class ExplorePatients extends AppCompatActivity {
+public class ExplorePatientsActivity extends AppCompatActivity {
 
 
     private RecyclerView yourPatientsRecyclerView, explorePatientsRecyclerView;
     private Spinner bloodgrpSpinner;
     private EditText districtEditText;
     private ProgressBar yourPatientsProgressBar, progressBar;
-
+    private TextView yourPatientsTextView;
     private ImageView backbtn;
 
     @Override
@@ -45,6 +46,7 @@ public class ExplorePatients extends AppCompatActivity {
 
         yourPatientsRecyclerView = findViewById(R.id.your_patients_recyclerview);
         yourPatientsProgressBar = findViewById(R.id.your_patients_progress_bar);
+        yourPatientsTextView = findViewById(R.id.your_patients_textview);
 
         explorePatientsRecyclerView = findViewById(R.id.explore_patients_recyclerview);
         bloodgrpSpinner=findViewById(R.id.explore_patients_bld_grp);
@@ -111,6 +113,7 @@ public class ExplorePatients extends AppCompatActivity {
 
 
                 yourPatientsProgressBar.setVisibility(View.GONE);
+
                 patientDataModels.clear();
                 if(response.isSuccessful()){
                     ArrayList<PatientDataModel> initialModels = response.body();
@@ -121,21 +124,24 @@ public class ExplorePatients extends AppCompatActivity {
                     }
 
 
+                    if(patientDataModels.size() > 0){
+                        yourPatientsTextView.setVisibility(View.VISIBLE);
 
+                    }
                     yourPatientsRecyclerView.setAdapter(patientAdapter);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.HORIZONTAL, false);
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     yourPatientsRecyclerView.setLayoutManager(linearLayoutManager);
                 }
 
                 else{
-                    Toast.makeText(ExplorePatients.this, "No Response", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ExplorePatientsActivity.this, "No Response", Toast.LENGTH_SHORT).show();
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(ExplorePatients.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ExplorePatientsActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -160,7 +166,6 @@ public class ExplorePatients extends AppCompatActivity {
 
         patientDataModels.clear();
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Toast.makeText(this, bloodgroup+district+loggedInUserPhone, Toast.LENGTH_SHORT).show();
         Call<ArrayList<PatientDataModel>> searchDonor = retroInterface.searchPatients(bloodgroup,district,loggedInUserPhone);
         searchDonor.enqueue(new Callback<ArrayList<PatientDataModel>>() {
             @Override
@@ -185,14 +190,14 @@ public class ExplorePatients extends AppCompatActivity {
                 }
 
                 else{
-                    Toast.makeText(ExplorePatients.this, "No Response", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ExplorePatientsActivity.this, "No Response", Toast.LENGTH_SHORT).show();
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(ExplorePatients.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ExplorePatientsActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }

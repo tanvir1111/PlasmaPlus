@@ -296,9 +296,9 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         phone = loggedInUserPhone;
 
         if (needCheckbox.isChecked()) {
-            newNeed = "plasma";
+            newNeed = "Plasma";
         } else {
-            newNeed = "blood";
+            newNeed = "Blood";
         }
 
         if (!formFieldsFeatures.checkIfEmpty(nameEditText) && !formFieldsFeatures.checkIfEmpty(ageEditText)
@@ -324,7 +324,6 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
     private void updatePatient(String name, String age, String bloodGroup, String phone, String newName, String newAge, String newGender, String newBloodGroup, String newHospital, String newDivision, String newDistrict, String newDate, String newNeed) {
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<PatientDataModel> sendingData = retroInterface.updatePatientProfile(name, age, bloodGroup, phone, newName, newAge, newGender, newBloodGroup, newHospital, newDivision, newDistrict, newDate, newNeed);
-        //Toast.makeText(UpdatePatientProfileActivity.this,name+age+gender+bloodGroup+hospital+division+district+date+need+phone+newName+newAge+newGender+newBloodGroup+newHospital+newDivision+newDistrict+newDate+newNeed,Toast.LENGTH_LONG).show();
         sendingData.enqueue(new Callback<PatientDataModel>() {
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
