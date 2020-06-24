@@ -22,6 +22,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
+
 public class RequestsActivity extends AppCompatActivity {
 
     private Button addRequestsBtn;
@@ -58,7 +60,7 @@ public class RequestsActivity extends AppCompatActivity {
         patientDataModels = new ArrayList<>();
 
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call <ArrayList<PatientDataModel>> seeRequest = retroInterface.seeRequest();
+        Call <ArrayList<PatientDataModel>> seeRequest = retroInterface.seeRequest(loggedInUserPhone);
         seeRequest.enqueue(new Callback<ArrayList<PatientDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {

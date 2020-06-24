@@ -20,6 +20,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class DashboardActivity extends AppCompatActivity {
     private Button profileBtn,seeRequestBtn,findDonorBtn, allDonorBtn, seePatientsbtn;
@@ -85,7 +86,7 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<DashBoardNumberModel> dashBoardNumbers = retroInterface.getDashBoardNumbers();
+        Call<DashBoardNumberModel> dashBoardNumbers = retroInterface.getDashBoardNumbers(loggedInUserPhone);
         dashBoardNumbers.enqueue(new Callback<DashBoardNumberModel>() {
             @Override
             public void onResponse(Call<DashBoardNumberModel> call, Response<DashBoardNumberModel> response) {

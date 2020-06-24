@@ -2,6 +2,7 @@ package com.ece.cov19.RetroServices;
 
 import com.ece.cov19.DataModels.DashBoardNumberModel;
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.DataModels.RequestDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
 
 import java.util.ArrayList;
@@ -50,14 +51,16 @@ public interface RetroInterface {
     @POST("searchDonor.php")
     Call<ArrayList<UserDataModel>> findDonor(@Field("bloodGroup") String bloodgroup,@Field("district") String district);
 
-    @GET("seeRequest.php") Call<ArrayList<PatientDataModel>> seeRequest();
+    @FormUrlEncoded
+    @POST("seeRequest.php") Call<ArrayList<PatientDataModel>> seeRequest(@Field("phone") String userPhone);
 
     @FormUrlEncoded
     @POST("searchPatients.php")
     Call<ArrayList<PatientDataModel>> searchPatients(@Field("bloodGroup") String bloodGroup,@Field("district") String district,@Field("phone") String phone);
 
-    @GET("dashBoardNumbers.php")
-    Call<DashBoardNumberModel> getDashBoardNumbers();
+    @FormUrlEncoded
+    @POST("dashBoardNumbers.php")
+    Call<DashBoardNumberModel> getDashBoardNumbers(@Field("phone") String phone);
 
     @FormUrlEncoded
     @POST("ownPatients.php")
@@ -81,6 +84,12 @@ public interface RetroInterface {
                                                 @Field("date") String date, @Field("need") String need,
                                                 @Field("phone") String phone);
 
+
+    @FormUrlEncoded
+    @POST("sendRequest.php")
+    Call<RequestDataModel> sendRequest( @Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
+                                        @Field("patientAge") String patientAge, @Field("patientPhone") String patientPhone,
+                                        @Field("patientBloodGrp") String patientBloodGrp,@Field("requestedBy") String requester);
 
 }
 

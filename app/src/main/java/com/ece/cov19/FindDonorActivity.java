@@ -8,11 +8,9 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,7 +18,6 @@ import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.RecyclerViews.DonorAdapter;
-import com.ece.cov19.RecyclerViews.ExplorePatientAdapter;
 import com.ece.cov19.RecyclerViews.FindPatientAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -41,6 +38,8 @@ public class FindDonorActivity extends AppCompatActivity {
     private ProgressBar patientProgressBar, donorProgressBar;
     private TextView patientTextView, donorTextView, filterTextView, noMatchTextView;
     private ImageView backbtn;
+
+
     String bloodGroup;
 
     @Override
@@ -104,7 +103,8 @@ public class FindDonorActivity extends AppCompatActivity {
         findPatientAdapter = new FindPatientAdapter(getApplicationContext(), patientDataModels, new FindPatientAdapter.RecyclerViewClickListener() {
         @Override
             public void onClicked(View v, int position) {
-                Toast.makeText(getApplicationContext(),"Position: "+position,Toast.LENGTH_SHORT).show();
+
+
                 findDonor();
             }
         });

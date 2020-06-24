@@ -45,6 +45,9 @@ public class FindPatientAdapter extends RecyclerView.Adapter<FindPatientViewHold
             public void onClicked(View v, int position) {
                 FindPatientData.findPatientPosition = position;
                 FindPatientData.findPatientBloodGroup = patientDataModels.get(position).getBloodGroup();
+                FindPatientData.findPatientName=patientDataModels.get(position).getName();
+                FindPatientData.findPatientAge=patientDataModels.get(position).getAge();
+                FindPatientData.findPatientPhone=patientDataModels.get(position).getPhone();
                 recyclerViewClickListener.onClicked(v,position);
             }
         });
