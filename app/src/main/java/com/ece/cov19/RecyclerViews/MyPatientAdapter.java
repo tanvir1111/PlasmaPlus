@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,37 +14,35 @@ import com.ece.cov19.R;
 
 import java.util.ArrayList;
 
-public class ExplorePatientAdapter extends RecyclerView.Adapter<ExplorePatientViewHolder> {
+public class MyPatientAdapter extends RecyclerView.Adapter<MyPatientViewHolder> {
 
     public Context context;
     public PatientDataModel patientDataModel;
     public ArrayList<PatientDataModel> patientDataModels;
 
-    public ExplorePatientAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
+    public MyPatientAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
         this.context = context;
         this.patientDataModels = patientDataModels;
     }
 
     @NonNull
     @Override
-    public ExplorePatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyPatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.seeking_help_child, parent, false);
-        ExplorePatientViewHolder explorePatientViewHolder = new ExplorePatientViewHolder(view, patientDataModels);
-        return explorePatientViewHolder;
+        MyPatientViewHolder myPatientViewHolder = new MyPatientViewHolder(view, patientDataModels);
+        return myPatientViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ExplorePatientViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyPatientViewHolder holder, int position) {
 
         patientDataModel = patientDataModels.get(position);
 
 
-        if((LoggedInUserData.loggedInUserDonorInfo.equals("Blood") || LoggedInUserData.loggedInUserDonorInfo.equals("Plasma")) && patientDataModel.getBloodGroup().equals(LoggedInUserData.loggedInUserBloodGroup)){
-            holder.donateTextView.setVisibility(View.VISIBLE);
-        }
-
+        holder.donateTextView.setVisibility(View.VISIBLE);
+        holder.donateTextView.setText("View Profile");
 
         holder.nameTextView.setText(patientDataModel.getName());
         holder.typeTextView.setText(patientDataModel.getNeed());

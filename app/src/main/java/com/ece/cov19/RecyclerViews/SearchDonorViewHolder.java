@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.R;
 import com.ece.cov19.ViewDonorProfileActivity;
@@ -17,16 +18,15 @@ import com.ece.cov19.ViewDonorProfileActivity;
 import java.util.ArrayList;
 
 
-public class DonorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class SearchDonorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    TextView nameTextView, locationTextView, bloodTextView,donortype;
+    TextView nameTextView, locationTextView, bloodTextView,donortype, askButton;
     ImageView donorImageView, locationImageView;
-    Button askButton;
     UserDataModel userDataModel;
     ArrayList<UserDataModel> userDataModels;
     int pos;
 
-    public DonorViewHolder(@NonNull View itemView, ArrayList<UserDataModel> userDataModels) {
+    public SearchDonorViewHolder(@NonNull View itemView, ArrayList<UserDataModel> userDataModels) {
         super(itemView);
         this.userDataModels = userDataModels;
         nameTextView = itemView.findViewById(R.id.donor_name);
@@ -48,6 +48,8 @@ public class DonorViewHolder extends RecyclerView.ViewHolder implements View.OnC
         Context c = view.getContext();
 
         userDataModel = userDataModels.get(pos);
+
+
         Intent intent = new Intent(view.getContext(), ViewDonorProfileActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

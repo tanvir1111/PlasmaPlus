@@ -4,12 +4,12 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.FindPatientData;
+import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.R;
 
@@ -57,10 +57,13 @@ public class FindPatientAdapter extends RecyclerView.Adapter<FindPatientViewHold
     @Override
     public void onBindViewHolder(@NonNull FindPatientViewHolder holder, int position) {
 
-        patientDataModel = patientDataModels.get(position);
         FindPatientData.findPatientPosition = holder.getAdapterPosition();
+        patientDataModel = patientDataModels.get(position);
+
+        holder.donateTextView.setVisibility(View.VISIBLE);
+        holder.donateTextView.setText("Select Profile");
+
         holder.nameTextView.setText(patientDataModel.getName());
-        holder.phoneTextView.setText(patientDataModel.getPhone());
         holder.typeTextView.setText(patientDataModel.getNeed());
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());
         holder.locationTextView.setText(patientDataModel.getDistrict());

@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.RecyclerViews.ExplorePatientAdapter;
+import com.ece.cov19.RecyclerViews.MyPatientAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -55,7 +56,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         backbtn=findViewById(R.id.explore_patients_back_button);
 
 
-        ownPatientsSearch();
+        myPatientsSearch();
 
 
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -95,13 +96,13 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         });
     }
 
-    private void ownPatientsSearch(){
+    private void myPatientsSearch(){
         yourPatientsProgressBar.setVisibility(View.VISIBLE);
 
         ArrayList<PatientDataModel> patientDataModels;
-        ExplorePatientAdapter explorePatientAdapter;
+        MyPatientAdapter myPatientAdapter;
         patientDataModels = new ArrayList<>();
-        explorePatientAdapter = new ExplorePatientAdapter(getApplicationContext(), patientDataModels);
+        myPatientAdapter = new MyPatientAdapter(getApplicationContext(), patientDataModels);
 
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<ArrayList<PatientDataModel>> searchDonor = retroInterface.ownPatients(loggedInUserPhone);
@@ -128,7 +129,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
                         yourPatientsTextView.setVisibility(View.VISIBLE);
 
                     }
-                    yourPatientsRecyclerView.setAdapter(explorePatientAdapter);
+                    yourPatientsRecyclerView.setAdapter(myPatientAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     yourPatientsRecyclerView.setLayoutManager(linearLayoutManager);
                 }

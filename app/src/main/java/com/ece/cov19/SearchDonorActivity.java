@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.UserDataModel;
-import com.ece.cov19.RecyclerViews.DonorAdapter;
+import com.ece.cov19.RecyclerViews.SearchDonorAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -30,7 +30,7 @@ public class SearchDonorActivity extends AppCompatActivity {
 
 
    private ArrayList<UserDataModel> userDataModels;
-    private DonorAdapter donorAdapter;
+    private SearchDonorAdapter searchDonorAdapter;
     private RecyclerView recyclerView;
    private   Spinner bloodgrpSpinner;
     private EditText districtEditText;
@@ -122,9 +122,9 @@ public class SearchDonorActivity extends AppCompatActivity {
                         }
                     }
 
-                    donorAdapter = new DonorAdapter(getApplicationContext(), userDataModels);
+                    searchDonorAdapter = new SearchDonorAdapter(getApplicationContext(), userDataModels);
 
-                    recyclerView.setAdapter(donorAdapter);
+                    recyclerView.setAdapter(searchDonorAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
                 }

@@ -17,7 +17,7 @@ import android.widget.Toast;
 import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
-import com.ece.cov19.RecyclerViews.DonorAdapter;
+import com.ece.cov19.RecyclerViews.FindDonorAdapter;
 import com.ece.cov19.RecyclerViews.FindPatientAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -164,9 +164,9 @@ public class FindDonorActivity extends AppCompatActivity {
         noMatchTextView.setVisibility(View.GONE);
 
         ArrayList<UserDataModel> userDataModels;
-        DonorAdapter donorAdapter;
+        FindDonorAdapter findDonorAdapter;
         userDataModels = new ArrayList<>();
-        donorAdapter = new DonorAdapter(getApplicationContext(),userDataModels);
+        findDonorAdapter = new FindDonorAdapter(getApplicationContext(),userDataModels);
 
         bloodGroup = FindPatientData.findPatientBloodGroup;
         String district;
@@ -203,7 +203,7 @@ public class FindDonorActivity extends AppCompatActivity {
                         noMatchTextView.setVisibility(View.VISIBLE);
                     }
 
-                    donorRecyclerView.setAdapter(donorAdapter);
+                    donorRecyclerView.setAdapter(findDonorAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     donorRecyclerView.setLayoutManager(linearLayoutManager);
                 }

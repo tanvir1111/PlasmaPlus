@@ -18,37 +18,61 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/seeking_help_donate_btn"
+            android:id="@+id/request_patient_accept_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
 
 
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/button_style_colored"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_style_green"
+            android:elevation="10sp"
+            android:fontFamily="@font/montserrat_bold"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="Accept"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/request_patient_location"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/request_patient_child_location_image"
+            app:layout_constraintTop_toBottomOf="@+id/request_patient_location"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/request_patient_decline_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+
+
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/button_style_red"
             android:elevation="10dp"
             android:fontFamily="@font/montserrat_bold"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="Donate to Help"
+            android:text="Decline"
             android:textColor="@android:color/white"
             android:textSize="14sp"
-            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/seeking_help_location"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/seeking_help_child_location_image"
-            app:layout_constraintTop_toBottomOf="@+id/seeking_help_location" />
+            app:layout_constraintEnd_toStartOf="@+id/request_patient_child_bld_grp"
+            app:layout_constraintStart_toEndOf="@+id/request_patient_accept_btn"
+            app:layout_constraintTop_toBottomOf="@+id/request_patient_location"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
-            android:id="@+id/seeking_help_child_bld_grp"
+            android:id="@+id/request_patient_child_bld_grp"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
-            android:background="@drawable/blood_grp_not_selected"
 
+            android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
             android:padding="15dp"
@@ -58,39 +82,39 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/seeking_help_type"
-            app:layout_constraintTop_toBottomOf="@+id/seeking_help_type"
+            app:layout_constraintStart_toStartOf="@+id/request_patient_type"
+            app:layout_constraintTop_toBottomOf="@+id/request_patient_type"
             app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
-            android:id="@+id/seeking_help_child_profile_image"
+            android:id="@+id/request_patient_child_profile_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:src="@drawable/profile_icon_male"
-            app:layout_constraintBottom_toBottomOf="@+id/seeking_help_location"
+            app:layout_constraintBottom_toBottomOf="@+id/request_patient_location"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/seeking_help_name"
-            app:layout_constraintVertical_bias="0.161" />
+            app:layout_constraintTop_toTopOf="@+id/request_patient_name"
+            app:layout_constraintVertical_bias="0.032" />
 
         <TextView
-            android:id="@+id/seeking_help_name"
+            android:id="@+id/request_patient_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="28dp"
+            android:textColor="@color/textColorDark"
             android:fontFamily="@font/montserrat"
             android:text="Tanvir Ahmmad"
-            android:textColor="@color/textColorDark"
             android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/seeking_help_child_profile_image"
+            app:layout_constraintStart_toEndOf="@+id/request_patient_child_profile_image"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/seeking_help_type"
+            android:id="@+id/request_patient_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/button_style_colored"
             android:fontFamily="@font/raleway_bold"
             android:paddingLeft="20dp"
@@ -104,19 +128,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/seeking_help_child_location_image"
+            android:id="@+id/request_patient_child_location_image"
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_marginTop="8dp"
             android:scaleType="fitXY"
             android:src="@drawable/location_icon"
-            app:layout_constraintEnd_toEndOf="@+id/seeking_help_name"
+            app:layout_constraintEnd_toEndOf="@+id/request_patient_name"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/seeking_help_name"
-            app:layout_constraintTop_toBottomOf="@+id/seeking_help_name" />
+            app:layout_constraintStart_toStartOf="@+id/request_patient_name"
+            app:layout_constraintTop_toBottomOf="@+id/request_patient_name" />
 
         <TextView
-            android:id="@+id/seeking_help_location"
+            android:id="@+id/request_patient_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
@@ -124,9 +148,9 @@
             android:fontFamily="@font/raleway"
             android:text="Jessore"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/seeking_help_child_location_image"
-            app:layout_constraintStart_toEndOf="@+id/seeking_help_child_location_image"
-            app:layout_constraintTop_toTopOf="@+id/seeking_help_child_location_image" />
+            app:layout_constraintBottom_toBottomOf="@+id/request_patient_child_location_image"
+            app:layout_constraintStart_toEndOf="@+id/request_patient_child_location_image"
+            app:layout_constraintTop_toTopOf="@+id/request_patient_child_location_image" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
