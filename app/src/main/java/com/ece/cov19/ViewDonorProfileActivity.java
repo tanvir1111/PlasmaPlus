@@ -69,6 +69,11 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         addressTextView.setText(intent.getStringExtra("address"));
         ageTextView.setText(intent.getStringExtra("age"));
         donorInfoTextView.setText(intent.getStringExtra("donorinfo"));
+
+        if(findPatientName.equals("") && findPatientAge.equals("") && findPatientPhone.equals("") && findPatientBloodGroup.equals("any")){
+            askForHelpBtn.setVisibility(View.GONE);
+        }
+
         if(intent.getStringExtra("gender").equals("male")){
             genderImageView.setImageResource(R.drawable.profile_icon_male);
         }
@@ -143,7 +148,6 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<RequestDataModel> requestFromPatient = retroInterface.sendRequest(donorphone,findPatientName,findPatientAge,findPatientPhone,findPatientBloodGroup,"patient");
-        Toast.makeText(this, donorphone+findPatientName+findPatientAge+findPatientPhone+findPatientBloodGroup, Toast.LENGTH_SHORT).show();
         requestFromPatient.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {

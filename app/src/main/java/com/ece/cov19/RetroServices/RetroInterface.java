@@ -43,13 +43,11 @@ public interface RetroInterface {
                                                 @Field("phone") String phone);
 
 
-    @FormUrlEncoded
-    @POST("searchDonor.php")
-    Call<ArrayList<UserDataModel>> searchDonor(@Field("bloodGroup") String bloodgroup,@Field("district") String district);
+
 
     @FormUrlEncoded
     @POST("searchDonor.php")
-    Call<ArrayList<UserDataModel>> findDonor(@Field("bloodGroup") String bloodgroup,@Field("district") String district);
+    Call<ArrayList<UserDataModel>> findDonor(@Field("bloodGroup") String bloodgroup,@Field("district") String district,@Field("phone") String phone);
 
     @FormUrlEncoded
     @POST("checkDonorRequest.php") Call<ArrayList<PatientDataModel>> checkDonorRequest(@Field("phone") String userPhone);

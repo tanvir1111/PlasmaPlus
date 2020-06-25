@@ -61,7 +61,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     ArrayList<PatientDataModel> initialModels = response.body();
                     for(PatientDataModel initialDataModel : initialModels){
-                        if(initialDataModel.getNeed().equals("blood") || initialDataModel.getNeed().equals("plasma")){
+                        if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
                             //Toast.makeText(RequestsActivity.this, initialDataModel.getName(), Toast.LENGTH_SHORT).show();
                             patientDataModels.add(initialDataModel);
                         }

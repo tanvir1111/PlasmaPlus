@@ -57,7 +57,12 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 loadingView.setVisibility(View.GONE);
                 numberOfDonors.setText(response.body().getNumberOfDonors());
                 numberOfPatients.setText(response.body().getNumberOfPatients());
-                numberOfRequests.setText(response.body().getNumberOfRequests());
+
+                if(response.body().getNumberOfRequests().equals("0")){
+                    numberOfRequests.setText("No");
+                    seeRequestBtn.setVisibility(View.GONE);
+                }
+
             }
 
             @Override
@@ -66,6 +71,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             }
         });
+
 
         profileBtn.setText(nameSplit[0]);
         profileBtn.setOnClickListener(this);

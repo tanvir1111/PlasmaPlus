@@ -105,7 +105,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         need = intent.getStringExtra("need");
         phone = intent.getStringExtra("phone");
 
-        if(need.equals("plasma")){
+        if(need.equals("Plasma")){
             needCheckbox.setChecked(true);
         }
         ArrayAdapter arrayAdapter = (ArrayAdapter) divisionSpinner.getAdapter();

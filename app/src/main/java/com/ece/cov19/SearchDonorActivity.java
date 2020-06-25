@@ -26,6 +26,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
+
 public class SearchDonorActivity extends AppCompatActivity {
 
 
@@ -109,7 +111,7 @@ public class SearchDonorActivity extends AppCompatActivity {
 
 
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call <ArrayList<UserDataModel>> searchDonor = retroInterface.searchDonor(bloodgroup,district);
+        Call <ArrayList<UserDataModel>> searchDonor = retroInterface.findDonor(bloodgroup,district,loggedInUserPhone);
         searchDonor.enqueue(new Callback<ArrayList<UserDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {

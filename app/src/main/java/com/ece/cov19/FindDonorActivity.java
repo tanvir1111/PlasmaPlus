@@ -28,6 +28,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class FindDonorActivity extends AppCompatActivity {
@@ -46,6 +50,10 @@ public class FindDonorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_donor);
+        findPatientName="";
+        findPatientAge="";
+        findPatientPhone="";
+        findPatientBloodGroup="any";
 
         patientRecyclerView = findViewById(R.id.find_donor_forpatients_recyclerview);
         patientProgressBar = findViewById(R.id.find_donor_forpatients_progress_bar);
@@ -179,7 +187,7 @@ public class FindDonorActivity extends AppCompatActivity {
 
         userDataModels.clear();
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<ArrayList<UserDataModel>> findDonor = retroInterface.findDonor(bloodGroup,district);
+        Call<ArrayList<UserDataModel>> findDonor = retroInterface.findDonor(bloodGroup,district,loggedInUserPhone);
         findDonor.enqueue(new Callback<ArrayList<UserDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {
