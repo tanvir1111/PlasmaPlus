@@ -16,13 +16,16 @@
         <activity android:name=".ExplorePatientsActivity"
             android:screenOrientation="nosensor"
             />
+        <activity android:name=".PatientRequestsActivity"
+            android:screenOrientation="nosensor"
+            />
         <activity android:name=".UpdatePasswordActivity"
             android:screenOrientation="nosensor"/>
         <activity android:name=".UpdateUserProfileActivity"
             android:screenOrientation="nosensor"
             />
         <activity
-            android:name=".RequestsActivity"
+            android:name=".DonorRequestsActivity"
             android:screenOrientation="nosensor" />
         <activity
             android:name=".SearchDonorActivity"

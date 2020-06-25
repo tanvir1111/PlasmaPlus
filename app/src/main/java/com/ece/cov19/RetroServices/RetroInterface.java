@@ -52,7 +52,7 @@ public interface RetroInterface {
     Call<ArrayList<UserDataModel>> findDonor(@Field("bloodGroup") String bloodgroup,@Field("district") String district);
 
     @FormUrlEncoded
-    @POST("seeRequest.php") Call<ArrayList<PatientDataModel>> seeRequest(@Field("phone") String userPhone);
+    @POST("checkDonorRequest.php") Call<ArrayList<PatientDataModel>> checkDonorRequest(@Field("phone") String userPhone);
 
     @FormUrlEncoded
     @POST("searchPatients.php")
@@ -90,6 +90,12 @@ public interface RetroInterface {
     Call<RequestDataModel> sendRequest( @Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
                                         @Field("patientAge") String patientAge, @Field("patientPhone") String patientPhone,
                                         @Field("patientBloodGrp") String patientBloodGrp,@Field("requestedBy") String requester);
+
+
+    @FormUrlEncoded
+    @POST("checkPatientRequest.php")
+    Call<ArrayList<UserDataModel>> checkPatientRequest(@Field("name") String name,@Field("age") String age,
+                                                 @Field("bloodGroup") String bloodgroup, @Field("phone") String phone);
 
 }
 

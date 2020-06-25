@@ -15,7 +15,7 @@ import com.ece.cov19.ViewPatientProfileActivity;
 
 import java.util.ArrayList;
 
-public class MyPatientViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ExplorePatientsAlphaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView nameTextView, donateTextView, typeTextView, bloodTextView, locationTextView;
     ImageView patientImageView;
@@ -23,7 +23,8 @@ public class MyPatientViewHolder extends RecyclerView.ViewHolder implements View
     ArrayList<PatientDataModel> patientDataModels;
     int pos;
 
-    public MyPatientViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels) {
+
+    public ExplorePatientsAlphaViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels) {
         super(itemView);
         this.patientDataModels = patientDataModels;
 
@@ -37,10 +38,12 @@ public class MyPatientViewHolder extends RecyclerView.ViewHolder implements View
 
         itemView.setOnClickListener(this);
         donateTextView.setOnClickListener(this);
+
     }
 
     @Override
     public void onClick(View view) {
+
         pos = getAdapterPosition();
         Context c = view.getContext();
 

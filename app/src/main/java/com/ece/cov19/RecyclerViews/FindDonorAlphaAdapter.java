@@ -9,13 +9,12 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.FindPatientData;
-import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.R;
 
 import java.util.ArrayList;
 
-public class FindPatientAdapter extends RecyclerView.Adapter<FindPatientViewHolder>{
+public class FindDonorAlphaAdapter extends RecyclerView.Adapter<FindDonorAlphaViewHolder>{
 
     public Context context;
     public PatientDataModel patientDataModel;
@@ -27,7 +26,7 @@ public class FindPatientAdapter extends RecyclerView.Adapter<FindPatientViewHold
         void onClicked(View v, int position);
     }
 
-    public FindPatientAdapter(Context context, ArrayList<PatientDataModel> patientDataModels, RecyclerViewClickListener recyclerViewClickListener) {
+    public FindDonorAlphaAdapter(Context context, ArrayList<PatientDataModel> patientDataModels, RecyclerViewClickListener recyclerViewClickListener) {
         this.context = context;
         this.patientDataModels = patientDataModels;
         this.recyclerViewClickListener = recyclerViewClickListener;
@@ -35,11 +34,11 @@ public class FindPatientAdapter extends RecyclerView.Adapter<FindPatientViewHold
 
     @NonNull
     @Override
-    public FindPatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public FindDonorAlphaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.seeking_help_child, parent, false);
-        FindPatientViewHolder findPatientViewHolder = new FindPatientViewHolder(view, patientDataModels, new FindPatientViewHolder.FindPatientViewHolderViewClickListener() {
+        FindDonorAlphaViewHolder findDonorAlphaViewHolder = new FindDonorAlphaViewHolder(view, patientDataModels, new FindDonorAlphaViewHolder.FindPatientViewHolderViewClickListener() {
 
         @Override
             public void onClicked(View v, int position) {
@@ -51,18 +50,17 @@ public class FindPatientAdapter extends RecyclerView.Adapter<FindPatientViewHold
                 recyclerViewClickListener.onClicked(v,position);
             }
         });
-        return findPatientViewHolder;
+        return findDonorAlphaViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FindPatientViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FindDonorAlphaViewHolder holder, int position) {
 
-        FindPatientData.findPatientPosition = holder.getAdapterPosition();
+        //FindPatientData.findPatientPosition = holder.getAdapterPosition();
         patientDataModel = patientDataModels.get(position);
 
         holder.donateTextView.setVisibility(View.VISIBLE);
         holder.donateTextView.setText("Select Profile");
-
         holder.nameTextView.setText(patientDataModel.getName());
         holder.typeTextView.setText(patientDataModel.getNeed());
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());

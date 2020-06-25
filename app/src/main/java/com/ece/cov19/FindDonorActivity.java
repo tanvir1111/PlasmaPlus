@@ -17,8 +17,8 @@ import android.widget.Toast;
 import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
-import com.ece.cov19.RecyclerViews.FindDonorAdapter;
-import com.ece.cov19.RecyclerViews.FindPatientAdapter;
+import com.ece.cov19.RecyclerViews.FindDonorBetaAdapter;
+import com.ece.cov19.RecyclerViews.FindDonorAlphaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -98,12 +98,11 @@ public class FindDonorActivity extends AppCompatActivity {
         patientProgressBar.setVisibility(View.VISIBLE);
 
         ArrayList<PatientDataModel> patientDataModels;
-        FindPatientAdapter findPatientAdapter;
+        FindDonorAlphaAdapter findDonorAlphaAdapter;
         patientDataModels = new ArrayList<>();
-        findPatientAdapter = new FindPatientAdapter(getApplicationContext(), patientDataModels, new FindPatientAdapter.RecyclerViewClickListener() {
+        findDonorAlphaAdapter = new FindDonorAlphaAdapter(getApplicationContext(), patientDataModels, new FindDonorAlphaAdapter.RecyclerViewClickListener() {
         @Override
             public void onClicked(View v, int position) {
-
 
                 findDonor();
             }
@@ -134,7 +133,7 @@ public class FindDonorActivity extends AppCompatActivity {
                         patientTextView.setVisibility(View.VISIBLE);
 
                     }
-                    patientRecyclerView.setAdapter(findPatientAdapter);
+                    patientRecyclerView.setAdapter(findDonorAlphaAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
                     patientRecyclerView.setLayoutManager(linearLayoutManager);
                 }
@@ -164,9 +163,9 @@ public class FindDonorActivity extends AppCompatActivity {
         noMatchTextView.setVisibility(View.GONE);
 
         ArrayList<UserDataModel> userDataModels;
-        FindDonorAdapter findDonorAdapter;
+        FindDonorBetaAdapter findDonorBetaAdapter;
         userDataModels = new ArrayList<>();
-        findDonorAdapter = new FindDonorAdapter(getApplicationContext(),userDataModels);
+        findDonorBetaAdapter = new FindDonorBetaAdapter(getApplicationContext(),userDataModels);
 
         bloodGroup = FindPatientData.findPatientBloodGroup;
         String district;
@@ -203,7 +202,7 @@ public class FindDonorActivity extends AppCompatActivity {
                         noMatchTextView.setVisibility(View.VISIBLE);
                     }
 
-                    donorRecyclerView.setAdapter(findDonorAdapter);
+                    donorRecyclerView.setAdapter(findDonorBetaAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     donorRecyclerView.setLayoutManager(linearLayoutManager);
                 }

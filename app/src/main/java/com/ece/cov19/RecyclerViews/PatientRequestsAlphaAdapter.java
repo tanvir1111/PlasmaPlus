@@ -8,41 +8,39 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.R;
 
 import java.util.ArrayList;
 
-public class MyPatientAdapter extends RecyclerView.Adapter<MyPatientViewHolder> {
+public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientRequestsAlphaViewHolder> {
 
     public Context context;
     public PatientDataModel patientDataModel;
     public ArrayList<PatientDataModel> patientDataModels;
 
-    public MyPatientAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
+    public PatientRequestsAlphaAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
         this.context = context;
         this.patientDataModels = patientDataModels;
     }
 
     @NonNull
     @Override
-    public MyPatientViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PatientRequestsAlphaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.seeking_help_child, parent, false);
-        MyPatientViewHolder myPatientViewHolder = new MyPatientViewHolder(view, patientDataModels);
-        return myPatientViewHolder;
+        PatientRequestsAlphaViewHolder patientRequestsAlphaViewHolder = new PatientRequestsAlphaViewHolder(view, patientDataModels);
+        return patientRequestsAlphaViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyPatientViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PatientRequestsAlphaViewHolder holder, int position) {
 
         patientDataModel = patientDataModels.get(position);
 
-
         holder.donateTextView.setVisibility(View.VISIBLE);
-        holder.donateTextView.setText("View Profile");
+        holder.donateTextView.setText("View Requests");
 
         holder.nameTextView.setText(patientDataModel.getName());
         holder.typeTextView.setText(patientDataModel.getNeed());
@@ -54,6 +52,7 @@ public class MyPatientAdapter extends RecyclerView.Adapter<MyPatientViewHolder> 
         } else {
             holder.patientImageView.setImageResource(R.drawable.profile_icon_female);
         }
+
 
 
 

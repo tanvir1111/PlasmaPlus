@@ -22,69 +22,33 @@ import retrofit2.Response;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
-public class DashboardActivity extends AppCompatActivity {
-    private Button profileBtn,seeRequestBtn,findDonorBtn, allDonorBtn, seePatientsbtn;
+public class DashboardActivity extends AppCompatActivity implements View.OnClickListener{
+    private Button profileBtn,seeRequestBtn,seePatientRequestBtn, findDonorBtn, allDonorBtn, seePatientsbtn;
     private String[] nameSplit;
     private TextView numberOfPatients,numberOfDonors,numberOfRequests;
     private ProgressBar progressBar;
     private ConstraintLayout loadingView;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        progressBar=findViewById(R.id.dashboard_progress_bar);
 
-        profileBtn=findViewById(R.id.dashboard_profile_btn);
-        seeRequestBtn=findViewById(R.id.dashboard_see_requests_btn);
-        findDonorBtn=findViewById(R.id.dashboard_find_donor_btn);
-        allDonorBtn=findViewById(R.id.dashboard_all_donor_btn);
-        seePatientsbtn =findViewById(R.id.dashboard_see_patients_btn);
+        progressBar=findViewById(R.id.dashboard_progress_bar);
         numberOfDonors=findViewById(R.id.dashboard_number_of_donors);
         numberOfPatients=findViewById(R.id.dashboard_number_of_patients);
         numberOfRequests=findViewById(R.id.dashboard_number_of_requests);
         nameSplit = loggedInUserName.split("");
         loadingView=findViewById(R.id.loadingView);
 
-        profileBtn.setText(nameSplit[0]);
-        profileBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent profileIntent=new Intent(DashboardActivity.this, ViewUserProfileActivity.class);
-                startActivity(profileIntent);
-            }
-        });
+        profileBtn=findViewById(R.id.dashboard_profile_btn);
+        seeRequestBtn=findViewById(R.id.dashboard_see_requests_btn);
+        seePatientsbtn =findViewById(R.id.dashboard_view_patients_btn);
+        seePatientRequestBtn = findViewById(R.id.dashboard_check_requests_btn);
+        findDonorBtn=findViewById(R.id.dashboard_find_donor_btn);
+        allDonorBtn=findViewById(R.id.dashboard_all_donor_btn);
 
-        seeRequestBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent seeRequstsIntent=new Intent(DashboardActivity.this,RequestsActivity.class);
-                startActivity(seeRequstsIntent);
-            }
-        });
-        findDonorBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent findDonorIntent=new Intent(DashboardActivity.this,FindDonorActivity.class);
-                startActivity(findDonorIntent);
-            }
-        });
-
-        allDonorBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent allDonorIntent = new Intent(DashboardActivity.this,SearchDonorActivity.class);
-                startActivity(allDonorIntent);
-            }
-        });
-
-        seePatientsbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent seePatientsIntent=new Intent(DashboardActivity.this, ExplorePatientsActivity.class);
-                startActivity(seePatientsIntent);
-            }
-        });
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<DashBoardNumberModel> dashBoardNumbers = retroInterface.getDashBoardNumbers(loggedInUserPhone);
         dashBoardNumbers.enqueue(new Callback<DashBoardNumberModel>() {
@@ -103,6 +67,43 @@ public class DashboardActivity extends AppCompatActivity {
             }
         });
 
+        profileBtn.setText(nameSplit[0]);
+        profileBtn.setOnClickListener(this);
+        seeRequestBtn.setOnClickListener(this);
+        findDonorBtn.setOnClickListener(this);
+        allDonorBtn.setOnClickListener(this);
+        seePatientRequestBtn.setOnClickListener(this);
+        seePatientsbtn.setOnClickListener(this);
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.dashboard_profile_btn:
+                Intent profileIntent=new Intent(DashboardActivity.this, ViewUserProfileActivity.class);
+                startActivity(profileIntent);
+                break;
+            case R.id.dashboard_see_requests_btn:
+                Intent checkDonorRequestsIntent=new Intent(DashboardActivity.this, DonorRequestsActivity.class);
+                startActivity(checkDonorRequestsIntent);
+                break;
+            case R.id.dashboard_find_donor_btn:
+                Intent findDonorIntent=new Intent(DashboardActivity.this,FindDonorActivity.class);
+                startActivity(findDonorIntent);
+                break;
+            case R.id.dashboard_all_donor_btn:
+                Intent allDonorsIntent = new Intent(DashboardActivity.this,SearchDonorActivity.class);
+                startActivity(allDonorsIntent);
+                break;
+            case R.id.dashboard_check_requests_btn:
+                Intent checkPatientRequestsIntent = new Intent(DashboardActivity.this, PatientRequestsActivity.class);
+                startActivity(checkPatientRequestsIntent);
+                break;
+            case R.id.dashboard_view_patients_btn:
+                Intent allPatientsIntent=new Intent(DashboardActivity.this, ExplorePatientsActivity.class);
+                startActivity(allPatientsIntent);
+                break;
+        }
     }
 }

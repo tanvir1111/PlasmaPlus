@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.RecyclerViews.ExplorePatientAdapter;
+import com.ece.cov19.RecyclerViews.ExplorePatientsBetaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -24,12 +24,12 @@ import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
-public class RequestsActivity extends AppCompatActivity {
+public class DonorRequestsActivity extends AppCompatActivity {
 
-    private Button addRequestsBtn;
+    private Button addPatientBtn;
     private PatientDataModel patientDataModel;
     private ArrayList<PatientDataModel> patientDataModels;
-    private ExplorePatientAdapter explorePatientAdapter;
+    private ExplorePatientsBetaAdapter explorePatientsBetaAdapter;
     private RecyclerView recyclerView;
     private ImageView backbtn;
 
@@ -37,10 +37,9 @@ public class RequestsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_requests);
-        recyclerView = findViewById(R.id.requests_recyclerview);
-        addRequestsBtn=findViewById(R.id.requsts_add_requests_btn);
-        backbtn=findViewById(R.id.requests_back_button);
+        setContentView(R.layout.activity_donor_requests);
+        recyclerView = findViewById(R.id.donor_requests_recyclerview);
+        backbtn=findViewById(R.id.donor_requests_back_button);
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,19 +48,13 @@ public class RequestsActivity extends AppCompatActivity {
             }
         });
 
-        addRequestsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent bldReqIntent=new Intent(RequestsActivity.this, BloodRequestFormActivity.class);
-                startActivity(bldReqIntent);
-            }
-        });
+
 
         patientDataModels = new ArrayList<>();
 
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call <ArrayList<PatientDataModel>> seeRequest = retroInterface.seeRequest(loggedInUserPhone);
-        seeRequest.enqueue(new Callback<ArrayList<PatientDataModel>>() {
+        Call <ArrayList<PatientDataModel>> incomingResponse = retroInterface.checkDonorRequest(loggedInUserPhone);
+        incomingResponse.enqueue(new Callback<ArrayList<PatientDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
 
@@ -73,19 +66,19 @@ public class RequestsActivity extends AppCompatActivity {
                             patientDataModels.add(initialDataModel);
                         }
                     }
-                    explorePatientAdapter = new ExplorePatientAdapter(getApplicationContext(), patientDataModels);
-                    recyclerView.setAdapter(explorePatientAdapter);
+                    explorePatientsBetaAdapter = new ExplorePatientsBetaAdapter(getApplicationContext(), patientDataModels);
+                    recyclerView.setAdapter(explorePatientsBetaAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
                 }
                 else {
-                    Toast.makeText(RequestsActivity.this, "No Response", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(DonorRequestsActivity.this, "No Response", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(RequestsActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(DonorRequestsActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 

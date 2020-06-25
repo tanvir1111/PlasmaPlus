@@ -8,19 +8,18 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.R;
 
 import java.util.ArrayList;
 
-public class FindDonorAdapter extends RecyclerView.Adapter<FindDonorViewHolder>{
+public class PatientRequestsBetaAdapter extends RecyclerView.Adapter<PatientRequestsBetaViewHolder>{
 
     public Context context;
     public UserDataModel userDataModel;
     public ArrayList<UserDataModel> userDataModels;
 
-    public FindDonorAdapter(Context context, ArrayList<UserDataModel> userDataModels) {
+    public PatientRequestsBetaAdapter(Context context, ArrayList<UserDataModel> userDataModels) {
         this.context = context;
         this.userDataModels = userDataModels;
     }
@@ -28,23 +27,23 @@ public class FindDonorAdapter extends RecyclerView.Adapter<FindDonorViewHolder>{
 
     @NonNull
     @Override
-    public FindDonorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public PatientRequestsBetaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.search_donor_child, parent, false);
-        FindDonorViewHolder findDonorViewHolder = new FindDonorViewHolder(view, userDataModels);
-        return findDonorViewHolder;
+        View view = layoutInflater.inflate(R.layout.request_donor_child, parent, false);
+        PatientRequestsBetaViewHolder patientRequestsBetaViewHolder = new PatientRequestsBetaViewHolder(view, userDataModels);
+        return patientRequestsBetaViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FindDonorViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull PatientRequestsBetaViewHolder holder, int position) {
 
         userDataModel = userDataModels.get(position);
 
         holder.nameTextView.setText(userDataModel.getName());
         holder.locationTextView.setText(userDataModel.getDistrict());
         holder.bloodTextView.setText(userDataModel.getBloodGroup());
-        holder.donortype.setText(userDataModel.getDonor());
+        holder.donorType.setText(userDataModel.getDonor());
 
         if(userDataModel.getGender().equals("male")) {
             holder.donorImageView.setImageResource(R.drawable.profile_icon_male);
@@ -53,9 +52,6 @@ public class FindDonorAdapter extends RecyclerView.Adapter<FindDonorViewHolder>{
         }
         holder.locationImageView.setImageResource(R.drawable.location_icon);
 
-        if(userDataModel.getBloodGroup().equals(FindPatientData.findPatientBloodGroup)){
-            holder.askButton.setVisibility(View.VISIBLE);
-        }
     }
 
     @Override

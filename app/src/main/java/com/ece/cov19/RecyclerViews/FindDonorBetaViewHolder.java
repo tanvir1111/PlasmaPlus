@@ -17,7 +17,7 @@ import com.ece.cov19.ViewDonorProfileActivity;
 import java.util.ArrayList;
 
 
-public class FindDonorViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class FindDonorBetaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     TextView nameTextView, locationTextView, bloodTextView,donortype, askButton;
     ImageView donorImageView, locationImageView;
@@ -25,7 +25,7 @@ public class FindDonorViewHolder extends RecyclerView.ViewHolder implements View
     ArrayList<UserDataModel> userDataModels;
     int pos;
 
-    public FindDonorViewHolder(@NonNull View itemView, ArrayList<UserDataModel> userDataModels) {
+    public FindDonorBetaViewHolder(@NonNull View itemView, ArrayList<UserDataModel> userDataModels) {
         super(itemView);
         this.userDataModels = userDataModels;
         nameTextView = itemView.findViewById(R.id.donor_name);

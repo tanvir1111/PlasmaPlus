@@ -61,7 +61,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/your_patients_textview"
+                        android:id="@+id/my_patients_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="32dp"
@@ -77,7 +77,7 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ProgressBar
-                        android:id="@+id/your_patients_progress_bar"
+                        android:id="@+id/my_patients_progress_bar"
                         style="?android:attr/progressBarStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -92,12 +92,13 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/your_patients_recyclerview"
+                        android:id="@+id/my_patients_recyclerview"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/your_patients_textview" />
+                        app:layout_constraintTop_toBottomOf="@+id/my_patients_textview" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView

@@ -8,6 +8,37 @@
     tools:context=".DashboardActivity">
 
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/loadingView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:elevation="20dp"
+        tools:layout_editor_absoluteX="32dp"
+        tools:layout_editor_absoluteY="93dp">
+
+        <ProgressBar
+            android:id="@+id/dashboard_progress_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="Loading Data"
+            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/dashboard_progress_bar" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/dashboard_header"
         android:layout_width="wrap_content"
@@ -17,7 +48,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="245dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="DashBoard"
+        android:text="Dashboard"
         android:textColor="#ffffff"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/dashboard_profile_btn"
@@ -39,6 +70,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/dashboard_header" />
 
+
     <androidx.cardview.widget.CardView
         android:id="@+id/dashboard_cardView_1"
         android:layout_width="match_parent"
@@ -52,35 +84,6 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/dashboard_header">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/loadingView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#ffffff"
-            android:elevation="20dp">
-
-            <ProgressBar
-                android:id="@+id/dashboard_progress_bar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:elevation="30dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
-                android:text="Loading Data"
-                android:textColor="@color/colorAccent"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/dashboard_progress_bar" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -140,7 +143,6 @@
 
 
     </androidx.cardview.widget.CardView>
-
 
     <androidx.cardview.widget.CardView
         android:id="@+id/donors_cardview"
@@ -285,21 +287,36 @@
                 app:layout_constraintTop_toBottomOf="@+id/dashboard_number_of_patients" />
 
             <Button
-                android:id="@+id/dashboard_see_patients_btn"
+                android:id="@+id/dashboard_view_patients_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="68dp"
+                android:layout_marginTop="14dp"
                 android:background="@drawable/button_style_white"
                 android:elevation="10dp"
                 android:padding="15dp"
-                android:text="see patients"
+
+
+                android:text="All Patients"
                 android:textColor="@color/colorAccent"
+                app:layout_constraintStart_toEndOf="@+id/dashboard_patients_textview"
+                app:layout_constraintTop_toBottomOf="@+id/dashboard_check_requests_btn" />
+
+            <Button
+                android:id="@+id/dashboard_check_requests_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="88dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_style_white"
+                android:elevation="10dp"
+                android:padding="15dp"
 
 
-                app:layout_constraintBottom_toBottomOf="@+id/dashboard_patients_textview"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.67"
+                android:text="View Requests"
+                android:textColor="@color/colorAccent"
                 app:layout_constraintStart_toEndOf="@+id/dashboard_number_of_patients"
-                app:layout_constraintTop_toTopOf="@+id/dashboard_number_of_patients" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
