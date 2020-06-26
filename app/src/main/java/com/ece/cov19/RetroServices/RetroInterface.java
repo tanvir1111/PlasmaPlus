@@ -50,7 +50,7 @@ public interface RetroInterface {
     Call<ArrayList<UserDataModel>> findDonor(@Field("bloodGroup") String bloodgroup,@Field("district") String district,@Field("phone") String phone);
 
     @FormUrlEncoded
-    @POST("checkDonorRequest.php") Call<ArrayList<PatientDataModel>> checkDonorRequest(@Field("phone") String userPhone);
+    @POST("checkDonorRequest.php") Call<ArrayList<PatientDataModel>> checkDonorRequest(@Field("phone") String userPhone,@Field("status") String status);
 
     @FormUrlEncoded
     @POST("searchPatients.php")

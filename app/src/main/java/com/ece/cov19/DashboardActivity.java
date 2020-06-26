@@ -62,6 +62,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     numberOfRequests.setText("No");
                     seeRequestBtn.setVisibility(View.GONE);
                 }
+                else {
+                    numberOfRequests.setText(response.body().getNumberOfRequests());
+                }
 
             }
 

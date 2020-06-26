@@ -256,4 +256,5 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         builder.show();
 
     }
+    
 }

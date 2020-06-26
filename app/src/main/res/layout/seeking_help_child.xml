@@ -122,8 +122,8 @@
                     android:layout_height="wrap_content"
 
 
-                    android:layout_marginStart="100dp"
-                    android:layout_marginTop="72dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
                     android:background="@drawable/button_style_colored"
                     android:elevation="10dp"
                     android:fontFamily="@font/montserrat_bold"
@@ -132,9 +132,12 @@
                     android:text="Donate to Help"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
-                    android:visibility="gone"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/seeking_help_child_bld_grp"
+                    app:layout_constraintStart_toEndOf="@+id/seeking_help_child_profile_image"
+                    app:layout_constraintTop_toBottomOf="@+id/seeking_help_location"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <ImageView
                     android:id="@+id/seeking_help_child_location_image"

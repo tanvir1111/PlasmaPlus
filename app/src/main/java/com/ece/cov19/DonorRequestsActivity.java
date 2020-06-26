@@ -32,6 +32,8 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private ExplorePatientsBetaAdapter explorePatientsBetaAdapter;
     private RecyclerView recyclerView;
     private ImageView backbtn;
+    private Button pendingbtn,acceptedBtn;
+    private String status="pending";
 
 
     @Override
@@ -40,6 +42,9 @@ public class DonorRequestsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_donor_requests);
         recyclerView = findViewById(R.id.donor_requests_recyclerview);
         backbtn=findViewById(R.id.donor_requests_back_button);
+        acceptedBtn=findViewById(R.id.donor_requests_show_accepted_requests);
+        pendingbtn=findViewById(R.id.donor_requests_show_pending_requests);
+
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,18 +52,48 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 finish();
             }
         });
+        getRequests();
 
 
 
         patientDataModels = new ArrayList<>();
 
+        pendingbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                status="Pending";
+                pendingbtn.setVisibility(View.GONE);
+                acceptedBtn.setVisibility(View.VISIBLE);
+                getRequests();
+
+            }
+        });
+        acceptedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                status="Accepted";
+                pendingbtn.setVisibility(View.VISIBLE);
+                acceptedBtn.setVisibility(View.GONE);
+                getRequests();
+
+            }
+        });
+
+
+    }
+
+    private void getRequests() {
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call <ArrayList<PatientDataModel>> incomingResponse = retroInterface.checkDonorRequest(loggedInUserPhone);
+
+        Call <ArrayList<PatientDataModel>> incomingResponse = retroInterface.checkDonorRequest(loggedInUserPhone,status);
         incomingResponse.enqueue(new Callback<ArrayList<PatientDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
 
                 if(response.isSuccessful()) {
+                    patientDataModels.clear();
                     ArrayList<PatientDataModel> initialModels = response.body();
                     for(PatientDataModel initialDataModel : initialModels){
                         if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
@@ -81,7 +116,6 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 Toast.makeText(DonorRequestsActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
 
     }
 }
