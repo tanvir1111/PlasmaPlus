@@ -50,7 +50,7 @@ public class ExplorePatientsBetaAdapter extends RecyclerView.Adapter<ExplorePati
         holder.nameTextView.setText(patientDataModel.getName());
         holder.typeTextView.setText(patientDataModel.getNeed());
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());
-        holder.locationTextView.setText(patientDataModel.getDistrict());
+        holder.locationTextView.setText(patientDataModel.getHospital());
 
         if(patientDataModel.getGender().equals("male")) {
             holder.patientImageView.setImageResource(R.drawable.profile_icon_male);

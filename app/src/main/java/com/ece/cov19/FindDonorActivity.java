@@ -42,6 +42,7 @@ public class FindDonorActivity extends AppCompatActivity {
     private ProgressBar patientProgressBar, donorProgressBar;
     private TextView patientTextView, donorTextView, filterTextView, noMatchTextView;
     private ImageView backbtn;
+    private String myPatients,availableDonors;
 
 
     String bloodGroup;
@@ -66,6 +67,9 @@ public class FindDonorActivity extends AppCompatActivity {
         districtEditText=findViewById(R.id.find_donor_fordonors_district_edittext);
         donorProgressBar =findViewById(R.id.find_donor_fordonors_progress_bar);
         backbtn=findViewById(R.id.find_donor_fordonors_back_button);
+
+        myPatients=patientTextView.getText().toString();
+        availableDonors=donorTextView.getText().toString();
 
         donorTextView.setVisibility(View.GONE);
         filterTextView.setVisibility(View.GONE);
@@ -130,6 +134,7 @@ public class FindDonorActivity extends AppCompatActivity {
                 patientDataModels.clear();
                 if(response.isSuccessful()){
                     ArrayList<PatientDataModel> initialModels = response.body();
+                    patientTextView.setText(myPatients+" (" + initialModels.size() + ")");
                     for(PatientDataModel initialDataModel : initialModels){
 
                         patientDataModels.add(initialDataModel);
@@ -197,6 +202,7 @@ public class FindDonorActivity extends AppCompatActivity {
 
                 if(response.isSuccessful()){
                     ArrayList<UserDataModel> initialModels = response.body();
+                    donorTextView.setText(availableDonors+ " (" +initialModels.size()+ ")");
                     for(UserDataModel initialDataModel : initialModels){
 
                         userDataModels.add(initialDataModel);

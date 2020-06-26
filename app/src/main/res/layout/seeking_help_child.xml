@@ -90,12 +90,16 @@
                     android:id="@+id/seeking_help_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="32dp"
                     android:fontFamily="@font/raleway"
+                    android:maxWidth="140dp"
                     android:text="Jessore"
                     android:textColor="@color/textColorGrey"
                     android:textSize="12sp"
+                    app:layout_constraintEnd_toStartOf="@+id/seeking_help_child_bld_grp"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/seeking_help_child_location_image"
                     app:layout_constraintTop_toBottomOf="@+id/seeking_help_name" />
 
@@ -103,7 +107,7 @@
                     android:id="@+id/seeking_help_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
+                    android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat"
                     android:text="Tanvir Ahmmad"
@@ -136,12 +140,12 @@
                     android:id="@+id/seeking_help_child_location_image"
                     android:layout_width="12dp"
                     android:layout_height="12dp"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginTop="5dp"
+                    android:layout_marginStart="16dp"
                     android:scaleType="fitXY"
                     android:src="@drawable/location_icon"
+                    app:layout_constraintBottom_toBottomOf="@+id/seeking_help_location"
                     app:layout_constraintStart_toEndOf="@+id/seeking_help_child_profile_image"
-                    app:layout_constraintTop_toBottomOf="@+id/seeking_help_name" />
+                    app:layout_constraintTop_toTopOf="@+id/seeking_help_location" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

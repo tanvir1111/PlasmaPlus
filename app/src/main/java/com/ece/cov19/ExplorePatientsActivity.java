@@ -37,8 +37,9 @@ public class ExplorePatientsActivity extends AppCompatActivity {
     private Spinner bloodgrpSpinner;
     private EditText districtEditText;
     private ProgressBar myPatientsProgressBar, progressBar;
-    private TextView myPatientsTextView;
+    private TextView myPatientsTextView,otherPatientsTextView;
     private ImageView backbtn;
+    private String otherPatientsText,myPatientsText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,12 +49,15 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         myPatientsRecyclerView = findViewById(R.id.my_patients_recyclerview);
         myPatientsProgressBar = findViewById(R.id.my_patients_progress_bar);
         myPatientsTextView = findViewById(R.id.my_patients_textview);
+        otherPatientsTextView=findViewById(R.id.explore_patients_textview);
 
         explorePatientsRecyclerView = findViewById(R.id.explore_patients_recyclerview);
         bloodgrpSpinner=findViewById(R.id.explore_patients_bld_grp);
         districtEditText=findViewById(R.id.explore_patients_district_edittext);
         progressBar=findViewById(R.id.explore_patients_progress_bar);
         backbtn=findViewById(R.id.explore_patients_back_button);
+        otherPatientsText=otherPatientsTextView.getText().toString();
+        myPatientsText=myPatientsTextView.getText().toString();
 
 
         myPatientsSearch();
@@ -117,6 +121,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
                 patientDataModels.clear();
                 if(response.isSuccessful()){
                     ArrayList<PatientDataModel> initialModels = response.body();
+                    myPatientsTextView.setText(myPatientsText+" ("+Integer.toString(initialModels.size())+")");
                     for(PatientDataModel initialDataModel : initialModels){
 
                         patientDataModels.add(initialDataModel);
@@ -176,6 +181,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
 
                 if(response.isSuccessful()){
                     ArrayList<PatientDataModel> initialModels = response.body();
+                    otherPatientsTextView.setText(otherPatientsText+" (" +initialModels.size() + ")");
                     for(PatientDataModel initialDataModel : initialModels){
 
                         patientDataModels.add(initialDataModel);

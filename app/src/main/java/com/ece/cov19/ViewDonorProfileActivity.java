@@ -35,7 +35,7 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class ViewDonorProfileActivity extends AppCompatActivity {
 
-    private TextView nameTextView, phoneTextView, bloodGroupTextView, addressTextView, ageTextView, donorInfoTextView;
+    private TextView nameTextView, phoneTextView, bloodGroupTextView, addressTextView, ageTextView, donorInfoTextView,sendRequestSuggestion;
     private ImageView genderImageView;
     private Button askForHelpBtn;
     private ImageView backbtn;
@@ -59,12 +59,19 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         genderImageView = findViewById(R.id.donor_profile_gender_icon);
         askForHelpBtn =findViewById(R.id.donor_ask_for_help_button);
         backbtn=findViewById(R.id.donor_profile_back_button);
+        sendRequestSuggestion=findViewById(R.id.donor_profile_send_request_suggestion);
 
 
 
 
         nameTextView.setText(intent.getStringExtra("name"));
-        phoneTextView.setText(donorphone);
+        if(donorphone.equals(loggedInUserPhone)){
+            phoneTextView.setText(donorphone);
+
+        }
+        else {
+            phoneTextView.setText("Not Permitted!");
+        }
         bloodGroupTextView.setText(intent.getStringExtra("blood"));
         addressTextView.setText(intent.getStringExtra("address"));
         ageTextView.setText(intent.getStringExtra("age"));
@@ -72,6 +79,8 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
         if(findPatientName.equals("") && findPatientAge.equals("") && findPatientPhone.equals("") && findPatientBloodGroup.equals("any")){
             askForHelpBtn.setVisibility(View.GONE);
+            sendRequestSuggestion.setVisibility(View.VISIBLE);
+
         }
 
         if(intent.getStringExtra("gender").equals("male")){
@@ -152,7 +161,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 if(response.body().getServerMsg().equals("Success")){
-                    Toast.makeText(ViewDonorProfileActivity.this, "Request Sent! Wait For dono's Response", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewDonorProfileActivity.this, "Request Sent! Wait For donor's Response", Toast.LENGTH_SHORT).show();
 
 
 

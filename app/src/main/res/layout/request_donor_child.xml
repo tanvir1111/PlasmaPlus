@@ -81,23 +81,27 @@
             android:layout_width="12dp"
             android:layout_height="12dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:scaleType="fitXY"
             android:src="@drawable/location_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/request_donor_location"
             app:layout_constraintStart_toEndOf="@+id/request_donor_profile_image"
-            app:layout_constraintTop_toBottomOf="@+id/request_donor_name" />
+            app:layout_constraintTop_toTopOf="@+id/request_donor_location" />
 
         <TextView
             android:id="@+id/request_donor_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
+            android:layout_marginStart="8dp"
+            android:maxWidth="140dp"
 
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
             android:fontFamily="@font/raleway"
             android:text="Jessore"
             android:textColor="@color/textColorGrey"
             android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/request_donor_bld_grp"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/request_donor_location_image"
             app:layout_constraintTop_toBottomOf="@+id/request_donor_name" />
 

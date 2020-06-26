@@ -221,11 +221,23 @@
     </androidx.cardview.widget.CardView>
 
 
+    <TextView
+        android:id="@+id/donor_profile_send_request_suggestion"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Select a patient to send the donor request! if your request is accepted both of you will get each others phone number"
+        android:fontFamily="@font/raleway_bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
     <Button
         android:id="@+id/donor_ask_for_help_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/button_style_colored"
         android:elevation="10dp"
@@ -238,7 +250,8 @@
         android:textColor="#ffffff"
         android:textSize="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         app:layout_constraintVertical_bias="0.037" />
 

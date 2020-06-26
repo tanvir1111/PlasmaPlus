@@ -24,6 +24,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class ViewPatientProfileActivity extends AppCompatActivity {
 
@@ -64,7 +65,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         phone = intent.getStringExtra("phone");
 
         nameTextView.setText(name);
-        phoneTextView.setText(phone);
+        if(phone.equals(loggedInUserPhone)){
+            phoneTextView.setText(phone);
+
+        }
+        else {
+            phoneTextView.setText("Not Permitted!");
+        }
         bloodGroupTextView.setText(bloodGroup);
         hospitalTextView.setText(hospital);
         ageTextView.setText(age);

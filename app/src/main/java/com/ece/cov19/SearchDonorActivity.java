@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,13 +32,15 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 public class SearchDonorActivity extends AppCompatActivity {
 
 
-   private ArrayList<UserDataModel> userDataModels;
+    private ArrayList<UserDataModel> userDataModels;
     private SearchDonorAdapter searchDonorAdapter;
     private RecyclerView recyclerView;
-   private   Spinner bloodgrpSpinner;
+    private Spinner bloodgrpSpinner;
     private EditText districtEditText;
     private ProgressBar progressBar;
     private ImageView backbtn;
+    private TextView filterResult;
+    private String filterResultText;
 
 
     @Override
@@ -45,17 +48,20 @@ public class SearchDonorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_donor);
         recyclerView = findViewById(R.id.search_donor_recyclerview);
-        bloodgrpSpinner=findViewById(R.id.search_donor_bld_grp);
-        districtEditText=findViewById(R.id.search_donor_district_edittext);
-        progressBar=findViewById(R.id.search_donor_progress_bar);
-        backbtn=findViewById(R.id.search_donor_back_button);
+        bloodgrpSpinner = findViewById(R.id.search_donor_bld_grp);
+        districtEditText = findViewById(R.id.search_donor_district_edittext);
+        progressBar = findViewById(R.id.search_donor_progress_bar);
+        backbtn = findViewById(R.id.search_donor_back_button);
+        filterResult = findViewById(R.id.search_donor_filter_result);
+
+        filterResultText = filterResult.getText().toString();
+
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
-
 
 
         userDataModels = new ArrayList<>();
@@ -90,9 +96,6 @@ public class SearchDonorActivity extends AppCompatActivity {
         });
 
 
-
-
-
     }
 
     private void donorSearch() {
@@ -102,24 +105,29 @@ public class SearchDonorActivity extends AppCompatActivity {
         String bloodgroup = bloodgrpSpinner.getSelectedItem().toString();
         String district;
 
-        if(districtEditText.getText().toString().isEmpty()){
-            district="any";
-        }
-        else{
-            district=districtEditText.getText().toString();
+        if (districtEditText.getText().toString().isEmpty()) {
+            district = "any";
+        } else {
+            district = districtEditText.getText().toString();
         }
 
 
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call <ArrayList<UserDataModel>> searchDonor = retroInterface.findDonor(bloodgroup,district,loggedInUserPhone);
+        Call<ArrayList<UserDataModel>> searchDonor = retroInterface.findDonor(bloodgroup, district, loggedInUserPhone);
         searchDonor.enqueue(new Callback<ArrayList<UserDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {
                 progressBar.setVisibility(View.GONE);
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
                     ArrayList<UserDataModel> initialModels = response.body();
-                    for(UserDataModel initialDataModel : initialModels){
-                        if(initialDataModel.getDonor().equals("Blood") || initialDataModel.getDonor().equals("Plasma")){
+                    if (initialModels.size() == 0) {
+                        filterResult.setText("No Donors Found");
+                    } else {
+                        filterResult.setText(filterResultText + " (" + initialModels.size() + ")");
+                    }
+
+                    for (UserDataModel initialDataModel : initialModels) {
+                        if (initialDataModel.getDonor().equals("Blood") || initialDataModel.getDonor().equals("Plasma")) {
                             userDataModels.add(initialDataModel);
                         }
                     }
@@ -129,9 +137,7 @@ public class SearchDonorActivity extends AppCompatActivity {
                     recyclerView.setAdapter(searchDonorAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
-                }
-
-                else{
+                } else {
                     Toast.makeText(SearchDonorActivity.this, "No Response", Toast.LENGTH_SHORT).show();
 
                 }
@@ -139,7 +145,7 @@ public class SearchDonorActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
-                Toast.makeText(SearchDonorActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(SearchDonorActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
