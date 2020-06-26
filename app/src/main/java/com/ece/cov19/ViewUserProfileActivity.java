@@ -29,7 +29,7 @@ import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 public class ViewUserProfileActivity extends AppCompatActivity {
     private TextView nameTextView, phoneTextView, bloodGroupTextView, addressTextView, ageTextView, donorInfoTextView;
     private ImageView genderImageView,backbtn;
-    private Button logoutBtn,updateInfoBtn,updatePasswordBtn;
+    private Button logoutBtn,updateInfoBtn,updatePasswordBtn, deleteBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +47,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         logoutBtn=findViewById(R.id.profile_logout_btn);
         updateInfoBtn=findViewById(R.id.profile_update_button);
         updatePasswordBtn=findViewById(R.id.profile_change_password_btn);
+        deleteBtn = findViewById(R.id.profile_delete_button);
 
 //      setting logged in user info
         nameTextView.setText(loggedInUserName);
@@ -120,6 +121,13 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                 Intent intent= new Intent(ViewUserProfileActivity.this, UpdatePasswordActivity.class);
 
                 showAlertDialog(intent);
+
+            }
+        });
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
             }
         });

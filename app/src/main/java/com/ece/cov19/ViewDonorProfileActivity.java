@@ -1,6 +1,5 @@
 package com.ece.cov19;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,12 +14,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.RequestDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
-
-import java.util.ArrayList;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -35,19 +32,16 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class ViewDonorProfileActivity extends AppCompatActivity {
 
-    private TextView nameTextView, phoneTextView, bloodGroupTextView, addressTextView, ageTextView, donorInfoTextView,sendRequestSuggestion;
+    private TextView nameTextView, phoneTextView, bloodGroupTextView, addressTextView, ageTextView, donorInfoTextView, sendRequestSuggestion;
     private ImageView genderImageView;
-    private Button askForHelpBtn;
+    private Button askForHelpBtn, acceptBtn, declineBtn;
     private ImageView backbtn;
-    String donorphone;
+    String name, age, bloodGroup, donorphone, donorInfo, address;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_donor_profile);
-        Intent intent = getIntent();
-
-        donorphone=intent.getStringExtra("phone");
-
 
 
         nameTextView = findViewById(R.id.donor_profile_name);
@@ -57,39 +51,49 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         ageTextView = findViewById(R.id.donor_profile_age);
         donorInfoTextView = findViewById(R.id.donor_profile_type);
         genderImageView = findViewById(R.id.donor_profile_gender_icon);
-        askForHelpBtn =findViewById(R.id.donor_ask_for_help_button);
-        backbtn=findViewById(R.id.donor_profile_back_button);
-        sendRequestSuggestion=findViewById(R.id.donor_profile_send_request_suggestion);
+        askForHelpBtn = findViewById(R.id.donor_profile_ask_for_help_button);
+        acceptBtn = findViewById(R.id.donor_profile_accept_button);
+        declineBtn = findViewById(R.id.donor_profile_decline_button);
+        backbtn = findViewById(R.id.donor_profile_back_button);
+        sendRequestSuggestion = findViewById(R.id.donor_profile_send_request_suggestion);
 
 
+        Intent intent = getIntent();
 
+        name = intent.getStringExtra("name");
+        age = intent.getStringExtra("age");
+        bloodGroup = intent.getStringExtra("blood");
+        donorphone = intent.getStringExtra("phone");
+        donorInfo = intent.getStringExtra("donorinfo");
+        address = intent.getStringExtra("address");
 
-        nameTextView.setText(intent.getStringExtra("name"));
-        if(donorphone.equals(loggedInUserPhone)){
+        nameTextView.setText(name);
+        if (donorphone.equals(loggedInUserPhone)) {
             phoneTextView.setText(donorphone);
 
-        }
-        else {
+        } else {
             phoneTextView.setText("Not Permitted!");
         }
-        bloodGroupTextView.setText(intent.getStringExtra("blood"));
-        addressTextView.setText(intent.getStringExtra("address"));
-        ageTextView.setText(intent.getStringExtra("age"));
-        donorInfoTextView.setText(intent.getStringExtra("donorinfo"));
+        bloodGroupTextView.setText(bloodGroup);
+        addressTextView.setText(address);
+        ageTextView.setText(age);
+        donorInfoTextView.setText(donorInfo);
 
-        if(findPatientName.equals("") && findPatientAge.equals("") && findPatientPhone.equals("") && findPatientBloodGroup.equals("any")){
+        if (findPatientName.equals("") && findPatientAge.equals("") && findPatientPhone.equals("") && findPatientBloodGroup.equals("any")) {
             askForHelpBtn.setVisibility(View.GONE);
             sendRequestSuggestion.setVisibility(View.VISIBLE);
 
         }
 
-        if(intent.getStringExtra("gender").equals("male")){
+        if (intent.getStringExtra("gender").equals("male")) {
             genderImageView.setImageResource(R.drawable.profile_icon_male);
-        }
-        else {
+        } else {
             genderImageView.setImageResource(R.drawable.profile_icon_female);
 
         }
+
+        lookforRequests();
+
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -97,13 +101,27 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             }
         });
 
+
+
         askForHelpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 passWordAlertDialog();
 
 
+            }
+        });
 
+        acceptBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        declineBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
             }
         });
@@ -120,8 +138,8 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         final EditText pass = new EditText(getApplicationContext());
 
         float density = getResources().getDisplayMetrics().density;
-        int paddingDp = (int)(12* density);
-        pass.setPadding(paddingDp,paddingDp,paddingDp,paddingDp);
+        int paddingDp = (int) (12 * density);
+        pass.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
         pass.setHint("******");
         pass.setBackgroundResource(R.drawable.edit_text_dark);
 // Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
@@ -133,12 +151,12 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if(pass.getText().toString().equals(loggedInUserPass)){
+                if (pass.getText().toString().equals(loggedInUserPass)) {
 
                     sendRequest();
-                }
-                else{
-                    Toast.makeText(getApplicationContext(), "Wrong Password", Toast.LENGTH_SHORT).show();;
+                } else {
+                    Toast.makeText(getApplicationContext(), "Wrong Password", Toast.LENGTH_SHORT).show();
+                    ;
                 }
             }
         });
@@ -153,20 +171,18 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
     }
 
-    private void sendRequest(){
+    private void sendRequest() {
 
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<RequestDataModel> requestFromPatient = retroInterface.sendRequest(donorphone,findPatientName,findPatientAge,findPatientPhone,findPatientBloodGroup,"patient");
+        Call<RequestDataModel> requestFromPatient = retroInterface.sendRequest(donorphone, findPatientName, findPatientAge, findPatientPhone, findPatientBloodGroup, "patient");
         requestFromPatient.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
-                if(response.body().getServerMsg().equals("Success")){
+                if (response.body().getServerMsg().equals("Success")) {
                     Toast.makeText(ViewDonorProfileActivity.this, "Request Sent! Wait For donor's Response", Toast.LENGTH_SHORT).show();
 
 
-
-                }
-                else {
+                } else {
                     Toast.makeText(ViewDonorProfileActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
                 }
             }
@@ -179,7 +195,65 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         });
 
 
-
     }
 
+    private void lookforRequests() {
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Toast.makeText(this, donorphone + findPatientName + findPatientAge + findPatientBloodGroup + findPatientPhone, Toast.LENGTH_SHORT).show();
+        Call<RequestDataModel> lookforRequestFromPatient = retroInterface.lookForRequests(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientPhone, "donor");
+        lookforRequestFromPatient.enqueue(new Callback<RequestDataModel>() {
+            @Override
+            public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(ViewDonorProfileActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                    if(response.body().getServerMsg().equals("no requests")) {
+                        if(donorphone.equals(loggedInUserPhone)){
+                            askForHelpBtn.setVisibility(View.GONE);
+                            acceptBtn.setVisibility(View.GONE);
+                            declineBtn.setVisibility(View.GONE);
+                        } else {
+                            askForHelpBtn.setVisibility(View.VISIBLE);
+                            askForHelpBtn.setText("Ask for Help");
+                            acceptBtn.setVisibility(View.GONE);
+                            declineBtn.setVisibility(View.GONE);
+                        }
+                    }
+                    else if (response.body().getServerMsg().equals("Pending")) {
+                        askForHelpBtn.setVisibility(View.GONE);
+                        acceptBtn.setVisibility(View.VISIBLE);
+                        acceptBtn.setText("Accept Request");
+                        declineBtn.setVisibility(View.VISIBLE);
+                        declineBtn.setText("Decline Request");
+                        Toast.makeText(ViewDonorProfileActivity.this, "show buttons", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (response.body().getServerMsg().equals("Accepted")) {
+//                        show accepted textView
+                        askForHelpBtn.setVisibility(View.VISIBLE);
+                        askForHelpBtn.setText("Accepted");
+                        acceptBtn.setVisibility(View.GONE);
+                        declineBtn.setVisibility(View.GONE);
+                        Toast.makeText(ViewDonorProfileActivity.this, "show text", Toast.LENGTH_SHORT).show();
+                    }
+                    else if (response.body().getServerMsg().equals("Declined")) {
+//                        show accepted textView
+                            askForHelpBtn.setVisibility(View.VISIBLE);
+                            askForHelpBtn.setText("Declined");
+                            acceptBtn.setVisibility(View.GONE);
+                            declineBtn.setVisibility(View.GONE);
+                            Toast.makeText(ViewDonorProfileActivity.this, "show text", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<RequestDataModel> call, Throwable t) {
+                Toast.makeText(ViewDonorProfileActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+    }
 }

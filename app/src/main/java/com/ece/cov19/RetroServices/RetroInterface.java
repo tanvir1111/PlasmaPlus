@@ -95,6 +95,17 @@ public interface RetroInterface {
     Call<ArrayList<UserDataModel>> checkPatientRequest(@Field("name") String name,@Field("age") String age,
                                                  @Field("bloodGroup") String bloodgroup, @Field("phone") String phone);
 
+    @FormUrlEncoded
+    @POST("getPatientRequest.php")
+    Call<ArrayList<UserDataModel>> getPatientRequest(@Field("name") String name,@Field("age") String age,
+                                                       @Field("bloodGroup") String bloodgroup, @Field("phone") String phone);
+
+    @FormUrlEncoded
+    @POST("lookForRequests.php")
+    Call<RequestDataModel> lookForRequests(@Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
+                                           @Field("patientAge") String patientAge, @Field("patientBloodGroup") String patientBloodGroup,
+                                           @Field("patientPhone") String phone, @Field("requestedBy") String requestedBy);
+
 }
 
 

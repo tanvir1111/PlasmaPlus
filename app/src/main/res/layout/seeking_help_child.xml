@@ -132,7 +132,7 @@
                     android:text="Donate to Help"
                     android:textColor="@android:color/white"
                     android:textSize="14sp"
-                    android:visibility="visible"
+                    android:visibility="gone"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/seeking_help_child_bld_grp"
                     app:layout_constraintStart_toEndOf="@+id/seeking_help_child_profile_image"
@@ -166,7 +166,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="160dp"
-            android:visibility="gone"
+            android:visibility="visible"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

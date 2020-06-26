@@ -43,6 +43,10 @@ public class DonorRequestsViewHolder extends RecyclerView.ViewHolder implements 
         acceptButton = itemView.findViewById(R.id.request_patient_accept_btn);
         declineButton = itemView.findViewById(R.id.request_patient_decline_btn);
 
+        acceptButton.setVisibility(View.VISIBLE);
+        acceptButton.setText("View Profile");
+        declineButton.setVisibility(View.GONE);
+
         acceptButton.setOnClickListener(this);
         declineButton.setOnClickListener(this);
     }
@@ -50,10 +54,6 @@ public class DonorRequestsViewHolder extends RecyclerView.ViewHolder implements 
     @Override
     public void onClick(View view) {
 
-        switch (view.getId()) {
-
-            case R.id.request_donor_accept_btn:
-            case R.id.request_donor_decline_btn:
                 Context c = view.getContext();
                 patientDataModel = patientDataModels.get(pos);
 
@@ -73,7 +73,7 @@ public class DonorRequestsViewHolder extends RecyclerView.ViewHolder implements 
                 intent.putExtra("phone", patientDataModel.getPhone());
 
                 c.startActivity(intent);
+
         }
 
-    }
 }

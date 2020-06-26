@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.R;
 import com.ece.cov19.ViewPatientProfileActivity;
@@ -45,6 +46,11 @@ public class ExplorePatientsBetaViewHolder extends RecyclerView.ViewHolder imple
         Context c = view.getContext();
 
         patientDataModel = patientDataModels.get(pos);
+        FindPatientData.findPatientPosition = pos;
+        FindPatientData.findPatientBloodGroup = patientDataModels.get(pos).getBloodGroup();
+        FindPatientData.findPatientName=patientDataModels.get(pos).getName();
+        FindPatientData.findPatientAge=patientDataModels.get(pos).getAge();
+        FindPatientData.findPatientPhone=patientDataModels.get(pos).getPhone();
         Intent intent = new Intent(view.getContext(), ViewPatientProfileActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

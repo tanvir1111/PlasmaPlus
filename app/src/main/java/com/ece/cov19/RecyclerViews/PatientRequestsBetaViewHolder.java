@@ -37,6 +37,11 @@ public class PatientRequestsBetaViewHolder extends RecyclerView.ViewHolder imple
         declineButton = itemView.findViewById(R.id.request_donor_decline_btn);
 
         //itemView.setOnClickListener(this);
+        acceptButton.setVisibility(View.VISIBLE);
+        acceptButton.setText("View Profile");
+        declineButton.setVisibility(View.GONE);
+
+
         acceptButton.setOnClickListener(this);
         declineButton.setOnClickListener(this);
 
@@ -45,11 +50,6 @@ public class PatientRequestsBetaViewHolder extends RecyclerView.ViewHolder imple
     @Override
     public void onClick(View view) {
 
-
-        switch (view.getId()) {
-
-            case R.id.request_donor_accept_btn:
-            case R.id.request_donor_decline_btn:
                 pos = getAdapterPosition();
                 Context c = view.getContext();
 
@@ -67,8 +67,6 @@ public class PatientRequestsBetaViewHolder extends RecyclerView.ViewHolder imple
                 intent.putExtra("gender", userDataModel.getGender());
 
                 c.startActivity(intent);
-                break;
 
-        }
     }
 }

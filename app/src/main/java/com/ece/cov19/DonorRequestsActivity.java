@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.RecyclerViews.ExplorePatientsBetaAdapter;
+import com.ece.cov19.RecyclerViews.DonorRequestsAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -29,7 +29,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private Button addPatientBtn;
     private PatientDataModel patientDataModel;
     private ArrayList<PatientDataModel> patientDataModels;
-    private ExplorePatientsBetaAdapter explorePatientsBetaAdapter;
+    private DonorRequestsAdapter donorRequestsAdapter;
     private RecyclerView recyclerView;
     private ImageView backbtn;
     private Button pendingbtn,acceptedBtn;
@@ -45,6 +45,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         acceptedBtn=findViewById(R.id.donor_requests_show_accepted_requests);
         pendingbtn=findViewById(R.id.donor_requests_show_pending_requests);
 
+        patientDataModels = new ArrayList<>();
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,9 +55,6 @@ public class DonorRequestsActivity extends AppCompatActivity {
         });
         getRequests();
 
-
-
-        patientDataModels = new ArrayList<>();
 
         pendingbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,6 +67,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
 
             }
         });
+
         acceptedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -101,8 +100,8 @@ public class DonorRequestsActivity extends AppCompatActivity {
                             patientDataModels.add(initialDataModel);
                         }
                     }
-                    explorePatientsBetaAdapter = new ExplorePatientsBetaAdapter(getApplicationContext(), patientDataModels);
-                    recyclerView.setAdapter(explorePatientsBetaAdapter);
+                    donorRequestsAdapter = new DonorRequestsAdapter(getApplicationContext(), patientDataModels);
+                    recyclerView.setAdapter(donorRequestsAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
                 }
