@@ -102,9 +102,9 @@ public interface RetroInterface {
 
     @FormUrlEncoded
     @POST("lookForRequests.php")
-    Call<RequestDataModel> lookForRequests(@Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
-                                           @Field("patientAge") String patientAge, @Field("patientBloodGroup") String patientBloodGroup,
-                                           @Field("patientPhone") String phone, @Field("requestedBy") String requestedBy);
+    Call<RequestDataModel> requestsOperation(@Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
+                                             @Field("patientAge") String patientAge, @Field("patientBloodGroup") String patientBloodGroup,
+                                             @Field("patientPhone") String phone, @Field("requestedBy") String requestedBy, @Field("operation") String operation);
 
 }
 

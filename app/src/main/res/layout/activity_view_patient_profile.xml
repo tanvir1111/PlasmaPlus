@@ -90,7 +90,7 @@
                 android:id="@+id/patient_profile_label_age"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="24dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
 
@@ -111,7 +111,7 @@
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/patient_profile_label_age"
-                app:layout_constraintStart_toEndOf="@+id/patient_profile_label_blood_group"
+                app:layout_constraintStart_toEndOf="@+id/patient_profile_label_date"
                 app:layout_constraintTop_toTopOf="@+id/patient_profile_label_age"
                 app:layout_constraintVertical_bias="0.0" />
 
@@ -131,7 +131,7 @@
                 android:id="@+id/patient_profile_hospital"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxWidth="172dp"
+                android:maxWidth="160dp"
                 android:layout_marginEnd="32dp"
                 android:fontFamily="@font/montserrat"
                 android:text="Hospital"
@@ -149,15 +149,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:layout_marginBottom="32dp"
                 android:fontFamily="@font/montserrat"
                 android:text="Need:"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/patient_profile_label_phone"
-                app:layout_constraintTop_toBottomOf="@+id/patient_profile_label_blood_group"
-                app:layout_constraintVertical_bias="1.0" />
+                app:layout_constraintTop_toBottomOf="@+id/patient_profile_label_blood_group" />
 
             <TextView
                 android:id="@+id/patient_profile_need"
@@ -220,6 +217,35 @@
                 app:layout_constraintBottom_toBottomOf="@+id/patient_profile_label_blood_group"
                 app:layout_constraintStart_toStartOf="@+id/patient_profile_phone"
                 app:layout_constraintTop_toTopOf="@+id/patient_profile_label_blood_group" />
+
+            <TextView
+                android:id="@+id/patient_profile_label_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp"
+                android:fontFamily="@font/montserrat"
+
+                android:text="Required Date :"
+                android:textColor="@color/colorAccent"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/patient_profile_label_type"
+                app:layout_constraintTop_toBottomOf="@+id/patient_profile_label_type" />
+
+            <TextView
+                android:id="@+id/patient_profile_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textColor="@color/textColorDark"
+                android:textSize="16sp"
+                android:fontFamily="@font/montserrat"
+                app:layout_constraintBottom_toBottomOf="@+id/patient_profile_label_date"
+                app:layout_constraintEnd_toEndOf="@+id/patient_profile_need"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/patient_profile_need"
+                app:layout_constraintTop_toTopOf="@+id/patient_profile_label_date" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

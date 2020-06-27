@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.RequestDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -84,6 +83,9 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             sendRequestSuggestion.setVisibility(View.VISIBLE);
 
         }
+        else{
+            requestsOperation("getStatus");
+        }
 
         if (intent.getStringExtra("gender").equals("male")) {
             genderImageView.setImageResource(R.drawable.profile_icon_male);
@@ -92,7 +94,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
         }
 
-        lookforRequests();
+
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -106,7 +108,9 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         askForHelpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                passWordAlertDialog();
+                if(askForHelpBtn.getText().toString().toLowerCase().equals("ask for help")) {
+                    passWordAlertDialog();
+                }
 
 
             }
@@ -115,6 +119,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                requestsOperation("accept");
 
             }
         });
@@ -122,6 +127,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         declineBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                requestsOperation("decline");
 
             }
         });
@@ -197,10 +203,10 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
     }
 
-    private void lookforRequests() {
+    private void requestsOperation(String operation) {
         RetroInterface retroInterface = RetroInstance.getRetro();
         Toast.makeText(this, donorphone + findPatientName + findPatientAge + findPatientBloodGroup + findPatientPhone, Toast.LENGTH_SHORT).show();
-        Call<RequestDataModel> lookforRequestFromPatient = retroInterface.lookForRequests(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientPhone, "donor");
+        Call<RequestDataModel> lookforRequestFromPatient = retroInterface.requestsOperation(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientPhone, "donor",operation);
         lookforRequestFromPatient.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
@@ -224,7 +230,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         acceptBtn.setText("Accept Request");
                         declineBtn.setVisibility(View.VISIBLE);
                         declineBtn.setText("Decline Request");
-                        Toast.makeText(ViewDonorProfileActivity.this, "show buttons", Toast.LENGTH_SHORT).show();
+
                     }
                     else if (response.body().getServerMsg().equals("Accepted")) {
 //                        show accepted textView
@@ -232,7 +238,8 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         askForHelpBtn.setText("Accepted");
                         acceptBtn.setVisibility(View.GONE);
                         declineBtn.setVisibility(View.GONE);
-                        Toast.makeText(ViewDonorProfileActivity.this, "show text", Toast.LENGTH_SHORT).show();
+                        phoneTextView.setText(donorphone);
+
                     }
                     else if (response.body().getServerMsg().equals("Declined")) {
 //                        show accepted textView
@@ -240,8 +247,6 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                             askForHelpBtn.setText("Declined");
                             acceptBtn.setVisibility(View.GONE);
                             declineBtn.setVisibility(View.GONE);
-                            Toast.makeText(ViewDonorProfileActivity.this, "show text", Toast.LENGTH_SHORT).show();
-
                     }
 
                 }

@@ -98,6 +98,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
                     }
                     myPatientRequestRecyclerView.setAdapter(patientRequestsAlphaAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+                    linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
                     myPatientRequestRecyclerView.setLayoutManager(linearLayoutManager);
 
                 }

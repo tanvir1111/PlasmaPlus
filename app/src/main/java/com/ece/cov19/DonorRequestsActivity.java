@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +34,8 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageView backbtn;
     private Button pendingbtn,acceptedBtn;
-    private String status="pending";
+    private String status="pending",requestTypeText="Pending Requests";
+    private TextView requestTypeTextView;
 
 
     @Override
@@ -44,6 +46,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         backbtn=findViewById(R.id.donor_requests_back_button);
         acceptedBtn=findViewById(R.id.donor_requests_show_accepted_requests);
         pendingbtn=findViewById(R.id.donor_requests_show_pending_requests);
+        requestTypeTextView=findViewById(R.id.donor_requests_type_textView);
 
         patientDataModels = new ArrayList<>();
 
@@ -61,6 +64,8 @@ public class DonorRequestsActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 status="Pending";
+                requestTypeText="Pending Requests";
+                requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.GONE);
                 acceptedBtn.setVisibility(View.VISIBLE);
                 getRequests();
@@ -72,7 +77,9 @@ public class DonorRequestsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                requestTypeText="Accepted Requests";
                 status="Accepted";
+                requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.VISIBLE);
                 acceptedBtn.setVisibility(View.GONE);
                 getRequests();
@@ -94,6 +101,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     patientDataModels.clear();
                     ArrayList<PatientDataModel> initialModels = response.body();
+                    requestTypeTextView.setText(requestTypeText+"(" +initialModels.size()+")");
                     for(PatientDataModel initialDataModel : initialModels){
                         if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
                             //Toast.makeText(RequestsActivity.this, initialDataModel.getName(), Toast.LENGTH_SHORT).show();

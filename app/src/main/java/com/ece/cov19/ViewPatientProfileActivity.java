@@ -14,7 +14,6 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.RequestDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
@@ -33,7 +32,7 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class ViewPatientProfileActivity extends AppCompatActivity {
 
-    private TextView nameTextView, phoneTextView, bloodGroupTextView, hospitalTextView, ageTextView, needTextView;
+    private TextView nameTextView, phoneTextView, bloodGroupTextView, hospitalTextView, ageTextView, needTextView,dateTextView;
     private ImageView genderImageView,backbtn;
     Button donateToHelpButton, updateButton, deleteButton;
     String name, age, gender, bloodGroup, hospital, division, district, date, need, phone;
@@ -54,6 +53,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         updateButton = findViewById(R.id.patient_profile_update_button);
         deleteButton = findViewById(R.id.patient_profile_delete_button);
         donateToHelpButton = findViewById(R.id.patient_profile_donate_button);
+        dateTextView=findViewById(R.id.patient_profile_date);
 
 
         Intent intent = getIntent();
@@ -82,6 +82,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         hospitalTextView.setText(hospital);
         ageTextView.setText(age);
         needTextView.setText(need);
+        dateTextView.setText(date);
 
 
         if(intent.getStringExtra("gender").equals("male")){
@@ -93,7 +94,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         }
 
 
-        lookforRequests();
+        requestsOperation("getStatus");
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,8 +105,11 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         donateToHelpButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                passWordAlertDialog();
+            public void onClick(View view)
+            {
+                if(donateToHelpButton.getText().toString().toLowerCase().equals("donate to help")) {
+                    passWordAlertDialog();
+                }
             }
         });
 
@@ -113,27 +117,43 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ViewPatientProfileActivity.this, UpdatePatientProfileActivity.class);
-                intent.putExtra("name",name);
-                intent.putExtra("age",age);
-                intent.putExtra("gender",gender);
-                intent.putExtra("blood_group",bloodGroup);
-                intent.putExtra("hospital",hospital);
-                intent.putExtra("division",division);
-                intent.putExtra("district",district);
-                intent.putExtra("date",date);
-                intent.putExtra("need",need);
-                intent.putExtra("phone",phone);
-                updateAlertDialog(intent);
+                if(updateButton.getText().toString().toLowerCase().equals("update profile")) {
+                    Intent intent = new Intent(ViewPatientProfileActivity.this, UpdatePatientProfileActivity.class);
+                    intent.putExtra("name", name);
+                    intent.putExtra("age", age);
+                    intent.putExtra("gender", gender);
+                    intent.putExtra("blood_group", bloodGroup);
+                    intent.putExtra("hospital", hospital);
+                    intent.putExtra("division", division);
+                    intent.putExtra("district", district);
+                    intent.putExtra("date", date);
+                    intent.putExtra("need", need);
+                    intent.putExtra("phone", phone);
+                    updateAlertDialog(intent);
+                }
+                else if(updateButton.getText().toString().toLowerCase().equals("accept request")){
+                    Toast.makeText(ViewPatientProfileActivity.this, "accept ops", Toast.LENGTH_SHORT).show();
+                    requestsOperation("accept");
+
+
+                }
             }
         });
 
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ViewPatientProfileActivity.this, ExplorePatientsActivity.class);
-                deleteAlertDialog(intent);
+                if(deleteButton.getText().toString().toLowerCase().equals("delete profile")) {
+                    Intent intent = new Intent(ViewPatientProfileActivity.this, ExplorePatientsActivity.class);
+                    deleteAlertDialog(intent);
+                }
+                else if(deleteButton.getText().toString().toLowerCase().equals("decline request")){
+                    Toast.makeText(ViewPatientProfileActivity.this, "decline ops", Toast.LENGTH_SHORT).show();
+                    requestsOperation("decline");
+
+                }
             }
+
         });
 
 
@@ -299,7 +319,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     sendRequest();
                 } else {
                     Toast.makeText(getApplicationContext(), "Wrong Password", Toast.LENGTH_SHORT).show();
-                    ;
+
                 }
             }
         });
@@ -340,10 +360,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
     }
 
-    private void lookforRequests() {
+    private void requestsOperation(String operation) {
         RetroInterface retroInterface = RetroInstance.getRetro();
         Toast.makeText(this, loggedInUserPhone+name +age +bloodGroup +phone, Toast.LENGTH_SHORT).show();
-        Call<RequestDataModel> lookforRequestFromDonor = retroInterface.lookForRequests(loggedInUserPhone, name, age, bloodGroup,phone,"patient");
+        Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup,phone,"patient",operation);
         lookforRequestFromDonor.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
@@ -377,6 +397,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         donateToHelpButton.setText("Accepted");
                         updateButton.setVisibility(View.GONE);
                         deleteButton.setVisibility(View.GONE);
+                        phoneTextView.setText(phone);
 
                     }
                     else if(response.body().getServerMsg().equals("Declined")){
