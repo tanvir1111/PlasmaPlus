@@ -11,7 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.FindDonorActivity;
 import com.ece.cov19.R;
+import com.ece.cov19.SearchDonorActivity;
 import com.ece.cov19.ViewDonorProfileActivity;
 
 import java.util.ArrayList;
@@ -59,7 +61,9 @@ public class FindDonorBetaViewHolder extends RecyclerView.ViewHolder implements 
         intent.putExtra("age",userDataModel.getAge());
         intent.putExtra("donorinfo",userDataModel.getDonor());
         intent.putExtra("gender",userDataModel.getGender());
+        intent.putExtra("activity","FindDonorActivity");
 
         c.startActivity(intent);
+        //((FindDonorActivity)c).finish();
     }
 }

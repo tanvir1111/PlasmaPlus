@@ -2,6 +2,7 @@ package com.ece.cov19.RecyclerViews;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
 
     TextView nameTextView, donateTextView, typeTextView, bloodTextView, locationTextView;
     ImageView patientImageView;
+    ProgressBar progressBar;
     RecyclerView requestDonorRecyclerView;
     PatientDataModel patientDataModel;
     ArrayList<PatientDataModel> patientDataModels;
@@ -42,6 +44,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
         bloodTextView = itemView.findViewById(R.id.seeking_help_child_bld_grp);
         locationTextView = itemView.findViewById(R.id.seeking_help_location);
         patientImageView = itemView.findViewById(R.id.seeking_help_child_profile_image);
+        progressBar = itemView.findViewById(R.id.seeking_help_child_progressBar);
         requestDonorRecyclerView = itemView.findViewById(R.id.seeking_help_child_recyclerview);
 
 
@@ -70,14 +73,14 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
             ArrayList<UserDataModel> userDataModels;
             userDataModels = new ArrayList<>();
 
-
+            progressBar.setVisibility(View.VISIBLE);
             RetroInterface retroInterface = RetroInstance.getRetro();
             Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.checkPatientRequest(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone());
             Toast.makeText(view.getContext(), patientDataModel.getName()+patientDataModel.getAge()+patientDataModel.getBloodGroup()+patientDataModel.getPhone(), Toast.LENGTH_SHORT).show();
             incomingResponse.enqueue(new Callback<ArrayList<UserDataModel>>() {
                 @Override
                 public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {
-
+                    progressBar.setVisibility(View.GONE);
                     userDataModels.clear();
 
                     if(response.isSuccessful()){

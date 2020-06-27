@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.PatientRequestsActivity;
 import com.ece.cov19.R;
 import com.ece.cov19.ViewDonorProfileActivity;
 
@@ -65,6 +66,7 @@ public class PatientRequestsBetaViewHolder extends RecyclerView.ViewHolder imple
                 intent.putExtra("age", userDataModel.getAge());
                 intent.putExtra("donorinfo", userDataModel.getDonor());
                 intent.putExtra("gender", userDataModel.getGender());
+                intent.putExtra("activity", "PatientRequestsActivity");
 
                 c.startActivity(intent);
 

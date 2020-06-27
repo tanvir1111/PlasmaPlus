@@ -1,5 +1,6 @@
 package com.ece.cov19;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -59,7 +60,9 @@ public class SearchDonorActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent goBackIntent = new Intent(SearchDonorActivity.this,DashboardActivity.class);
+                startActivity(goBackIntent);
+                finishAffinity();
             }
         });
 
@@ -96,6 +99,15 @@ public class SearchDonorActivity extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent goBackIntent = new Intent(SearchDonorActivity.this,DashboardActivity.class);
+        startActivity(goBackIntent);
+        finishAffinity();
     }
 
     private void donorSearch() {

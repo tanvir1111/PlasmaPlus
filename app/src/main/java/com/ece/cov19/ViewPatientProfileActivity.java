@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
     private TextView nameTextView, phoneTextView, bloodGroupTextView, hospitalTextView, ageTextView, needTextView,dateTextView;
     private ImageView genderImageView,backbtn;
+    private ProgressBar progressBar;
     Button donateToHelpButton, updateButton, deleteButton;
     String name, age, gender, bloodGroup, hospital, division, district, date, need, phone;
 
@@ -54,6 +56,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         deleteButton = findViewById(R.id.patient_profile_delete_button);
         donateToHelpButton = findViewById(R.id.patient_profile_donate_button);
         dateTextView=findViewById(R.id.patient_profile_date);
+        progressBar = findViewById(R.id.patient_profile_progressBar);
 
 
         Intent intent = getIntent();
@@ -99,7 +102,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = getIntent();
+
+                if(intent.getStringExtra("activity").equals("ExplorePatientsActivity")){
+                    Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,ExplorePatientsActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+                }
             }
         });
 
@@ -161,9 +170,23 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
 
+        Intent intent = getIntent();
 
+        if(intent.getStringExtra("activity").equals("PatientRequestsActivity")){
+            Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,PatientRequestsActivity.class);
+            startActivity(goBackIntent);
+            finish();
 
+        } else if(intent.getStringExtra("activity").equals("ExplorePatientsActivity")){
+            Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,ExplorePatientsActivity.class);
+            startActivity(goBackIntent);
+            finish();
+        }
+    }
 
     private void updateAlertDialog(final Intent intent) {
 
@@ -239,11 +262,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     builder.setMessage("Are you sure?");
                     builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
+                            progressBar.setVisibility(View.VISIBLE);
                             RetroInterface retroInterface = RetroInstance.getRetro();
                             Call<PatientDataModel> deletePatientRecord = retroInterface.deletePatientProfile(name, age, gender, bloodGroup, hospital, division, district, date, need, phone);
                             deletePatientRecord.enqueue(new Callback<PatientDataModel>() {
                                 @Override
                                 public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
+                                    progressBar.setVisibility(View.GONE);
                                     if(response.body().getServerMsg().equals("Success")){
                                         Toast.makeText(ViewPatientProfileActivity.this, "Patient Record Deleted", Toast.LENGTH_SHORT).show();
                                         startActivity(intent);
@@ -335,12 +360,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     }
 
     private void sendRequest() {
-
+        progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<RequestDataModel> requestFromDonor = retroInterface.sendRequest(loggedInUserPhone, findPatientName, findPatientAge, findPatientPhone, findPatientBloodGroup, "donor");
         requestFromDonor.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
+                progressBar.setVisibility(View.GONE);
                 if (response.body().getServerMsg().equals("Success")) {
                     Toast.makeText(ViewPatientProfileActivity.this, "Request Sent! Wait For patient's Response", Toast.LENGTH_SHORT).show();
 
@@ -361,12 +387,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     }
 
     private void requestsOperation(String operation) {
+        progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
         Toast.makeText(this, loggedInUserPhone+name +age +bloodGroup +phone, Toast.LENGTH_SHORT).show();
         Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup,phone,"patient",operation);
         lookforRequestFromDonor.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
+                progressBar.setVisibility(View.GONE);
                 if(response.isSuccessful()){
                     Toast.makeText(ViewPatientProfileActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
                     if(response.body().getServerMsg().equals("no requests")){

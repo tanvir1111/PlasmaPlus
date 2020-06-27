@@ -12,9 +12,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.DonorRequestsActivity;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
+import com.ece.cov19.SearchDonorActivity;
 import com.ece.cov19.ViewPatientProfileActivity;
 
 import java.util.ArrayList;
@@ -71,9 +73,11 @@ public class DonorRequestsViewHolder extends RecyclerView.ViewHolder implements 
                 intent.putExtra("date", patientDataModel.getDate());
                 intent.putExtra("need", patientDataModel.getNeed());
                 intent.putExtra("phone", patientDataModel.getPhone());
+                intent.putExtra("activity","DonorRequestsActivity");
 
                 c.startActivity(intent);
+                //((DonorRequestsActivity)c).finish();
 
-        }
+    }
 
 }

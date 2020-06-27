@@ -61,6 +61,7 @@ public class ExplorePatientsAlphaViewHolder extends RecyclerView.ViewHolder impl
         intent.putExtra("date",patientDataModel.getDate());
         intent.putExtra("district",patientDataModel.getDistrict());
         intent.putExtra("division",patientDataModel.getDivision());
+        intent.putExtra("activity","ExplorePatientsActivity");
 
         c.startActivity(intent);
     }

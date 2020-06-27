@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -83,7 +84,9 @@ public class FindDonorActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent goBackIntent = new Intent(FindDonorActivity.this,DashboardActivity.class);
+                startActivity(goBackIntent);
+                finishAffinity();
             }
         });
 
@@ -104,6 +107,15 @@ public class FindDonorActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent goBackIntent = new Intent(FindDonorActivity.this,DashboardActivity.class);
+        startActivity(goBackIntent);
+        finishAffinity();
     }
 
     private void findPatient(){

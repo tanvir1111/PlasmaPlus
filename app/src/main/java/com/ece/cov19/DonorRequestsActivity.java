@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +37,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private Button pendingbtn,acceptedBtn;
     private String status="pending",requestTypeText="Pending Requests";
     private TextView requestTypeTextView;
+    private ProgressBar progressBar;
 
 
     @Override
@@ -47,13 +49,16 @@ public class DonorRequestsActivity extends AppCompatActivity {
         acceptedBtn=findViewById(R.id.donor_requests_show_accepted_requests);
         pendingbtn=findViewById(R.id.donor_requests_show_pending_requests);
         requestTypeTextView=findViewById(R.id.donor_requests_type_textView);
+        progressBar = findViewById(R.id.donor_requests_progressBar);
 
         patientDataModels = new ArrayList<>();
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent goBackIntent = new Intent(DonorRequestsActivity.this,DashboardActivity.class);
+                startActivity(goBackIntent);
+                finishAffinity();
             }
         });
         getRequests();
@@ -90,14 +95,24 @@ public class DonorRequestsActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        Intent goBackIntent = new Intent(DonorRequestsActivity.this,DashboardActivity.class);
+        startActivity(goBackIntent);
+        finishAffinity();
+    }
+
     private void getRequests() {
+        progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
 
         Call <ArrayList<PatientDataModel>> incomingResponse = retroInterface.checkDonorRequest(loggedInUserPhone,status);
         incomingResponse.enqueue(new Callback<ArrayList<PatientDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
-
+                progressBar.setVisibility(View.GONE);
                 if(response.isSuccessful()) {
                     patientDataModels.clear();
                     ArrayList<PatientDataModel> initialModels = response.body();

@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,7 +36,10 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     private ImageView genderImageView;
     private Button askForHelpBtn, acceptBtn, declineBtn;
     private ImageView backbtn;
+    private ProgressBar progressBar;
     String name, age, bloodGroup, donorphone, donorInfo, address;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +59,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         declineBtn = findViewById(R.id.donor_profile_decline_button);
         backbtn = findViewById(R.id.donor_profile_back_button);
         sendRequestSuggestion = findViewById(R.id.donor_profile_send_request_suggestion);
+        progressBar = findViewById(R.id.donor_profile_progressBar);
 
 
         Intent intent = getIntent();
@@ -99,7 +104,28 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = getIntent();
+
+                if(intent.getStringExtra("activity").equals("DonorRequestsActivity")){
+                    Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,DonorRequestsActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+
+                } else if(intent.getStringExtra("activity").equals("FindDonorActivity")){
+                    Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,FindDonorActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+
+                } else if(intent.getStringExtra("activity").equals("SearchDonorActivity")){
+                    Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,SearchDonorActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+
+                } else if(intent.getStringExtra("activity").equals("PatientRequestsActivity")){
+                    Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,PatientRequestsActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+                }
             }
         });
 
@@ -132,6 +158,33 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = getIntent();
+
+        if(intent.getStringExtra("activity").equals("DonorRequestsActivity")){
+            Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,DonorRequestsActivity.class);
+            startActivity(goBackIntent);
+            finish();
+
+        } else if(intent.getStringExtra("activity").equals("FindDonorActivity")){
+            Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,FindDonorActivity.class);
+            startActivity(goBackIntent);
+            finish();
+
+        } else if(intent.getStringExtra("activity").equals("SearchDonorActivity")){
+            Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,SearchDonorActivity.class);
+            startActivity(goBackIntent);
+            finish();
+
+        } else if(intent.getStringExtra("activity").equals("PatientRequestsActivity")){
+            Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,PatientRequestsActivity.class);
+            startActivity(goBackIntent);
+            finish();
+        }
     }
 
     private void passWordAlertDialog() {
@@ -178,12 +231,13 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     }
 
     private void sendRequest() {
-
+        progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<RequestDataModel> requestFromPatient = retroInterface.sendRequest(donorphone, findPatientName, findPatientAge, findPatientPhone, findPatientBloodGroup, "patient");
         requestFromPatient.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
+                progressBar.setVisibility(View.GONE);
                 if (response.body().getServerMsg().equals("Success")) {
                     Toast.makeText(ViewDonorProfileActivity.this, "Request Sent! Wait For donor's Response", Toast.LENGTH_SHORT).show();
 
@@ -204,12 +258,14 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     }
 
     private void requestsOperation(String operation) {
+        progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
         Toast.makeText(this, donorphone + findPatientName + findPatientAge + findPatientBloodGroup + findPatientPhone, Toast.LENGTH_SHORT).show();
         Call<RequestDataModel> lookforRequestFromPatient = retroInterface.requestsOperation(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientPhone, "donor",operation);
         lookforRequestFromPatient.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
+                progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     Toast.makeText(ViewDonorProfileActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
                     if(response.body().getServerMsg().equals("no requests")) {
@@ -233,7 +289,6 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     }
                     else if (response.body().getServerMsg().equals("Accepted")) {
-//                        show accepted textView
                         askForHelpBtn.setVisibility(View.VISIBLE);
                         askForHelpBtn.setText("Accepted");
                         acceptBtn.setVisibility(View.GONE);
@@ -242,7 +297,6 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     }
                     else if (response.body().getServerMsg().equals("Declined")) {
-//                        show accepted textView
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText("Declined");
                             acceptBtn.setVisibility(View.GONE);
