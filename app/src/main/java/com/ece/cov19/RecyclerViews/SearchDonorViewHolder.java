@@ -3,18 +3,14 @@ package com.ece.cov19.RecyclerViews;
 import android.content.Context;
 import android.content.Intent;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.R;
-import com.ece.cov19.SearchDonorActivity;
 import com.ece.cov19.ViewDonorProfileActivity;
 
 import java.util.ArrayList;

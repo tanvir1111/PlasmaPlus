@@ -7,23 +7,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.DataModels.UserDataModel;
-import com.ece.cov19.DonorRequestsActivity;
 import com.ece.cov19.R;
-import com.ece.cov19.RetroServices.RetroInstance;
-import com.ece.cov19.RetroServices.RetroInterface;
-import com.ece.cov19.SearchDonorActivity;
 import com.ece.cov19.ViewPatientProfileActivity;
 
 import java.util.ArrayList;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class DonorRequestsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 

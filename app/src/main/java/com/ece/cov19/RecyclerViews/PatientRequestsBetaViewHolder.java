@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.UserDataModel;
-import com.ece.cov19.PatientRequestsActivity;
 import com.ece.cov19.R;
 import com.ece.cov19.ViewDonorProfileActivity;
 

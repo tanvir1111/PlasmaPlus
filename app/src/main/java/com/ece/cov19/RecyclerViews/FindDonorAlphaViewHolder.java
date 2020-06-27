@@ -1,7 +1,5 @@
 package com.ece.cov19.RecyclerViews;
 
-import android.content.Context;
-import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -13,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ece.cov19.DataModels.PatientDataModel;
 
 import com.ece.cov19.R;
-import com.ece.cov19.ViewPatientProfileActivity;
 
 
 import java.util.ArrayList;
