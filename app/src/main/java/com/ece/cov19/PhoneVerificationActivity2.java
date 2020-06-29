@@ -68,8 +68,8 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
 
         Intent intent = getIntent();
         verification = intent.getStringExtra("verification");
-        phonenumber = "+88"+intent.getStringExtra("phone");
-        sendVerificationCode(phonenumber);
+        phonenumber = intent.getStringExtra("phone");
+        sendVerificationCode("+88"+phonenumber);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
