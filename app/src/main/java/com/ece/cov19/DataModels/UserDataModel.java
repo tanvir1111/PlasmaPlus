@@ -33,7 +33,7 @@ public class UserDataModel {
     private String donor;
     @SerializedName("password")
     @Expose
-    private String password; 
+    private String password;
     @SerializedName("serverMsg")
     @Expose
     private String serverMsg;
@@ -131,6 +131,7 @@ public class UserDataModel {
     public void setPassword(String password) {
         this.password = password;
     }
+
     public String getServerMsg() {
         return serverMsg;
     }

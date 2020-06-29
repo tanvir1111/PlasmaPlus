@@ -47,6 +47,7 @@ public class DonorRequestsViewHolder extends RecyclerView.ViewHolder implements 
     public void onClick(View view) {
 
                 Context c = view.getContext();
+                pos = getAdapterPosition();
                 patientDataModel = patientDataModels.get(pos);
 
 

@@ -125,6 +125,10 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,PatientRequestsActivity.class);
                     startActivity(goBackIntent);
                     finish();
+                } else if(intent.getStringExtra("activity").equals("DonorResponseActivity")) {
+                    Intent goBackIntent = new Intent(ViewDonorProfileActivity.this, DonorResponseActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
                 }
             }
         });
@@ -182,6 +186,10 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
         } else if(intent.getStringExtra("activity").equals("PatientRequestsActivity")){
             Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,PatientRequestsActivity.class);
+            startActivity(goBackIntent);
+            finish();
+        } else if(intent.getStringExtra("activity").equals("DonorResponseActivity")) {
+            Intent goBackIntent = new Intent(ViewDonorProfileActivity.this, DonorResponseActivity.class);
             startActivity(goBackIntent);
             finish();
         }
@@ -260,7 +268,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     private void requestsOperation(String operation) {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Toast.makeText(this, donorphone + findPatientName + findPatientAge + findPatientBloodGroup + findPatientPhone, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this, donorphone + findPatientName + findPatientAge + findPatientBloodGroup + findPatientPhone, Toast.LENGTH_SHORT).show();
         Call<RequestDataModel> lookforRequestFromPatient = retroInterface.requestsOperation(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientPhone, "donor",operation);
         lookforRequestFromPatient.enqueue(new Callback<RequestDataModel>() {
             @Override
@@ -281,11 +289,17 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         }
                     }
                     else if (response.body().getServerMsg().equals("Pending")) {
-                        askForHelpBtn.setVisibility(View.GONE);
-                        acceptBtn.setVisibility(View.VISIBLE);
-                        acceptBtn.setText("Accept Request");
-                        declineBtn.setVisibility(View.VISIBLE);
-                        declineBtn.setText("Decline Request");
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                            askForHelpBtn.setVisibility(View.VISIBLE);
+                            askForHelpBtn.setText("Pending");
+                        }
+                        else {
+                            askForHelpBtn.setVisibility(View.GONE);
+                            acceptBtn.setVisibility(View.VISIBLE);
+                            acceptBtn.setText("Accept Request");
+                            declineBtn.setVisibility(View.VISIBLE);
+                            declineBtn.setText("Decline Request");
+                        }
 
                     }
                     else if (response.body().getServerMsg().equals("Accepted")) {

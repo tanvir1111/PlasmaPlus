@@ -28,6 +28,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class SearchDonorActivity extends AppCompatActivity {
@@ -47,6 +51,12 @@ public class SearchDonorActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        findPatientName="";
+        findPatientAge="";
+        findPatientPhone="";
+        findPatientBloodGroup="any";
+
         setContentView(R.layout.activity_search_donor);
         recyclerView = findViewById(R.id.search_donor_recyclerview);
         bloodgrpSpinner = findViewById(R.id.search_donor_bld_grp);

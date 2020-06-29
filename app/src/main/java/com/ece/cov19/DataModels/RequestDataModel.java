@@ -18,6 +18,10 @@ public class RequestDataModel {
     @Expose
     private String patientPhone;
 
+    @SerializedName("status")
+    @Expose
+    private String status;
+
     @SerializedName("serverMsg")
     @Expose
     private String serverMsg;
@@ -41,6 +45,11 @@ public class RequestDataModel {
     public String getPatientPhone() {
         return patientPhone;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
 
     public RequestDataModel(String donorPhone, String patientName, String patientAge, String patientPhone) {
         this.donorPhone = donorPhone;

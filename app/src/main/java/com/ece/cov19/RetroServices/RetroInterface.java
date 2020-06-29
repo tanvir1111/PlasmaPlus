@@ -99,6 +99,15 @@ public interface RetroInterface {
                                                  @Field("bloodGroup") String bloodgroup, @Field("phone") String phone);
 
     @FormUrlEncoded
+    @POST("checkDonorResponse.php")
+    Call<ArrayList<UserDataModel>> checkDonorResponse(@Field("name") String name,@Field("age") String age,
+                                                       @Field("bloodGroup") String bloodgroup, @Field("phone") String phone);
+
+    @FormUrlEncoded
+    @POST("checkDonorApproaches.php")
+    Call<ArrayList<PatientDataModel>> checkRequestByDonor(@Field("donorPhone") String loggedInUserPhone);
+
+    @FormUrlEncoded
     @POST("getPatientRequest.php")
     Call<ArrayList<UserDataModel>> getPatientRequest(@Field("name") String name,@Field("age") String age,
                                                        @Field("bloodGroup") String bloodgroup, @Field("phone") String phone);

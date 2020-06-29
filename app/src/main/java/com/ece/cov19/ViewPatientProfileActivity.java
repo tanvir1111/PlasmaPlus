@@ -37,7 +37,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     private ImageView genderImageView,backbtn;
     private ProgressBar progressBar;
     Button donateToHelpButton, updateButton, deleteButton;
-    String name, age, gender, bloodGroup, hospital, division, district, date, need, phone;
+    String name, age, gender, bloodGroup, hospital, division, district, date, need, phone,requestedBy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +73,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         need = intent.getStringExtra("need");
         phone = intent.getStringExtra("phone");
 
+        if(intent.hasExtra("activity")){
+            if(intent.getStringExtra("activity").equals("PatientsResponseActivity")){
+                requestedBy="donor";
+            }
+            else {
+                requestedBy="patient";
+            }
+        }
         nameTextView.setText(name);
         if(phone.equals(loggedInUserPhone)){
             phoneTextView.setText(phone);
@@ -390,7 +398,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
         Toast.makeText(this, loggedInUserPhone+name +age +bloodGroup +phone, Toast.LENGTH_SHORT).show();
-        Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup,phone,"patient",operation);
+        Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup,phone,requestedBy,operation);
         lookforRequestFromDonor.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {

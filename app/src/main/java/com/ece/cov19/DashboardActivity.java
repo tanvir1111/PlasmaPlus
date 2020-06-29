@@ -23,9 +23,9 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener{
-    private Button profileBtn,seeRequestBtn,seePatientRequestBtn, findDonorBtn, allDonorBtn, seePatientsbtn;
+    private Button profileBtn,seeRequestBtn,seePatientRequestBtn, findDonorBtn, allDonorBtn, seePatientsbtn, seePatientResponseBtn, seeDonorResponseBtn;
     private String[] nameSplit;
-    private TextView numberOfPatients,numberOfDonors,numberOfRequests;
+    private TextView numberOfPatients,numberOfDonors,numberOfRequests,numberofPatientRequests,numberofDonorRequests;
     private ProgressBar progressBar;
     private ConstraintLayout loadingView;
     private int backCounter;
@@ -49,6 +49,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         seePatientRequestBtn = findViewById(R.id.dashboard_check_requests_btn);
         findDonorBtn=findViewById(R.id.dashboard_find_donor_btn);
         allDonorBtn=findViewById(R.id.dashboard_all_donor_btn);
+        numberofPatientRequests=findViewById(R.id.dashboard_number_of_responses);
+        seePatientResponseBtn=findViewById(R.id.dashboard_view_patient_response_btn);
+        seeDonorResponseBtn=findViewById(R.id.dashboard_view_donor_response_btn);
 
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<DashBoardNumberModel> dashBoardNumbers = retroInterface.getDashBoardNumbers(loggedInUserPhone);
@@ -84,6 +87,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         allDonorBtn.setOnClickListener(this);
         seePatientRequestBtn.setOnClickListener(this);
         seePatientsbtn.setOnClickListener(this);
+        seePatientResponseBtn.setOnClickListener(this);
+        seeDonorResponseBtn.setOnClickListener(this);
 
     }
 
@@ -126,6 +131,14 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             case R.id.dashboard_view_patients_btn:
                 Intent allPatientsIntent=new Intent(DashboardActivity.this, ExplorePatientsActivity.class);
                 startActivity(allPatientsIntent);
+                break;
+            case R.id.dashboard_view_patient_response_btn:
+                Intent viewPatientResIntent=new Intent(DashboardActivity.this, PatientResponseActivity.class);
+                startActivity(viewPatientResIntent);
+                break;
+            case R.id.dashboard_view_donor_response_btn:
+                Intent viewDonorResIntent=new Intent(DashboardActivity.this, DonorResponseActivity.class);
+                startActivity(viewDonorResIntent);
                 break;
         }
     }
