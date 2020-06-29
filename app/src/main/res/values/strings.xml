@@ -1,13 +1,19 @@
 <resources>
     <string name="app_name">Cov19</string>
     <string name="login_request">Please login to your account.</string>
-    <string name="lebel_phone_number">Phone Number</string>
-    <string name="lebel_password">Password</string>
+    <string name="label_phone_number">Phone Number</string>
+    <string name="label_password">Password</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="sign_in">sign in</string>
     <string name="no_account">Don’t have an account?</string>
     <string name="sign_up">sign up</string>
     <string name="label_name">Name</string>
+    <string name="label_verify_otp">Verify OTP</string>
+    <string name="label_current_pass">Current Password</string>
+    <string name="label_new_pass">New Password</string>
+    <string name="label_confirm_pass">Confirm Password</string>
+    <string name="label_finish">Finish</string>
+    <string name="label_reset">Reset</string>
 
     <string-array name="division">
         <item>Dhaka</item>

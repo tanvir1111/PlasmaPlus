@@ -25,6 +25,10 @@ public interface RetroInterface {
     Call<UserDataModel> loginRetroMethod(@Field("phone") String phone, @Field("password") String password);
 
     @FormUrlEncoded
+    @POST("checkUser.php")
+    Call<UserDataModel> checkUser(@Field("phone") String phone);
+
+    @FormUrlEncoded
     @POST("updateUserInfo.php")
     Call<UserDataModel> updateUser(@Field("phone") String phone, @Field("name") String name, @Field("division") String division, @Field("district") String district, @Field("thana") String thana, @Field("age") String age, @Field("donor") String donorInfo);
 

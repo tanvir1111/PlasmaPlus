@@ -290,8 +290,7 @@
                 android:id="@+id/dashboard_view_patients_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="68dp"
-                android:layout_marginTop="14dp"
+                android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_white"
                 android:elevation="10dp"
                 android:padding="15dp"
@@ -299,14 +298,15 @@
 
                 android:text="All Patients"
                 android:textColor="@color/colorAccent"
-                app:layout_constraintStart_toEndOf="@+id/dashboard_patients_textview"
+                app:layout_constraintEnd_toEndOf="@+id/dashboard_check_requests_btn"
+                app:layout_constraintStart_toStartOf="@+id/dashboard_check_requests_btn"
                 app:layout_constraintTop_toBottomOf="@+id/dashboard_check_requests_btn" />
 
             <Button
                 android:id="@+id/dashboard_check_requests_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="88dp"
+                android:layout_marginStart="80dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_white"
                 android:elevation="10dp"

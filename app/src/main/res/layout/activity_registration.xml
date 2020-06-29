@@ -400,7 +400,7 @@
             android:layout_marginTop="96dp"
             android:fontFamily="@font/montserrat_bold"
             android:textColor="@color/textColorDark"
-            android:text="@string/lebel_password"
+            android:text="@string/label_password"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_donor_checkbox"
             app:layout_constraintHorizontal_bias="0.0"

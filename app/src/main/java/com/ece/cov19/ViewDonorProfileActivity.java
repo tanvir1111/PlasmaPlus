@@ -239,7 +239,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(ViewDonorProfileActivity.this, "Request Sent! Wait For donor's Response", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewDonorProfileActivity.this, "Request Sent! Wait For Donor's Response", Toast.LENGTH_SHORT).show();
 
 
                 } else {

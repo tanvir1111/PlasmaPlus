@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
@@ -34,11 +35,14 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText phoneNumberEditText, passwordEditText;
+    private TextView forgotPasswordTextView;
     private ImageView showPasswordIcon;
     private Button signUpButton, signInbtn;
     public static final String LOGIN_SHARED_PREFS = "login_pref";
     public static final String LOGIN_USER_PHONE = "login_phone";
     public static final String LOGIN_USER_PASS = "login_pass";
+
+    private int backCounter=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +53,7 @@ public class LoginActivity extends AppCompatActivity {
         showPasswordIcon = findViewById(R.id.show_password_icon);
         signUpButton = findViewById(R.id.login_sign_up_button);
         signInbtn = findViewById(R.id.login_sign_in_button);
+        forgotPasswordTextView = findViewById(R.id.login_forgot_password_textview);
 
 
         signInbtn.setOnClickListener(new View.OnClickListener() {
@@ -63,7 +68,8 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent phonever = new Intent(LoginActivity.this, PhoneVerificationActivity.class);
+                Intent phonever = new Intent(LoginActivity.this, PhoneVerificationActivity1.class);
+                phonever.putExtra("verification","signup");
                 startActivity(phonever);
             }
         });
@@ -82,9 +88,29 @@ public class LoginActivity extends AppCompatActivity {
 
         });
 
+        forgotPasswordTextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent forgotPassIntent = new Intent(LoginActivity.this,PhoneVerificationActivity1.class);
+                forgotPassIntent.putExtra("verification","forgotpass");
+                startActivity(forgotPassIntent);
+            }
+        });
+
 
     }
 
+    @Override
+    public void onBackPressed() {
+
+        backCounter++;
+        if(backCounter == 1) {
+            Toast.makeText(LoginActivity.this,"Press back one more time to exit", Toast.LENGTH_SHORT).show();
+        }
+        if(backCounter == 2) {
+            finish();
+        }
+    }
 
     private void verifyData() {
         String phone, password, emptyfield = "all ok";
@@ -97,17 +123,20 @@ public class LoginActivity extends AppCompatActivity {
 //        checking empty Fields
 
         if (phone.isEmpty()) {
-            emptyfield = "phone";
-        } else if (password.isEmpty()) {
+            phoneNumberEditText.setError("Phone Number Required");
+            phoneNumberEditText.requestFocus();
+            emptyfield = "phone number";
+        }
+
+        if (password.isEmpty()) {
+            passwordEditText.setError("Password Required");
+            passwordEditText.requestFocus();
             emptyfield = "password";
         }
 
         if (emptyfield.equals("all ok")) {
             loginUser(phone, password);
-        } else {
-            Toast.makeText(this, "Enter " + emptyfield, Toast.LENGTH_SHORT).show();
         }
-
 
     }
 

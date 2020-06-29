@@ -28,6 +28,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private TextView numberOfPatients,numberOfDonors,numberOfRequests;
     private ProgressBar progressBar;
     private ConstraintLayout loadingView;
+    private int backCounter;
 
 
     @Override
@@ -85,6 +86,19 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         seePatientsbtn.setOnClickListener(this);
 
     }
+
+    @Override
+    public void onBackPressed() {
+
+        backCounter++;
+        if(backCounter == 1) {
+            Toast.makeText(DashboardActivity.this,"Press back one more time to exit", Toast.LENGTH_SHORT).show();
+        }
+        if(backCounter == 2) {
+            finish();
+        }
+    }
+
 
     @Override
     public void onClick(View view) {
