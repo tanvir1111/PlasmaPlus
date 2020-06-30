@@ -155,7 +155,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
 
                     }
                     myPatientsRecyclerView.setAdapter(explorePatientsAlphaAdapter);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
                     myPatientsRecyclerView.setLayoutManager(linearLayoutManager);
                 }
 
