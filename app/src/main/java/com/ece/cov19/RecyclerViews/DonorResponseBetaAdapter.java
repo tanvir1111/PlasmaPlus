@@ -1,6 +1,7 @@
 package com.ece.cov19.RecyclerViews;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,16 +50,22 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
         if(userDataModel.getServerMsg().equals("Pending")) {
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText("Pending");
+            holder.acceptButton.setBackgroundColor(Color.parseColor("#FF9800"));
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
         else if(userDataModel.getServerMsg().equals("Accepted")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText("Accepted");
+            holder.acceptButton.setBackgroundColor(Color.parseColor("#4CAF50"));
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
         else if(userDataModel.getServerMsg().equals("Declined")){
             holder.acceptButton.setVisibility(View.VISIBLE);
-            holder.acceptButton.setText("Accepted");
+            holder.acceptButton.setText("Declined");
+            holder.acceptButton.setBackgroundColor(Color.parseColor("#E91E63"));
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
 

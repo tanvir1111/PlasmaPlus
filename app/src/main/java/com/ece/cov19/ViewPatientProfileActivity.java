@@ -2,6 +2,7 @@ package com.ece.cov19;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -73,14 +74,6 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         need = intent.getStringExtra("need");
         phone = intent.getStringExtra("phone");
 
-        if(intent.hasExtra("activity")){
-            if(intent.getStringExtra("activity").equals("PatientsResponseActivity")){
-                requestedBy="donor";
-            }
-            else {
-                requestedBy="patient";
-            }
-        }
         nameTextView.setText(name);
         if(phone.equals(loggedInUserPhone)){
             phoneTextView.setText(phone);
@@ -112,8 +105,17 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = getIntent();
 
-                if(intent.getStringExtra("activity").equals("ExplorePatientsActivity")){
+                if(intent.getStringExtra("activity").equals("PatientRequestsActivity")){
+                    Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,PatientRequestsActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+
+                } else if(intent.getStringExtra("activity").equals("ExplorePatientsActivity")){
                     Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,ExplorePatientsActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+                } else if(intent.getStringExtra("activity").equals("PatientResponseActivity")) {
+                    Intent goBackIntent = new Intent(ViewPatientProfileActivity.this, PatientResponseActivity.class);
                     startActivity(goBackIntent);
                     finish();
                 }
@@ -151,8 +153,11 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 else if(updateButton.getText().toString().toLowerCase().equals("accept request")){
                     Toast.makeText(ViewPatientProfileActivity.this, "accept ops", Toast.LENGTH_SHORT).show();
                     requestsOperation("accept");
-
-
+                }
+                else if(updateButton.getText().toString().toLowerCase().equals("call patient")){
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:"+phone));
+                    startActivity(intent);
                 }
             }
         });
@@ -167,7 +172,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 else if(deleteButton.getText().toString().toLowerCase().equals("decline request")){
                     Toast.makeText(ViewPatientProfileActivity.this, "decline ops", Toast.LENGTH_SHORT).show();
                     requestsOperation("decline");
-
+                }
+                else if(deleteButton.getText().toString().toLowerCase().equals("send sms")){
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse("smsto:"));
+                    intent.putExtra("address", phone);
+                    intent.putExtra("sms_body","Hello! I would like to contact with you.");
+                    startActivity(intent);
                 }
             }
 
@@ -191,6 +203,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         } else if(intent.getStringExtra("activity").equals("ExplorePatientsActivity")){
             Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,ExplorePatientsActivity.class);
+            startActivity(goBackIntent);
+            finish();
+        } else if(intent.getStringExtra("activity").equals("PatientResponseActivity")) {
+            Intent goBackIntent = new Intent(ViewPatientProfileActivity.this, PatientResponseActivity.class);
             startActivity(goBackIntent);
             finish();
         }
@@ -376,7 +392,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(ViewPatientProfileActivity.this, "Request Sent! Wait For patient's Response", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewPatientProfileActivity.this, "Request Sent! Wait For Patient's Response", Toast.LENGTH_SHORT).show();
 
 
                 } else {
@@ -397,14 +413,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     private void requestsOperation(String operation) {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Toast.makeText(this, loggedInUserPhone+name +age +bloodGroup +phone, Toast.LENGTH_SHORT).show();
-        Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup,phone,requestedBy,operation);
+        //Toast.makeText(this, loggedInUserPhone+name +age +bloodGroup +phone, Toast.LENGTH_SHORT).show();
+        Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup,phone,"patient",operation);
         lookforRequestFromDonor.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
                 if(response.isSuccessful()){
-                    Toast.makeText(ViewPatientProfileActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
                     if(response.body().getServerMsg().equals("no requests")){
                         if(phone.equals(loggedInUserPhone)){
                             donateToHelpButton.setVisibility(View.GONE);
@@ -420,19 +435,28 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         }
                     }
                     else if(response.body().getServerMsg().equals("Pending")){
-                        donateToHelpButton.setVisibility(View.GONE);
-                        updateButton.setVisibility(View.VISIBLE);
-                        updateButton.setText("Accept Request");
-                        deleteButton.setVisibility(View.VISIBLE);
-                        deleteButton.setText("Decline Request");
+                        if(getIntent().getStringExtra("activity").equals("PatientResponseActivity")){
+
+                            donateToHelpButton.setVisibility(View.VISIBLE);
+                            donateToHelpButton.setText("Pending");
+                            updateButton.setVisibility(View.GONE);
+                            deleteButton.setVisibility(View.GONE);
+                        } else {
+                            donateToHelpButton.setVisibility(View.GONE);
+                            updateButton.setVisibility(View.VISIBLE);
+                            updateButton.setText("Accept Request");
+                            deleteButton.setVisibility(View.VISIBLE);
+                            deleteButton.setText("Decline Request");
+                        }
 
 
                     }
                     else if(response.body().getServerMsg().equals("Accepted")){
-                        donateToHelpButton.setVisibility(View.VISIBLE);
-                        donateToHelpButton.setText("Accepted");
-                        updateButton.setVisibility(View.GONE);
-                        deleteButton.setVisibility(View.GONE);
+                        donateToHelpButton.setVisibility(View.GONE);
+                        updateButton.setVisibility(View.VISIBLE);
+                        updateButton.setText("Call Patient");
+                        deleteButton.setVisibility(View.VISIBLE);
+                        deleteButton.setText("Send SMS");
                         phoneTextView.setText(phone);
 
                     }

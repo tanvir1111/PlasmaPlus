@@ -52,8 +52,6 @@ public interface RetroInterface {
     @POST("searchDonor.php")
     Call<ArrayList<UserDataModel>> findDonor(@Field("bloodGroup") String bloodgroup,@Field("district") String district,@Field("phone") String phone);
 
-    @FormUrlEncoded
-    @POST("checkDonorRequest.php") Call<ArrayList<PatientDataModel>> checkDonorRequest(@Field("phone") String userPhone,@Field("status") String status);
 
     @FormUrlEncoded
     @POST("searchPatients.php")
@@ -92,6 +90,8 @@ public interface RetroInterface {
                                         @Field("patientAge") String patientAge, @Field("patientPhone") String patientPhone,
                                         @Field("patientBloodGrp") String patientBloodGrp,@Field("requestedBy") String requester);
 
+    @FormUrlEncoded
+    @POST("checkDonorRequest.php") Call<ArrayList<PatientDataModel>> checkDonorRequest(@Field("phone") String userPhone,@Field("status") String status);
 
     @FormUrlEncoded
     @POST("checkPatientRequest.php")
@@ -101,7 +101,11 @@ public interface RetroInterface {
     @FormUrlEncoded
     @POST("checkDonorResponse.php")
     Call<ArrayList<UserDataModel>> checkDonorResponse(@Field("name") String name,@Field("age") String age,
-                                                       @Field("bloodGroup") String bloodgroup, @Field("phone") String phone);
+                                                      @Field("bloodGroup") String bloodgroup, @Field("phone") String phone);
+    @FormUrlEncoded
+    @POST("checkPatientResponse.php") Call<ArrayList<PatientDataModel>> checkPatientResponse(@Field("phone") String userPhone);
+
+
 
     @FormUrlEncoded
     @POST("checkDonorApproaches.php")

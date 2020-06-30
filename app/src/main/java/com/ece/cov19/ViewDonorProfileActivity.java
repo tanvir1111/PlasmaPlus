@@ -2,6 +2,7 @@ package com.ece.cov19;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -149,7 +150,14 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requestsOperation("accept");
+                if(acceptBtn.getText().toString().toLowerCase().equals("accept request")) {
+                    requestsOperation("accept");
+                }
+                else if(acceptBtn.getText().toString().toLowerCase().equals("call donor")){
+                    Intent intent = new Intent(Intent.ACTION_DIAL);
+                    intent.setData(Uri.parse("tel:"+donorphone));
+                    startActivity(intent);
+                }
 
             }
         });
@@ -157,7 +165,17 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         declineBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requestsOperation("decline");
+                if(declineBtn.getText().toString().toLowerCase().equals("decline request")) {
+                    requestsOperation("decline");
+                }
+                else if(declineBtn.getText().toString().toLowerCase().equals("send sms")){
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_SENDTO);
+                    intent.setData(Uri.parse("smsto:"));
+                    intent.putExtra("address", donorphone);
+                    intent.putExtra("sms_body","Hello! I would like to contact with you.");
+                    startActivity(intent);
+                }
 
             }
         });
@@ -275,7 +293,6 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
-                    Toast.makeText(ViewDonorProfileActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
                     if(response.body().getServerMsg().equals("no requests")) {
                         if(donorphone.equals(loggedInUserPhone)){
                             askForHelpBtn.setVisibility(View.GONE);
@@ -303,10 +320,11 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     }
                     else if (response.body().getServerMsg().equals("Accepted")) {
-                        askForHelpBtn.setVisibility(View.VISIBLE);
-                        askForHelpBtn.setText("Accepted");
-                        acceptBtn.setVisibility(View.GONE);
-                        declineBtn.setVisibility(View.GONE);
+                        askForHelpBtn.setVisibility(View.GONE);
+                        acceptBtn.setVisibility(View.VISIBLE);
+                        acceptBtn.setText("Call Donor");
+                        declineBtn.setVisibility(View.VISIBLE);
+                        declineBtn.setText("Send SMS");
                         phoneTextView.setText(donorphone);
 
                     }

@@ -131,8 +131,8 @@
                 android:id="@+id/donor_profile_hospital"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxWidth="172dp"
                 android:fontFamily="@font/montserrat"
+                android:maxWidth="172dp"
                 android:text=" Thana,District"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
@@ -235,31 +235,12 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <Button
-        android:id="@+id/donor_profile_ask_for_help_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="136dp"
-        android:background="@drawable/button_style_colored"
-        android:elevation="10dp"
-        android:fontFamily="@font/raleway_bold"
-        android:gravity="center"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:text="Ask for help"
-        android:textAlignment="center"
-        android:textColor="#ffffff"
-        android:textSize="10sp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/cardView"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/cardView" />
-
-    <Button
         android:id="@+id/donor_profile_accept_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="136dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
         android:background="@drawable/button_style_green"
         android:elevation="10dp"
         android:fontFamily="@font/raleway_bold"
@@ -271,14 +252,17 @@
         android:textColor="#ffffff"
         android:textSize="10sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/cardView" />
+        app:layout_constraintEnd_toStartOf="@+id/donor_profile_decline_button"
+        app:layout_constraintStart_toStartOf="@+id/cardView"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <Button
         android:id="@+id/donor_profile_decline_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="136dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="52dp"
         android:background="@drawable/button_style_colored"
         android:elevation="10dp"
         android:fontFamily="@font/raleway_bold"
@@ -290,8 +274,30 @@
         android:textColor="#ffffff"
         android:textSize="10sp"
         android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/cardView" />
+        app:layout_constraintEnd_toEndOf="@+id/cardView"
+        app:layout_constraintStart_toEndOf="@+id/donor_profile_accept_button"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <Button
+        android:id="@+id/donor_profile_ask_for_help_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/button_style_blue"
+        android:elevation="10dp"
+        android:fontFamily="@font/raleway_bold"
+        android:gravity="center"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="Ask For Help"
+        android:textAlignment="center"
+        android:textColor="#ffffff"
+        android:textSize="10sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <ProgressBar
         android:id="@+id/donor_profile_progressBar"
