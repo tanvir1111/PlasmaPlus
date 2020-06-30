@@ -32,6 +32,7 @@ import retrofit2.Response;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientNeed;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
@@ -216,8 +217,16 @@ public class FindDonorActivity extends AppCompatActivity {
                     ArrayList<UserDataModel> initialModels = response.body();
                     donorTextView.setText(availableDonors+ " (" +initialModels.size()+ ")");
                     for(UserDataModel initialDataModel : initialModels){
+                        if(findPatientNeed.equals("Plasma")){
+                            if(initialDataModel.getDonor().equals("Plasma")){
+                                userDataModels.add(initialDataModel);
+                            }
+                        }
+                        else {
 
-                        userDataModels.add(initialDataModel);
+                            userDataModels.add(initialDataModel);
+                        }
+
 
                     }
 

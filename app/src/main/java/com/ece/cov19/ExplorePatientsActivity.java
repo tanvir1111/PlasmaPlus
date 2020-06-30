@@ -32,6 +32,7 @@ import retrofit2.Response;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientNeed;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
@@ -55,6 +56,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         findPatientAge="";
         findPatientPhone="";
         findPatientBloodGroup="any";
+        findPatientNeed="";
 
         myPatientsRecyclerView = findViewById(R.id.my_patients_recyclerview);
         myPatientsProgressBar = findViewById(R.id.my_patients_progress_bar);
