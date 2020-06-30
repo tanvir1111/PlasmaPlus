@@ -279,7 +279,6 @@
                         android:id="@+id/dashboard_patients_textview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
                         android:layout_marginBottom="32dp"
                         android:fontFamily="@font/montserrat_bold"
                         android:text="Patients"
@@ -314,7 +313,7 @@
                         android:layout_width="145dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="24dp"
                         android:background="@drawable/button_style_colored"
 
 
@@ -333,7 +332,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/donor_response_cardview"
+                android:id="@+id/patient_response_cardview"
                 android:layout_width="170dp"
                 android:layout_height="256dp"
                 android:layout_marginTop="24dp"
@@ -346,6 +345,89 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <TextView
+                        android:id="@+id/dashboard_number_of_patient_responses"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="5"
+                        android:textColor="@color/colorAccent"
+
+                        android:textSize="30sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.503"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.081" />
+
+                    <TextView
+                        android:id="@+id/dashboard_patient_response_textview"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginBottom="160dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="Responses"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="18sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="@+id/dashboard_number_of_patient_responses"
+                        app:layout_constraintStart_toStartOf="@+id/dashboard_number_of_patient_responses"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboard_number_of_patient_responses" />
+
+                    <Button
+                        android:id="@+id/dashboard_view_patient_response_btn"
+                        android:layout_width="145dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:background="@drawable/button_style_colored"
+                        android:elevation="10dp"
+
+
+                        android:padding="10dp"
+                        android:text="Patient Responses"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/dashboard_patient_response_textview"
+                        app:layout_constraintStart_toStartOf="@+id/dashboard_patient_response_textview"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboard_patient_response_textview" />
+
+                    <Button
+                        android:id="@+id/dashboard_add_patient_btn"
+                        android:layout_width="145dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/button_style_colored"
+                        android:elevation="10dp"
+
+
+                        android:padding="10dp"
+                        android:text="Add Patient"
+                        android:textColor="@android:color/white"
+                        app:layout_constraintEnd_toEndOf="@+id/dashboard_view_patient_response_btn"
+                        app:layout_constraintHorizontal_bias="0.489"
+                        app:layout_constraintStart_toStartOf="@+id/dashboard_view_patient_response_btn"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboard_view_patient_response_btn" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/donor_response_cardview"
+                android:layout_width="170dp"
+                android:layout_height="256dp"
+                android:layout_marginTop="96dp"
+                android:layout_marginEnd="32dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="30dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -363,77 +445,10 @@
                         app:layout_constraintHorizontal_bias="0.506"
                         app:layout_constraintStart_toStartOf="@+id/dashboard_number_of_responses"
                         app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.339" />
-
-                    <TextView
-                        android:id="@+id/dashboard_number_of_responses"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/montserrat_bold"
-
-                        android:text="5"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="30sp"
-                        app:layout_constraintBottom_toTopOf="@+id/dashboard_donor_response_textview"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.503"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:layout_constraintVertical_bias="0.695" />
-
-                    <Button
-                        android:id="@+id/dashboard_view_donor_response_btn"
-                        android:layout_width="145dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="24dp"
-                        android:background="@drawable/button_style_colored"
-                        android:elevation="10dp"
-
-
-                        android:padding="10dp"
-                        android:text="Donor Responses"
-                        android:textColor="@android:color/white"
-                        app:layout_constraintEnd_toEndOf="@+id/dashboard_donor_response_textview"
-                        app:layout_constraintStart_toStartOf="@+id/dashboard_donor_response_textview"
-                        app:layout_constraintTop_toBottomOf="@+id/dashboard_donor_response_textview" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
-                android:id="@+id/patient_response_cardview"
-                android:layout_width="170dp"
-                android:layout_height="256dp"
-                android:layout_marginTop="96dp"
-                android:layout_marginEnd="32dp"
-                android:elevation="10dp"
-                app:cardCornerRadius="30dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <TextView
-                        android:id="@+id/dashboard_patient_response_textview"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-
-                        android:fontFamily="@font/montserrat_bold"
-                        android:text="Responses"
-                        android:textColor="@color/colorAccent"
-                        android:textSize="18sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="@+id/dashboard_number_of_patient_responses"
-                        app:layout_constraintHorizontal_bias="0.506"
-                        app:layout_constraintStart_toStartOf="@+id/dashboard_number_of_patient_responses"
-                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintVertical_bias="0.502" />
 
                     <TextView
-                        android:id="@+id/dashboard_number_of_patient_responses"
+                        android:id="@+id/dashboard_number_of_responses"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/montserrat_bold"
@@ -449,7 +464,7 @@
                         app:layout_constraintVertical_bias="0.23" />
 
                     <Button
-                        android:id="@+id/dashboard_view_patient_response_btn"
+                        android:id="@+id/dashboard_view_donor_response_btn"
                         android:layout_width="145dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
@@ -458,12 +473,12 @@
 
                         android:elevation="10dp"
                         android:padding="10dp"
-                        android:text="Patient Responses"
+                        android:text="Donor Responses"
                         android:textColor="@android:color/white"
-                        app:layout_constraintEnd_toEndOf="@+id/dashboard_patient_response_textview"
+                        app:layout_constraintEnd_toEndOf="@+id/dashboard_donor_response_textview"
                         app:layout_constraintHorizontal_bias="0.489"
-                        app:layout_constraintStart_toStartOf="@+id/dashboard_patient_response_textview"
-                        app:layout_constraintTop_toBottomOf="@+id/dashboard_patient_response_textview" />
+                        app:layout_constraintStart_toStartOf="@+id/dashboard_donor_response_textview"
+                        app:layout_constraintTop_toBottomOf="@+id/dashboard_donor_response_textview" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>

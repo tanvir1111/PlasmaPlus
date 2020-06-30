@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PatientResponseActivity">
+
     <TextView
         android:id="@+id/patients_response_header"
         android:layout_width="wrap_content"
@@ -12,7 +13,7 @@
 
         android:layout_marginStart="-16dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Patients' Responses"
+        android:text="Patient Responses"
         android:textColor="@color/textColorDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/patients_response_back_button"
@@ -27,7 +28,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="48dp"
         android:fontFamily="@font/raleway_bold"
-        android:text="Current Requests"
+        android:text="Responses from the Patients approached"
         app:layout_constraintStart_toStartOf="@+id/patients_response_constraintLayout_recycler"
         app:layout_constraintTop_toBottomOf="@+id/patients_response_header" />
 

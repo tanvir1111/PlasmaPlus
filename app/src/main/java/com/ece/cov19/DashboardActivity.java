@@ -23,7 +23,7 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener{
-    private Button profileBtn,seeRequestBtn,seePatientRequestBtn, findDonorBtn, allDonorBtn, seePatientsbtn, seePatientResponseBtn, seeDonorResponseBtn;
+    private Button profileBtn,seeRequestBtn,seePatientRequestBtn, findDonorBtn, allDonorBtn, seePatientsbtn, seePatientResponseBtn, seeDonorResponseBtn, addPatientBtn;
     private String[] nameSplit;
     private TextView numberOfPatients,numberOfDonors,numberOfRequests,numberofPatientRequests,numberofDonorRequests;
     private ProgressBar progressBar;
@@ -52,6 +52,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         numberofPatientRequests=findViewById(R.id.dashboard_number_of_responses);
         seePatientResponseBtn=findViewById(R.id.dashboard_view_patient_response_btn);
         seeDonorResponseBtn=findViewById(R.id.dashboard_view_donor_response_btn);
+        addPatientBtn=findViewById(R.id.dashboard_add_patient_btn);
 
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<DashBoardNumberModel> dashBoardNumbers = retroInterface.getDashBoardNumbers(loggedInUserPhone);
@@ -89,6 +90,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         seePatientsbtn.setOnClickListener(this);
         seePatientResponseBtn.setOnClickListener(this);
         seeDonorResponseBtn.setOnClickListener(this);
+        addPatientBtn.setOnClickListener(this);
 
     }
 
@@ -140,6 +142,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 Intent viewDonorResIntent=new Intent(DashboardActivity.this, DonorResponseActivity.class);
                 startActivity(viewDonorResIntent);
                 break;
+            case R.id.dashboard_add_patient_btn:
+                Intent addPatientIntent=new Intent(DashboardActivity.this, BloodRequestFormActivity.class);
+                startActivity(addPatientIntent);
+                break;
+
         }
     }
 }
