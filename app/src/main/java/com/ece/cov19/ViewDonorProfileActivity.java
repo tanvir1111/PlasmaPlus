@@ -167,7 +167,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Request Accepted",loggedInUserName +" has accepted your request");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Request Accepted",loggedInUserName +" has accepted your request. Check Patient Responses.");
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -201,7 +201,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
 
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Request Declined",loggedInUserName +" has declined your request");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Request Declined",loggedInUserName +" has declined your request. Check Patient Responses");
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
