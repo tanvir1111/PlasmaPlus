@@ -320,7 +320,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Incoming Request from Patient",findPatientName +" has sent you a request");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Incoming Request from Patient",findPatientName +" has sent you a request. Check Donor Requests.");
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {

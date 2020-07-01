@@ -445,7 +445,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,"Incoming Request from Donor",loggedInUserName+" has sent you a request");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,"Incoming Request from Donor",loggedInUserName+" has sent you a request. Check Patient Requests.");
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
