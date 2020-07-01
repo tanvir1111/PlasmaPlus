@@ -1,10 +1,12 @@
 package com.ece.cov19;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -12,12 +14,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.DashBoardNumberModel;
+import com.ece.cov19.DataModels.LoggedInUserData;
+import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import static android.content.ContentValues.TAG;
+
 
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
@@ -25,7 +35,7 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener{
     private Button profileBtn,seeRequestBtn,seePatientRequestBtn, findDonorBtn, allDonorBtn, seePatientsbtn, seePatientResponseBtn, seeDonorResponseBtn, addPatientBtn;
     private String[] nameSplit;
-    private TextView numberOfPatients,numberOfDonors,numberOfRequests,numberofPatientRequests,numberofDonorRequests;
+    private TextView dashboard, numberOfPatients,numberOfDonors,numberOfRequests,numberofPatientRequests,numberofDonorRequests;
     private ProgressBar progressBar;
     private ConstraintLayout loadingView;
     private int backCounter;
@@ -53,6 +63,39 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         seePatientResponseBtn=findViewById(R.id.dashboard_view_patient_response_btn);
         seeDonorResponseBtn=findViewById(R.id.dashboard_view_donor_response_btn);
         addPatientBtn=findViewById(R.id.dashboard_add_patient_btn);
+        dashboard=findViewById(R.id.dashboard_header);
+
+        FirebaseInstanceId.getInstance().getInstanceId()
+                .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                        if (!task.isSuccessful()) {
+//To do//
+                            return;
+                        }
+
+// Get the Instance ID token//
+                        String token = task.getResult().getToken();
+                        String msg = getString(R.string.fcm_token, token);
+                        Log.d(TAG, msg);
+
+                        RetroInterface retroInterface = RetroInstance.getRetro();
+                        Call<UserDataModel> incomingResponse = retroInterface.sendToken(LoggedInUserData.loggedInUserPhone,token);
+                        incomingResponse.enqueue(new Callback<UserDataModel>() {
+                            @Override
+                            public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                            }
+
+                            @Override
+                            public void onFailure(Call<UserDataModel> call, Throwable t) {
+
+                            }
+                        });
+
+                    }
+                });
+
 
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<DashBoardNumberModel> dashBoardNumbers = retroInterface.getDashBoardNumbers(loggedInUserPhone);
@@ -80,7 +123,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             }
         });
 
-
         profileBtn.setText(nameSplit[0]);
         profileBtn.setOnClickListener(this);
         seeRequestBtn.setOnClickListener(this);
@@ -91,6 +133,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         seePatientResponseBtn.setOnClickListener(this);
         seeDonorResponseBtn.setOnClickListener(this);
         addPatientBtn.setOnClickListener(this);
+        dashboard.setOnClickListener(this);
+
 
     }
 
@@ -146,6 +190,20 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 Intent addPatientIntent=new Intent(DashboardActivity.this, BloodRequestFormActivity.class);
                 startActivity(addPatientIntent);
                 break;
+            case R.id.dashboard_header:
+                RetroInterface retroInterface = RetroInstance.getRetro();
+                Call<UserDataModel> incomingResponse = retroInterface.sendNotification(loggedInUserPhone,"Dashboard","Welcome  to Dashboard");
+                incomingResponse.enqueue(new Callback<UserDataModel>() {
+                    @Override
+                    public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserDataModel> call, Throwable t) {
+
+                    }
+                });
 
         }
     }

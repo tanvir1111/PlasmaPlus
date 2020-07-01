@@ -18,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.RequestDataModel;
+import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -30,6 +31,7 @@ import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
@@ -162,6 +164,25 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 else if(updateButton.getText().toString().toLowerCase().equals("accept request")){
                     Toast.makeText(ViewPatientProfileActivity.this, "accept ops", Toast.LENGTH_SHORT).show();
                     requestsOperation("accept");
+
+                    //Push Notification
+
+
+                    RetroInterface retroInterface = RetroInstance.getRetro();
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,"Request Accepted",loggedInUserName +" has accepted your request");
+                    incomingResponse.enqueue(new Callback<UserDataModel>() {
+                        @Override
+                        public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserDataModel> call, Throwable t) {
+
+                        }
+                    });
+
+
                 }
                 else if(updateButton.getText().toString().toLowerCase().equals("call patient")){
                     Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -181,6 +202,23 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 else if(deleteButton.getText().toString().toLowerCase().equals("decline request")){
                     Toast.makeText(ViewPatientProfileActivity.this, "decline ops", Toast.LENGTH_SHORT).show();
                     requestsOperation("decline");
+
+                    //Push Notification
+
+
+                    RetroInterface retroInterface = RetroInstance.getRetro();
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,"Request Declined",loggedInUserName +" has declined your request");
+                    incomingResponse.enqueue(new Callback<UserDataModel>() {
+                        @Override
+                        public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserDataModel> call, Throwable t) {
+
+                        }
+                    });
                 }
                 else if(deleteButton.getText().toString().toLowerCase().equals("send sms")){
                     Intent intent = new Intent();
@@ -403,6 +441,22 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 if (response.body().getServerMsg().equals("Success")) {
                     Toast.makeText(ViewPatientProfileActivity.this, "Request Sent! Wait For Patient's Response", Toast.LENGTH_SHORT).show();
 
+                    //Push Notification
+
+
+                    RetroInterface retroInterface = RetroInstance.getRetro();
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,"Incoming Request from Donor",loggedInUserName+" has sent you a request");
+                    incomingResponse.enqueue(new Callback<UserDataModel>() {
+                        @Override
+                        public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserDataModel> call, Throwable t) {
+
+                        }
+                    });
 
                 } else {
                     Toast.makeText(ViewPatientProfileActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();

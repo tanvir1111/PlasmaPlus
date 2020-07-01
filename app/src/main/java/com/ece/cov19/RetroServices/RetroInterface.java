@@ -121,7 +121,13 @@ public interface RetroInterface {
     Call<RequestDataModel> requestsOperation(@Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
                                              @Field("patientAge") String patientAge, @Field("patientBloodGroup") String patientBloodGroup,
                                              @Field("patientPhone") String phone, @Field("requestedBy") String requestedBy, @Field("operation") String operation);
+    @FormUrlEncoded
+    @POST("tokenRegister.php")
+    Call <UserDataModel> sendToken(@Field("phone") String phone, @Field("token") String token);
 
+    @FormUrlEncoded
+    @POST("pushNotification.php")
+    Call <UserDataModel> sendNotification(@Field("phone") String phone, @Field("title") String title, @Field("body") String body);
 }
 
 

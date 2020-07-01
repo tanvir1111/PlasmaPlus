@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ece.cov19.DataModels.RequestDataModel;
+import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -28,6 +29,7 @@ import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
@@ -160,6 +162,23 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(acceptBtn.getText().toString().toLowerCase().equals("accept request")) {
                     requestsOperation("accept");
+
+                    //Push Notification
+
+
+                    RetroInterface retroInterface = RetroInstance.getRetro();
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Request Accepted",loggedInUserName +" has accepted your request");
+                    incomingResponse.enqueue(new Callback<UserDataModel>() {
+                        @Override
+                        public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserDataModel> call, Throwable t) {
+
+                        }
+                    });
                 }
                 else if(acceptBtn.getText().toString().toLowerCase().equals("call donor")){
                     Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -175,6 +194,25 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(declineBtn.getText().toString().toLowerCase().equals("decline request")) {
                     requestsOperation("decline");
+
+
+                    //Push Notification
+
+
+                    RetroInterface retroInterface = RetroInstance.getRetro();
+
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Request Declined",loggedInUserName +" has declined your request");
+                    incomingResponse.enqueue(new Callback<UserDataModel>() {
+                        @Override
+                        public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserDataModel> call, Throwable t) {
+
+                        }
+                    });
                 }
                 else if(declineBtn.getText().toString().toLowerCase().equals("send sms")){
                     Intent intent = new Intent();
@@ -274,6 +312,27 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 if (response.body().getServerMsg().equals("Success")) {
                     Toast.makeText(ViewDonorProfileActivity.this, "Request Sent! Wait For Donor's Response", Toast.LENGTH_SHORT).show();
+
+
+
+
+                    //Push Notification
+
+
+                    RetroInterface retroInterface = RetroInstance.getRetro();
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Incoming Request from Patient",findPatientName +" has sent you a request");
+                    incomingResponse.enqueue(new Callback<UserDataModel>() {
+                        @Override
+                        public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<UserDataModel> call, Throwable t) {
+
+                        }
+                    });
+
 
 
                 } else {
