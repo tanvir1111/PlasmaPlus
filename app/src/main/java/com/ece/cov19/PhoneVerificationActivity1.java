@@ -48,19 +48,11 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
         getOtpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(phoneInput.getText().length() == 11){
+                phonenumber=phoneInput.getText().toString();
+                if(phonenumber.length() == 11){
 
-                    if(verification.equals("signup")) {
-                        phonenumber = phoneInput.getText().toString();
-                        Intent nextIntent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
-                        nextIntent.putExtra("phone",phonenumber);
-                        nextIntent.putExtra("verification",verification);
-                        startActivity(nextIntent);
-                        finish();
-                    }
-                    else if(verification.equals("forgotpass")){
+
                         checkUser();
-                    }
                 } else {
                     phoneInput.setError("Invalid Phone Number");
                     phoneInput.requestFocus();
@@ -82,30 +74,57 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
     }
 
     private void checkUser() {
-        String phonenumber = phoneInput.getText().toString();
 
         RetroInterface retroInterface = RetroInstance.getRetro();
+
         Call<UserDataModel> sendingData = retroInterface.checkUser(phonenumber);
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-                if (response.body().getServerMsg().equals("record exists")) {
-                    Intent intent = new Intent(PhoneVerificationActivity1.this, UpdatePasswordActivity.class);
-                    intent.putExtra("phone", phonenumber);
-                    intent.putExtra("verification", verification);
-                    startActivity(intent);
-                    finish();
+
+                if(verification.equals("forgotpass")) {
+                    if (response.body().getServerMsg().equals("record exists")) {
+                        Intent intent = new Intent(PhoneVerificationActivity1.this, UpdatePasswordActivity.class);
+                        intent.putExtra("phone", phonenumber);
+                        intent.putExtra("verification", verification);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else if(response.body().getServerMsg().equals("record doesn't exist")){
+                        Toast.makeText(PhoneVerificationActivity1.this, "This Phone number is not registered", Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(PhoneVerificationActivity1.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    }
+                    else {
+                        Toast.makeText(PhoneVerificationActivity1.this,  response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                    }
                 }
 
-                else if (response.body().getServerMsg().equals("record doesn't exist")) {
-                    Toast.makeText(PhoneVerificationActivity1.this, "This Phone number is not registered", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(PhoneVerificationActivity1.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
+
+                else if(verification.equals("signup")){
+                    if (response.body().getServerMsg().equals("record exists")) {
+                        Toast.makeText(PhoneVerificationActivity1.this, "This phone number is  already registered", Toast.LENGTH_SHORT).show();
+
+                    }
+                    else if(response.body().getServerMsg().equals("record doesn't exist")){
+
+
+                        Intent nextIntent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
+                        nextIntent.putExtra("phone",phonenumber);
+                        nextIntent.putExtra("verification",verification);
+                        startActivity(nextIntent);
+                        finish();
+
+                    }
+                    else {
+                        Toast.makeText(PhoneVerificationActivity1.this,  response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                    }
+
+
                 }
-                else{
-                    Toast.makeText(PhoneVerificationActivity1.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
-                }
+
+
 
             }
 

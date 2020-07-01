@@ -84,6 +84,8 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
                     userDataModels.clear();
 
                     if(response.isSuccessful()){
+
+
                         ArrayList<UserDataModel> initialModels = response.body();
                         for(UserDataModel initialDataModel : initialModels){
 
@@ -98,6 +100,8 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(itemView.getContext());
                         requestDonorRecyclerView.setLayoutManager(linearLayoutManager);
                     } else {
+
+
                         donateTextView.setText("No Requests Found");
                         Toast.makeText(view.getContext(),"No data",Toast.LENGTH_LONG).show();
                     }
@@ -107,6 +111,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
 
                 @Override
                 public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
+                    progressBar.setVisibility(View.GONE);
                     donateTextView.setText("No Request Found");
                     //Toast.makeText(view.getContext(),"Error: "+t.getMessage(),Toast.LENGTH_LONG).show();
                 }

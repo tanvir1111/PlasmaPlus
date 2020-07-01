@@ -38,7 +38,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     private Button askForHelpBtn, acceptBtn, declineBtn;
     private ImageView backbtn;
     private ProgressBar progressBar;
-    String name, age, bloodGroup, donorphone, donorInfo, address;
+    String name, age, bloodGroup, donorphone, donorInfo, address,requestedBy;
 
 
 
@@ -71,6 +71,14 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         donorphone = intent.getStringExtra("phone");
         donorInfo = intent.getStringExtra("donorinfo");
         address = intent.getStringExtra("address");
+        if(intent.hasExtra("activity")){
+            if(intent.getStringExtra("activity").equals("PatientRequestsActivity")){
+                requestedBy="donor";
+            }
+            else{
+                requestedBy="patient";
+            }
+        }
 
         nameTextView.setText(name);
         if (donorphone.equals(loggedInUserPhone)) {
@@ -287,7 +295,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
         //Toast.makeText(this, donorphone + findPatientName + findPatientAge + findPatientBloodGroup + findPatientPhone, Toast.LENGTH_SHORT).show();
-        Call<RequestDataModel> lookforRequestFromPatient = retroInterface.requestsOperation(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientPhone, "patient",operation);
+        Call<RequestDataModel> lookforRequestFromPatient = retroInterface.requestsOperation(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientPhone, requestedBy,operation);
         lookforRequestFromPatient.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {

@@ -29,6 +29,7 @@ import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
@@ -73,6 +74,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         date = intent.getStringExtra("date");
         need = intent.getStringExtra("need");
         phone = intent.getStringExtra("phone");
+        if(intent.hasExtra("activity")){
+            if(intent.getStringExtra("activity").equals("DonorRequestsActivity")){
+                requestedBy="patient";
+            }
+            else{
+                requestedBy="donor";
+            }
+        }
 
         nameTextView.setText(name);
         if(phone.equals(loggedInUserPhone)){
@@ -414,7 +423,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
         //Toast.makeText(this, loggedInUserPhone+name +age +bloodGroup +phone, Toast.LENGTH_SHORT).show();
-        Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup,phone,"donor",operation);
+        Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup,phone,requestedBy,operation);
         lookforRequestFromDonor.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
@@ -427,9 +436,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             updateButton.setText("Update Profile");
                             deleteButton.setVisibility(View.VISIBLE);
                             deleteButton.setText("Delete Profile");
-                        } else {
+                        } else if(bloodGroup.equals(loggedInUserBloodGroup)) {
                             donateToHelpButton.setVisibility(View.VISIBLE);
                             donateToHelpButton.setText("Donate to Help");
+                            updateButton.setVisibility(View.GONE);
+                            deleteButton.setVisibility(View.GONE);
+                        }
+                        else {
+                            donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                         }

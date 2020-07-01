@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.R;
@@ -41,7 +42,7 @@ public class SearchDonorAdapter extends RecyclerView.Adapter<SearchDonorViewHold
 
         userDataModel = userDataModels.get(position);
         
-        if(userDataModel.getBloodGroup().equals(LoggedInUserData.loggedInUserBloodGroup)) {
+        if(userDataModel.getBloodGroup().equals(FindPatientData.findPatientBloodGroup)) {
             holder.askButton.setVisibility(View.VISIBLE);
         }
 

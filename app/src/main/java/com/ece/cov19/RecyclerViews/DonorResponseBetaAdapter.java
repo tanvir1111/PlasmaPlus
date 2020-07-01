@@ -50,21 +50,21 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
         if(userDataModel.getServerMsg().equals("Pending")) {
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText("Pending");
-            holder.acceptButton.setBackgroundColor(Color.parseColor("#FF9800"));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_orange);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
         else if(userDataModel.getServerMsg().equals("Accepted")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText("Accepted");
-            holder.acceptButton.setBackgroundColor(Color.parseColor("#4CAF50"));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
         else if(userDataModel.getServerMsg().equals("Declined")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText("Declined");
-            holder.acceptButton.setBackgroundColor(Color.parseColor("#E91E63"));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_red);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }

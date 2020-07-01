@@ -45,6 +45,10 @@ public class ExplorePatientsBetaAdapter extends RecyclerView.Adapter<ExplorePati
             holder.donateTextView.setVisibility(View.VISIBLE);
             holder.donateTextView.setText("Donate to Help");
         }
+        else
+        {
+            holder.donateTextView.setVisibility(View.GONE);
+        }
 
 
         holder.nameTextView.setText(patientDataModel.getName());
