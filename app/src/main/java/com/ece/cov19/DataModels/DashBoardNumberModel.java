@@ -16,6 +16,10 @@ public class DashBoardNumberModel {
     @Expose
     private String numberOfRequests;
 
+    @SerializedName("numberOfResponses")
+    @Expose
+    private String numberOfResponses;
+
     public String getNumberOfDonors() {
         return numberOfDonors;
     }
@@ -26,5 +30,9 @@ public class DashBoardNumberModel {
 
     public String getNumberOfRequests() {
         return numberOfRequests;
+    }
+
+    public String getNumberOfResponses() {
+        return numberOfResponses;
     }
 }

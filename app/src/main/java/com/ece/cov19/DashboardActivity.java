@@ -2,6 +2,7 @@ package com.ece.cov19;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -28,17 +30,31 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import static android.content.ContentValues.TAG;
 
-
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
+
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener{
-    private Button profileBtn,seeRequestBtn,seePatientRequestBtn, findDonorBtn, allDonorBtn, seePatientsbtn, seePatientResponseBtn, seeDonorResponseBtn, addPatientBtn;
     private String[] nameSplit;
-    private TextView dashboard, numberOfPatients,numberOfDonors,numberOfRequests,numberofPatientRequests,numberofDonorRequests;
+    private Button profileBtn;
+    private CardView findDonorCardView, addPatientCardView, requestsCardView, responsesCardView, fromDonorsCardView,
+            fromPatientsCardView, exploreCardView, myPatientsCardView, allDonorsCardView, allPatientsCardView;
+    private TextView findDonorText, addPatientText, requestsText, responsesText,fromDonorsText,fromPatientsText, exploreText,
+            myPatientsText,allDonorsText,allPatientsText;
+    private ImageView findDonorImage, addPatientImage, requestsImage, responsesImage,fromDonorsImage,fromPatientsImage, exploreImage,
+            myPatientsImage,allDonorsImage,allPatientsImage;
+    private TextView dashboard, numberOfPatients,numberOfDonors,numberOfPatientsText,numberOfDonorsText,numberOfRequestsFromDonors,
+            numberOfRequestsFromPatients,numberOfRequestsFromDonorsText,numberOfRequestsFromPatientsText;
     private ProgressBar progressBar;
     private ConstraintLayout loadingView;
-    private int backCounter;
+
+    public int backCounter=0;
+    public int requestResponseSwitcher=0;
+    public int requestResponseCardViewSwitcher=0;
+    public int exploreSwitcher=0;
+
+
+    private String noOfDonors, noOfPatients, noOfRequests, noOfResponses;
 
 
     @Override
@@ -46,24 +62,63 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
-        progressBar=findViewById(R.id.dashboard_progress_bar);
-        numberOfDonors=findViewById(R.id.dashboard_number_of_donors);
-        numberOfPatients=findViewById(R.id.dashboard_number_of_patients);
-        numberOfRequests=findViewById(R.id.dashboard_number_of_requests);
-        nameSplit = loggedInUserName.split("");
         loadingView=findViewById(R.id.loadingView);
-
-        profileBtn=findViewById(R.id.dashboard_profile_btn);
-        seeRequestBtn=findViewById(R.id.dashboard_see_requests_btn);
-        seePatientsbtn =findViewById(R.id.dashboard_view_patients_btn);
-        seePatientRequestBtn = findViewById(R.id.dashboard_check_requests_btn);
-        findDonorBtn=findViewById(R.id.dashboard_find_donor_btn);
-        allDonorBtn=findViewById(R.id.dashboard_all_donor_btn);
-        numberofPatientRequests=findViewById(R.id.dashboard_number_of_responses);
-        seePatientResponseBtn=findViewById(R.id.dashboard_view_patient_response_btn);
-        seeDonorResponseBtn=findViewById(R.id.dashboard_view_donor_response_btn);
-        addPatientBtn=findViewById(R.id.dashboard_add_patient_btn);
         dashboard=findViewById(R.id.dashboard_header);
+        progressBar=findViewById(R.id.dashboard_progress_bar);
+        profileBtn=findViewById(R.id.dashboard_profile_btn);
+
+        findDonorCardView=findViewById(R.id.cardView_findDonor);
+        addPatientCardView=findViewById(R.id.cardView_addPatient);
+        requestsCardView=findViewById(R.id.cardView_requests);
+        responsesCardView=findViewById(R.id.cardView_responses);
+        fromDonorsCardView=findViewById(R.id.cardView_requestA);
+        fromPatientsCardView=findViewById(R.id.cardView_requestB);
+        exploreCardView=findViewById(R.id.cardView_explore);
+        myPatientsCardView=findViewById(R.id.cardView_myPatients);
+        allDonorsCardView=findViewById(R.id.cardView_exploreA);
+        allPatientsCardView=findViewById(R.id.cardView_exploreB);
+
+        findDonorText=findViewById(R.id.dashboard_text_find_donor);
+        addPatientText=findViewById(R.id.dashboard_text_add_patient);
+        requestsText=findViewById(R.id.dashboard_text_requests);
+        responsesText=findViewById(R.id.dashboard_text_responses);
+        fromDonorsText=findViewById(R.id.dashboard_text_requestA);
+        fromPatientsText=findViewById(R.id.dashboard_text_requestB);
+        exploreText=findViewById(R.id.dashboard_text_explore);
+        myPatientsText=findViewById(R.id.dashboard_text_my_patients);
+        allDonorsText=findViewById(R.id.dashboard_text_explore_all_donors);
+        allPatientsText=findViewById(R.id.dashboard_text_explore_all_patients);
+
+        findDonorImage=findViewById(R.id.dashboard_img_find_donor);
+        addPatientImage=findViewById(R.id.dashboard_img_add_patient);
+        requestsImage=findViewById(R.id.dashboard_img_requests);
+        responsesImage=findViewById(R.id.dashboard_img_responses);
+        fromDonorsImage=findViewById(R.id.dashboard_img_requestA);
+        fromPatientsImage=findViewById(R.id.dashboard_img_requestB);
+        exploreImage=findViewById(R.id.dashboard_img_explore);
+        myPatientsImage=findViewById(R.id.dashboard_img_my_patients);
+        allDonorsImage=findViewById(R.id.dashboard_img_explore_all_donors);
+        allPatientsImage=findViewById(R.id.dashboard_img_explore_all_patients);
+
+        numberOfDonors=findViewById(R.id.dashboard_no_of_donors);
+        numberOfDonorsText=findViewById(R.id.dashboard_text_no_of_donors);
+        numberOfPatients=findViewById(R.id.dashboard_no_of_patients);
+        numberOfPatientsText=findViewById(R.id.dashboard_text_no_of_patients);
+        numberOfRequestsFromDonors=findViewById(R.id.dashboard_no_of_requests_from_donors);
+        numberOfRequestsFromDonorsText=findViewById(R.id.dashboard_text_no_of_requests_from_donors);
+        numberOfRequestsFromPatients=findViewById(R.id.dashboard_no_of_requests_from_patients);
+        numberOfRequestsFromPatientsText=findViewById(R.id.dashboard_text_no_of_requests_from_patients);
+
+
+        nameSplit = loggedInUserName.split("");
+        loadingView.setVisibility(View.VISIBLE);
+
+        fromDonorsCardView.setVisibility(View.GONE);
+        fromPatientsCardView.setVisibility(View.GONE);
+        allDonorsCardView.setVisibility(View.GONE);
+        allPatientsCardView.setVisibility(View.GONE);
+
+
 
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -103,16 +158,12 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onResponse(Call<DashBoardNumberModel> call, Response<DashBoardNumberModel> response) {
                 loadingView.setVisibility(View.GONE);
-                numberOfDonors.setText(response.body().getNumberOfDonors());
-                numberOfPatients.setText(response.body().getNumberOfPatients());
 
-                if(response.body().getNumberOfRequests().equals("0")){
-                    numberOfRequests.setText("No");
-                    seeRequestBtn.setVisibility(View.GONE);
-                }
-                else {
-                    numberOfRequests.setText(response.body().getNumberOfRequests());
-                }
+
+                noOfDonors = response.body().getNumberOfDonors();
+                noOfPatients = response.body().getNumberOfPatients();
+                noOfRequests = response.body().getNumberOfRequests();
+                noOfResponses = response.body().getNumberOfResponses();
 
             }
 
@@ -125,17 +176,57 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         profileBtn.setText(nameSplit[0]);
         profileBtn.setOnClickListener(this);
-        seeRequestBtn.setOnClickListener(this);
-        findDonorBtn.setOnClickListener(this);
-        allDonorBtn.setOnClickListener(this);
-        seePatientRequestBtn.setOnClickListener(this);
-        seePatientsbtn.setOnClickListener(this);
-        seePatientResponseBtn.setOnClickListener(this);
-        seeDonorResponseBtn.setOnClickListener(this);
-        addPatientBtn.setOnClickListener(this);
         dashboard.setOnClickListener(this);
 
+        findDonorCardView.setOnClickListener(this);
+        addPatientCardView.setOnClickListener(this);
+        requestsCardView.setOnClickListener(this);
+        responsesCardView.setOnClickListener(this);
+        fromDonorsCardView.setOnClickListener(this);
+        fromPatientsCardView.setOnClickListener(this);
+        exploreCardView.setOnClickListener(this);
+        myPatientsCardView.setOnClickListener(this);
+        allDonorsCardView.setOnClickListener(this);
+        allPatientsCardView.setOnClickListener(this);
 
+        findDonorText.setOnClickListener(this);
+        addPatientText.setOnClickListener(this);
+        requestsText.setOnClickListener(this);
+        responsesText.setOnClickListener(this);
+        fromDonorsText.setOnClickListener(this);
+        fromPatientsText.setOnClickListener(this);
+        exploreText.setOnClickListener(this);
+        myPatientsText.setOnClickListener(this);
+        allDonorsText.setOnClickListener(this);
+        allPatientsText.setOnClickListener(this);
+
+        findDonorImage.setOnClickListener(this);
+        addPatientImage.setOnClickListener(this);
+        requestsImage.setOnClickListener(this);
+        responsesImage.setOnClickListener(this);
+        fromDonorsImage.setOnClickListener(this);
+        fromPatientsImage.setOnClickListener(this);
+        exploreImage.setOnClickListener(this);
+        myPatientsImage.setOnClickListener(this);
+        allDonorsImage.setOnClickListener(this);
+        allPatientsImage.setOnClickListener(this);
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+
+        if(requestResponseCardViewSwitcher==0) {
+            backCounter = 0;
+            requestResponseCardViewSwitcher = 0;
+            requestResponseSwitcher = 0;
+        } else{
+            backCounter = 0;
+            requestResponseCardViewSwitcher = 1;
+            requestResponseSwitcher = 1;
+        }
     }
 
     @Override
@@ -158,38 +249,139 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 Intent profileIntent=new Intent(DashboardActivity.this, ViewUserProfileActivity.class);
                 startActivity(profileIntent);
                 break;
-            case R.id.dashboard_see_requests_btn:
-                Intent checkDonorRequestsIntent=new Intent(DashboardActivity.this, DonorRequestsActivity.class);
-                startActivity(checkDonorRequestsIntent);
-                break;
-            case R.id.dashboard_find_donor_btn:
+
+            case R.id.dashboard_text_find_donor:
+            case R.id.dashboard_img_find_donor:
+            case R.id.cardView_findDonor:
                 Intent findDonorIntent=new Intent(DashboardActivity.this,FindDonorActivity.class);
                 startActivity(findDonorIntent);
                 break;
-            case R.id.dashboard_all_donor_btn:
-                Intent allDonorsIntent = new Intent(DashboardActivity.this,SearchDonorActivity.class);
-                startActivity(allDonorsIntent);
-                break;
-            case R.id.dashboard_check_requests_btn:
-                Intent checkPatientRequestsIntent = new Intent(DashboardActivity.this, PatientRequestsActivity.class);
-                startActivity(checkPatientRequestsIntent);
-                break;
-            case R.id.dashboard_view_patients_btn:
-                Intent allPatientsIntent=new Intent(DashboardActivity.this, ExplorePatientsActivity.class);
-                startActivity(allPatientsIntent);
-                break;
-            case R.id.dashboard_view_patient_response_btn:
-                Intent viewPatientResIntent=new Intent(DashboardActivity.this, PatientResponseActivity.class);
-                startActivity(viewPatientResIntent);
-                break;
-            case R.id.dashboard_view_donor_response_btn:
-                Intent viewDonorResIntent=new Intent(DashboardActivity.this, DonorResponseActivity.class);
-                startActivity(viewDonorResIntent);
-                break;
-            case R.id.dashboard_add_patient_btn:
+            case R.id.dashboard_text_add_patient:
+            case R.id.dashboard_img_add_patient:
+            case R.id.cardView_addPatient:
                 Intent addPatientIntent=new Intent(DashboardActivity.this, BloodRequestFormActivity.class);
                 startActivity(addPatientIntent);
                 break;
+            case R.id.dashboard_text_requests:
+            case R.id.dashboard_img_requests:
+            case R.id.cardView_requests:
+                if(requestResponseCardViewSwitcher == 0) {
+                    requestResponseCardViewSwitcher = 1;
+                    requestResponseSwitcher = 1;
+                    fromDonorsCardView.setVisibility(View.VISIBLE);
+                    fromPatientsCardView.setVisibility(View.VISIBLE);
+                    numberOfRequestsFromDonorsText.setText("Requests");
+                    numberOfRequestsFromPatientsText.setText("Requests");
+                    numberOfRequestsFromDonors.setText(noOfResponses);
+                    numberOfRequestsFromPatients.setText(noOfRequests);
+                    break;
+                }
+                if(requestResponseCardViewSwitcher ==1) {
+                    requestResponseCardViewSwitcher = 0;
+                    requestResponseSwitcher = 0;
+                    fromDonorsCardView.setVisibility(View.GONE);
+                    fromPatientsCardView.setVisibility(View.GONE);
+                    break;
+                }
+                break;
+            case R.id.dashboard_text_responses:
+            case R.id.dashboard_img_responses:
+            case R.id.cardView_responses:
+                if(requestResponseCardViewSwitcher ==0) {
+                    requestResponseCardViewSwitcher = 1;
+                    requestResponseSwitcher = 2;
+                    fromDonorsCardView.setVisibility(View.VISIBLE);
+                    fromPatientsCardView.setVisibility(View.VISIBLE);
+                    numberOfRequestsFromDonorsText.setText("Responses");
+                    numberOfRequestsFromPatientsText.setText("Responses");
+                    numberOfRequestsFromDonors.setText(noOfRequests);
+                    numberOfRequestsFromPatients.setText(noOfResponses);
+                    break;
+                }
+                if(requestResponseCardViewSwitcher ==1) {
+                    requestResponseCardViewSwitcher = 0;
+                    requestResponseSwitcher = 0;
+                    fromDonorsCardView.setVisibility(View.GONE);
+                    fromPatientsCardView.setVisibility(View.GONE);
+                    break;
+                }
+                break;
+
+            case R.id.dashboard_text_requestA:
+            case R.id.dashboard_img_requestA:
+            case R.id.cardView_requestA:
+                if(requestResponseSwitcher == 1) {
+                    Intent checkPatientRequestsIntent = new Intent(DashboardActivity.this, PatientRequestsActivity.class);
+                    startActivity(checkPatientRequestsIntent);
+                    requestResponseSwitcher = 0;
+                    break;
+                }
+                if (requestResponseSwitcher == 2) {
+                    Intent viewDonorResIntent=new Intent(DashboardActivity.this, DonorResponseActivity.class);
+                    startActivity(viewDonorResIntent);
+                    requestResponseSwitcher = 0;
+                    break;
+                }
+                break;
+            case R.id.dashboard_text_requestB:
+            case R.id.dashboard_img_requestB:
+            case R.id.cardView_requestB:
+                if(requestResponseSwitcher == 1) {
+                    Intent checkDonorRequestsIntent = new Intent(DashboardActivity.this, DonorRequestsActivity.class);
+                    startActivity(checkDonorRequestsIntent);
+                    requestResponseSwitcher = 0;
+                    break;
+
+                }
+                if (requestResponseSwitcher == 2) {
+                    Intent viewPatientResIntent=new Intent(DashboardActivity.this, PatientResponseActivity.class);
+                    startActivity(viewPatientResIntent);
+                    requestResponseSwitcher = 0;
+                    break;
+
+
+                }
+                break;
+
+            case R.id.dashboard_text_explore:
+            case R.id.dashboard_img_explore:
+            case R.id.cardView_explore:
+                if(exploreSwitcher==0) {
+                    exploreSwitcher=1;
+                    allDonorsCardView.setVisibility(View.VISIBLE);
+                    allPatientsCardView.setVisibility(View.VISIBLE);
+                    numberOfDonors.setText(noOfDonors);
+                    numberOfPatients.setText(noOfPatients);
+                    break;
+                }
+                if(exploreSwitcher==1) {
+                    exploreSwitcher=0;
+                    allDonorsCardView.setVisibility(View.GONE);
+                    allPatientsCardView.setVisibility(View.GONE);
+                    break;
+                }
+                break;
+            case R.id.dashboard_text_explore_all_donors:
+            case R.id.dashboard_img_explore_all_donors:
+            case R.id.cardView_exploreA:
+                Intent allDonorsIntent = new Intent(DashboardActivity.this,SearchDonorActivity.class);
+                startActivity(allDonorsIntent);
+                break;
+
+            case R.id.dashboard_text_explore_all_patients:
+            case R.id.dashboard_img_explore_all_patients:
+            case R.id.cardView_exploreB:
+                Intent allPatientsIntent=new Intent(DashboardActivity.this, ExplorePatientsActivity.class);
+                startActivity(allPatientsIntent);
+                break;
+
+            case R.id.dashboard_text_my_patients:
+            case R.id.dashboard_img_my_patients:
+            case R.id.cardView_myPatients:
+                Intent viewMyPatientsIntent=new Intent(DashboardActivity.this, MyPatientsActivity.class);
+                startActivity(viewMyPatientsIntent);
+                break;
+
             case R.id.dashboard_header:
                 RetroInterface retroInterface = RetroInstance.getRetro();
                 Call<UserDataModel> incomingResponse = retroInterface.sendNotification(loggedInUserPhone,"Dashboard","Welcome  to Dashboard");

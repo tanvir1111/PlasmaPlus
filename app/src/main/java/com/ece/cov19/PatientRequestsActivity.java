@@ -30,9 +30,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
 
     private RecyclerView myPatientRequestRecyclerView;
     private ProgressBar myPatientRequestProgressBar;
-    private TextView myPatientRequestTextView;
     private ImageView backbtn;
-    private Button addPatientBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,28 +39,18 @@ public class PatientRequestsActivity extends AppCompatActivity {
 
         myPatientRequestRecyclerView = findViewById(R.id.patient_requests_recyclerview);
         myPatientRequestProgressBar=findViewById(R.id.patient_requests_progress_bar);
-        myPatientRequestTextView=findViewById(R.id.patient_requests_show_textview);
         backbtn=findViewById(R.id.patient_requests_back_button);
-        addPatientBtn =findViewById(R.id.patient_requests_add_patient_btn);
 
-        addPatientBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent bldReqIntent=new Intent(PatientRequestsActivity.this, BloodRequestFormActivity.class);
-                startActivity(bldReqIntent);
-            }
-        });
         myPatientsSearch();
-
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goBackIntent = new Intent(PatientRequestsActivity.this,DashboardActivity.class);
-                startActivity(goBackIntent);
-                finishAffinity();
+                finish();
             }
         });
+
+
        
     }
 
@@ -70,9 +58,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent goBackIntent = new Intent(PatientRequestsActivity.this,DashboardActivity.class);
-        startActivity(goBackIntent);
-        finishAffinity();
+       finish();
     }
 
     private void myPatientsSearch(){
@@ -104,12 +90,11 @@ public class PatientRequestsActivity extends AppCompatActivity {
 
 
                     if(patientDataModels.size() > 0){
-                        myPatientRequestTextView.setVisibility(View.VISIBLE);
 
                     }
                     myPatientRequestRecyclerView.setAdapter(patientRequestsAlphaAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-                    linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+                    linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
                     myPatientRequestRecyclerView.setLayoutManager(linearLayoutManager);
 
                 }

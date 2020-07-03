@@ -53,9 +53,7 @@ public class PatientResponseActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goBackIntent = new Intent(PatientResponseActivity.this,DashboardActivity.class);
-                startActivity(goBackIntent);
-                finishAffinity();
+                finish();
             }
         });
         progressBar.setVisibility(View.VISIBLE);
@@ -102,9 +100,7 @@ public class PatientResponseActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent goBackIntent = new Intent(PatientResponseActivity.this,DashboardActivity.class);
-        startActivity(goBackIntent);
-        finishAffinity();
+       finish();
     }
 
 }

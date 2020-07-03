@@ -56,9 +56,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goBackIntent = new Intent(DonorRequestsActivity.this,DashboardActivity.class);
-                startActivity(goBackIntent);
-                finishAffinity();
+                finish();
             }
         });
         getRequests();
@@ -99,9 +97,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent goBackIntent = new Intent(DonorRequestsActivity.this,DashboardActivity.class);
-        startActivity(goBackIntent);
-        finishAffinity();
+       finish();
     }
 
     private void getRequests() {
@@ -116,7 +112,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     patientDataModels.clear();
                     ArrayList<PatientDataModel> initialModels = response.body();
-                    requestTypeTextView.setText(requestTypeText+"(" +initialModels.size()+")");
+                    requestTypeTextView.setText(requestTypeText+" (" +initialModels.size()+")");
                     for(PatientDataModel initialDataModel : initialModels){
                         if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
                             //Toast.makeText(RequestsActivity.this, initialDataModel.getName(), Toast.LENGTH_SHORT).show();

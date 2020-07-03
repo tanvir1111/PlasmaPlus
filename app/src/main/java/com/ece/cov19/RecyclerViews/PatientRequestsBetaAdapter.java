@@ -1,6 +1,7 @@
 package com.ece.cov19.RecyclerViews;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -51,6 +52,28 @@ public class PatientRequestsBetaAdapter extends RecyclerView.Adapter<PatientRequ
             holder.donorImageView.setImageResource(R.drawable.profile_icon_female);
         }
         holder.locationImageView.setImageResource(R.drawable.location_icon);
+
+        if(userDataModel.getServerMsg().equals("Pending")) {
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText("Pending");
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_orange);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
+        else if(userDataModel.getServerMsg().equals("Accepted")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText("Accepted");
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
+        else if(userDataModel.getServerMsg().equals("Declined")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText("Declined");
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_red);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
 
     }
 

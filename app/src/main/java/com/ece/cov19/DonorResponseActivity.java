@@ -51,9 +51,7 @@ public class DonorResponseActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goBackIntent = new Intent(DonorResponseActivity.this,DashboardActivity.class);
-                startActivity(goBackIntent);
-                finishAffinity();
+                finish();
             }
         });
 
@@ -63,9 +61,7 @@ public class DonorResponseActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent goBackIntent = new Intent(DonorResponseActivity.this,DashboardActivity.class);
-        startActivity(goBackIntent);
-        finishAffinity();
+        finish();
     }
 
     private void myPatientsSearch(){
@@ -102,7 +98,7 @@ public class DonorResponseActivity extends AppCompatActivity {
                     }
                     RecyclerView.setAdapter(donorResponseAlphaAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-                    linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
+                    linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
                     RecyclerView.setLayoutManager(linearLayoutManager);
 
                 }

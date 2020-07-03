@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -18,7 +17,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.RecyclerViews.ExplorePatientsAlphaAdapter;
 import com.ece.cov19.RecyclerViews.ExplorePatientsBetaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -39,11 +37,11 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 public class ExplorePatientsActivity extends AppCompatActivity {
 
 
-    private RecyclerView myPatientsRecyclerView, explorePatientsRecyclerView;
+    private RecyclerView explorePatientsRecyclerView;
     private Spinner bloodgrpSpinner;
     private EditText districtEditText;
-    private ProgressBar myPatientsProgressBar, progressBar;
-    private TextView myPatientsTextView,otherPatientsTextView;
+    private ProgressBar progressBar;
+    private TextView explorePatientsTextView;
     private ImageView backbtn;
     private String otherPatientsText,myPatientsText;
 
@@ -58,29 +56,19 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         findPatientBloodGroup="any";
         findPatientNeed="";
 
-        myPatientsRecyclerView = findViewById(R.id.my_patients_recyclerview);
-        myPatientsProgressBar = findViewById(R.id.my_patients_progress_bar);
-        myPatientsTextView = findViewById(R.id.my_patients_textview);
-        otherPatientsTextView=findViewById(R.id.explore_patients_textview);
-
+        explorePatientsTextView =findViewById(R.id.explore_patients_textview);
         explorePatientsRecyclerView = findViewById(R.id.explore_patients_recyclerview);
         bloodgrpSpinner=findViewById(R.id.explore_patients_bld_grp);
         districtEditText=findViewById(R.id.explore_patients_district_edittext);
         progressBar=findViewById(R.id.explore_patients_progress_bar);
         backbtn=findViewById(R.id.explore_patients_back_button);
-        otherPatientsText=otherPatientsTextView.getText().toString();
-        myPatientsText=myPatientsTextView.getText().toString();
-
-
-        myPatientsSearch();
+        otherPatientsText= explorePatientsTextView.getText().toString();
 
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent goBackIntent = new Intent(ExplorePatientsActivity.this,DashboardActivity.class);
-                startActivity(goBackIntent);
-                finishAffinity();
+               finish();
             }
         });
         bloodgrpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -118,62 +106,9 @@ public class ExplorePatientsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent goBackIntent = new Intent(ExplorePatientsActivity.this,DashboardActivity.class);
-        startActivity(goBackIntent);
-        finishAffinity();
+        finish();
     }
 
-    private void myPatientsSearch(){
-        myPatientsProgressBar.setVisibility(View.VISIBLE);
-
-        ArrayList<PatientDataModel> patientDataModels;
-        ExplorePatientsAlphaAdapter explorePatientsAlphaAdapter;
-        patientDataModels = new ArrayList<>();
-        explorePatientsAlphaAdapter = new ExplorePatientsAlphaAdapter(getApplicationContext(), patientDataModels);
-        RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<ArrayList<PatientDataModel>> viewPatients = retroInterface.ownPatients(loggedInUserPhone);
-        viewPatients.enqueue(new Callback<ArrayList<PatientDataModel>>() {
-            @Override
-            public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
-
-
-
-
-                myPatientsProgressBar.setVisibility(View.GONE);
-
-                patientDataModels.clear();
-                if(response.isSuccessful()){
-                    ArrayList<PatientDataModel> initialModels = response.body();
-                    myPatientsTextView.setText(myPatientsText+" ("+Integer.toString(initialModels.size())+")");
-                    for(PatientDataModel initialDataModel : initialModels){
-
-                        patientDataModels.add(initialDataModel);
-
-                    }
-
-
-                    if(patientDataModels.size() > 0){
-                        myPatientsTextView.setVisibility(View.VISIBLE);
-
-                    }
-                    myPatientsRecyclerView.setAdapter(explorePatientsAlphaAdapter);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.HORIZONTAL,false);
-                    myPatientsRecyclerView.setLayoutManager(linearLayoutManager);
-                }
-
-                else{
-                    Toast.makeText(ExplorePatientsActivity.this, "No Response", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(ExplorePatientsActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
-
-    }
 
     private void allPatientsSearch() {
         progressBar.setVisibility(View.VISIBLE);
@@ -204,7 +139,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
 
                 if(response.isSuccessful()){
                     ArrayList<PatientDataModel> initialModels = response.body();
-                    otherPatientsTextView.setText(otherPatientsText+" (" +initialModels.size() + ")");
+                    explorePatientsTextView.setText(otherPatientsText+" (" +initialModels.size() + ")");
                     for(PatientDataModel initialDataModel : initialModels){
 
                         patientDataModels.add(initialDataModel);
