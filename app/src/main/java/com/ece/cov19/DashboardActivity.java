@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,7 +52,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private ProgressBar progressBar;
     private ConstraintLayout loadingView;
 
-    public int backCounter;
+    public int backCounter, slideUpCounter, slideUpCounter2;
     public int requestResponseSwitcher;
     public int requestResponseCardViewSwitcher;
     public int exploreSwitcher;
@@ -282,28 +284,107 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
-    public void slideUp(View view){
-        TranslateAnimation animate = new TranslateAnimation(
-                0,                 // fromXDelta
-                0,                 // toXDelta
-                view.getHeight()-300,  // fromYDelta
-                -300);                // toYDelta
-        animate.setDuration(250);
-        animate.setFillAfter(false);
-        view.startAnimation(animate);
+    public void slideUp(View view) {
+        if (slideUpCounter == 0) {
+            slideUpCounter = 1;
+            view.animate()
+                    .translationY(0)
+                    .alpha(0.0f)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            view.setVisibility(View.GONE);
+                        }
+                    });
+        } else if(slideUpCounter == 1){
+            view.animate()
+                    .translationY(-300)
+                    .alpha(0.0f)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            view.setVisibility(View.GONE);
+                        }
+                    });
+        }
     }
 
     // slide the view from its current position to below itself
-    public void slideDown(View view){
-        view.setVisibility(View.VISIBLE);
-        TranslateAnimation animate = new TranslateAnimation(
-                0,                 // fromXDelta
-                0,                 // toXDelta
-                -300,                 // fromYDelta
-                view.getHeight()-300); // toYDelta
-        animate.setDuration(250);
-        animate.setFillAfter(false);
-        view.startAnimation(animate);
+    public void slideDown(View view) {
+
+        if (slideUpCounter == 0) {
+            view.setVisibility(View.VISIBLE);
+            view.setAlpha(0.0f);
+
+// Start the animation
+            view.animate()
+                    .translationY(view.getHeight())
+                    .alpha(1.0f)
+                    .setListener(null);
+        }
+        else if(slideUpCounter == 1) {
+            view.setVisibility(View.VISIBLE);
+            view.setAlpha(0.0f);
+
+// Start the animation
+            view.animate()
+                    .translationY(view.getHeight()-300)
+                    .alpha(1.0f)
+                    .setListener(null);
+        }
+    }
+
+    public void slideUp2(View view) {
+        if (slideUpCounter2 == 0) {
+            slideUpCounter2 = 1;
+            view.animate()
+                    .translationY(0)
+                    .alpha(0.0f)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            view.setVisibility(View.GONE);
+                        }
+                    });
+        } else if(slideUpCounter2 == 1){
+            view.animate()
+                    .translationY(-300)
+                    .alpha(0.0f)
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationEnd(Animator animation) {
+                            super.onAnimationEnd(animation);
+                            view.setVisibility(View.GONE);
+                        }
+                    });
+        }
+    }
+
+    public void slideDown2(View view) {
+
+        if (slideUpCounter2 == 0) {
+            view.setVisibility(View.VISIBLE);
+            view.setAlpha(0.0f);
+
+// Start the animation
+            view.animate()
+                    .translationY(view.getHeight())
+                    .alpha(1.0f)
+                    .setListener(null);
+        }
+        else if(slideUpCounter2 == 1) {
+            view.setVisibility(View.VISIBLE);
+            view.setAlpha(0.0f);
+
+// Start the animation
+            view.animate()
+                    .translationY(view.getHeight()-300)
+                    .alpha(1.0f)
+                    .setListener(null);
+        }
     }
 
 
@@ -348,15 +429,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     requestResponseSwitcher = 0;
                     slideUp(fromDonorsCardView);
                     slideUp(fromPatientsCardView);
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            fromDonorsCardView.setVisibility(View.GONE);
-                            fromPatientsCardView.setVisibility(View.GONE);
-                        }
-                    }, 250);
-
                     break;
                 }
                 break;
@@ -379,14 +451,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     requestResponseSwitcher = 0;
                     slideUp(fromDonorsCardView);
                     slideUp(fromPatientsCardView);
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            fromDonorsCardView.setVisibility(View.GONE);
-                            fromPatientsCardView.setVisibility(View.GONE);
-                        }
-                    }, 250);
                     break;
                 }
                 break;
@@ -428,24 +492,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             case R.id.cardView_explore:
                 if(exploreSwitcher==0) {
                     exploreSwitcher=1;
-                    slideDown(allDonorsCardView);
-                    slideDown(allPatientsCardView);
+                    slideDown2(allDonorsCardView);
+                    slideDown2(allPatientsCardView);
                     numberOfDonors.setText(noOfDonors);
                     numberOfPatients.setText(noOfPatients);
                     break;
                 }
                 if(exploreSwitcher==1) {
                     exploreSwitcher=0;
-                    slideUp(allDonorsCardView);
-                    slideUp(allPatientsCardView);
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            allDonorsCardView.setVisibility(View.GONE);
-                            allPatientsCardView.setVisibility(View.GONE);
-                        }
-                    }, 250);
+                    slideUp2(allDonorsCardView);
+                    slideUp2(allPatientsCardView);
                     break;
                 }
                 break;
