@@ -7,8 +7,10 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -95,6 +97,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         fromPatientsCardView.setVisibility(View.GONE);
         allDonorsCardView.setVisibility(View.GONE);
         allPatientsCardView.setVisibility(View.GONE);
+
+
 
 
 
@@ -195,6 +199,50 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 numberOfDonors.setText(noOfDonors);
                 numberOfPatients.setText(noOfPatients);
 
+                if(requestResponseCardViewSwitcher == 1) {
+                    if(requestResponseSwitcher == 1) {
+                        requestResponseCardViewSwitcher = 1;
+                        requestResponseSwitcher = 1;
+                        fromDonorsCardView.setVisibility(View.VISIBLE);
+                        fromPatientsCardView.setVisibility(View.VISIBLE);
+                        numberOfRequestsFromDonorsText.setText("Requests");
+                        numberOfRequestsFromPatientsText.setText("Requests");
+                        numberOfRequestsFromDonors.setText(noOfResponses);
+                        numberOfRequestsFromPatients.setText(noOfRequests);
+                    }
+
+                    if(requestResponseSwitcher == 2){
+                        requestResponseCardViewSwitcher = 1;
+                        requestResponseSwitcher = 2;
+                        fromDonorsCardView.setVisibility(View.VISIBLE);
+                        fromPatientsCardView.setVisibility(View.VISIBLE);
+                        numberOfRequestsFromDonorsText.setText("Responses");
+                        numberOfRequestsFromPatientsText.setText("Responses");
+                        numberOfRequestsFromDonors.setText(noOfRequests);
+                        numberOfRequestsFromPatients.setText(noOfResponses);
+                    }
+                }
+                else if(requestResponseCardViewSwitcher == 0) {
+                    requestResponseCardViewSwitcher = 0;
+                    requestResponseSwitcher = 0;
+                    fromDonorsCardView.setVisibility(View.GONE);
+                    fromPatientsCardView.setVisibility(View.GONE);
+                }
+
+
+                if(exploreSwitcher==1) {
+                    exploreSwitcher=1;
+                    allDonorsCardView.setVisibility(View.VISIBLE);
+                    allPatientsCardView.setVisibility(View.VISIBLE);
+
+                }
+                else if(exploreSwitcher==0) {
+                    exploreSwitcher=0;
+                    allDonorsCardView.setVisibility(View.GONE);
+                    allPatientsCardView.setVisibility(View.GONE);
+                }
+
+
             }
 
             @Override
@@ -203,52 +251,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             }
         });
-
-        if(requestResponseCardViewSwitcher == 1) {
-            if(requestResponseSwitcher == 1) {
-                requestResponseCardViewSwitcher = 1;
-                requestResponseSwitcher = 1;
-                fromDonorsCardView.setVisibility(View.VISIBLE);
-                fromPatientsCardView.setVisibility(View.VISIBLE);
-                numberOfRequestsFromDonorsText.setText("Requests");
-                numberOfRequestsFromPatientsText.setText("Requests");
-                numberOfRequestsFromDonors.setText(noOfResponses);
-                numberOfRequestsFromPatients.setText(noOfRequests);
-            }
-
-            if(requestResponseSwitcher == 2){
-                requestResponseCardViewSwitcher = 1;
-                requestResponseSwitcher = 2;
-                fromDonorsCardView.setVisibility(View.VISIBLE);
-                fromPatientsCardView.setVisibility(View.VISIBLE);
-                numberOfRequestsFromDonorsText.setText("Responses");
-                numberOfRequestsFromPatientsText.setText("Responses");
-                numberOfRequestsFromDonors.setText(noOfRequests);
-                numberOfRequestsFromPatients.setText(noOfResponses);
-            }
-        }
-        else if(requestResponseCardViewSwitcher == 0) {
-            requestResponseCardViewSwitcher = 0;
-            requestResponseSwitcher = 0;
-            fromDonorsCardView.setVisibility(View.GONE);
-            fromPatientsCardView.setVisibility(View.GONE);
-        }
-
-
-        if(exploreSwitcher==1) {
-            exploreSwitcher=1;
-            allDonorsCardView.setVisibility(View.VISIBLE);
-            allPatientsCardView.setVisibility(View.VISIBLE);
-
-        }
-        else if(exploreSwitcher==0) {
-            exploreSwitcher=0;
-            allDonorsCardView.setVisibility(View.GONE);
-            allPatientsCardView.setVisibility(View.GONE);
-        }
-
-
-
 
 
         profileBtn.setText(nameSplit[0]);
@@ -280,6 +282,31 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         }
     }
 
+    public void slideUp(View view){
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                view.getHeight()-300,  // fromYDelta
+                -300);                // toYDelta
+        animate.setDuration(250);
+        animate.setFillAfter(false);
+        view.startAnimation(animate);
+    }
+
+    // slide the view from its current position to below itself
+    public void slideDown(View view){
+        view.setVisibility(View.VISIBLE);
+        TranslateAnimation animate = new TranslateAnimation(
+                0,                 // fromXDelta
+                0,                 // toXDelta
+                -300,                 // fromYDelta
+                view.getHeight()-300); // toYDelta
+        animate.setDuration(250);
+        animate.setFillAfter(false);
+        view.startAnimation(animate);
+    }
+
+
 
     @Override
     public void onClick(View view) {
@@ -307,19 +334,29 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 if(requestResponseCardViewSwitcher == 0) {
                     requestResponseCardViewSwitcher = 1;
                     requestResponseSwitcher = 1;
-                    fromDonorsCardView.setVisibility(View.VISIBLE);
-                    fromPatientsCardView.setVisibility(View.VISIBLE);
+                    slideDown(fromDonorsCardView);
+                    slideDown(fromPatientsCardView);
                     numberOfRequestsFromDonorsText.setText("Requests");
                     numberOfRequestsFromPatientsText.setText("Requests");
                     numberOfRequestsFromDonors.setText(noOfResponses);
                     numberOfRequestsFromPatients.setText(noOfRequests);
+
                     break;
                 }
                 if(requestResponseCardViewSwitcher ==1) {
                     requestResponseCardViewSwitcher = 0;
                     requestResponseSwitcher = 0;
-                    fromDonorsCardView.setVisibility(View.GONE);
-                    fromPatientsCardView.setVisibility(View.GONE);
+                    slideUp(fromDonorsCardView);
+                    slideUp(fromPatientsCardView);
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            fromDonorsCardView.setVisibility(View.GONE);
+                            fromPatientsCardView.setVisibility(View.GONE);
+                        }
+                    }, 250);
+
                     break;
                 }
                 break;
@@ -329,8 +366,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 if(requestResponseCardViewSwitcher ==0) {
                     requestResponseCardViewSwitcher = 1;
                     requestResponseSwitcher = 2;
-                    fromDonorsCardView.setVisibility(View.VISIBLE);
-                    fromPatientsCardView.setVisibility(View.VISIBLE);
+                    slideDown(fromDonorsCardView);
+                    slideDown(fromPatientsCardView);
                     numberOfRequestsFromDonorsText.setText("Responses");
                     numberOfRequestsFromPatientsText.setText("Responses");
                     numberOfRequestsFromDonors.setText(noOfRequests);
@@ -340,8 +377,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 if(requestResponseCardViewSwitcher ==1) {
                     requestResponseCardViewSwitcher = 0;
                     requestResponseSwitcher = 0;
-                    fromDonorsCardView.setVisibility(View.GONE);
-                    fromPatientsCardView.setVisibility(View.GONE);
+                    slideUp(fromDonorsCardView);
+                    slideUp(fromPatientsCardView);
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            fromDonorsCardView.setVisibility(View.GONE);
+                            fromPatientsCardView.setVisibility(View.GONE);
+                        }
+                    }, 250);
                     break;
                 }
                 break;
@@ -383,16 +428,24 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             case R.id.cardView_explore:
                 if(exploreSwitcher==0) {
                     exploreSwitcher=1;
-                    allDonorsCardView.setVisibility(View.VISIBLE);
-                    allPatientsCardView.setVisibility(View.VISIBLE);
+                    slideDown(allDonorsCardView);
+                    slideDown(allPatientsCardView);
                     numberOfDonors.setText(noOfDonors);
                     numberOfPatients.setText(noOfPatients);
                     break;
                 }
                 if(exploreSwitcher==1) {
                     exploreSwitcher=0;
-                    allDonorsCardView.setVisibility(View.GONE);
-                    allPatientsCardView.setVisibility(View.GONE);
+                    slideUp(allDonorsCardView);
+                    slideUp(allPatientsCardView);
+                    final Handler handler = new Handler();
+                    handler.postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            allDonorsCardView.setVisibility(View.GONE);
+                            allPatientsCardView.setVisibility(View.GONE);
+                        }
+                    }, 250);
                     break;
                 }
                 break;
