@@ -2,14 +2,9 @@ package com.ece.cov19;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,8 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.RecyclerViews.ExplorePatientsAlphaAdapter;
-import com.ece.cov19.RecyclerViews.ExplorePatientsBetaAdapter;
+import com.ece.cov19.RecyclerViews.MyPatientsAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -71,7 +65,9 @@ public class MyPatientsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+                startActivity(intent);
+                finishAffinity();
             }
         });
 
@@ -81,16 +77,18 @@ public class MyPatientsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        finish();
+        Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+        startActivity(intent);
+        finishAffinity();
     }
 
     private void myPatientsSearch(){
         myPatientsProgressBar.setVisibility(View.VISIBLE);
 
         ArrayList<PatientDataModel> patientDataModels;
-        ExplorePatientsAlphaAdapter explorePatientsAlphaAdapter;
+        MyPatientsAdapter myPatientsAdapter;
         patientDataModels = new ArrayList<>();
-        explorePatientsAlphaAdapter = new ExplorePatientsAlphaAdapter(getApplicationContext(), patientDataModels);
+        myPatientsAdapter = new MyPatientsAdapter(getApplicationContext(), patientDataModels);
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<ArrayList<PatientDataModel>> viewPatients = retroInterface.ownPatients(loggedInUserPhone);
         viewPatients.enqueue(new Callback<ArrayList<PatientDataModel>>() {
@@ -117,7 +115,7 @@ public class MyPatientsActivity extends AppCompatActivity {
                         myPatientsTextView.setVisibility(View.VISIBLE);
 
                     }
-                    myPatientsRecyclerView.setAdapter(explorePatientsAlphaAdapter);
+                    myPatientsRecyclerView.setAdapter(myPatientsAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false);
                     myPatientsRecyclerView.setLayoutManager(linearLayoutManager);
                 }

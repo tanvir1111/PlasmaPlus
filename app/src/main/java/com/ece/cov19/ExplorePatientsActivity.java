@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,7 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.RecyclerViews.ExplorePatientsBetaAdapter;
+import com.ece.cov19.RecyclerViews.ExplorePatientsAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -68,7 +69,9 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               finish();
+                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+                startActivity(intent);
+                finishAffinity();
             }
         });
         bloodgrpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -106,16 +109,18 @@ public class ExplorePatientsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        finish();
+        Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+        startActivity(intent);
+        finishAffinity();
     }
 
 
     private void allPatientsSearch() {
         progressBar.setVisibility(View.VISIBLE);
         ArrayList<PatientDataModel> patientDataModels;
-        ExplorePatientsBetaAdapter explorePatientsBetaAdapter;
+        ExplorePatientsAdapter explorePatientsAdapter;
         patientDataModels = new ArrayList<>();
-        explorePatientsBetaAdapter = new ExplorePatientsBetaAdapter(getApplicationContext(), patientDataModels);
+        explorePatientsAdapter = new ExplorePatientsAdapter(getApplicationContext(), patientDataModels);
 
         String bloodgroup = bloodgrpSpinner.getSelectedItem().toString();
         String district;
@@ -148,7 +153,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
 
 
 
-                    explorePatientsRecyclerView.setAdapter(explorePatientsBetaAdapter);
+                    explorePatientsRecyclerView.setAdapter(explorePatientsAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     explorePatientsRecyclerView.setLayoutManager(linearLayoutManager);
                 }

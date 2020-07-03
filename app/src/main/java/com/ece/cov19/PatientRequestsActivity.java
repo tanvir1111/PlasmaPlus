@@ -46,7 +46,9 @@ public class PatientRequestsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+                startActivity(intent);
+                finishAffinity();
             }
         });
 
@@ -58,7 +60,9 @@ public class PatientRequestsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-       finish();
+        Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
+        startActivity(intent);
+        finishAffinity();
     }
 
     private void myPatientsSearch(){

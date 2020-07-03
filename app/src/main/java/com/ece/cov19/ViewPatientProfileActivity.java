@@ -125,6 +125,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,ExplorePatientsActivity.class);
                     startActivity(goBackIntent);
                     finish();
+                } else if(intent.getStringExtra("activity").equals("MyPatientsActivity")) {
+                    Intent goBackIntent = new Intent(ViewPatientProfileActivity.this, MyPatientsActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
                 } else if(intent.getStringExtra("activity").equals("PatientResponseActivity")) {
                     Intent goBackIntent = new Intent(ViewPatientProfileActivity.this, PatientResponseActivity.class);
                     startActivity(goBackIntent);
@@ -250,6 +254,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         } else if(intent.getStringExtra("activity").equals("ExplorePatientsActivity")){
             Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,ExplorePatientsActivity.class);
+            startActivity(goBackIntent);
+            finish();
+        } else if(intent.getStringExtra("activity").equals("MyPatientsActivity")) {
+            Intent goBackIntent = new Intent(ViewPatientProfileActivity.this, MyPatientsActivity.class);
             startActivity(goBackIntent);
             finish();
         } else if(intent.getStringExtra("activity").equals("PatientResponseActivity")) {

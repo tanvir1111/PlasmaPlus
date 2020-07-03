@@ -9,13 +9,14 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.R;
 import com.ece.cov19.ViewPatientProfileActivity;
 
 import java.util.ArrayList;
 
-public class ExplorePatientsAlphaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ExplorePatientsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView nameTextView, donateTextView, typeTextView, bloodTextView, locationTextView;
     ImageView patientImageView;
@@ -23,8 +24,7 @@ public class ExplorePatientsAlphaViewHolder extends RecyclerView.ViewHolder impl
     ArrayList<PatientDataModel> patientDataModels;
     int pos;
 
-
-    public ExplorePatientsAlphaViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels) {
+    public ExplorePatientsViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels) {
         super(itemView);
         this.patientDataModels = patientDataModels;
 
@@ -38,16 +38,19 @@ public class ExplorePatientsAlphaViewHolder extends RecyclerView.ViewHolder impl
 
         itemView.setOnClickListener(this);
         donateTextView.setOnClickListener(this);
-
     }
 
     @Override
     public void onClick(View view) {
-
         pos = getAdapterPosition();
         Context c = view.getContext();
 
         patientDataModel = patientDataModels.get(pos);
+        FindPatientData.findPatientPosition = pos;
+        FindPatientData.findPatientBloodGroup = patientDataModels.get(pos).getBloodGroup();
+        FindPatientData.findPatientName=patientDataModels.get(pos).getName();
+        FindPatientData.findPatientAge=patientDataModels.get(pos).getAge();
+        FindPatientData.findPatientPhone=patientDataModels.get(pos).getPhone();
         Intent intent = new Intent(view.getContext(), ViewPatientProfileActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
