@@ -114,26 +114,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = getIntent();
-
-                if(intent.getStringExtra("activity").equals("PatientRequestsActivity")){
-                    Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,PatientRequestsActivity.class);
-                    startActivity(goBackIntent);
-                    finish();
-
-                } else if(intent.getStringExtra("activity").equals("ExplorePatientsActivity")){
-                    Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,ExplorePatientsActivity.class);
-                    startActivity(goBackIntent);
-                    finish();
-                } else if(intent.getStringExtra("activity").equals("MyPatientsActivity")) {
-                    Intent goBackIntent = new Intent(ViewPatientProfileActivity.this, MyPatientsActivity.class);
-                    startActivity(goBackIntent);
-                    finish();
-                } else if(intent.getStringExtra("activity").equals("PatientResponseActivity")) {
-                    Intent goBackIntent = new Intent(ViewPatientProfileActivity.this, PatientResponseActivity.class);
-                    startActivity(goBackIntent);
-                    finish();
-                }
+                finish();
             }
         });
 
@@ -245,26 +226,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = getIntent();
-
-        if(intent.getStringExtra("activity").equals("PatientRequestsActivity")){
-            Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,PatientRequestsActivity.class);
-            startActivity(goBackIntent);
-            finish();
-
-        } else if(intent.getStringExtra("activity").equals("ExplorePatientsActivity")){
-            Intent goBackIntent = new Intent(ViewPatientProfileActivity.this,ExplorePatientsActivity.class);
-            startActivity(goBackIntent);
-            finish();
-        } else if(intent.getStringExtra("activity").equals("MyPatientsActivity")) {
-            Intent goBackIntent = new Intent(ViewPatientProfileActivity.this, MyPatientsActivity.class);
-            startActivity(goBackIntent);
-            finish();
-        } else if(intent.getStringExtra("activity").equals("PatientResponseActivity")) {
-            Intent goBackIntent = new Intent(ViewPatientProfileActivity.this, PatientResponseActivity.class);
-            startActivity(goBackIntent);
-            finish();
-        }
+        finish();
     }
 
     private void updateAlertDialog(final Intent intent) {

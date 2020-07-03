@@ -51,9 +51,31 @@ public class DonorResponseActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-                startActivity(intent);
-                finishAffinity();
+                finish();
+            }
+        });
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        setContentView(R.layout.activity_donor_response);
+
+        TextView = findViewById(R.id.donor_response_textview);
+        RecyclerView = findViewById(R.id.donor_response_recyclerview);
+        ProgressBar=findViewById(R.id.donor_response_progress_bar);
+        backbtn=findViewById(R.id.donor_response_back_button);
+
+
+        myPatientsSearch();
+
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
             }
         });
 
@@ -63,9 +85,7 @@ public class DonorResponseActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-        startActivity(intent);
-        finishAffinity();
+        finish();
     }
 
     private void myPatientsSearch(){

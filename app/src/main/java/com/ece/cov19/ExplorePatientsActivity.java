@@ -69,9 +69,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-                startActivity(intent);
-                finishAffinity();
+                finish();
             }
         });
         bloodgrpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -106,12 +104,67 @@ public class ExplorePatientsActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+
+        setContentView(R.layout.activity_explore_patients);
+
+        findPatientName="";
+        findPatientAge="";
+        findPatientPhone="";
+        findPatientBloodGroup="any";
+        findPatientNeed="";
+
+        explorePatientsTextView =findViewById(R.id.explore_patients_textview);
+        explorePatientsRecyclerView = findViewById(R.id.explore_patients_recyclerview);
+        bloodgrpSpinner=findViewById(R.id.explore_patients_bld_grp);
+        districtEditText=findViewById(R.id.explore_patients_district_edittext);
+        progressBar=findViewById(R.id.explore_patients_progress_bar);
+        backbtn=findViewById(R.id.explore_patients_back_button);
+        otherPatientsText= explorePatientsTextView.getText().toString();
+
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        bloodgrpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                allPatientsSearch();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+        districtEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                allPatientsSearch();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+
+            }
+        });
+    }
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-        startActivity(intent);
-        finishAffinity();
+        finish();
     }
 
 

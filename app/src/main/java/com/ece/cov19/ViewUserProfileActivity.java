@@ -135,6 +135,108 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        setContentView(R.layout.activity_view_user_profile);
+
+        nameTextView = findViewById(R.id.profile_name);
+        phoneTextView = findViewById(R.id.profile_phone);
+        bloodGroupTextView = findViewById(R.id.profile_blood_group);
+        addressTextView = findViewById(R.id.profile_hospital);
+        ageTextView = findViewById(R.id.profile_age);
+        donorInfoTextView = findViewById(R.id.profile_type);
+        genderImageView = findViewById(R.id.profile_gender_icon);
+        backbtn=findViewById(R.id.profile_back_button);
+        logoutBtn=findViewById(R.id.profile_logout_btn);
+        updateInfoBtn=findViewById(R.id.profile_update_button);
+        updatePasswordBtn=findViewById(R.id.profile_change_password_btn);
+        deleteBtn = findViewById(R.id.profile_delete_button);
+
+//      setting logged in user info
+        nameTextView.setText(loggedInUserName);
+        phoneTextView.setText(loggedInUserPhone);
+        bloodGroupTextView.setText(loggedInUserBloodGroup);
+        addressTextView.setText(String.format("%s, %s", loggedInUserThana, loggedInUserDistrict));
+        ageTextView.setText(loggedInUserAge);
+        if(loggedInUserDonorInfo.equals("na")) {
+            donorInfoTextView.setText("Not a donor");
+        }
+        else{
+            donorInfoTextView.setText(loggedInUserDonorInfo+" Donor");
+        }
+        if (loggedInUserGender.toLowerCase().equals("male")) {
+            genderImageView.setImageResource(R.drawable.profile_icon_male);
+        } else if (loggedInUserGender.toLowerCase().equals("male")) {
+            genderImageView.setImageResource(R.drawable.profile_icon_female);
+        }
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+        logoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
+                builder.setMessage("Are you Sure?");
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
+                        sharedPreferences.edit().clear().apply();
+                        Intent login= new Intent(ViewUserProfileActivity.this, LoginActivity.class);
+                        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(login);
+                        finish();
+
+
+                    }
+                })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog alertDialog=builder.create();
+                alertDialog.show();
+
+
+
+            }
+        });
+
+        updateInfoBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(ViewUserProfileActivity.this, UpdateUserProfileActivity.class);
+                showAlertDialog(intent);
+
+
+
+            }
+        });
+        updatePasswordBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent= new Intent(ViewUserProfileActivity.this, UpdatePasswordActivity.class);
+
+                showAlertDialog(intent);
+
+            }
+        });
+
+        deleteBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
     private void showAlertDialog(final Intent intent) {
 
 //                asking password with alertdialog

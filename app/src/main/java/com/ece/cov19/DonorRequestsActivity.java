@@ -56,9 +56,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-                startActivity(intent);
-                finishAffinity();
+               finish();
             }
         });
         getRequests();
@@ -96,12 +94,62 @@ public class DonorRequestsActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+        setContentView(R.layout.activity_donor_requests);
+        recyclerView = findViewById(R.id.donor_requests_recyclerview);
+        backbtn=findViewById(R.id.donor_requests_back_button);
+        acceptedBtn=findViewById(R.id.donor_requests_show_accepted_requests);
+        pendingbtn=findViewById(R.id.donor_requests_show_pending_requests);
+        requestTypeTextView=findViewById(R.id.donor_requests_type_textView);
+        progressBar = findViewById(R.id.donor_requests_progressBar);
+
+        patientDataModels = new ArrayList<>();
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        getRequests();
+
+
+        pendingbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                status="Pending";
+                requestTypeText="Pending Requests";
+                requestTypeTextView.setText(requestTypeText);
+                pendingbtn.setVisibility(View.GONE);
+                acceptedBtn.setVisibility(View.VISIBLE);
+                getRequests();
+
+            }
+        });
+
+        acceptedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                requestTypeText="Accepted Requests";
+                status="Accepted";
+                requestTypeTextView.setText(requestTypeText);
+                pendingbtn.setVisibility(View.VISIBLE);
+                acceptedBtn.setVisibility(View.GONE);
+                getRequests();
+
+            }
+        });
+
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-        startActivity(intent);
-        finishAffinity();
+        finish();
     }
 
     private void getRequests() {

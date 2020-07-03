@@ -65,21 +65,47 @@ public class MyPatientsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-                startActivity(intent);
-                finishAffinity();
+                finish();
             }
         });
 
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+        setContentView(R.layout.activity_my_patients);
+
+        findPatientName="";
+        findPatientAge="";
+        findPatientPhone="";
+        findPatientBloodGroup="any";
+        findPatientNeed="";
+
+        myPatientsRecyclerView = findViewById(R.id.my_patients_recyclerview);
+        myPatientsProgressBar = findViewById(R.id.my_patients_progress_bar);
+        myPatientsTextView = findViewById(R.id.my_patients_textview);
+
+        backbtn=findViewById(R.id.my_patients_back_button);
+        myPatientsText=myPatientsTextView.getText().toString();
+
+
+        myPatientsSearch();
+
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-        startActivity(intent);
-        finishAffinity();
+        finish();
     }
 
     private void myPatientsSearch(){

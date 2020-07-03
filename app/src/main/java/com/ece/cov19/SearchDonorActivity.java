@@ -52,11 +52,6 @@ public class SearchDonorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        findPatientName="";
-        findPatientAge="";
-        findPatientPhone="";
-        findPatientBloodGroup="any";
-
         setContentView(R.layout.activity_search_donor);
         recyclerView = findViewById(R.id.search_donor_recyclerview);
         bloodgrpSpinner = findViewById(R.id.search_donor_bld_grp);
@@ -67,12 +62,15 @@ public class SearchDonorActivity extends AppCompatActivity {
 
         filterResultText = filterResult.getText().toString();
 
+        findPatientName="";
+        findPatientAge="";
+        findPatientPhone="";
+        findPatientBloodGroup="any";
+
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-                startActivity(intent);
-                finishAffinity();
+                finish();
             }
         });
 
@@ -112,12 +110,68 @@ public class SearchDonorActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+        setContentView(R.layout.activity_search_donor);
+        recyclerView = findViewById(R.id.search_donor_recyclerview);
+        bloodgrpSpinner = findViewById(R.id.search_donor_bld_grp);
+        districtEditText = findViewById(R.id.search_donor_district_edittext);
+        progressBar = findViewById(R.id.search_donor_progress_bar);
+        backbtn = findViewById(R.id.search_donor_back_button);
+        filterResult = findViewById(R.id.search_donor_filter_result);
+
+        filterResultText = filterResult.getText().toString();
+
+        findPatientName="";
+        findPatientAge="";
+        findPatientPhone="";
+        findPatientBloodGroup="any";
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+
+        userDataModels = new ArrayList<>();
+
+        bloodgrpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                donorSearch();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        districtEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                donorSearch();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+
+            }
+        });
+
+    }
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-        startActivity(intent);
-        finishAffinity();
+        finish();
     }
 
     private void donorSearch() {

@@ -115,32 +115,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = getIntent();
-
-                if(intent.getStringExtra("activity").equals("DonorRequestsActivity")){
-                    Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,DonorRequestsActivity.class);
-                    startActivity(goBackIntent);
-                    finish();
-
-                } else if(intent.getStringExtra("activity").equals("FindDonorActivity")){
-                    Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,FindDonorActivity.class);
-                    startActivity(goBackIntent);
-                    finish();
-
-                } else if(intent.getStringExtra("activity").equals("SearchDonorActivity")){
-                    Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,SearchDonorActivity.class);
-                    startActivity(goBackIntent);
-                    finish();
-
-                } else if(intent.getStringExtra("activity").equals("PatientRequestsActivity")){
-                    Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,PatientRequestsActivity.class);
-                    startActivity(goBackIntent);
-                    finish();
-                } else if(intent.getStringExtra("activity").equals("DonorResponseActivity")) {
-                    Intent goBackIntent = new Intent(ViewDonorProfileActivity.this, DonorResponseActivity.class);
-                    startActivity(goBackIntent);
-                    finish();
-                }
+                finish();
             }
         });
 
@@ -231,32 +206,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = getIntent();
-
-        if(intent.getStringExtra("activity").equals("DonorRequestsActivity")){
-            Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,DonorRequestsActivity.class);
-            startActivity(goBackIntent);
-            finish();
-
-        } else if(intent.getStringExtra("activity").equals("FindDonorActivity")){
-            Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,FindDonorActivity.class);
-            startActivity(goBackIntent);
-            finish();
-
-        } else if(intent.getStringExtra("activity").equals("SearchDonorActivity")){
-            Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,SearchDonorActivity.class);
-            startActivity(goBackIntent);
-            finish();
-
-        } else if(intent.getStringExtra("activity").equals("PatientRequestsActivity")){
-            Intent goBackIntent = new Intent(ViewDonorProfileActivity.this,PatientRequestsActivity.class);
-            startActivity(goBackIntent);
-            finish();
-        } else if(intent.getStringExtra("activity").equals("DonorResponseActivity")) {
-            Intent goBackIntent = new Intent(ViewDonorProfileActivity.this, DonorResponseActivity.class);
-            startActivity(goBackIntent);
-            finish();
-        }
+        finish();
     }
 
     private void passWordAlertDialog() {

@@ -53,10 +53,6 @@ public class FindDonorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_donor);
-        findPatientName="";
-        findPatientAge="";
-        findPatientPhone="";
-        findPatientBloodGroup="any";
 
         patientRecyclerView = findViewById(R.id.find_donor_forpatients_recyclerview);
         patientProgressBar = findViewById(R.id.find_donor_forpatients_progress_bar);
@@ -69,6 +65,11 @@ public class FindDonorActivity extends AppCompatActivity {
         districtEditText=findViewById(R.id.find_donor_fordonors_district_edittext);
         donorProgressBar =findViewById(R.id.find_donor_fordonors_progress_bar);
         backbtn=findViewById(R.id.find_donor_fordonors_back_button);
+
+        findPatientName="";
+        findPatientAge="";
+        findPatientPhone="";
+        findPatientBloodGroup="any";
 
         myPatients=patientTextView.getText().toString();
         availableDonors=donorTextView.getText().toString();
@@ -85,9 +86,7 @@ public class FindDonorActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-                startActivity(intent);
-                finishAffinity();;
+                finish();
             }
         });
 
@@ -111,12 +110,71 @@ public class FindDonorActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+
+        setContentView(R.layout.activity_find_donor);
+
+        patientRecyclerView = findViewById(R.id.find_donor_forpatients_recyclerview);
+        patientProgressBar = findViewById(R.id.find_donor_forpatients_progress_bar);
+        patientTextView = findViewById(R.id.find_donor_forpatients_textview);
+
+        donorRecyclerView = findViewById(R.id.find_donor_fordonors_recyclerview);
+        donorTextView = findViewById(R.id.find_donor_fordonors_textview);
+        noMatchTextView = findViewById(R.id.find_donor_fordonors_nomatchtextview);
+        filterTextView = findViewById(R.id.find_donor_fordonors_label_district);
+        districtEditText=findViewById(R.id.find_donor_fordonors_district_edittext);
+        donorProgressBar =findViewById(R.id.find_donor_fordonors_progress_bar);
+        backbtn=findViewById(R.id.find_donor_fordonors_back_button);
+
+        findPatientName="";
+        findPatientAge="";
+        findPatientPhone="";
+        findPatientBloodGroup="any";
+
+        myPatients=patientTextView.getText().toString();
+        availableDonors=donorTextView.getText().toString();
+
+        donorTextView.setVisibility(View.GONE);
+        filterTextView.setVisibility(View.GONE);
+        districtEditText.setVisibility(View.GONE);
+        noMatchTextView.setVisibility(View.GONE);
+
+        FindPatientData.findPatientBloodGroup = "any";
+        findPatient();
+        findDonor();
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
+        districtEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                findDonor();
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+
+            }
+        });
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-        startActivity(intent);
-        finishAffinity();
+        finish();
     }
 
     private void findPatient(){

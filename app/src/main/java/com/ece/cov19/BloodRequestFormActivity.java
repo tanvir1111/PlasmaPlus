@@ -113,6 +113,13 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
             }
         });
 
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+
 
 //        all OnclickListeners
         aPositive.setOnClickListener(this);
@@ -127,6 +134,12 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         genderFemale.setOnClickListener(this);
         submitBtn.setOnClickListener(this);
         backbtn.setOnClickListener(this);
+    }
+
+    @Override
+    public void onBackPressed(){
+        super.onBackPressed();
+        finish();
     }
 
 //    datepicker for choosing date

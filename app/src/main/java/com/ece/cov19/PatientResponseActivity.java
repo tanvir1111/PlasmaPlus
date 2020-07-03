@@ -53,9 +53,7 @@ public class PatientResponseActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-                startActivity(intent);
-                finishAffinity();
+                finish();
             }
         });
         progressBar.setVisibility(View.VISIBLE);
@@ -99,12 +97,66 @@ public class PatientResponseActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        setContentView(R.layout.activity_patient_response);
+        recyclerView = findViewById(R.id.patients_response_recyclerview);
+        backbtn=findViewById(R.id.patients_response_back_button);
+        requestTypeTextView=findViewById(R.id.patients_response_type_textView);
+        progressBar = findViewById(R.id.patients_response_progressBar);
+
+
+        patientDataModels = new ArrayList<>();
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
+        progressBar.setVisibility(View.VISIBLE);
+        RetroInterface retroInterface = RetroInstance.getRetro();
+
+        Call <ArrayList<PatientDataModel>> incomingResponse = retroInterface.checkPatientResponse(loggedInUserPhone);
+        incomingResponse.enqueue(new Callback<ArrayList<PatientDataModel>>() {
+            @Override
+            public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
+                progressBar.setVisibility(View.GONE);
+                if(response.isSuccessful()) {
+                    patientDataModels.clear();
+                    ArrayList<PatientDataModel> initialModels = response.body();
+                    //requestTypeTextView.setText(requestTypeText+"(" +initialModels.size()+")");
+
+                    for(PatientDataModel initialDataModel : initialModels){
+                        if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
+
+                            patientDataModels.add(initialDataModel);
+                        }
+                    }
+
+                    PatientResponseAdapter = new PatientResponseAdapter(getApplicationContext(), patientDataModels);
+                    recyclerView.setAdapter(PatientResponseAdapter);
+                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
+                    recyclerView.setLayoutManager(linearLayoutManager);
+                }
+                else {
+                    Toast.makeText(PatientResponseActivity.this, "No Response", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
+                Toast.makeText(PatientResponseActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    @Override
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = new Intent(getApplicationContext(),DashboardActivity.class);
-        startActivity(intent);
-        finishAffinity();
+        finish();
     }
 
 }
