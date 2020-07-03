@@ -48,10 +48,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private ProgressBar progressBar;
     private ConstraintLayout loadingView;
 
-    public int backCounter=0;
-    public int requestResponseSwitcher=0;
-    public int requestResponseCardViewSwitcher=0;
-    public int exploreSwitcher=0;
+    public int backCounter;
+    public int requestResponseSwitcher;
+    public int requestResponseCardViewSwitcher;
+    public int exploreSwitcher;
 
 
     private String noOfDonors, noOfPatients, noOfRequests, noOfResponses;
@@ -77,28 +77,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         myPatientsCardView=findViewById(R.id.cardView_myPatients);
         allDonorsCardView=findViewById(R.id.cardView_exploreA);
         allPatientsCardView=findViewById(R.id.cardView_exploreB);
-
-        findDonorText=findViewById(R.id.dashboard_text_find_donor);
-        addPatientText=findViewById(R.id.dashboard_text_add_patient);
-        requestsText=findViewById(R.id.dashboard_text_requests);
-        responsesText=findViewById(R.id.dashboard_text_responses);
-        fromDonorsText=findViewById(R.id.dashboard_text_requestA);
-        fromPatientsText=findViewById(R.id.dashboard_text_requestB);
-        exploreText=findViewById(R.id.dashboard_text_explore);
-        myPatientsText=findViewById(R.id.dashboard_text_my_patients);
-        allDonorsText=findViewById(R.id.dashboard_text_explore_all_donors);
-        allPatientsText=findViewById(R.id.dashboard_text_explore_all_patients);
-
-        findDonorImage=findViewById(R.id.dashboard_img_find_donor);
-        addPatientImage=findViewById(R.id.dashboard_img_add_patient);
-        requestsImage=findViewById(R.id.dashboard_img_requests);
-        responsesImage=findViewById(R.id.dashboard_img_responses);
-        fromDonorsImage=findViewById(R.id.dashboard_img_requestA);
-        fromPatientsImage=findViewById(R.id.dashboard_img_requestB);
-        exploreImage=findViewById(R.id.dashboard_img_explore);
-        myPatientsImage=findViewById(R.id.dashboard_img_my_patients);
-        allDonorsImage=findViewById(R.id.dashboard_img_explore_all_donors);
-        allPatientsImage=findViewById(R.id.dashboard_img_explore_all_patients);
 
         numberOfDonors=findViewById(R.id.dashboard_no_of_donors);
         numberOfDonorsText=findViewById(R.id.dashboard_text_no_of_donors);
@@ -169,7 +147,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                Toast.makeText(DashboardActivity.this, "failed to get numbers", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DashboardActivity.this, "Failed to Update Dashboard", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -189,27 +167,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         allDonorsCardView.setOnClickListener(this);
         allPatientsCardView.setOnClickListener(this);
 
-        findDonorText.setOnClickListener(this);
-        addPatientText.setOnClickListener(this);
-        requestsText.setOnClickListener(this);
-        responsesText.setOnClickListener(this);
-        fromDonorsText.setOnClickListener(this);
-        fromPatientsText.setOnClickListener(this);
-        exploreText.setOnClickListener(this);
-        myPatientsText.setOnClickListener(this);
-        allDonorsText.setOnClickListener(this);
-        allPatientsText.setOnClickListener(this);
-
-        findDonorImage.setOnClickListener(this);
-        addPatientImage.setOnClickListener(this);
-        requestsImage.setOnClickListener(this);
-        responsesImage.setOnClickListener(this);
-        fromDonorsImage.setOnClickListener(this);
-        fromPatientsImage.setOnClickListener(this);
-        exploreImage.setOnClickListener(this);
-        myPatientsImage.setOnClickListener(this);
-        allDonorsImage.setOnClickListener(this);
-        allPatientsImage.setOnClickListener(this);
 
     }
 
@@ -218,15 +175,97 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         super.onResume();
 
 
-        if(requestResponseCardViewSwitcher==0) {
-            backCounter = 0;
+        nameSplit = loggedInUserName.split("");
+        loadingView.setVisibility(View.VISIBLE);
+
+
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Call<DashBoardNumberModel> dashBoardNumbers = retroInterface.getDashBoardNumbers(loggedInUserPhone);
+        dashBoardNumbers.enqueue(new Callback<DashBoardNumberModel>() {
+            @Override
+            public void onResponse(Call<DashBoardNumberModel> call, Response<DashBoardNumberModel> response) {
+                loadingView.setVisibility(View.GONE);
+
+
+                noOfDonors = response.body().getNumberOfDonors();
+                noOfPatients = response.body().getNumberOfPatients();
+                noOfRequests = response.body().getNumberOfRequests();
+                noOfResponses = response.body().getNumberOfResponses();
+
+                numberOfDonors.setText(noOfDonors);
+                numberOfPatients.setText(noOfPatients);
+
+            }
+
+            @Override
+            public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
+                Toast.makeText(DashboardActivity.this, "Failed to Update Dashboard", Toast.LENGTH_SHORT).show();
+
+            }
+        });
+
+        if(requestResponseCardViewSwitcher == 1) {
+            if(requestResponseSwitcher == 1) {
+                requestResponseCardViewSwitcher = 1;
+                requestResponseSwitcher = 1;
+                fromDonorsCardView.setVisibility(View.VISIBLE);
+                fromPatientsCardView.setVisibility(View.VISIBLE);
+                numberOfRequestsFromDonorsText.setText("Requests");
+                numberOfRequestsFromPatientsText.setText("Requests");
+                numberOfRequestsFromDonors.setText(noOfResponses);
+                numberOfRequestsFromPatients.setText(noOfRequests);
+            }
+
+            if(requestResponseSwitcher == 2){
+                requestResponseCardViewSwitcher = 1;
+                requestResponseSwitcher = 2;
+                fromDonorsCardView.setVisibility(View.VISIBLE);
+                fromPatientsCardView.setVisibility(View.VISIBLE);
+                numberOfRequestsFromDonorsText.setText("Responses");
+                numberOfRequestsFromPatientsText.setText("Responses");
+                numberOfRequestsFromDonors.setText(noOfRequests);
+                numberOfRequestsFromPatients.setText(noOfResponses);
+            }
+        }
+        else if(requestResponseCardViewSwitcher == 0) {
             requestResponseCardViewSwitcher = 0;
             requestResponseSwitcher = 0;
-        } else{
-            backCounter = 0;
-            requestResponseCardViewSwitcher = 1;
-            requestResponseSwitcher = 1;
+            fromDonorsCardView.setVisibility(View.GONE);
+            fromPatientsCardView.setVisibility(View.GONE);
         }
+
+
+        if(exploreSwitcher==1) {
+            exploreSwitcher=1;
+            allDonorsCardView.setVisibility(View.VISIBLE);
+            allPatientsCardView.setVisibility(View.VISIBLE);
+
+        }
+        else if(exploreSwitcher==0) {
+            exploreSwitcher=0;
+            allDonorsCardView.setVisibility(View.GONE);
+            allPatientsCardView.setVisibility(View.GONE);
+        }
+
+
+
+
+
+        profileBtn.setText(nameSplit[0]);
+        profileBtn.setOnClickListener(this);
+        dashboard.setOnClickListener(this);
+
+        findDonorCardView.setOnClickListener(this);
+        addPatientCardView.setOnClickListener(this);
+        requestsCardView.setOnClickListener(this);
+        responsesCardView.setOnClickListener(this);
+        fromDonorsCardView.setOnClickListener(this);
+        fromPatientsCardView.setOnClickListener(this);
+        exploreCardView.setOnClickListener(this);
+        myPatientsCardView.setOnClickListener(this);
+        allDonorsCardView.setOnClickListener(this);
+        allPatientsCardView.setOnClickListener(this);
+
     }
 
     @Override
@@ -313,13 +352,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 if(requestResponseSwitcher == 1) {
                     Intent checkPatientRequestsIntent = new Intent(DashboardActivity.this, PatientRequestsActivity.class);
                     startActivity(checkPatientRequestsIntent);
-                    requestResponseSwitcher = 0;
                     break;
                 }
                 if (requestResponseSwitcher == 2) {
                     Intent viewDonorResIntent=new Intent(DashboardActivity.this, DonorResponseActivity.class);
                     startActivity(viewDonorResIntent);
-                    requestResponseSwitcher = 0;
                     break;
                 }
                 break;
@@ -329,14 +366,12 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 if(requestResponseSwitcher == 1) {
                     Intent checkDonorRequestsIntent = new Intent(DashboardActivity.this, DonorRequestsActivity.class);
                     startActivity(checkDonorRequestsIntent);
-                    requestResponseSwitcher = 0;
                     break;
 
                 }
                 if (requestResponseSwitcher == 2) {
                     Intent viewPatientResIntent=new Intent(DashboardActivity.this, PatientResponseActivity.class);
                     startActivity(viewPatientResIntent);
-                    requestResponseSwitcher = 0;
                     break;
 
 

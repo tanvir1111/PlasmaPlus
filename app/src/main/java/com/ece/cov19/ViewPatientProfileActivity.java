@@ -181,8 +181,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(deleteButton.getText().toString().toLowerCase().equals("delete profile")) {
-                    Intent intent = new Intent(ViewPatientProfileActivity.this, ExplorePatientsActivity.class);
-                    deleteAlertDialog(intent);
+                    deleteAlertDialog();
                 }
                 else if(deleteButton.getText().toString().toLowerCase().equals("decline request")){
                     Toast.makeText(ViewPatientProfileActivity.this, "decline ops", Toast.LENGTH_SHORT).show();
@@ -274,7 +273,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     }
 
 
-    private void deleteAlertDialog(final Intent intent) {
+    private void deleteAlertDialog() {
 
 //                asking password with alertdialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
@@ -312,7 +311,6 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                                     progressBar.setVisibility(View.GONE);
                                     if(response.body().getServerMsg().equals("Success")){
                                         Toast.makeText(ViewPatientProfileActivity.this, "Patient Record Deleted", Toast.LENGTH_SHORT).show();
-                                        startActivity(intent);
                                         finish();
                                     }
                                     else{
