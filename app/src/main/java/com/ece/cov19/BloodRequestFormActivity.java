@@ -244,7 +244,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
                 if (response.body().getServerMsg().equals("Success")) {
                     Toast.makeText(BloodRequestFormActivity.this, "Patient Added", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(BloodRequestFormActivity.this, DonorRequestsActivity.class);
+                    Intent intent = new Intent(BloodRequestFormActivity.this, DashboardActivity.class);
                     finish();
                 } else {
                     Toast.makeText(BloodRequestFormActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
