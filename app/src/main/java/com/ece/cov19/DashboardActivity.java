@@ -15,6 +15,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.net.Uri;
@@ -53,6 +54,8 @@ import static android.content.ContentValues.TAG;
 
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
+import static com.ece.cov19.SplashActivity.Language_pref;
+import static com.ece.cov19.SplashActivity.Selected_language;
 
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
@@ -388,6 +391,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         Resources res = getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
+        SharedPreferences langPrefs=getSharedPreferences(Language_pref,MODE_PRIVATE);
+        SharedPreferences.Editor langprefseditor = langPrefs.edit();
+        langprefseditor.putString(Selected_language, lang);
+        langprefseditor.apply();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
         Intent refresh = new Intent(this, DashboardActivity.class);
