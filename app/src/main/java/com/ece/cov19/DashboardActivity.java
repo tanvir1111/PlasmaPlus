@@ -1,16 +1,30 @@
 package com.ece.cov19;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.TranslateAnimation;
 import android.widget.Button;
@@ -26,8 +40,11 @@ import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
+
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -38,19 +55,22 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 
-public class DashboardActivity extends AppCompatActivity implements View.OnClickListener{
+public class DashboardActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
     private String[] nameSplit;
     private Button profileBtn;
     private CardView findDonorCardView, addPatientCardView, requestsCardView, responsesCardView, fromDonorsCardView,
             fromPatientsCardView, exploreCardView, myPatientsCardView, allDonorsCardView, allPatientsCardView;
     private TextView findDonorText, addPatientText, requestsText, responsesText,fromDonorsText,fromPatientsText, exploreText,
             myPatientsText,allDonorsText,allPatientsText;
-    private ImageView findDonorImage, addPatientImage, requestsImage, responsesImage,fromDonorsImage,fromPatientsImage, exploreImage,
+    private ImageView dashboardDrawerBtn, findDonorImage, addPatientImage, requestsImage, responsesImage,fromDonorsImage,fromPatientsImage, exploreImage,
             myPatientsImage,allDonorsImage,allPatientsImage;
     private TextView dashboard, numberOfPatients,numberOfDonors,numberOfPatientsText,numberOfDonorsText,numberOfRequestsFromDonors,
             numberOfRequestsFromPatients,numberOfRequestsFromDonorsText,numberOfRequestsFromPatientsText;
     private ProgressBar progressBar;
     private ConstraintLayout loadingView;
+
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationView;
 
     public int backCounter, slideUpCounter, slideUpCounter2;
     public int requestResponseSwitcher;
@@ -66,10 +86,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        drawerLayout =findViewById(R.id.drawer_layout);
+        navigationView =findViewById(R.id.nav_view);
         loadingView=findViewById(R.id.loadingView);
         dashboard=findViewById(R.id.dashboard_header);
         progressBar=findViewById(R.id.dashboard_progress_bar);
         profileBtn=findViewById(R.id.dashboard_profile_btn);
+        dashboardDrawerBtn=findViewById(R.id.dashboard_drawer_btn);
 
         findDonorCardView=findViewById(R.id.cardView_findDonor);
         addPatientCardView=findViewById(R.id.cardView_addPatient);
@@ -99,8 +122,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         fromPatientsCardView.setVisibility(View.GONE);
         allDonorsCardView.setVisibility(View.GONE);
         allPatientsCardView.setVisibility(View.GONE);
-
-
 
 
 
@@ -159,9 +180,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         });
 
         profileBtn.setText(nameSplit[0]);
+        navigationView.setNavigationItemSelectedListener(this);
         profileBtn.setOnClickListener(this);
         dashboard.setOnClickListener(this);
-
+        dashboardDrawerBtn.setOnClickListener(this);
         findDonorCardView.setOnClickListener(this);
         addPatientCardView.setOnClickListener(this);
         requestsCardView.setOnClickListener(this);
@@ -257,8 +279,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         profileBtn.setText(nameSplit[0]);
         profileBtn.setOnClickListener(this);
+        navigationView.setNavigationItemSelectedListener(this);
         dashboard.setOnClickListener(this);
-
+        dashboardDrawerBtn.setOnClickListener(this);
         findDonorCardView.setOnClickListener(this);
         addPatientCardView.setOnClickListener(this);
         requestsCardView.setOnClickListener(this);
@@ -273,15 +296,103 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     }
 
     @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+
+        int id = item.getItemId();
+
+        if(id == R.id.profile){
+            Intent profileIntent=new Intent(DashboardActivity.this, ViewUserProfileActivity.class);
+            startActivity(profileIntent);
+        }
+        else if (id == R.id.feedback) {
+            Intent feedbackIntent=new Intent(DashboardActivity.this, FeedbackActivity.class);
+            startActivity(feedbackIntent);
+        }
+        else if (id == R.id.english) {
+            languageAlertDialog("en");
+        }
+        else if (id == R.id.bangla) {
+            languageAlertDialog("bn");
+        }
+        else if (id == R.id.shareApp){
+            Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
+            Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            try {
+                startActivity(goToMarket);
+            } catch (ActivityNotFoundException e) {
+                startActivity(new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
+            }
+        }
+        else if (id == R.id.emailUs){
+
+            String email = "ece.lab.ruet@gmail.com";
+            String subject = "Contact Us";
+            String body = "Please share your valuable thoughts with us.";
+            Intent intent = new Intent(Intent.ACTION_SENDTO);
+            intent.setData(Uri.parse("mailto:"));
+            intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
+            intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+            intent.putExtra(Intent.EXTRA_TEXT, body);
+            //intent.setData(Uri.parse("mailto:"+id+"?cc="+"&subject="+Uri.encode(subject)+"&body="+Uri.encode(body)));
+            startActivityForResult(intent,200);
+        }
+
+        drawerLayout.closeDrawer(GravityCompat.START);
+        return true;
+    }
+
+
+    @Override
     public void onBackPressed() {
 
-        backCounter++;
-        if(backCounter == 1) {
-            Toast.makeText(DashboardActivity.this,"Press back one more time to exit", Toast.LENGTH_SHORT).show();
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+
+            backCounter++;
+            if (backCounter == 1) {
+                Toast.makeText(DashboardActivity.this, "Press back one more time to exit", Toast.LENGTH_SHORT).show();
+            }
+            if (backCounter == 2) {
+                finish();
+            }
         }
-        if(backCounter == 2) {
-            finish();
-        }
+    }
+
+
+    private void languageAlertDialog(String lang){
+        AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);
+        builder.setMessage("Are you sure?");
+        builder.setPositiveButton("Change Language", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+               setLocale(lang);
+            }
+        })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
+
+    }
+
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        Intent refresh = new Intent(this, DashboardActivity.class);
+        startActivity(refresh);
+        finish();
     }
 
     public void slideUp(View view) {
@@ -392,6 +503,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Override
     public void onClick(View view) {
         switch(view.getId()){
+            case R.id.dashboard_drawer_btn:
+                drawerLayout.openDrawer(Gravity.LEFT);
+                break;
+
             case R.id.dashboard_profile_btn:
                 Intent profileIntent=new Intent(DashboardActivity.this, ViewUserProfileActivity.class);
                 startActivity(profileIntent);

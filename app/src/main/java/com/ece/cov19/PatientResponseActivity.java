@@ -28,13 +28,12 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class PatientResponseActivity extends AppCompatActivity {
 
-    private PatientDataModel patientDataModel;
     private ArrayList<PatientDataModel> patientDataModels;
     private PatientResponseAdapter PatientResponseAdapter;
     private RecyclerView recyclerView;
     private ImageView backbtn;
-    private String status="pending",requestTypeText="Pending Requests";
-    private TextView requestTypeTextView;
+    private String status="pending",responseTypeText="Response from Patients Approached";
+    private TextView responseTypeTextView;
     private ProgressBar progressBar;
 
 
@@ -44,8 +43,9 @@ public class PatientResponseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_response);
         recyclerView = findViewById(R.id.patients_response_recyclerview);
         backbtn=findViewById(R.id.patients_response_back_button);
-        requestTypeTextView=findViewById(R.id.patients_response_type_textView);
+        responseTypeTextView=findViewById(R.id.patients_response_type_textView);
         progressBar = findViewById(R.id.patients_response_progressBar);
+
 
 
         patientDataModels = new ArrayList<>();
@@ -67,10 +67,16 @@ public class PatientResponseActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     patientDataModels.clear();
                     ArrayList<PatientDataModel> initialModels = response.body();
-                    //requestTypeTextView.setText(requestTypeText+"(" +initialModels.size()+")");
+                    responseTypeTextView.setText(responseTypeText+" (" +initialModels.size()+")");
 
                     for(PatientDataModel initialDataModel : initialModels){
-                        if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
+
+                        if(initialDataModel.getServerMsg().equals("No Record")){
+                            patientDataModels.clear();
+                            responseTypeTextView.setText(responseTypeText+" (" +0+")");
+                            break;
+                        }
+                        else if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
 
                             patientDataModels.add(initialDataModel);
                         }
@@ -103,7 +109,7 @@ public class PatientResponseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_patient_response);
         recyclerView = findViewById(R.id.patients_response_recyclerview);
         backbtn=findViewById(R.id.patients_response_back_button);
-        requestTypeTextView=findViewById(R.id.patients_response_type_textView);
+        responseTypeTextView=findViewById(R.id.patients_response_type_textView);
         progressBar = findViewById(R.id.patients_response_progressBar);
 
 
@@ -126,10 +132,16 @@ public class PatientResponseActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     patientDataModels.clear();
                     ArrayList<PatientDataModel> initialModels = response.body();
-                    //requestTypeTextView.setText(requestTypeText+"(" +initialModels.size()+")");
+                    responseTypeTextView.setText(responseTypeText+" (" +initialModels.size()+")");
 
                     for(PatientDataModel initialDataModel : initialModels){
-                        if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
+
+                        if(initialDataModel.getServerMsg().equals("No Record")){
+                            patientDataModels.clear();
+                            responseTypeTextView.setText(responseTypeText+" (" +0+")");
+                            break;
+                        }
+                        else if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
 
                             patientDataModels.add(initialDataModel);
                         }

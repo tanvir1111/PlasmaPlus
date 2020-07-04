@@ -38,7 +38,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private String status="pending",requestTypeText="Pending Requests";
     private TextView requestTypeTextView;
     private ProgressBar progressBar;
-
+    private int buttonSelector = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,19 +59,19 @@ public class DonorRequestsActivity extends AppCompatActivity {
                finish();
             }
         });
-        getRequests();
+        getRequests("Pending");
 
 
         pendingbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                buttonSelector = 1;
                 status="Pending";
                 requestTypeText="Pending Requests";
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.GONE);
                 acceptedBtn.setVisibility(View.VISIBLE);
-                getRequests();
+                getRequests(status);
 
             }
         });
@@ -79,13 +79,13 @@ public class DonorRequestsActivity extends AppCompatActivity {
         acceptedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                buttonSelector = 2;
                 requestTypeText="Accepted Requests";
                 status="Accepted";
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.VISIBLE);
                 acceptedBtn.setVisibility(View.GONE);
-                getRequests();
+                getRequests(status);
 
             }
         });
@@ -104,6 +104,15 @@ public class DonorRequestsActivity extends AppCompatActivity {
         requestTypeTextView=findViewById(R.id.donor_requests_type_textView);
         progressBar = findViewById(R.id.donor_requests_progressBar);
 
+        if(buttonSelector == 1) {
+            pendingbtn.setVisibility(View.VISIBLE);
+            acceptedBtn.setVisibility(View.GONE);
+        }
+        else if(buttonSelector == 2){
+            pendingbtn.setVisibility(View.GONE);
+            acceptedBtn.setVisibility(View.VISIBLE);
+        }
+
         patientDataModels = new ArrayList<>();
 
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -112,19 +121,19 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 finish();
             }
         });
-        getRequests();
+        getRequests("Pending");
 
 
         pendingbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                buttonSelector = 1;
                 status="Pending";
                 requestTypeText="Pending Requests";
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.GONE);
                 acceptedBtn.setVisibility(View.VISIBLE);
-                getRequests();
+                getRequests(status);
 
             }
         });
@@ -132,13 +141,13 @@ public class DonorRequestsActivity extends AppCompatActivity {
         acceptedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                buttonSelector = 2;
                 requestTypeText="Accepted Requests";
                 status="Accepted";
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.VISIBLE);
                 acceptedBtn.setVisibility(View.GONE);
-                getRequests();
+                getRequests(status);
 
             }
         });
@@ -152,7 +161,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         finish();
     }
 
-    private void getRequests() {
+    private void getRequests(String status) {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
 
@@ -166,8 +175,12 @@ public class DonorRequestsActivity extends AppCompatActivity {
                     ArrayList<PatientDataModel> initialModels = response.body();
                     requestTypeTextView.setText(requestTypeText+" (" +initialModels.size()+")");
                     for(PatientDataModel initialDataModel : initialModels){
-                        if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
-                            //Toast.makeText(RequestsActivity.this, initialDataModel.getName(), Toast.LENGTH_SHORT).show();
+                        if(initialDataModel.getServerMsg().equals("No Record")){
+                            patientDataModels.clear();
+                            requestTypeTextView.setText(requestTypeText+" (" +0+")");
+                            break;
+                        }
+                        else if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
                             patientDataModels.add(initialDataModel);
                         }
                     }

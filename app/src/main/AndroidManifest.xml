@@ -13,27 +13,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ExplorePatientsActivity"
-            android:screenOrientation="nosensor"
-            />
-        <activity android:name=".MyPatientsActivity"
-            android:screenOrientation="nosensor"
-            />
-        <activity android:name=".PatientRequestsActivity"
-            android:screenOrientation="nosensor"
-            />
-        <activity android:name=".DonorResponseActivity"
-            android:screenOrientation="nosensor"
-            />
-        <activity android:name=".PatientResponseActivity"
-            android:screenOrientation="nosensor"
-
-            />
-        <activity android:name=".UpdatePasswordActivity"
-            android:screenOrientation="nosensor"/>
-        <activity android:name=".UpdateUserProfileActivity"
-            android:screenOrientation="nosensor"
-            />
+        <activity
+            android:name=".FeedbackActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".ExplorePatientsActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".MyPatientsActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".PatientRequestsActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".DonorResponseActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".PatientResponseActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".UpdatePasswordActivity"
+            android:screenOrientation="nosensor" />
+        <activity
+            android:name=".UpdateUserProfileActivity"
+            android:screenOrientation="nosensor" />
         <activity
             android:name=".DonorRequestsActivity"
             android:screenOrientation="nosensor" />
@@ -45,9 +48,7 @@
             android:screenOrientation="nosensor" />
         <activity
             android:name=".DashboardActivity"
-            android:screenOrientation="nosensor">
-
-        </activity>
+            android:screenOrientation="nosensor"></activity>
         <activity
             android:name=".ViewUserProfileActivity"
             android:screenOrientation="nosensor" />
@@ -72,33 +73,28 @@
         <activity
             android:name=".ViewPatientProfileActivity"
             android:screenOrientation="nosensor" />
-        <activity android:name=".UpdatePatientProfileActivity"
-            android:screenOrientation="nosensor"/>
+        <activity
+            android:name=".UpdatePatientProfileActivity"
+            android:screenOrientation="nosensor" />
         <activity
             android:name=".SplashActivity"
             android:screenOrientation="nosensor"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
 
-
-        <service
-            android:name=".FirebaseMessagingService">
+        <service android:name=".FirebaseMessagingService">
             <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
-
-
-        <service
-            android:name=".FirebaseInstanceIDService">
+        <service android:name=".FirebaseInstanceIDService">
             <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
             </intent-filter>
         </service>
 
@@ -106,7 +102,5 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-
-
 
 </manifest>

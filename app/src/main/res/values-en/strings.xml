@@ -15,9 +15,7 @@
     <string name="label_finish">Finish</string>
     <string name="label_reset">Reset</string>
     <string name="fcm_token">FCM Token: %s</string>
-
-    
-    <string name="dashboard_header">Dashboard-Default</string>
+    <string name="dashboard_header">Dashboard</string>
 
 
     <string name="navheader_title">COV19</string>

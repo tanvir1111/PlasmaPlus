@@ -83,17 +83,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ProgressBar
-        android:id="@+id/donor_requests_progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="16dp"
-        android:visibility="gone"
-        app:layout_constraintStart_toStartOf="@+id/donor_requests_type_textView"
-        app:layout_constraintTop_toTopOf="@+id/donor_requests_show_accepted_requests" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout4"
         android:layout_width="match_parent"
@@ -118,6 +107,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:id="@+id/donor_requests_progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/donor_requests_show_accepted_requests"
+        app:layout_constraintStart_toStartOf="@+id/donor_requests_show_accepted_requests"
+        app:layout_constraintTop_toBottomOf="@+id/donor_requests_type_textView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
