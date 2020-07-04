@@ -72,7 +72,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
 
-    public int backCounter, slideUpCounter, slideUpCounter2;
+    public int backCounter;
     public int requestResponseSwitcher;
     public int requestResponseCardViewSwitcher;
     public int exploreSwitcher;
@@ -396,10 +396,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void slideUp(View view) {
-        if (slideUpCounter == 0) {
-            slideUpCounter = 1;
             view.animate()
-                    .translationY(0)
+                    .translationY(-view.getHeight())
                     .alpha(0.0f)
                     .setListener(new AnimatorListenerAdapter() {
                         @Override
@@ -408,95 +406,25 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                             view.setVisibility(View.GONE);
                         }
                     });
-        } else if(slideUpCounter == 1){
-            view.animate()
-                    .translationY(-300)
-                    .alpha(0.0f)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            view.setVisibility(View.GONE);
-                        }
-                    });
-        }
+
     }
 
     // slide the view from its current position to below itself
     public void slideDown(View view) {
 
-        if (slideUpCounter == 0) {
+
             view.setVisibility(View.VISIBLE);
-            view.setAlpha(0.0f);
+
 
 // Start the animation
-            view.animate()
-                    .translationY(view.getHeight())
-                    .alpha(1.0f)
-                    .setListener(null);
-        }
-        else if(slideUpCounter == 1) {
-            view.setVisibility(View.VISIBLE);
-            view.setAlpha(0.0f);
-
-// Start the animation
-            view.animate()
-                    .translationY(view.getHeight()-300)
-                    .alpha(1.0f)
-                    .setListener(null);
-        }
-    }
-
-    public void slideUp2(View view) {
-        if (slideUpCounter2 == 0) {
-            slideUpCounter2 = 1;
             view.animate()
                     .translationY(0)
-                    .alpha(0.0f)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            view.setVisibility(View.GONE);
-                        }
-                    });
-        } else if(slideUpCounter2 == 1){
-            view.animate()
-                    .translationY(-300)
-                    .alpha(0.0f)
-                    .setListener(new AnimatorListenerAdapter() {
-                        @Override
-                        public void onAnimationEnd(Animator animation) {
-                            super.onAnimationEnd(animation);
-                            view.setVisibility(View.GONE);
-                        }
-                    });
-        }
+                    .alpha(1)
+                    .setListener(null);
+
     }
 
-    public void slideDown2(View view) {
 
-        if (slideUpCounter2 == 0) {
-            view.setVisibility(View.VISIBLE);
-            view.setAlpha(0.0f);
-
-// Start the animation
-            view.animate()
-                    .translationY(view.getHeight())
-                    .alpha(1.0f)
-                    .setListener(null);
-        }
-        else if(slideUpCounter2 == 1) {
-            view.setVisibility(View.VISIBLE);
-            view.setAlpha(0.0f);
-
-// Start the animation
-            view.animate()
-                    .translationY(view.getHeight()-300)
-                    .alpha(1.0f)
-                    .setListener(null);
-        }
-    }
 
 
 
@@ -607,16 +535,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             case R.id.cardView_explore:
                 if(exploreSwitcher==0) {
                     exploreSwitcher=1;
-                    slideDown2(allDonorsCardView);
-                    slideDown2(allPatientsCardView);
+                    slideDown(allDonorsCardView);
+                    slideDown(allPatientsCardView);
                     numberOfDonors.setText(noOfDonors);
                     numberOfPatients.setText(noOfPatients);
                     break;
                 }
                 if(exploreSwitcher==1) {
                     exploreSwitcher=0;
-                    slideUp2(allDonorsCardView);
-                    slideUp2(allPatientsCardView);
+                    slideUp(allDonorsCardView);
+                    slideUp(allPatientsCardView);
                     break;
                 }
                 break;
