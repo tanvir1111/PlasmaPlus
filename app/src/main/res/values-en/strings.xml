@@ -15,12 +15,33 @@
     <string name="label_finish">Finish</string>
     <string name="label_reset">Reset</string>
     <string name="fcm_token">FCM Token: %s</string>
-    <string name="dashboard_header">Dashboard</string>
-
 
     <string name="navheader_title">COV19</string>
     <string name="navheadersubtitle">ECE Covid App</string>
     <string name="navheaderdesc">Navigation Header</string>
+
+
+    <string name="dashboard_header">Dashboard</string>
+    <string name="dashboard_text_find_donor">Find A Donor</string>
+    <string name="dashboard_text_add_patient">Add Patient</string>
+    <string name="dashboard_text_requests">Requests</string>
+    <string name="dashboard_text_responses">Responses</string>
+    <string name="dashboard_text_explore">Explore</string>
+    <string name="dashboard_text_my_patients">My Patients</string>
+    <string name="dashboard_text_no_of_patients">Patients</string>
+    <string name="dashboard_text_explore_all_patients">Explore Patients</string>
+    <string name="dashboard_text_requestB">From    Patients</string>
+    <string name="dashboard_text_no_of_requests_from_patients">Requests</string>
+    <string name="dashboard_text_no_of_requests_from_donors">Requests</string>
+    <string name="dashboard_text_requestA">From Donors</string>
+    <string name="dashboard_text_no_of_donors">Donors</string>
+    <string name="dashboard_text_explore_all_donors">Explore Donors</string>
+    <string name="profile">View Profile</string>
+    <string name="feedback">Feedback</string>
+    <string name="change_language">Change Language</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="shareApp">Share this App</string>
+    <string name="emailUs">Email Us</string>
 
 
     <string-array name="division">

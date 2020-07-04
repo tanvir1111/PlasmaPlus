@@ -6,12 +6,12 @@
     <group>
         <item
             android:id="@+id/profile"
-            android:title="View Profile" />
+            android:title="@string/profile" />
         <item
             android:id="@+id/feedback"
-            android:title="Feedback" />
+            android:title="@string/feedback" />
 
-        <item android:title="Change Language">
+        <item android:title="@string/change_language">
             <menu>
                 <item
                     android:id="@+id/english"
@@ -25,16 +25,16 @@
 
     </group>
 
-    <item android:title="Contact Us">
+    <item android:title="@string/contact_us">
         <menu>
             <item
                 android:id="@+id/shareApp"
                 android:icon="@drawable/ic_menu_share"
-                android:title="Share this App" />
+                android:title="@string/shareApp" />
             <item
                 android:id="@+id/emailUs"
                 android:icon="@drawable/ic_menu_send"
-                android:title="Email Us" />
+                android:title="@string/emailUs" />
         </menu>
     </item>
 

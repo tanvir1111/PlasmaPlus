@@ -15,12 +15,33 @@
     <string name="label_finish">Finish</string>
     <string name="label_reset">Reset</string>
     <string name="fcm_token">FCM Token: %s</string>
+
+    <string name="navheader_title">কোভিড-১৯</string>
+    <string name="navheadersubtitle">ইসিই কোভিড অ্যাপ</string>
+    <string name="navheaderdesc">নেভিগেশন হেডার</string>
+    <string name="profile">প্রোফাইল</string>
+    <string name="feedback">মতামত</string>
+    <string name="change_language">ভাষা পরিবর্তন</string>
+    <string name="contact_us">যোগাযোগ</string>
+    <string name="shareApp">শেয়ার অ্যাপ</string>
+    <string name="emailUs">ইমেইল করুন</string>
+
     <string name="dashboard_header">মূল পাতা</string>
+    <string name="dashboard_text_find_donor">দাতা সার্চ</string>
+    <string name="dashboard_text_add_patient">নতুন গ্রহীতা</string>
+    <string name="dashboard_text_requests">অনুরোধ</string>
+    <string name="dashboard_text_responses">প্রতিক্রিয়া</string>
+    <string name="dashboard_text_explore">অনুসন্ধান</string>
+    <string name="dashboard_text_my_patients">আমার গ্রহীতাসমূহ</string>
+    <string name="dashboard_text_no_of_patients">গ্রহীতা</string>
+    <string name="dashboard_text_explore_all_patients">গ্রহীতা অনুসন্ধান</string>
+    <string name="dashboard_text_requestB">গ্রহীতা থেকে</string>
+    <string name="dashboard_text_no_of_requests_from_patients">অনুরোধ</string>
+    <string name="dashboard_text_no_of_requests_from_donors">অনুরোধ</string>
+    <string name="dashboard_text_requestA">দাতা থেকে</string>
+    <string name="dashboard_text_no_of_donors">দাতা</string>
+    <string name="dashboard_text_explore_all_donors">দাতা অনুসন্ধান</string>
 
-
-    <string name="navheader_title">COV19</string>
-    <string name="navheadersubtitle">ECE Covid App</string>
-    <string name="navheaderdesc">Navigation Header</string>
 
 
     <string-array name="division">
