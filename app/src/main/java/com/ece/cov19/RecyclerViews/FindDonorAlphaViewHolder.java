@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class FindDonorAlphaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    TextView nameTextView, donateTextView, typeTextView, bloodTextView, locationTextView;
+    TextView nameTextView, donateTextView, typeTextView, bloodTextView, locationTextView, dateTextView;
     ImageView patientImageView;
     PatientDataModel patientDataModel;
     ArrayList<PatientDataModel> patientDataModels;
@@ -39,6 +39,7 @@ public class FindDonorAlphaViewHolder extends RecyclerView.ViewHolder implements
         bloodTextView = itemView.findViewById(R.id.seeking_help_child_bld_grp);
         locationTextView = itemView.findViewById(R.id.seeking_help_location);
         patientImageView = itemView.findViewById(R.id.seeking_help_child_profile_image);
+        dateTextView = itemView.findViewById(R.id.seeking_help_date);
 
 
         itemView.setOnClickListener(this);

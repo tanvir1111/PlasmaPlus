@@ -25,7 +25,7 @@ import retrofit2.Response;
 
 public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    TextView nameTextView, donateTextView, typeTextView, bloodTextView, locationTextView;
+    TextView nameTextView, donateTextView, typeTextView, bloodTextView, locationTextView, dateTextView;
     ImageView patientImageView;
     ProgressBar progressBar;
     RecyclerView requestDonorRecyclerView;
@@ -46,6 +46,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
         patientImageView = itemView.findViewById(R.id.seeking_help_child_profile_image);
         progressBar = itemView.findViewById(R.id.seeking_help_child_progressBar);
         requestDonorRecyclerView = itemView.findViewById(R.id.seeking_help_child_recyclerview);
+        dateTextView = itemView.findViewById(R.id.seeking_help_date);
 
 
         //donateTextView.setBackgroundColor(R.drawable.button_style_green);

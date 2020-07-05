@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class DonorRequestsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-    TextView nameTextView, typeTextView, bloodTextView, locationTextView, acceptButton, declineButton;
+    TextView nameTextView, typeTextView, bloodTextView, locationTextView, acceptButton, declineButton, dateTextView;
     ImageView patientImageView;
     PatientDataModel patientDataModel;
     ArrayList<PatientDataModel> patientDataModels;
@@ -34,6 +34,7 @@ public class DonorRequestsViewHolder extends RecyclerView.ViewHolder implements 
         patientImageView = itemView.findViewById(R.id.request_patient_child_profile_image);
         acceptButton = itemView.findViewById(R.id.request_patient_accept_btn);
         declineButton = itemView.findViewById(R.id.request_patient_decline_btn);
+        dateTextView = itemView.findViewById(R.id.request_patient_date);
 
         acceptButton.setVisibility(View.VISIBLE);
         acceptButton.setText("View Profile");

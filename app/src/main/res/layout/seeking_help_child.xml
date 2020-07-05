@@ -51,7 +51,7 @@
                     android:id="@+id/seeking_help_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="16dp"
 
 
                     android:layout_marginBottom="8dp"
@@ -71,9 +71,8 @@
                     android:layout_width="60dp"
                     android:layout_height="60dp"
 
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="18dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="12dp"
                     android:background="@drawable/blood_grp_not_selected"
                     android:fontFamily="@font/montserrat"
                     android:gravity="center"
@@ -81,10 +80,8 @@
                     android:text="AB+"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/seeking_help_type"
-                    app:layout_constraintVertical_bias="1.0" />
+                    app:layout_constraintTop_toBottomOf="@+id/seeking_help_type" />
 
                 <TextView
                     android:id="@+id/seeking_help_location"
@@ -123,21 +120,17 @@
 
 
                     android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@drawable/button_style_colored"
+                    android:background="@drawable/button_style_white"
                     android:elevation="10dp"
                     android:fontFamily="@font/montserrat_bold"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
                     android:text="Donate to Help"
-                    android:textColor="@android:color/white"
+                    android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:visibility="gone"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/seeking_help_child_bld_grp"
-                    app:layout_constraintStart_toEndOf="@+id/seeking_help_child_profile_image"
-                    app:layout_constraintTop_toBottomOf="@+id/seeking_help_location"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintStart_toStartOf="@+id/seeking_help_child_location_image"
+                    app:layout_constraintTop_toBottomOf="@+id/seeking_help_location" />
 
                 <ImageView
                     android:id="@+id/seeking_help_child_location_image"
@@ -149,6 +142,21 @@
                     app:layout_constraintBottom_toBottomOf="@+id/seeking_help_location"
                     app:layout_constraintStart_toEndOf="@+id/seeking_help_child_profile_image"
                     app:layout_constraintTop_toTopOf="@+id/seeking_help_location" />
+
+                <TextView
+                    android:id="@+id/seeking_help_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="56dp"
+                    android:background="@drawable/background_side_nav_bar"
+                    android:fontFamily="@font/montserrat"
+                    android:paddingLeft="30dp"
+                    android:text="Last date of donation: "
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/seeking_help_location" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

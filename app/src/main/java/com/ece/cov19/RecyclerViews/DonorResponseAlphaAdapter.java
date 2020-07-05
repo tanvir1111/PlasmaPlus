@@ -56,7 +56,7 @@ public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorRespons
         holder.typeTextView.setText(patientDataModel.getNeed());
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());
         holder.locationTextView.setText(patientDataModel.getHospital());
-
+        holder.dateTextView.setText("Last date of donation              "+patientDataModel.getDate());
         if(patientDataModel.getGender().equals("male")) {
             holder.patientImageView.setImageResource(R.drawable.profile_icon_male);
         } else {
