@@ -33,7 +33,7 @@
             android:layout_height="50dp"
 
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
             android:padding="15dp"
             android:src="@drawable/back_button"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,10 +51,10 @@
             android:gravity="center"
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="Log out"
+            android:text="@string/profile_logout_btn"
             android:textAlignment="center"
             android:textColor="#ffffff"
-            android:textSize="10sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,10 +63,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="24dp"
 
             android:fontFamily="@font/montserrat_bold"
-            android:text="My Profile"
+            android:text="@string/profile_header"
             android:textColor="@color/colorAccent"
             android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/profile_back_button"
@@ -112,7 +112,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="Tanvir Ahmmad"
+                    android:text="@string/profile_name"
                     android:textColor="@color/colorAccent"
 
                     android:textSize="18sp"
@@ -128,7 +128,7 @@
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/montserrat"
 
-                    android:text="Age : "
+                    android:text="@string/profile_label_age"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="parent"
@@ -141,7 +141,7 @@
 
                     android:layout_marginStart="16dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Age "
+                    android:text="@string/profile_age"
                     android:textColor="@color/textColorDark"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/profile_label_age"
@@ -150,28 +150,28 @@
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/profile_label_hospital"
+                    android:id="@+id/profile_label_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Address :"
+                    android:text="@string/profile_label_address"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/profile_label_age"
                     app:layout_constraintTop_toBottomOf="@+id/profile_label_age" />
 
                 <TextView
-                    android:id="@+id/profile_hospital"
+                    android:id="@+id/profile_address"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text=" Thana,District"
+                    android:text="@string/profile_address"
                     android:textColor="@color/textColorDark"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/profile_label_hospital"
+                    app:layout_constraintBottom_toBottomOf="@+id/profile_label_address"
                     app:layout_constraintStart_toStartOf="@+id/profile_age"
-                    app:layout_constraintTop_toTopOf="@+id/profile_label_hospital"
+                    app:layout_constraintTop_toTopOf="@+id/profile_label_address"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
@@ -181,7 +181,7 @@
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="32dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Donor Role :"
+                    android:text="@string/profile_label_type"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -194,7 +194,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text=" Blood / plasma"
+                    android:text="@string/profile_type"
                     android:textColor="@color/textColorDark"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/profile_label_type"
@@ -207,22 +207,22 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Phone : "
+                    android:text="@string/profile_label_phone"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/profile_label_hospital"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_hospital" />
+                    app:layout_constraintStart_toStartOf="@+id/profile_label_address"
+                    app:layout_constraintTop_toBottomOf="@+id/profile_address" />
 
                 <TextView
                     android:id="@+id/profile_phone"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="Phone "
+                    android:text="@string/profile_phone"
                     android:textColor="@color/textColorDark"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/profile_label_phone"
-                    app:layout_constraintStart_toStartOf="@+id/profile_hospital"
+                    app:layout_constraintStart_toStartOf="@+id/profile_address"
                     app:layout_constraintTop_toTopOf="@+id/profile_label_phone" />
 
                 <TextView
@@ -231,7 +231,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:fontFamily="@font/montserrat"
-                    android:text="Blood Group : "
+                    android:text="@string/profile_label_blood_group"
                     android:textColor="@color/colorAccent"
                     android:textSize="16sp"
                     app:layout_constraintStart_toStartOf="@+id/profile_label_phone"
@@ -242,7 +242,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/montserrat"
-                    android:text="A+"
+                    android:text="@string/profile_blood_group"
                     android:textColor="@color/textColorDark"
                     android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="@+id/profile_label_blood_group"
@@ -259,7 +259,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="32dp"
-            android:text="Account Maintenance"
+            android:text="@string/profile_id_account_maintenance"
             android:textColor="@color/textColorDark"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -278,10 +278,10 @@
             android:gravity="center"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:text="Change Password"
+            android:text="@string/profile_change_password_btn"
             android:textAlignment="center"
             android:textColor="#ffffff"
-            android:textSize="10sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_update_button" />
@@ -299,10 +299,10 @@
             android:gravity="center"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:text="Update Profile"
+            android:text="@string/profile_update_button"
             android:textAlignment="center"
             android:textColor="#ffffff"
-            android:textSize="10sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_id_account_maintenance" />
@@ -320,10 +320,10 @@
             android:gravity="center"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
-            android:text="Delete Profile"
+            android:text="@string/profile_delete_button"
             android:textAlignment="center"
             android:textColor="#ffffff"
-            android:textSize="10sp"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/profile_change_password_btn" />

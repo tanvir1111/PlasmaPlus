@@ -29,11 +29,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="-16dp"
-            android:textColor="@color/textColorDark"
-
-
             android:fontFamily="@font/montserrat_bold"
-            android:text="Donor Registration"
+
+
+            android:text="@string/reg_heading_textview"
+            android:textColor="@color/textColorDark"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/reg_back_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/label_name"
+            android:text="@string/reg_label_name"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
@@ -67,7 +67,7 @@
             android:background="@drawable/edit_text_dark"
 
             android:fontFamily="@font/montserrat"
-            android:hint="Enter Your Name"
+            android:hint="@string/reg_name_edittext"
             android:paddingStart="25dp"
             android:paddingTop="10dp"
             android:paddingEnd="20dp"
@@ -86,7 +86,7 @@
 
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Gender"
+            android:text="@string/reg_label_gender"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_age_edittext"
@@ -115,19 +115,19 @@
             app:layout_constraintTop_toTopOf="@+id/reg_male_icon"
             app:layout_constraintVertical_bias="0.0" />
 
-    <TextView
-        android:id="@+id/reg_label_blood_grp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:textColor="@color/textColorDark"
+        <TextView
+            android:id="@+id/reg_label_blood_grp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
 
 
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Select Blood Group"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/reg_label_gender"
-        app:layout_constraintTop_toBottomOf="@+id/reg_male_icon" />
+            android:text="@string/reg_label_blood_grp"
+            android:textColor="@color/textColorDark"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/reg_label_gender"
+            app:layout_constraintTop_toBottomOf="@+id/reg_male_icon" />
 
 
         <TextView
@@ -268,20 +268,20 @@
             app:layout_constraintStart_toEndOf="@+id/reg_bld_ab_positive"
             app:layout_constraintTop_toTopOf="@+id/reg_bld_ab_positive" />
 
-    <TextView
-        android:id="@+id/reg_label_spinner_division"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/reg_label_spinner_division"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        android:layout_marginTop="24dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="Division"
-        android:textSize="16sp"
-        android:textColor="@color/textColorDark"
-        app:layout_constraintEnd_toEndOf="@+id/reg_label_blood_grp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/reg_label_blood_grp"
-        app:layout_constraintTop_toBottomOf="@+id/reg_bld_ab_positive" />
+            android:layout_marginTop="24dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/reg_label_spinner_division"
+            android:textColor="@color/textColorDark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_label_blood_grp"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/reg_label_blood_grp"
+            app:layout_constraintTop_toBottomOf="@+id/reg_bld_ab_positive" />
 
     <Spinner
         android:id="@+id/reg_division_spinner"
@@ -298,21 +298,21 @@
         app:layout_constraintStart_toStartOf="@+id/reg_label_spinner_division"
         app:layout_constraintTop_toBottomOf="@+id/reg_label_spinner_division" />
 
-    <TextView
-        android:id="@+id/reg_label_spinner_district"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        <TextView
+            android:id="@+id/reg_label_spinner_district"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/montserrat_bold"
-        android:text="District"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/reg_label_spinner_district"
 
-        android:textSize="16sp"
-        android:textColor="@color/textColorDark"
-        app:layout_constraintEnd_toEndOf="@+id/reg_division_spinner"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/reg_division_spinner"
-        app:layout_constraintTop_toBottomOf="@+id/reg_division_spinner" />
+            android:textColor="@color/textColorDark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_division_spinner"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/reg_division_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/reg_division_spinner" />
 
     <Spinner
         android:id="@+id/reg_district_spinner"
@@ -336,8 +336,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat_bold"
+            android:text="@string/reg_label_thana"
             android:textColor="@color/textColorDark"
-            android:text="Thana"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_district_spinner"
             app:layout_constraintHorizontal_bias="0.0"
@@ -350,11 +350,11 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
-            android:hint="Boalia"
-
             android:layout_marginEnd="32dp"
+
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/raleway_bold"
+            android:hint="@string/reg_thana_edittext"
             android:minHeight="40dp"
             android:padding="15dp"
             android:textSize="12sp"
@@ -371,7 +371,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/montserrat"
-            android:text="I am a donor"
+            android:text="@string/reg_donor_checkbox"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_thana_edittext"
             app:layout_constraintStart_toStartOf="@+id/reg_thana_edittext"
@@ -386,9 +386,9 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
             android:fontFamily="@font/montserrat"
-            android:text="I can donate plasma  [check this if you have recovered from covid-19]"
+            android:text="@string/reg_plasma_checkbox"
             android:textSize="12sp"
-            android:visibility="invisible"
+            android:visibility="gone"
             app:layout_constraintEnd_toEndOf="@+id/reg_donor_checkbox"
             app:layout_constraintStart_toStartOf="@+id/reg_donor_checkbox"
             app:layout_constraintTop_toBottomOf="@+id/reg_donor_checkbox" />
@@ -397,67 +397,66 @@
             android:id="@+id/reg_label_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="96dp"
             android:fontFamily="@font/montserrat_bold"
+            android:text="@string/reg_label_password"
             android:textColor="@color/textColorDark"
-            android:text="@string/label_password"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_donor_checkbox"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/reg_donor_checkbox"
-            app:layout_constraintTop_toTopOf="@+id/reg_plasma_checkbox" />
+            app:layout_constraintTop_toBottomOf="@+id/reg_plasma_checkbox" />
 
-    <EditText
-        android:id="@+id/reg_password_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:padding="15dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/edit_text_dark"
+        <EditText
+            android:id="@+id/reg_password_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_dark"
+            android:fontFamily="@font/raleway_bold"
 
-        android:hint="*******"
-        android:fontFamily="@font/raleway_bold"
-        android:inputType="textPassword"
-        android:minHeight="40dp"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/reg_label_password"
-        app:layout_constraintStart_toStartOf="@+id/reg_label_password"
-        app:layout_constraintTop_toBottomOf="@+id/reg_label_password" />
+            android:hint="@string/reg_password_edittext"
+            android:inputType="textPassword"
+            android:minHeight="40dp"
+            android:padding="15dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_label_password"
+            app:layout_constraintStart_toStartOf="@+id/reg_label_password"
+            app:layout_constraintTop_toBottomOf="@+id/reg_label_password" />
 
-    <TextView
-        android:id="@+id/reg_label_confirm_passord"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/montserrat_bold"   
-        android:textColor="@color/textColorDark"
-        android:text="Confirm Password"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/reg_password_edittext"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/reg_password_edittext"
-        app:layout_constraintTop_toBottomOf="@+id/reg_password_edittext" />
+        <TextView
+            android:id="@+id/reg_label_confirm_passord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/reg_label_confirm_passord"
+            android:textColor="@color/textColorDark"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_password_edittext"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/reg_password_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_password_edittext" />
 
-    <EditText
-        android:id="@+id/reg_confirm_password_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:padding="15dp"
-        android:hint="*********"
-        android:background="@drawable/edit_text_dark"
-        android:fontFamily="@font/raleway_bold"
-        android:inputType="textPassword"
-        android:minHeight="40dp"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="@+id/reg_label_confirm_passord"
-        app:layout_constraintHorizontal_bias="0.29"
-        app:layout_constraintStart_toStartOf="@+id/reg_label_confirm_passord"
-        app:layout_constraintTop_toBottomOf="@+id/reg_label_confirm_passord" />
+        <EditText
+            android:id="@+id/reg_confirm_password_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/edit_text_dark"
+            android:fontFamily="@font/raleway_bold"
+            android:hint="@string/reg_confirm_password_edittext"
+            android:inputType="textPassword"
+            android:minHeight="40dp"
+            android:padding="15dp"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_label_confirm_passord"
+            app:layout_constraintHorizontal_bias="0.29"
+            app:layout_constraintStart_toStartOf="@+id/reg_label_confirm_passord"
+            app:layout_constraintTop_toBottomOf="@+id/reg_label_confirm_passord" />
 
         <TextView
             android:id="@+id/reg_label_age"
@@ -467,7 +466,7 @@
 
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Age"
+            android:text="@string/reg_label_age"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
@@ -484,7 +483,7 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/raleway_bold"
-            android:hint="Enter Age"
+            android:hint="@string/reg_age_edittext"
             android:inputType="number"
             android:minHeight="40dp"
             android:padding="15dp"
@@ -503,7 +502,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:maxWidth="350dp"
             android:minWidth="320dp"
-            android:text="@string/sign_up"
+            android:text="@string/reg_sign_up_btn"
             android:textColor="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/reg_confirm_password_edittext"

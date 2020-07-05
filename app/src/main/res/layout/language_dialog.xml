@@ -20,7 +20,7 @@
 
 
         android:fontFamily="@font/montserrat"
-        android:text="Select Language (ভাষা নির্বাচন করুন)"
+        android:text="@string/language_dialog_message"
         android:textColor="@color/textColorDark"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +38,7 @@
         android:fontFamily="@font/montserrat"
         android:padding="10dp"
 
-        android:text="English"
+        android:text="@string/language_dialog_english"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -54,7 +54,7 @@
         android:layout_marginEnd="40dp"
         android:fontFamily="@font/montserrat"
         android:padding="10dp"
-        android:text="বাংলা"
+        android:text="@string/language_dialog_bengali"
         android:textColor="@color/colorAccent"
 
         android:textSize="20sp"

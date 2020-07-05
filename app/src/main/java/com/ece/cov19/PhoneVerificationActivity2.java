@@ -61,9 +61,9 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_verification_2);
-        editText = findViewById(R.id.phn_ver_otp);
-        button = findViewById(R.id.phn_ver_otp_button);
-        backButton = findViewById(R.id.phn_ver_back_button);
+        editText = findViewById(R.id.phn_ver2_otp);
+        button = findViewById(R.id.phn_ver2_otp_button);
+        backButton = findViewById(R.id.phn_ver2_back_button);
         mAuth = FirebaseAuth.getInstance();
 
         Intent intent = getIntent();

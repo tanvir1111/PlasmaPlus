@@ -27,12 +27,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-16dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Donor Profile"
+        android:text="@string/donor_profile_header"
 
         android:textColor="@color/colorAccent"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/donor_profile_back_button"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/donor_profile_back_button"
         app:layout_constraintTop_toTopOf="@+id/donor_profile_back_button" />
 
@@ -78,7 +77,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="Tanvir Ahmmad"
+                android:text="@string/donor_profile_name"
                 android:textColor="@color/colorAccent"
 
                 android:textSize="18sp"
@@ -94,7 +93,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
 
-                android:text="Age : "
+                android:text="@string/donor_profile_label_age"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +106,7 @@
 
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Age "
+                android:text="@string/donor_profile_age"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/donor_profile_label_age"
@@ -116,29 +115,29 @@
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
-                android:id="@+id/donor_profile_label_hospital"
+                android:id="@+id/donor_profile_label_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Address :"
+                android:text="@string/donor_profile_label_address"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/donor_profile_label_age"
                 app:layout_constraintTop_toBottomOf="@+id/donor_profile_label_age" />
 
             <TextView
-                android:id="@+id/donor_profile_hospital"
+                android:id="@+id/donor_profile_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
                 android:maxWidth="172dp"
-                android:text=" Thana,District"
+                android:text="@string/donor_profile_address"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
-                app:layout_constraintBottom_toBottomOf="@+id/donor_profile_label_hospital"
+                app:layout_constraintBottom_toBottomOf="@+id/donor_profile_label_address"
                 app:layout_constraintStart_toStartOf="@+id/donor_profile_age"
-                app:layout_constraintTop_toTopOf="@+id/donor_profile_label_hospital"
+                app:layout_constraintTop_toTopOf="@+id/donor_profile_label_address"
                 app:layout_constraintVertical_bias="0.0" />
 
             <TextView
@@ -148,7 +147,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="32dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Donor Role :"
+                android:text="@string/donor_profile_label_type"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -161,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
-                android:text=" Blood / plasma"
+                android:text="@string/donor_profile_type"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/donor_profile_label_type"
@@ -174,22 +173,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Phone : "
+                android:text="@string/donor_profile_label_phone"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
-                app:layout_constraintStart_toStartOf="@+id/donor_profile_label_hospital"
-                app:layout_constraintTop_toBottomOf="@+id/donor_profile_hospital" />
+                app:layout_constraintStart_toStartOf="@+id/donor_profile_label_address"
+                app:layout_constraintTop_toBottomOf="@+id/donor_profile_address" />
 
             <TextView
                 android:id="@+id/donor_profile_phone"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
-                android:text="Phone "
+                android:text="@string/donor_profile_phone"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/donor_profile_label_phone"
-                app:layout_constraintStart_toStartOf="@+id/donor_profile_hospital"
+                app:layout_constraintStart_toStartOf="@+id/donor_profile_address"
                 app:layout_constraintTop_toTopOf="@+id/donor_profile_label_phone" />
 
             <TextView
@@ -198,7 +197,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
-                android:text="Blood Group : "
+                android:text="@string/donor_profile_label_blood_group"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="@+id/donor_profile_label_phone"
@@ -209,7 +208,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
-                android:text="A+"
+                android:text="@string/donor_profile_blood_group"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/donor_profile_label_blood_group"

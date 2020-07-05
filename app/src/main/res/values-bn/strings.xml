@@ -1,30 +1,19 @@
 <resources>
-    <string name="app_name">Cov19</string>
-    <string name="login_request">Please login to your account.</string>
-    <string name="label_phone_number">Phone Number</string>
-    <string name="label_password">Password</string>
-    <string name="forgot_password">Forgot Password</string>
-    <string name="sign_in">sign in</string>
-    <string name="no_account">Don’t have an account?</string>
-    <string name="sign_up">sign up</string>
-    <string name="label_name">Name</string>
-    <string name="label_verify_otp">Verify OTP</string>
-    <string name="label_current_pass">Current Password</string>
-    <string name="label_new_pass">New Password</string>
-    <string name="label_confirm_pass">Confirm Password</string>
-    <string name="label_finish">Finish</string>
-    <string name="label_reset">Reset</string>
+    <string name="app_name">Medicare</string>
     <string name="fcm_token">FCM Token: %s</string>
 
-    <string name="navheader_title">কোভিড-১৯</string>
-    <string name="navheadersubtitle">ইসিই কোভিড অ্যাপ</string>
+    <string name="navheader_title">মেডিকেয়ার</string>
+    <string name="navheadersubtitle">প্লাজমা এন্ড ব্লাড ব্যাংকিং অ্যাপ</string>
     <string name="navheaderdesc">নেভিগেশন হেডার</string>
     <string name="profile">প্রোফাইল</string>
-    <string name="feedback">মতামত</string>
     <string name="change_language">ভাষা পরিবর্তন</string>
     <string name="contact_us">যোগাযোগ</string>
     <string name="shareApp">শেয়ার অ্যাপ</string>
     <string name="emailUs">ইমেইল করুন</string>
+
+    <string name="language_dialog_message">Select Language (ভাষা নির্বাচন করুন)</string>
+    <string name="language_dialog_english">English</string>
+    <string name="language_dialog_bengali">বাংলা</string>
 
     <string name="dashboard_header">মূল পাতা</string>
     <string name="dashboard_text_find_donor">দাতা সার্চ</string>
@@ -42,6 +31,180 @@
     <string name="dashboard_text_no_of_donors">দাতা</string>
     <string name="dashboard_text_explore_all_donors">দাতা অনুসন্ধান</string>
 
+    <string name="bld_req_heading_textview">নতুন গ্রহীতা</string>
+    <string name="bld_req_label_name">নাম</string>
+    <string name="bld_req_name_edittext">এখানে নাম লাগবে</string>
+    <string name="bld_req_label_age">বয়স</string>
+    <string name="bld_req_age_edittext">এখানে বয়স লাগবে</string>
+    <string name="bld_req_label_gender">লিঙ্গ</string>
+    <string name="bld_req_label_blood_grp">রক্তের গ্রুপ</string>
+    <string name="bld_req_label_hospital">হাসপাতাল</string>
+    <string name="bld_req_hospital_edittext">এখানে হাসপাতালের নাম লাগবে</string>
+    <string name="bld_req_label_spinner_division">বিভাগ</string>
+    <string name="bld_req_label_spinner_district">জেলা</string>
+    <string name="bld_req_label_date">প্রযোজনের তারিখ</string>
+    <string name="bld_req_date_textview">তারিখ লাগবে</string>
+    <string name="bld_req_plasma_checkbox">প্লাজমা লাগবে (প্লাজমা থেরাপির জন্য)</string>
+    <string name="bld_req_request_btn">জমা দিন</string>
+
+    <string name="donor_requests_header">গ্রহীতা থেকে অনুরোধ</string>
+    <string name="donor_requests_type_textView">অমীমাংসিত অনুরোধ</string>
+    <string name="donor_requests_show_accepted_requests">সম্মত অনুরোধ দেখুন</string>
+    <string name="donor_requests_show_pending_requests">অমীমাংসিত অনুরোধ দেখুন</string>
+
+    <string name="donor_response_header">দাতার প্রতিক্রিয়া</string>
+    <string name="donor_response_textview">আমার গ্রহীতাসমূহ</string>
+
+    <string name="explore_patients_header">গ্রহীতা অনুসন্ধান</string>
+    <string name="explore_patients_label_bld_grp">রক্তের গ্রুপ</string>
+    <string name="explore_patients_label_district">জেলা</string>
+    <string name="explore_patients_district_edittext">জেলা দিন</string>
+    <string name="explore_patients_textview">প্রাপ্ত গ্রহীতা</string>
+
+    <string name="find_donor_fordonors_header">দাতা সার্চ</string>
+    <string name="find_donor_forpatients_textview">আমার গ্রহীতাসমূহ</string>
+    <string name="find_donor_fordonors_label_district">জেলাভিত্তিক সার্চ</string>
+    <string name="find_donor_fordonors_textview">প্রাপ্ত দাতা</string>
+    <string name="find_donor_fordonors_nomatchtextview">যোগ্য দাতা পাওয়া যায় নি</string>
+    <string name="find_donor_fordonors_district_edittext">জেলা দিন</string>
+
+    <string name="login_request_textview">একাউন্টে লগইন করুন</string>
+    <string name="login_label_phone">মোবাইল নম্বর</string>
+    <string name="login_phone_number_edittext">01xxxxxxxxx</string>
+    <string name="login_label_password">পাসওয়ার্ড</string>
+    <string name="login_password_edittext">******</string>
+    <string name="login_forgot_password_textview">পাসওয়ার্ড ভুলে গিয়েছি</string>
+    <string name="login_sign_in_button">সাইন ইন</string>
+    <string name="login_no_account_textview">একাউন্ট খোলা হয়নি?</string>
+    <string name="login_sign_up_button">সাইন আপ</string>
+
+    <string name="my_patients_header">আমার গ্রহীতাসমূহ</string>
+    <string name="my_patients_textview">প্রাপ্ত গ্রহীতা</string>
+
+    <string name="patient_requests_textview">আমার গ্রহীতাসমূহ</string>
+    <string name="patient_requests_header">দাতার থেকে অনুরোধ</string>
+
+    <string name="patients_response_header">গ্রহীতার প্রতিক্রিয়া</string>
+    <string name="patients_response_type_textView">অগ্রসরকৃত গ্রহীতাদের থেকে আসা প্রতিক্রিয়াসমূহ</string>
+
+    <string name="phn_ver_header_textview">ফোন ভেরিফিকেশন</string>
+    <string name="phn_ver_phone_text">মোবাইল নম্বর</string>
+    <string name="phn_ver_phone_input">01xxxxxxxxx</string>
+    <string name="phn_ver_get_otp_button">OTP পাঠাও</string>
+
+    <string name="phn_ver2_header_textview">ফোন ভেরিফিকেশন</string>
+    <string name="phn_ver2_phone_text">OTP নিশ্চিত করুন</string>
+    <string name="phn_ver2_otp">******</string>
+    <string name="phn_ver2_otp_button">OTP নিশ্চিত করুন</string>
+
+    <string name="search_donor_header">দাতা অনুসন্ধান</string>
+    <string name="search_donor_label_bld_grp">রক্তের গ্রুপ</string>
+    <string name="search_donor_label_district">জেলা</string>
+    <string name="search_donor_district_edittext">জেলা দিন</string>
+    <string name="search_donor_filter_result">প্রাপ্ত দাতা</string>
+
+    <string name="reg_heading_textview">ইউজার রেজিস্ট্রেশন</string>
+    <string name="reg_label_name">নাম</string>
+    <string name="reg_name_edittext">এখানে নাম লাগবে</string>
+    <string name="reg_label_age">বয়স</string>
+    <string name="reg_age_edittext">এখানে বয়স লাগবে</string>
+    <string name="reg_label_gender">লিঙ্গ</string>
+    <string name="reg_label_blood_grp">রক্তের গ্রুপ</string>
+    <string name="reg_label_spinner_division">বিভাগ</string>
+    <string name="reg_label_spinner_district">জেলা</string>
+    <string name="reg_label_thana">থানা</string>
+    <string name="reg_thana_edittext">এখানে থানা লাগবে</string>
+    <string name="reg_donor_checkbox">আমি একজন দাতা</string>
+    <string name="reg_plasma_checkbox">প্লাজমা দিতে ইচ্ছুক</string>
+    <string name="reg_label_password">পাসওয়ার্ড</string>
+    <string name="reg_password_edittext">******</string>
+    <string name="reg_label_confirm_passord">কনফার্ম পাসওয়ার্ড</string>
+    <string name="reg_confirm_password_edittext">******</string>
+    <string name="reg_sign_up_btn">সাইন আপ</string>
+
+    <string name="update_password_heading_textview">আপডেট পাসওয়ার্ড</string>
+    <string name="update_password_label_password">নতুন পাসওয়ার্ড</string>
+    <string name="update_password_password_edittext">******</string>
+    <string name="update_password_label_confirm_password">কনফার্ম পাসওয়ার্ড</string>
+    <string name="update_password_confirm_password_edittext">*******</string>
+    <string name="update_password_update_btn">কনফার্ম আপডেট</string>
+
+    <string name="update_patient_heading_textview">আপডেট প্রোফাইল</string>
+    <string name="update_patient_label_name">নাম</string>
+    <string name="update_patient_name_edittext">এখানে নাম লাগবে</string>
+    <string name="update_patient_label_age">বয়স</string>
+    <string name="update_patient_age_edittext">এখানে বয়স লাগবে</string>
+    <string name="update_patient_label_gender">লিঙ্গ</string>
+    <string name="update_patient_label_blood_grp">রক্তের গ্রুপ</string>
+    <string name="update_patient_label_hospital">হাসপাতাল</string>
+    <string name="update_patient_hospital_edittext">এখানে হাসপাতালের নাম লাগবে</string>
+    <string name="update_patient_label_spinner_division">বিভাগ</string>
+    <string name="update_patient_label_spinner_district">জেলা</string>
+    <string name="update_patient_label_date">প্রয়োজনের তারিখ</string>
+    <string name="update_patient_date_textview">তারিখ লাগবে</string>
+    <string name="update_patient_plasma_checkbox">প্লাজমা লাগবে (প্লাজমা থেরাপিের জন্য)</string>
+    <string name="update_patient_request_btn">আপডেট প্রোফাইল</string>
+
+    <string name="update_heading_textview">আপডেট প্রোফাইল</string>
+    <string name="update_label_name">নাম</string>
+    <string name="update_name_edittext">এখানে নাম লাগবে</string>
+    <string name="update_label_spinner_division">বিভাগ</string>
+    <string name="update_label_spinner_district">জেলা</string>
+    <string name="update_label_thana">থানা</string>
+    <string name="update_thana_edittext">এখানে থানা লাগবে</string>
+    <string name="update_label_age">বয়স</string>
+    <string name="update_age_edittext">এখানে বয়স লাগবে</string>
+    <string name="update_label_donor_role">ভূমিকা</string>
+    <string name="update_donor_role_radio_group_blood">রক্ত</string>
+    <string name="update_donor_role_radio_group_plasma">প্লাজমা</string>
+    <string name="update_donor_role_radio_group_none">কোনটি নয়</string>
+    <string name="update_update_btn">আপডেট প্রোফাইল</string>
+
+    <string name="donor_profile_header">দাতার প্রোফাইল</string>
+    <string name="donor_profile_name">নাম</string>
+    <string name="donor_profile_label_age">বয়স :</string>
+    <string name="donor_profile_age">বয়স</string>
+    <string name="donor_profile_label_address">ঠিকানা :</string>
+    <string name="donor_profile_address">থানা, জেলা</string>
+    <string name="donor_profile_label_phone">মোবাইল :</string>
+    <string name="donor_profile_phone">মোবাইল</string>
+    <string name="donor_profile_label_blood_group">রক্তের গ্রুপ :</string>
+    <string name="donor_profile_blood_group">রক্তের গ্রুপ</string>
+    <string name="donor_profile_label_type">দাতার ভূমিকা :</string>
+    <string name="donor_profile_type">রক্ত / প্লাজমা</string>
+
+    <string name="patient_profile_header">গ্রহীতার প্রোফাইল</string>
+    <string name="patient_profile_name">নাম</string>
+    <string name="patient_profile_label_age">বয়স :</string>
+    <string name="patient_profile_age">বয়স</string>
+    <string name="patient_profile_label_hospital">হাসপাতাল :</string>
+    <string name="patient_profile_label_phone">মোবাইল :</string>
+    <string name="patient_profile_hospital">হাসপাতাল</string>
+    <string name="patient_profile_phone">মোবাইল</string>
+    <string name="patient_profile_label_blood_group">রক্তের গ্রুপ :</string>
+    <string name="patient_profile_blood_group">রক্তের গ্রুপ</string>
+    <string name="patient_profile_label_type">প্রয়োজনের ধরণ :</string>
+    <string name="patient_profile_need">রক্ত / প্লাজমা</string>
+    <string name="patient_profile_label_date">প্রয়োজনের তারিখ :</string>
+    <string name="patient_profile_date">তারিখ</string>
+
+    <string name="profile_header">আমার প্রোফাইল</string>
+    <string name="profile_logout_btn">লগআউট</string>
+    <string name="profile_name">নাম</string>
+    <string name="profile_label_age">বয়স :</string>
+    <string name="profile_age">বয়স</string>
+    <string name="profile_label_address">ঠিকানা :</string>
+    <string name="profile_address">থানা, জেলা</string>
+    <string name="profile_label_phone">মোবাইল :</string>
+    <string name="profile_phone">মোবাইল</string>
+    <string name="profile_label_blood_group">রক্তের গ্রুপ :</string>
+    <string name="profile_blood_group">রক্তের গ্রুপ</string>
+    <string name="profile_label_type">ভূমিকা :</string>
+    <string name="profile_type">রক্ত / প্লাজমা</string>
+    <string name="profile_id_account_maintenance">একাউন্ট মেইনটেনেন্স</string>
+    <string name="profile_update_button">আপডেট প্রোফাইল</string>
+    <string name="profile_change_password_btn">পাসওয়ার্ড পরিবর্তন</string>
+    <string name="profile_delete_button">প্রোফাইল মুছে ফেলুন</string>
 
 
     <string-array name="division">

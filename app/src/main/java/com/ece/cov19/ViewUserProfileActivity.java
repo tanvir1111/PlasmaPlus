@@ -39,7 +39,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         nameTextView = findViewById(R.id.profile_name);
         phoneTextView = findViewById(R.id.profile_phone);
         bloodGroupTextView = findViewById(R.id.profile_blood_group);
-        addressTextView = findViewById(R.id.profile_hospital);
+        addressTextView = findViewById(R.id.profile_address);
         ageTextView = findViewById(R.id.profile_age);
         donorInfoTextView = findViewById(R.id.profile_type);
         genderImageView = findViewById(R.id.profile_gender_icon);
@@ -143,7 +143,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         nameTextView = findViewById(R.id.profile_name);
         phoneTextView = findViewById(R.id.profile_phone);
         bloodGroupTextView = findViewById(R.id.profile_blood_group);
-        addressTextView = findViewById(R.id.profile_hospital);
+        addressTextView = findViewById(R.id.profile_address);
         ageTextView = findViewById(R.id.profile_age);
         donorInfoTextView = findViewById(R.id.profile_type);
         genderImageView = findViewById(R.id.profile_gender_icon);

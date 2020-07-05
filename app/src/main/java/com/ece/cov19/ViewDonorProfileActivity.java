@@ -53,7 +53,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         nameTextView = findViewById(R.id.donor_profile_name);
         phoneTextView = findViewById(R.id.donor_profile_phone);
         bloodGroupTextView = findViewById(R.id.donor_profile_blood_group);
-        addressTextView = findViewById(R.id.donor_profile_hospital);
+        addressTextView = findViewById(R.id.donor_profile_address);
         ageTextView = findViewById(R.id.donor_profile_age);
         donorInfoTextView = findViewById(R.id.donor_profile_type);
         genderImageView = findViewById(R.id.donor_profile_gender_icon);

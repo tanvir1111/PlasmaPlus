@@ -27,11 +27,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="-16dp"
-            android:textColor="@color/textColorDark"
-
-
             android:fontFamily="@font/montserrat_bold"
-            android:text="Update Info"
+
+
+            android:text="@string/update_heading_textview"
+            android:textColor="@color/textColorDark"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/update_back_button"
             app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/label_name"
+            android:text="@string/update_label_name"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/update_name_edittext"
@@ -64,7 +64,7 @@
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/montserrat"
 
-            android:hint="Enter Your Name"
+            android:hint="@string/update_name_edittext"
             android:paddingStart="25dp"
             android:paddingTop="10dp"
             android:paddingEnd="20dp"
@@ -83,7 +83,7 @@
 
             android:layout_marginTop="32dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Division"
+            android:text="@string/update_label_spinner_division"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/update_label_name"
@@ -113,10 +113,10 @@
 
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="District"
+            android:text="@string/update_label_spinner_district"
 
-            android:textSize="16sp"
             android:textColor="@color/textColorDark"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/update_division_spinner"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/update_division_spinner"
@@ -144,8 +144,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat_bold"
+            android:text="@string/update_label_thana"
             android:textColor="@color/textColorDark"
-            android:text="Thana"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/update_district_spinner"
             app:layout_constraintHorizontal_bias="0.0"
@@ -158,17 +158,18 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
-            android:hint="Boalia"
-
             android:layout_marginEnd="32dp"
+
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/raleway_bold"
+            android:hint="@string/update_thana_edittext"
             android:minHeight="40dp"
             android:padding="15dp"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/update_label_thana"
             app:layout_constraintStart_toStartOf="@+id/update_label_thana"
             app:layout_constraintTop_toBottomOf="@+id/update_label_thana" />
+
         <TextView
             android:id="@+id/update_label_age"
             android:layout_width="wrap_content"
@@ -177,9 +178,9 @@
 
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="Age"
-            android:textSize="16sp"
+            android:text="@string/update_label_age"
             android:textColor="@color/textColorDark"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/update_thana_edittext"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/update_thana_edittext"
@@ -194,7 +195,7 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/raleway_bold"
-            android:hint="Enter Age"
+            android:hint="@string/update_age_edittext"
             android:inputType="number"
             android:maxLength="2"
             android:minHeight="40dp"
@@ -210,7 +211,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/raleway_bold"
-            android:text="Donor Role"
+            android:text="@string/update_label_donor_role"
             android:textColor="@color/textColorDark"
 
             android:textSize="16sp"
@@ -231,26 +232,27 @@
             app:layout_constraintTop_toBottomOf="@+id/update_label_donor_role">
 
             <RadioButton
+                android:id="@+id/update_donor_role_radio_group_blood"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Blood"
 
-                />
+                android:text="@string/update_donor_role_radio_group_blood" />
 
             <RadioButton
+                android:id="@+id/update_donor_role_radio_group_plasma"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="Plasma" />
+                android:text="@string/update_donor_role_radio_group_plasma" />
 
             <RadioButton
+                android:id="@+id/update_donor_role_radio_group_none"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="None"
 
-                />
+                android:text="@string/update_donor_role_radio_group_none" />
 
 
         </RadioGroup>
@@ -266,7 +268,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:maxWidth="350dp"
             android:minWidth="320dp"
-            android:text="update"
+            android:text="@string/update_update_btn"
             android:textColor="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/update_age_edittext"

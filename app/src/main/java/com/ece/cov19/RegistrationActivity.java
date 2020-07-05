@@ -143,7 +143,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
                         } else {
                             donorInfo = "na";
-                            isPlasmaDonor.setVisibility(View.INVISIBLE);
+                            isPlasmaDonor.setVisibility(View.GONE);
                         }
                         Toast.makeText(RegistrationActivity.this, donorInfo, Toast.LENGTH_SHORT).show();
                     }

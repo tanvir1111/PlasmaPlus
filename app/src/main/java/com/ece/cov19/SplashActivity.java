@@ -90,9 +90,9 @@ handler.postDelayed(new Runnable() {
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
-        SharedPreferences.Editor langprefseditor = langPrefs.edit();
-        langprefseditor.putString(Selected_language, lang);
-        langprefseditor.apply();
+        SharedPreferences.Editor langPrefsEditor = langPrefs.edit();
+        langPrefsEditor.putString(Selected_language, lang);
+        langPrefsEditor.apply();
         loginUser();
         res.updateConfiguration(conf, dm);
     }

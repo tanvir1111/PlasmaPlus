@@ -307,10 +307,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             Intent profileIntent=new Intent(DashboardActivity.this, ViewUserProfileActivity.class);
             startActivity(profileIntent);
         }
-        else if (id == R.id.feedback) {
-            Intent feedbackIntent=new Intent(DashboardActivity.this, FeedbackActivity.class);
-            startActivity(feedbackIntent);
-        }
         else if (id == R.id.english) {
             languageAlertDialog("en");
         }
@@ -392,9 +388,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
         SharedPreferences langPrefs=getSharedPreferences(Language_pref,MODE_PRIVATE);
-        SharedPreferences.Editor langprefseditor = langPrefs.edit();
-        langprefseditor.putString(Selected_language, lang);
-        langprefseditor.apply();
+        SharedPreferences.Editor langPrefsEditor = langPrefs.edit();
+        langPrefsEditor.putString(Selected_language, lang);
+        langPrefsEditor.apply();
         conf.locale = myLocale;
         res.updateConfiguration(conf, dm);
         Intent refresh = new Intent(this, DashboardActivity.class);
