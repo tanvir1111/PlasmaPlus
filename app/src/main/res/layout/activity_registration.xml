@@ -362,49 +362,20 @@
             app:layout_constraintStart_toStartOf="@+id/reg_label_thana"
             app:layout_constraintTop_toBottomOf="@+id/reg_label_thana" />
 
-        <CheckBox
-            android:id="@+id/reg_donor_checkbox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/reg_donor_checkbox"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/reg_thana_edittext"
-            app:layout_constraintStart_toStartOf="@+id/reg_thana_edittext"
-            app:layout_constraintTop_toBottomOf="@+id/reg_thana_edittext" />
-
-        <CheckBox
-            android:id="@+id/reg_plasma_checkbox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-            android:layout_marginStart="64dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/reg_plasma_checkbox"
-            android:textSize="12sp"
-            android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="@+id/reg_donor_checkbox"
-            app:layout_constraintStart_toStartOf="@+id/reg_donor_checkbox"
-            app:layout_constraintTop_toBottomOf="@+id/reg_donor_checkbox" />
 
         <TextView
             android:id="@+id/reg_label_password"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/reg_label_password"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/reg_donor_checkbox"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/reg_donor_checkbox"
-            app:layout_constraintTop_toBottomOf="@+id/reg_plasma_checkbox" />
+            app:layout_constraintStart_toStartOf="@+id/reg_label_donor_role"
+            app:layout_constraintTop_toBottomOf="@+id/reg_donor_role_radio_group" />
 
         <EditText
             android:id="@+id/reg_password_edittext"
@@ -491,6 +462,69 @@
             app:layout_constraintEnd_toEndOf="@+id/reg_label_age"
             app:layout_constraintStart_toStartOf="@+id/reg_label_age"
             app:layout_constraintTop_toBottomOf="@+id/reg_label_age" />
+        
+        
+        
+        <TextView
+            android:id="@+id/reg_label_donor_role"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/raleway_bold"
+            android:text="@string/label_donor_role"
+            android:textColor="@color/textColorDark"
+
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="@+id/reg_thana_edittext"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/reg_thana_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/reg_thana_edittext" />
+
+        <RadioGroup
+            android:id="@+id/reg_donor_role_radio_group"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.24"
+            app:layout_constraintStart_toStartOf="@+id/reg_label_donor_role"
+            app:layout_constraintTop_toBottomOf="@+id/reg_label_donor_role">
+
+            <RadioButton
+                android:id="@+id/reg_donor_role_radio_group_blood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+
+                android:text="@string/update_donor_role_radio_group_blood" />
+
+            <RadioButton
+                android:id="@+id/reg_donor_role_radio_group_plasma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/update_donor_role_radio_group_plasma" />
+
+            <RadioButton
+                android:id="@+id/reg_donor_role_radio_group_plasma_and_blood"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/blood_and_plasma_txt" />
+
+            <RadioButton
+                android:id="@+id/reg_donor_role_radio_group_none"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+
+                android:text="@string/update_donor_role_radio_group_none" />
+
+
+        </RadioGroup>
+
 
         <Button
             android:id="@+id/reg_sign_up_btn"

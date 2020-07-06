@@ -1,9 +1,11 @@
 package com.ece.cov19;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -12,6 +14,8 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,21 +33,23 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
     private TextView labelGender,labelBloodGroup;
     private EditText nameEditText, ageEditText, thanaEditText, passwordEditText, confPasswordEditText;
-    private String  gender="not selected", donorInfo = "na";
+    private String  gender="not selected", donorInfo = "none";
     private ImageView genderMale, genderFemale,backbtn;
     private Button singUp;
     private Spinner divisionSpinner, districtSpinner;
+    private RadioGroup donorRoleRadioGrp;
     FormFieldsFeatures formFieldsFeatures =new FormFieldsFeatures();
     public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
 
             R.array.Barisal, R.array.Sylhet};
 
-    private CheckBox isPlasmaDonor, isDonorBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        donorRoleRadioGrp=findViewById(R.id.reg_donor_role_radio_group);
 
 
 //        all editTexts
@@ -57,8 +63,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 //      buttons
         backbtn=findViewById(R.id.reg_back_button);
         singUp = findViewById(R.id.reg_sign_up_btn);
-        isDonorBtn = findViewById(R.id.reg_donor_checkbox);
-        isPlasmaDonor = findViewById(R.id.reg_plasma_checkbox);
+
 //        spinners
         divisionSpinner = findViewById(R.id.reg_division_spinner);
         districtSpinner = findViewById(R.id.reg_district_spinner);
@@ -119,35 +124,68 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 
 //        donorcheckbox setting donor info blood/plasma/na
-        isDonorBtn.setOnCheckedChangeListener(
-                new CompoundButton.OnCheckedChangeListener() {
-                    @Override
-                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                        if (isChecked) {
-                            donorInfo = "Blood";
-                            isPlasmaDonor.setVisibility(View.VISIBLE);
-                            isPlasmaDonor.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-                                @Override
-                                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                                    if (isChecked) {
-                                        donorInfo = "Plasma";
+        donorRoleRadioGrp.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedID) {
+                RadioButton radioButton = findViewById(checkedID);
+                if(checkedID==R.id.reg_donor_role_radio_group_plasma|| checkedID==R.id.reg_donor_role_radio_group_plasma_and_blood) {
 
-                                    } else {
-                                        donorInfo = "Blood";
-                                    }
-                                    Toast.makeText(RegistrationActivity.this, donorInfo, Toast.LENGTH_SHORT).show();
+                    if (radioButton.isChecked()) {
 
+                        final AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);
 
+                        LayoutInflater inflater = LayoutInflater.from(RegistrationActivity.this);
+                        View plasmaDialog = inflater.inflate(R.layout.plasma_dialog, null);
+                        TextView ok = plasmaDialog.findViewById(R.id.plasma_dialog_ok_textView);
+                        TextView cancel = plasmaDialog.findViewById(R.id.plasma_dialog_cancel_textView);
+                        CheckBox confirmCheckBox = plasmaDialog.findViewById(R.id.plasma_dialog_checkbox);
+                        builder.setCancelable(false);
+                        builder.setView(plasmaDialog);
+                        AlertDialog alertDialog = builder.create();
+                        alertDialog.show();
+                        ok.setEnabled(false);
+                        ok.setTextColor(getResources().getColor(R.color.common_google_signin_btn_text_dark_disabled));
+                        confirmCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                            @Override
+                            public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                                if (isChecked) {
+                                    ok.setEnabled(true);
+
+                                    ok.setTextColor(getResources().getColor(R.color.colorAccent));
+                                } else {
+                                    ok.setEnabled(false);
+
+                                    ok.setTextColor(getResources().getColor(R.color.common_google_signin_btn_text_dark_disabled));
                                 }
-                            });
 
-                        } else {
-                            donorInfo = "na";
-                            isPlasmaDonor.setVisibility(View.GONE);
-                        }
-                        Toast.makeText(RegistrationActivity.this, donorInfo, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+                        ok.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                alertDialog.dismiss();
+                            }
+                        });
+                        cancel.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                radioButton.setChecked(false);
+
+                                alertDialog.cancel();
+                            }
+                        });
+
+
                     }
-                });
+                }
+
+
+                donorInfo=radioButton.getText().toString();
+            }
+        });
+
 
 
     }
@@ -188,6 +226,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 verifyData();
 
                 break;
+
         }
     }
 
