@@ -142,7 +142,7 @@
     <string name="update_patient_label_spinner_district">জেলা</string>
     <string name="update_patient_label_date">প্রয়োজনের তারিখ</string>
     <string name="update_patient_date_textview">তারিখ লাগবে</string>
-    <string name="update_patient_plasma_checkbox">প্লাজমা লাগবে (প্লাজমা থেরাপিের জন্য)</string>
+    <string name="update_patient_plasma_checkbox">প্লাজমা লাগবে (প্লাজমা থেরাপির জন্য)</string>
     <string name="update_patient_request_btn">আপডেট প্রোফাইল</string>
 
     <string name="update_heading_textview">আপডেট প্রোফাইল</string>
