@@ -154,7 +154,7 @@
     <string name="update_thana_edittext">Enter Thana</string>
     <string name="update_label_age">Age</string>
     <string name="update_age_edittext">Enter Age</string>
-    <string name="update_label_donor_role">Role</string>
+    <string name="label_donor_role">Role</string>
     <string name="update_donor_role_radio_group_blood">Blood</string>
     <string name="update_donor_role_radio_group_plasma">Plasma</string>
     <string name="update_donor_role_radio_group_none">None</string>
@@ -205,6 +205,7 @@
     <string name="profile_update_button">Update Profile</string>
     <string name="profile_change_password_btn">Change Password</string>
     <string name="profile_delete_button">Delete Profile</string>
+    <string name="blood_and_plasma_txt">Blood and Plasma</string>
 
 
     <string-array name="division">
