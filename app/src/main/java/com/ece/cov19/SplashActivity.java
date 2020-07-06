@@ -60,28 +60,18 @@ public class SplashActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.splash_progress_bar);
         final Handler handler = new Handler();
 
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+              langPrefs=getSharedPreferences(Language_pref,MODE_PRIVATE);
+                if(langPrefs.contains(Selected_language)){
+                    setLocale(langPrefs.getString(Selected_language,""));
 
-
-
-handler.postDelayed(new Runnable() {
-    @Override
-    public void run() {
-      langPrefs=getSharedPreferences(Language_pref,MODE_PRIVATE);
-        if(langPrefs.contains(Selected_language)){
-            setLocale(langPrefs.getString(Selected_language,""));
-
-        }else {
-            languageAlertDialog();
-        }
-    }
-},1000);
-
-
-
-
-
-
-
+                }else {
+                    languageAlertDialog();
+                }
+            }
+        },1000);
     }
 
     private void setLocale(String selected_language) {
@@ -90,11 +80,15 @@ handler.postDelayed(new Runnable() {
         DisplayMetrics dm = res.getDisplayMetrics();
         Configuration conf = res.getConfiguration();
         conf.locale = myLocale;
-        SharedPreferences.Editor langPrefsEditor = langPrefs.edit();
-        langPrefsEditor.putString(Selected_language, lang);
-        langPrefsEditor.apply();
-        loginUser();
         res.updateConfiguration(conf, dm);
+
+        langPrefs=getSharedPreferences(Language_pref,MODE_PRIVATE);
+        SharedPreferences.Editor langPrefsEditor = langPrefs.edit();
+        langPrefsEditor.putString(Selected_language, selected_language);
+        langPrefsEditor.apply();
+
+        loginUser();
+
     }
 
     private void languageAlertDialog() {
@@ -106,9 +100,6 @@ handler.postDelayed(new Runnable() {
         TextView bengali=langDialogView.findViewById(R.id.language_dialog_bengali);
         builder.setCancelable(false);
         builder.setView(langDialogView);
-
-        langPrefs=getSharedPreferences(Language_pref,MODE_PRIVATE);
-
 
         AlertDialog alertDialog=builder.create();
         alertDialog.show();
@@ -122,8 +113,10 @@ handler.postDelayed(new Runnable() {
                 english.setTextColor(Color.WHITE);
                 bengali.setBackgroundResource(0);
                 bengali.setTextColor(getResources().getColor(R.color.colorAccent));
+
                 lang="en";
                 setLocale(lang);
+
                 alertDialog.dismiss();
 
 
@@ -136,8 +129,10 @@ handler.postDelayed(new Runnable() {
                 bengali.setTextColor(Color.WHITE);
                 english.setBackgroundResource(0);
                 english.setTextColor(getResources().getColor(R.color.colorAccent));
+
                 lang="bn";
                 setLocale(lang);
+
                 alertDialog.dismiss();
 
 

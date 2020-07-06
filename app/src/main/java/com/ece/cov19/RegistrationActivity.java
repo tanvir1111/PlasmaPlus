@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +44,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
             R.array.Barisal, R.array.Sylhet};
 
-
+    boolean eligible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -135,10 +136,27 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                         final AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);
 
                         LayoutInflater inflater = LayoutInflater.from(RegistrationActivity.this);
-                        View plasmaDialog = inflater.inflate(R.layout.plasma_dialog, null);
+                        View plasmaDialog = inflater.inflate(R.layout.plasma_dialog_new, null);
                         TextView ok = plasmaDialog.findViewById(R.id.plasma_dialog_ok_textView);
                         TextView cancel = plasmaDialog.findViewById(R.id.plasma_dialog_cancel_textView);
                         CheckBox confirmCheckBox = plasmaDialog.findViewById(R.id.plasma_dialog_checkbox);
+                        TextView header = plasmaDialog.findViewById(R.id.plasma_dialog_confirm_header);
+                        TextView eligibility = plasmaDialog.findViewById(R.id.plasma_dialog_confirm_eligibility_text);
+                        TextView confirm_ok = plasmaDialog.findViewById(R.id.plasma_dialog_confirm_ok_textView);
+                        RadioButton q1_yes = plasmaDialog.findViewById(R.id.q1_yes);
+                        RadioButton q1_no = plasmaDialog.findViewById(R.id.q1_no);
+                        RadioButton q2_less = plasmaDialog.findViewById(R.id.q2_less);
+                        RadioButton q2_greater = plasmaDialog.findViewById(R.id.q2_greater);
+                        RadioButton q3_less = plasmaDialog.findViewById(R.id.q3_less);
+                        RadioButton q3_greater = plasmaDialog.findViewById(R.id.q3_greater);
+                        RadioButton q4_yes = plasmaDialog.findViewById(R.id.q4_yes);
+                        RadioButton q4_no = plasmaDialog.findViewById(R.id.q4_no);
+                        ScrollView scrollView = plasmaDialog.findViewById(R.id.plasma_dialog_scrollView);
+
+                        header.setVisibility(View.GONE);
+                        eligibility.setVisibility(View.GONE);
+                        confirm_ok.setVisibility(View.GONE);
+
                         builder.setCancelable(false);
                         builder.setView(plasmaDialog);
                         AlertDialog alertDialog = builder.create();
@@ -164,10 +182,34 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                         ok.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
+                                scrollView.setVisibility(View.GONE);
+                                header.setVisibility(View.VISIBLE);
+                                eligibility.setVisibility(View.VISIBLE);
+                                confirm_ok.setVisibility(View.VISIBLE);
 
+                                if(q1_yes.isChecked() && q2_greater.isChecked() && q3_greater.isChecked() && q4_no.isChecked()){
+                                    eligible = true;
+                                    eligibility.setText("You are eligible to Donate");
+                                }
+                            }
+
+                        });
+
+                        confirm_ok.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                if(eligible == true){
+                                    radioButton.setChecked(true);
+                                }
+                                else{
+                                    radioButton.setChecked(false);
+                                }
                                 alertDialog.dismiss();
                             }
                         });
+
+
+
                         cancel.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {

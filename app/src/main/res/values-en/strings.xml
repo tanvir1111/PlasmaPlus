@@ -77,6 +77,11 @@
     <string name="login_sign_in_button">Sign In</string>
     <string name="login_no_account_textview">Don\'t have an account?</string>
     <string name="login_sign_up_button">Sign Up</string>
+    <string name="login_activity_on_back_pressed">Press back one more time to exit</string>
+    <string name="login_activity_phone_number_edittext">Phone Number Required</string>
+    <string name="login_activity_password_edittext">Password Required</string>
+    <string name="login_activity_login_user">Welcome</string>
+    <string name="login_activity_error_response">An error occurred! Check your connection and try again</string>
 
     <string name="my_patients_header">My Patients</string>
     <string name="my_patients_textview">Patients Found</string>
@@ -206,6 +211,7 @@
     <string name="profile_change_password_btn">Change Password</string>
     <string name="profile_delete_button">Delete Profile</string>
     <string name="blood_and_plasma_txt">Blood and Plasma</string>
+    <string name="login_language">Change Language (ভাষা পরিবর্তন)</string>
 
 
     <string-array name="division">

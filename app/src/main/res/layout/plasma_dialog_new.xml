@@ -1,0 +1,278 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ScrollView
+        android:id="@+id/plasma_dialog_scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/plasma_dialog_header"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/raleway_bold"
+                android:text="Please answer the following list to check your eligiblity"
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/plasma_dialog_q1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/montserrat"
+                android:lineHeight="25sp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Are you Recovered from COVID-19?"
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_header" />
+
+            <RadioGroup
+                android:id="@+id/q1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/plasma_dialog_q1"
+                app:layout_constraintStart_toStartOf="@+id/plasma_dialog_q1"
+                app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_q1">
+
+                <RadioButton
+                    android:id="@+id/q1_yes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Yes" />
+
+                <RadioButton
+                    android:id="@+id/q1_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="No" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/plasma_dialog_q2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat"
+                android:lineHeight="25sp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="What is your weight?"
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/q1"
+                app:layout_constraintStart_toStartOf="@+id/q1"
+                app:layout_constraintTop_toBottomOf="@+id/q1" />
+
+            <RadioGroup
+                android:id="@+id/q2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/plasma_dialog_q2"
+                app:layout_constraintStart_toStartOf="@+id/plasma_dialog_q2"
+                app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_q2">
+
+                <RadioButton
+                    android:id="@+id/q2_less"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Less than 50 kg" />
+
+                <RadioButton
+                    android:id="@+id/q2_greater"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Greater than or equal to 50 kg" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/plasma_dialog_q3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat"
+                android:lineHeight="25sp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="When was the last time you had any COVID-19 symptoms?"
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/q2"
+                app:layout_constraintStart_toStartOf="@+id/q2"
+                app:layout_constraintTop_toBottomOf="@+id/q2" />
+
+            <RadioGroup
+                android:id="@+id/q3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/plasma_dialog_q3"
+                app:layout_constraintStart_toStartOf="@+id/plasma_dialog_q3"
+                app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_q3">
+
+                <RadioButton
+                    android:id="@+id/q3_less"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Less than or equal to 14 days ago" />
+
+                <RadioButton
+                    android:id="@+id/q3_greater"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="More than 14 days ago" />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/plasma_dialog_q4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat"
+                android:lineHeight="25sp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="Do you have any of the mentioned diseases?"
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/q3"
+                app:layout_constraintStart_toStartOf="@+id/q3"
+                app:layout_constraintTop_toBottomOf="@+id/q3" />
+
+            <RadioGroup
+                android:id="@+id/q4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="@+id/plasma_dialog_q4"
+                app:layout_constraintStart_toStartOf="@+id/plasma_dialog_q4"
+                app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_q4">
+
+                <RadioButton
+                    android:id="@+id/q4_yes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AIDS, Malaria, Hepatitis, etc." />
+
+                <RadioButton
+                    android:id="@+id/q4_no"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="None of above" />
+
+            </RadioGroup>
+
+            <CheckBox
+                android:id="@+id/plasma_dialog_checkbox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/montserrat"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:text="I have not falsified any answers"
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="@+id/q4"
+                app:layout_constraintStart_toStartOf="@+id/q4"
+                app:layout_constraintTop_toBottomOf="@+id/q4" />
+
+            <TextView
+                android:id="@+id/plasma_dialog_ok_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:fontFamily="@font/montserrat"
+
+                android:padding="10dp"
+                android:text="OK"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="@+id/plasma_dialog_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_checkbox" />
+
+            <TextView
+                android:id="@+id/plasma_dialog_cancel_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="48dp"
+                android:fontFamily="@font/montserrat"
+                android:padding="10dp"
+
+                android:text="Cancel"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/plasma_dialog_checkbox"
+                app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_checkbox" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/plasma_dialog_confirm_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="Eligibility Result"
+        android:textColor="@color/colorAccent"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/plasma_dialog_scrollView" />
+
+    <TextView
+        android:id="@+id/plasma_dialog_confirm_ok_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat"
+        android:padding="10dp"
+        android:text="OK"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/plasma_dialog_confirm_eligibility_text"
+        app:layout_constraintStart_toStartOf="@+id/plasma_dialog_confirm_eligibility_text"
+        app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_confirm_eligibility_text" />
+
+    <TextView
+        android:id="@+id/plasma_dialog_confirm_eligibility_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="You are not eligible"
+        android:textColor="#000000"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/plasma_dialog_confirm_header"
+        app:layout_constraintStart_toStartOf="@+id/plasma_dialog_confirm_header"
+        app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_confirm_header" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

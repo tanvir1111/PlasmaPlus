@@ -77,6 +77,13 @@
     <string name="login_sign_in_button">সাইন ইন</string>
     <string name="login_no_account_textview">একাউন্ট খোলা হয়নি?</string>
     <string name="login_sign_up_button">সাইন আপ</string>
+    <string name="login_activity_on_back_pressed">বের হতে আরেকবার ব্যাক প্রেস করুন</string>
+    <string name="login_activity_phone_number_edittext">মোবাইল নম্বর লাগবে</string>
+    <string name="login_activity_password_edittext">পাসওয়ার্ড লাগবে</string>
+    <string name="login_activity_login_user">স্বাগতম</string>
+    <string name="login_activity_error_response">নেটওয়ার্ক সমস্যা! কানেকশন চেক করে আবার চেষ্টা করুন</string>
+
+
 
     <string name="my_patients_header">আমার গ্রহীতাসমূহ</string>
     <string name="my_patients_textview">প্রাপ্ত গ্রহীতা</string>
@@ -157,7 +164,8 @@
     <string name="label_donor_role">ভূমিকা</string>
     <string name="update_donor_role_radio_group_blood">রক্ত</string>
     <string name="update_donor_role_radio_group_plasma">প্লাজমা</string>
-    <string name="update_donor_role_radio_group_none">কোনটি নয়</string>
+    <string name="blood_and_plasma_txt">রক্ত এবং প্লাজমা</string>
+    <string name="update_donor_role_radio_group_none">কোনোটিই নয়</string>
     <string name="update_update_btn">আপডেট প্রোফাইল</string>
 
     <string name="donor_profile_header">দাতার প্রোফাইল</string>
@@ -205,7 +213,7 @@
     <string name="profile_update_button">আপডেট প্রোফাইল</string>
     <string name="profile_change_password_btn">পাসওয়ার্ড পরিবর্তন</string>
     <string name="profile_delete_button">প্রোফাইল মুছে ফেলুন</string>
-    <string name="blood_and_plasma_txt">রক্ত এবং প্লাজমা</string>
+    <string name="login_language">Change Language (ভাষা পরিবর্তন)</string>
 
 
     <string-array name="division">

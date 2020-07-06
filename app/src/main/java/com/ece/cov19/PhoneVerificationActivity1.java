@@ -110,7 +110,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
                     else if(response.body().getServerMsg().equals("record doesn't exist")){
 
 
-                        Intent nextIntent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
+                        Intent nextIntent = new Intent(PhoneVerificationActivity1.this, RegistrationActivity.class);
                         nextIntent.putExtra("phone",phonenumber);
                         nextIntent.putExtra("verification",verification);
                         startActivity(nextIntent);
