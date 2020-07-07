@@ -1,18 +1,24 @@
 package com.ece.cov19;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.ScrollView;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
@@ -42,6 +48,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
     private int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
             R.array.Barisal, R.array.Sylhet};
     private Button updateBtn;
+    boolean eligible = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,13 +86,162 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         } else if (loggedInUserDonorInfo.equals("Plasma")) {
             index = 1;
         }
+        else if(loggedInUserDonorInfo.equals("Blood and Plasma")){
+            index=2;
+        }
 
         else {
-            index = 2;
+            index = 3;
         }
         RadioButton bld = (RadioButton) bloodRadioGroup.getChildAt(index);
         bld.setChecked(true);
         donorInfo=bld.getText().toString();
+
+        bloodRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedID) {
+                if(bld.getId()==R.id.update_donor_role_radio_group_none|| bld.getId()==R.id.update_donor_role_radio_group_blood){
+                    RadioButton radioButton = findViewById(checkedID);
+                    if(checkedID==R.id.update_donor_role_radio_group_plasma|| checkedID==R.id.update_donor_role_radio_group_blood_and_plasma) {
+
+                        if (radioButton.isChecked()) {
+
+                            final AlertDialog.Builder builder = new AlertDialog.Builder(UpdateUserProfileActivity.this);
+
+                            LayoutInflater inflater = LayoutInflater.from(UpdateUserProfileActivity.this);
+                            View plasmaDialog = inflater.inflate(R.layout.plasma_dialog_new, null);
+                            TextView ok = plasmaDialog.findViewById(R.id.plasma_dialog_ok_textView);
+                            TextView cancel = plasmaDialog.findViewById(R.id.plasma_dialog_cancel_textView);
+                            CheckBox confirmCheckBox = plasmaDialog.findViewById(R.id.plasma_dialog_checkbox);
+                            TextView header = plasmaDialog.findViewById(R.id.plasma_dialog_confirm_header);
+                            TextView eligibility = plasmaDialog.findViewById(R.id.plasma_dialog_confirm_eligibility_text);
+                            TextView confirm_ok = plasmaDialog.findViewById(R.id.plasma_dialog_confirm_ok_textView);
+                            TextView q1Txt=plasmaDialog.findViewById(R.id.plasma_dialog_q1);
+                            TextView q2Txt=plasmaDialog.findViewById(R.id.plasma_dialog_q2);
+                            TextView q3Txt=plasmaDialog.findViewById(R.id.plasma_dialog_q3);
+                            TextView q4Txt=plasmaDialog.findViewById(R.id.plasma_dialog_q4);
+
+
+
+                            RadioGroup q1=plasmaDialog.findViewById(R.id.q1);
+                            RadioGroup q2=plasmaDialog.findViewById(R.id.q2);
+                            RadioGroup q3=plasmaDialog.findViewById(R.id.q3);
+                            RadioGroup q4=plasmaDialog.findViewById(R.id.q4);
+
+                            RadioButton q1_yes = plasmaDialog.findViewById(R.id.q1_yes);
+                            RadioButton q1_no = plasmaDialog.findViewById(R.id.q1_no);
+                            RadioButton q2_less = plasmaDialog.findViewById(R.id.q2_less);
+                            RadioButton q2_greater = plasmaDialog.findViewById(R.id.q2_greater);
+                            RadioButton q3_less = plasmaDialog.findViewById(R.id.q3_less);
+                            RadioButton q3_greater = plasmaDialog.findViewById(R.id.q3_greater);
+                            RadioButton q4_yes = plasmaDialog.findViewById(R.id.q4_yes);
+                            RadioButton q4_no = plasmaDialog.findViewById(R.id.q4_no);
+
+                            ScrollView scrollView = plasmaDialog.findViewById(R.id.plasma_dialog_scrollView);
+
+                            header.setVisibility(View.GONE);
+                            eligibility.setVisibility(View.GONE);
+                            confirm_ok.setVisibility(View.GONE);
+
+                            builder.setCancelable(false);
+                            builder.setView(plasmaDialog);
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
+                            ok.setEnabled(false);
+                            ok.setTextColor(getResources().getColor(R.color.common_google_signin_btn_text_dark_disabled));
+                            confirmCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                                @Override
+                                public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
+                                    if (isChecked) {
+                                        if(q1.getCheckedRadioButtonId()!=-1 && q2.getCheckedRadioButtonId()!=-1 &&
+                                                q3.getCheckedRadioButtonId()!=-1 && q4.getCheckedRadioButtonId()!=-1) {
+                                            ok.setEnabled(true);
+
+                                            ok.setTextColor(getResources().getColor(R.color.colorAccent));
+                                        }
+                                        else{
+
+
+                                            if(q4.getCheckedRadioButtonId()==-1){
+                                                q4Txt.setError("Answer this question");
+                                                q4Txt.requestFocus();
+                                            }
+
+                                            if (q3.getCheckedRadioButtonId()==-1){
+                                                q3Txt.setError("Answer this question");
+                                                q3Txt.requestFocus();
+
+                                            }
+
+                                            if(q2.getCheckedRadioButtonId()==-1){
+                                                q2Txt.setError("Answer this question");
+                                                q2Txt.requestFocus();
+
+                                            }
+
+                                            if(q1.getCheckedRadioButtonId()==-1){
+                                                q1Txt.setError("Answer this question");
+                                                q1Txt.requestFocus();
+                                            }
+
+
+                                            confirmCheckBox.toggle();
+                                        }
+                                    } else {
+                                        ok.setEnabled(false);
+
+                                        ok.setTextColor(getResources().getColor(R.color.common_google_signin_btn_text_dark_disabled));
+                                    }
+
+                                }
+                            });
+
+                            ok.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    scrollView.setVisibility(View.GONE);
+                                    header.setVisibility(View.VISIBLE);
+                                    eligibility.setVisibility(View.VISIBLE);
+                                    confirm_ok.setVisibility(View.VISIBLE);
+
+                                    if(q1_yes.isChecked() && q2_greater.isChecked() && q3_greater.isChecked() && q4_no.isChecked()){
+                                        eligible = true;
+                                        eligibility.setText("You are eligible to Donate");
+                                    }
+                                }
+
+                            });
+
+                            confirm_ok.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+                                    if(eligible == true){
+                                        radioButton.setChecked(true);
+                                        donorInfo=radioButton.getText().toString();
+                                    }
+                                    else{
+
+                                        radioGroup.check(bld.getId());
+                                    }
+                                    alertDialog.dismiss();
+                                }
+                            });
+
+                            cancel.setOnClickListener(new View.OnClickListener() {
+                                @Override
+                                public void onClick(View view) {
+
+                                    radioGroup.check(bld.getId());
+                                    alertDialog.cancel();
+
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        });
+
 
         divisionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -129,7 +285,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         donorInfo=selectedRadiobtn.getText().toString();
         emptyfield="all ok";
 
-        if(donorInfo.equals("none")){
+        if(donorInfo.equals("None")){
             donorInfo="na";
         }
 

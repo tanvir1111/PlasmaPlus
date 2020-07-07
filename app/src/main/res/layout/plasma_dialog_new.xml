@@ -20,28 +20,33 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
                 android:fontFamily="@font/raleway_bold"
                 android:text="Please answer the following list to check your eligiblity"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/plasma_dialog_q1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
                 android:fontFamily="@font/montserrat"
                 android:lineHeight="25sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="Are you Recovered from COVID-19?"
+                android:text="Have you Recovered from COVID-19?"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_header" />
 
@@ -70,6 +75,8 @@
 
             <TextView
                 android:id="@+id/plasma_dialog_q2"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -109,6 +116,8 @@
 
             <TextView
                 android:id="@+id/plasma_dialog_q3"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
@@ -148,6 +157,8 @@
 
             <TextView
                 android:id="@+id/plasma_dialog_q4"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"

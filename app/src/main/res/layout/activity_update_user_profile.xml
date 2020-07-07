@@ -245,6 +245,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/update_donor_role_radio_group_plasma" />
+            <RadioButton
+                android:id="@+id/update_donor_role_radio_group_blood_and_plasma"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/blood_and_plasma_txt"/>
 
             <RadioButton
                 android:id="@+id/update_donor_role_radio_group_none"

@@ -34,7 +34,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
     private TextView labelGender,labelBloodGroup;
     private EditText nameEditText, ageEditText, thanaEditText, passwordEditText, confPasswordEditText;
-    private String  gender="not selected", donorInfo = "none";
+    private String  gender="not selected", donorInfo = "None";
     private ImageView genderMale, genderFemale,backbtn;
     private Button singUp;
     private Spinner divisionSpinner, districtSpinner;
@@ -143,6 +143,18 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                         TextView header = plasmaDialog.findViewById(R.id.plasma_dialog_confirm_header);
                         TextView eligibility = plasmaDialog.findViewById(R.id.plasma_dialog_confirm_eligibility_text);
                         TextView confirm_ok = plasmaDialog.findViewById(R.id.plasma_dialog_confirm_ok_textView);
+                        TextView q1Txt=plasmaDialog.findViewById(R.id.plasma_dialog_q1);
+                        TextView q2Txt=plasmaDialog.findViewById(R.id.plasma_dialog_q2);
+                        TextView q3Txt=plasmaDialog.findViewById(R.id.plasma_dialog_q3);
+                        TextView q4Txt=plasmaDialog.findViewById(R.id.plasma_dialog_q4);
+
+
+
+                        RadioGroup q1=plasmaDialog.findViewById(R.id.q1);
+                        RadioGroup q2=plasmaDialog.findViewById(R.id.q2);
+                        RadioGroup q3=plasmaDialog.findViewById(R.id.q3);
+                        RadioGroup q4=plasmaDialog.findViewById(R.id.q4);
+
                         RadioButton q1_yes = plasmaDialog.findViewById(R.id.q1_yes);
                         RadioButton q1_no = plasmaDialog.findViewById(R.id.q1_no);
                         RadioButton q2_less = plasmaDialog.findViewById(R.id.q2_less);
@@ -151,6 +163,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                         RadioButton q3_greater = plasmaDialog.findViewById(R.id.q3_greater);
                         RadioButton q4_yes = plasmaDialog.findViewById(R.id.q4_yes);
                         RadioButton q4_no = plasmaDialog.findViewById(R.id.q4_no);
+
                         ScrollView scrollView = plasmaDialog.findViewById(R.id.plasma_dialog_scrollView);
 
                         header.setVisibility(View.GONE);
@@ -167,9 +180,40 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                             @Override
                             public void onCheckedChanged(CompoundButton compoundButton, boolean isChecked) {
                                 if (isChecked) {
-                                    ok.setEnabled(true);
+                                    if(q1.getCheckedRadioButtonId()!=-1 && q2.getCheckedRadioButtonId()!=-1 &&
+                                            q3.getCheckedRadioButtonId()!=-1 && q4.getCheckedRadioButtonId()!=-1) {
+                                        ok.setEnabled(true);
 
-                                    ok.setTextColor(getResources().getColor(R.color.colorAccent));
+                                        ok.setTextColor(getResources().getColor(R.color.colorAccent));
+                                    }
+                                    else{
+
+
+                                        if(q4.getCheckedRadioButtonId()==-1){
+                                            q4Txt.setError("Answer this question");
+                                            q4Txt.requestFocus();
+                                        }
+
+                                        if (q3.getCheckedRadioButtonId()==-1){
+                                            q3Txt.setError("Answer this question");
+                                            q3Txt.requestFocus();
+
+                                        }
+
+                                        if(q2.getCheckedRadioButtonId()==-1){
+                                            q2Txt.setError("Answer this question");
+                                            q2Txt.requestFocus();
+
+                                        }
+
+                                        if(q1.getCheckedRadioButtonId()==-1){
+                                            q1Txt.setError("Answer this question");
+                                            q1Txt.requestFocus();
+                                        }
+
+
+                                        confirmCheckBox.toggle();
+                                    }
                                 } else {
                                     ok.setEnabled(false);
 
@@ -200,9 +244,11 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                             public void onClick(View view) {
                                 if(eligible == true){
                                     radioButton.setChecked(true);
+                                    donorInfo=radioButton.getText().toString();
                                 }
                                 else{
-                                    radioButton.setChecked(false);
+
+                                    radioGroup.clearCheck();
                                 }
                                 alertDialog.dismiss();
                             }
@@ -213,7 +259,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                         cancel.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                radioButton.setChecked(false);
+
+                                radioGroup.clearCheck();
 
                                 alertDialog.cancel();
                             }
@@ -224,7 +271,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 }
 
 
-                donorInfo=radioButton.getText().toString();
+
+
             }
         });
 
