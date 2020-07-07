@@ -1,6 +1,7 @@
 package com.ece.cov19.RetroServices;
 
 import com.ece.cov19.DataModels.DashBoardNumberModel;
+import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.RequestDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
@@ -128,6 +129,18 @@ public interface RetroInterface {
     @FormUrlEncoded
     @POST("pushNotification.php")
     Call <UserDataModel> sendNotification(@Field("phone") String phone, @Field("title") String title, @Field("body") String body);
+
+    @FormUrlEncoded
+    @POST("imageUpload.php")
+    Call<ImageDataModel> uploadImage(@Field("title") String title, @Field("image") String image);
+
+    @FormUrlEncoded
+    @POST("imageDownload.php")
+    Call<ImageDataModel> downloadImage(@Field("title") String title);
+
+    @FormUrlEncoded
+    @POST("imageDelete.php")
+    Call<ImageDataModel> deleteImage(@Field("title") String title);
 }
 
 

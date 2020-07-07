@@ -18,6 +18,32 @@
         android:layout_height="match_parent">
 
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            app:cardCornerRadius="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/donor_child_profile_image"
+                    android:layout_width="55dp"
+                    android:layout_height="55dp"
+
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/profile_icon_male"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
+
         <TextView
             android:id="@+id/donor_child_donor_type"
             android:layout_width="wrap_content"
@@ -55,18 +81,6 @@
             app:layout_constraintTop_toBottomOf="@+id/donor_child_donor_type"
             app:layout_constraintVertical_bias="0.0" />
 
-        <ImageView
-            android:id="@+id/donor_child_profile_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-
-            android:layout_marginStart="16dp"
-            android:src="@drawable/profile_icon_male"
-            app:layout_constraintBottom_toBottomOf="@+id/donor_location"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/donor_name"
-            app:layout_constraintVertical_bias="0.161" />
-
         <TextView
             android:id="@+id/donor_name"
             android:layout_width="wrap_content"
@@ -77,7 +91,7 @@
             android:text="Tanvir Ahmmad"
             android:textColor="@color/textColorDark"
             android:textSize="14sp"
-            app:layout_constraintStart_toEndOf="@+id/donor_child_profile_image"
+            app:layout_constraintStart_toEndOf="@+id/cardView3"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
@@ -116,7 +130,6 @@
             android:layout_height="wrap_content"
 
 
-            android:layout_marginStart="16dp"
             android:layout_marginTop="14dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/button_style_orange"
@@ -129,7 +142,7 @@
             android:textSize="14sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/donor_child_profile_image"
+            app:layout_constraintStart_toStartOf="@+id/donor_name"
             app:layout_constraintTop_toBottomOf="@+id/donor_location" />
 
 

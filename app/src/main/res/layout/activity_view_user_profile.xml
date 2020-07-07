@@ -14,321 +14,334 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:layout_height="wrap_content">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:id="@+id/profile_back_button"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
 
-        <ImageView
-            android:id="@+id/profile_back_button"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:padding="15dp"
+                android:src="@drawable/back_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:padding="15dp"
-            android:src="@drawable/back_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/profile_logout_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_style_colored"
+                android:elevation="10dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:text="@string/profile_logout_btn"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/profile_logout_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/button_style_colored"
-            android:elevation="10dp"
-            android:fontFamily="@font/raleway_bold"
-            android:gravity="center"
-            android:paddingLeft="20dp"
-            android:paddingRight="20dp"
-            android:text="@string/profile_logout_btn"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/profile_header"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
 
-        <TextView
-            android:id="@+id/profile_header"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
+                android:fontFamily="@font/montserrat_bold"
+                android:text="@string/profile_header"
+                android:textColor="@color/colorAccent"
+                android:textSize="18sp"
+                app:layout_constraintStart_toEndOf="@+id/profile_back_button"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/profile_header"
-            android:textColor="@color/colorAccent"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/profile_back_button"
-            app:layout_constraintTop_toTopOf="parent" />
+            <androidx.cardview.widget.CardView
 
-        <androidx.cardview.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="64dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_style_white"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="10dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_header">
 
-            android:id="@+id/cardView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="128dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/button_style_white"
-            app:cardCornerRadius="30dp"
-            app:cardElevation="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_style_white">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        app:cardCornerRadius="40dp"
+                        app:layout_constraintBottom_toTopOf="@+id/profile_name"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <ImageView
+                                android:id="@+id/profile_gender_icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+
+                                android:scaleType="centerCrop"
+                                android:src="@drawable/profile_icon_male"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/profile_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat_bold"
+                        android:text="@string/profile_name"
+
+                        android:textColor="@color/colorAccent"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="@+id/cardView3"
+                        app:layout_constraintStart_toStartOf="@+id/cardView3"
+                        app:layout_constraintTop_toBottomOf="@+id/cardView3" />
+
+                    <TextView
+                        android:id="@+id/profile_label_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="32dp"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+
+                        android:text="@string/profile_label_age"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_name" />
+
+                    <TextView
+                        android:id="@+id/profile_age"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:layout_marginStart="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/profile_age"
+                        android:textColor="@color/textColorDark"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/profile_label_age"
+                        app:layout_constraintStart_toEndOf="@+id/profile_label_blood_group"
+                        app:layout_constraintTop_toTopOf="@+id/profile_label_age"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/profile_label_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/profile_label_address"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@+id/profile_label_age"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_label_age" />
+
+                    <TextView
+                        android:id="@+id/profile_address"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/profile_address"
+                        android:textColor="@color/textColorDark"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/profile_label_address"
+                        app:layout_constraintStart_toStartOf="@+id/profile_age"
+                        app:layout_constraintTop_toTopOf="@+id/profile_label_address"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/profile_label_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="32dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/profile_label_type"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="@+id/profile_label_phone"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_label_blood_group"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/profile_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/profile_type"
+                        android:textColor="@color/textColorDark"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/profile_label_type"
+                        app:layout_constraintStart_toStartOf="@+id/profile_blood_group"
+                        app:layout_constraintTop_toTopOf="@+id/profile_label_type" />
+
+                    <TextView
+                        android:id="@+id/profile_label_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/profile_label_phone"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@+id/profile_label_address"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_address" />
+
+                    <TextView
+                        android:id="@+id/profile_phone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/profile_phone"
+                        android:textColor="@color/textColorDark"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/profile_label_phone"
+                        app:layout_constraintStart_toStartOf="@+id/profile_address"
+                        app:layout_constraintTop_toTopOf="@+id/profile_label_phone" />
+
+                    <TextView
+                        android:id="@+id/profile_label_blood_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/profile_label_blood_group"
+                        android:textColor="@color/colorAccent"
+                        android:textSize="16sp"
+                        app:layout_constraintStart_toStartOf="@+id/profile_label_phone"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_label_phone" />
+
+                    <TextView
+                        android:id="@+id/profile_blood_group"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/montserrat"
+                        android:text="@string/profile_blood_group"
+                        android:textColor="@color/textColorDark"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="@+id/profile_label_blood_group"
+                        app:layout_constraintStart_toStartOf="@+id/profile_phone"
+                        app:layout_constraintTop_toTopOf="@+id/profile_label_blood_group" />
+
+                    <ImageView
+                        android:id="@+id/profile_image_upload"
+                        android:layout_width="25dp"
+                        android:layout_height="25dp"
+                        app:layout_constraintEnd_toStartOf="@+id/cardView3"
+                        app:layout_constraintTop_toTopOf="@+id/cardView3"
+                        app:srcCompat="@mipmap/plus_2" />
+
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/profile_id_account_maintenance"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="32dp"
+                android:text="@string/profile_id_account_maintenance"
+                android:textColor="@color/textColorDark"
+                android:textSize="14sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+            <Button
+                android:id="@+id/profile_change_password_btn"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_style_white">
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_style_colored"
+                android:elevation="10dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/profile_change_password_btn"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_update_button" />
 
-                <ImageView
-                    android:id="@+id/profile_gender_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/profile_update_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_style_colored"
+                android:elevation="10dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/profile_update_button"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_id_account_maintenance" />
 
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
-                    android:src="@drawable/profile_icon_male"
-                    app:layout_constraintBottom_toTopOf="@+id/profile_name"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:id="@+id/profile_delete_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/button_style_colored"
+                android:elevation="10dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/profile_delete_button"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_change_password_btn" />
 
-                <TextView
-                    android:id="@+id/profile_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/profile_name"
-                    android:textColor="@color/colorAccent"
-
-                    android:textSize="18sp"
-                    app:layout_constraintEnd_toEndOf="@+id/profile_gender_icon"
-                    app:layout_constraintStart_toStartOf="@+id/profile_gender_icon"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_gender_icon" />
-
-                <TextView
-                    android:id="@+id/profile_label_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="32dp"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat"
-
-                    android:text="@string/profile_label_age"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_name" />
-
-                <TextView
-                    android:id="@+id/profile_age"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-
-                    android:layout_marginStart="16dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/profile_age"
-                    android:textColor="@color/textColorDark"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/profile_label_age"
-                    app:layout_constraintStart_toEndOf="@+id/profile_label_blood_group"
-                    app:layout_constraintTop_toTopOf="@+id/profile_label_age"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <TextView
-                    android:id="@+id/profile_label_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/profile_label_address"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/profile_label_age"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_label_age" />
-
-                <TextView
-                    android:id="@+id/profile_address"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/profile_address"
-                    android:textColor="@color/textColorDark"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/profile_label_address"
-                    app:layout_constraintStart_toStartOf="@+id/profile_age"
-                    app:layout_constraintTop_toTopOf="@+id/profile_label_address"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <TextView
-                    android:id="@+id/profile_label_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="32dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/profile_label_type"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="16sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@+id/profile_label_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_label_blood_group"
-                    app:layout_constraintVertical_bias="1.0" />
-
-                <TextView
-                    android:id="@+id/profile_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/profile_type"
-                    android:textColor="@color/textColorDark"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/profile_label_type"
-                    app:layout_constraintStart_toStartOf="@+id/profile_blood_group"
-                    app:layout_constraintTop_toTopOf="@+id/profile_label_type" />
-
-                <TextView
-                    android:id="@+id/profile_label_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/profile_label_phone"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/profile_label_address"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_address" />
-
-                <TextView
-                    android:id="@+id/profile_phone"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/profile_phone"
-                    android:textColor="@color/textColorDark"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/profile_label_phone"
-                    app:layout_constraintStart_toStartOf="@+id/profile_address"
-                    app:layout_constraintTop_toTopOf="@+id/profile_label_phone" />
-
-                <TextView
-                    android:id="@+id/profile_label_blood_group"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/profile_label_blood_group"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="16sp"
-                    app:layout_constraintStart_toStartOf="@+id/profile_label_phone"
-                    app:layout_constraintTop_toBottomOf="@+id/profile_label_phone" />
-
-                <TextView
-                    android:id="@+id/profile_blood_group"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/montserrat"
-                    android:text="@string/profile_blood_group"
-                    android:textColor="@color/textColorDark"
-                    android:textSize="14sp"
-                    app:layout_constraintBottom_toBottomOf="@+id/profile_label_blood_group"
-                    app:layout_constraintStart_toStartOf="@+id/profile_phone"
-                    app:layout_constraintTop_toTopOf="@+id/profile_label_blood_group" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-
-        <TextView
-            android:id="@+id/profile_id_account_maintenance"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:text="@string/profile_id_account_maintenance"
-            android:textColor="@color/textColorDark"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cardView" />
-
-        <Button
-            android:id="@+id/profile_change_password_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/button_style_colored"
-            android:elevation="10dp"
-            android:fontFamily="@font/raleway_bold"
-            android:gravity="center"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:text="@string/profile_change_password_btn"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_update_button" />
-
-        <Button
-            android:id="@+id/profile_update_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/button_style_colored"
-            android:elevation="10dp"
-            android:fontFamily="@font/raleway_bold"
-            android:gravity="center"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:text="@string/profile_update_button"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_id_account_maintenance" />
-
-        <Button
-            android:id="@+id/profile_delete_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="32dp"
-            android:background="@drawable/button_style_colored"
-            android:elevation="10dp"
-            android:fontFamily="@font/raleway_bold"
-            android:gravity="center"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:text="@string/profile_delete_button"
-            android:textAlignment="center"
-            android:textColor="#ffffff"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/profile_change_password_btn" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

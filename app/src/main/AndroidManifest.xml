@@ -3,6 +3,8 @@
     package="com.ece.cov19">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -13,6 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".AddProfileImageActivity"></activity>
         <activity
             android:name=".ExplorePatientsActivity"
             android:screenOrientation="nosensor" />
@@ -45,7 +48,7 @@
             android:screenOrientation="nosensor" />
         <activity
             android:name=".DashboardActivity"
-            android:screenOrientation="nosensor"></activity>
+            android:screenOrientation="nosensor" />
         <activity
             android:name=".ViewUserProfileActivity"
             android:screenOrientation="nosensor" />
@@ -83,6 +86,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:screenOrientation="nosensor"
+            android:theme="@style/Base.Theme.AppCompat"/>
 
         <service android:name=".FirebaseMessagingService">
             <intent-filter>

@@ -30,6 +30,8 @@
     <string name="dashboard_text_requestA">From Donors</string>
     <string name="dashboard_text_no_of_donors">Donors</string>
     <string name="dashboard_text_explore_all_donors">Explore Donors</string>
+    <string name="dashboard_error_message">Failed to Update Dashboard</string>
+
 
     <string name="bld_req_heading_textview">Add Patient</string>
     <string name="bld_req_name_edittext">Enter Your Name</string>
@@ -212,6 +214,9 @@
     <string name="profile_delete_button">Delete Profile</string>
     <string name="blood_and_plasma_txt">Blood and Plasma</string>
     <string name="login_language">Change Language (ভাষা পরিবর্তন)</string>
+    <string name="add_image">Add Image</string>
+    <string name="edit_image">Edit Image</string>
+    <string name="delete_image">Delete Image</string>
 
 
     <string-array name="division">

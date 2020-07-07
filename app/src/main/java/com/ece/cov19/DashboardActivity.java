@@ -18,9 +18,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
@@ -35,6 +40,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.DashBoardNumberModel;
+import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
@@ -52,6 +58,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import static android.content.ContentValues.TAG;
 
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 import static com.ece.cov19.SplashActivity.Language_pref;
@@ -60,12 +67,11 @@ import static com.ece.cov19.SplashActivity.Selected_language;
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
     private String[] nameSplit;
-    private Button profileBtn;
     private CardView findDonorCardView, addPatientCardView, requestsCardView, responsesCardView, fromDonorsCardView,
             fromPatientsCardView, exploreCardView, myPatientsCardView, allDonorsCardView, allPatientsCardView;
     private TextView findDonorText, addPatientText, requestsText, responsesText,fromDonorsText,fromPatientsText, exploreText,
             myPatientsText,allDonorsText,allPatientsText;
-    private ImageView dashboardDrawerBtn, findDonorImage, addPatientImage, requestsImage, responsesImage,fromDonorsImage,fromPatientsImage, exploreImage,
+    private ImageView dashboardDrawerBtn, dashboardGenderIcon, findDonorImage, addPatientImage, requestsImage, responsesImage,fromDonorsImage,fromPatientsImage, exploreImage,
             myPatientsImage,allDonorsImage,allPatientsImage;
     private TextView dashboard, numberOfPatients,numberOfDonors,numberOfPatientsText,numberOfDonorsText,numberOfRequestsFromDonors,
             numberOfRequestsFromPatients,numberOfRequestsFromDonorsText,numberOfRequestsFromPatientsText;
@@ -83,6 +89,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     private String noOfDonors, noOfPatients, noOfRequests, noOfResponses;
 
+    Bitmap insertBitmap;
+    Uri imageUri;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +103,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         loadingView=findViewById(R.id.loadingView);
         dashboard=findViewById(R.id.dashboard_header);
         progressBar=findViewById(R.id.dashboard_progress_bar);
-        profileBtn=findViewById(R.id.dashboard_profile_btn);
+        dashboardGenderIcon=findViewById(R.id.dashboard_gender_icon);
         dashboardDrawerBtn=findViewById(R.id.dashboard_drawer_btn);
 
         findDonorCardView=findViewById(R.id.cardView_findDonor);
@@ -126,6 +135,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         allDonorsCardView.setVisibility(View.GONE);
         allPatientsCardView.setVisibility(View.GONE);
 
+        downloadImage(loggedInUserPhone);
 
 
         FirebaseInstanceId.getInstance().getInstanceId()
@@ -177,14 +187,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                Toast.makeText(DashboardActivity.this, "Failed to Update Dashboard", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DashboardActivity.this, R.string.dashboard_error_message, Toast.LENGTH_SHORT).show();
 
             }
         });
 
-        profileBtn.setText(nameSplit[0]);
         navigationView.setNavigationItemSelectedListener(this);
-        profileBtn.setOnClickListener(this);
+        dashboardGenderIcon.setOnClickListener(this);
         dashboard.setOnClickListener(this);
         dashboardDrawerBtn.setOnClickListener(this);
         findDonorCardView.setOnClickListener(this);
@@ -209,6 +218,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         nameSplit = loggedInUserName.split("");
         loadingView.setVisibility(View.VISIBLE);
 
+        downloadImage(loggedInUserPhone);
 
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<DashBoardNumberModel> dashBoardNumbers = retroInterface.getDashBoardNumbers(loggedInUserPhone);
@@ -280,8 +290,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         });
 
 
-        profileBtn.setText(nameSplit[0]);
-        profileBtn.setOnClickListener(this);
+        dashboardGenderIcon.setOnClickListener(this);
         navigationView.setNavigationItemSelectedListener(this);
         dashboard.setOnClickListener(this);
         dashboardDrawerBtn.setOnClickListener(this);
@@ -438,7 +447,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 drawerLayout.openDrawer(Gravity.LEFT);
                 break;
 
-            case R.id.dashboard_profile_btn:
+            case R.id.dashboard_gender_icon:
                 Intent profileIntent=new Intent(DashboardActivity.this, ViewUserProfileActivity.class);
                 startActivity(profileIntent);
                 break;
@@ -589,4 +598,98 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         }
     }
+
+    private Bitmap scaleImage(Bitmap bitmap) {
+
+
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        int bounding = dpToPx(150);
+
+
+        // Determine how much to scale: the dimension requiring less scaling is
+        // closer to the its side. This way the image always stays inside your
+        // bounding box AND either x/y axis touches it.
+        float xScale = ((float) bounding) / width;
+        float yScale = ((float) bounding) / height;
+        float scale = (xScale <= yScale) ? xScale : yScale;
+
+        // Create a matrix for the scaling and add the scaling data
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale, scale);
+
+        // Create a new bitmap and convert it to a format understood by the ImageView
+        Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+
+        return scaledBitmap;
+
+    }
+
+    private int dpToPx(int dp) {
+        float density = getApplicationContext().getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
+    }
+
+
+
+
+    private void showImage(ImageView view, Bitmap bitmap) {
+
+        BitmapDrawable result = new BitmapDrawable(bitmap);
+        view.setImageDrawable(result);
+
+        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) view.getLayoutParams();
+        params.width = 150;
+        params.height = 150;
+        view.setLayoutParams(params);
+    }
+
+
+
+
+
+
+
+
+    private void downloadImage(String title) {
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Call<ImageDataModel> incomingResponse = retroInterface.downloadImage(title);
+        incomingResponse.enqueue(new Callback<ImageDataModel>() {
+            @Override
+            public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
+
+                if(response.body().getServerMsg().equals("true")){
+                    String image = response.body().getImage();
+                    byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
+                    insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+                    insertBitmap = scaleImage(insertBitmap);
+                    showImage(dashboardGenderIcon, insertBitmap);
+                }
+
+                else if(response.body().getServerMsg().equals("false")) {
+
+                    if (loggedInUserGender.toLowerCase().equals("male")) {
+                        dashboardGenderIcon.setImageResource(R.drawable.profile_icon_male);
+                    } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                        dashboardGenderIcon.setImageResource(R.drawable.profile_icon_female);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ImageDataModel> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Profile Image retrieve failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                if (loggedInUserGender.toLowerCase().equals("male")) {
+                    dashboardGenderIcon.setImageResource(R.drawable.profile_icon_male);
+                } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                    dashboardGenderIcon.setImageResource(R.drawable.profile_icon_female);
+                }
+            }
+        });
+
+    }
+
 }

@@ -30,6 +30,8 @@
     <string name="dashboard_text_requestA">দাতা থেকে</string>
     <string name="dashboard_text_no_of_donors">দাতা</string>
     <string name="dashboard_text_explore_all_donors">দাতা অনুসন্ধান</string>
+    <string name="dashboard_error_message">ড্যাসবোর্ড আপডেট ফেইল হয়েছে</string>
+
 
     <string name="bld_req_heading_textview">নতুন গ্রহীতা</string>
     <string name="bld_req_label_name">নাম</string>
@@ -214,6 +216,9 @@
     <string name="profile_change_password_btn">পাসওয়ার্ড পরিবর্তন</string>
     <string name="profile_delete_button">প্রোফাইল মুছে ফেলুন</string>
     <string name="login_language">Change Language (ভাষা পরিবর্তন)</string>
+    <string name="add_image">নতুন ছবি যোগ</string>
+    <string name="edit_image">ছবি সম্পাদনা</string>
+    <string name="delete_image">ছবি মুছে ফেলুন</string>
 
 
     <string-array name="division">

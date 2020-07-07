@@ -2,9 +2,16 @@ package com.ece.cov19;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.text.InputType;
+import android.util.Base64;
+import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,11 +22,20 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.ece.cov19.DataModels.ImageDataModel;
+import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.RequestDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +45,7 @@ import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
@@ -41,7 +58,8 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     private ImageView backbtn;
     private ProgressBar progressBar;
     String name, age, bloodGroup, donorphone, donorInfo, address,requestedBy;
-
+    Bitmap insertBitmap;
+    Uri imageUri;
 
 
     @Override
@@ -103,12 +121,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             requestsOperation("getStatus");
         }
 
-        if (intent.getStringExtra("gender").equals("male")) {
-            genderImageView.setImageResource(R.drawable.profile_icon_male);
-        } else {
-            genderImageView.setImageResource(R.drawable.profile_icon_female);
-
-        }
+        downloadImage(donorphone);
 
 
 
@@ -364,4 +377,109 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         });
 
     }
+
+
+
+
+
+
+
+
+    private Bitmap scaleImage(Bitmap bitmap) {
+
+
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        int bounding = dpToPx(150);
+
+
+        // Determine how much to scale: the dimension requiring less scaling is
+        // closer to the its side. This way the image always stays inside your
+        // bounding box AND either x/y axis touches it.
+        float xScale = ((float) bounding) / width;
+        float yScale = ((float) bounding) / height;
+        float scale = (xScale <= yScale) ? xScale : yScale;
+
+        // Create a matrix for the scaling and add the scaling data
+        Matrix matrix = new Matrix();
+        matrix.postScale(scale, scale);
+
+        // Create a new bitmap and convert it to a format understood by the ImageView
+        Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
+
+        return scaledBitmap;
+
+    }
+
+    private int dpToPx(int dp) {
+        float density = getApplicationContext().getResources().getDisplayMetrics().density;
+        return Math.round((float) dp * density);
+    }
+
+
+
+
+    private void showImage(ImageView view, Bitmap bitmap, int drawable) {
+
+        BitmapDrawable result = new BitmapDrawable(bitmap);
+        view.setImageDrawable(result);
+
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inTargetDensity = DisplayMetrics.DENSITY_DEFAULT;
+        Bitmap bmp = BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                drawable, o);
+        int width = bmp.getWidth();
+        int height = bmp.getHeight();
+
+        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) view.getLayoutParams();
+        params.width = 5*width;
+        params.height = 5*height;
+        view.setLayoutParams(params);
+    }
+
+
+
+
+    private void downloadImage(String title) {
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Call<ImageDataModel> incomingResponse = retroInterface.downloadImage(title);
+        incomingResponse.enqueue(new Callback<ImageDataModel>() {
+            @Override
+            public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
+
+                if(response.body().getServerMsg().equals("true")){
+                    String image = response.body().getImage();
+                    byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
+                    insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+                    insertBitmap = scaleImage(insertBitmap);
+                    showImage(genderImageView, insertBitmap, R.drawable.profile_icon_male);
+                }
+
+                else if(response.body().getServerMsg().equals("false")) {
+
+                    if (loggedInUserGender.toLowerCase().equals("male")) {
+                        genderImageView.setImageResource(R.drawable.profile_icon_male);
+                    } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                        genderImageView.setImageResource(R.drawable.profile_icon_female);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<ImageDataModel> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Profile Image retrieve failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+
+
+                if (loggedInUserGender.toLowerCase().equals("male")) {
+                    genderImageView.setImageResource(R.drawable.profile_icon_male);
+                } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                    genderImageView.setImageResource(R.drawable.profile_icon_female);
+                }
+            }
+        });
+
+    }
+
+
 }
