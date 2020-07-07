@@ -361,6 +361,7 @@ private void updateAlertDialog(){
             intent.putExtra("date",newDate);
             intent.putExtra("need",newNeed);
             intent.putExtra("phone",phone);
+            intent.putExtra("activity","UpdatePatientProfileActivity");
             Toast.makeText(UpdatePatientProfileActivity.this, "Patient Profile Updated!", Toast.LENGTH_SHORT).show();
             startActivity(intent);
             finish();

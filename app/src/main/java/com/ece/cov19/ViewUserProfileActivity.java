@@ -91,7 +91,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             donorInfoTextView.setText("Not a donor");
         }
         else{
-            donorInfoTextView.setText(loggedInUserDonorInfo+" Donor");
+            donorInfoTextView.setText(loggedInUserDonorInfo);
         }
 
         downloadImage(loggedInUserPhone);

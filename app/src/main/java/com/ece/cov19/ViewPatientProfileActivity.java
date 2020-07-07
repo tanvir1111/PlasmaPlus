@@ -96,6 +96,8 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         date = intent.getStringExtra("date");
         need = intent.getStringExtra("need");
         phone = intent.getStringExtra("phone");
+
+        requestedBy="donor";
         if(intent.hasExtra("activity")){
             if(intent.getStringExtra("activity").equals("DonorRequestsActivity")){
                 requestedBy="patient";
@@ -234,6 +236,8 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
 
     }
+
+
 
     @Override
     public void onBackPressed() {
