@@ -34,7 +34,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
     private TextView labelGender,labelBloodGroup;
     private EditText nameEditText, ageEditText, thanaEditText, passwordEditText, confPasswordEditText;
-    private String  gender="not selected", donorInfo = "none";
+    private String  gender="not selected", donorInfo = "None";
     private ImageView genderMale, genderFemale,backbtn;
     private Button singUp;
     private Spinner divisionSpinner, districtSpinner;
