@@ -1,6 +1,9 @@
 package com.ece.cov19.RecyclerViews;
 
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -25,16 +28,19 @@ import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.FindDonorActivity;
+import com.ece.cov19.LoginActivity;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 
 public class FindDonorAlphaAdapter extends RecyclerView.Adapter<FindDonorAlphaViewHolder>{
@@ -48,9 +54,16 @@ public class FindDonorAlphaAdapter extends RecyclerView.Adapter<FindDonorAlphaVi
     Bitmap insertBitmap;
     Uri imageUri;
 
+
+    public static final String Language_pref="Language";
+    public static final String Selected_language="Selected Language";
+    SharedPreferences langPrefs;
+
+
     public interface RecyclerViewClickListener {
         void onClicked(View v, int position);
     }
+
 
     public FindDonorAlphaAdapter(Context context, ArrayList<PatientDataModel> patientDataModels, RecyclerViewClickListener recyclerViewClickListener) {
         this.context = context;
@@ -66,6 +79,7 @@ public class FindDonorAlphaAdapter extends RecyclerView.Adapter<FindDonorAlphaVi
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.seeking_help_child, parent, false);
         FindDonorAlphaViewHolder findDonorAlphaViewHolder = new FindDonorAlphaViewHolder(view, patientDataModels, new FindDonorAlphaViewHolder.FindPatientViewHolderViewClickListener() {
+
 
         @Override
             public void onClicked(View v, int position) {
@@ -83,6 +97,12 @@ public class FindDonorAlphaAdapter extends RecyclerView.Adapter<FindDonorAlphaVi
 
     @Override
     public void onBindViewHolder(@NonNull FindDonorAlphaViewHolder holder, int position) {
+
+        langPrefs=context.getSharedPreferences(Language_pref,MODE_PRIVATE);
+        if(langPrefs.contains(Selected_language)){
+            setLocale(langPrefs.getString(Selected_language,""));
+
+        }
 
         //FindPatientData.findPatientPosition = holder.getAdapterPosition();
         patientDataModel = patientDataModels.get(position);
@@ -214,6 +234,21 @@ public class FindDonorAlphaAdapter extends RecyclerView.Adapter<FindDonorAlphaVi
                 }
             }
         });
+
+    }
+
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = context.getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+
+        langPrefs = context.getSharedPreferences(Language_pref,MODE_PRIVATE);
+        SharedPreferences.Editor langPrefsEditor = langPrefs.edit();
+        langPrefsEditor.putString(Selected_language, lang);
+        langPrefsEditor.apply();
 
     }
 }

@@ -212,4 +212,5 @@ public class PatientRequestsBetaAdapter extends RecyclerView.Adapter<PatientRequ
         });
 
     }
+
 }

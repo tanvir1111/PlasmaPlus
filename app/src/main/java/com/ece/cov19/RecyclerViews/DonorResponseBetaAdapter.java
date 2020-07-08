@@ -1,6 +1,9 @@
 package com.ece.cov19.RecyclerViews;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -26,11 +29,13 @@ import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 
 public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponseBetaViewHolder>{
@@ -38,6 +43,7 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
     public Context context;
     public UserDataModel userDataModel;
     public ArrayList<UserDataModel> userDataModels;
+
 
     Bitmap insertBitmap;
     Uri imageUri;
@@ -216,4 +222,5 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
         });
 
     }
+
 }

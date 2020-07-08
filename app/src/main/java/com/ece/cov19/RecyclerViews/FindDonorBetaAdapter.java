@@ -196,4 +196,6 @@ public class FindDonorBetaAdapter extends RecyclerView.Adapter<FindDonorBetaView
         });
 
     }
+
+
 }

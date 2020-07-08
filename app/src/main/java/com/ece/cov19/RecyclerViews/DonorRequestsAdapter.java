@@ -1,6 +1,9 @@
 package com.ece.cov19.RecyclerViews;
 
 import android.content.Context;
+import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -27,11 +30,13 @@ import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.Context.MODE_PRIVATE;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 
 public class DonorRequestsAdapter extends RecyclerView.Adapter<DonorRequestsViewHolder> {
@@ -39,6 +44,10 @@ public class DonorRequestsAdapter extends RecyclerView.Adapter<DonorRequestsView
     public Context context;
     public PatientDataModel patientDataModel;
     public ArrayList<PatientDataModel> patientDataModels;
+
+    public static final String Language_pref="Language";
+    public static final String Selected_language="Selected Language";
+    SharedPreferences langPrefs;
 
     Bitmap insertBitmap;
     Uri imageUri;
@@ -61,6 +70,11 @@ public class DonorRequestsAdapter extends RecyclerView.Adapter<DonorRequestsView
     @Override
     public void onBindViewHolder(@NonNull DonorRequestsViewHolder holder, int position) {
 
+        langPrefs=context.getSharedPreferences(Language_pref,MODE_PRIVATE);
+        if(langPrefs.contains(Selected_language)){
+            setLocale(langPrefs.getString(Selected_language,""));
+
+        }
         patientDataModel = patientDataModels.get(position);
 
         holder.nameTextView.setText(patientDataModel.getName());
@@ -204,6 +218,21 @@ public class DonorRequestsAdapter extends RecyclerView.Adapter<DonorRequestsView
                 }
             }
         });
+
+    }
+
+    public void setLocale(String lang) {
+        Locale myLocale = new Locale(lang);
+        Resources res = context.getResources();
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+
+        langPrefs = context.getSharedPreferences(Language_pref,MODE_PRIVATE);
+        SharedPreferences.Editor langPrefsEditor = langPrefs.edit();
+        langPrefsEditor.putString(Selected_language, lang);
+        langPrefsEditor.apply();
 
     }
 }

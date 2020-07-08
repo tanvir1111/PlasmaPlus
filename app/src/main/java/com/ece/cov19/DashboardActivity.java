@@ -9,6 +9,8 @@ import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -42,7 +44,9 @@ import android.widget.Toast;
 import com.ece.cov19.DataModels.DashBoardNumberModel;
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.LoggedInUserData;
+import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.RecyclerViews.FindDonorAlphaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -51,6 +55,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
+import java.util.ArrayList;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -75,6 +80,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             myPatientsImage,allDonorsImage,allPatientsImage;
     private TextView dashboard, numberOfPatients,numberOfDonors,numberOfPatientsText,numberOfDonorsText,numberOfRequestsFromDonors,
             numberOfRequestsFromPatients,numberOfRequestsFromDonorsText,numberOfRequestsFromPatientsText;
+
+
     private ProgressBar progressBar;
     private ConstraintLayout loadingView;
 
@@ -85,6 +92,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public int requestResponseSwitcher;
     public int requestResponseCardViewSwitcher;
     public int exploreSwitcher;
+
+
 
 
     private String noOfDonors, noOfPatients, noOfRequests, noOfResponses;
@@ -117,6 +126,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         allDonorsCardView=findViewById(R.id.cardView_exploreA);
         allPatientsCardView=findViewById(R.id.cardView_exploreB);
 
+
         numberOfDonors=findViewById(R.id.dashboard_no_of_donors);
         numberOfDonorsText=findViewById(R.id.dashboard_text_no_of_donors);
         numberOfPatients=findViewById(R.id.dashboard_no_of_patients);
@@ -135,7 +145,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         allDonorsCardView.setVisibility(View.GONE);
         allPatientsCardView.setVisibility(View.GONE);
 
+
         downloadImage(loggedInUserPhone);
+
 
 
         FirebaseInstanceId.getInstance().getInstanceId()
@@ -217,6 +229,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         nameSplit = loggedInUserName.split("");
         loadingView.setVisibility(View.VISIBLE);
+
+
+
 
         downloadImage(loggedInUserPhone);
 
@@ -372,6 +387,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     }
 
 
+
+
     private void languageAlertDialog(String lang){
         AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);
         builder.setMessage(getResources().getString(R.string.dashboard_activity_are_you_sure));
@@ -406,6 +423,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         startActivity(refresh);
         finish();
     }
+
 
     public void slideUp(View view) {
             view.animate()
@@ -708,5 +726,4 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         });
 
     }
-
 }
