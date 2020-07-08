@@ -33,7 +33,7 @@ public class PatientResponseActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageView backbtn;
     private String status="pending",responseTypeText="Response from Patients Approached";
-    private TextView responseTypeTextView;
+    private TextView responseTypeTextView, noResponseTextView;
     private ProgressBar progressBar;
 
 
@@ -45,7 +45,7 @@ public class PatientResponseActivity extends AppCompatActivity {
         backbtn=findViewById(R.id.patients_response_back_button);
         responseTypeTextView=findViewById(R.id.patients_response_type_textView);
         progressBar = findViewById(R.id.patients_response_progressBar);
-
+        noResponseTextView = findViewById(R.id.patients_response_norecordtextview);
 
 
         patientDataModels = new ArrayList<>();
@@ -56,47 +56,8 @@ public class PatientResponseActivity extends AppCompatActivity {
                 finish();
             }
         });
-        progressBar.setVisibility(View.VISIBLE);
-        RetroInterface retroInterface = RetroInstance.getRetro();
 
-        Call <ArrayList<PatientDataModel>> incomingResponse = retroInterface.checkPatientResponse(loggedInUserPhone);
-        incomingResponse.enqueue(new Callback<ArrayList<PatientDataModel>>() {
-            @Override
-            public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
-                progressBar.setVisibility(View.GONE);
-                if(response.isSuccessful()) {
-                    patientDataModels.clear();
-                    ArrayList<PatientDataModel> initialModels = response.body();
-                    responseTypeTextView.setText(responseTypeText+" (" +initialModels.size()+")");
-
-                    for(PatientDataModel initialDataModel : initialModels){
-
-                        if(initialDataModel.getServerMsg().equals("No Record")){
-                            patientDataModels.clear();
-                            responseTypeTextView.setText(responseTypeText+" (" +0+")");
-                            break;
-                        }
-                        else if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
-
-                            patientDataModels.add(initialDataModel);
-                        }
-                    }
-
-                    PatientResponseAdapter = new PatientResponseAdapter(getApplicationContext(), patientDataModels);
-                    recyclerView.setAdapter(PatientResponseAdapter);
-                    LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-                    recyclerView.setLayoutManager(linearLayoutManager);
-                }
-                else {
-                    Toast.makeText(PatientResponseActivity.this, "No Response", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(PatientResponseActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+        patientResponseSearch();
 
 
 
@@ -111,6 +72,7 @@ public class PatientResponseActivity extends AppCompatActivity {
         backbtn=findViewById(R.id.patients_response_back_button);
         responseTypeTextView=findViewById(R.id.patients_response_type_textView);
         progressBar = findViewById(R.id.patients_response_progressBar);
+        noResponseTextView = findViewById(R.id.patients_response_norecordtextview);
 
 
         patientDataModels = new ArrayList<>();
@@ -121,6 +83,20 @@ public class PatientResponseActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        patientResponseSearch();
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+        finish();
+    }
+
+
+    private void patientResponseSearch(){
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
 
@@ -133,6 +109,9 @@ public class PatientResponseActivity extends AppCompatActivity {
                     patientDataModels.clear();
                     ArrayList<PatientDataModel> initialModels = response.body();
                     responseTypeTextView.setText(responseTypeText+" (" +initialModels.size()+")");
+                    if(initialModels.size() > 0){
+                        noResponseTextView.setVisibility(View.VISIBLE);
+                    }
 
                     for(PatientDataModel initialDataModel : initialModels){
 
@@ -163,12 +142,4 @@ public class PatientResponseActivity extends AppCompatActivity {
             }
         });
     }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        finish();
-    }
-
 }

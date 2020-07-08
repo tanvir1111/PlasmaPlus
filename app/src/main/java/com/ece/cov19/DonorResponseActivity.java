@@ -30,7 +30,7 @@ public class DonorResponseActivity extends AppCompatActivity {
 
     private RecyclerView RecyclerView;
     private ProgressBar ProgressBar;
-    private TextView TextView;
+    private TextView TextView, noResponseTextView;
     private ImageView backbtn;
     private Button addPatientBtn;
 
@@ -43,6 +43,7 @@ public class DonorResponseActivity extends AppCompatActivity {
         RecyclerView = findViewById(R.id.donor_response_recyclerview);
         ProgressBar=findViewById(R.id.donor_response_progress_bar);
         backbtn=findViewById(R.id.donor_response_back_button);
+        noResponseTextView = findViewById(R.id.donor_response_norecordtextview);
 
 
         myPatientsSearch();
@@ -67,6 +68,7 @@ public class DonorResponseActivity extends AppCompatActivity {
         RecyclerView = findViewById(R.id.donor_response_recyclerview);
         ProgressBar=findViewById(R.id.donor_response_progress_bar);
         backbtn=findViewById(R.id.donor_response_back_button);
+        noResponseTextView = findViewById(R.id.donor_response_norecordtextview);
 
 
         myPatientsSearch();
@@ -109,6 +111,9 @@ public class DonorResponseActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
 
                     ArrayList<PatientDataModel> initialModels = response.body();
+                    if(initialModels.size() == 0){
+                        noResponseTextView.setVisibility(View.VISIBLE);
+                    }
                     for(PatientDataModel initialDataModel : initialModels){
 
                         patientDataModels.add(initialDataModel);

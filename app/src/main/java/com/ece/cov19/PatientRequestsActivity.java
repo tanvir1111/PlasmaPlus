@@ -31,6 +31,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
     private RecyclerView myPatientRequestRecyclerView;
     private ProgressBar myPatientRequestProgressBar;
     private ImageView backbtn;
+    private TextView noRequestTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
         myPatientRequestRecyclerView = findViewById(R.id.patient_requests_recyclerview);
         myPatientRequestProgressBar=findViewById(R.id.patient_requests_progress_bar);
         backbtn=findViewById(R.id.patient_requests_back_button);
+        noRequestTextView=findViewById(R.id.patient_requests_norecordtextview);
 
         myPatientsSearch();
 
@@ -62,6 +64,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
         myPatientRequestRecyclerView = findViewById(R.id.patient_requests_recyclerview);
         myPatientRequestProgressBar=findViewById(R.id.patient_requests_progress_bar);
         backbtn=findViewById(R.id.patient_requests_back_button);
+        noRequestTextView=findViewById(R.id.patient_requests_norecordtextview);
 
         myPatientsSearch();
 
@@ -101,6 +104,9 @@ public class PatientRequestsActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
 
                     ArrayList<PatientDataModel> initialModels = response.body();
+                    if(initialModels.size() == 0){
+                        noRequestTextView.setVisibility(View.VISIBLE);
+                    }
                     for(PatientDataModel initialDataModel : initialModels){
 
                         patientDataModels.add(initialDataModel);

@@ -31,6 +31,7 @@ import android.widget.Toast;
 
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.LoggedInUserData;
+import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -87,11 +88,20 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         bloodGroupTextView.setText(loggedInUserBloodGroup);
         addressTextView.setText(String.format("%s, %s", loggedInUserThana, loggedInUserDistrict));
         ageTextView.setText(loggedInUserAge);
-        if(loggedInUserDonorInfo.equals("na")) {
-            donorInfoTextView.setText("Not a donor");
-        }
-        else{
-            donorInfoTextView.setText(loggedInUserDonorInfo);
+
+        switch (loggedInUserDonorInfo){
+            case "Blood":
+                donorInfoTextView.setText(R.string.profile_blood);
+                break;
+            case "Plasma":
+                donorInfoTextView.setText(R.string.profile_plasma);
+                break;
+            case "Blood and Plasma":
+                donorInfoTextView.setText(R.string.profile_blood_and_plasma);
+                break;
+            case "None":
+                donorInfoTextView.setText(R.string.profile_none);
+                break;
         }
 
         downloadImage(loggedInUserPhone);
@@ -110,31 +120,8 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
-                builder.setMessage("Are you Sure?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
-                        sharedPreferences.edit().clear().apply();
-                        Intent login= new Intent(ViewUserProfileActivity.this, LoginActivity.class);
-                        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(login);
-                        finish();
 
-
-                    }
-                })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.dismiss();
-                            }
-                        });
-
-                AlertDialog alertDialog=builder.create();
-                alertDialog.show();
-
-
-
+               logoutAlertDialog();
             }
         });
 
@@ -154,11 +141,10 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                         if (id == R.id.add_image) {
                            addImage();
                         }
-                        else if (id == R.id.update_image) {
-                            editImage(imageUri);
-                        }
+
                         else if(id == R.id.delete_image){
-                           deleteImage(loggedInUserPhone);
+
+                           deleteImageAlertDialog();
                         }
                         return true;
                     }
@@ -170,8 +156,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(ViewUserProfileActivity.this, UpdateUserProfileActivity.class);
-                showAlertDialog(intent);
-
+                updateAlertDialog(intent);
 
 
             }
@@ -181,15 +166,14 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(ViewUserProfileActivity.this, UpdatePasswordActivity.class);
 
-                showAlertDialog(intent);
-
+                confirmAlertDialog(intent);
             }
         });
 
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                deleteProfileAlertDialog();
             }
         });
 
@@ -221,13 +205,22 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         bloodGroupTextView.setText(loggedInUserBloodGroup);
         addressTextView.setText(String.format("%s, %s", loggedInUserThana, loggedInUserDistrict));
         ageTextView.setText(loggedInUserAge);
-        if(loggedInUserDonorInfo.equals("na")) {
-            donorInfoTextView.setText("Not a donor");
-        }
-        else{
-            donorInfoTextView.setText(loggedInUserDonorInfo+" Donor");
-        }
 
+
+        switch (loggedInUserDonorInfo){
+            case "Blood":
+                donorInfoTextView.setText(R.string.profile_blood);
+                break;
+            case "Plasma":
+                donorInfoTextView.setText(R.string.profile_plasma);
+                break;
+            case "Blood and Plasma":
+                donorInfoTextView.setText(R.string.profile_blood_and_plasma);
+                break;
+            case "None":
+                donorInfoTextView.setText(R.string.profile_none);
+                break;
+        }
         downloadImage(loggedInUserPhone);
 
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -243,31 +236,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
-                builder.setMessage("Are you Sure?");
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
-                        sharedPreferences.edit().clear().apply();
-                        Intent login= new Intent(ViewUserProfileActivity.this, LoginActivity.class);
-                        login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(login);
-                        finish();
-
-
-                    }
-                })
-                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.dismiss();
-                            }
-                        });
-
-                AlertDialog alertDialog=builder.create();
-                alertDialog.show();
-
-
-
+              logoutAlertDialog();
             }
         });
 
@@ -287,11 +256,8 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                         if (id == R.id.add_image) {
                             addImage();
                         }
-                        else if (id == R.id.update_image) {
-                            editImage(imageUri);
-                        }
                         else if(id == R.id.delete_image){
-                            deleteImage(loggedInUserPhone);
+                            deleteImageAlertDialog();
                         }
                         return true;
                     }
@@ -299,12 +265,11 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             }
         });
 
-                updateInfoBtn.setOnClickListener(new View.OnClickListener() {
+        updateInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(ViewUserProfileActivity.this, UpdateUserProfileActivity.class);
-                showAlertDialog(intent);
-
+                updateAlertDialog(intent);
 
 
             }
@@ -314,7 +279,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent= new Intent(ViewUserProfileActivity.this, UpdatePasswordActivity.class);
 
-                showAlertDialog(intent);
+                confirmAlertDialog(intent);
 
             }
         });
@@ -322,16 +287,35 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                deleteProfileAlertDialog();
             }
         });
+    }
+
+
+    private void confirmAlertDialog(final Intent intent){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
+        builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
+        builder.setPositiveButton(getResources().getString(R.string.profile_activity_yes), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                showAlertDialog(intent);
+            }
+        })
+                .setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
     }
 
     private void showAlertDialog(final Intent intent) {
 
 //                asking password with alertdialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
-        builder.setMessage("Enter Password");
+        builder.setMessage(getResources().getString(R.string.profile_activity_Enter_Password));
 
 // Set up the input
         final EditText pass = new EditText(ViewUserProfileActivity.this);
@@ -346,7 +330,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         builder.setView(pass);
 
 // Set up the buttons
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.profile_activity_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -355,11 +339,11 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(ViewUserProfileActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();;
+                    Toast.makeText(ViewUserProfileActivity.this, getResources().getString(R.string.profile_activity_Wrong_Password), Toast.LENGTH_SHORT).show();;
                 }
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -367,6 +351,171 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         });
 
         builder.show();
+
+    }
+
+
+
+    private void logoutAlertDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
+        builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
+        builder.setPositiveButton(getResources().getString(R.string.profile_activity_yes), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
+                sharedPreferences.edit().clear().apply();
+                Intent login= new Intent(ViewUserProfileActivity.this, LoginActivity.class);
+                login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(login);
+                finish();
+
+
+            }
+        })
+                .setNegativeButton(getResources().getString(R.string.profile_activity_no), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
+
+    }
+
+
+    private void updateAlertDialog(final Intent intent){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
+        builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
+        builder.setPositiveButton(getResources().getString(R.string.profile_activity_yes), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                startActivity(intent);
+            }
+        })
+                .setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
+    }
+
+    private void deleteProfileAlertDialog(){
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
+        builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
+        builder.setPositiveButton(getResources().getString(R.string.profile_activity_Delete_profile_question), new DialogInterface.OnClickListener() {
+
+            public void onClick(DialogInterface dialog, int id) {
+
+                final AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
+                builder.setMessage(getResources().getString(R.string.profile_activity_Enter_Password));
+
+                final EditText pass = new EditText(ViewUserProfileActivity.this);
+
+                float density = getResources().getDisplayMetrics().density;
+                int paddingDp = (int)(12* density);
+                pass.setPadding(paddingDp,paddingDp,paddingDp,paddingDp);
+                pass.setHint("******");
+                pass.setBackgroundResource(R.drawable.edit_text_dark);
+                pass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                builder.setView(pass);
+
+                builder.setPositiveButton(getResources().getString(R.string.profile_activity_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if(pass.getText().toString().equals(loggedInUserPass)){
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
+                            builder.setMessage(getResources().getString(R.string.profile_activity_Confirm_delete));
+                            builder.setPositiveButton(getResources().getString(R.string.profile_delete_button), new DialogInterface.OnClickListener() {
+
+                                public void onClick(DialogInterface dialog, int id) {
+
+                                    RetroInterface retroInterface = RetroInstance.getRetro();
+                                    Call<UserDataModel> incomingResponse = retroInterface.deleteUserProfile(loggedInUserPhone);
+                                    incomingResponse.enqueue(new Callback<UserDataModel>() {
+                                        @Override
+                                        public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+                                            if(response.body().getServerMsg().equals("Success")){
+                                                SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
+                                                sharedPreferences.edit().clear().apply();
+                                                Intent login= new Intent(ViewUserProfileActivity.this, LoginActivity.class);
+                                                login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
+                                                startActivity(login);
+                                                finish();
+                                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_Delete_Successful), Toast.LENGTH_SHORT).show();
+                                            }
+                                            else if(response.body().getServerMsg().equals("Failed")){
+                                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_Delete_Failed), Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<UserDataModel> call, Throwable t) {
+                                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_error), Toast.LENGTH_SHORT).show();
+
+                                        }
+                                    });
+                                }
+                            })
+                                    .setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.dismiss();
+                                        }
+                                    });
+
+                            AlertDialog finalDialog=builder.create();
+                            finalDialog.show();
+
+                        }
+                        else{
+                            Toast.makeText(ViewUserProfileActivity.this, getResources().getString(R.string.profile_activity_Wrong_Password), Toast.LENGTH_SHORT).show();;
+                        }
+                    }
+                })
+                        .setNegativeButton(getResources().getString(R.string.profile_activity_no), new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.dismiss();
+                            }
+                        });
+
+                AlertDialog passDialog=builder.create();
+                passDialog.show();
+
+            }
+        })
+                .setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog firstDialog = builder.create();
+        firstDialog.show();
+    }
+
+
+
+    private void deleteImageAlertDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
+        builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
+        builder.setPositiveButton(getResources().getString(R.string.profile_activity_Delete), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                deleteImage(loggedInUserPhone);
+            }
+        })
+                .setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
 
     }
 
@@ -503,14 +652,14 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                     downloadImage(loggedInUserPhone);
                 }
                 else if(response.body().getServerMsg().equals("false")){
-                    Toast.makeText(getApplicationContext(), "Image did not upload.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_image_did_not_upload), Toast.LENGTH_SHORT).show();
 
                 }
             }
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Image upload failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_image_upload_failed), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -535,7 +684,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
                     if (loggedInUserGender.toLowerCase().equals("male")) {
                         genderImageView.setImageResource(R.drawable.profile_icon_male);
-                    } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                    } else if (loggedInUserGender.toLowerCase().equals("female")) {
                         genderImageView.setImageResource(R.drawable.profile_icon_female);
                     }
                 }
@@ -544,12 +693,12 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Profile Image retrieve failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_image_retrieve_failed), Toast.LENGTH_SHORT).show();
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_male);
-                } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                } else if (loggedInUserGender.toLowerCase().equals("female")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_female);
                 }
             }
@@ -580,14 +729,14 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
                 }
                 else if(response.body().getServerMsg().equals("false")){
-                    Toast.makeText(getApplicationContext(), "No Image Found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_image_not_found), Toast.LENGTH_SHORT).show();
 
                 }
             }
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Image Delete failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_image_delete_failed), Toast.LENGTH_SHORT).show();
 
             }
         });

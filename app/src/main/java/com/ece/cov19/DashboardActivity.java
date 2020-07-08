@@ -242,8 +242,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                         requestResponseSwitcher = 1;
                         fromDonorsCardView.setVisibility(View.VISIBLE);
                         fromPatientsCardView.setVisibility(View.VISIBLE);
-                        numberOfRequestsFromDonorsText.setText("Requests");
-                        numberOfRequestsFromPatientsText.setText("Requests");
+                        numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.dashboard_text_requests));
+                        numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.dashboard_text_requests));
                         numberOfRequestsFromDonors.setText(noOfResponses);
                         numberOfRequestsFromPatients.setText(noOfRequests);
                     }
@@ -253,8 +253,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                         requestResponseSwitcher = 2;
                         fromDonorsCardView.setVisibility(View.VISIBLE);
                         fromPatientsCardView.setVisibility(View.VISIBLE);
-                        numberOfRequestsFromDonorsText.setText("Responses");
-                        numberOfRequestsFromPatientsText.setText("Responses");
+                        numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.dashboard_text_responses));
+                        numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.dashboard_text_responses));
                         numberOfRequestsFromDonors.setText(noOfRequests);
                         numberOfRequestsFromPatients.setText(noOfResponses);
                     }
@@ -284,7 +284,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                Toast.makeText(DashboardActivity.this, "Failed to Update Dashboard", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DashboardActivity.this, getResources().getString(R.string.dashboard_error_message), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -363,7 +363,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             backCounter++;
             if (backCounter == 1) {
-                Toast.makeText(DashboardActivity.this, "Press back one more time to exit", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DashboardActivity.this, getResources().getString(R.string.dashboard_text_Press_back_one_more_time_to_exit), Toast.LENGTH_SHORT).show();
             }
             if (backCounter == 2) {
                 finish();
@@ -374,13 +374,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     private void languageAlertDialog(String lang){
         AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);
-        builder.setMessage("Are you sure?");
-        builder.setPositiveButton("Change Language", new DialogInterface.OnClickListener() {
+        builder.setMessage(getResources().getString(R.string.dashboard_activity_are_you_sure));
+        builder.setPositiveButton(getResources().getString(R.string.dashboard_activity_change_language), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                setLocale(lang);
             }
         })
-                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.dashboard_activity_cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -472,8 +472,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     requestResponseSwitcher = 1;
                     slideDown(fromDonorsCardView);
                     slideDown(fromPatientsCardView);
-                    numberOfRequestsFromDonorsText.setText("Requests");
-                    numberOfRequestsFromPatientsText.setText("Requests");
+                    numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.dashboard_text_requests));
+                    numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.dashboard_text_requests));
                     numberOfRequestsFromDonors.setText(noOfResponses);
                     numberOfRequestsFromPatients.setText(noOfRequests);
 
@@ -495,8 +495,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     requestResponseSwitcher = 2;
                     slideDown(fromDonorsCardView);
                     slideDown(fromPatientsCardView);
-                    numberOfRequestsFromDonorsText.setText("Responses");
-                    numberOfRequestsFromPatientsText.setText("Responses");
+                    numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.dashboard_text_responses));
+                    numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.dashboard_text_responses));
                     numberOfRequestsFromDonors.setText(noOfRequests);
                     numberOfRequestsFromPatients.setText(noOfResponses);
                     break;
@@ -583,7 +583,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             case R.id.dashboard_header:
                 RetroInterface retroInterface = RetroInstance.getRetro();
-                Call<UserDataModel> incomingResponse = retroInterface.sendNotification(loggedInUserPhone,"Dashboard","Welcome  to Dashboard");
+                Call<UserDataModel> incomingResponse = retroInterface.sendNotification(loggedInUserPhone,getResources().getString(R.string.dashboard_header),getResources().getString(R.string.dashboard_welcome_to));
                 incomingResponse.enqueue(new Callback<UserDataModel>() {
                     @Override
                     public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -633,22 +633,39 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
 
 
-    private void showImage(ImageView view, Bitmap bitmap) {
+    private void showImage(ImageView view, Bitmap bitmap, int drawable) {
 
         BitmapDrawable result = new BitmapDrawable(bitmap);
         view.setImageDrawable(result);
 
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inTargetDensity = DisplayMetrics.DENSITY_DEFAULT;
+        Bitmap bmp = BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                drawable, o);
+        int width = bmp.getWidth();
+        int height = bmp.getHeight();
+
         ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) view.getLayoutParams();
-        params.width = 150;
-        params.height = 150;
+        params.width = 2*width;
+        params.height = 2*height;
         view.setLayoutParams(params);
     }
 
+    private void showDrawable(ImageView view, int drawable) {
+        view.setImageResource(drawable);
 
+        BitmapFactory.Options o = new BitmapFactory.Options();
+        o.inTargetDensity = DisplayMetrics.DENSITY_DEFAULT;
+        Bitmap bmp = BitmapFactory.decodeResource(getApplicationContext().getResources(),
+                drawable, o);
+        int width = bmp.getWidth();
+        int height = bmp.getHeight();
 
-
-
-
+        ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) view.getLayoutParams();
+        params.width = 2*width;
+        params.height = 2*height;
+        view.setLayoutParams(params);
+    }
 
 
     private void downloadImage(String title) {
@@ -663,15 +680,15 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
                     insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
                     insertBitmap = scaleImage(insertBitmap);
-                    showImage(dashboardGenderIcon, insertBitmap);
+                    showImage(dashboardGenderIcon, insertBitmap, R.drawable.profile_icon_male);
                 }
 
                 else if(response.body().getServerMsg().equals("false")) {
 
                     if (loggedInUserGender.toLowerCase().equals("male")) {
-                        dashboardGenderIcon.setImageResource(R.drawable.profile_icon_male);
+                        showDrawable(dashboardGenderIcon,R.drawable.profile_icon_male);
                     } else if (loggedInUserGender.toLowerCase().equals("male")) {
-                        dashboardGenderIcon.setImageResource(R.drawable.profile_icon_female);
+                        showDrawable(dashboardGenderIcon,R.drawable.profile_icon_female);
                     }
                 }
 
@@ -679,7 +696,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Profile Image retrieve failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.dashboard_image_retrieve_failed), Toast.LENGTH_SHORT).show();
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {

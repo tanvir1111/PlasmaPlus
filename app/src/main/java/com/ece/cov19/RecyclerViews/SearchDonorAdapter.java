@@ -175,7 +175,7 @@ public class SearchDonorAdapter extends RecyclerView.Adapter<SearchDonorViewHold
 
                     if (loggedInUserGender.toLowerCase().equals("male")) {
                         showDrawable(genderImageView, R.drawable.profile_icon_male);
-                    } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                    } else if (loggedInUserGender.toLowerCase().equals("female")) {
                         showDrawable(genderImageView, R.drawable.profile_icon_female);
                     }
                 }
@@ -189,7 +189,7 @@ public class SearchDonorAdapter extends RecyclerView.Adapter<SearchDonorViewHold
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_male);
-                } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                } else if (loggedInUserGender.toLowerCase().equals("female")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_female);
                 }
             }

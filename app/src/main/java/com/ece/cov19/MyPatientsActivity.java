@@ -1,6 +1,5 @@
 package com.ece.cov19;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -36,7 +35,7 @@ public class MyPatientsActivity extends AppCompatActivity {
     private RecyclerView myPatientsRecyclerView;
 
     private ProgressBar myPatientsProgressBar;
-    private TextView myPatientsTextView;
+    private TextView myPatientsTextView, noRecordTextView;
     private ImageView backbtn;
     private String myPatientsText;
 
@@ -54,12 +53,13 @@ public class MyPatientsActivity extends AppCompatActivity {
         myPatientsRecyclerView = findViewById(R.id.my_patients_recyclerview);
         myPatientsProgressBar = findViewById(R.id.my_patients_progress_bar);
         myPatientsTextView = findViewById(R.id.my_patients_textview);
+        noRecordTextView = findViewById(R.id.my_patients_norecordtextview);
 
         backbtn=findViewById(R.id.my_patients_back_button);
         myPatientsText=myPatientsTextView.getText().toString();
 
-
         myPatientsSearch();
+
 
 
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -85,12 +85,15 @@ public class MyPatientsActivity extends AppCompatActivity {
         myPatientsRecyclerView = findViewById(R.id.my_patients_recyclerview);
         myPatientsProgressBar = findViewById(R.id.my_patients_progress_bar);
         myPatientsTextView = findViewById(R.id.my_patients_textview);
+        noRecordTextView = findViewById(R.id.my_patients_norecordtextview);
+
 
         backbtn=findViewById(R.id.my_patients_back_button);
         myPatientsText=myPatientsTextView.getText().toString();
 
 
         myPatientsSearch();
+
 
 
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -130,6 +133,11 @@ public class MyPatientsActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     ArrayList<PatientDataModel> initialModels = response.body();
                     myPatientsTextView.setText(myPatientsText+" ("+Integer.toString(initialModels.size())+")");
+
+                    if(initialModels.size() == 0){
+                        noRecordTextView.setVisibility(View.VISIBLE);
+                    }
+
                     for(PatientDataModel initialDataModel : initialModels){
 
                         patientDataModels.add(initialDataModel);

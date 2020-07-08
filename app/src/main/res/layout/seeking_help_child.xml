@@ -165,7 +165,7 @@
                     android:background="@drawable/background_side_nav_bar"
                     android:fontFamily="@font/montserrat"
                     android:paddingLeft="30dp"
-                    android:text="Last date of donation: "
+                    android:text="@string/seeking_help_date"
                     android:textColor="#FFFFFF"
                     android:textSize="10sp"
                     app:layout_constraintEnd_toEndOf="parent"

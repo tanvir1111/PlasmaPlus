@@ -81,15 +81,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/update_label_spinner_division"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/update_label_name"
+            app:layout_constraintEnd_toEndOf="@+id/update_age_edittext"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/update_label_name"
-            app:layout_constraintTop_toBottomOf="@+id/update_name_edittext" />
+            app:layout_constraintStart_toStartOf="@+id/update_age_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/update_age_edittext" />
 
         <Spinner
             android:id="@+id/update_division_spinner"
@@ -142,7 +142,7 @@
             android:id="@+id/update_label_thana"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/update_label_thana"
             android:textColor="@color/textColorDark"
@@ -181,10 +181,10 @@
             android:text="@string/update_label_age"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/update_thana_edittext"
+            app:layout_constraintEnd_toEndOf="@+id/update_name_edittext"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/update_thana_edittext"
-            app:layout_constraintTop_toBottomOf="@+id/update_thana_edittext" />
+            app:layout_constraintStart_toStartOf="@+id/update_name_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/update_name_edittext" />
 
         <EditText
             android:id="@+id/update_age_edittext"
@@ -210,15 +210,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:fontFamily="@font/raleway_bold"
+            android:fontFamily="@font/montserrat_bold"
             android:text="@string/label_donor_role"
-            android:textColor="@color/textColorDark"
 
+            android:textColor="@color/textColorDark"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/update_age_edittext"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/update_age_edittext"
-            app:layout_constraintTop_toBottomOf="@+id/update_age_edittext" />
+            app:layout_constraintStart_toStartOf="@+id/update_thana_edittext"
+            app:layout_constraintTop_toBottomOf="@+id/update_thana_edittext" />
 
         <RadioGroup
             android:id="@+id/update_donor_role_radio_group"
@@ -250,7 +248,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/blood_and_plasma_txt"/>
+                android:text="@string/update_donor_role_radio_group_blood_and_plasma"/>
 
             <RadioButton
                 android:id="@+id/update_donor_role_radio_group_none"

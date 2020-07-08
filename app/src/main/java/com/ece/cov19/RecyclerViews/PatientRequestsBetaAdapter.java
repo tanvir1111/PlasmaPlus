@@ -79,21 +79,21 @@ public class PatientRequestsBetaAdapter extends RecyclerView.Adapter<PatientRequ
 
         if(userDataModel.getServerMsg().equals("Pending")) {
             holder.acceptButton.setVisibility(View.VISIBLE);
-            holder.acceptButton.setText("Pending");
+            holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Pending));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_orange);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
         else if(userDataModel.getServerMsg().equals("Accepted")){
             holder.acceptButton.setVisibility(View.VISIBLE);
-            holder.acceptButton.setText("Accepted");
+            holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Accepted));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
         else if(userDataModel.getServerMsg().equals("Declined")){
             holder.acceptButton.setVisibility(View.VISIBLE);
-            holder.acceptButton.setText("Declined");
+            holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Declined));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_red);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
@@ -191,7 +191,7 @@ public class PatientRequestsBetaAdapter extends RecyclerView.Adapter<PatientRequ
 
                     if (loggedInUserGender.toLowerCase().equals("male")) {
                         showDrawable(genderImageView, R.drawable.profile_icon_male);
-                    } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                    } else if (loggedInUserGender.toLowerCase().equals("female")) {
                         showDrawable(genderImageView, R.drawable.profile_icon_female);
                     }
                 }
@@ -205,7 +205,7 @@ public class PatientRequestsBetaAdapter extends RecyclerView.Adapter<PatientRequ
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_male);
-                } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                } else if (loggedInUserGender.toLowerCase().equals("female")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_female);
                 }
             }

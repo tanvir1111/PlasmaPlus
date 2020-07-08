@@ -334,6 +334,24 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             bloodGroup = selectedBldGrp.getText().toString();
         }
 
+        RadioButton selectedRadiobtn= findViewById(donorRoleRadioGrp.getCheckedRadioButtonId());
+        switch (selectedRadiobtn.getText().toString()){
+            case "ব্লাড":
+                donorInfo = "Blood";
+                break;
+            case "প্লাজমা":
+                donorInfo = "Plasma";
+                break;
+            case "ব্লাড এবং প্লাজমা":
+                donorInfo = "Blood and Plasma";
+                break;
+            case "কোনোটিই নয়":
+                donorInfo = "None";
+                break;
+            default:
+                donorInfo = selectedRadiobtn.getText().toString();
+                break;
+        }
         Intent i = getIntent();
         phone = i.getExtras().get("phone").toString();
 
@@ -349,7 +367,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 && !formFieldsFeatures.checkIfEmpty(passwordEditText)) {
 
             if (password.length() < 6) {
-                Toast.makeText(this, "password must be of at least 6 characters", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Password must be of at least 6 characters", Toast.LENGTH_SHORT).show();
             } else {
                 if (password.equals(confPasswordEditText.getText().toString())) {
 //            retro operations
@@ -358,7 +376,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 
                 } else {
-                    confPasswordEditText.setError("password doesn't match");
+                    confPasswordEditText.setError("Password doesn't match");
                     confPasswordEditText.requestFocus();
                 }
             }
@@ -377,7 +395,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(RegistrationActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
 
 //              going to login activity
                     Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
@@ -391,7 +409,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                Toast.makeText(RegistrationActivity.this, "failed to register! Check your connection and try again.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegistrationActivity.this, "Failed to register! Check your connection and try again.", Toast.LENGTH_SHORT).show();
             }
         });
 

@@ -225,7 +225,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
             case R.id.update_patient_female_icon:
                 genderFemale.setImageResource(R.drawable.female_icon_selected);
                 genderMale.setImageResource(R.drawable.male_icon);
-                newDate = "female";
+                newGender = "female";
                 break;
             case R.id.update_patient_bld_a_positive:
             case R.id.update_patient_bld_b_positive:
@@ -243,7 +243,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
             case R.id.update_patient_request_btn:
                 verifydata();
                 break;
-            case R.id.reg_back_button:
+            case R.id.update_patient_back_button:
                 finish();
                 break;
         }
@@ -264,7 +264,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
                                           final int dayOfMonth) {
 
                         @SuppressLint("SimpleDateFormat")
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
                         calendar.set(year, month, dayOfMonth);
                         newDate = sdf.format(calendar.getTime());
 
@@ -284,6 +284,10 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
 
     private void verifydata() {
+
+        String emptyfield = "";
+        boolean emptyfieldChecker = true;
+
         newName = nameEditText.getText().toString();
         newAge = ageEditText.getText().toString();
         newDivision = divisionSpinner.getSelectedItem().toString();
@@ -301,11 +305,52 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
             newNeed = "Blood";
         }
 
-        if (!formFieldsFeatures.checkIfEmpty(nameEditText) && !formFieldsFeatures.checkIfEmpty(ageEditText)
+
+
+
+//        checking empty Fields
+
+        if (newName.isEmpty()) {
+            emptyfieldChecker = false;
+            emptyfield += getResources().getString(R.string.update_patient_label_name) + " ";
+            nameEditText.setError(getResources().getString(R.string.update_patient_label_name)+" "+getResources().getString(R.string.update_patient_activity_is_required));
+        }
+        if (newHospital.isEmpty()) {
+            emptyfieldChecker = false;
+            emptyfield += getResources().getString(R.string.update_patient_label_hospital) + " ";
+            hospitalEditText.setError(getResources().getString(R.string.update_patient_label_hospital)+" "+getResources().getString(R.string.update_patient_activity_is_required));
+        }
+        if (newAge.isEmpty()) {
+            emptyfieldChecker = false;
+            emptyfield += getResources().getString(R.string.update_patient_label_age) + " ";
+            ageEditText.setError(getResources().getString(R.string.update_patient_label_age)+" "+getResources().getString(R.string.update_patient_activity_is_required));
+        }
+        if (newDivision.isEmpty()) {
+            emptyfieldChecker = false;
+            emptyfield += getResources().getString(R.string.update_patient_label_spinner_division) + " ";
+        }
+        if (newDistrict.isEmpty()) {
+            emptyfieldChecker = false;
+            emptyfield += getResources().getString(R.string.update_patient_label_spinner_district) + " ";
+        }
+
+        if(emptyfieldChecker == true){
+            updatePatient(name, age, bloodGroup, phone, newName, newAge, newGender, newBloodGroup, newHospital, newDivision, newDistrict, newDate, newNeed);
+
+        }
+        else{
+            emptyfield += getResources().getString(R.string.update_activity_is_required);
+            Toast.makeText(this,emptyfield, Toast.LENGTH_SHORT).show();
+        }
+
+        /*if (!formFieldsFeatures.checkIfEmpty(nameEditText) && !formFieldsFeatures.checkIfEmpty(ageEditText)
                 && !formFieldsFeatures.checkIfEmpty(hospitalEditText) && !formFieldsFeatures.checkIfEmpty(this, labelBloodGroup, bloodGroup)
                 && !formFieldsFeatures.checkIfEmpty(this, labelGender, gender)) {
-            updatePatient(name, age, bloodGroup, phone, newName, newAge, newGender, newBloodGroup, newHospital, newDivision, newDistrict, newDate, newNeed);
+            updatePatient(name, age, bloodGroup, phone, newName, newAge, newGender, newBloodGroup, newHospital, newDivision, newDistrict, newDate, newNeed)
+
         }
+
+         */
 //
 
 /*
@@ -331,13 +376,13 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
                     updateAlertDialog();
 
                 } else {
-                    Toast.makeText(UpdatePatientProfileActivity.this, "Update Failed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdatePatientProfileActivity.this, R.string.update_patient_activity_update_failed, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<PatientDataModel> call, Throwable t) {
-                Toast.makeText(UpdatePatientProfileActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdatePatientProfileActivity.this, R.string.update_patient_activity_update_error, Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -346,37 +391,37 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
 
 private void updateAlertDialog(){
-    AlertDialog.Builder builder = new AlertDialog.Builder(UpdatePatientProfileActivity.this);
-    builder.setMessage("Confirm Update?");
-    builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
-        public void onClick(DialogInterface dialog, int id) {
-            Intent intent = new Intent(UpdatePatientProfileActivity.this, ViewPatientProfileActivity.class);
-            intent.putExtra("name",newName);
-            intent.putExtra("age",newAge);
-            intent.putExtra("gender",newGender);
-            intent.putExtra("blood_group",newBloodGroup);
-            intent.putExtra("hospital",newHospital);
-            intent.putExtra("division",newDivision);
-            intent.putExtra("district",newDistrict);
-            intent.putExtra("date",newDate);
-            intent.putExtra("need",newNeed);
-            intent.putExtra("phone",phone);
-            intent.putExtra("activity","UpdatePatientProfileActivity");
-            Toast.makeText(UpdatePatientProfileActivity.this, "Patient Profile Updated!", Toast.LENGTH_SHORT).show();
-            startActivity(intent);
-            finish();
-        }
-    })
-            .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialog, int id) {
-                    dialog.dismiss();
-                }
-            });
+        AlertDialog.Builder builder = new AlertDialog.Builder(UpdatePatientProfileActivity.this);
+        builder.setMessage(getResources().getString(R.string.update_patient_activity_confirm_update));
+        builder.setPositiveButton(getString(R.string.update_patient_activity_confirm), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                Intent intent = new Intent(UpdatePatientProfileActivity.this, ViewPatientProfileActivity.class);
+                intent.putExtra("name",newName);
+                intent.putExtra("age",newAge);
+                intent.putExtra("gender",newGender);
+                intent.putExtra("blood_group",newBloodGroup);
+                intent.putExtra("hospital",newHospital);
+                intent.putExtra("division",newDivision);
+                intent.putExtra("district",newDistrict);
+                intent.putExtra("date",newDate);
+                intent.putExtra("need",newNeed);
+                intent.putExtra("phone",phone);
+                intent.putExtra("activity","UpdatePatientProfileActivity");
+                Toast.makeText(UpdatePatientProfileActivity.this, R.string.update_patient_activity_update_successful, Toast.LENGTH_SHORT).show();
+                startActivity(intent);
+                finish();
+            }
+        })
+                .setNegativeButton(getString(R.string.update_patient_activity_cancel), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
 
-    AlertDialog alertDialog=builder.create();
-    alertDialog.show();
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
 
-}
+    }
 
 
 }

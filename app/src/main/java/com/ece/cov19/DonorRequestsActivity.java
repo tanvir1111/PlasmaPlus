@@ -1,6 +1,5 @@
 package com.ece.cov19;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -36,7 +35,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private ImageView backbtn;
     private Button pendingbtn,acceptedBtn;
     private String status="Pending",requestTypeText="Pending Requests";
-    private TextView requestTypeTextView;
+    private TextView requestTypeTextView, noRequestTextView;
     private ProgressBar progressBar;
     private int buttonSelector = 0;
 
@@ -50,6 +49,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         pendingbtn=findViewById(R.id.donor_requests_show_pending_requests);
         requestTypeTextView=findViewById(R.id.donor_requests_type_textView);
         progressBar = findViewById(R.id.donor_requests_progressBar);
+        noRequestTextView = findViewById(R.id.donor_requests_norecordtextview);
 
         patientDataModels = new ArrayList<>();
 
@@ -103,6 +103,8 @@ public class DonorRequestsActivity extends AppCompatActivity {
         pendingbtn=findViewById(R.id.donor_requests_show_pending_requests);
         requestTypeTextView=findViewById(R.id.donor_requests_type_textView);
         progressBar = findViewById(R.id.donor_requests_progressBar);
+        noRequestTextView = findViewById(R.id.donor_requests_norecordtextview);
+
 
         if(buttonSelector == 1) {
             pendingbtn.setVisibility(View.VISIBLE);
@@ -178,6 +180,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
                         if(initialDataModel.getServerMsg().equals("No Record")){
                             patientDataModels.clear();
                             requestTypeTextView.setText(requestTypeText+" (" +0+")");
+                            noRequestTextView.setVisibility(View.VISIBLE);
                             break;
                         }
                         else if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){

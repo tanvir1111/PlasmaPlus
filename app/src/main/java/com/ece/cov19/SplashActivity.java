@@ -174,7 +174,7 @@ public class SplashActivity extends AppCompatActivity {
                         loggedInUserAge = response.body().getAge();
                         loggedInUserDonorInfo = response.body().getDonor();
                         loggedInUserPass = response.body().getPassword();
-                        Toast.makeText(SplashActivity.this, "Welcome " + loggedInUserName, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(SplashActivity.this, getResources().getString(R.string.splash_welcome)+" " + loggedInUserName, Toast.LENGTH_SHORT).show();
 
 //                  going to Dashboard
                         Intent intent = new Intent(SplashActivity.this, DashboardActivity.class);
@@ -194,7 +194,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<UserDataModel> call, Throwable t) {
-                    Toast.makeText(SplashActivity.this, "An error occurred! Check your connection and try again", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SplashActivity.this, getResources().getString(R.string.splash_error), Toast.LENGTH_SHORT).show();
                 }
             });
 

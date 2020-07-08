@@ -42,7 +42,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
     private Spinner bloodgrpSpinner;
     private EditText districtEditText;
     private ProgressBar progressBar;
-    private TextView explorePatientsTextView;
+    private TextView explorePatientsTextView, noRecordTextView;
     private ImageView backbtn;
     private String otherPatientsText,myPatientsText;
 
@@ -63,6 +63,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         districtEditText=findViewById(R.id.explore_patients_district_edittext);
         progressBar=findViewById(R.id.explore_patients_progress_bar);
         backbtn=findViewById(R.id.explore_patients_back_button);
+        noRecordTextView=findViewById(R.id.explore_patients_norecordtextview);
         otherPatientsText= explorePatientsTextView.getText().toString();
 
 
@@ -121,6 +122,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         districtEditText=findViewById(R.id.explore_patients_district_edittext);
         progressBar=findViewById(R.id.explore_patients_progress_bar);
         backbtn=findViewById(R.id.explore_patients_back_button);
+        noRecordTextView=findViewById(R.id.explore_patients_norecordtextview);
         otherPatientsText= explorePatientsTextView.getText().toString();
 
 
@@ -198,6 +200,9 @@ public class ExplorePatientsActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     ArrayList<PatientDataModel> initialModels = response.body();
                     explorePatientsTextView.setText(otherPatientsText+" (" +initialModels.size() + ")");
+                    if(initialModels.size() == 0){
+                        noRecordTextView.setVisibility(View.VISIBLE);
+                    }
                     for(PatientDataModel initialDataModel : initialModels){
 
                         patientDataModels.add(initialDataModel);

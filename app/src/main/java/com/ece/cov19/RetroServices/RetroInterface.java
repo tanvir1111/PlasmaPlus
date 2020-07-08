@@ -84,6 +84,11 @@ public interface RetroInterface {
                                                 @Field("date") String date, @Field("need") String need,
                                                 @Field("phone") String phone);
 
+    @FormUrlEncoded
+    @POST("deleteUserProfile.php")
+    Call<UserDataModel> deleteUserProfile( @Field("phone") String phone);
+
+
 
     @FormUrlEncoded
     @POST("sendRequest.php")

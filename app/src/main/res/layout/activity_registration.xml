@@ -353,7 +353,7 @@
             android:layout_marginEnd="32dp"
 
             android:background="@drawable/edit_text_dark"
-            android:fontFamily="@font/raleway_bold"
+            android:fontFamily="@font/montserrat"
             android:hint="@string/reg_thana_edittext"
             android:minHeight="40dp"
             android:padding="15dp"
@@ -453,7 +453,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_dark"
-            android:fontFamily="@font/raleway_bold"
+            android:fontFamily="@font/montserrat"
             android:hint="@string/reg_age_edittext"
             android:inputType="number"
             android:minHeight="40dp"
@@ -512,7 +512,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/blood_and_plasma_txt" />
+                android:text="@string/update_donor_role_radio_group_blood_and_plasma" />
 
             <RadioButton
                 android:id="@+id/reg_donor_role_radio_group_none"

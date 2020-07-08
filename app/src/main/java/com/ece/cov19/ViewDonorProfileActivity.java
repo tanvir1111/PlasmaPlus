@@ -105,7 +105,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             phoneTextView.setText(donorphone);
 
         } else {
-            phoneTextView.setText("Not Permitted!");
+            phoneTextView.setText(getResources().getString(R.string.donor_profile_activity_Not_Permitted));
         }
         bloodGroupTextView.setText(bloodGroup);
         addressTextView.setText(address);
@@ -137,7 +137,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         askForHelpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(askForHelpBtn.getText().toString().toLowerCase().equals("ask for help")) {
+                if(askForHelpBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Ask_for_Help))) {
                     passWordAlertDialog();
                 }
 
@@ -148,14 +148,14 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(acceptBtn.getText().toString().toLowerCase().equals("accept request")) {
+                if (acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Accepted))) {
                     requestsOperation("accept");
 
                     //Push Notification
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Request Accepted",loggedInUserName +" has accepted your request. Check Patient Responses.");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone, getResources().getString(R.string.donor_profile_activity_notification_accepted_1), loggedInUserName + " " + getResources().getString(R.string.donor_profile_activity_notification_accepted_2));
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -167,20 +167,18 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                         }
                     });
-                }
-                else if(acceptBtn.getText().toString().toLowerCase().equals("call donor")){
+                } else if (acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Call_Donor))) {
                     Intent intent = new Intent(Intent.ACTION_DIAL);
-                    intent.setData(Uri.parse("tel:"+donorphone));
+                    intent.setData(Uri.parse("tel:" + donorphone));
                     startActivity(intent);
                 }
-
             }
-        });
+            });
 
         declineBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(declineBtn.getText().toString().toLowerCase().equals("decline request")) {
+                if(declineBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Decline_Request))) {
                     requestsOperation("decline");
 
 
@@ -189,7 +187,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
 
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Request Declined",loggedInUserName +" has declined your request. Check Patient Responses");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,getResources().getString(R.string.donor_profile_activity_notification_declined_1),loggedInUserName +" "+getResources().getString(R.string.donor_profile_activity_notification_declined_2));
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -202,7 +200,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         }
                     });
                 }
-                else if(declineBtn.getText().toString().toLowerCase().equals("send sms")){
+                else if(acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Send_SMS))){
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_SENDTO);
                     intent.setData(Uri.parse("smsto:"));
@@ -226,7 +224,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
 //                asking password with alertdialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewDonorProfileActivity.this);
-        builder.setMessage("Enter Password");
+        builder.setMessage(getResources().getString(R.string.donor_profile_activity_Enter_Password));
 
 // Set up the input
         final EditText pass = new EditText(getApplicationContext());
@@ -241,7 +239,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         builder.setView(pass);
 
 // Set up the buttons
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.donor_profile_activity_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -249,12 +247,12 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     sendRequest();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Wrong Password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.donor_profile_activity_Wrong_Password), Toast.LENGTH_SHORT).show();
                     ;
                 }
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.donor_profile_activity_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -274,7 +272,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(ViewDonorProfileActivity.this, "Request Sent! Wait For Donor's Response", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewDonorProfileActivity.this, getResources().getString(R.string.donor_profile_activity_Request_Sent), Toast.LENGTH_SHORT).show();
 
 
 
@@ -283,7 +281,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,"Incoming Request from Patient",findPatientName +" has sent you a request. Check Donor Requests.");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,getResources().getString(R.string.donor_profile_activity_notification_incoming_1),findPatientName +" "+getResources().getString(R.string.donor_profile_activity_notification_incoming_2));
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -299,13 +297,13 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
 
                 } else {
-                    Toast.makeText(ViewDonorProfileActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewDonorProfileActivity.this, "Failed to connect! Please try again!", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                Toast.makeText(ViewDonorProfileActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewDonorProfileActivity.this, "Error occured! Please try again!", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -330,7 +328,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                             declineBtn.setVisibility(View.GONE);
                         } else {
                             askForHelpBtn.setVisibility(View.VISIBLE);
-                            askForHelpBtn.setText("Ask for Help");
+                            askForHelpBtn.setText(getResources().getString(R.string.donor_profile_ask_for_help_button));
                             acceptBtn.setVisibility(View.GONE);
                             declineBtn.setVisibility(View.GONE);
                         }
@@ -338,29 +336,29 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     else if (response.body().getServerMsg().equals("Pending")) {
                         if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
-                            askForHelpBtn.setText("Pending");
+                            askForHelpBtn.setText(getResources().getString(R.string.donor_profile_activity_Pending));
                         }
                         else {
                             askForHelpBtn.setVisibility(View.GONE);
                             acceptBtn.setVisibility(View.VISIBLE);
-                            acceptBtn.setText("Accept Request");
+                            acceptBtn.setText(getResources().getString(R.string.donor_profile_accept_button));
                             declineBtn.setVisibility(View.VISIBLE);
-                            declineBtn.setText("Decline Request");
+                            declineBtn.setText(getResources().getString(R.string.donor_profile_decline_button));
                         }
 
                     }
                     else if (response.body().getServerMsg().equals("Accepted")) {
                         askForHelpBtn.setVisibility(View.GONE);
                         acceptBtn.setVisibility(View.VISIBLE);
-                        acceptBtn.setText("Call Donor");
+                        acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
                         declineBtn.setVisibility(View.VISIBLE);
-                        declineBtn.setText("Send SMS");
+                        declineBtn.setText(getResources().getString(R.string.donor_profile_activity_Send_SMS));
                         phoneTextView.setText(donorphone);
 
                     }
                     else if (response.body().getServerMsg().equals("Declined")) {
                             askForHelpBtn.setVisibility(View.VISIBLE);
-                            askForHelpBtn.setText("Declined");
+                            askForHelpBtn.setText(getResources().getString(R.string.donor_profile_activity_Declined));
                             acceptBtn.setVisibility(View.GONE);
                             declineBtn.setVisibility(View.GONE);
                     }
@@ -371,7 +369,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                Toast.makeText(ViewDonorProfileActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewDonorProfileActivity.this, "Error occurred! Please try again", Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -459,7 +457,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     if (loggedInUserGender.toLowerCase().equals("male")) {
                         genderImageView.setImageResource(R.drawable.profile_icon_male);
-                    } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                    } else if (loggedInUserGender.toLowerCase().equals("female")) {
                         genderImageView.setImageResource(R.drawable.profile_icon_female);
                     }
                 }
@@ -468,12 +466,12 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Profile Image retrieve failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),getResources().getString(R.string.donor_profile_activity_image_failed), Toast.LENGTH_SHORT).show();
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_male);
-                } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                } else if (loggedInUserGender.toLowerCase().equals("female")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_female);
                 }
             }

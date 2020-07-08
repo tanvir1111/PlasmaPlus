@@ -12,6 +12,11 @@ public class DashBoardNumberModel {
     @Expose
     private String numberOfPatients;
 
+    @SerializedName("numberOfMyPatients")
+    @Expose
+    private String numberOfMyPatients;
+
+
     @SerializedName("numberOfRequests")
     @Expose
     private String numberOfRequests;
@@ -19,6 +24,10 @@ public class DashBoardNumberModel {
     @SerializedName("numberOfResponses")
     @Expose
     private String numberOfResponses;
+
+    public String getNumberOfMyPatients() {
+        return numberOfMyPatients;
+    }
 
     public String getNumberOfDonors() {
         return numberOfDonors;

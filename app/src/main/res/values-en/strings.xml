@@ -15,7 +15,12 @@
     <string name="language_dialog_english">English</string>
     <string name="language_dialog_bengali">বাংলা</string>
 
+    <string name="splash_welcome">Welcome</string>
+    <string name="splash_error">Connection Failed! Check your connection and try again</string>
+
+
     <string name="dashboard_header">Dashboard</string>
+    <string name="dashboard_welcome_to">Welcome to Medicare!</string>
     <string name="dashboard_text_find_donor">Find A Donor</string>
     <string name="dashboard_text_add_patient">Add Patient</string>
     <string name="dashboard_text_requests">Requests</string>
@@ -31,6 +36,11 @@
     <string name="dashboard_text_no_of_donors">Donors</string>
     <string name="dashboard_text_explore_all_donors">Explore Donors</string>
     <string name="dashboard_error_message">Failed to Update Dashboard</string>
+    <string name="dashboard_text_Press_back_one_more_time_to_exit">Press back one more time to exit</string>
+    <string name="dashboard_activity_are_you_sure">Are you sure?</string>
+    <string name="dashboard_activity_change_language">Change Language</string>
+    <string name="dashboard_activity_cancel">Cancel</string>
+    <string name="dashboard_image_retrieve_failed">Error! Image retrieve failed</string>
 
 
     <string name="bld_req_heading_textview">Add Patient</string>
@@ -48,6 +58,9 @@
     <string name="bld_req_date_textview">Select Date</string>
     <string name="bld_req_plasma_checkbox">Need Plasma (For Plasma Therapy)</string>
     <string name="bld_req_request_btn">Submit</string>
+    <string name="bld_req_activity_patient_added">Patient Profile Added Successfully</string>
+    <string name="bld_req_activity_connection_problem">Connection Problem! Try again</string>
+    <string name="bld_req_activity_error">Error occurred! Try again</string>
 
     <string name="donor_requests_header">Request from Patients</string>
     <string name="donor_requests_type_textView">Pending Requests</string>
@@ -83,6 +96,7 @@
     <string name="login_activity_phone_number_edittext">Phone Number Required</string>
     <string name="login_activity_password_edittext">Password Required</string>
     <string name="login_activity_login_user">Welcome</string>
+    <string name="login_activity_connection_failed">Connection Failed! Check your connection and try again</string>
     <string name="login_activity_error_response">An error occurred! Check your connection and try again</string>
 
     <string name="my_patients_header">My Patients</string>
@@ -147,10 +161,17 @@
     <string name="update_patient_hospital_edittext">Enter Hospital</string>
     <string name="update_patient_label_spinner_division">Division</string>
     <string name="update_patient_label_spinner_district">District</string>
-    <string name="update_patient_label_date">Date (When Needed)</string>
+    <string name="update_patient_label_date">Requirement Date</string>
     <string name="update_patient_date_textview">Select Date</string>
     <string name="update_patient_plasma_checkbox">Need Plasma (For Plasma Therapy)</string>
     <string name="update_patient_request_btn">Update Profile</string>
+    <string name="update_patient_activity_is_required">is required</string>
+    <string name="update_patient_activity_update_failed">Patient Profile Update Failed!</string>
+    <string name="update_patient_activity_update_successful">Patient Profile Update Successful!</string>
+    <string name="update_patient_activity_update_error">Error occurred! Try again</string>
+    <string name="update_patient_activity_confirm_update">Confirm Update?</string>
+    <string name="update_patient_activity_cancel">Cancel</string>
+    <string name="update_patient_activity_confirm">Yes</string>
 
     <string name="update_heading_textview">Update Profile</string>
     <string name="update_label_name">Name</string>
@@ -164,8 +185,16 @@
     <string name="label_donor_role">Role</string>
     <string name="update_donor_role_radio_group_blood">Blood</string>
     <string name="update_donor_role_radio_group_plasma">Plasma</string>
+    <string name="update_donor_role_radio_group_blood_and_plasma">Blood and Plasma</string>
     <string name="update_donor_role_radio_group_none">None</string>
     <string name="update_update_btn">Update Profile</string>
+    <string name="update_activity_is_required">is required</string>
+    <string name="update_activity_update_failed">Failed to update! Check your connection and try again.</string>
+    <string name="update_activity_update_successful">Profile Successfully Updated!</string>
+    <string name="update_activity_update_error">Error occurred! Try again</string>
+    <string name="update_activity_confirm_update">Confirm Update?</string>
+    <string name="update_activity_cancel">Cancel</string>
+    <string name="update_activity_confirm">Yes</string>
 
     <string name="donor_profile_header">Donor Profile</string>
     <string name="donor_profile_name">Name</string>
@@ -179,6 +208,33 @@
     <string name="donor_profile_blood_group">Blood Group</string>
     <string name="donor_profile_label_type">Donor Role :</string>
     <string name="donor_profile_type">Blood/Plasma</string>
+    <string name="donor_profile_accept_button">Accept Request</string>
+    <string name="donor_profile_decline_button">Decline Request</string>
+    <string name="donor_profile_ask_for_help_button">Ask For Help</string>
+    <string name="donor_profile_send_request_suggestion">Select a patient to send Donor Request! If your request is accepted, phone number will be visible.</string>
+    <string name="donor_profile_activity_Enter_Password">Enter Password</string>
+    <string name="donor_profile_activity_Wrong_Password">Wrong Password</string>
+    <string name="donor_profile_activity_ok">OK</string>
+    <string name="donor_profile_activity_cancel">Cancel</string>
+    <string name="donor_profile_activity_Request_Sent">Request Sent! Wait For Donor\'s Response</string>
+    <string name="donor_profile_activity_Accept_Request">Accept Request</string>
+    <string name="donor_profile_activity_Decline_Request">Decline Request</string>
+    <string name="donor_profile_activity_Call_Donor">Call Donor</string>
+    <string name="donor_profile_activity_Send_SMS">Send SMS</string>
+    <string name="donor_profile_activity_Ask_for_Help">Ask for Help</string>
+    <string name="donor_profile_activity_Not_Permitted">Not Permitted!</string>
+    <string name="donor_profile_activity_Accepted">Accepted</string>
+    <string name="donor_profile_activity_Declined">Declined</string>
+    <string name="donor_profile_activity_Pending">Pending</string>
+    <string name="donor_profile_activity_notification_accepted_1">Request accepted!</string>
+    <string name="donor_profile_activity_notification_accepted_2">has accepted your request. Check Patient Responses</string>
+    <string name="donor_profile_activity_notification_declined_1">Request declined!</string>
+    <string name="donor_profile_activity_notification_declined_2">has declined your request. Check Patient Responses</string>
+    <string name="donor_profile_activity_notification_incoming_1">Incoming Request from Patient!</string>
+    <string name="donor_profile_activity_notification_incoming_2">has sent you a request. Check Donor Requests</string>
+    <string name="donor_profile_activity_image_failed">Profile Image retrieve failed!</string>
+
+
 
     <string name="patient_profile_header">Patient Profile</string>
     <string name="patient_profile_name">Name</string>
@@ -194,6 +250,47 @@
     <string name="patient_profile_need">Blood/Plasma</string>
     <string name="patient_profile_label_date">Required Date :</string>
     <string name="patient_profile_date">Date</string>
+    <string name="patient_profile_update_button">Update Profile</string>
+    <string name="patient_profile_delete_button">Delete Profile</string>
+    <string name="patient_profile_donate_button">Donate to Help</string>
+    <string name="patient_profile_activity_Not_Permitted">Not Permitted!</string>
+    <string name="patient_profile_activity_Enter_Password">Enter Password</string>
+    <string name="patient_profile_activity_Wrong_Password">Wrong Password</string>
+    <string name="patient_profile_activity_ok">OK</string>
+    <string name="patient_profile_activity_Are_you_sure">Are you sure?</string>
+    <string name="patient_profile_activity_yes">Yes</string>
+    <string name="patient_profile_activity_cancel">Cancel</string>
+    <string name="patient_profile_activity_Delete_profile_question">Delete Profile?</string>
+    <string name="patient_profile_activity_proceed">Proceed</string>
+    <string name="patient_profile_activity_go_back">Go Back</string>
+    <string name="patient_profile_activity_Confirm_delete">Are you sure? All data and activities associated will be deleted.</string>
+    <string name="patient_profile_activity_Delete">Delete Profile</string>
+    <string name="patient_profile_activity_Patient_Record_Deleted">Patient Record Deleted</string>
+    <string name="patient_profile_activity_Delete_Failed">Delete Failed!</string>
+    <string name="patient_profile_activity_Request_Sent">Request Sent! Wait For Patient\'s Response</string>
+    <string name="patient_profile_activity_Update_Profile">Update Profile</string>
+    <string name="patient_profile_activity_Delete_Profile">Delete Profile</string>
+    <string name="patient_profile_activity_Donate_to_Help">Donate to Help</string>
+    <string name="patient_profile_activity_Accept_Request">Accept Request</string>
+    <string name="patient_profile_activity_Decline_Request">Decline Request</string>
+    <string name="patient_profile_activity_Call_Patient">Call Patient</string>
+    <string name="patient_profile_activity_Send_SMS">Send SMS</string>
+    <string name="patient_profile_activity_Accepted">Accepted</string>
+    <string name="patient_profile_activity_Declined">Declined</string>
+    <string name="patient_profile_activity_Pending">Pending</string>
+    <string name="patient_profile_activity_error">Error occurred! Please try again</string>
+    <string name="patient_profile_activity_connection_failed">Connection failed! Please try again</string>
+    <string name="patient_profile_activity_notification_accepted_1">Request accepted!</string>
+    <string name="patient_profile_activity_notification_accepted_2">has accepted your request. Check Donor Responses</string>
+    <string name="patient_profile_activity_notification_declined_1">Request declined!</string>
+    <string name="patient_profile_activity_notification_declined_2">has declined your request. Check Donor Responses</string>
+    <string name="patient_profile_activity_notification_incoming_1">Incoming Request from Donor!</string>
+    <string name="patient_profile_activity_notification_incoming_2">has sent you a request. Check Patient Requests</string>
+    <string name="patient_profile_activity_image_not_found">Image Not found</string>
+
+
+
+
 
     <string name="profile_header">My Profile</string>
     <string name="profile_logout_btn">Logout</string>
@@ -208,15 +305,60 @@
     <string name="profile_blood_group">Blood Group</string>
     <string name="profile_label_type">User Role :</string>
     <string name="profile_type">Blood/Plasma</string>
+    <string name="profile_blood">Blood Donor</string>
+    <string name="profile_plasma">Plasma Donor</string>
+    <string name="profile_blood_and_plasma">Blood and Plasma Donor</string>
+    <string name="profile_none">Not a Donor</string>
     <string name="profile_id_account_maintenance">Account Maintenance</string>
     <string name="profile_update_button">Update Profile</string>
     <string name="profile_change_password_btn">Change Password</string>
     <string name="profile_delete_button">Delete Profile</string>
-    <string name="blood_and_plasma_txt">Blood and Plasma</string>
+    <string name="profile_activity_Not_a_donor">Not a donor</string>
+    <string name="profile_activity_Are_you_Sure">Are you Sure?</string>
+    <string name="profile_activity_Enter_Password">Enter Password</string>
+    <string name="profile_activity_Wrong_Password">Wrong Password</string>
+    <string name="profile_activity_yes">Yes</string>
+    <string name="profile_activity_no">No</string>
+    <string name="profile_activity_cancel">Cancel</string>
+    <string name="profile_activity_ok">OK</string>
+    <string name="profile_activity_Delete_profile_question">Delete Profile?</string>
+    <string name="profile_activity_proceed">Proceed</string>
+    <string name="profile_activity_go_back">Go Back</string>
+    <string name="profile_activity_Delete">Delete</string>
+    <string name="profile_activity_Confirm_delete">Are you sure? All data and activities associated will be deleted.</string>
+    <string name="profile_activity_Delete_Successful">Profile Successfully Deleted</string>
+    <string name="profile_activity_Delete_Failed">Delete Failed!</string>
+    <string name="profile_activity_error">Error occurred! Please try again</string>
+    <string name="profile_activity_connection_failed">Connection failed! Please try again</string>
+    <string name="profile_activity_image_did_not_upload">Image did not upload</string>
+    <string name="profile_activity_image_upload_failed">Error! Image upload failed</string>
+    <string name="profile_activity_image_retrieve_failed">Error! Image retrieve failed</string>
+    <string name="profile_activity_image_delete_failed">Error! Image delete failed</string>
+    <string name="profile_activity_image_not_found">Image Not found</string>
+
+
+    <string name="adapter_Accepted">Accepted</string>
+    <string name="adapter_Declined">Declined</string>
+    <string name="adapter_Pending">Pending</string>
+    <string name="adapter_Date">Date of requirement</string>
+
     <string name="login_language">Change Language (ভাষা পরিবর্তন)</string>
     <string name="add_image">Add Image</string>
     <string name="edit_image">Edit Image</string>
     <string name="delete_image">Delete Image</string>
+
+
+    <string name="my_patients_nomatchtextview">No Patient Record Found</string>
+    <string name="donor_requests_norecordtextview">No Requests from Patients</string>
+    <string name="donor_response_norecordtextview">No Response from Donors</string>
+    <string name="explore_patients_norecordtextview">No Patient Record Found</string>
+    <string name="patient_requests_norecordtextview">No Requests from Donors</string>
+    <string name="patients_response_norecordtextview">No Response from Patients</string>
+    <string name="search_donor_norecordtextview">No Donor Found</string>
+    <string name="find_donor_add_patient_btn">Add Record to Search</string>
+    <string name="request_patient_date">Date of requirement</string>
+    <string name="seeking_help_date">Date of requirement</string>
+
 
 
     <string-array name="division">

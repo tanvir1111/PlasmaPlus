@@ -44,7 +44,7 @@ public class SearchDonorActivity extends AppCompatActivity {
     private EditText districtEditText;
     private ProgressBar progressBar;
     private ImageView backbtn;
-    private TextView filterResult;
+    private TextView filterResult, noRecordTextView;
     private String filterResultText;
 
 
@@ -59,6 +59,7 @@ public class SearchDonorActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.search_donor_progress_bar);
         backbtn = findViewById(R.id.search_donor_back_button);
         filterResult = findViewById(R.id.search_donor_filter_result);
+        noRecordTextView = findViewById(R.id.search_donor_norecordtextview);
 
         filterResultText = filterResult.getText().toString();
 
@@ -119,6 +120,7 @@ public class SearchDonorActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.search_donor_progress_bar);
         backbtn = findViewById(R.id.search_donor_back_button);
         filterResult = findViewById(R.id.search_donor_filter_result);
+        noRecordTextView = findViewById(R.id.search_donor_norecordtextview);
 
         filterResultText = filterResult.getText().toString();
 
@@ -197,7 +199,8 @@ public class SearchDonorActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     ArrayList<UserDataModel> initialModels = response.body();
                     if (initialModels.size() == 0) {
-                        filterResult.setText("No Donors Found");
+                        filterResult.setText(filterResultText + " (" + initialModels.size() + ")");
+                        noRecordTextView.setVisibility(View.VISIBLE);
                     } else {
                         filterResult.setText(filterResultText + " (" + initialModels.size() + ")");
                     }

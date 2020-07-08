@@ -113,7 +113,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         }
         else {
-            phoneTextView.setText("Not Permitted!");
+            phoneTextView.setText(getResources().getString(R.string.patient_profile_activity_Not_Permitted));
         }
         bloodGroupTextView.setText(bloodGroup);
         hospitalTextView.setText(hospital);
@@ -138,7 +138,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                if(donateToHelpButton.getText().toString().toLowerCase().equals("donate to help")) {
+                if(donateToHelpButton.getText().toString().equals(getResources().getString(R.string.patient_profile_donate_button))) {
                     passWordAlertDialog();
                 }
             }
@@ -148,7 +148,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(updateButton.getText().toString().toLowerCase().equals("update profile")) {
+                if(updateButton.getText().toString().equals(getResources().getString(R.string.patient_profile_update_button))) {
                     Intent intent = new Intent(ViewPatientProfileActivity.this, UpdatePatientProfileActivity.class);
                     intent.putExtra("name", name);
                     intent.putExtra("age", age);
@@ -162,7 +162,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     intent.putExtra("phone", phone);
                     updateAlertDialog(intent);
                 }
-                else if(updateButton.getText().toString().toLowerCase().equals("accept request")){
+                else if(updateButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Accept_Request))){
                     Toast.makeText(ViewPatientProfileActivity.this, "accept ops", Toast.LENGTH_SHORT).show();
                     requestsOperation("accept");
 
@@ -170,7 +170,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,"Request Accepted",loggedInUserName +" has accepted your request. Check Donor Responses.");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,getResources().getString(R.string.patient_profile_activity_notification_accepted_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_accepted_2));
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -185,7 +185,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
 
                 }
-                else if(updateButton.getText().toString().toLowerCase().equals("call patient")){
+                else if(updateButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Call_Patient))){
                     Intent intent = new Intent(Intent.ACTION_DIAL);
                     intent.setData(Uri.parse("tel:"+phone));
                     startActivity(intent);
@@ -196,10 +196,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(deleteButton.getText().toString().toLowerCase().equals("delete profile")) {
+                if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_delete_button))) {
                     deleteAlertDialog();
                 }
-                else if(deleteButton.getText().toString().toLowerCase().equals("decline request")){
+                else if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Decline_Request))){
                     Toast.makeText(ViewPatientProfileActivity.this, "decline ops", Toast.LENGTH_SHORT).show();
                     requestsOperation("decline");
 
@@ -207,7 +207,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,"Request Declined",loggedInUserName +" has declined your request. Check Donor Responses.");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,getResources().getString(R.string.patient_profile_activity_notification_declined_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_declined_2));
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -220,7 +220,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         }
                     });
                 }
-                else if(deleteButton.getText().toString().toLowerCase().equals("send sms")){
+                else if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Send_SMS))){
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_SENDTO);
                     intent.setData(Uri.parse("smsto:"));
@@ -248,38 +248,19 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
     private void updateAlertDialog(final Intent intent) {
 
-//                asking password with alertdialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
-        builder.setMessage("Enter Password");
+        builder.setMessage(getResources().getString(R.string.patient_profile_activity_Are_you_sure));
 
-// Set up the input
-        final EditText pass = new EditText(ViewPatientProfileActivity.this);
-
-        float density = getResources().getDisplayMetrics().density;
-        int paddingDp = (int)(12* density);
-        pass.setPadding(paddingDp,paddingDp,paddingDp,paddingDp);
-        pass.setHint("******");
-        pass.setBackgroundResource(R.drawable.edit_text_dark);
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        pass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        builder.setView(pass);
-
-// Set up the buttons
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if(pass.getText().toString().equals(loggedInUserPass)){
+                startActivity(intent);
+                finish();
 
-                    startActivity(intent);
-                    finish();
-                }
-                else{
-                    Toast.makeText(ViewPatientProfileActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();;
-                }
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.patient_profile_activity_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -293,76 +274,92 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
     private void deleteAlertDialog() {
 
-//                asking password with alertdialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
-        builder.setMessage("Enter Password");
+        builder.setMessage(getResources().getString(R.string.patient_profile_activity_Delete_profile_question));
 
-// Set up the input
-        final EditText pass = new EditText(ViewPatientProfileActivity.this);
-
-        float density = getResources().getDisplayMetrics().density;
-        int paddingDp = (int)(12* density);
-        pass.setPadding(paddingDp,paddingDp,paddingDp,paddingDp);
-        pass.setHint("******");
-        pass.setBackgroundResource(R.drawable.edit_text_dark);
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        pass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        builder.setView(pass);
-
-// Set up the buttons
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_proceed), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if(pass.getText().toString().equals(loggedInUserPass)){
+                final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
+                builder.setMessage(getResources().getString(R.string.patient_profile_activity_Enter_Password));
 
-                    AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
-                    builder.setMessage("Are you sure?");
-                    builder.setPositiveButton("DELETE", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            progressBar.setVisibility(View.VISIBLE);
-                            RetroInterface retroInterface = RetroInstance.getRetro();
-                            Call<PatientDataModel> deletePatientRecord = retroInterface.deletePatientProfile(name, age, gender, bloodGroup, hospital, division, district, date, need, phone);
-                            deletePatientRecord.enqueue(new Callback<PatientDataModel>() {
-                                @Override
-                                public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
-                                    progressBar.setVisibility(View.GONE);
-                                    if(response.body().getServerMsg().equals("Success")){
-                                        Toast.makeText(ViewPatientProfileActivity.this, "Patient Record Deleted", Toast.LENGTH_SHORT).show();
-                                        finish();
-                                    }
-                                    else{
-                                        Toast.makeText(ViewPatientProfileActivity.this, "Delete Failed!", Toast.LENGTH_SHORT).show();
+// Set up the input
+                final EditText pass = new EditText(ViewPatientProfileActivity.this);
 
-                                    }
+                float density = getResources().getDisplayMetrics().density;
+                int paddingDp = (int)(12* density);
+                pass.setPadding(paddingDp,paddingDp,paddingDp,paddingDp);
+                pass.setHint("******");
+                pass.setBackgroundResource(R.drawable.edit_text_dark);
+// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
+                pass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                builder.setView(pass);
+
+// Set up the buttons
+                builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_ok), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        if(pass.getText().toString().equals(loggedInUserPass)){
+
+                            AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
+                            builder.setMessage(getResources().getString(R.string.patient_profile_activity_Confirm_delete));
+                            builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_Delete), new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    progressBar.setVisibility(View.VISIBLE);
+                                    RetroInterface retroInterface = RetroInstance.getRetro();
+                                    Call<PatientDataModel> deletePatientRecord = retroInterface.deletePatientProfile(name, age, gender, bloodGroup, hospital, division, district, date, need, phone);
+                                    deletePatientRecord.enqueue(new Callback<PatientDataModel>() {
+                                        @Override
+                                        public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
+                                            progressBar.setVisibility(View.GONE);
+                                            if(response.body().getServerMsg().equals("Success")){
+                                                Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Patient_Record_Deleted), Toast.LENGTH_SHORT).show();
+                                                finish();
+                                            }
+                                            else{
+                                                Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Delete_Failed), Toast.LENGTH_SHORT).show();
+
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onFailure(Call<PatientDataModel> call, Throwable t) {
+                                            Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+
+
                                 }
+                            })
+                                    .setNegativeButton(getResources().getString(R.string.patient_profile_activity_go_back), new DialogInterface.OnClickListener() {
+                                        public void onClick(DialogInterface dialog, int id) {
+                                            dialog.dismiss();
+                                        }
+                                    });
 
-                                @Override
-                                public void onFailure(Call<PatientDataModel> call, Throwable t) {
-                                    Toast.makeText(ViewPatientProfileActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
+                            AlertDialog alertDialog=builder.create();
+                            alertDialog.show();
 
 
                         }
-                    })
-                            .setNegativeButton("GO BACK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.dismiss();
-                                }
-                            });
+                        else{
+                            Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Wrong_Password), Toast.LENGTH_SHORT).show();;
+                        }
+                    }
+                });
+                builder.setNegativeButton(getResources().getString(R.string.patient_profile_activity_cancel), new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
 
-                    AlertDialog alertDialog=builder.create();
-                    alertDialog.show();
-
-
-                }
-                else{
-                    Toast.makeText(ViewPatientProfileActivity.this, "Wrong Password", Toast.LENGTH_SHORT).show();;
-                }
+                builder.show();
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.patient_profile_activity_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -371,13 +368,18 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         builder.show();
 
+
+
+//                asking password with alertdialog
+
+
     }
 
     private void passWordAlertDialog() {
 
 //                asking password with alertdialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
-        builder.setMessage("Enter Password");
+        builder.setMessage(getResources().getString(R.string.patient_profile_activity_Enter_Password));
 
 // Set up the input
         final EditText pass = new EditText(getApplicationContext());
@@ -392,7 +394,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         builder.setView(pass);
 
 // Set up the buttons
-        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_ok), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -400,12 +402,12 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                     sendRequest();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Wrong Password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_Wrong_Password), Toast.LENGTH_SHORT).show();
 
                 }
             }
         });
-        builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.patient_profile_activity_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -425,13 +427,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(ViewPatientProfileActivity.this, "Request Sent! Wait For Patient's Response", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Request_Sent), Toast.LENGTH_SHORT).show();
 
                     //Push Notification
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,"Incoming Request from Donor",loggedInUserName+" has sent you a request. Check Patient Requests.");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,getResources().getString(R.string.patient_profile_activity_notification_incoming_1),loggedInUserName+" "+getResources().getString(R.string.patient_profile_activity_notification_incoming_2));
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -445,13 +447,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     });
 
                 } else {
-                    Toast.makeText(ViewPatientProfileActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_connection_failed), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                Toast.makeText(ViewPatientProfileActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -473,12 +475,12 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         if(phone.equals(loggedInUserPhone)){
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText("Update Profile");
+                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Update_Profile));
                             deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText("Delete Profile");
+                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Delete_Profile));
                         } else if(bloodGroup.equals(loggedInUserBloodGroup)) {
                             donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText("Donate to Help");
+                            donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                         }
@@ -492,15 +494,15 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         if(getIntent().getStringExtra("activity").equals("PatientResponseActivity")){
 
                             donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText("Pending");
+                            donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Pending));
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                         } else {
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText("Accept Request");
+                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Accept_Request));
                             deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText("Decline Request");
+                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Decline_Request));
                         }
 
 
@@ -508,15 +510,15 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     else if(response.body().getServerMsg().equals("Accepted")){
                         donateToHelpButton.setVisibility(View.GONE);
                         updateButton.setVisibility(View.VISIBLE);
-                        updateButton.setText("Call Patient");
+                        updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                         deleteButton.setVisibility(View.VISIBLE);
-                        deleteButton.setText("Send SMS");
+                        deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Send_SMS));
                         phoneTextView.setText(phone);
 
                     }
                     else if(response.body().getServerMsg().equals("Declined")){
                         donateToHelpButton.setVisibility(View.VISIBLE);
-                        donateToHelpButton.setText("Declined");
+                        donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Declined));
                         updateButton.setVisibility(View.GONE);
                         deleteButton.setVisibility(View.GONE);
 
@@ -529,7 +531,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                Toast.makeText(ViewPatientProfileActivity.this, t.toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -671,14 +673,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     downloadImage(findPatientPhone);
                 }
                 else if(response.body().getServerMsg().equals("false")){
-                    Toast.makeText(getApplicationContext(), "Image did not upload.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_connection_failed), Toast.LENGTH_SHORT).show();
 
                 }
             }
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Image upload failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
 
             }
         });
@@ -701,9 +703,9 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                 else if(response.body().getServerMsg().equals("false")) {
 
-                    if (FindPatientData.findPatientGender.toLowerCase().equals("male")) {
+                    if (gender.toLowerCase().equals("male")) {
                         genderImageView.setImageResource(R.drawable.profile_icon_male);
-                    } else if (FindPatientData.findPatientGender.toLowerCase().equals("male")) {
+                    } else if (gender.toLowerCase().equals("female")) {
                         genderImageView.setImageResource(R.drawable.profile_icon_female);
                     }
                 }
@@ -712,12 +714,12 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Profile Image retrieve failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
 
 
-                if (FindPatientData.findPatientGender.toLowerCase().equals("male")) {
+                if (gender.toLowerCase().equals("male")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_male);
-                } else if (FindPatientData.findPatientGender.toLowerCase().equals("male")) {
+                } else if (gender.toLowerCase().equals("female")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_female);
                 }
             }
@@ -748,14 +750,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                 }
                 else if(response.body().getServerMsg().equals("false")){
-                    Toast.makeText(getApplicationContext(), "No Image Found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_image_not_found), Toast.LENGTH_SHORT).show();
 
                 }
             }
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Image Delete failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
 
             }
         });

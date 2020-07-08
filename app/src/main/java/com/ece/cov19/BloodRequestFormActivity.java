@@ -156,7 +156,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                                           final int dayOfMonth) {
 
                         @SuppressLint("SimpleDateFormat")
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
                         calendar.set(year, month, dayOfMonth);
                         date = sdf.format(calendar.getTime());
 
@@ -256,17 +256,18 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(BloodRequestFormActivity.this, "Patient Added", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BloodRequestFormActivity.this, R.string.bld_req_activity_patient_added, Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(BloodRequestFormActivity.this, DashboardActivity.class);
+                    startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(BloodRequestFormActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(BloodRequestFormActivity.this, R.string.bld_req_activity_connection_problem, Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<PatientDataModel> call, Throwable t) {
-                Toast.makeText(BloodRequestFormActivity.this, "Error occurred ! Try again", Toast.LENGTH_SHORT).show();
+                Toast.makeText(BloodRequestFormActivity.this, R.string.bld_req_activity_error, Toast.LENGTH_SHORT).show();
 
             }
         });

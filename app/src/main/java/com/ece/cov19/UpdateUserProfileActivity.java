@@ -3,6 +3,7 @@ package com.ece.cov19;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -246,13 +247,13 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         divisionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                ArrayAdapter<String> adpter = new ArrayAdapter<String>(
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(
                         UpdateUserProfileActivity.this,
                         android.R.layout.simple_spinner_dropdown_item,
                         getResources().getStringArray(divisionResourceIds[position]));
-                districtSpinner.setAdapter(adpter);
+                districtSpinner.setAdapter(adapter);
 
-                    districtSpinner.setSelection(adpter.getPosition(loggedInUserDistrict));
+                    districtSpinner.setSelection(adapter.getPosition(loggedInUserDistrict));
             }
 
             @Override
@@ -265,7 +266,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                verifyData();
+                updateAlertDialog();
             }
         });
 
@@ -274,7 +275,8 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
     }
 
     private void verifyData() {
-        String name,  division, district, thana, age,  emptyfield = "all ok";
+        String name,  division, district, thana, age, emptyfield="";
+        Boolean emptyfieldChecker=true;
         name = nameEditText.getText().toString();
         thana = thanaEditText.getText().toString();
         age = ageEditText.getText().toString();
@@ -282,35 +284,60 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         division = divisionSpinner.getSelectedItem().toString();
         district = districtSpinner.getSelectedItem().toString();
         RadioButton selectedRadiobtn= findViewById(bloodRadioGroup.getCheckedRadioButtonId());
-        donorInfo=selectedRadiobtn.getText().toString();
-        emptyfield="all ok";
-
-        if(donorInfo.equals("None")){
-            donorInfo="na";
+        switch (selectedRadiobtn.getText().toString()){
+            case "ব্লাড":
+                donorInfo = "Blood";
+                break;
+            case "প্লাজমা":
+                donorInfo = "Plasma";
+                break;
+            case "ব্লাড এবং প্লাজমা":
+                donorInfo = "Blood and Plasma";
+                break;
+            case "কোনোটিই নয়":
+                donorInfo = "None";
+                break;
+            default:
+                donorInfo = selectedRadiobtn.getText().toString();
+                break;
         }
+
 
 
 //        checking empty Fields
 
         if (name.isEmpty()) {
-            emptyfield = "name";
-        } else if (thana.isEmpty()) {
-            emptyfield = "thana";
-        } else if (age.isEmpty()) {
-            emptyfield = "age";
-        } else if (division.isEmpty()) {
-            emptyfield = "division";
-        } else if (district.isEmpty()) {
-            emptyfield = "district";
+            emptyfieldChecker = false;
+            emptyfield += getResources().getString(R.string.update_label_name) + " ";
+            nameEditText.setError(getResources().getString(R.string.update_label_name)+" "+getResources().getString(R.string.update_activity_is_required));
+        }
+        if (thana.isEmpty()) {
+            emptyfieldChecker = false;
+            emptyfield += getResources().getString(R.string.update_label_thana) + " ";
+            thanaEditText.setError(getResources().getString(R.string.update_label_thana)+" "+getResources().getString(R.string.update_activity_is_required));
+        }
+        if (age.isEmpty()) {
+            emptyfieldChecker = false;
+            emptyfield += getResources().getString(R.string.update_label_age) + " ";
+            ageEditText.setError(getResources().getString(R.string.update_label_age)+" "+getResources().getString(R.string.update_activity_is_required));
+        }
+        if (division.isEmpty()) {
+            emptyfieldChecker = false;
+            emptyfield += getResources().getString(R.string.update_label_spinner_division) + " ";
+        }
+        if (district.isEmpty()) {
+            emptyfieldChecker = false;
+            emptyfield += getResources().getString(R.string.update_label_spinner_district) + " ";
         }
 
 
-        if (emptyfield.equals("all ok")) {
+        if (emptyfieldChecker == true) {
 
 //            retro operations
              updateUserInfo(name, division, district, thana, age,donorInfo);
         } else {
-            Toast.makeText(this, "Enter " + emptyfield, Toast.LENGTH_SHORT).show();
+            emptyfield += getResources().getString(R.string.update_activity_is_required);
+            Toast.makeText(this,emptyfield, Toast.LENGTH_SHORT).show();
         }
 
 
@@ -323,7 +350,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(UpdateUserProfileActivity.this, "Successfully Updated", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateUserProfileActivity.this, R.string.update_activity_update_successful, Toast.LENGTH_SHORT).show();
 //                    update logged in Data
                     loggedInUserName=name;
                     loggedInUserDivision=division;
@@ -340,18 +367,41 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
-                    Toast.makeText(UpdateUserProfileActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateUserProfileActivity.this, R.string.update_activity_update_failed, Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                Toast.makeText(UpdateUserProfileActivity.this, "failed to update! Check your connection and try again.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(UpdateUserProfileActivity.this, R.string.update_activity_update_error, Toast.LENGTH_SHORT).show();
             }
         });
 
 
+
+    }
+
+    private void updateAlertDialog() {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(UpdateUserProfileActivity.this);
+        builder.setMessage(getResources().getString(R.string.update_activity_confirm_update));
+
+        builder.setPositiveButton(getResources().getString(R.string.update_activity_confirm), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
+               verifyData();
+            }
+        });
+        builder.setNegativeButton(getResources().getString(R.string.update_activity_cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
 
     }
 }

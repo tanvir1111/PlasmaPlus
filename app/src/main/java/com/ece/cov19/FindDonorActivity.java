@@ -1,6 +1,7 @@
 package com.ece.cov19;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -9,12 +10,14 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ece.cov19.DataModels.DashBoardNumberModel;
 import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
@@ -42,17 +45,23 @@ public class FindDonorActivity extends AppCompatActivity {
     private RecyclerView patientRecyclerView, donorRecyclerView;
     private EditText districtEditText;
     private ProgressBar patientProgressBar, donorProgressBar;
-    private TextView patientTextView, donorTextView, filterTextView, noMatchTextView;
+    private TextView patientTextView, donorTextView, filterTextView, noMatchTextView, numberOfPatients, numberOfPatientsTextView;
     private ImageView backbtn;
     private String myPatients,availableDonors;
+    private Button addPatientBtn;
+    private CardView addPatientCardView;
 
-
-    String bloodGroup;
+    String bloodGroup, noOfMyPatients;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_donor);
+
+        addPatientCardView = findViewById(R.id.add_patient_cardView);
+        numberOfPatients = findViewById(R.id.find_donor_number_of_patients);
+        numberOfPatientsTextView = findViewById(R.id.find_donor_number_of_patients_textview);
+        addPatientBtn = findViewById(R.id.find_donor_add_patient_btn);
 
         patientRecyclerView = findViewById(R.id.find_donor_forpatients_recyclerview);
         patientProgressBar = findViewById(R.id.find_donor_forpatients_progress_bar);
@@ -77,7 +86,8 @@ public class FindDonorActivity extends AppCompatActivity {
         donorTextView.setVisibility(View.GONE);
         filterTextView.setVisibility(View.GONE);
         districtEditText.setVisibility(View.GONE);
-        noMatchTextView.setVisibility(View.GONE);
+
+
 
         FindPatientData.findPatientBloodGroup = "any";
         findPatient();
@@ -115,6 +125,12 @@ public class FindDonorActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_find_donor);
 
+        addPatientCardView = findViewById(R.id.add_patient_cardView);
+        numberOfPatients = findViewById(R.id.find_donor_number_of_patients);
+        numberOfPatientsTextView = findViewById(R.id.find_donor_number_of_patients_textview);
+        addPatientBtn = findViewById(R.id.find_donor_add_patient_btn);
+
+
         patientRecyclerView = findViewById(R.id.find_donor_forpatients_recyclerview);
         patientProgressBar = findViewById(R.id.find_donor_forpatients_progress_bar);
         patientTextView = findViewById(R.id.find_donor_forpatients_textview);
@@ -138,7 +154,7 @@ public class FindDonorActivity extends AppCompatActivity {
         donorTextView.setVisibility(View.GONE);
         filterTextView.setVisibility(View.GONE);
         districtEditText.setVisibility(View.GONE);
-        noMatchTextView.setVisibility(View.GONE);
+
 
         FindPatientData.findPatientBloodGroup = "any";
         findPatient();
@@ -150,6 +166,16 @@ public class FindDonorActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+        addPatientBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),BloodRequestFormActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         districtEditText.addTextChangedListener(new TextWatcher() {
             @Override
@@ -206,6 +232,10 @@ public class FindDonorActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     ArrayList<PatientDataModel> initialModels = response.body();
                     patientTextView.setText(myPatients+" (" + initialModels.size() + ")");
+
+                    if(initialModels.size() == 0){
+                        addPatientCardView.setVisibility(View.VISIBLE);
+                    }
                     for(PatientDataModel initialDataModel : initialModels){
 
                         patientDataModels.add(initialDataModel);
@@ -274,6 +304,10 @@ public class FindDonorActivity extends AppCompatActivity {
                 if(response.isSuccessful()){
                     ArrayList<UserDataModel> initialModels = response.body();
                     donorTextView.setText(availableDonors+ " (" +initialModels.size()+ ")");
+
+                    if(initialModels.size() == 0){
+                        noMatchTextView.setVisibility(View.VISIBLE);
+                    }
                     for(UserDataModel initialDataModel : initialModels){
                         if(findPatientNeed.equals("Plasma")){
                             if(initialDataModel.getDonor().equals("Plasma")){
