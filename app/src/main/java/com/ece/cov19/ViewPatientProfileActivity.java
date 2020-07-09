@@ -140,7 +140,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 if(donateToHelpButton.getText().toString().equals(getResources().getString(R.string.patient_profile_donate_button))) {
-                    passWordAlertDialog();
+                    donateToHelpAlertDialog();
                 }
             }
         });
@@ -165,7 +165,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 }
                 else if(updateButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Accept_Request))){
                     Toast.makeText(ViewPatientProfileActivity.this, "accept ops", Toast.LENGTH_SHORT).show();
-                    requestsOperation("accept");
+                    requestOperationAlertDialog("accept");
 
                     //Push Notification
 
@@ -202,7 +202,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 }
                 else if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Decline_Request))){
                     Toast.makeText(ViewPatientProfileActivity.this, "decline ops", Toast.LENGTH_SHORT).show();
-                    requestsOperation("decline");
+                    requestOperationAlertDialog("decline");
 
                     //Push Notification
 
@@ -376,36 +376,42 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
     }
 
-    private void passWordAlertDialog() {
 
-//                asking password with alertdialog
+    private void donateToHelpAlertDialog() {
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.patient_profile_activity_Enter_Password));
+        builder.setMessage(getResources().getString(R.string.donor_profile_activity_send_request));
 
-// Set up the input
-        final EditText pass = new EditText(getApplicationContext());
 
-        float density = getResources().getDisplayMetrics().density;
-        int paddingDp = (int) (12 * density);
-        pass.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
-        pass.setHint("******");
-        pass.setBackgroundResource(R.drawable.edit_text_dark);
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        pass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        builder.setView(pass);
-
-// Set up the buttons
-        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_ok), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                sendRequest();
 
-                if (pass.getText().toString().equals(loggedInUserPass)) {
+            }
+        });
+        builder.setNegativeButton(getResources().getString(R.string.patient_profile_activity_cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
 
-                    sendRequest();
-                } else {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_Wrong_Password), Toast.LENGTH_SHORT).show();
+        builder.show();
 
-                }
+    }
+
+    private void requestOperationAlertDialog(String getstatus) {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
+        builder.setMessage(getResources().getString(R.string.patient_profile_activity_Are_you_sure));
+
+
+        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                requestsOperation(getstatus);
+
             }
         });
         builder.setNegativeButton(getResources().getString(R.string.patient_profile_activity_cancel), new DialogInterface.OnClickListener() {

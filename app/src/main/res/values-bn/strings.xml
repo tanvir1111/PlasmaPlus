@@ -217,7 +217,8 @@
     <string name="donor_profile_send_request_suggestion">দাতাকে অনুরোধ পাঠাতে গ্রহীতা নির্বাচন করুন</string>
     <string name="donor_profile_activity_Enter_Password">পাসওয়ার্ড দিন</string>
     <string name="donor_profile_activity_Wrong_Password">ভুল পাসওয়ার্ড</string>
-    <string name="donor_profile_activity_ok">ঠিক আছে</string>
+    <string name="donor_profile_activity_send_request">অনুরোধ পাঠাবেন?</string>
+    <string name="donor_profile_activity_yes">হ্যাঁ</string>
     <string name="donor_profile_activity_cancel">বাতিল করুন</string>
     <string name="donor_profile_activity_Request_Sent">আবেদন প্রেরিত হয়েছে!দাতার প্রতিক্রিয়ার জন্য অপেক্ষা করুন</string>
     <string name="donor_profile_activity_Accept_Request">আবেদন গ্রহন করুন</string>
@@ -229,6 +230,7 @@
     <string name="donor_profile_activity_Accepted">সম্মত হয়েছে</string>
     <string name="donor_profile_activity_Declined">প্রত্যাখ্যান করা হয়েছে</string>
     <string name="donor_profile_activity_Pending">অমীমাংসিত</string>
+    <string name="donor_profile_activity_confirm">নিশ্চিত?</string>
     <string name="donor_profile_activity_notification_accepted_1">অনুরোধ গ্রহন করেছে!</string>
     <string name="donor_profile_activity_notification_accepted_2">আপনার অনুরোধে সম্মতি দিয়েছে। গ্রহীতার প্রতিক্রিয়া দেখুন।</string>
     <string name="donor_profile_activity_notification_declined_1">অনুরোধ প্রত্যাখ্যান করেছে!</string>

@@ -217,7 +217,8 @@
     <string name="donor_profile_send_request_suggestion">Select a patient to send Donor Request! If your request is accepted, phone number will be visible.</string>
     <string name="donor_profile_activity_Enter_Password">Enter Password</string>
     <string name="donor_profile_activity_Wrong_Password">Wrong Password</string>
-    <string name="donor_profile_activity_ok">OK</string>
+    <string name="donor_profile_activity_send_request">Send Request?</string>
+    <string name="donor_profile_activity_yes">Yes</string>
     <string name="donor_profile_activity_cancel">Cancel</string>
     <string name="donor_profile_activity_Request_Sent">Request Sent! Wait For Donor\'s Response</string>
     <string name="donor_profile_activity_Accept_Request">Accept Request</string>
@@ -229,6 +230,7 @@
     <string name="donor_profile_activity_Accepted">Accepted</string>
     <string name="donor_profile_activity_Declined">Declined</string>
     <string name="donor_profile_activity_Pending">Pending</string>
+    <string name="donor_profile_activity_confirm">Are you sure?</string>
     <string name="donor_profile_activity_notification_accepted_1">Request accepted!</string>
     <string name="donor_profile_activity_notification_accepted_2">has accepted your request. Check Patient Responses</string>
     <string name="donor_profile_activity_notification_declined_1">Request declined!</string>
