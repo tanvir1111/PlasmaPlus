@@ -45,6 +45,7 @@ import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientDate;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;

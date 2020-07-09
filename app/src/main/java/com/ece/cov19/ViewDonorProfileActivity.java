@@ -43,6 +43,7 @@ import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientDate;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
@@ -148,7 +149,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Accepted))) {
+                if (acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Accept_Request))) {
                     requestsOperation("accept");
 
                     //Push Notification

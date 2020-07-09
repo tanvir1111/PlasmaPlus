@@ -63,6 +63,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import static android.content.ContentValues.TAG;
 
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserEligibility;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
@@ -204,6 +205,33 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             }
         });
 
+        retroInterface = RetroInstance.getRetro();
+        Call<DashBoardNumberModel> donorEligibility = retroInterface.eligibilityCheck(loggedInUserPhone);
+        donorEligibility.enqueue(new Callback<DashBoardNumberModel>() {
+            @Override
+            public void onResponse(Call<DashBoardNumberModel> call, Response<DashBoardNumberModel> response) {
+
+                if(response.body().getServerMsg().equals("true")) {
+                    if (response.body().getEligibility().equals("eligible")) {
+                        loggedInUserEligibility = "eligible";
+                    } else if (response.body().getEligibility().equals("not_eligible")) {
+                        loggedInUserEligibility = "not_eligible";
+                    }
+                    Toast.makeText(getApplicationContext(),loggedInUserEligibility,Toast.LENGTH_SHORT).show();
+
+
+                }
+                else if(response.body().getServerMsg().equals("false")){
+                    Toast.makeText(getApplicationContext(),"Connection failed! Please try again",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"Error occurred! Please try again",Toast.LENGTH_SHORT).show();
+            }
+        });
+
         navigationView.setNavigationItemSelectedListener(this);
         dashboardGenderIcon.setOnClickListener(this);
         dashboard.setOnClickListener(this);
@@ -301,6 +329,32 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
                 Toast.makeText(DashboardActivity.this, getResources().getString(R.string.dashboard_error_message), Toast.LENGTH_SHORT).show();
 
+            }
+        });
+
+        retroInterface = RetroInstance.getRetro();
+        Call<DashBoardNumberModel> donorEligibility = retroInterface.eligibilityCheck(loggedInUserPhone);
+        donorEligibility.enqueue(new Callback<DashBoardNumberModel>() {
+            @Override
+            public void onResponse(Call<DashBoardNumberModel> call, Response<DashBoardNumberModel> response) {
+
+                if(response.body().getServerMsg().equals("true")) {
+                    if (response.body().getEligibility().equals("eligible")) {
+                        loggedInUserEligibility = "eligible";
+                    } else if (response.body().getEligibility().equals("not_eligible")) {
+                        loggedInUserEligibility = "not_eligible";
+                    }
+
+
+                }
+                else if(response.body().getServerMsg().equals("false")){
+                    Toast.makeText(getApplicationContext(),"Connection failed! Please try again",Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"Error occurred! Please try again",Toast.LENGTH_SHORT).show();
             }
         });
 
