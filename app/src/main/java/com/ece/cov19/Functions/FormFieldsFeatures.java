@@ -27,7 +27,7 @@ public class FormFieldsFeatures {
 
             label.setFocusable(true);
             label.setError("This field can't be empty");
-            Toast.makeText(ctx, "Select " +label.getText().toString(),Toast.LENGTH_SHORT).show();
+            ToastCreator.toastCreatorRed(ctx, "Select " +label.getText().toString());
             return true;
         }
 

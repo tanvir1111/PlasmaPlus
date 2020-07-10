@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.Functions.FormFieldsFeatures;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -256,18 +257,20 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(BloodRequestFormActivity.this, R.string.bld_req_activity_patient_added, Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorGreen(BloodRequestFormActivity.this,getResources().getString(R.string.bld_req_activity_patient_added)+ response.body().getServerMsg());
                     Intent intent = new Intent(BloodRequestFormActivity.this, DashboardActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(BloodRequestFormActivity.this, R.string.bld_req_activity_connection_problem, Toast.LENGTH_SHORT).show();
+
+                    ToastCreator.toastCreatorRed(BloodRequestFormActivity.this,getResources().getString(R.string.bld_req_activity_connection_problem));
                 }
             }
 
             @Override
             public void onFailure(Call<PatientDataModel> call, Throwable t) {
-                Toast.makeText(BloodRequestFormActivity.this, R.string.bld_req_activity_error, Toast.LENGTH_SHORT).show();
+
+                ToastCreator.toastCreatorRed(BloodRequestFormActivity.this,getResources().getString(R.string.bld_req_activity_error));
 
             }
         });

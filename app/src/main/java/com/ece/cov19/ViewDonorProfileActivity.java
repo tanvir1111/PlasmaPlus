@@ -8,13 +8,10 @@ import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.ParcelFileDescriptor;
-import android.text.InputType;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -25,17 +22,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.ece.cov19.DataModels.ImageDataModel;
-import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.RequestDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
-import com.theartofdev.edmodo.cropper.CropImage;
-import com.theartofdev.edmodo.cropper.CropImageView;
-
-import java.io.ByteArrayOutputStream;
-import java.io.FileDescriptor;
-import java.io.IOException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -47,7 +38,6 @@ import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class ViewDonorProfileActivity extends AppCompatActivity {
@@ -138,7 +128,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(askForHelpBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Ask_for_Help))) {
-                    passWordAlertDialog();
+                    askForHelpAlertDialog();
                 }
 
 
@@ -220,36 +210,18 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         finish();
     }
 
-    private void passWordAlertDialog() {
+    private void askForHelpAlertDialog() {
 
 //                asking password with alertdialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewDonorProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.donor_profile_activity_Enter_Password));
+        builder.setMessage(getResources().getString(R.string.donor_profile_activity_send_request));
 
-// Set up the input
-        final EditText pass = new EditText(getApplicationContext());
-
-        float density = getResources().getDisplayMetrics().density;
-        int paddingDp = (int) (12 * density);
-        pass.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
-        pass.setHint("******");
-        pass.setBackgroundResource(R.drawable.edit_text_dark);
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        pass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        builder.setView(pass);
 
 // Set up the buttons
-        builder.setPositiveButton(getResources().getString(R.string.donor_profile_activity_ok), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.donor_profile_activity_yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-
-                if (pass.getText().toString().equals(loggedInUserPass)) {
-
                     sendRequest();
-                } else {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.donor_profile_activity_Wrong_Password), Toast.LENGTH_SHORT).show();
-                    ;
-                }
             }
         });
         builder.setNegativeButton(getResources().getString(R.string.donor_profile_activity_cancel), new DialogInterface.OnClickListener() {
@@ -272,7 +244,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(ViewDonorProfileActivity.this, getResources().getString(R.string.donor_profile_activity_Request_Sent), Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorGreen(ViewDonorProfileActivity.this, getResources().getString(R.string.donor_profile_activity_Request_Sent));
 
 
 
@@ -297,13 +269,13 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
 
                 } else {
-                    Toast.makeText(ViewDonorProfileActivity.this, "Failed to connect! Please try again!", Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(ViewDonorProfileActivity.this, "Failed to connect! Please try again!");
                 }
             }
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                Toast.makeText(ViewDonorProfileActivity.this, "Error occured! Please try again!", Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(ViewDonorProfileActivity.this, "Error occured! Please try again!");
 
             }
         });
@@ -314,7 +286,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     private void requestsOperation(String operation) {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
-        //Toast.makeText(this, donorphone + findPatientName + findPatientAge + findPatientBloodGroup + findPatientPhone, Toast.LENGTH_SHORT).show();
+        //ToastCreator.toastCreator(this, donorphone + findPatientName + findPatientAge + findPatientBloodGroup + findPatientPhone, Toast.LENGTH_SHORT).show();
         Call<RequestDataModel> lookforRequestFromPatient = retroInterface.requestsOperation(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientPhone, requestedBy,operation);
         lookforRequestFromPatient.enqueue(new Callback<RequestDataModel>() {
             @Override
@@ -369,7 +341,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                Toast.makeText(ViewDonorProfileActivity.this, "Error occurred! Please try again", Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(ViewDonorProfileActivity.this, "Error occurred! Please try again");
 
             }
         });
@@ -466,7 +438,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),getResources().getString(R.string.donor_profile_activity_image_failed), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.donor_profile_activity_image_failed));
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {

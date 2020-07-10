@@ -28,6 +28,7 @@ import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.FindDonorActivity;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.LoginActivity;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
@@ -224,7 +225,7 @@ public class FindDonorAlphaAdapter extends RecyclerView.Adapter<FindDonorAlphaVi
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(context, "Profile Image retrieve failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(context, "Profile Image retrieve failed. " + t.getMessage());
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {

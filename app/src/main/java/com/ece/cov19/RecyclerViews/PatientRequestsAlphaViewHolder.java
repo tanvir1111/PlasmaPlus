@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -58,7 +59,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
     public void onClick(View view) {
 
         if(visibility == true){
-           // Toast.makeText(view.getContext(),"Pressed",Toast.LENGTH_SHORT).show();
+           // ToastCreator.toastCreator(view.getContext(),"Pressed",Toast.LENGTH_SHORT).show();
             visibility = false;
             pos = getAdapterPosition();
 
@@ -77,7 +78,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
             progressBar.setVisibility(View.VISIBLE);
             RetroInterface retroInterface = RetroInstance.getRetro();
             Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.checkPatientRequest(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone());
-            //Toast.makeText(view.getContext(), patientDataModel.getName()+patientDataModel.getAge()+patientDataModel.getBloodGroup()+patientDataModel.getPhone(), Toast.LENGTH_SHORT).show();
+            //ToastCreator.toastCreator(view.getContext(), patientDataModel.getName()+patientDataModel.getAge()+patientDataModel.getBloodGroup()+patientDataModel.getPhone(), Toast.LENGTH_SHORT).show();
             incomingResponse.enqueue(new Callback<ArrayList<UserDataModel>>() {
                 @Override
                 public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {
@@ -104,7 +105,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
 
 
                         donateTextView.setText("No Requests Found");
-                        Toast.makeText(view.getContext(),"No data",Toast.LENGTH_LONG).show();
+                        ToastCreator.toastCreatorRed(view.getContext(),"No data");
                     }
 
 
@@ -114,13 +115,13 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
                 public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
                     progressBar.setVisibility(View.GONE);
                     donateTextView.setText("No Request Found");
-                    //Toast.makeText(view.getContext(),"Error: "+t.getMessage(),Toast.LENGTH_LONG).show();
+                    //ToastCreator.toastCreator(view.getContext(),"Error: "+t.getMessage(),Toast.LENGTH_LONG).show();
                 }
             });
 
         }
         else{
-            //Toast.makeText(view.getContext(),"Pressed again",Toast.LENGTH_SHORT).show();
+            //ToastCreator.toastCreator(view.getContext(),"Pressed again",Toast.LENGTH_SHORT).show();
             visibility = true;
             donateTextView.setText("View Requests");
             //donateTextView.setBackgroundColor(R.drawable.button_style_green);

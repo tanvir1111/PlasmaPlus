@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -200,7 +201,8 @@ public class PatientRequestsBetaAdapter extends RecyclerView.Adapter<PatientRequ
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(context, "Profile Image retrieve failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+
+                ToastCreator.toastCreatorRed(context, "Profile Image retrieve failed. " + t.getMessage());
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {

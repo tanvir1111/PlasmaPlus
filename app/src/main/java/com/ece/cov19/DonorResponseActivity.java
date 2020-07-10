@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RecyclerViews.DonorResponseAlphaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -133,14 +134,15 @@ public class DonorResponseActivity extends AppCompatActivity {
                 }
 
                 else{
-                    Toast.makeText(DonorResponseActivity.this, "No Response", Toast.LENGTH_SHORT).show();
+
+                    ToastCreator.toastCreatorRed(DonorResponseActivity.this,"No Response");
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(DonorResponseActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(DonorResponseActivity.this,"Error : " +t.getMessage());
             }
         });
     }

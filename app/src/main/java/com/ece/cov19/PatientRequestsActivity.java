@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RecyclerViews.PatientRequestsAlphaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -125,14 +126,16 @@ public class PatientRequestsActivity extends AppCompatActivity {
                 }
 
                 else{
+
                     Toast.makeText(PatientRequestsActivity.this, "No Response", Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(PatientRequestsActivity.this,"No Response");
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(PatientRequestsActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(PatientRequestsActivity.this,"Error : " +t.getMessage());
             }
         });
 

@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -112,13 +113,13 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
                             Intent intent = new Intent(PhoneVerificationActivity2.this, RegistrationActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                             intent.putExtra("phone", phonenumber);
-                            Toast.makeText(PhoneVerificationActivity2.this, "Verification Successful!", Toast.LENGTH_LONG).show();
+                            ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, "Verification Successful!");
                             startActivity(intent);
                             finish();
 
 
                         } else {
-                            Toast.makeText(PhoneVerificationActivity2.this, "Verification Failed! Error: "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                            ToastCreator.toastCreatorRed(PhoneVerificationActivity2.this, "Verification Failed! Error: "+task.getException().getMessage());
                         }
                     }
                 });
@@ -153,13 +154,13 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
             if (code != null) {
                 editText.setText(code);
                 verifyCode(code);
-                Toast.makeText(PhoneVerificationActivity2.this, "Automatic Verification", Toast.LENGTH_LONG).show();
+                ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, "Verification successful");
             }
         }
 
         @Override
         public void onVerificationFailed(FirebaseException e) {
-            Toast.makeText(PhoneVerificationActivity2.this, "Automatic Verification Failed! Error: "+e.getMessage(), Toast.LENGTH_LONG).show();
+            ToastCreator.toastCreatorRed(PhoneVerificationActivity2.this, "Automatic Verification Failed! Error: "+e.getMessage());
         }
     };
 

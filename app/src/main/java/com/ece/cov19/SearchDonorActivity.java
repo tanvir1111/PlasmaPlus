@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RecyclerViews.SearchDonorAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -218,13 +219,14 @@ public class SearchDonorActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(linearLayoutManager);
                 } else {
                     Toast.makeText(SearchDonorActivity.this, "No Response", Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(SearchDonorActivity.this,"No Response");
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
-                Toast.makeText(SearchDonorActivity.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(SearchDonorActivity.this,"Error: " + t.getMessage());
             }
         });
     }

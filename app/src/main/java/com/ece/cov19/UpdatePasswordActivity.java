@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -53,7 +54,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
 
                 if (password.length() < 6) {
 
-                    Toast.makeText(UpdatePasswordActivity.this, "password must be of at least 6 characters", Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(UpdatePasswordActivity.this,"password must be of at least 6 characters");
                 }
                 else {
                     if(password.equals(confPasswordEditText.getText().toString())){
@@ -61,7 +62,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
                     }
                     else {
 
-                        Toast.makeText(UpdatePasswordActivity.this, "Passwords don't match", Toast.LENGTH_SHORT).show();
+                        ToastCreator.toastCreatorRed(UpdatePasswordActivity.this,"Passwords don't match");
                     }
                 }
             }
@@ -78,7 +79,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 String serverMsg = response.body().getServerMsg();
                 if(serverMsg.equals("Success")){
-                    Toast.makeText(UpdatePasswordActivity.this, "Password Updated", Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorGreen(UpdatePasswordActivity.this,"Password Updated");
 
 //                    clearing Shared Prefs
                     SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
@@ -92,7 +93,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                Toast.makeText(UpdatePasswordActivity.this, "Couldn't Update Password! Check your Connection and try again", Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(UpdatePasswordActivity.this,"Couldn't Update Password! Check your Connection and try again");
 
             }
         });

@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.Functions.FormFieldsFeatures;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -340,7 +341,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         }
         else{
             emptyfield += getResources().getString(R.string.update_activity_is_required);
-            Toast.makeText(this,emptyfield, Toast.LENGTH_SHORT).show();
+            ToastCreator.toastCreatorRed(this, emptyfield);
         }
 
         /*if (!formFieldsFeatures.checkIfEmpty(nameEditText) && !formFieldsFeatures.checkIfEmpty(ageEditText)
@@ -376,13 +377,13 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
                     updateAlertDialog();
 
                 } else {
-                    Toast.makeText(UpdatePatientProfileActivity.this, R.string.update_patient_activity_update_failed, Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(UpdatePatientProfileActivity.this, getResources().getString(R.string.update_patient_activity_update_failed));
                 }
             }
 
             @Override
             public void onFailure(Call<PatientDataModel> call, Throwable t) {
-                Toast.makeText(UpdatePatientProfileActivity.this, R.string.update_patient_activity_update_error, Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(UpdatePatientProfileActivity.this, getResources().getString(R.string.update_patient_activity_update_error));
 
             }
         });
@@ -407,7 +408,7 @@ private void updateAlertDialog(){
                 intent.putExtra("need",newNeed);
                 intent.putExtra("phone",phone);
                 intent.putExtra("activity","UpdatePatientProfileActivity");
-                Toast.makeText(UpdatePatientProfileActivity.this, R.string.update_patient_activity_update_successful, Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorGreen(UpdatePatientProfileActivity.this, getResources().getString(R.string.update_patient_activity_update_successful));
                 startActivity(intent);
                 finish();
             }

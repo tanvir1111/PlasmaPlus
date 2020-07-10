@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -91,20 +92,20 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
                         finish();
                     }
                     else if(response.body().getServerMsg().equals("record doesn't exist")){
-                        Toast.makeText(PhoneVerificationActivity1.this, "This Phone number is not registered", Toast.LENGTH_SHORT).show();
+                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, "This Phone number is not registered");
                         Intent intent = new Intent(PhoneVerificationActivity1.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
                     }
                     else {
-                        Toast.makeText(PhoneVerificationActivity1.this,  response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this,  response.body().getServerMsg());
                     }
                 }
 
 
                 else if(verification.equals("signup")){
                     if (response.body().getServerMsg().equals("record exists")) {
-                        Toast.makeText(PhoneVerificationActivity1.this, "This phone number is  already registered", Toast.LENGTH_SHORT).show();
+                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, "This phone number is  already registered");
 
                     }
                     else if(response.body().getServerMsg().equals("record doesn't exist")){
@@ -118,7 +119,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
 
                     }
                     else {
-                        Toast.makeText(PhoneVerificationActivity1.this,  response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this,  response.body().getServerMsg());
                     }
 
 
@@ -130,7 +131,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                Toast.makeText(PhoneVerificationActivity1.this, "An error occurred! Check your connection and try again", Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, "An error occurred! Check your connection and try again");
             }
         });
 

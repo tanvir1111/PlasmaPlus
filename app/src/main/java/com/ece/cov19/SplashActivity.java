@@ -21,6 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -174,14 +175,15 @@ public class SplashActivity extends AppCompatActivity {
                         loggedInUserAge = response.body().getAge();
                         loggedInUserDonorInfo = response.body().getDonor();
                         loggedInUserPass = response.body().getPassword();
-                        Toast.makeText(SplashActivity.this, getResources().getString(R.string.splash_welcome)+" " + loggedInUserName, Toast.LENGTH_SHORT).show();
+                        ToastCreator.toastCreatorGreen(SplashActivity.this,getResources().getString(R.string.splash_welcome)+" " + loggedInUserName);
+
 
 //                  going to Dashboard
                         Intent intent = new Intent(SplashActivity.this, DashboardActivity.class);
                         startActivity(intent);
                         finish();
                     } else {
-                        Toast.makeText(SplashActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                        ToastCreator.toastCreatorRed(SplashActivity.this, response.body().getServerMsg());
 
 //                   going to Login
                         Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
@@ -194,7 +196,9 @@ public class SplashActivity extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<UserDataModel> call, Throwable t) {
-                    Toast.makeText(SplashActivity.this, getResources().getString(R.string.splash_error), Toast.LENGTH_SHORT).show();
+                    
+                    ToastCreator.toastCreatorRed(SplashActivity.this,getResources().getString(R.string.splash_error));
+
                 }
             });
 

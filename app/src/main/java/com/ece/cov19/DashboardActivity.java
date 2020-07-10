@@ -46,6 +46,7 @@ import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RecyclerViews.FindDonorAlphaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -199,7 +200,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                Toast.makeText(DashboardActivity.this, R.string.dashboard_error_message, Toast.LENGTH_SHORT).show();
+
+                ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.dashboard_error_message));
 
             }
         });
@@ -299,7 +301,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                Toast.makeText(DashboardActivity.this, getResources().getString(R.string.dashboard_error_message), Toast.LENGTH_SHORT).show();
+
+                ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.dashboard_error_message));
 
             }
         });
@@ -378,7 +381,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             backCounter++;
             if (backCounter == 1) {
-                Toast.makeText(DashboardActivity.this, getResources().getString(R.string.dashboard_text_Press_back_one_more_time_to_exit), Toast.LENGTH_SHORT).show();
+
+                ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.dashboard_text_Press_back_one_more_time_to_exit));
             }
             if (backCounter == 2) {
                 finish();
@@ -714,7 +718,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.dashboard_image_retrieve_failed), Toast.LENGTH_SHORT).show();
+
+                ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.dashboard_image_retrieve_failed));
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {

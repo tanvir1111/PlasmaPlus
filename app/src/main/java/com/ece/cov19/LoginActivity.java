@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -151,7 +152,8 @@ public class LoginActivity extends AppCompatActivity {
 
         backCounter++;
         if(backCounter == 1) {
-            Toast.makeText(LoginActivity.this,getResources().getString(R.string.login_activity_on_back_pressed), Toast.LENGTH_SHORT).show();
+         ;
+            ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.login_activity_on_back_pressed));
         }
         if(backCounter == 2) {
             finish();
@@ -199,7 +201,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.body().getServerMsg().equals("Success")) {
                     progressBar.setVisibility(View.GONE);
 
-                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_activity_login_user)+" " + response.body().getName(), Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorGreen(LoginActivity.this, getResources().getString(R.string.login_activity_login_user)+" " + response.body().getName());
 
 //                  Storing phone and password to shared preferences
                     SharedPreferences loginSharedPrefs = getSharedPreferences(LOGIN_SHARED_PREFS, MODE_PRIVATE);
@@ -228,7 +230,7 @@ public class LoginActivity extends AppCompatActivity {
                 } else {
                     progressBar.setVisibility(View.GONE);
 
-                    Toast.makeText(LoginActivity.this, getResources().getString(R.string.login_activity_connection_failed), Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.login_activity_connection_failed));
                 }
 
             }
@@ -237,7 +239,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onFailure(Call<UserDataModel> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
 
-                Toast.makeText(LoginActivity.this,getResources().getString(R.string.login_activity_error_response), Toast.LENGTH_SHORT).show();
+
+                ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.login_activity_error_response));
             }
         });
 

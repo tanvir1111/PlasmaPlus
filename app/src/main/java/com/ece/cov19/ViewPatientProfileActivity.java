@@ -24,12 +24,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.ImageDataModel;
-import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.RequestDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -48,7 +47,6 @@ import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
@@ -139,7 +137,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 if(donateToHelpButton.getText().toString().equals(getResources().getString(R.string.patient_profile_donate_button))) {
-                    passWordAlertDialog();
+                    confirmationAlert();
                 }
             }
         });
@@ -163,7 +161,6 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     updateAlertDialog(intent);
                 }
                 else if(updateButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Accept_Request))){
-                    Toast.makeText(ViewPatientProfileActivity.this, "accept ops", Toast.LENGTH_SHORT).show();
                     requestsOperation("accept");
 
                     //Push Notification
@@ -200,7 +197,6 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     deleteAlertDialog();
                 }
                 else if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Decline_Request))){
-                    Toast.makeText(ViewPatientProfileActivity.this, "decline ops", Toast.LENGTH_SHORT).show();
                     requestsOperation("decline");
 
                     //Push Notification
@@ -282,7 +278,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
-                builder.setMessage(getResources().getString(R.string.patient_profile_activity_Enter_Password));
+                builder.setMessage(getResources().getString(R.string.patient_profile_activity_dialog_msg));
 
 // Set up the input
                 final EditText pass = new EditText(ViewPatientProfileActivity.this);
@@ -315,18 +311,18 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                                         public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
                                             progressBar.setVisibility(View.GONE);
                                             if(response.body().getServerMsg().equals("Success")){
-                                                Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Patient_Record_Deleted), Toast.LENGTH_SHORT).show();
+                                                ToastCreator.toastCreatorGreen(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Patient_Record_Deleted));
                                                 finish();
                                             }
                                             else{
-                                                Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Delete_Failed), Toast.LENGTH_SHORT).show();
+                                                ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Delete_Failed));
 
                                             }
                                         }
 
                                         @Override
                                         public void onFailure(Call<PatientDataModel> call, Throwable t) {
-                                            Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
+                                            ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error));
                                         }
                                     });
 
@@ -345,7 +341,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                         }
                         else{
-                            Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Wrong_Password), Toast.LENGTH_SHORT).show();;
+                            ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Wrong_Password));;
                         }
                     }
                 });
@@ -375,36 +371,19 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
     }
 
-    private void passWordAlertDialog() {
+    private void confirmationAlert() {
 
 //                asking password with alertdialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.patient_profile_activity_Enter_Password));
-
-// Set up the input
-        final EditText pass = new EditText(getApplicationContext());
-
-        float density = getResources().getDisplayMetrics().density;
-        int paddingDp = (int) (12 * density);
-        pass.setPadding(paddingDp, paddingDp, paddingDp, paddingDp);
-        pass.setHint("******");
-        pass.setBackgroundResource(R.drawable.edit_text_dark);
-// Specify the type of input expected; this, for example, sets the input as a password, and will mask the text
-        pass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
-        builder.setView(pass);
+        builder.setMessage(getResources().getString(R.string.patient_profile_activity_Are_you_sure));
 
 // Set up the buttons
-        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_ok), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
-                if (pass.getText().toString().equals(loggedInUserPass)) {
-
                     sendRequest();
-                } else {
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_Wrong_Password), Toast.LENGTH_SHORT).show();
 
-                }
             }
         });
         builder.setNegativeButton(getResources().getString(R.string.patient_profile_activity_cancel), new DialogInterface.OnClickListener() {
@@ -427,7 +406,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Request_Sent), Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorGreen(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Request_Sent));
 
                     //Push Notification
 
@@ -447,13 +426,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     });
 
                 } else {
-                    Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_connection_failed), Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_connection_failed));
                 }
             }
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error));
 
             }
         });
@@ -464,7 +443,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     private void requestsOperation(String operation) {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
-        //Toast.makeText(this, loggedInUserPhone+name +age +bloodGroup +phone, Toast.LENGTH_SHORT).show();
+        //ToastCreator.toastCreator(this, loggedInUserPhone+name +age +bloodGroup +phone, Toast.LENGTH_SHORT).show();
         Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup,phone,requestedBy,operation);
         lookforRequestFromDonor.enqueue(new Callback<RequestDataModel>() {
             @Override
@@ -531,7 +510,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error));
 
             }
         });
@@ -673,14 +652,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     downloadImage(findPatientPhone);
                 }
                 else if(response.body().getServerMsg().equals("false")){
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_connection_failed), Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_connection_failed));
 
                 }
             }
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error));
 
             }
         });
@@ -714,7 +693,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error));
 
 
                 if (gender.toLowerCase().equals("male")) {
@@ -750,14 +729,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                 }
                 else if(response.body().getServerMsg().equals("false")){
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_image_not_found), Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_image_not_found));
 
                 }
             }
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error));
 
             }
         });

@@ -21,6 +21,7 @@ import com.ece.cov19.DataModels.DashBoardNumberModel;
 import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RecyclerViews.FindDonorBetaAdapter;
 import com.ece.cov19.RecyclerViews.FindDonorAlphaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
@@ -253,14 +254,14 @@ public class FindDonorActivity extends AppCompatActivity {
                 }
 
                 else{
-                    Toast.makeText(FindDonorActivity.this, "No Response", Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(FindDonorActivity.this,"No Response");
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(FindDonorActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(FindDonorActivity.this,"Error : " +t.getMessage());
             }
         });
 
@@ -335,14 +336,15 @@ public class FindDonorActivity extends AppCompatActivity {
                 }
 
                 else{
-                    Toast.makeText(FindDonorActivity.this, "No Response", Toast.LENGTH_SHORT).show();
+
+                    ToastCreator.toastCreatorRed(FindDonorActivity.this,"No Response");
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
-                Toast.makeText(FindDonorActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(FindDonorActivity.this,"Error : " +t.getMessage());
             }
         });
     }

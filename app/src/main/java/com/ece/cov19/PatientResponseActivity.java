@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RecyclerViews.PatientResponseAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -132,13 +133,15 @@ public class PatientResponseActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(linearLayoutManager);
                 }
                 else {
-                    Toast.makeText(PatientResponseActivity.this, "No Response", Toast.LENGTH_SHORT).show();
+
+                    ToastCreator.toastCreatorRed(PatientResponseActivity.this,"No Response");
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(PatientResponseActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+
+                ToastCreator.toastCreatorRed(PatientResponseActivity.this,"Error: "+t.getMessage());
             }
         });
     }

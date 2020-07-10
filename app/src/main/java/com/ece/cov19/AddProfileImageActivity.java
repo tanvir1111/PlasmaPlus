@@ -25,6 +25,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.LoggedInUserData;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 import com.squareup.picasso.Picasso;
@@ -216,13 +217,14 @@ public class AddProfileImageActivity extends Activity {
         incomingResponse.enqueue(new Callback<ImageDataModel>() {
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
-                Toast.makeText(AddProfileImageActivity.this, "Image upload successful. " + response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorGreen(AddProfileImageActivity.this,"Image upload successful. " + response.body().getServerMsg());
 
             }
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(AddProfileImageActivity.this, "Image upload failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(AddProfileImageActivity.this,"Image upload failed. " + t.getMessage());
+
 
             }
         });
@@ -235,7 +237,8 @@ public class AddProfileImageActivity extends Activity {
         incomingResponse.enqueue(new Callback<ImageDataModel>() {
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
-                Toast.makeText(AddProfileImageActivity.this, "Image download successful. " + response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorGreen(AddProfileImageActivity.this,"Image download successful. " + response.body().getServerMsg());
+
                 String image = response.body().getImage();
 
                 byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
@@ -245,7 +248,8 @@ public class AddProfileImageActivity extends Activity {
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(AddProfileImageActivity.this, "Image download failed. " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(AddProfileImageActivity.this,"Image download failed. " + t.getMessage());
+
 
             }
         });

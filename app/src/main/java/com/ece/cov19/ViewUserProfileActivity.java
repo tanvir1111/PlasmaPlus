@@ -32,6 +32,7 @@ import android.widget.Toast;
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 import com.theartofdev.edmodo.cropper.CropImage;
@@ -339,7 +340,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
-                    Toast.makeText(ViewUserProfileActivity.this, getResources().getString(R.string.profile_activity_Wrong_Password), Toast.LENGTH_SHORT).show();;
+                    ToastCreator.toastCreatorRed(ViewUserProfileActivity.this, getResources().getString(R.string.profile_activity_Wrong_Password));
                 }
             }
         });
@@ -446,17 +447,17 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                                                 login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                                                 startActivity(login);
                                                 finish();
-                                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_Delete_Successful), Toast.LENGTH_SHORT).show();
+                                                ToastCreator.toastCreatorGreen(getApplicationContext(), getResources().getString(R.string.profile_activity_Delete_Successful));
                                             }
                                             else if(response.body().getServerMsg().equals("Failed")){
-                                                Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_Delete_Failed), Toast.LENGTH_SHORT).show();
+                                                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_Delete_Failed));
 
                                             }
                                         }
 
                                         @Override
                                         public void onFailure(Call<UserDataModel> call, Throwable t) {
-                                            Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_error), Toast.LENGTH_SHORT).show();
+                                            ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_error));
 
                                         }
                                     });
@@ -473,7 +474,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
                         }
                         else{
-                            Toast.makeText(ViewUserProfileActivity.this, getResources().getString(R.string.profile_activity_Wrong_Password), Toast.LENGTH_SHORT).show();;
+                            ToastCreator.toastCreatorRed(ViewUserProfileActivity.this, getResources().getString(R.string.profile_activity_Wrong_Password));;
                         }
                     }
                 })
@@ -652,14 +653,14 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                     downloadImage(loggedInUserPhone);
                 }
                 else if(response.body().getServerMsg().equals("false")){
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_image_did_not_upload), Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_image_did_not_upload));
 
                 }
             }
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_image_upload_failed), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_image_upload_failed));
 
             }
         });
@@ -693,7 +694,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_image_retrieve_failed), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_image_retrieve_failed));
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {
@@ -729,14 +730,14 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
                 }
                 else if(response.body().getServerMsg().equals("false")){
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_image_not_found), Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_image_not_found));
 
                 }
             }
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), getResources().getString(R.string.profile_activity_image_delete_failed), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_image_delete_failed));
 
             }
         });

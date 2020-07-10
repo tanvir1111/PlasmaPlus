@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -337,7 +338,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
              updateUserInfo(name, division, district, thana, age,donorInfo);
         } else {
             emptyfield += getResources().getString(R.string.update_activity_is_required);
-            Toast.makeText(this,emptyfield, Toast.LENGTH_SHORT).show();
+            ToastCreator.toastCreatorRed(this,emptyfield);
         }
 
 
@@ -350,7 +351,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(UpdateUserProfileActivity.this, R.string.update_activity_update_successful, Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorGreen(UpdateUserProfileActivity.this, getResources().getString(R.string.update_activity_update_successful));
 //                    update logged in Data
                     loggedInUserName=name;
                     loggedInUserDivision=division;
@@ -367,14 +368,14 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
-                    Toast.makeText(UpdateUserProfileActivity.this, R.string.update_activity_update_failed, Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(UpdateUserProfileActivity.this,getResources().getString(R.string.update_activity_update_failed));
                 }
 
             }
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                Toast.makeText(UpdateUserProfileActivity.this, R.string.update_activity_update_error, Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(UpdateUserProfileActivity.this,   getResources().getString(R.string.update_activity_update_error));
             }
         });
 

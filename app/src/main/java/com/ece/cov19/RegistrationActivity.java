@@ -23,6 +23,7 @@ import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.Functions.FormFieldsFeatures;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -367,7 +368,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 && !formFieldsFeatures.checkIfEmpty(passwordEditText)) {
 
             if (password.length() < 6) {
-                Toast.makeText(this, "Password must be of at least 6 characters", Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(RegistrationActivity.this, "Password must be of at least 6 characters");
             } else {
                 if (password.equals(confPasswordEditText.getText().toString())) {
 //            retro operations
@@ -395,21 +396,21 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 if (response.body().getServerMsg().equals("Success")) {
-                    Toast.makeText(RegistrationActivity.this, "Registration Successful!", Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorGreen(RegistrationActivity.this, "Registration Successful!");
 
 //              going to login activity
                     Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    Toast.makeText(RegistrationActivity.this, response.body().getServerMsg(), Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(RegistrationActivity.this, response.body().getServerMsg());
                 }
 
             }
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                Toast.makeText(RegistrationActivity.this, "Failed to register! Check your connection and try again.", Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(RegistrationActivity.this, "Failed to register! Check your connection and try again.");
             }
         });
 

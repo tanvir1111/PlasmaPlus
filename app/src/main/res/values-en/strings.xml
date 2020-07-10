@@ -214,7 +214,7 @@
     <string name="donor_profile_send_request_suggestion">Select a patient to send Donor Request! If your request is accepted, phone number will be visible.</string>
     <string name="donor_profile_activity_Enter_Password">Enter Password</string>
     <string name="donor_profile_activity_Wrong_Password">Wrong Password</string>
-    <string name="donor_profile_activity_ok">OK</string>
+    <string name="donor_profile_activity_yes">yes</string>
     <string name="donor_profile_activity_cancel">Cancel</string>
     <string name="donor_profile_activity_Request_Sent">Request Sent! Wait For Donor\'s Response</string>
     <string name="donor_profile_activity_Accept_Request">Accept Request</string>
@@ -254,7 +254,7 @@
     <string name="patient_profile_delete_button">Delete Profile</string>
     <string name="patient_profile_donate_button">Donate to Help</string>
     <string name="patient_profile_activity_Not_Permitted">Not Permitted!</string>
-    <string name="patient_profile_activity_Enter_Password">Enter Password</string>
+    <string name="patient_profile_activity_dialog_msg">Enter Password</string>
     <string name="patient_profile_activity_Wrong_Password">Wrong Password</string>
     <string name="patient_profile_activity_ok">OK</string>
     <string name="patient_profile_activity_Are_you_sure">Are you sure?</string>
@@ -482,6 +482,7 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
+    <string name="donor_profile_activity_send_request">Send Request to this donor?</string>
 
 
 </resources>

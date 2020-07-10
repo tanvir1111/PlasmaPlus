@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RecyclerViews.DonorRequestsAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -193,13 +194,13 @@ public class DonorRequestsActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(linearLayoutManager);
                 }
                 else {
-                    Toast.makeText(DonorRequestsActivity.this, "No Response", Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(DonorRequestsActivity.this,"No Response");
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(DonorRequestsActivity.this, "Error: "+t.getMessage(), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(DonorRequestsActivity.this,"Error : " +t.getMessage());
             }
         });
 
