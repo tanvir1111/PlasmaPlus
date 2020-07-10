@@ -218,7 +218,7 @@ public class SearchDonorActivity extends AppCompatActivity {
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
                 } else {
-                    Toast.makeText(SearchDonorActivity.this, "No Response", Toast.LENGTH_SHORT).show();
+
                     ToastCreator.toastCreatorRed(SearchDonorActivity.this,"No Response");
 
                 }

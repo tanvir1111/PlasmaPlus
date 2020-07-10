@@ -38,7 +38,7 @@ public class FirebaseInstanceIDService extends FirebaseMessagingService {
         super.onNewToken(s);
 
         String token = FirebaseInstanceId.getInstance().getId();
-        Toast.makeText(getApplicationContext(), token, Toast.LENGTH_SHORT).show();
+
         registerToken(token);
     }
 

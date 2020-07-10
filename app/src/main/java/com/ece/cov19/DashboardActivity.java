@@ -219,18 +219,18 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     } else if (response.body().getEligibility().equals("not_eligible")) {
                         loggedInUserEligibility = "not_eligible";
                     }
-                    Toast.makeText(getApplicationContext(),loggedInUserEligibility,Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorGreen(getApplicationContext(),loggedInUserEligibility);
 
 
                 }
                 else if(response.body().getServerMsg().equals("false")){
-                    Toast.makeText(getApplicationContext(),"Connection failed! Please try again",Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(getApplicationContext(),"Connection failed! Please try again");
                 }
             }
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Error occurred! Please try again",Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(getApplicationContext(),"Error occurred! Please try again");
             }
         });
 
@@ -351,13 +351,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
                 }
                 else if(response.body().getServerMsg().equals("false")){
-                    Toast.makeText(getApplicationContext(),"Connection failed! Please try again",Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(getApplicationContext(),"Connection failed! Please try again");
                 }
             }
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Error occurred! Please try again",Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(getApplicationContext(),"Error occurred! Please try again");
             }
         });
 

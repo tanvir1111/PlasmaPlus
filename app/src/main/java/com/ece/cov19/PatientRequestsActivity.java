@@ -127,7 +127,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
 
                 else{
 
-                    Toast.makeText(PatientRequestsActivity.this, "No Response", Toast.LENGTH_SHORT).show();
+
                     ToastCreator.toastCreatorRed(PatientRequestsActivity.this,"No Response");
 
                 }

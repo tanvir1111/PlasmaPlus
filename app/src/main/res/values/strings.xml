@@ -239,7 +239,7 @@
     <string name="donor_profile_activity_notification_incoming_1">Incoming Request from Patient!</string>
     <string name="donor_profile_activity_notification_incoming_2">has sent you a request. Check Donor Requests</string>
     <string name="donor_profile_activity_image_failed">Profile Image retrieve failed!</string>
-    <string name="donor_profile_activity_send_request">Send Request to this donor?</string>
+
 
 
 
