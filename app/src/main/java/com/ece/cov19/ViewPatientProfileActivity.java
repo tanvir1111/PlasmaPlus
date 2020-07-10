@@ -44,6 +44,7 @@ import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientDate;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
@@ -137,7 +138,8 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 if(donateToHelpButton.getText().toString().equals(getResources().getString(R.string.patient_profile_donate_button))) {
-                    confirmationAlert();
+
+                    donateToHelpAlertDialog();
                 }
             }
         });
@@ -162,6 +164,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 }
                 else if(updateButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Accept_Request))){
                     requestsOperation("accept");
+
 
                     //Push Notification
 
@@ -198,6 +201,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 }
                 else if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Decline_Request))){
                     requestsOperation("decline");
+
 
                     //Push Notification
 
@@ -371,18 +375,42 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
     }
 
-    private void confirmationAlert() {
 
-//                asking password with alertdialog
+    private void donateToHelpAlertDialog() {
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.patient_profile_activity_Are_you_sure));
 
-// Set up the buttons
+        builder.setMessage(getResources().getString(R.string.donor_profile_activity_send_request));
+
+
         builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
+                sendRequest();
 
-                    sendRequest();
+            }
+        });
+        builder.setNegativeButton(getResources().getString(R.string.patient_profile_activity_cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+
+    }
+
+    private void requestOperationAlertDialog(String getstatus) {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
+        builder.setMessage(getResources().getString(R.string.patient_profile_activity_Are_you_sure));
+
+
+        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                requestsOperation(getstatus);
 
             }
         });

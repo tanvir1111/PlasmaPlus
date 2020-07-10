@@ -25,6 +25,17 @@ public class DashBoardNumberModel {
     @Expose
     private String numberOfResponses;
 
+    @SerializedName("eligibility")
+    @Expose
+    private String eligibility;
+    @SerializedName("lastdate")
+    @Expose
+    private String lastdate;
+
+    @SerializedName("serverMsg")
+    @Expose
+    private String serverMsg;
+
     public String getNumberOfMyPatients() {
         return numberOfMyPatients;
     }
@@ -43,5 +54,17 @@ public class DashBoardNumberModel {
 
     public String getNumberOfResponses() {
         return numberOfResponses;
+    }
+
+    public String getEligibility() {
+        return eligibility;
+    }
+
+    public String getLastdate() {
+        return lastdate;
+    }
+
+    public String getServerMsg() {
+        return serverMsg;
     }
 }

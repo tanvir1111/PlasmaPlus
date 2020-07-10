@@ -34,6 +34,7 @@ import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientDate;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
@@ -138,8 +139,8 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Accepted))) {
-                    requestsOperation("accept");
+                if (acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Accept_Request))) {
+                    requestOperationAlertDialog("accept");
 
                     //Push Notification
 
@@ -169,7 +170,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(declineBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Decline_Request))) {
-                    requestsOperation("decline");
+                    requestOperationAlertDialog("decline");
 
 
                     //Push Notification
@@ -212,16 +213,39 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
     private void askForHelpAlertDialog() {
 
-//                asking password with alertdialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewDonorProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.donor_profile_activity_send_request));
 
 
-// Set up the buttons
         builder.setPositiveButton(getResources().getString(R.string.donor_profile_activity_yes), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                    sendRequest();
+                sendRequest();
+
+            }
+        });
+        builder.setNegativeButton(getResources().getString(R.string.donor_profile_activity_cancel), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+
+        builder.show();
+
+    }
+
+    private void requestOperationAlertDialog(String getstatus) {
+
+        final AlertDialog.Builder builder = new AlertDialog.Builder(ViewDonorProfileActivity.this);
+        builder.setMessage(getResources().getString(R.string.donor_profile_activity_confirm));
+
+
+        builder.setPositiveButton(getResources().getString(R.string.donor_profile_activity_yes), new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                requestsOperation(getstatus);
+                
             }
         });
         builder.setNegativeButton(getResources().getString(R.string.donor_profile_activity_cancel), new DialogInterface.OnClickListener() {

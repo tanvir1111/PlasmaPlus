@@ -63,6 +63,10 @@ public interface RetroInterface {
     Call<DashBoardNumberModel> getDashBoardNumbers(@Field("phone") String phone);
 
     @FormUrlEncoded
+    @POST("donorEligibility.php")
+    Call<DashBoardNumberModel> eligibilityCheck(@Field("phone") String phone);
+
+    @FormUrlEncoded
     @POST("ownPatients.php")
     Call<ArrayList<PatientDataModel>> ownPatients(@Field("phone") String phone);
 
@@ -94,7 +98,7 @@ public interface RetroInterface {
     @POST("sendRequest.php")
     Call<RequestDataModel> sendRequest( @Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
                                         @Field("patientAge") String patientAge, @Field("patientPhone") String patientPhone,
-                                        @Field("patientBloodGrp") String patientBloodGrp,@Field("requestedBy") String requester);
+                                        @Field("patientBloodGrp") String patientBloodGrp, @Field("requestedBy") String requester);
 
     @FormUrlEncoded
     @POST("checkDonorRequest.php") Call<ArrayList<PatientDataModel>> checkDonorRequest(@Field("phone") String userPhone,@Field("status") String status);
@@ -126,7 +130,8 @@ public interface RetroInterface {
     @POST("lookForRequests.php")
     Call<RequestDataModel> requestsOperation(@Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
                                              @Field("patientAge") String patientAge, @Field("patientBloodGroup") String patientBloodGroup,
-                                             @Field("patientPhone") String phone, @Field("requestedBy") String requestedBy, @Field("operation") String operation);
+                                             @Field("patientPhone") String phone,
+                                             @Field("requestedBy") String requestedBy, @Field("operation") String operation);
     @FormUrlEncoded
     @POST("tokenRegister.php")
     Call <UserDataModel> sendToken(@Field("phone") String phone, @Field("token") String token);

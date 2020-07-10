@@ -11,5 +11,6 @@ public class LoggedInUserData {
     public static String loggedInUserAge;
     public static String loggedInUserDonorInfo;
     public static String loggedInUserPass;
+    public static String loggedInUserEligibility;
 
 }
