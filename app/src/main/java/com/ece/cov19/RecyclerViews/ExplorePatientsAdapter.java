@@ -37,6 +37,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserEligibility;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 
 public class ExplorePatientsAdapter extends RecyclerView.Adapter<ExplorePatientsViewHolder> {
@@ -82,13 +83,14 @@ public class ExplorePatientsAdapter extends RecyclerView.Adapter<ExplorePatients
 
 
 
-        if((LoggedInUserData.loggedInUserDonorInfo.equals("Blood") || LoggedInUserData.loggedInUserDonorInfo.equals("Plasma")) && patientDataModel.getBloodGroup().equals(LoggedInUserData.loggedInUserBloodGroup)){
+        if((LoggedInUserData.loggedInUserDonorInfo.equals("Blood") || LoggedInUserData.loggedInUserDonorInfo.equals("Plasma"))&& loggedInUserEligibility.equals("eligible") && patientDataModel.getBloodGroup().equals(LoggedInUserData.loggedInUserBloodGroup)){
             holder.donateTextView.setVisibility(View.VISIBLE);
             holder.donateTextView.setText("Donate to Help");
         }
         else
         {
-            holder.donateTextView.setVisibility(View.GONE);
+            holder.donateTextView.setVisibility(View.VISIBLE);
+            holder.donateTextView.setText("View Profile");
         }
 
 

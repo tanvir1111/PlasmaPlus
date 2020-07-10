@@ -48,6 +48,7 @@ import static com.ece.cov19.DataModels.FindPatientData.findPatientDate;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserEligibility;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
@@ -485,7 +486,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Update_Profile));
                             deleteButton.setVisibility(View.VISIBLE);
                             deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Delete_Profile));
-                        } else if(bloodGroup.equals(loggedInUserBloodGroup)) {
+                        }
+                        else if(loggedInUserEligibility.equals("not_eligible")){
+                            donateToHelpButton.setVisibility(View.GONE);
+                            updateButton.setVisibility(View.GONE);
+                            deleteButton.setVisibility(View.GONE);
+                        }
+
+                        else if(bloodGroup.equals(loggedInUserBloodGroup)) {
                             donateToHelpButton.setVisibility(View.VISIBLE);
                             donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
                             updateButton.setVisibility(View.GONE);
