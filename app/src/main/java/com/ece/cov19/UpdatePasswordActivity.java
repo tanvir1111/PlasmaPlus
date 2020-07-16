@@ -29,7 +29,6 @@ public class UpdatePasswordActivity extends AppCompatActivity {
     private String password,phone;
     private Button updatePassBtn;
     private ImageView backbtn;
-    private String phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
