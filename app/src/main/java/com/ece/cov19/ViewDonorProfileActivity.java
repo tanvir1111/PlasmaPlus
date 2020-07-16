@@ -128,7 +128,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         askForHelpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(askForHelpBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Ask_for_Help))) {
+                if(askForHelpBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_ask_for_help_button))) {
                     askForHelpAlertDialog();
                 }
 
