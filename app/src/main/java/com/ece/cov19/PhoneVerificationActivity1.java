@@ -88,7 +88,9 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
 
                 if(verification.equals("forgotpass")) {
                     if (response.body().getServerMsg().equals("record exists")) {
+
                         Intent intent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
+
                         intent.putExtra("phone", phonenumber);
                         intent.putExtra("verification", verification);
                         startActivity(intent);

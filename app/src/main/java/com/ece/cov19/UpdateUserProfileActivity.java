@@ -252,7 +252,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
                         UpdateUserProfileActivity.this,
                         android.R.layout.simple_spinner_dropdown_item,
                         getResources().getStringArray(divisionResourceIds[position]));
-                districtSpinner.setAdapter(adapter);
+                        districtSpinner.setAdapter(adapter);
 
                     districtSpinner.setSelection(adapter.getPosition(loggedInUserDistrict));
             }

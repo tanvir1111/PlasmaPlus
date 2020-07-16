@@ -137,6 +137,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent forgotPassIntent = new Intent(LoginActivity.this,PhoneVerificationActivity1.class);
+
                 forgotPassIntent.putExtra("verification","forgotpass");
                 startActivity(forgotPassIntent);
             }
