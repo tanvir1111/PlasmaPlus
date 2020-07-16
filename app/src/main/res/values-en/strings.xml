@@ -96,6 +96,7 @@
     <string name="login_activity_phone_number_edittext">Phone Number Required</string>
     <string name="login_activity_password_edittext">Password Required</string>
     <string name="login_activity_login_user">Welcome</string>
+    <string name="login_activity_wrong">Wrong Phone or Password</string>
     <string name="login_activity_connection_failed">Connection Failed! Check your connection and try again</string>
     <string name="login_activity_error_response">An error occurred! Check your connection and try again</string>
 
@@ -316,14 +317,13 @@
     <string name="profile_change_password_btn">Change Password</string>
     <string name="profile_delete_button">Delete Profile</string>
     <string name="profile_activity_Not_a_donor">Not a donor</string>
-    <string name="profile_activity_Are_you_Sure">Are you Sure?</string>
+    <string name="profile_activity_Are_you_Sure">Are you sure?</string>
     <string name="profile_activity_Enter_Password">Enter Password</string>
     <string name="profile_activity_Wrong_Password">Wrong Password</string>
     <string name="profile_activity_yes">Yes</string>
     <string name="profile_activity_no">No</string>
     <string name="profile_activity_cancel">Cancel</string>
     <string name="profile_activity_ok">OK</string>
-    <string name="profile_activity_Delete_profile_question">Delete Profile?</string>
     <string name="profile_activity_proceed">Proceed</string>
     <string name="profile_activity_go_back">Go Back</string>
     <string name="profile_activity_Delete">Delete</string>

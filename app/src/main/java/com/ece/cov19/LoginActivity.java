@@ -228,7 +228,13 @@ public class LoginActivity extends AppCompatActivity {
                     Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
                     startActivity(intent);
                     finish();
-                } else {
+                }
+                else if(response.body().getServerMsg().equals("Wrong phone or password")){
+                    progressBar.setVisibility(View.GONE);
+                    ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.login_activity_wrong));
+                }
+
+                else {
                     progressBar.setVisibility(View.GONE);
 
                     ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.login_activity_connection_failed));

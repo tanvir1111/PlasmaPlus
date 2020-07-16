@@ -109,14 +109,23 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            if(verification.equals("signup")) {
+                                Intent intent = new Intent(PhoneVerificationActivity2.this, RegistrationActivity.class);
+                                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                intent.putExtra("phone", phonenumber);
+                                ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, "Verification Successful!");
+                                startActivity(intent);
+                                finish();
+                            }
 
-                            Intent intent = new Intent(PhoneVerificationActivity2.this, RegistrationActivity.class);
-                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                            intent.putExtra("phone", phonenumber);
-                            ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, "Verification Successful!");
-                            startActivity(intent);
-                            finish();
-
+                            else if(verification.equals("forgotpass")){
+                                Intent intent = new Intent(PhoneVerificationActivity2.this, UpdatePasswordActivity.class);
+                                intent.putExtra("phone", phonenumber);
+                                intent.putExtra("verification", verification);
+                                ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, "Verification Successful!");
+                                startActivity(intent);
+                                finish();
+                            }
 
                         } else {
                             ToastCreator.toastCreatorRed(PhoneVerificationActivity2.this, "Verification Failed! Error: "+task.getException().getMessage());
@@ -154,7 +163,7 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
             if (code != null) {
                 editText.setText(code);
                 verifyCode(code);
-                ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, "Verification successful");
+                ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, "Verification Successful!");
             }
         }
 
