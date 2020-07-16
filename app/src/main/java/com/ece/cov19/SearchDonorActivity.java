@@ -219,7 +219,7 @@ public class SearchDonorActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(linearLayoutManager);
                 } else {
 
-                    ToastCreator.toastCreatorRed(SearchDonorActivity.this,"No Response");
+                    ToastCreator.toastCreatorRed(SearchDonorActivity.this,"No Response from Server");
 
                 }
             }

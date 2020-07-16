@@ -29,6 +29,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
     private String password;
     private Button updatePassBtn;
     private ImageView backbtn;
+    private String phone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,10 @@ public class UpdatePasswordActivity extends AppCompatActivity {
         confPasswordEditText=findViewById(R.id.update_password_confirm_password_edittext);
         updatePassBtn=findViewById(R.id.update_password_update_btn);
         backbtn=findViewById(R.id.update_password_back_button);
+
+        Intent intent = getIntent();
+        phone = intent.getStringExtra("phone");
+
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +78,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
     private void updatePassword(String password) {
 
         RetroInterface retroInterface= RetroInstance.getRetro();
-        Call<UserDataModel> updatePass = retroInterface.updatePassword(loggedInUserPhone, password);
+        Call<UserDataModel> updatePass = retroInterface.updatePassword(phone, password);
         updatePass.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {

@@ -21,7 +21,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class PhoneVerificationActivity1 extends AppCompatActivity {
-    TextView labelPhone,countryCode;
+    TextView labelPhone,countryCode,headerTextView;
     EditText phoneInput;
     Button getOtpBtn;
     ImageView backBtn;
@@ -38,12 +38,15 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
         countryCode=findViewById(R.id.phn_ver_countryCode);
         getOtpBtn=findViewById(R.id.phn_ver_get_otp_button);
         phoneInput=findViewById(R.id.phn_ver_phone_input);
+        headerTextView=findViewById(R.id.phn_ver_header_textview);
+
 
         Intent intent = getIntent();
         verification = intent.getStringExtra("verification");
 
        if(verification.equals("forgotpass")){
             getOtpBtn.setText("Next");
+            headerTextView.setText("Forgot Password");
         }
 
         getOtpBtn.setOnClickListener(new View.OnClickListener() {
@@ -85,7 +88,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
 
                 if(verification.equals("forgotpass")) {
                     if (response.body().getServerMsg().equals("record exists")) {
-                        Intent intent = new Intent(PhoneVerificationActivity1.this, UpdatePasswordActivity.class);
+                        Intent intent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
                         intent.putExtra("phone", phonenumber);
                         intent.putExtra("verification", verification);
                         startActivity(intent);
@@ -111,7 +114,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
                     else if(response.body().getServerMsg().equals("record doesn't exist")){
 
 
-                        Intent nextIntent = new Intent(PhoneVerificationActivity1.this, RegistrationActivity.class);
+                        Intent nextIntent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
                         nextIntent.putExtra("phone",phonenumber);
                         nextIntent.putExtra("verification",verification);
                         startActivity(nextIntent);

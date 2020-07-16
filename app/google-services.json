@@ -1,0 +1,64 @@
+{
+  "project_info": {
+    "project_number": "747629944283",
+    "firebase_url": "https://ece-covid-app.firebaseio.com",
+    "project_id": "ece-covid-app",
+    "storage_bucket": "ece-covid-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:747629944283:android:bc2986db7206307c2edbfe",
+        "android_client_info": {
+          "package_name": "com.ece.cov19"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "747629944283-alah4nrlgn6jb420jvtm4dne10lad54v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ece.cov19",
+            "certificate_hash": "909938b284ee34b8944678f4221b9b21c705e1b1"
+          }
+        },
+        {
+          "client_id": "747629944283-on8nku5qthftulodkltd1a9e3vofqhaj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ece.cov19",
+            "certificate_hash": "c87d21a96b1c7ead88177bf8a39b0c813fbf2892"
+          }
+        },
+        {
+          "client_id": "747629944283-m2intopm2jd2al5bavpa3vibh038hbv9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ece.cov19",
+            "certificate_hash": "8ae8f5607075041040e2558229a47166b619c383"
+          }
+        },
+        {
+          "client_id": "747629944283-0dilsk68bb60f4dvcbtrc8io1h917tt8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBDgJBbyYlSqKL6aJTUFoRy4rsC2GajQZs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "747629944283-0dilsk68bb60f4dvcbtrc8io1h917tt8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

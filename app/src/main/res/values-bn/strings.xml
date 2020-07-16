@@ -98,6 +98,7 @@
     <string name="login_activity_phone_number_edittext">মোবাইল নম্বর লাগবে</string>
     <string name="login_activity_password_edittext">পাসওয়ার্ড লাগবে</string>
     <string name="login_activity_login_user">স্বাগতম</string>
+    <string name="login_activity_wrong">ফোন বা পাসওয়ার্ড ভুল হয়েছে</string>
     <string name="login_activity_connection_failed">নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন</string>
     <string name="login_activity_error_response">এরর! লগইন ব্যর্থ হয়েছে</string>
 
@@ -327,7 +328,6 @@
     <string name="profile_activity_no">না</string>
     <string name="profile_activity_cancel">বাতিল করুন</string>
     <string name="profile_activity_ok">ঠিক আছে</string>
-    <string name="profile_activity_Delete_profile_question">প্রোফাইল মুছে ফেলবেন?</string>
     <string name="profile_activity_proceed">অগ্রসর হোন</string>
     <string name="profile_activity_go_back">ফিরে যান</string>
     <string name="profile_activity_Delete">মুছে ফেলুন</string>

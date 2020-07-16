@@ -166,7 +166,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(ViewUserProfileActivity.this, UpdatePasswordActivity.class);
-
+                intent.putExtra("phone", loggedInUserPhone);
                 confirmAlertDialog(intent);
             }
         });
@@ -279,7 +279,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(ViewUserProfileActivity.this, UpdatePasswordActivity.class);
-
+                intent.putExtra("phone", loggedInUserPhone);
                 confirmAlertDialog(intent);
 
             }
@@ -406,7 +406,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
-        builder.setPositiveButton(getResources().getString(R.string.profile_activity_Delete_profile_question), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.profile_delete_button), new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int id) {
 
