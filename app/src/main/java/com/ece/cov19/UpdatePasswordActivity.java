@@ -26,7 +26,7 @@ import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 public class UpdatePasswordActivity extends AppCompatActivity {
 
     private EditText passwordEditText,confPasswordEditText;
-    private String password;
+    private String password,phone;
     private Button updatePassBtn;
     private ImageView backbtn;
     private String phone;
@@ -40,6 +40,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
         confPasswordEditText=findViewById(R.id.update_password_confirm_password_edittext);
         updatePassBtn=findViewById(R.id.update_password_update_btn);
         backbtn=findViewById(R.id.update_password_back_button);
+
 
         Intent intent = getIntent();
         phone = intent.getStringExtra("phone");

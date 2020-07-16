@@ -405,6 +405,9 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
 
 
+
+                loggedInUserPhone="";
+
                 Intent login= new Intent(ViewUserProfileActivity.this, LoginActivity.class);
                 login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(login);
