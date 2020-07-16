@@ -26,7 +26,7 @@ import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 public class UpdatePasswordActivity extends AppCompatActivity {
 
     private EditText passwordEditText,confPasswordEditText;
-    private String password;
+    private String password,phone;
     private Button updatePassBtn;
     private ImageView backbtn;
 
@@ -39,6 +39,19 @@ public class UpdatePasswordActivity extends AppCompatActivity {
         confPasswordEditText=findViewById(R.id.update_password_confirm_password_edittext);
         updatePassBtn=findViewById(R.id.update_password_update_btn);
         backbtn=findViewById(R.id.update_password_back_button);
+        Intent intent=getIntent();
+        if(intent.hasExtra("verifiction")){
+            if(intent.getStringExtra("verification").equals("forgotpass")){
+                phone=intent.getStringExtra("phone");
+            }
+
+        }
+        else {
+
+            phone=loggedInUserPhone;
+        }
+
+
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,7 +86,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
     private void updatePassword(String password) {
 
         RetroInterface retroInterface= RetroInstance.getRetro();
-        Call<UserDataModel> updatePass = retroInterface.updatePassword(loggedInUserPhone, password);
+        Call<UserDataModel> updatePass = retroInterface.updatePassword(phone, password);
         updatePass.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {

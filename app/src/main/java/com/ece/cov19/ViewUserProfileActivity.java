@@ -364,6 +364,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
                 sharedPreferences.edit().clear().apply();
+                loggedInUserPhone="";
                 Intent login= new Intent(ViewUserProfileActivity.this, LoginActivity.class);
                 login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(login);
