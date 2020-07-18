@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -32,6 +33,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserAge;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class BloodRequestFormActivity extends AppCompatActivity implements View.OnClickListener {
@@ -40,7 +45,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
     private String gender = "not selected", date = "not selected";
     private ImageView genderMale, backbtn, genderFemale;
     private CheckBox needCheckbox;
-    private Button submitBtn;
+    private Button submitBtn,forMyselfBtn;
     private EditText nameEditText, ageEditText, hospitalEditText;
     private Spinner divisionSpinner, districtSpinner;
     public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
@@ -56,6 +61,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
         submitBtn = findViewById(R.id.bld_req_request_btn);
         backbtn = findViewById(R.id.bld_req_back_button);
+        forMyselfBtn=findViewById(R.id.bld_req_for_myself);
 //      editTexts
         nameEditText = findViewById(R.id.bld_req_name_edittext);
         ageEditText = findViewById(R.id.bld_req_age_edittext);
@@ -135,6 +141,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         genderFemale.setOnClickListener(this);
         submitBtn.setOnClickListener(this);
         backbtn.setOnClickListener(this);
+        forMyselfBtn.setOnClickListener(this);
     }
 
     @Override
@@ -181,16 +188,22 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
 
         switch (v.getId()) {
+            case R.id.bld_req_for_myself:
+                fillAvailableInfo();
+                break;
+
             case R.id.bld_req_male_icon:
                 genderFemale.setImageResource(R.drawable.female_icon);
                 genderMale.setImageResource(R.drawable.male_icon_selected);
                 gender = "male";
                 break;
+
             case R.id.bld_req_female_icon:
                 genderFemale.setImageResource(R.drawable.female_icon_selected);
                 genderMale.setImageResource(R.drawable.male_icon);
                 gender = "female";
                 break;
+
             case R.id.bld_req_bld_a_positive:
             case R.id.bld_req_bld_b_positive:
             case R.id.bld_req_bld_o_positive:
@@ -215,6 +228,55 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
 
         }
+    }
+
+    private void fillAvailableInfo() {
+        nameEditText.setText(loggedInUserName);
+        ageEditText.setText(loggedInUserAge);
+        String bloodGroup=loggedInUserBloodGroup;
+        String gender=loggedInUserGender;
+        if(gender.equals("male")) {
+            genderFemale.setImageResource(R.drawable.female_icon);
+            genderMale.setImageResource(R.drawable.male_icon_selected);
+        }
+        else {
+            genderFemale.setImageResource(R.drawable.female_icon_selected);
+            genderMale.setImageResource(R.drawable.male_icon);
+        }
+
+
+        switch (bloodGroup) {
+            case "A+":
+                selectedBldGrp = aPositive;
+                break;
+            case "A-":
+                selectedBldGrp = aNegative;
+                break;
+            case "AB+":
+                selectedBldGrp = abPositive;
+                break;
+            case "AB-":
+                selectedBldGrp = abNegative;
+                break;
+            case "B+":
+                selectedBldGrp = bPositive;
+                break;
+            case "B-":
+                selectedBldGrp = bNegative;
+                break;
+            case "O+":
+                selectedBldGrp = oPositive;
+                break;
+            case "O-":
+                selectedBldGrp = oNegative;
+                break;
+
+
+        }
+        selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_selected);
+        selectedBldGrp.setTextColor(Color.WHITE);
+
+
     }
 
     private void verifydata() {

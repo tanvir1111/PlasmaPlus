@@ -5,7 +5,7 @@
     <string name="navheader_title">Medicare</string>
     <string name="navheadersubtitle">Plasma and Blood Banking App</string>
     <string name="navheaderdesc">Navigation Header</string>
-    
+
     <string name="profile">View Profile</string>
     <string name="contact_us">Contact Us</string>
     <string name="shareApp">Share this App</string>
@@ -29,6 +29,7 @@
     <string name="change_language">Change Language</string>
     <string name="cancel">Cancel</string>
     <string name="image_retrieve_failed">Error! Image retrieve failed</string>
+
 <!--  common strings ... removing repeats ends  -->
 
     <string name="dashboard_header">Dashboard</string>
