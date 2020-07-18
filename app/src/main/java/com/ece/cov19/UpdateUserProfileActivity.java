@@ -20,7 +20,6 @@ import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.Functions.ToastCreator;
@@ -395,7 +394,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
                verifyData();
             }
         });
-        builder.setNegativeButton(getResources().getString(R.string.update_activity_cancel), new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();

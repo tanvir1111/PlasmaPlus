@@ -1,16 +1,12 @@
 package com.ece.cov19;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.cardview.widget.CardView;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -26,28 +22,21 @@ import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.animation.TranslateAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ece.cov19.DataModels.DashBoardNumberModel;
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.LoggedInUserData;
-import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.Functions.ToastCreator;
-import com.ece.cov19.RecyclerViews.FindDonorAlphaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -56,7 +45,6 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 import retrofit2.Call;
@@ -287,8 +275,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                         requestResponseSwitcher = 1;
                         fromDonorsCardView.setVisibility(View.VISIBLE);
                         fromPatientsCardView.setVisibility(View.VISIBLE);
-                        numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.dashboard_text_requests));
-                        numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.dashboard_text_requests));
+                        numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.requests));
+                        numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.requests));
                         numberOfRequestsFromDonors.setText(noOfResponses);
                         numberOfRequestsFromPatients.setText(noOfRequests);
                     }
@@ -298,8 +286,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                         requestResponseSwitcher = 2;
                         fromDonorsCardView.setVisibility(View.VISIBLE);
                         fromPatientsCardView.setVisibility(View.VISIBLE);
-                        numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.dashboard_text_responses));
-                        numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.dashboard_text_responses));
+                        numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.responses));
+                        numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.responses));
                         numberOfRequestsFromDonors.setText(noOfRequests);
                         numberOfRequestsFromPatients.setText(noOfResponses);
                     }
@@ -449,13 +437,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     private void languageAlertDialog(String lang){
         AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);
-        builder.setMessage(getResources().getString(R.string.dashboard_activity_are_you_sure));
-        builder.setPositiveButton(getResources().getString(R.string.dashboard_activity_change_language), new DialogInterface.OnClickListener() {
+        builder.setMessage(getResources().getString(R.string.are_you_sure));
+        builder.setPositiveButton(getResources().getString(R.string.change_language), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                setLocale(lang);
             }
         })
-                .setNegativeButton(getResources().getString(R.string.dashboard_activity_cancel), new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -548,8 +536,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     requestResponseSwitcher = 1;
                     slideDown(fromDonorsCardView);
                     slideDown(fromPatientsCardView);
-                    numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.dashboard_text_requests));
-                    numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.dashboard_text_requests));
+                    numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.requests));
+                    numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.requests));
                     numberOfRequestsFromDonors.setText(noOfResponses);
                     numberOfRequestsFromPatients.setText(noOfRequests);
 
@@ -571,8 +559,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     requestResponseSwitcher = 2;
                     slideDown(fromDonorsCardView);
                     slideDown(fromPatientsCardView);
-                    numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.dashboard_text_responses));
-                    numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.dashboard_text_responses));
+                    numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.responses));
+                    numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.responses));
                     numberOfRequestsFromDonors.setText(noOfRequests);
                     numberOfRequestsFromPatients.setText(noOfResponses);
                     break;
@@ -773,7 +761,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
 
-                ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.dashboard_image_retrieve_failed));
+                ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.image_retrieve_failed));
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {

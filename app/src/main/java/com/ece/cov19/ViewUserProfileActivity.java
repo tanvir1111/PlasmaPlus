@@ -29,7 +29,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.LoggedInUserData;
@@ -303,13 +302,13 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
     private void confirmAlertDialog(final Intent intent){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
+        builder.setMessage(getResources().getString(R.string.are_you_sure));
         builder.setPositiveButton(getResources().getString(R.string.profile_activity_yes), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 showAlertDialog(intent);
             }
         })
-                .setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -351,7 +350,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                 }
             }
         });
-        builder.setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -366,7 +365,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
     private void logoutAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
+        builder.setMessage(getResources().getString(R.string.are_you_sure));
         builder.setPositiveButton(getResources().getString(R.string.profile_activity_yes), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
@@ -430,13 +429,13 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
     private void updateAlertDialog(final Intent intent){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
+        builder.setMessage(getResources().getString(R.string.are_you_sure));
         builder.setPositiveButton(getResources().getString(R.string.profile_activity_yes), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 startActivity(intent);
             }
         })
-                .setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -449,7 +448,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
     private void deleteProfileAlertDialog(){
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
+        builder.setMessage(getResources().getString(R.string.are_you_sure));
         builder.setPositiveButton(getResources().getString(R.string.profile_delete_button), new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int id) {
@@ -507,7 +506,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                                     });
                                 }
                             })
-                                    .setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
+                                    .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             dialog.dismiss();
                                         }
@@ -533,7 +532,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
             }
         })
-                .setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -547,13 +546,13 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
     private void deleteImageAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
+        builder.setMessage(getResources().getString(R.string.are_you_sure));
         builder.setPositiveButton(getResources().getString(R.string.profile_activity_Delete), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 deleteImage(loggedInUserPhone);
             }
         })
-                .setNegativeButton(getResources().getString(R.string.profile_activity_cancel), new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
                     }
@@ -738,7 +737,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_image_retrieve_failed));
+                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.image_retrieve_failed));
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {

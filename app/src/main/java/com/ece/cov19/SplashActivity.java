@@ -193,7 +193,7 @@ public class SplashActivity extends AppCompatActivity {
                 @Override
                 public void onFailure(Call<UserDataModel> call, Throwable t) {
                     
-                    ToastCreator.toastCreatorRed(SplashActivity.this,getResources().getString(R.string.splash_error));
+                    ToastCreator.toastCreatorRed(SplashActivity.this,getResources().getString(R.string.connection_error));
 
                 }
             });

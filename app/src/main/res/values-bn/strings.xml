@@ -6,7 +6,7 @@
     <string name="navheadersubtitle">প্লাজমা এন্ড ব্লাড ব্যাংকিং অ্যাপ</string>
     <string name="navheaderdesc">নেভিগেশন হেডার</string>
     <string name="profile">প্রোফাইল</string>
-    <string name="change_language">ভাষা পরিবর্তন</string>
+
     <string name="contact_us">যোগাযোগ</string>
     <string name="shareApp">শেয়ার অ্যাপ</string>
     <string name="emailUs">ইমেইল করুন</string>
@@ -14,37 +14,47 @@
     <string name="language_dialog_message">Select Language (ভাষা নির্বাচন করুন)</string>
     <string name="language_dialog_english">English</string>
     <string name="language_dialog_bengali">বাংলা</string>
-
+    <!--  common strings ... removing repeats  -->
     <string name="welcome">স্বাগতম</string>
-    <string name="splash_error">নেটওয়ার্ক সমস্য! আবার চেষ্টা করুন</string>
-
+    <string name="connection_error">নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন</string>
+    <string name="find_a_donor">দাতা সার্চ</string>
+    <string name="add_patient">নতুন গ্রহীতা</string>
+    <string name="requests">অনুরোধ</string>
+    <string name="responses">প্রতিক্রিয়া</string>
+    <string name="my_patients">আমার গ্রহীতাসমূহ</string>
+    <string name="are_you_sure">নিশ্চিত?</string>
+    <string name="explore_patients">গ্রহীতা অনুসন্ধান</string>
+    <string name="explore_donors">দাতা অনুসন্ধান</string>
+    <string name="change_language">ভাষা পরিবর্তন করুন</string>
+    <string name="cancel">বাতিল করুন</string>
+    <string name="image_retrieve_failed">এরর! ছবি ডাউনলোড ব্যর্থ হয়েছে</string>
+    <!--  common strings ... removing repeats ends  -->
     <string name="dashboard_header">মূল পাতা</string>
     <string name="dashboard_welcome_to">মেডিকেয়ারে স্বাগতম!</string>
-    <string name="dashboard_text_find_donor">দাতা সার্চ</string>
-    <string name="dashboard_text_add_patient">নতুন গ্রহীতা</string>
-    <string name="dashboard_text_requests">অনুরোধ</string>
-    <string name="dashboard_text_responses">প্রতিক্রিয়া</string>
+
+
+
+
     <string name="dashboard_text_explore">অনুসন্ধান</string>
-    <string name="dashboard_text_my_patients">আমার গ্রহীতাসমূহ</string>
+
     <string name="dashboard_text_no_of_patients">গ্রহীতা</string>
-    <string name="dashboard_text_explore_all_patients">গ্রহীতা অনুসন্ধান</string>
+
     <string name="dashboard_text_requestB">গ্রহীতা থেকে</string>
-    <string name="dashboard_text_no_of_requests_from_patients">অনুরোধ</string>
-    <string name="dashboard_text_no_of_requests_from_donors">অনুরোধ</string>
+
+
     <string name="dashboard_text_requestA">দাতা থেকে</string>
     <string name="dashboard_text_no_of_donors">দাতা</string>
-    <string name="dashboard_text_explore_all_donors">দাতা অনুসন্ধান</string>
+
     <string name="dashboard_error_message">ড্যাসবোর্ড আপডেট ফেইল হয়েছে</string>
     <string name="dashboard_text_Press_back_one_more_time_to_exit">প্রস্থান করার জন্য পুনরায় চাপুন</string>
-    <string name="dashboard_activity_are_you_sure">নিশ্চিত?</string>
-    <string name="dashboard_activity_change_language">ভাষা পরিবর্তন করুন</string>
-    <string name="dashboard_activity_cancel">বাতিল করুন</string>
-    <string name="dashboard_image_retrieve_failed">এরর! ছবি ডাউনলোড ব্যর্থ হয়েছে</string>
 
 
 
 
-    <string name="bld_req_heading_textview">নতুন গ্রহীতা</string>
+
+
+
+
     <string name="bld_req_label_name">নাম</string>
     <string name="bld_req_name_edittext">এখানে নাম লাগবে</string>
     <string name="bld_req_label_age">বয়স</string>
@@ -70,16 +80,16 @@
     <string name="donor_requests_show_pending_requests">অমীমাংসিত অনুরোধ দেখুন</string>
 
     <string name="donor_response_header">দাতার প্রতিক্রিয়া</string>
-    <string name="donor_response_textview">আমার গ্রহীতাসমূহ</string>
 
-    <string name="explore_patients_header">গ্রহীতা অনুসন্ধান</string>
+
+
     <string name="explore_patients_label_bld_grp">রক্তের গ্রুপ</string>
     <string name="explore_patients_label_district">জেলা</string>
     <string name="explore_patients_district_edittext">জেলা দিন</string>
     <string name="explore_patients_textview">প্রাপ্ত গ্রহীতা</string>
 
-    <string name="find_donor_fordonors_header">দাতা সার্চ</string>
-    <string name="find_donor_forpatients_textview">আমার গ্রহীতাসমূহ</string>
+
+
     <string name="find_donor_fordonors_label_district">জেলাভিত্তিক সার্চ</string>
     <string name="find_donor_fordonors_textview">প্রাপ্ত দাতা</string>
     <string name="find_donor_fordonors_nomatchtextview">যোগ্য দাতা পাওয়া যায় নি</string>
@@ -98,13 +108,13 @@
     <string name="login_activity_phone_number_edittext">মোবাইল নম্বর লাগবে</string>
     <string name="login_activity_password_edittext">পাসওয়ার্ড লাগবে</string>
     <string name="login_activity_wrong">ফোন বা পাসওয়ার্ড ভুল হয়েছে</string>
-    <string name="login_activity_connection_failed">নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন</string>
+
     <string name="login_activity_error_response">এরর! লগইন ব্যর্থ হয়েছে</string>
 
-    <string name="my_patients_header">আমার গ্রহীতাসমূহ</string>
+
     <string name="my_patients_textview">প্রাপ্ত গ্রহীতা</string>
 
-    <string name="patient_requests_textview">আমার গ্রহীতাসমূহ</string>
+
     <string name="patient_requests_header">দাতার থেকে অনুরোধ</string>
 
     <string name="patients_response_header">গ্রহীতার প্রতিক্রিয়া</string>
@@ -120,7 +130,7 @@
     <string name="phn_ver2_otp">******</string>
     <string name="phn_ver2_otp_button">OTP নিশ্চিত করুন</string>
 
-    <string name="search_donor_header">দাতা অনুসন্ধান</string>
+
     <string name="search_donor_label_bld_grp">রক্তের গ্রুপ</string>
     <string name="search_donor_label_district">জেলা</string>
     <string name="search_donor_district_edittext">জেলা দিন</string>
@@ -172,7 +182,6 @@
     <string name="update_patient_activity_update_error">এরর! আবার চেষ্টা করুন</string>
     <string name="update_patient_activity_update_failed">নেটওয়ার্ক সমস্যা! আপডেট ব্যর্থ হয়েছে</string>
     <string name="update_patient_activity_confirm_update">হালনাগাদ নিশ্চিত?</string>
-    <string name="update_patient_activity_cancel">বাতিল করুন</string>
     <string name="update_patient_activity_confirm">হ্যাঁ</string>
 
 
@@ -196,7 +205,7 @@
     <string name="update_activity_update_successful">আপডেট সফল হয়েছে!</string>
     <string name="update_activity_update_error">এরর! আবার চেষ্টা করুন</string>
     <string name="update_activity_confirm_update">হালনাগাদ নিশ্চিত?</string>
-    <string name="update_activity_cancel">বাতিল করুন</string>
+
     <string name="update_activity_confirm">হ্যাঁ</string>
 
     <string name="donor_profile_header">দাতার প্রোফাইল</string>
@@ -220,7 +229,6 @@
 
     <string name="donor_profile_activity_send_request">অনুরোধ পাঠাবেন?</string>
     <string name="donor_profile_activity_yes">হ্যাঁ</string>
-    <string name="donor_profile_activity_cancel">বাতিল করুন</string>
     <string name="donor_profile_activity_Request_Sent">আবেদন প্রেরিত হয়েছে!দাতার প্রতিক্রিয়ার জন্য অপেক্ষা করুন</string>
     <string name="donor_profile_activity_Accept_Request">আবেদন গ্রহন করুন</string>
     <string name="donor_profile_activity_Decline_Request">আবেদন প্রত্যাখ্যান করুন</string>
@@ -231,7 +239,7 @@
     <string name="donor_profile_activity_Accepted">সম্মত হয়েছে</string>
     <string name="donor_profile_activity_Declined">প্রত্যাখ্যান করা হয়েছে</string>
     <string name="donor_profile_activity_Pending">অমীমাংসিত</string>
-    <string name="donor_profile_activity_confirm">নিশ্চিত?</string>
+
     <string name="donor_profile_activity_notification_accepted_1">অনুরোধ গ্রহন করেছে!</string>
     <string name="donor_profile_activity_notification_accepted_2">আপনার অনুরোধে সম্মতি দিয়েছে। গ্রহীতার প্রতিক্রিয়া দেখুন।</string>
     <string name="donor_profile_activity_notification_declined_1">অনুরোধ প্রত্যাখ্যান করেছে!</string>
@@ -262,9 +270,9 @@
     <string name="patient_profile_activity_dialog_msg">পাসওয়ার্ড দিন</string>
     <string name="patient_profile_activity_Wrong_Password">ভুল পাসওয়ার্ড</string>
     <string name="patient_profile_activity_ok">ঠিক আছে</string>
-    <string name="patient_profile_activity_Are_you_sure">নিশ্চিত?</string>
+
     <string name="patient_profile_activity_yes">হ্যাঁ</string>
-    <string name="patient_profile_activity_cancel">বাতিল করুন</string>
+
     <string name="patient_profile_activity_Delete_profile_question">প্রোফাইল মুছে ফেলবেন?</string>
     <string name="patient_profile_activity_proceed">অগ্রসর হোন</string>
     <string name="patient_profile_activity_go_back">ফিরে যান</string>
@@ -320,12 +328,12 @@
     <string name="profile_change_password_btn">পাসওয়ার্ড পরিবর্তন</string>
     <string name="profile_delete_button">প্রোফাইল মুছে ফেলুন</string>
     <string name="profile_activity_Not_a_donor">দাতা নন</string>
-    <string name="profile_activity_Are_you_Sure">নিশ্চিত?</string>
+
     <string name="profile_activity_Enter_Password">পাসওয়ার্ড দিন</string>
     <string name="profile_activity_Wrong_Password">ভুল পাসওয়ার্ড</string>
     <string name="profile_activity_yes">হ্যাঁ</string>
     <string name="profile_activity_no">না</string>
-    <string name="profile_activity_cancel">বাতিল করুন</string>
+
     <string name="profile_activity_ok">ঠিক আছে</string>
     <string name="profile_activity_proceed">অগ্রসর হোন</string>
     <string name="profile_activity_go_back">ফিরে যান</string>
@@ -337,7 +345,7 @@
     <string name="profile_activity_connection_failed">নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন</string>
     <string name="profile_activity_image_did_not_upload">ছবি আপলোড সফল হয় নি</string>
     <string name="profile_activity_image_upload_failed">এরর! ছবি আপলোড ব্যর্থ হয়েছে</string>
-    <string name="profile_activity_image_retrieve_failed">এরর! ছবি ডাউনলোড ব্যর্থ হয়েছে</string>
+
     <string name="profile_activity_image_delete_failed">এরর! ছবি মুছে ফেলা ব্যর্থ হয়েছে</string>
     <string name="profile_activity_image_not_found">ছবি পাওয়া যায় নি</string>
 

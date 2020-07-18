@@ -71,7 +71,7 @@
                     android:layout_marginStart="32dp"
                     android:layout_marginTop="24dp"
                     android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/donor_response_textview"
+                    android:text="@string/my_patients"
                     android:textColor="#000000"
                     android:textSize="17sp"
                     app:layout_constraintStart_toStartOf="parent"

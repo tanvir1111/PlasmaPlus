@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="-16dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="@string/my_patients_header"
+        android:text="@string/my_patients"
         android:textColor="@color/textColorDark"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/my_patients_back_button"

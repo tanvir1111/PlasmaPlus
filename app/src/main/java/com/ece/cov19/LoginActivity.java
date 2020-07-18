@@ -232,7 +232,7 @@ public class LoginActivity extends AppCompatActivity {
                 else {
                     progressBar.setVisibility(View.GONE);
 
-                    ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.login_activity_connection_failed));
+                    ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.connection_error));
                 }
 
             }

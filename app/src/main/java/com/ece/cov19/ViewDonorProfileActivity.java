@@ -15,7 +15,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,7 +33,6 @@ import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
-import static com.ece.cov19.DataModels.FindPatientData.findPatientDate;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
@@ -224,7 +222,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
             }
         });
-        builder.setNegativeButton(getResources().getString(R.string.donor_profile_activity_cancel), new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
@@ -238,7 +236,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     private void requestOperationAlertDialog(String getstatus) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewDonorProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.donor_profile_activity_confirm));
+        builder.setMessage(getResources().getString(R.string.are_you_sure));
 
 
         builder.setPositiveButton(getResources().getString(R.string.donor_profile_activity_yes), new DialogInterface.OnClickListener() {
@@ -248,7 +246,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                 
             }
         });
-        builder.setNegativeButton(getResources().getString(R.string.donor_profile_activity_cancel), new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
