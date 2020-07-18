@@ -1,7 +1,6 @@
 package com.ece.cov19;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,7 +9,6 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.method.PasswordTransformationMethod;
 import android.util.DisplayMetrics;
-import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.Functions.ToastCreator;
@@ -43,8 +40,6 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
-import static com.ece.cov19.SplashActivity.Language_pref;
-import static com.ece.cov19.SplashActivity.Selected_language;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -202,7 +197,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.body().getServerMsg().equals("Success")) {
                     progressBar.setVisibility(View.GONE);
 
-                    ToastCreator.toastCreatorGreen(LoginActivity.this, getResources().getString(R.string.login_activity_login_user)+" " + response.body().getName());
+                    ToastCreator.toastCreatorGreen(LoginActivity.this, getResources().getString(R.string.welcome)+" " + response.body().getName());
 
 //                  Storing phone and password to shared preferences
                     SharedPreferences loginSharedPrefs = getSharedPreferences(LOGIN_SHARED_PREFS, MODE_PRIVATE);

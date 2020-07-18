@@ -15,7 +15,7 @@
     <string name="language_dialog_english">English</string>
     <string name="language_dialog_bengali">বাংলা</string>
 
-    <string name="splash_welcome">Welcome</string>
+    <string name="welcome">স্বাগতম</string>
     <string name="splash_error">Connection Failed! Check your connection and try again</string>
 
 
@@ -95,7 +95,6 @@
     <string name="login_activity_on_back_pressed">Press back one more time to exit</string>
     <string name="login_activity_phone_number_edittext">Phone Number Required</string>
     <string name="login_activity_password_edittext">Password Required</string>
-    <string name="login_activity_login_user">Welcome</string>
     <string name="login_activity_connection_failed">Connection Failed! Check your connection and try again</string>
     <string name="login_activity_error_response">An error occurred! Check your connection and try again</string>
 
@@ -222,7 +221,7 @@
     <string name="donor_profile_activity_Decline_Request">Decline Request</string>
     <string name="donor_profile_activity_Call_Donor">Call Donor</string>
     <string name="donor_profile_activity_Send_SMS">Send SMS</string>
-    <string name="donor_profile_activity_Ask_for_Help">Ask for Help</string>
+    <string name="donor_profile_activity_Ask_for_Help">Ask For Help</string>
     <string name="donor_profile_activity_Not_Permitted">Not Permitted!</string>
     <string name="donor_profile_activity_Accepted">Accepted</string>
     <string name="donor_profile_activity_Declined">Declined</string>

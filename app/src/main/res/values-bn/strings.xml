@@ -15,7 +15,7 @@
     <string name="language_dialog_english">English</string>
     <string name="language_dialog_bengali">বাংলা</string>
 
-    <string name="splash_welcome">স্বাগতম</string>
+    <string name="welcome">স্বাগতম</string>
     <string name="splash_error">নেটওয়ার্ক সমস্য! আবার চেষ্টা করুন</string>
 
     <string name="dashboard_header">মূল পাতা</string>
@@ -97,7 +97,7 @@
     <string name="login_activity_on_back_pressed">বের হতে আরেকবার ব্যাক প্রেস করুন</string>
     <string name="login_activity_phone_number_edittext">মোবাইল নম্বর লাগবে</string>
     <string name="login_activity_password_edittext">পাসওয়ার্ড লাগবে</string>
-    <string name="login_activity_login_user">স্বাগতম</string>
+
     <string name="login_activity_connection_failed">নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন</string>
     <string name="login_activity_error_response">এরর! লগইন ব্যর্থ হয়েছে</string>
 
