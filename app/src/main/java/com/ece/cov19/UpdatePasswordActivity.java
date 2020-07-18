@@ -39,18 +39,10 @@ public class UpdatePasswordActivity extends AppCompatActivity {
         confPasswordEditText=findViewById(R.id.update_password_confirm_password_edittext);
         updatePassBtn=findViewById(R.id.update_password_update_btn);
         backbtn=findViewById(R.id.update_password_back_button);
-        Intent intent=getIntent();
-        if(intent.hasExtra("verifiction")){
-            if(intent.getStringExtra("verification").equals("forgotpass")){
-                phone=intent.getStringExtra("phone");
-            }
 
-        }
-        else {
 
-            phone=loggedInUserPhone;
-        }
-
+        Intent intent = getIntent();
+        phone = intent.getStringExtra("phone");
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override

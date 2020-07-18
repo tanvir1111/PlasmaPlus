@@ -219,7 +219,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     } else if (response.body().getEligibility().equals("not_eligible")) {
                         loggedInUserEligibility = "not_eligible";
                     }
-//                    ToastCreator.toastCreatorGreen(getApplicationContext(),loggedInUserEligibility);
+                    //ToastCreator.toastCreatorGreen(getApplicationContext(),loggedInUserEligibility);
 
 
                 }

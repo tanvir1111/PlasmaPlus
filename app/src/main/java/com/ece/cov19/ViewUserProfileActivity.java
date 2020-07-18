@@ -1,5 +1,6 @@
 package com.ece.cov19;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -18,6 +19,7 @@ import android.os.ParcelFileDescriptor;
 import android.text.InputType;
 import android.util.Base64;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.ContextThemeWrapper;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -35,6 +37,10 @@ import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -46,6 +52,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static android.content.ContentValues.TAG;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserAge;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDistrict;
@@ -166,7 +173,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(ViewUserProfileActivity.this, UpdatePasswordActivity.class);
-
+                intent.putExtra("phone", loggedInUserPhone);
                 confirmAlertDialog(intent);
             }
         });
@@ -279,7 +286,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(ViewUserProfileActivity.this, UpdatePasswordActivity.class);
-
+                intent.putExtra("phone", loggedInUserPhone);
                 confirmAlertDialog(intent);
 
             }
@@ -364,7 +371,43 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int id) {
                 SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
                 sharedPreferences.edit().clear().apply();
+
+                FirebaseInstanceId.getInstance().getInstanceId()
+                        .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<InstanceIdResult> task) {
+                                if (!task.isSuccessful()) {
+//To do//
+                                    return;
+                                }
+
+// Get the Instance ID token//
+                                String token = task.getResult().getToken();
+                                String msg = getString(R.string.fcm_token, token);
+                                Log.d(TAG, msg);
+
+                                RetroInterface retroInterface = RetroInstance.getRetro();
+                                Call<UserDataModel> incomingResponse = retroInterface.sendToken(LoggedInUserData.loggedInUserPhone,token);
+                                incomingResponse.enqueue(new Callback<UserDataModel>() {
+                                    @Override
+                                    public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<UserDataModel> call, Throwable t) {
+
+                                    }
+                                });
+
+                            }
+                        });
+
+
+
+
                 loggedInUserPhone="";
+
                 Intent login= new Intent(ViewUserProfileActivity.this, LoginActivity.class);
                 login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(login);
@@ -407,7 +450,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.profile_activity_Are_you_Sure));
-        builder.setPositiveButton(getResources().getString(R.string.profile_activity_Delete_profile_question), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.profile_delete_button), new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int id) {
 
