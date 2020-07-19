@@ -105,7 +105,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         need = intent.getStringExtra("need");
         phone = intent.getStringExtra("phone");
 
-        if(need.equals("Plasma")){
+        if(need.toLowerCase().equals("plasma")){
             needCheckbox.setChecked(true);
         }
         ArrayAdapter arrayAdapter = (ArrayAdapter) divisionSpinner.getAdapter();
@@ -122,7 +122,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         ageEditText.setText(age);
         hospitalEditText.setText(hospital);
 
-        if(gender.equals("male")) {
+        if(gender.toLowerCase().equals("male")) {
             genderFemale.setImageResource(R.drawable.female_icon);
             genderMale.setImageResource(R.drawable.male_icon_selected);
         }
@@ -372,7 +372,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         sendingData.enqueue(new Callback<PatientDataModel>() {
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
-                if (response.body().getServerMsg().equals("Success")) {
+                if (response.body().getServerMsg().toLowerCase().equals("success")) {
                     updateAlertDialog();
 
                 } else {

@@ -92,7 +92,7 @@ public class SearchDonorAdapter extends RecyclerView.Adapter<SearchDonorViewHold
         holder.bloodTextView.setText(userDataModel.getBloodGroup());
         holder.donortype.setText(userDataModel.getDonor());
 
-        if(userDataModel.getGender().equals("male")) {
+        if(userDataModel.getGender().toLowerCase().equals("male")) {
             holder.donorImageView.setImageResource(R.drawable.profile_icon_male);
         } else {
             holder.donorImageView.setImageResource(R.drawable.profile_icon_female);
@@ -181,13 +181,13 @@ public class SearchDonorAdapter extends RecyclerView.Adapter<SearchDonorViewHold
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
 
-                if (response.body().getServerMsg().equals("true")) {
+                if (response.body().getServerMsg().toLowerCase().equals("true")) {
                     String image = response.body().getImage();
                     byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
                     insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
                     insertBitmap = scaleImage(insertBitmap);
                     showImage(genderImageView, insertBitmap, R.drawable.profile_icon_male);
-                } else if (response.body().getServerMsg().equals("false")) {
+                } else if (response.body().getServerMsg().toLowerCase().equals("false")) {
 
                     if (loggedInUserGender.toLowerCase().equals("male")) {
                         showDrawable(genderImageView, R.drawable.profile_icon_male);

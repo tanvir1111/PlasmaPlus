@@ -109,7 +109,7 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            if(verification.equals("signup")) {
+                            if(verification.toLowerCase().equals("signup")) {
                                 Intent intent = new Intent(PhoneVerificationActivity2.this, RegistrationActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.putExtra("phone", phonenumber);
@@ -118,7 +118,7 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
                                 finish();
                             }
 
-                            else if(verification.equals("forgotpass")){
+                            else if(verification.toLowerCase().equals("forgotpass")){
                                 Intent intent = new Intent(PhoneVerificationActivity2.this, UpdatePasswordActivity.class);
                                 intent.putExtra("phone", phonenumber);
                                 intent.putExtra("verification", verification);

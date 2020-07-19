@@ -207,7 +207,7 @@ public class SearchDonorActivity extends AppCompatActivity {
                     }
 
                     for (UserDataModel initialDataModel : initialModels) {
-                        if (initialDataModel.getDonor().equals("Blood") || initialDataModel.getDonor().equals("Plasma")) {
+                        if (initialDataModel.getDonor().toLowerCase().equals("blood") || initialDataModel.getDonor().toLowerCase().equals("plasma")) {
                             userDataModels.add(initialDataModel);
                         }
                     }

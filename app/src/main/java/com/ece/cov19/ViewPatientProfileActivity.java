@@ -46,6 +46,7 @@ import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDonorInfo;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserEligibility;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
@@ -136,7 +137,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                if(donateToHelpButton.getText().toString().equals(getResources().getString(R.string.patient_profile_donate_button))) {
+                if(donateToHelpButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.patient_profile_donate_button).toLowerCase())) {
 
                     donateToHelpAlertDialog();
                 }
@@ -147,7 +148,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(updateButton.getText().toString().equals(getResources().getString(R.string.patient_profile_update_button))) {
+                if(updateButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.patient_profile_update_button).toLowerCase())) {
                     Intent intent = new Intent(ViewPatientProfileActivity.this, UpdatePatientProfileActivity.class);
                     intent.putExtra("name", name);
                     intent.putExtra("age", age);
@@ -165,7 +166,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     requestOperationAlertDialog("accept",phone,getResources().getString(R.string.patient_profile_activity_notification_accepted_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_accepted_2),"DonorResponseActivity");
 
                 }
-                else if(updateButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Call_Patient))){
+                else if(updateButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.patient_profile_activity_Call_Patient).toLowerCase())){
                     Intent intent = new Intent(Intent.ACTION_DIAL);
                     intent.setData(Uri.parse("tel:"+phone));
                     startActivity(intent);
@@ -176,14 +177,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_delete_button))) {
+                if(deleteButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.patient_profile_delete_button).toLowerCase())) {
                     deleteAlertDialog();
                 }
                 else if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Decline_Request))){
                     requestOperationAlertDialog("decline",phone,getResources().getString(R.string.patient_profile_activity_notification_declined_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_declined_2),"DonorResponseActivity");
 
                 }
-                else if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Send_SMS))){
+                else if(deleteButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.patient_profile_activity_Send_SMS).toLowerCase())){
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_SENDTO);
                     intent.setData(Uri.parse("smsto:"));
@@ -278,7 +279,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                                         @Override
                                         public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
                                             progressBar.setVisibility(View.GONE);
-                                            if(response.body().getServerMsg().equals("Success")){
+                                            if(response.body().getServerMsg().toLowerCase().equals("success")){
                                                 ToastCreator.toastCreatorGreen(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Patient_Record_Deleted));
                                                 finish();
                                             }
@@ -411,7 +412,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
-                if (response.body().getServerMsg().equals("Success")) {
+                if (response.body().getServerMsg().toLowerCase().equals("success")) {
                     ToastCreator.toastCreatorGreen(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Request_Sent));
 
                     //Push Notification
@@ -455,7 +456,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
                 if(response.isSuccessful()){
-                    if(response.body().getServerMsg().equals("no requests")){
+                    if(response.body().getServerMsg().toLowerCase().equals("no requests")){
                         if(phone.equals(loggedInUserPhone)){
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
@@ -463,15 +464,26 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             deleteButton.setVisibility(View.VISIBLE);
                             deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Delete_Profile));
                         }
-                        else if(loggedInUserEligibility.equals("not_eligible")){
+                        else if(loggedInUserEligibility.toLowerCase().equals("not_eligible")){
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                         }
 
                         else if(bloodGroup.equals(loggedInUserBloodGroup)) {
-                            donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
+                            if(need.toLowerCase().equals("blood") && (loggedInUserDonorInfo.toLowerCase().equals("blood")||
+                            loggedInUserDonorInfo.toLowerCase().equals("blood and plasma"))) {
+                                donateToHelpButton.setVisibility(View.VISIBLE);
+                                donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
+                            }
+                            else if(need.toLowerCase().equals("plasma") && (loggedInUserDonorInfo.toLowerCase().equals("plasma")||
+                                    loggedInUserDonorInfo.toLowerCase().equals("blood and plasma"))){
+                                donateToHelpButton.setVisibility(View.VISIBLE);
+                                donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
+                            }
+                            else{
+                                donateToHelpButton.setVisibility(View.GONE);
+                            }
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                         }
@@ -481,7 +493,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             deleteButton.setVisibility(View.GONE);
                         }
                     }
-                    else if(response.body().getServerMsg().equals("Pending")){
+                    else if(response.body().getServerMsg().toLowerCase().equals("pending")){
                         if(getIntent().getStringExtra("activity").equals("PatientResponseActivity")){
 
                             donateToHelpButton.setVisibility(View.VISIBLE);
@@ -686,10 +698,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
 
-                if(response.body().getServerMsg().equals("true")) {
+                if(response.body().getServerMsg().toLowerCase().equals("true")) {
                     downloadImage(findPatientPhone);
                 }
-                else if(response.body().getServerMsg().equals("false")){
+                else if(response.body().getServerMsg().toLowerCase().equals("false")){
                     ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_connection_failed));
 
                 }
@@ -710,7 +722,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
 
-                if(response.body().getServerMsg().equals("true")){
+                if(response.body().getServerMsg().toLowerCase().equals("true")){
                     String image = response.body().getImage();
                     byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
                     insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
@@ -718,7 +730,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     showImage(genderImageView, insertBitmap, R.drawable.profile_icon_male);
                 }
 
-                else if(response.body().getServerMsg().equals("false")) {
+                else if(response.body().getServerMsg().toLowerCase().equals("false")) {
 
                     if (gender.toLowerCase().equals("male")) {
                         genderImageView.setImageResource(R.drawable.profile_icon_male);
@@ -750,7 +762,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         incomingResponse.enqueue(new Callback<ImageDataModel>() {
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
-                if(response.body().getServerMsg().equals("true")) {
+                if(response.body().getServerMsg().toLowerCase().equals("true")) {
                     downloadImage(findPatientPhone);
                     BitmapFactory.Options o = new BitmapFactory.Options();
                     o.inTargetDensity = DisplayMetrics.DENSITY_DEFAULT;
@@ -766,7 +778,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
 
                 }
-                else if(response.body().getServerMsg().equals("false")){
+                else if(response.body().getServerMsg().toLowerCase().equals("false")){
                     ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_image_not_found));
 
                 }

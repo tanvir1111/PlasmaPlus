@@ -85,21 +85,21 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
         downloadImage(userDataModel.getPhone(), holder.donorImageView);
 
 
-        if(userDataModel.getServerMsg().equals("Pending")) {
+        if(userDataModel.getServerMsg().toLowerCase().equals("pending")) {
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Pending));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_orange);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
-        else if(userDataModel.getServerMsg().equals("Accepted")){
+        else if(userDataModel.getServerMsg().toLowerCase().equals("accepted")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Accepted));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
-        else if(userDataModel.getServerMsg().equals("Declined")){
+        else if(userDataModel.getServerMsg().toLowerCase().equals("declined")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Declined));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_red);
@@ -110,7 +110,7 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
 
         //ToastCreator.toastCreator(holder.itemView.getContext(), userDataModel.getServerMsg(), Toast.LENGTH_SHORT).show();
 
-            if(userDataModel.getGender().equals("male")) {
+            if(userDataModel.getGender().toLowerCase().equals("male")) {
             holder.donorImageView.setImageResource(R.drawable.profile_icon_male);
         } else {
             holder.donorImageView.setImageResource(R.drawable.profile_icon_female);
@@ -199,13 +199,13 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
 
-                if (response.body().getServerMsg().equals("true")) {
+                if (response.body().getServerMsg().toLowerCase().equals("true")) {
                     String image = response.body().getImage();
                     byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
                     insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
                     insertBitmap = scaleImage(insertBitmap);
                     showImage(genderImageView, insertBitmap, R.drawable.profile_icon_male);
-                } else if (response.body().getServerMsg().equals("false")) {
+                } else if (response.body().getServerMsg().toLowerCase().equals("false")) {
 
                     if (loggedInUserGender.toLowerCase().equals("male")) {
                         showDrawable(genderImageView, R.drawable.profile_icon_male);

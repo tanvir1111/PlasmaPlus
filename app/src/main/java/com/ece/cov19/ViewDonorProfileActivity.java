@@ -293,7 +293,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
-                    if(response.body().getServerMsg().equals("no requests")) {
+                    if(response.body().getServerMsg().toLowerCase().equals("no requests")) {
                         if(donorphone.equals(loggedInUserPhone)){
                             askForHelpBtn.setVisibility(View.GONE);
                             acceptBtn.setVisibility(View.GONE);
@@ -305,7 +305,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                             declineBtn.setVisibility(View.GONE);
                         }
                     }
-                    else if (response.body().getServerMsg().equals("Pending")) {
+                    else if (response.body().getServerMsg().toLowerCase().equals("pending")) {
                         if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.donor_profile_activity_Pending));
@@ -319,7 +319,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         }
 
                     }
-                    else if (response.body().getServerMsg().equals("Accepted")) {
+                    else if (response.body().getServerMsg().toLowerCase().equals("accepted")) {
                         askForHelpBtn.setVisibility(View.GONE);
                         acceptBtn.setVisibility(View.VISIBLE);
                         acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
@@ -328,7 +328,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         phoneTextView.setText(donorphone);
 
                     }
-                    else if (response.body().getServerMsg().equals("Declined")) {
+                    else if (response.body().getServerMsg().toLowerCase().equals("declined")) {
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.donor_profile_activity_Declined));
                             acceptBtn.setVisibility(View.GONE);
@@ -417,7 +417,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
 
-                if(response.body().getServerMsg().equals("true")){
+                if(response.body().getServerMsg().toLowerCase().equals("true")){
                     String image = response.body().getImage();
                     byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
                     insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
@@ -425,7 +425,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     showImage(genderImageView, insertBitmap, R.drawable.profile_icon_male);
                 }
 
-                else if(response.body().getServerMsg().equals("false")) {
+                else if(response.body().getServerMsg().toLowerCase().equals("false")) {
 
                     if (loggedInUserGender.toLowerCase().equals("male")) {
                         genderImageView.setImageResource(R.drawable.profile_icon_male);

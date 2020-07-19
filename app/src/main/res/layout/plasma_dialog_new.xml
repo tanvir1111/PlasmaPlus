@@ -22,7 +22,7 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="32dp"
                 android:fontFamily="@font/raleway_bold"
-                android:text="Please answer the following list to check your eligiblity"
+                android:text="@string/plasma_dialog_header"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +42,7 @@
                 android:lineHeight="25sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="Have you Recovered from COVID-19?"
+                android:text="@string/plasma_question_1"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -63,13 +63,13 @@
                     android:id="@+id/q1_yes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Yes" />
+                    android:text="@string/update_patient_activity_confirm" />
 
                 <RadioButton
                     android:id="@+id/q1_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="No" />
+                    android:text="@string/profile_activity_no"/>
 
             </RadioGroup>
 
@@ -84,7 +84,7 @@
                 android:lineHeight="25sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="What is your weight?"
+                android:text="@string/plasma_question_2"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/q1"
@@ -104,13 +104,13 @@
                     android:id="@+id/q2_less"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Less than 50 kg" />
+                    android:text="@string/plasma_radio_weight_1" />
 
                 <RadioButton
                     android:id="@+id/q2_greater"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Greater than or equal to 50 kg" />
+                    android:text="@string/plasma_radio_weight_2" />
 
             </RadioGroup>
 
@@ -125,7 +125,7 @@
                 android:lineHeight="25sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="When was the last time you had any COVID-19 symptoms?"
+                android:text="@string/plasma_question_3"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/q2"
@@ -145,13 +145,13 @@
                     android:id="@+id/q3_less"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Less than or equal to 14 days ago" />
+                    android:text="@string/plasma_radio_symptoms_1" />
 
                 <RadioButton
                     android:id="@+id/q3_greater"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="More than 14 days ago" />
+                    android:text="@string/plasma_radio_symptoms_2" />
 
             </RadioGroup>
 
@@ -166,7 +166,7 @@
                 android:lineHeight="25sp"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="Do you have any of the mentioned diseases?"
+                android:text="@string/plasma_question_4"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/q3"
@@ -186,13 +186,13 @@
                     android:id="@+id/q4_yes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="AIDS, Malaria, Hepatitis, etc." />
+                    android:text="@string/plasma_radio_diseases" />
 
                 <RadioButton
                     android:id="@+id/q4_no"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="None of above" />
+                    android:text="@string/plasma_radio_none" />
 
             </RadioGroup>
 
@@ -205,7 +205,7 @@
                 android:fontFamily="@font/montserrat"
                 android:paddingTop="10dp"
                 android:paddingBottom="10dp"
-                android:text="I have not falsified any answers"
+                android:text="@string/plasma_no_falsfied_answers"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="@+id/q4"
@@ -220,7 +220,7 @@
                 android:fontFamily="@font/montserrat"
 
                 android:padding="10dp"
-                android:text="OK"
+                android:text="@string/profile_activity_ok"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/plasma_dialog_checkbox"
@@ -234,7 +234,7 @@
                 android:fontFamily="@font/montserrat"
                 android:padding="10dp"
 
-                android:text="Cancel"
+                android:text="@string/cancel"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="@+id/plasma_dialog_checkbox"
@@ -249,7 +249,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="Eligibility Result"
+        android:text="@string/plasma_eligibility_result"
         android:textColor="@color/colorAccent"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
@@ -264,7 +264,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat"
         android:padding="10dp"
-        android:text="OK"
+        android:text="@string/profile_activity_ok"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:visibility="gone"
@@ -278,7 +278,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="You are not eligible"
+        android:text="@string/plasma_not_eligible"
         android:textColor="#000000"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/plasma_dialog_confirm_header"

@@ -209,13 +209,13 @@ public class DonorRequestsActivity extends AppCompatActivity {
                     ArrayList<PatientDataModel> initialModels = response.body();
                     requestTypeTextView.setText(requestTypeText+" (" +initialModels.size()+")");
                     for(PatientDataModel initialDataModel : initialModels){
-                        if(initialDataModel.getServerMsg().equals("No Record")){
+                        if(initialDataModel.getServerMsg().toLowerCase().equals("no record")){
                             patientDataModels.clear();
                             requestTypeTextView.setText(requestTypeText+" (" +0+")");
                             noRequestTextView.setVisibility(View.VISIBLE);
                             break;
                         }
-                        else if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
+                        else if(initialDataModel.getNeed().toLowerCase().equals("blood") || initialDataModel.getNeed().toLowerCase().equals("plasma")){
                             patientDataModels.add(initialDataModel);
                         }
                     }

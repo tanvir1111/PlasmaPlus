@@ -44,7 +44,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
         Intent intent = getIntent();
         verification = intent.getStringExtra("verification");
 
-       if(verification.equals("forgotpass")){
+       if(verification.toLowerCase().equals("forgotpass")){
             getOtpBtn.setText("Next");
             headerTextView.setText("Forgot Password");
         }
@@ -86,8 +86,8 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
 
-                if(verification.equals("forgotpass")) {
-                    if (response.body().getServerMsg().equals("record exists")) {
+                if(verification.toLowerCase().equals("forgotpass")) {
+                    if (response.body().getServerMsg().toLowerCase().equals("record exists")) {
 
                         Intent intent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
 
@@ -96,7 +96,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     }
-                    else if(response.body().getServerMsg().equals("record doesn't exist")){
+                    else if(response.body().getServerMsg().toLowerCase().equals("record doesn't exist")){
                         ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, "This Phone number is not registered");
                         Intent intent = new Intent(PhoneVerificationActivity1.this, LoginActivity.class);
                         startActivity(intent);
@@ -108,12 +108,12 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
                 }
 
 
-                else if(verification.equals("signup")){
-                    if (response.body().getServerMsg().equals("record exists")) {
+                else if(verification.toLowerCase().equals("signup")){
+                    if (response.body().getServerMsg().toLowerCase().equals("record exists")) {
                         ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, "This phone number is  already registered");
 
                     }
-                    else if(response.body().getServerMsg().equals("record doesn't exist")){
+                    else if(response.body().getServerMsg().toLowerCase().equals("record doesn't exist")){
 
 
                         Intent nextIntent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);

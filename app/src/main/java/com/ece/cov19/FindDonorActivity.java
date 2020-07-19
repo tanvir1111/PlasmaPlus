@@ -310,14 +310,17 @@ public class FindDonorActivity extends AppCompatActivity {
                         noMatchTextView.setVisibility(View.VISIBLE);
                     }
                     for(UserDataModel initialDataModel : initialModels){
-                        if(findPatientNeed.equals("Plasma")){
-                            if(initialDataModel.getDonor().equals("Plasma")){
+                        if(findPatientNeed.toLowerCase().equals("plasma")){
+                            if(initialDataModel.getDonor().toLowerCase().equals("plasma")|| initialDataModel.getDonor().toLowerCase().equals("blood and plasma")){
                                 userDataModels.add(initialDataModel);
                             }
                         }
                         else {
+                            if(initialDataModel.getDonor().toLowerCase().equals("blood")|| initialDataModel.getDonor().toLowerCase().equals("blood and plasma")) {
 
-                            userDataModels.add(initialDataModel);
+
+                                userDataModels.add(initialDataModel);
+                            }
                         }
 
 

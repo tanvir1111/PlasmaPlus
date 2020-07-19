@@ -154,7 +154,7 @@ public class SplashActivity extends AppCompatActivity {
             sendingData.enqueue(new Callback<UserDataModel>() {
                 @Override
                 public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-                    if (response.body().getServerMsg().equals("Success")) {
+                    if (response.body().getServerMsg().toLowerCase().equals("success")) {
 
                         progressBar.setVisibility(View.GONE);
 
