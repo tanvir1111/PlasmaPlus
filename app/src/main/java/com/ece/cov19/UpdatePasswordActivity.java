@@ -83,7 +83,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 String serverMsg = response.body().getServerMsg();
-                if(serverMsg.equals("Success")){
+                if(serverMsg.toLowerCase().equals("success")){
                     ToastCreator.toastCreatorGreen(UpdatePasswordActivity.this,"Password Updated");
 
 //                    clearing Shared Prefs

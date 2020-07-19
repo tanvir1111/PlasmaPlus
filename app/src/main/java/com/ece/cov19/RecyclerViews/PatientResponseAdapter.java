@@ -86,27 +86,27 @@ public class PatientResponseAdapter extends RecyclerView.Adapter<PatientResponse
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());
         holder.locationTextView.setText(patientDataModel.getDistrict());
         holder.dateTextView.setText(context.getResources().getString(R.string.adapter_Date)+"               "+patientDataModel.getDate());
-        if(patientDataModel.getGender().equals("male")) {
+        if(patientDataModel.getGender().toLowerCase().equals("male")) {
             holder.patientImageView.setImageResource(R.drawable.profile_icon_male);
         } else {
             holder.patientImageView.setImageResource(R.drawable.profile_icon_female);
         }
 
-        if(patientDataModel.getServerMsg().equals("Pending")){
+        if(patientDataModel.getServerMsg().toLowerCase().equals("pending")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Pending));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_orange);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
-        else if(patientDataModel.getServerMsg().equals("Accepted")){
+        else if(patientDataModel.getServerMsg().toLowerCase().equals("accepted")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Accepted));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
-        else if(patientDataModel.getServerMsg().equals("Declined")){
+        else if(patientDataModel.getServerMsg().toLowerCase().equals("declined")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Declined));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_red);
@@ -197,13 +197,13 @@ public class PatientResponseAdapter extends RecyclerView.Adapter<PatientResponse
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
 
-                if (response.body().getServerMsg().equals("true")) {
+                if (response.body().getServerMsg().toLowerCase().equals("true")) {
                     String image = response.body().getImage();
                     byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
                     insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
                     insertBitmap = scaleImage(insertBitmap);
                     showImage(genderImageView, insertBitmap, R.drawable.profile_icon_male);
-                } else if (response.body().getServerMsg().equals("false")) {
+                } else if (response.body().getServerMsg().toLowerCase().equals("false")) {
 
                     if (loggedInUserGender.toLowerCase().equals("male")) {
                         showDrawable(genderImageView, R.drawable.profile_icon_male);

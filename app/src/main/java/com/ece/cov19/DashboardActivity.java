@@ -201,17 +201,17 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onResponse(Call<DashBoardNumberModel> call, Response<DashBoardNumberModel> response) {
 
-                if(response.body().getServerMsg().equals("true")) {
-                    if (response.body().getEligibility().equals("eligible")) {
+                if(response.body().getServerMsg().toLowerCase().equals("true")) {
+                    if (response.body().getEligibility().toLowerCase().equals("eligible")) {
                         loggedInUserEligibility = "eligible";
-                    } else if (response.body().getEligibility().equals("not_eligible")) {
+                    } else if (response.body().getEligibility().toLowerCase().equals("not_eligible")) {
                         loggedInUserEligibility = "not_eligible";
                     }
                     //ToastCreator.toastCreatorGreen(getApplicationContext(),loggedInUserEligibility);
 
 
                 }
-                else if(response.body().getServerMsg().equals("false")){
+                else if(response.body().getServerMsg().toLowerCase().equals("false")){
                     ToastCreator.toastCreatorRed(getApplicationContext(),"Connection failed! Please try again");
                 }
             }
@@ -329,16 +329,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onResponse(Call<DashBoardNumberModel> call, Response<DashBoardNumberModel> response) {
 
-                if(response.body().getServerMsg().equals("true")) {
-                    if (response.body().getEligibility().equals("eligible")) {
+                if(response.body().getServerMsg().toLowerCase().equals("true")) {
+                    if (response.body().getEligibility().toLowerCase().equals("eligible")) {
                         loggedInUserEligibility = "eligible";
-                    } else if (response.body().getEligibility().equals("not_eligible")) {
+                    } else if (response.body().getEligibility().toLowerCase().equals("not_eligible")) {
                         loggedInUserEligibility = "not_eligible";
                     }
 
 
                 }
-                else if(response.body().getServerMsg().equals("false")){
+                else if(response.body().getServerMsg().toLowerCase().equals("false")){
                     ToastCreator.toastCreatorRed(getApplicationContext(),"Connection failed! Please try again");
                 }
             }
@@ -739,7 +739,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
 
-                if(response.body().getServerMsg().equals("true")){
+                if(response.body().getServerMsg().toLowerCase().equals("true")){
                     String image = response.body().getImage();
                     byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
                     insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
@@ -747,11 +747,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     showImage(dashboardGenderIcon, insertBitmap, R.drawable.profile_icon_male);
                 }
 
-                else if(response.body().getServerMsg().equals("false")) {
+                else if(response.body().getServerMsg().toLowerCase().equals("false")) {
 
-                    if (loggedInUserGender.toLowerCase().equals("male")) {
+                    if (loggedInUserGender.toLowerCase().toLowerCase().equals("male")) {
                         showDrawable(dashboardGenderIcon,R.drawable.profile_icon_male);
-                    } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                    } else if (loggedInUserGender.toLowerCase().toLowerCase().equals("male")) {
                         showDrawable(dashboardGenderIcon,R.drawable.profile_icon_female);
                     }
                 }
@@ -764,9 +764,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.image_retrieve_failed));
 
 
-                if (loggedInUserGender.toLowerCase().equals("male")) {
+                if (loggedInUserGender.toLowerCase().toLowerCase().equals("male")) {
                     dashboardGenderIcon.setImageResource(R.drawable.profile_icon_male);
-                } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                } else if (loggedInUserGender.toLowerCase().toLowerCase().equals("male")) {
                     dashboardGenderIcon.setImageResource(R.drawable.profile_icon_female);
                 }
             }

@@ -235,7 +235,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         ageEditText.setText(loggedInUserAge);
         String bloodGroup=loggedInUserBloodGroup;
         String gender=loggedInUserGender;
-        if(gender.equals("male")) {
+        if(gender.toLowerCase().toLowerCase().equals("male")) {
             genderFemale.setImageResource(R.drawable.female_icon);
             genderMale.setImageResource(R.drawable.male_icon_selected);
         }
@@ -318,7 +318,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         sendingData.enqueue(new Callback<PatientDataModel>() {
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
-                if (response.body().getServerMsg().equals("Success")) {
+                if (response.body().getServerMsg().toLowerCase().equals("success")) {
                     ToastCreator.toastCreatorGreen(BloodRequestFormActivity.this,getResources().getString(R.string.bld_req_activity_patient_added));
                     Intent intent = new Intent(BloodRequestFormActivity.this, DashboardActivity.class);
                     startActivity(intent);

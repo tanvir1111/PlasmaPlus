@@ -82,12 +82,12 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
 
 //       setting donor info radio button
         int index;
-        if (loggedInUserDonorInfo.equals("Blood")) {
+        if (loggedInUserDonorInfo.toLowerCase().equals("blood")) {
             index = 0;
-        } else if (loggedInUserDonorInfo.equals("Plasma")) {
+        } else if (loggedInUserDonorInfo.toLowerCase().equals("plasma")) {
             index = 1;
         }
-        else if(loggedInUserDonorInfo.equals("Blood and Plasma")){
+        else if(loggedInUserDonorInfo.toLowerCase().equals("blood and plasma")){
             index=2;
         }
 
@@ -349,7 +349,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-                if (response.body().getServerMsg().equals("Success")) {
+                if (response.body().getServerMsg().toLowerCase().equals("success")) {
                     ToastCreator.toastCreatorGreen(UpdateUserProfileActivity.this, getResources().getString(R.string.update_activity_update_successful));
 //                    update logged in Data
                     loggedInUserName=name;

@@ -395,7 +395,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-                if (response.body().getServerMsg().equals("Success")) {
+                if (response.body().getServerMsg().toLowerCase().equals("success")) {
                     ToastCreator.toastCreatorGreen(RegistrationActivity.this, "Registration Successful!");
 
 //              going to login activity

@@ -178,7 +178,7 @@ public class LoginActivity extends AppCompatActivity {
             emptyfield = "password";
         }
 
-        if (emptyfield.equals("all ok")) {
+        if (emptyfield.toLowerCase().equals("all ok")) {
             loginUser(phone, password);
         }
 
@@ -194,7 +194,7 @@ public class LoginActivity extends AppCompatActivity {
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-                if (response.body().getServerMsg().equals("Success")) {
+                if (response.body().getServerMsg().toLowerCase().equals("success")) {
                     progressBar.setVisibility(View.GONE);
 
                     ToastCreator.toastCreatorGreen(LoginActivity.this, getResources().getString(R.string.welcome)+" " + response.body().getName());
@@ -224,7 +224,7 @@ public class LoginActivity extends AppCompatActivity {
                     startActivity(intent);
                     finish();
                 }
-                else if(response.body().getServerMsg().equals("Wrong phone or password")){
+                else if(response.body().getServerMsg().toLowerCase().equals("wrong phone or password")){
                     progressBar.setVisibility(View.GONE);
                     ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.login_activity_wrong));
                 }

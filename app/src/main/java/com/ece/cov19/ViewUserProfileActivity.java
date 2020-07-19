@@ -483,7 +483,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                                         @Override
                                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-                                            if(response.body().getServerMsg().equals("Success")){
+                                            if(response.body().getServerMsg().toLowerCase().equals("success")){
                                                 SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
                                                 sharedPreferences.edit().clear().apply();
                                                 Intent login= new Intent(ViewUserProfileActivity.this, LoginActivity.class);
@@ -492,7 +492,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                                                 finish();
                                                 ToastCreator.toastCreatorGreen(getApplicationContext(), getResources().getString(R.string.profile_activity_Delete_Successful));
                                             }
-                                            else if(response.body().getServerMsg().equals("Failed")){
+                                            else if(response.body().getServerMsg().toLowerCase().equals("failed")){
                                                 ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_Delete_Failed));
 
                                             }
@@ -692,10 +692,10 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
 
-                if(response.body().getServerMsg().equals("true")) {
+                if(response.body().getServerMsg().toLowerCase().equals("true")) {
                     downloadImage(loggedInUserPhone);
                 }
-                else if(response.body().getServerMsg().equals("false")){
+                else if(response.body().getServerMsg().toLowerCase().equals("false")){
                     ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_image_did_not_upload));
 
                 }
@@ -716,7 +716,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
 
-                if(response.body().getServerMsg().equals("true")){
+                if(response.body().getServerMsg().toLowerCase().equals("true")){
                     String image = response.body().getImage();
                     byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
                     insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
@@ -724,7 +724,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                     showImage(genderImageView, insertBitmap, R.drawable.profile_icon_male);
                     }
 
-                    else if(response.body().getServerMsg().equals("false")) {
+                    else if(response.body().getServerMsg().toLowerCase().equals("false")) {
 
                     if (loggedInUserGender.toLowerCase().equals("male")) {
                         genderImageView.setImageResource(R.drawable.profile_icon_male);
@@ -756,7 +756,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         incomingResponse.enqueue(new Callback<ImageDataModel>() {
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
-                if(response.body().getServerMsg().equals("true")) {
+                if(response.body().getServerMsg().toLowerCase().equals("true")) {
                     downloadImage(loggedInUserPhone);
                     BitmapFactory.Options o = new BitmapFactory.Options();
                     o.inTargetDensity = DisplayMetrics.DENSITY_DEFAULT;
@@ -772,7 +772,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
 
                 }
-                else if(response.body().getServerMsg().equals("false")){
+                else if(response.body().getServerMsg().toLowerCase().equals("false")){
                     ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_image_not_found));
 
                 }
