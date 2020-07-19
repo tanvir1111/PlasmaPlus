@@ -97,7 +97,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         requestedBy="donor";
         if(intent.hasExtra("activity")){
-            if(intent.getStringExtra("activity").equals("DonorRequestsActivity")){
+            if(intent.getStringExtra("activity").equals("DonorRequestsActivity") || intent.getStringExtra("activity").equals("ExplorePatientsActivity")){
                 requestedBy="patient";
             }
             else{
@@ -162,26 +162,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     updateAlertDialog(intent);
                 }
                 else if(updateButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Accept_Request))){
-                    requestsOperation("accept");
-
-
-                    //Push Notification
-
-
-                    RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,getResources().getString(R.string.patient_profile_activity_notification_accepted_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_accepted_2));
-                    incomingResponse.enqueue(new Callback<UserDataModel>() {
-                        @Override
-                        public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<UserDataModel> call, Throwable t) {
-
-                        }
-                    });
-
+                    requestOperationAlertDialog("accept",phone,getResources().getString(R.string.patient_profile_activity_notification_accepted_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_accepted_2),"DonorResponseActivity");
 
                 }
                 else if(updateButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Call_Patient))){
@@ -199,25 +180,8 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     deleteAlertDialog();
                 }
                 else if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Decline_Request))){
-                    requestsOperation("decline");
+                    requestOperationAlertDialog("decline",phone,getResources().getString(R.string.patient_profile_activity_notification_declined_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_declined_2),"DonorResponseActivity");
 
-
-                    //Push Notification
-
-
-                    RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,getResources().getString(R.string.patient_profile_activity_notification_declined_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_declined_2));
-                    incomingResponse.enqueue(new Callback<UserDataModel>() {
-                        @Override
-                        public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<UserDataModel> call, Throwable t) {
-
-                        }
-                    });
                 }
                 else if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Send_SMS))){
                     Intent intent = new Intent();
@@ -244,6 +208,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         finish();
     }
+
 
     private void updateAlertDialog(final Intent intent) {
 
@@ -400,7 +365,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
     }
 
-    private void requestOperationAlertDialog(String getstatus) {
+    private void requestOperationAlertDialog(String getstatus, String phonenumber, String title, String body, String activity) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
@@ -410,6 +375,20 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 requestsOperation(getstatus);
+
+                RetroInterface retroInterface = RetroInstance.getRetro();
+                Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phonenumber,title,body,activity);
+                incomingResponse.enqueue(new Callback<UserDataModel>() {
+                    @Override
+                    public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserDataModel> call, Throwable t) {
+
+                    }
+                });
 
             }
         });
@@ -439,7 +418,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,getResources().getString(R.string.patient_profile_activity_notification_incoming_1),loggedInUserName+" "+getResources().getString(R.string.patient_profile_activity_notification_incoming_2));
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,getResources().getString(R.string.patient_profile_activity_notification_incoming_1),loggedInUserName+" "+getResources().getString(R.string.patient_profile_activity_notification_incoming_2),"PatientRequestsActivity");
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -470,7 +449,6 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     private void requestsOperation(String operation) {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
-        //ToastCreator.toastCreator(this, loggedInUserPhone+name +age +bloodGroup +phone, Toast.LENGTH_SHORT).show();
         Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup,phone,requestedBy,operation);
         lookforRequestFromDonor.enqueue(new Callback<RequestDataModel>() {
             @Override
@@ -510,7 +488,15 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Pending));
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
-                        } else {
+                        }
+                        else if(phone.equals(loggedInUserPhone)) {
+                            donateToHelpButton.setVisibility(View.GONE);
+                            updateButton.setVisibility(View.VISIBLE);
+                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Update_Profile));
+                            deleteButton.setVisibility(View.VISIBLE);
+                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Delete_Profile));
+                        }
+                        else {
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Accept_Request));
@@ -521,19 +507,37 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                     }
                     else if(response.body().getServerMsg().equals("Accepted")){
-                        donateToHelpButton.setVisibility(View.GONE);
-                        updateButton.setVisibility(View.VISIBLE);
-                        updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
-                        deleteButton.setVisibility(View.VISIBLE);
-                        deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Send_SMS));
-                        phoneTextView.setText(phone);
+                        if(phone.equals(loggedInUserPhone)) {
+                            donateToHelpButton.setVisibility(View.GONE);
+                            updateButton.setVisibility(View.VISIBLE);
+                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Update_Profile));
+                            deleteButton.setVisibility(View.VISIBLE);
+                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Delete_Profile));
+                        }
+                        else{
+                            donateToHelpButton.setVisibility(View.GONE);
+                            updateButton.setVisibility(View.VISIBLE);
+                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
+                            deleteButton.setVisibility(View.VISIBLE);
+                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Send_SMS));
+                            phoneTextView.setText(phone);
+                        }
 
                     }
                     else if(response.body().getServerMsg().equals("Declined")){
-                        donateToHelpButton.setVisibility(View.VISIBLE);
-                        donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Declined));
-                        updateButton.setVisibility(View.GONE);
-                        deleteButton.setVisibility(View.GONE);
+                        if(phone.equals(loggedInUserPhone)) {
+                            donateToHelpButton.setVisibility(View.GONE);
+                            updateButton.setVisibility(View.VISIBLE);
+                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Update_Profile));
+                            deleteButton.setVisibility(View.VISIBLE);
+                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Delete_Profile));
+                        }
+                        else{
+                            donateToHelpButton.setVisibility(View.VISIBLE);
+                            donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Declined));
+                            updateButton.setVisibility(View.GONE);
+                            deleteButton.setVisibility(View.GONE);
+                        }
 
                     }
 

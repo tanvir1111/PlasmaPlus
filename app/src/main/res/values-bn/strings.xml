@@ -240,12 +240,12 @@
     <string name="donor_profile_activity_Declined">প্রত্যাখ্যান করা হয়েছে</string>
     <string name="donor_profile_activity_Pending">অমীমাংসিত</string>
 
-    <string name="donor_profile_activity_notification_accepted_1">অনুরোধ গ্রহন করেছে!</string>
-    <string name="donor_profile_activity_notification_accepted_2">আপনার অনুরোধে সম্মতি দিয়েছে। গ্রহীতার প্রতিক্রিয়া দেখুন।</string>
-    <string name="donor_profile_activity_notification_declined_1">অনুরোধ প্রত্যাখ্যান করেছে!</string>
-    <string name="donor_profile_activity_notification_declined_2">আপনার অনুরোধকে প্রত্যাখ্যান করেছে। গ্রহীতার প্রতিক্রিয়া দেখুন।</string>
-    <string name="donor_profile_activity_notification_incoming_1">গ্রহীতার কাছ থেকে নতুন অনুরোধ!</string>
-    <string name="donor_profile_activity_notification_incoming_2">আপনাকে অনুরোধ পাঠিয়েছে। গ্রহীতার কাছ থেকে আসা অনুরোধ দেখুন।</string>
+    <string name="donor_profile_activity_notification_accepted_1">Request accepted from Patient!</string>
+    <string name="donor_profile_activity_notification_accepted_2">has accepted your request. Check Patient Responses</string>
+    <string name="donor_profile_activity_notification_declined_1">Request declined from Patient!</string>
+    <string name="donor_profile_activity_notification_declined_2">has declined your request. Check Patient Responses</string>
+    <string name="donor_profile_activity_notification_incoming_1">Incoming Request from Patient!</string>
+    <string name="donor_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Patients</string>
     <string name="donor_profile_activity_image_failed">প্রোফাইলের ছবি ডাউনলোড ব্যর্থ হয়েছে!</string>
 
 
@@ -293,12 +293,12 @@
     <string name="patient_profile_activity_Pending">অমীমাংসিত</string>
     <string name="patient_profile_activity_error">এরর! আবার চেষ্টা করুন</string>
     <string name="patient_profile_activity_connection_failed">নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন</string>
-    <string name="patient_profile_activity_notification_accepted_1">অনুরোধ গ্রহন করেছে!</string>
-    <string name="patient_profile_activity_notification_accepted_2">আপনার অনুরোধে সম্মতি দিয়েছে। দাতার প্রতিক্রিয়া দেখুন।</string>
-    <string name="patient_profile_activity_notification_declined_1">অনুরোধ প্রত্যাখ্যান করেছে!</string>
-    <string name="patient_profile_activity_notification_declined_2">আপনার অনুরোধকে প্রত্যাখ্যান করেছে। দাতার প্রতিক্রিয়া দেখুন।</string>
-    <string name="patient_profile_activity_notification_incoming_1">গ্রহীতার কাছ থেকে নতুন অনুরোধ!</string>
-    <string name="patient_profile_activity_notification_incoming_2">আপনাকে অনুরোধ পাঠিয়েছে। দাতার কাছ থেকে আসা অনুরোধ দেখুন।</string>
+    <string name="patient_profile_activity_notification_accepted_1">Request accepted from Donor!</string>
+    <string name="patient_profile_activity_notification_accepted_2">has accepted your request. Check Donor Responses</string>
+    <string name="patient_profile_activity_notification_declined_1">Request declined from Donor!</string>
+    <string name="patient_profile_activity_notification_declined_2">has declined your request. Check Donor Responses</string>
+    <string name="patient_profile_activity_notification_incoming_1">Incoming Request from Donor!</string>
+    <string name="patient_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Donors</string>
     <string name="patient_profile_activity_image_not_found">ছবি পাওয়া যায় নি</string>
 
 

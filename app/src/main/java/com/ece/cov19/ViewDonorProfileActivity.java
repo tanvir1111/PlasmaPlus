@@ -48,7 +48,6 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     String name, age, bloodGroup, donorphone, donorInfo, address,requestedBy;
     Bitmap insertBitmap;
-    Uri imageUri;
 
 
     @Override
@@ -138,24 +137,8 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Accept_Request))) {
-                    requestOperationAlertDialog("accept");
+                    requestOperationAlertDialog("accept",donorphone,getResources().getString(R.string.donor_profile_activity_notification_accepted_1),loggedInUserName + " " + getResources().getString(R.string.donor_profile_activity_notification_accepted_2),"PatientResponseActivity");
 
-                    //Push Notification
-
-
-                    RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone, getResources().getString(R.string.donor_profile_activity_notification_accepted_1), loggedInUserName + " " + getResources().getString(R.string.donor_profile_activity_notification_accepted_2));
-                    incomingResponse.enqueue(new Callback<UserDataModel>() {
-                        @Override
-                        public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<UserDataModel> call, Throwable t) {
-
-                        }
-                    });
                 } else if (acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Call_Donor))) {
                     Intent intent = new Intent(Intent.ACTION_DIAL);
                     intent.setData(Uri.parse("tel:" + donorphone));
@@ -168,26 +151,8 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(declineBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Decline_Request))) {
-                    requestOperationAlertDialog("decline");
+                    requestOperationAlertDialog("decline",donorphone,getResources().getString(R.string.donor_profile_activity_notification_declined_1),loggedInUserName + " " + getResources().getString(R.string.donor_profile_activity_notification_declined_2),"PatientResponseActivity");
 
-
-                    //Push Notification
-
-
-                    RetroInterface retroInterface = RetroInstance.getRetro();
-
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,getResources().getString(R.string.donor_profile_activity_notification_declined_1),loggedInUserName +" "+getResources().getString(R.string.donor_profile_activity_notification_declined_2));
-                    incomingResponse.enqueue(new Callback<UserDataModel>() {
-                        @Override
-                        public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-
-                        }
-
-                        @Override
-                        public void onFailure(Call<UserDataModel> call, Throwable t) {
-
-                        }
-                    });
                 }
                 else if(acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Send_SMS))){
                     Intent intent = new Intent();
@@ -233,7 +198,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
     }
 
-    private void requestOperationAlertDialog(String getstatus) {
+    private void requestOperationAlertDialog(String getstatus, String phonenumber, String title, String body, String activity) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewDonorProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
@@ -243,6 +208,20 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 requestsOperation(getstatus);
+                RetroInterface retroInterface = RetroInstance.getRetro();
+
+                Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phonenumber,title,body,activity);
+                incomingResponse.enqueue(new Callback<UserDataModel>() {
+                    @Override
+                    public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<UserDataModel> call, Throwable t) {
+
+                    }
+                });
                 
             }
         });
@@ -275,7 +254,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,getResources().getString(R.string.donor_profile_activity_notification_incoming_1),findPatientName +" "+getResources().getString(R.string.donor_profile_activity_notification_incoming_2));
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(donorphone,getResources().getString(R.string.donor_profile_activity_notification_incoming_1),findPatientName +" "+getResources().getString(R.string.donor_profile_activity_notification_incoming_2),"DonorRequestsActivity");
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -308,7 +287,6 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     private void requestsOperation(String operation) {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
-        //ToastCreator.toastCreator(this, donorphone + findPatientName + findPatientAge + findPatientBloodGroup + findPatientPhone, Toast.LENGTH_SHORT).show();
         Call<RequestDataModel> lookforRequestFromPatient = retroInterface.requestsOperation(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientPhone, requestedBy,operation);
         lookforRequestFromPatient.enqueue(new Callback<RequestDataModel>() {
             @Override

@@ -157,7 +157,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                                           final int dayOfMonth) {
 
                         @SuppressLint("SimpleDateFormat")
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                         calendar.set(year, month, dayOfMonth);
                         date = sdf.format(calendar.getTime());
 

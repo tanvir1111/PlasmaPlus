@@ -32,8 +32,10 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
     RecyclerView requestDonorRecyclerView;
     PatientDataModel patientDataModel;
     ArrayList<PatientDataModel> patientDataModels;
+
     int pos;
     boolean visibility = true;
+
 
     public DonorResponseAlphaViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels) {
         super(itemView);
@@ -60,6 +62,8 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
     @Override
     public void onClick(View view) {
 
+
+
         if(visibility == true){
            // ToastCreator.toastCreator(view.getContext(),"Pressed",Toast.LENGTH_SHORT).show();
             visibility = false;
@@ -72,6 +76,8 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
             FindPatientData.findPatientName=patientDataModels.get(pos).getName();
             FindPatientData.findPatientAge=patientDataModels.get(pos).getAge();
             FindPatientData.findPatientPhone=patientDataModels.get(pos).getPhone();
+            FindPatientData.findPatientNeed=patientDataModels.get(pos).getNeed();
+
 
             UserDataModel userDataModel;
             ArrayList<UserDataModel> userDataModels;
@@ -80,7 +86,6 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
             progressBar.setVisibility(View.VISIBLE);
             RetroInterface retroInterface = RetroInstance.getRetro();
             Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.checkDonorResponse(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone());
-            //ToastCreator.toastCreator(view.getContext(), patientDataModel.getName()+patientDataModel.getAge()+patientDataModel.getBloodGroup()+patientDataModel.getPhone(), Toast.LENGTH_SHORT).show();
             incomingResponse.enqueue(new Callback<ArrayList<UserDataModel>>() {
                 @Override
                 public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {
@@ -120,7 +125,7 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
 
         }
         else{
-            //ToastCreator.toastCreator(view.getContext(),"Pressed again",Toast.LENGTH_SHORT).show();
+
             visibility = true;
             donateTextView.setText("Show Response");
             //donateTextView.setBackgroundColor(R.drawable.button_style_green);

@@ -15,14 +15,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
@@ -49,7 +53,7 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
     SharedPreferences langPrefs;
 
     Bitmap insertBitmap;
-    Uri imageUri;
+
 
     public PatientRequestsAlphaAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
         this.context = context;
@@ -77,12 +81,11 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
         }
         patientDataModel = patientDataModels.get(position);
 
+
         downloadImage(patientDataModel.getPhone(), holder.patientImageView);
 
-
         holder.donateTextView.setVisibility(View.VISIBLE);
-        holder.donateTextView.setText("View Requests");
-
+        holder.donateTextView.setText("Show Requests");
         holder.nameTextView.setText(patientDataModel.getName());
         holder.typeTextView.setText(patientDataModel.getNeed());
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());
@@ -93,6 +96,8 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
         } else {
             holder.patientImageView.setImageResource(R.drawable.profile_icon_female);
         }
+
+
 
 
 

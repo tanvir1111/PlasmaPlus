@@ -22,7 +22,9 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.ImageDataModel;
+import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.R;
@@ -48,10 +50,13 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
 
     Bitmap insertBitmap;
     Uri imageUri;
+    int pos;
+
 
     public DonorResponseBetaAdapter(Context context, ArrayList<UserDataModel> userDataModels) {
         this.context = context;
         this.userDataModels = userDataModels;
+
     }
 
 
@@ -62,6 +67,7 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.request_donor_child, parent, false);
         DonorResponseBetaViewHolder donorResponseBetaViewHolder = new DonorResponseBetaViewHolder(view, userDataModels);
+
         return donorResponseBetaViewHolder;
     }
 
@@ -69,6 +75,7 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
     public void onBindViewHolder(@NonNull DonorResponseBetaViewHolder holder, int position) {
 
         userDataModel = userDataModels.get(position);
+
 
         holder.nameTextView.setText(userDataModel.getName());
         holder.locationTextView.setText(userDataModel.getDistrict());

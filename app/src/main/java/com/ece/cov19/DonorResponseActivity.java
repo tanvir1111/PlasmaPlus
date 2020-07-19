@@ -15,8 +15,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.DataModels.RequestDataModel;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RecyclerViews.DonorResponseAlphaAdapter;
+import com.ece.cov19.RecyclerViews.DonorResponseBetaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -26,6 +28,10 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserEligibility;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
+
 public class DonorResponseActivity extends AppCompatActivity {
 
 
@@ -33,7 +39,6 @@ public class DonorResponseActivity extends AppCompatActivity {
     private ProgressBar ProgressBar;
     private TextView TextView, noResponseTextView;
     private ImageView backbtn;
-    private Button addPatientBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,18 @@ public class DonorResponseActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = getIntent();
+                String status = intent.getStringExtra("notification");
+
+                if(status == null){
+                    finish();
+                }
+                else if(status.equals("yes")){
+                    Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+                }
+
             }
         });
 
@@ -78,7 +94,18 @@ public class DonorResponseActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = getIntent();
+                String status = intent.getStringExtra("notification");
+
+                if(status == null){
+                    finish();
+                }
+                else if(status.equals("yes")){
+                    Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+                }
+
             }
         });
 
@@ -88,7 +115,18 @@ public class DonorResponseActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        finish();
+        Intent intent = getIntent();
+        String status = intent.getStringExtra("notification");
+
+        if(status == null){
+            finish();
+        }
+        else if(status.equals("yes")){
+            Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
+            startActivity(goBackIntent);
+            finish();
+        }
+
     }
 
     private void myPatientsSearch(){
@@ -100,7 +138,7 @@ public class DonorResponseActivity extends AppCompatActivity {
         donorResponseAlphaAdapter = new DonorResponseAlphaAdapter(getApplicationContext(), patientDataModels);
 
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<ArrayList<PatientDataModel>> ownPatients = retroInterface.ownPatients(LoggedInUserData.loggedInUserPhone);
+        Call<ArrayList<PatientDataModel>> ownPatients = retroInterface.responsesFromDonors(LoggedInUserData.loggedInUserPhone);
         ownPatients.enqueue(new Callback<ArrayList<PatientDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
@@ -115,14 +153,14 @@ public class DonorResponseActivity extends AppCompatActivity {
                     if(initialModels.size() == 0){
                         noResponseTextView.setVisibility(View.VISIBLE);
                     }
-                    for(PatientDataModel initialDataModel : initialModels){
+
+                    for(PatientDataModel initialDataModel : initialModels) {
 
                         patientDataModels.add(initialDataModel);
-
                     }
 
 
-                    if(patientDataModels.size() > 0){
+                        if(patientDataModels.size() > 0){
                         TextView.setVisibility(View.VISIBLE);
 
                     }
@@ -146,5 +184,8 @@ public class DonorResponseActivity extends AppCompatActivity {
             }
         });
     }
-    
+
+
+
+
 }

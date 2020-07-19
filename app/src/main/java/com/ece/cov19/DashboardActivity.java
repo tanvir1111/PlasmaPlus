@@ -83,10 +83,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public int requestResponseCardViewSwitcher;
     public int exploreSwitcher;
 
-
-
-
-    private String noOfDonors, noOfPatients, noOfRequests, noOfResponses;
+    private String noOfDonors, noOfPatients, noOfRequests, noOfResponses, nameOfActivity;
 
     Bitmap insertBitmap;
     Uri imageUri;
@@ -222,6 +219,50 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             }
         });
 
+
+
+        retroInterface = RetroInstance.getRetro();
+        Call<UserDataModel> checkNotification = retroInterface.checkNotification(loggedInUserPhone);
+        checkNotification.enqueue(new Callback<UserDataModel>() {
+            @Override
+            public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
+                if(response.body().getServerMsg().equals("No Notifications")){
+
+                }
+                else{
+                    nameOfActivity = response.body().getServerMsg();
+
+
+                    if(nameOfActivity.equals("DonorRequestsActivity")) {
+                        Intent intent = new Intent(getApplicationContext(), DonorRequestsActivity.class);
+                        startActivity(intent);
+                    }
+                    if(nameOfActivity.equals("PatientRequestsActivity")) {
+                        Intent intent = new Intent(getApplicationContext(), PatientRequestsActivity.class);
+                        startActivity(intent);
+                    }
+                    if(nameOfActivity.equals("DonorResponseActivity")) {
+                        Intent intent = new Intent(getApplicationContext(), DonorResponseActivity.class);
+                        startActivity(intent);
+                    }
+                    if(nameOfActivity.equals("PatientResponseActivity")) {
+                        Intent intent = new Intent(getApplicationContext(), PatientResponseActivity.class);
+                        startActivity(intent);
+                    }
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<UserDataModel> call, Throwable t) {
+                ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.connection_error));
+            }
+        });
+
+
+
+
         navigationView.setNavigationItemSelectedListener(this);
         dashboardGenderIcon.setOnClickListener(this);
         dashboard.setOnClickListener(this);
@@ -348,6 +389,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 ToastCreator.toastCreatorRed(getApplicationContext(),"Error occurred! Please try again");
             }
         });
+
+
 
 
         dashboardGenderIcon.setOnClickListener(this);
@@ -647,7 +690,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             case R.id.dashboard_header:
                 RetroInterface retroInterface = RetroInstance.getRetro();
-                Call<UserDataModel> incomingResponse = retroInterface.sendNotification(loggedInUserPhone,getResources().getString(R.string.dashboard_header),getResources().getString(R.string.dashboard_welcome_to));
+                Call<UserDataModel> incomingResponse = retroInterface.sendNotification(loggedInUserPhone,getResources().getString(R.string.dashboard_header),getResources().getString(R.string.dashboard_welcome_to),"DashboardActivity");
                 incomingResponse.enqueue(new Callback<UserDataModel>() {
                     @Override
                     public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -751,7 +794,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
                     if (loggedInUserGender.toLowerCase().equals("male")) {
                         showDrawable(dashboardGenderIcon,R.drawable.profile_icon_male);
-                    } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                    } else if (loggedInUserGender.toLowerCase().equals("female")) {
                         showDrawable(dashboardGenderIcon,R.drawable.profile_icon_female);
                     }
                 }
@@ -766,7 +809,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {
                     dashboardGenderIcon.setImageResource(R.drawable.profile_icon_male);
-                } else if (loggedInUserGender.toLowerCase().equals("male")) {
+                } else if (loggedInUserGender.toLowerCase().equals("female")) {
                     dashboardGenderIcon.setImageResource(R.drawable.profile_icon_female);
                 }
             }

@@ -53,7 +53,11 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
         //donateTextView.setBackgroundColor(R.drawable.button_style_green);
         //itemView.setOnClickListener(this);
         donateTextView.setOnClickListener(this);
-    }
+
+
+
+
+}
 
     @Override
     public void onClick(View view) {

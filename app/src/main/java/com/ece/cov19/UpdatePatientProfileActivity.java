@@ -264,7 +264,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
                                           final int dayOfMonth) {
 
                         @SuppressLint("SimpleDateFormat")
-                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MMM-yyyy");
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                         calendar.set(year, month, dayOfMonth);
                         newDate = sdf.format(calendar.getTime());
 

@@ -49,7 +49,17 @@ public class PatientRequestsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = getIntent();
+                String status = intent.getStringExtra("notification");
+
+                if(status == null){
+                    finish();
+                }
+                else if(status.equals("yes")){
+                    Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+                }
             }
         });
 
@@ -72,7 +82,17 @@ public class PatientRequestsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = getIntent();
+                String status = intent.getStringExtra("notification");
+
+                if(status == null){
+                    finish();
+                }
+                else if(status.equals("yes")){
+                    Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+                }
             }
         });
     }
@@ -82,6 +102,18 @@ public class PatientRequestsActivity extends AppCompatActivity {
         super.onBackPressed();
 
         finish();
+
+        Intent intent = getIntent();
+        String status = intent.getStringExtra("notification");
+
+        if(status == null){
+            finish();
+        }
+        else if(status.equals("yes")){
+            Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
+            startActivity(goBackIntent);
+            finish();
+        }
     }
 
     private void myPatientsSearch(){
@@ -93,7 +125,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
         patientRequestsAlphaAdapter = new PatientRequestsAlphaAdapter(getApplicationContext(), patientDataModels);
 
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<ArrayList<PatientDataModel>> ownPatients = retroInterface.ownPatients(LoggedInUserData.loggedInUserPhone);
+        Call<ArrayList<PatientDataModel>> ownPatients = retroInterface.requestsFromDonors(LoggedInUserData.loggedInUserPhone);
         ownPatients.enqueue(new Callback<ArrayList<PatientDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {

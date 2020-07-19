@@ -241,12 +241,12 @@
     <string name="donor_profile_activity_Declined">Declined</string>
     <string name="donor_profile_activity_Pending">Pending</string>
 
-    <string name="donor_profile_activity_notification_accepted_1">Request accepted!</string>
+    <string name="donor_profile_activity_notification_accepted_1">Request accepted from Patient!</string>
     <string name="donor_profile_activity_notification_accepted_2">has accepted your request. Check Patient Responses</string>
-    <string name="donor_profile_activity_notification_declined_1">Request declined!</string>
+    <string name="donor_profile_activity_notification_declined_1">Request declined from Patient!</string>
     <string name="donor_profile_activity_notification_declined_2">has declined your request. Check Patient Responses</string>
     <string name="donor_profile_activity_notification_incoming_1">Incoming Request from Patient!</string>
-    <string name="donor_profile_activity_notification_incoming_2">has sent you a request. Check Donor Requests</string>
+    <string name="donor_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Patients</string>
     <string name="donor_profile_activity_image_failed">Profile Image retrieve failed!</string>
 
 
@@ -295,12 +295,12 @@
     <string name="patient_profile_activity_Pending">Pending</string>
     <string name="patient_profile_activity_error">Error occurred! Please try again</string>
     <string name="patient_profile_activity_connection_failed">Connection failed! Please try again</string>
-    <string name="patient_profile_activity_notification_accepted_1">Request accepted!</string>
+    <string name="patient_profile_activity_notification_accepted_1">Request accepted from Donor!</string>
     <string name="patient_profile_activity_notification_accepted_2">has accepted your request. Check Donor Responses</string>
-    <string name="patient_profile_activity_notification_declined_1">Request declined!</string>
+    <string name="patient_profile_activity_notification_declined_1">Request declined from Donor!</string>
     <string name="patient_profile_activity_notification_declined_2">has declined your request. Check Donor Responses</string>
     <string name="patient_profile_activity_notification_incoming_1">Incoming Request from Donor!</string>
-    <string name="patient_profile_activity_notification_incoming_2">has sent you a request. Check Patient Requests</string>
+    <string name="patient_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Donors</string>
     <string name="patient_profile_activity_image_not_found">Image Not found</string>
 
 

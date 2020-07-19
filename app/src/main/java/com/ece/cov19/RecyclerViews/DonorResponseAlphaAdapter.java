@@ -25,7 +25,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.DataModels.RequestDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.DonorResponseActivity;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
@@ -40,6 +42,7 @@ import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorResponseAlphaViewHolder> {
 
@@ -66,6 +69,7 @@ public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorRespons
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.seeking_help_child, parent, false);
         DonorResponseAlphaViewHolder donorResponseAlphaViewHolder = new DonorResponseAlphaViewHolder(view, patientDataModels);
+
         return donorResponseAlphaViewHolder;
     }
 
@@ -78,6 +82,7 @@ public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorRespons
 
         }
         patientDataModel = patientDataModels.get(position);
+
 
         holder.donateTextView.setVisibility(View.VISIBLE);
         holder.donateTextView.setText("Show Response");
@@ -95,6 +100,7 @@ public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorRespons
         } else {
             holder.patientImageView.setImageResource(R.drawable.profile_icon_female);
         }
+
 
 
     }

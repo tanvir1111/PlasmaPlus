@@ -116,6 +116,13 @@ public interface RetroInterface {
     @POST("checkPatientResponse.php") Call<ArrayList<PatientDataModel>> checkPatientResponse(@Field("phone") String userPhone);
 
 
+    @FormUrlEncoded
+    @POST("requestsFromDonors.php")
+    Call<ArrayList<PatientDataModel>> requestsFromDonors(@Field("phone") String phone);
+
+    @FormUrlEncoded
+    @POST("responsesFromDonors.php")
+    Call<ArrayList<PatientDataModel>> responsesFromDonors(@Field("phone") String phone);
 
     @FormUrlEncoded
     @POST("checkDonorApproaches.php")
@@ -138,7 +145,17 @@ public interface RetroInterface {
 
     @FormUrlEncoded
     @POST("pushNotification.php")
-    Call <UserDataModel> sendNotification(@Field("phone") String phone, @Field("title") String title, @Field("body") String body);
+    Call <UserDataModel> sendNotification(@Field("phone") String phone, @Field("title") String title, @Field("body") String body,
+                                          @Field("activity") String activity);
+
+    @FormUrlEncoded
+    @POST("checkNotification.php")
+    Call <UserDataModel> checkNotification(@Field("phone") String phone);
+
+    @FormUrlEncoded
+    @POST("deleteNotification.php")
+    Call <UserDataModel> deleteNotification(@Field("phone") String phone);
+
 
     @FormUrlEncoded
     @POST("imageUpload.php")
