@@ -40,17 +40,12 @@ public class FormFieldsFeatures {
     //    Blood group selection starts
     public TextView bloodGroupSelection(Context ctx, TextView newSelection, TextView oldSelection){
 
-         if(newSelection==oldSelection){
-
-         }
-         else {
-             newSelection.setBackgroundResource(R.drawable.blood_grp_selected);
-             newSelection.setTextColor(Color.WHITE);
              if (oldSelection != null) {
                  oldSelection.setBackgroundResource(R.drawable.blood_grp_not_selected);
                  oldSelection.setTextColor(ContextCompat.getColor(ctx, R.color.textColorGrey));
              }
-         }
+        newSelection.setBackgroundResource(R.drawable.blood_grp_selected);
+        newSelection.setTextColor(Color.WHITE);
 
 
          return newSelection;

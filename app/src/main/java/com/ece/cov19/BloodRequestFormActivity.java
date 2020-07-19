@@ -1,6 +1,7 @@
 package com.ece.cov19;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
@@ -45,7 +46,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
     private String gender = "not selected", date = "not selected";
     private ImageView genderMale, backbtn, genderFemale;
     private CheckBox needCheckbox;
-    private Button submitBtn,forMyselfBtn;
+    private Button submitBtn, forMyselfBtn;
     private EditText nameEditText, ageEditText, hospitalEditText;
     private Spinner divisionSpinner, districtSpinner;
     public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
@@ -61,7 +62,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
         submitBtn = findViewById(R.id.bld_req_request_btn);
         backbtn = findViewById(R.id.bld_req_back_button);
-        forMyselfBtn=findViewById(R.id.bld_req_for_myself);
+        forMyselfBtn = findViewById(R.id.bld_req_for_myself);
 //      editTexts
         nameEditText = findViewById(R.id.bld_req_name_edittext);
         ageEditText = findViewById(R.id.bld_req_age_edittext);
@@ -145,7 +146,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         super.onBackPressed();
         finish();
     }
@@ -189,7 +190,20 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
         switch (v.getId()) {
             case R.id.bld_req_for_myself:
-                fillAvailableInfo();
+                if (forMyselfBtn.getText().toString().toLowerCase().equals("i am the patient")) {
+                    forMyselfBtn.setText("Others");
+                    fillAvailableInfo();
+                } else {
+                    forMyselfBtn.setText("I am the patient");
+                    genderFemale.setImageResource(R.drawable.female_icon);
+                    genderMale.setImageResource(R.drawable.male_icon);
+                    selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_not_selected);
+                    selectedBldGrp.setTextColor(ContextCompat.getColor(this,R.color.textColorGrey));
+                    nameEditText.setText("");
+                    ageEditText.setText("");
+
+
+                }
                 break;
 
             case R.id.bld_req_male_icon:
@@ -233,18 +247,19 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
     private void fillAvailableInfo() {
         nameEditText.setText(loggedInUserName);
         ageEditText.setText(loggedInUserAge);
-        String bloodGroup=loggedInUserBloodGroup;
-        String gender=loggedInUserGender;
-        if(gender.toLowerCase().toLowerCase().equals("male")) {
+        String bloodGroup = loggedInUserBloodGroup;
+        String gender = loggedInUserGender;
+        if (gender.toLowerCase().toLowerCase().equals("male")) {
             genderFemale.setImageResource(R.drawable.female_icon);
             genderMale.setImageResource(R.drawable.male_icon_selected);
-        }
-        else {
+        } else {
             genderFemale.setImageResource(R.drawable.female_icon_selected);
             genderMale.setImageResource(R.drawable.male_icon);
         }
+        TextView oldSelection;
 
-
+        
+            oldSelection = selectedBldGrp;
         switch (bloodGroup) {
             case "A+":
                 selectedBldGrp = aPositive;
@@ -273,8 +288,9 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
 
         }
-        selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_selected);
-        selectedBldGrp.setTextColor(Color.WHITE);
+        selectedBldGrp = formFieldsFeatures.bloodGroupSelection(this,selectedBldGrp ,oldSelection );
+//        selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_selected);
+//        selectedBldGrp.setTextColor(Color.WHITE);
 
 
     }
@@ -319,20 +335,20 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
                 if (response.body().getServerMsg().toLowerCase().equals("success")) {
-                    ToastCreator.toastCreatorGreen(BloodRequestFormActivity.this,getResources().getString(R.string.bld_req_activity_patient_added));
+                    ToastCreator.toastCreatorGreen(BloodRequestFormActivity.this, getResources().getString(R.string.bld_req_activity_patient_added));
                     Intent intent = new Intent(BloodRequestFormActivity.this, DashboardActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
 
-                    ToastCreator.toastCreatorRed(BloodRequestFormActivity.this,getResources().getString(R.string.bld_req_activity_connection_problem));
+                    ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.bld_req_activity_connection_problem));
                 }
             }
 
             @Override
             public void onFailure(Call<PatientDataModel> call, Throwable t) {
 
-                ToastCreator.toastCreatorRed(BloodRequestFormActivity.this,getResources().getString(R.string.bld_req_activity_error));
+                ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.bld_req_activity_error));
 
             }
         });
@@ -341,6 +357,5 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
 
 }
-
 
 

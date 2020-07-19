@@ -52,6 +52,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import static android.content.ContentValues.TAG;
 
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDonorInfo;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserEligibility;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
@@ -535,7 +536,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     requestResponseCardViewSwitcher = 1;
                     requestResponseSwitcher = 1;
                     slideDown(fromDonorsCardView);
-                    slideDown(fromPatientsCardView);
+                    if(!loggedInUserDonorInfo.toLowerCase().equals("none")) {
+                        slideDown(fromPatientsCardView);
+                    }
                     numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.requests));
                     numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.requests));
                     numberOfRequestsFromDonors.setText(noOfResponses);
@@ -558,7 +561,9 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     requestResponseCardViewSwitcher = 1;
                     requestResponseSwitcher = 2;
                     slideDown(fromDonorsCardView);
-                    slideDown(fromPatientsCardView);
+                    if(!loggedInUserDonorInfo.toLowerCase().equals("none")) {
+                        slideDown(fromPatientsCardView);
+                    }
                     numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.responses));
                     numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.responses));
                     numberOfRequestsFromDonors.setText(noOfRequests);
