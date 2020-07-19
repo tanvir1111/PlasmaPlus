@@ -358,7 +358,20 @@
     <string name="find_donor_add_patient_btn">Add Record to Search</string>
     <string name="request_patient_date">Date of requirement</string>
     <string name="seeking_help_date">Date of requirement</string>
-
+    <string name="plasma_dialog_header">Please answer the following question to check your eligiblity</string>
+    <string name="plasma_question_1">Have you Recovered from COVID-19?</string>
+    <string name="plasma_question_2">What is your weight?</string>
+    <string name="plasma_question_3">When was the last time you had any COVID-19 symptoms?</string>
+    <string name="plasma_question_4">Do you have any of the mentioned diseases?</string>
+    <string name="plasma_radio_weight_1">Less than 50 kg</string>
+    <string name="plasma_radio_weight_2">Greater than or equal to 50 kg</string>
+    <string name="plasma_radio_symptoms_1">Less than or equal to 14 days ago</string>
+    <string name="plasma_radio_symptoms_2">More than 14 days ago</string>
+    <string name="plasma_radio_diseases">AIDS, Malaria, Hepatitis, etc.</string>
+    <string name="plasma_radio_none">None of above</string>
+    <string name="plasma_no_falsfied_answers">I have not falsified any answers</string>
+    <string name="plasma_eligibility_result">Eligibility Result</string>
+    <string name="plasma_not_eligible">You are not eligible</string>
 
 
     <string-array name="division">
