@@ -46,6 +46,7 @@ import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDonorInfo;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserEligibility;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
@@ -492,8 +493,19 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         }
 
                         else if(bloodGroup.equals(loggedInUserBloodGroup)) {
-                            donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
+                            if(need.toLowerCase().equals("blood") && (loggedInUserDonorInfo.toLowerCase().equals("blood")||
+                            loggedInUserDonorInfo.toLowerCase().equals("blood and plasma"))) {
+                                donateToHelpButton.setVisibility(View.VISIBLE);
+                                donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
+                            }
+                            else if(need.toLowerCase().equals("plasma") && (loggedInUserDonorInfo.toLowerCase().equals("plasma")||
+                                    loggedInUserDonorInfo.toLowerCase().equals("blood and plasma"))){
+                                donateToHelpButton.setVisibility(View.VISIBLE);
+                                donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
+                            }
+                            else{
+                                donateToHelpButton.setVisibility(View.GONE);
+                            }
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                         }

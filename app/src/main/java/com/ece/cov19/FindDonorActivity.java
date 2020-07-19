@@ -311,13 +311,16 @@ public class FindDonorActivity extends AppCompatActivity {
                     }
                     for(UserDataModel initialDataModel : initialModels){
                         if(findPatientNeed.toLowerCase().equals("plasma")){
-                            if(initialDataModel.getDonor().toLowerCase().equals("plasma")){
+                            if(initialDataModel.getDonor().toLowerCase().equals("plasma")|| initialDataModel.getDonor().toLowerCase().equals("blood and plasma")){
                                 userDataModels.add(initialDataModel);
                             }
                         }
                         else {
+                            if(initialDataModel.getDonor().toLowerCase().equals("blood")|| initialDataModel.getDonor().toLowerCase().equals("blood and plasma")) {
 
-                            userDataModels.add(initialDataModel);
+
+                                userDataModels.add(initialDataModel);
+                            }
                         }
 
 
