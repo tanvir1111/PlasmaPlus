@@ -18,12 +18,12 @@
     <string name="welcome">স্বাগতম</string>
     <string name="connection_error">নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন</string>
     <string name="find_a_donor">দাতা সার্চ</string>
-    <string name="add_patient">নতুন গ্রহীতা</string>
+    <string name="add_patient">নতুন গ্রাহক</string>
     <string name="requests">অনুরোধ</string>
     <string name="responses">প্রতিক্রিয়া</string>
-    <string name="my_patients">আমার গ্রহীতাসমূহ</string>
+    <string name="my_patients">আমার গ্রাহকসমূহ</string>
     <string name="are_you_sure">নিশ্চিত?</string>
-    <string name="explore_patients">গ্রহীতা অনুসন্ধান</string>
+    <string name="explore_patients">গ্রাহক অনুসন্ধান</string>
     <string name="explore_donors">দাতা অনুসন্ধান</string>
     <string name="change_language">ভাষা পরিবর্তন করুন</string>
     <string name="cancel">বাতিল করুন</string>
@@ -37,9 +37,9 @@
 
     <string name="dashboard_text_explore">অনুসন্ধান</string>
 
-    <string name="dashboard_text_no_of_patients">গ্রহীতা</string>
+    <string name="dashboard_text_no_of_patients">গ্রাহক</string>
 
-    <string name="dashboard_text_requestB">গ্রহীতা থেকে</string>
+    <string name="dashboard_text_requestB">গ্রাহক থেকে</string>
 
 
     <string name="dashboard_text_requestA">দাতা থেকে</string>
@@ -69,12 +69,12 @@
     <string name="bld_req_date_textview">তারিখ লাগবে</string>
     <string name="bld_req_plasma_checkbox">প্লাজমা লাগবে (প্লাজমা থেরাপির জন্য)</string>
     <string name="bld_req_request_btn">জমা দিন</string>
-    <string name="bld_req_activity_patient_added">গ্রহীতার প্রোফাইল সফলভাবে যুক্ত হয়েছে</string>
+    <string name="bld_req_activity_patient_added">গ্রাহকের প্রোফাইল সফলভাবে যুক্ত হয়েছে</string>
     <string name="bld_req_activity_connection_problem">নেটওয়ার্ক সমস্য! আবার চেষ্টা করুন</string>
     <string name="bld_req_activity_error">ব্যর্থ হয়েছে! আবার চেষ্টা করুন</string>
 
 
-    <string name="donor_requests_header">গ্রহীতা থেকে অনুরোধ</string>
+    <string name="donor_requests_header">গ্রাহক থেকে অনুরোধ</string>
     <string name="donor_requests_type_textView">অমীমাংসিত অনুরোধ</string>
     <string name="donor_requests_show_accepted_requests">সম্মত অনুরোধ দেখুন</string>
     <string name="donor_requests_show_pending_requests">অমীমাংসিত অনুরোধ দেখুন</string>
@@ -86,7 +86,7 @@
     <string name="explore_patients_label_bld_grp">রক্তের গ্রুপ</string>
     <string name="explore_patients_label_district">জেলা</string>
     <string name="explore_patients_district_edittext">জেলা দিন</string>
-    <string name="explore_patients_textview">প্রাপ্ত গ্রহীতা</string>
+    <string name="explore_patients_textview">প্রাপ্ত গ্রাহক</string>
 
 
 
@@ -112,13 +112,13 @@
     <string name="login_activity_error_response">এরর! লগইন ব্যর্থ হয়েছে</string>
 
 
-    <string name="my_patients_textview">প্রাপ্ত গ্রহীতা</string>
+    <string name="my_patients_textview">প্রাপ্ত গ্রাহক</string>
 
 
     <string name="patient_requests_header">দাতার থেকে অনুরোধ</string>
 
-    <string name="patients_response_header">গ্রহীতার প্রতিক্রিয়া</string>
-    <string name="patients_response_type_textView">অগ্রসরকৃত গ্রহীতাদের থেকে আসা প্রতিক্রিয়াসমূহ</string>
+    <string name="patients_response_header">গ্রাহকের প্রতিক্রিয়া</string>
+    <string name="patients_response_type_textView">অগ্রসরকৃত গ্রাহকদের থেকে আসা প্রতিক্রিয়াসমূহ</string>
 
     <string name="phn_ver_header_textview">ফোন ভেরিফিকেশন</string>
     <string name="phn_ver_phone_text">মোবাইল নম্বর</string>
@@ -223,7 +223,7 @@
     <string name="donor_profile_accept_button">আবেদন গ্রহন করুন</string>
     <string name="donor_profile_decline_button">আবেদন প্রত্যাখ্যান করুন</string>
     <string name="donor_profile_ask_for_help_button">অনুরোধ করুন</string>
-    <string name="donor_profile_send_request_suggestion">দাতাকে অনুরোধ পাঠাতে গ্রহীতা নির্বাচন করুন</string>
+    <string name="donor_profile_send_request_suggestion">দাতাকে অনুরোধ পাঠাতে গ্রাহক নির্বাচন করুন</string>
     <string name="donor_profile_activity_Enter_Password">পাসওয়ার্ড দিন</string>
     <string name="donor_profile_activity_Wrong_Password">ভুল পাসওয়ার্ড</string>
 
@@ -249,7 +249,7 @@
     <string name="donor_profile_activity_image_failed">প্রোফাইলের ছবি ডাউনলোড ব্যর্থ হয়েছে!</string>
 
 
-    <string name="patient_profile_header">গ্রহীতার প্রোফাইল</string>
+    <string name="patient_profile_header">গ্রাহকের প্রোফাইল</string>
     <string name="patient_profile_name">নাম</string>
     <string name="patient_profile_label_age">বয়স :</string>
     <string name="patient_profile_age">বয়স</string>
@@ -276,18 +276,18 @@
     <string name="patient_profile_activity_Delete_profile_question">প্রোফাইল মুছে ফেলবেন?</string>
     <string name="patient_profile_activity_proceed">অগ্রসর হোন</string>
     <string name="patient_profile_activity_go_back">ফিরে যান</string>
-    <string name="patient_profile_activity_Confirm_delete">নিশ্চিত? গ্রহীতা প্রোফাইলের সমস্ত তথ্য, অনুরোধ ও প্রতিক্রিয়া মুছে যাবে।</string>
+    <string name="patient_profile_activity_Confirm_delete">নিশ্চিত? গ্রাহক প্রোফাইলের সমস্ত তথ্য, অনুরোধ ও প্রতিক্রিয়া মুছে যাবে।</string>
     <string name="patient_profile_activity_Delete">ডিলিট প্রোফাইল</string>
-    <string name="patient_profile_activity_Patient_Record_Deleted">গ্রহীতার তথ্য মুছে ফেলা হয়েছে</string>
+    <string name="patient_profile_activity_Patient_Record_Deleted">গ্রাহকের তথ্য মুছে ফেলা হয়েছে</string>
     <string name="patient_profile_activity_Delete_Failed">মুছে ফেলা ব্যর্থ হয়েছে!</string>
-    <string name="patient_profile_activity_Request_Sent">আবেদন প্রেরিত হয়েছে! গ্রহীতার প্রতিক্রিয়ার জন্য অপেক্ষা করুন</string>
+    <string name="patient_profile_activity_Request_Sent">আবেদন প্রেরিত হয়েছে! গ্রাহকের প্রতিক্রিয়ার জন্য অপেক্ষা করুন</string>
     <string name="patient_profile_activity_Update_Profile">প্রোফাইল হালনাগাদ</string>
     <string name="patient_profile_activity_Delete_Profile">প্রোফাইল মুছে ফেলুন</string>
     <string name="patient_profile_activity_Donate_to_Help">সাহায্য করুন</string>
     <string name="patient_profile_activity_Accept_Request">আবেদন গ্রহণ করুন</string>
     <string name="patient_profile_activity_Decline_Request">আবেদন প্রত্যাখ্যান করুন</string>
-    <string name="patient_profile_activity_Call_Patient">গ্রহীতাকে কল করুন</string>
-    <string name="patient_profile_activity_Send_SMS">গ্রহীতাকে এসএমএস করুন</string>
+    <string name="patient_profile_activity_Call_Patient">গ্রাহককে কল করুন</string>
+    <string name="patient_profile_activity_Send_SMS">গ্রাহককে এসএমএস করুন</string>
     <string name="patient_profile_activity_Accepted">সম্মত হয়েছে</string>
     <string name="patient_profile_activity_Declined">প্রত্যাখ্যান করা হয়েছে</string>
     <string name="patient_profile_activity_Pending">অমীমাংসিত</string>
@@ -338,7 +338,7 @@
     <string name="profile_activity_proceed">অগ্রসর হোন</string>
     <string name="profile_activity_go_back">ফিরে যান</string>
     <string name="profile_activity_Delete">মুছে ফেলুন</string>
-    <string name="profile_activity_Confirm_delete">নিশ্চিত? গ্রহীতা প্রোফাইলের সমস্ত তথ্য, অনুরোধ ও প্রতিক্রিয়া মুছে যাবে।</string>
+    <string name="profile_activity_Confirm_delete">নিশ্চিত? গ্রাহক প্রোফাইলের সমস্ত তথ্য, অনুরোধ ও প্রতিক্রিয়া মুছে যাবে।</string>
     <string name="profile_activity_Delete_Successful">প্রোফাইল মুছে ফেলা সফল হয়েছে</string>
     <string name="profile_activity_Delete_Failed">মুছে ফেলা ব্যর্থ হয়েছে!</string>
     <string name="profile_activity_error">এরর! আবার চেষ্টা করুন</string>
@@ -362,12 +362,12 @@
     <string name="delete_image">ছবি মুছে ফেলুন</string>
 
 
-    <string name="my_patients_nomatchtextview">কোনো গ্রহীতা পাওয়া যায় নি</string>
-    <string name="donor_requests_norecordtextview">কোনো গ্রহীতার অনুরোধ নেই</string>
+    <string name="my_patients_nomatchtextview">কোনো গ্রাহক পাওয়া যায় নি</string>
+    <string name="donor_requests_norecordtextview">কোনো গ্রাহকের অনুরোধ নেই</string>
     <string name="donor_response_norecordtextview">কোনো দাতার প্রতিক্রিয়া নেই</string>
-    <string name="explore_patients_norecordtextview">কোনো গ্রহীতা পাওয়া যায় নি</string>
+    <string name="explore_patients_norecordtextview">কোনো গ্রাহক পাওয়া যায় নি</string>
     <string name="patient_requests_norecordtextview">কোনো দাতার অনুরোধ নেই</string>
-    <string name="patients_response_norecordtextview">কোনো গ্রহীতার প্রতিক্রিয়া নেই</string>
+    <string name="patients_response_norecordtextview">কোনো গ্রাহকের প্রতিক্রিয়া নেই</string>
     <string name="search_donor_norecordtextview">কোনো দাতা পাওয়া যায় নি</string>
     <string name="find_donor_add_patient_btn">প্রথমে যোগ করুন</string>
     <string name="request_patient_date">প্রয়োজনের তারিখ</string>
@@ -389,7 +389,7 @@
     <string name="plasma_not_eligible">আপনি যোগ্য নন</string>
     <string name="plasma_eligible">আপনি দাতা হওয়ার যোগ্য</string>
 
-    <string name="bld_req_for_myself">আমি গ্রহীতা</string>
+    <string name="bld_req_for_myself">আমি গ্রাহক</string>
     <string name="bld_req_for_myself_2">অন্য কেউ</string>
 
 
