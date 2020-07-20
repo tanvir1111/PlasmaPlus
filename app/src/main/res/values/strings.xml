@@ -306,7 +306,7 @@
     <string name="profile_blood">Blood Donor</string>
     <string name="profile_plasma">Plasma Donor</string>
     <string name="profile_blood_and_plasma">Blood and Plasma Donor</string>
-    <string name="profile_none">Not a Donor</string>
+    <string name="profile_none">General User</string>
     <string name="profile_id_account_maintenance">Account Maintenance</string>
     <string name="profile_update_button">Update Profile</string>
     <string name="profile_change_password_btn">Change Password</string>

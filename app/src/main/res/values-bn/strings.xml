@@ -322,7 +322,7 @@
     <string name="profile_blood">ব্লাড দাতা</string>
     <string name="profile_plasma">প্লাজমা দাতা</string>
     <string name="profile_blood_and_plasma">ব্লাড এবং প্লাজমা দাতা</string>
-    <string name="profile_none">দাতা নন</string>
+    <string name="profile_none">সাধারণ ব্যবহারকারী</string>
     <string name="profile_id_account_maintenance">একাউন্ট মেইনটেনেন্স</string>
     <string name="profile_update_button">প্রোফাইল হালনাগাদ</string>
     <string name="profile_change_password_btn">পাসওয়ার্ড পরিবর্তন</string>

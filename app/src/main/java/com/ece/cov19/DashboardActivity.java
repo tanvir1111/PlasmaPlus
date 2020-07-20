@@ -18,6 +18,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -533,6 +534,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     }
 
+
     // slide the view from its current position to below itself
     public void slideDown(View view) {
 
@@ -545,6 +547,22 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     .translationY(0)
                     .alpha(1)
                     .setListener(null);
+
+    }
+
+    // slide the view from its current position to below itself
+    public void slideDownInactive(CardView view) {
+
+
+        view.setVisibility(View.VISIBLE);
+        view.setEnabled(false);
+        view.setCardBackgroundColor(Color.LTGRAY);
+
+// Start the animation
+        view.animate()
+                .translationY(0)
+                .alpha(1)
+                .setListener(null);
 
     }
 
@@ -585,6 +603,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     slideDown(fromDonorsCardView);
                     if(!loggedInUserDonorInfo.toLowerCase().equals("none")) {
                         slideDown(fromPatientsCardView);
+                    } else {
+                        slideDownInactive(fromPatientsCardView);
                     }
                     numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.requests));
                     numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.requests));
@@ -610,6 +630,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     slideDown(fromDonorsCardView);
                     if(!loggedInUserDonorInfo.toLowerCase().equals("none")) {
                         slideDown(fromPatientsCardView);
+                    } else {
+                        slideDownInactive(fromPatientsCardView);
                     }
                     numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.responses));
                     numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.responses));
