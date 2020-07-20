@@ -89,7 +89,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
                 if(verification.toLowerCase().equals("forgotpass")) {
                     if (response.body().getServerMsg().toLowerCase().equals("record exists")) {
 
-                        Intent intent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
+                        Intent intent = new Intent(PhoneVerificationActivity1.this, RegistrationActivity.class);
 
                         intent.putExtra("phone", phonenumber);
                         intent.putExtra("verification", verification);
@@ -116,7 +116,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
                     else if(response.body().getServerMsg().toLowerCase().equals("record doesn't exist")){
 
 
-                        Intent nextIntent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
+                        Intent nextIntent = new Intent(PhoneVerificationActivity1.this, RegistrationActivity.class);
                         nextIntent.putExtra("phone",phonenumber);
                         nextIntent.putExtra("verification",verification);
                         startActivity(nextIntent);
