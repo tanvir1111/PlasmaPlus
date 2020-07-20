@@ -84,7 +84,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     public int requestResponseCardViewSwitcher;
     public int exploreSwitcher;
 
-    private String noOfDonors, noOfPatients, noOfRequests, noOfResponses, nameOfActivity;
+    private String noOfDonors, noOfPatients, noOfRequestsFromDonors, noOfRequestsFromPatients, noOfResponsesFromDonors, noOfResponsesFromPatients, nameOfActivity;
 
     Bitmap insertBitmap;
     Uri imageUri;
@@ -180,8 +180,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
                 noOfDonors = response.body().getNumberOfDonors();
                 noOfPatients = response.body().getNumberOfPatients();
-                noOfRequests = response.body().getNumberOfRequests();
-                noOfResponses = response.body().getNumberOfResponses();
+                noOfRequestsFromDonors = response.body().getNumberOfRequestsFromDonors();
+                noOfRequestsFromPatients = response.body().getNumberOfRequestsFromPatients();
+                noOfResponsesFromDonors = response.body().getNumberOfResponsesFromDonors();
+                noOfResponsesFromPatients = response.body().getNumberOfResponsesFromPatients();
 
             }
 
@@ -305,8 +307,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
                 noOfDonors = response.body().getNumberOfDonors();
                 noOfPatients = response.body().getNumberOfPatients();
-                noOfRequests = response.body().getNumberOfRequests();
-                noOfResponses = response.body().getNumberOfResponses();
+                noOfRequestsFromDonors = response.body().getNumberOfRequestsFromDonors();
+                noOfRequestsFromPatients = response.body().getNumberOfRequestsFromPatients();
+                noOfResponsesFromDonors = response.body().getNumberOfResponsesFromDonors();
+                noOfResponsesFromPatients = response.body().getNumberOfResponsesFromPatients();
 
                 numberOfDonors.setText(noOfDonors);
                 numberOfPatients.setText(noOfPatients);
@@ -319,8 +323,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                         fromPatientsCardView.setVisibility(View.VISIBLE);
                         numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.requests));
                         numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.requests));
-                        numberOfRequestsFromDonors.setText(noOfResponses);
-                        numberOfRequestsFromPatients.setText(noOfRequests);
+                        numberOfRequestsFromDonors.setText(noOfRequestsFromDonors);
+                        numberOfRequestsFromPatients.setText(noOfRequestsFromPatients);
                     }
 
                     if(requestResponseSwitcher == 2){
@@ -330,8 +334,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                         fromPatientsCardView.setVisibility(View.VISIBLE);
                         numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.responses));
                         numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.responses));
-                        numberOfRequestsFromDonors.setText(noOfRequests);
-                        numberOfRequestsFromPatients.setText(noOfResponses);
+                        numberOfRequestsFromDonors.setText(noOfResponsesFromDonors);
+                        numberOfRequestsFromPatients.setText(noOfResponsesFromPatients);
                     }
                 }
                 else if(requestResponseCardViewSwitcher == 0) {
@@ -584,8 +588,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     }
                     numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.requests));
                     numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.requests));
-                    numberOfRequestsFromDonors.setText(noOfResponses);
-                    numberOfRequestsFromPatients.setText(noOfRequests);
+                    numberOfRequestsFromDonors.setText(noOfRequestsFromDonors);
+                    numberOfRequestsFromPatients.setText(noOfRequestsFromPatients);
 
                     break;
                 }
@@ -609,8 +613,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     }
                     numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.responses));
                     numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.responses));
-                    numberOfRequestsFromDonors.setText(noOfRequests);
-                    numberOfRequestsFromPatients.setText(noOfResponses);
+                    numberOfRequestsFromDonors.setText(noOfResponsesFromDonors);
+                    numberOfRequestsFromPatients.setText(noOfResponsesFromPatients);
                     break;
                 }
                 if(requestResponseCardViewSwitcher ==1) {

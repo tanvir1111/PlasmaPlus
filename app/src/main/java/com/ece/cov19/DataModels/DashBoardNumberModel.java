@@ -17,13 +17,19 @@ public class DashBoardNumberModel {
     private String numberOfMyPatients;
 
 
-    @SerializedName("numberOfRequests")
+    @SerializedName("numberOfRequestsFromDonors")
     @Expose
-    private String numberOfRequests;
+    private String numberOfRequestsFromDonors;
+    @SerializedName("numberOfRequestsFromPatients")
+    @Expose
+    private String numberOfRequestsFromPatients;
 
-    @SerializedName("numberOfResponses")
+    @SerializedName("numberOfResponsesFromDonors")
     @Expose
-    private String numberOfResponses;
+    private String numberOfResponsesFromDonors;
+    @SerializedName("numberOfResponsesFromPatients")
+    @Expose
+    private String numberOfResponsesFromPatients;
 
     @SerializedName("eligibility")
     @Expose
@@ -48,12 +54,20 @@ public class DashBoardNumberModel {
         return numberOfPatients;
     }
 
-    public String getNumberOfRequests() {
-        return numberOfRequests;
+    public String getNumberOfRequestsFromDonors() {
+        return numberOfRequestsFromDonors;
     }
 
-    public String getNumberOfResponses() {
-        return numberOfResponses;
+    public String getNumberOfRequestsFromPatients() {
+        return numberOfRequestsFromPatients;
+    }
+
+    public String getNumberOfResponsesFromDonors() {
+        return numberOfResponsesFromDonors;
+    }
+
+    public String getNumberOfResponsesFromPatients() {
+        return numberOfResponsesFromPatients;
     }
 
     public String getEligibility() {
