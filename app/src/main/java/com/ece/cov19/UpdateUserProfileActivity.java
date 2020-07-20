@@ -294,7 +294,8 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
             case "ব্লাড এবং প্লাজমা":
                 donorInfo = "Blood and Plasma";
                 break;
-            case "কোনোটিই নয়":
+            case "সাধারণ ব্যবহারকারী/গ্রাহক":
+            case "General User/Acceptor":
                 donorInfo = "None";
                 break;
             default:

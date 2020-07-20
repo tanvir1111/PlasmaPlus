@@ -174,11 +174,11 @@
     <string name="update_thana_edittext">Enter Thana</string>
     <string name="update_label_age">Age</string>
     <string name="update_age_edittext">Enter Age</string>
-    <string name="label_donor_role">Role of User(Donor/General user)</string>
+    <string name="label_donor_role">Role of User (Donor/General User)</string>
     <string name="update_donor_role_radio_group_blood">Blood</string>
     <string name="update_donor_role_radio_group_plasma">Plasma</string>
     <string name="update_donor_role_radio_group_blood_and_plasma">Blood and Plasma</string>
-    <string name="update_donor_role_radio_group_none">None(General User/Acceptor)</string>
+    <string name="update_donor_role_radio_group_none">General User/Acceptor</string>
     <string name="update_update_btn">Update Profile</string>
     <string name="update_activity_is_required">is required</string>
     <string name="update_activity_update_failed">Failed to update! Check your connection and try again.</string>
@@ -358,6 +358,7 @@
     <string name="find_donor_add_patient_btn">Add Record to Search</string>
     <string name="request_patient_date">Date of requirement</string>
     <string name="seeking_help_date">Date of requirement</string>
+
     <string name="plasma_dialog_header">Please answer the following question to check your eligiblity</string>
     <string name="plasma_question_1">Have you Recovered from COVID-19?</string>
     <string name="plasma_question_2">What is your weight?</string>

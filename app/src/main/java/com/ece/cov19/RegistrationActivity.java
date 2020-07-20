@@ -346,8 +346,8 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             case "ব্লাড এবং প্লাজমা":
                 donorInfo = "Blood and Plasma";
                 break;
-            case "কোনোটিই নয়(সাধারণ ব্যবহারকারী/গ্রাহক)":
-            case "None(General User/Acceptor)":
+            case "সাধারণ ব্যবহারকারী/গ্রাহক":
+            case "General User/Acceptor":
                 donorInfo = "None";
                 break;
             default:

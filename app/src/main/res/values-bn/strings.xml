@@ -194,11 +194,11 @@
     <string name="update_thana_edittext">এখানে থানা লাগবে</string>
     <string name="update_label_age">বয়স</string>
     <string name="update_age_edittext">এখানে বয়স লাগবে</string>
-    <string name="label_donor_role">ব্যবহারকারীর ভূমিকা(দাতা/সাধারণ ব্যবহারকারী)</string>
+    <string name="label_donor_role">ব্যবহারকারীর ভূমিকা (দাতা/সাধারণ ব্যবহারকারী)</string>
     <string name="update_donor_role_radio_group_blood">ব্লাড</string>
     <string name="update_donor_role_radio_group_plasma">প্লাজমা</string>
     <string name="update_donor_role_radio_group_blood_and_plasma">ব্লাড এবং প্লাজমা</string>
-    <string name="update_donor_role_radio_group_none">কোনোটিই নয়(সাধারণ ব্যবহারকারী/গ্রাহক)</string>
+    <string name="update_donor_role_radio_group_none">সাধারণ ব্যবহারকারী/গ্রাহক</string>
     <string name="update_update_btn">আপডেট প্রোফাইল</string>
     <string name="update_activity_is_required">বাদ পড়েছে</string>
     <string name="update_activity_update_failed">নেটওয়ার্ক সমস্যা! আপডেট ব্যর্থ হয়েছে</string>
@@ -376,6 +376,21 @@
     <string name="plasma_question_1">আপনি কি কোভিড-১৯ থেকে আরোগ্য লাভ করেছেন?</string>
     <string name="plasma_question_4">আপনার কি নিম্নলিখিত কোনও রোগ রয়েছে?</string>
 
+    <string name="plasma_question_2">আপনার ওজন কত?</string>
+    <string name="plasma_question_3">শেষ কবে আপনার কোভিড-১৯ এরব উপসর্গ দেখা গেছে?</string>
+    <string name="plasma_radio_weight_1">৫০ কেজির কম</string>
+    <string name="plasma_radio_weight_2">৫০ কেজি বা তার চেয়ে বেশি</string>
+    <string name="plasma_radio_symptoms_1">১৪ দিন বা তার কম সময়ের মধ্যে</string>
+    <string name="plasma_radio_symptoms_2">১৪ দিনের পূর্বে</string>
+    <string name="plasma_radio_diseases">এইডস, ম্যালেরিয়া, হেপাটাইটিস, ইত্যাদি</string>
+    <string name="plasma_radio_none">কোনোটিই নেই</string>
+    <string name="plasma_no_falsfied_answers">আমি কোন মিথ্যা উত্তর দেই নি</string>
+    <string name="plasma_eligibility_result">"যোগ্যতার ফলাফল "</string>
+    <string name="plasma_not_eligible">আপনি যোগ্য নন</string>
+
+    <string name="bld_req_for_myself">আমি গ্রহীতা</string>
+    <string name="bld_req_for_myself_2">অন্য কেউ</string>
+
 
     <string-array name="division">
         <item>Dhaka</item>
@@ -498,19 +513,6 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
-    <string name="plasma_question_2">আপনার ওজন কত?</string>
-    <string name="plasma_question_3">শেষ কবে আপনার কোভিড-১৯ এরব উপসর্গ দেখা গেছে?</string>
-    <string name="plasma_radio_weight_1">৫০ কেজির কম</string>
-    <string name="plasma_radio_weight_2">৫০ কেজি বা তার চেয়ে বেশি</string>
-    <string name="plasma_radio_symptoms_1">১৪ দিন বা তার কম সময়ের মধ্যে</string>
-    <string name="plasma_radio_symptoms_2">১৪ দিনের পূর্বে</string>
-    <string name="plasma_radio_diseases">এইডস, ম্যালেরিয়া, হেপাটাইটিস, ইত্যাদি</string>
-    <string name="plasma_radio_none">কোনোটিই নেই</string>
-    <string name="plasma_no_falsfied_answers">আমি কোন মিথ্যা উত্তর দেই নি</string>
-    <string name="plasma_eligibility_result">"যোগ্যতার ফলাফল "</string>
-    <string name="plasma_not_eligible">আপনি যোগ্য নন</string>
 
-    <string name="bld_req_for_myself">আমি গ্রহীতা</string>
-    <string name="bld_req_for_myself_2">অন্য কেউ</string>
 
 </resources>
