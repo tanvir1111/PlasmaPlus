@@ -234,7 +234,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
                                 if(q1_yes.isChecked() && q2_greater.isChecked() && q3_greater.isChecked() && q4_no.isChecked()){
                                     eligible = true;
-                                    eligibility.setText("You are eligible to Donate");
+                                    eligibility.setText(getResources().getString(R.string.plasma_eligible));
                                 }
                             }
 

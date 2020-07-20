@@ -387,6 +387,8 @@
     <string name="plasma_no_falsfied_answers">I have not falsified any answers</string>
     <string name="plasma_eligibility_result">Eligibility Result</string>
     <string name="plasma_not_eligible">You are not eligible</string>
+    <string name="plasma_eligible">You are eligible to Donate</string>
+
 
     <string name="bld_req_for_myself">I am the Patient</string>
     <string name="bld_req_for_myself_2">Others</string>
