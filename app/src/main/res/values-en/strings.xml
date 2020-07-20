@@ -510,5 +510,7 @@
     <string name="plasma_eligibility_result">Eligibility Result</string>
     <string name="plasma_not_eligible">You are not eligible</string>
 
+    <string name="bld_req_for_myself">I am the Patient</string>
+    <string name="bld_req_for_myself_2">Others</string>
 
 </resources>

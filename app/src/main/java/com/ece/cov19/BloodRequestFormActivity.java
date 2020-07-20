@@ -190,11 +190,11 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
         switch (v.getId()) {
             case R.id.bld_req_for_myself:
-                if (forMyselfBtn.getText().toString().toLowerCase().equals("i am the patient")) {
-                    forMyselfBtn.setText("Others");
+                if (forMyselfBtn.getText().toString().equals(getResources().getString(R.string.bld_req_for_myself))) {
+                    forMyselfBtn.setText(getResources().getString(R.string.bld_req_for_myself_2));
                     fillAvailableInfo();
                 } else {
-                    forMyselfBtn.setText("I am the patient");
+                    forMyselfBtn.setText(getResources().getString(R.string.bld_req_for_myself));
                     genderFemale.setImageResource(R.drawable.female_icon);
                     genderMale.setImageResource(R.drawable.male_icon);
                     selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_not_selected);

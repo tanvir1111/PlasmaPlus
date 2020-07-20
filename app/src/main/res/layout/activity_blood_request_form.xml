@@ -12,24 +12,20 @@
     <Button
         android:id="@+id/bld_req_for_myself"
 
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/button_style_colored"
+        android:background="@drawable/button_style_white"
+
         android:fontFamily="@font/montserrat_bold"
         android:maxWidth="350dp"
-
         android:paddingLeft="20dp"
         android:paddingRight="20dp"
-        android:text="I am the Patient"
-        android:textColor="#ffffff"
-        app:layout_constraintBottom_toBottomOf="@+id/bld_req_heading_textview"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.79"
-        app:layout_constraintStart_toEndOf="@+id/bld_req_heading_textview"
-        app:layout_constraintTop_toTopOf="@+id/bld_req_heading_textview"
-        app:layout_constraintVertical_bias="0.526" />
+        android:text="@string/bld_req_for_myself"
+        android:textColor="#000000"
+        app:layout_constraintBottom_toTopOf="@+id/bld_req_label_name"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_name_edittext"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_name_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_heading_textview" />
 
     <Spinner
         android:id="@+id/bld_req_division_spinner"
@@ -95,7 +91,7 @@
         android:layout_width="wrap_content"
 
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="96dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/bld_req_label_name"
         android:textColor="@color/textColorDark"

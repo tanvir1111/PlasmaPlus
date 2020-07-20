@@ -510,5 +510,7 @@
     <string name="plasma_eligibility_result">"যোগ্যতার ফলাফল "</string>
     <string name="plasma_not_eligible">আপনি যোগ্য নন</string>
 
+    <string name="bld_req_for_myself">আমি গ্রহীতা</string>
+    <string name="bld_req_for_myself_2">অন্য কেউ</string>
 
 </resources>
