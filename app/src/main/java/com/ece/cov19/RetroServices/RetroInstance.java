@@ -6,7 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetroInstance {
     private static Retrofit retrofit=null;
 
-    private static String baseUrl="http://fusionscience.org.bd/scripts/";
+    private static String baseUrl="http://118.179.103.66/scripts/";
 
     public static RetroInterface getRetro(){
         if(retrofit==null){
