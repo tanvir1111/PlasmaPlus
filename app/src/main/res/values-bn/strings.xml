@@ -514,6 +514,7 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
+    <string name="answer_this_question_error">প্রশ্নটির উত্তর দিন</string>
 
 
 </resources>

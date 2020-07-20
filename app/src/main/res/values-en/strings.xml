@@ -393,6 +393,8 @@
     <string name="bld_req_for_myself">I am the Patient</string>
     <string name="bld_req_for_myself_2">Others</string>
 
+    <string name="answer_this_question_error">Answer this question</string>
+
 
     <string-array name="division">
         <item>Dhaka</item>

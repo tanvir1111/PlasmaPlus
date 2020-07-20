@@ -188,24 +188,24 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 
                                         if (q4.getCheckedRadioButtonId() == -1) {
-                                            q4Txt.setError("Answer this question");
+                                            q4Txt.setError(getString(R.string.answer_this_question_error));
                                             q4Txt.requestFocus();
                                         }
 
                                         if (q3.getCheckedRadioButtonId() == -1) {
-                                            q3Txt.setError("Answer this question");
+                                            q3Txt.setError(getString(R.string.answer_this_question_error));
                                             q3Txt.requestFocus();
 
                                         }
 
                                         if (q2.getCheckedRadioButtonId() == -1) {
-                                            q2Txt.setError("Answer this question");
+                                            q2Txt.setError(getString(R.string.answer_this_question_error));
                                             q2Txt.requestFocus();
 
                                         }
 
                                         if (q1.getCheckedRadioButtonId() == -1) {
-                                            q1Txt.setError("Answer this question");
+                                            q1Txt.setError(getString(R.string.answer_this_question_error));
                                             q1Txt.requestFocus();
                                         }
 
