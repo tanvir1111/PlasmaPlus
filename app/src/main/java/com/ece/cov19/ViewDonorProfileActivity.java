@@ -154,7 +154,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     requestOperationAlertDialog("decline",donorphone,getResources().getString(R.string.donor_profile_activity_notification_declined_1),loggedInUserName + " " + getResources().getString(R.string.donor_profile_activity_notification_declined_2),"PatientResponseActivity");
 
                 }
-                else if(acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Send_SMS))){
+                else if(declineBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Send_SMS))){
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_SENDTO);
                     intent.setData(Uri.parse("smsto:"));
