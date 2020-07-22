@@ -42,7 +42,7 @@
 
         android:layout_marginStart="-16dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="@string/phn_ver_header_textview"
+        android:text="@string/phone_verification"
         android:textColor="#ffffff"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="@+id/phn_ver_back_button"
@@ -59,7 +59,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat_bold"
-        android:text="@string/phn_ver_phone_text"
+        android:text="@string/label_phone_number"
         android:textColor="@color/textColorDark"
         android:textSize="16sp"
 
@@ -78,7 +78,7 @@
 
         android:background="@drawable/edit_text_dark"
         android:fontFamily="@font/raleway_bold"
-        android:hint="@string/phn_ver_phone_input"
+        android:hint="@string/phone_number_hint"
         android:inputType="numberDecimal"
         android:maxLength="11"
         android:minHeight="40dp"

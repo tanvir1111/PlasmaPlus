@@ -312,26 +312,26 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
         if (newName.isEmpty()) {
             emptyfieldChecker = false;
-            emptyfield += getResources().getString(R.string.update_patient_label_name) + " ";
-            nameEditText.setError(getResources().getString(R.string.update_patient_label_name)+" "+getResources().getString(R.string.update_patient_activity_is_required));
+            emptyfield += getResources().getString(R.string.label_name) + " ";
+            nameEditText.setError(getResources().getString(R.string.label_name)+" "+getResources().getString(R.string.update_patient_activity_is_required));
         }
         if (newHospital.isEmpty()) {
             emptyfieldChecker = false;
-            emptyfield += getResources().getString(R.string.update_patient_label_hospital) + " ";
-            hospitalEditText.setError(getResources().getString(R.string.update_patient_label_hospital)+" "+getResources().getString(R.string.update_patient_activity_is_required));
+            emptyfield += getResources().getString(R.string.label_hospital) + " ";
+            hospitalEditText.setError(getResources().getString(R.string.label_hospital)+" "+getResources().getString(R.string.update_patient_activity_is_required));
         }
         if (newAge.isEmpty()) {
             emptyfieldChecker = false;
-            emptyfield += getResources().getString(R.string.update_patient_label_age) + " ";
-            ageEditText.setError(getResources().getString(R.string.update_patient_label_age)+" "+getResources().getString(R.string.update_patient_activity_is_required));
+            emptyfield += getResources().getString(R.string.label_age_1) + " ";
+            ageEditText.setError(getResources().getString(R.string.label_age_1)+" "+getResources().getString(R.string.update_patient_activity_is_required));
         }
         if (newDivision.isEmpty()) {
             emptyfieldChecker = false;
-            emptyfield += getResources().getString(R.string.update_patient_label_spinner_division) + " ";
+            emptyfield += getResources().getString(R.string.label_division) + " ";
         }
         if (newDistrict.isEmpty()) {
             emptyfieldChecker = false;
-            emptyfield += getResources().getString(R.string.update_patient_label_spinner_district) + " ";
+            emptyfield += getResources().getString(R.string.label_district) + " ";
         }
 
         if(emptyfieldChecker == true){
@@ -382,7 +382,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
             @Override
             public void onFailure(Call<PatientDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(UpdatePatientProfileActivity.this, getResources().getString(R.string.update_patient_activity_update_error));
+                ToastCreator.toastCreatorRed(UpdatePatientProfileActivity.this, getResources().getString(R.string.error_occured));
 
             }
         });

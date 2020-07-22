@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/montserrat_bold"
-                android:text="@string/donor_profile_name"
+                android:text="@string/label_name"
 
                 android:textColor="@color/colorAccent"
                 android:textSize="18sp"
@@ -105,7 +105,7 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/montserrat"
 
-                android:text="@string/donor_profile_label_age"
+                android:text="@string/label_age"
                 android:textColor="@color/colorAccent"
                 android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -118,7 +118,7 @@
 
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/montserrat"
-                android:text="@string/donor_profile_age"
+                android:text="@string/label_age_1"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/donor_profile_label_age"
@@ -220,7 +220,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat"
-                android:text="@string/donor_profile_blood_group"
+                android:text="@string/label_blood_grp"
                 android:textColor="@color/textColorDark"
                 android:textSize="14sp"
                 app:layout_constraintBottom_toBottomOf="@+id/donor_profile_label_blood_group"

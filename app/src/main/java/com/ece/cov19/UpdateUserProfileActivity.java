@@ -309,8 +309,8 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
 
         if (name.isEmpty()) {
             emptyfieldChecker = false;
-            emptyfield += getResources().getString(R.string.update_label_name) + " ";
-            nameEditText.setError(getResources().getString(R.string.update_label_name)+" "+getResources().getString(R.string.update_activity_is_required));
+            emptyfield += getResources().getString(R.string.label_name) + " ";
+            nameEditText.setError(getResources().getString(R.string.label_name)+" "+getResources().getString(R.string.update_activity_is_required));
         }
         if (thana.isEmpty()) {
             emptyfieldChecker = false;
@@ -319,16 +319,16 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         }
         if (age.isEmpty()) {
             emptyfieldChecker = false;
-            emptyfield += getResources().getString(R.string.update_label_age) + " ";
-            ageEditText.setError(getResources().getString(R.string.update_label_age)+" "+getResources().getString(R.string.update_activity_is_required));
+            emptyfield += getResources().getString(R.string.label_age_1) + " ";
+            ageEditText.setError(getResources().getString(R.string.label_age_1)+" "+getResources().getString(R.string.update_activity_is_required));
         }
         if (division.isEmpty()) {
             emptyfieldChecker = false;
-            emptyfield += getResources().getString(R.string.update_label_spinner_division) + " ";
+            emptyfield += getResources().getString(R.string.label_division) + " ";
         }
         if (district.isEmpty()) {
             emptyfieldChecker = false;
-            emptyfield += getResources().getString(R.string.update_label_spinner_district) + " ";
+            emptyfield += getResources().getString(R.string.label_district) + " ";
         }
 
 
@@ -375,7 +375,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(UpdateUserProfileActivity.this,   getResources().getString(R.string.update_activity_update_error));
+                ToastCreator.toastCreatorRed(UpdateUserProfileActivity.this,   getResources().getString(R.string.error_occured));
             }
         });
 

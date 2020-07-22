@@ -7,7 +7,6 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -19,7 +18,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.Functions.FormFieldsFeatures;
@@ -348,7 +346,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
             @Override
             public void onFailure(Call<PatientDataModel> call, Throwable t) {
 
-                ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.bld_req_activity_error));
+                ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.error_occured));
 
             }
         });

@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/reg_label_name"
+            android:text="@string/label_name"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
@@ -67,7 +67,7 @@
             android:background="@drawable/edit_text_dark"
 
             android:fontFamily="@font/montserrat"
-            android:hint="@string/reg_name_edittext"
+            android:hint="@string/enter_name_hint"
             android:paddingStart="25dp"
             android:paddingTop="10dp"
             android:paddingEnd="20dp"
@@ -86,7 +86,7 @@
 
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/reg_label_gender"
+            android:text="@string/label_gender"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_age_edittext"
@@ -123,7 +123,7 @@
             android:fontFamily="@font/montserrat_bold"
 
 
-            android:text="@string/reg_label_blood_grp"
+            android:text="@string/label_blood_grp"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="@+id/reg_label_gender"
@@ -275,7 +275,7 @@
 
             android:layout_marginTop="24dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/reg_label_spinner_division"
+            android:text="@string/label_division"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_label_blood_grp"
@@ -305,7 +305,7 @@
 
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/reg_label_spinner_district"
+            android:text="@string/label_district"
 
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
@@ -369,7 +369,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/reg_label_password"
+            android:text="@string/label_password"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -387,7 +387,7 @@
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/raleway_bold"
 
-            android:hint="@string/reg_password_edittext"
+            android:hint="@string/password_hint"
             android:inputType="textPassword"
             android:minHeight="40dp"
             android:padding="15dp"
@@ -419,7 +419,7 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/raleway_bold"
-            android:hint="@string/reg_confirm_password_edittext"
+            android:hint="@string/password_hint"
             android:inputType="textPassword"
             android:minHeight="40dp"
             android:padding="15dp"
@@ -437,7 +437,7 @@
 
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/reg_label_age"
+            android:text="@string/label_age_1"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_name_edittext"
@@ -454,7 +454,7 @@
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/montserrat"
-            android:hint="@string/reg_age_edittext"
+            android:hint="@string/enter_age_hint"
             android:inputType="number"
             android:minHeight="40dp"
             android:padding="15dp"
@@ -537,7 +537,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:maxWidth="350dp"
             android:minWidth="320dp"
-            android:text="@string/reg_sign_up_btn"
+            android:text="@string/sign_up"
             android:textColor="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/reg_confirm_password_edittext"

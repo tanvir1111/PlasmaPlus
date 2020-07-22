@@ -21,6 +21,7 @@
     <string name="find_a_donor">Find A Donor</string>
     <string name="add_patient">Add Patient</string>
     <string name="requests">Requests</string>
+    <string name="press_one_more_time">Press back one more time to exit</string>
     <string name="responses">Responses</string>
     <string name="my_patients">My Patients</string>
     <string name="are_you_sure">Are you sure?</string>
@@ -29,8 +30,29 @@
     <string name="change_language">Change Language</string>
     <string name="cancel">Cancel</string>
     <string name="image_retrieve_failed">Error! Image retrieve failed</string>
+    <string name="label_age">Age :</string>
+    <string name="label_gender">Gender</string>
+    <string name="label_blood_grp">Blood Group</string>
+    <string name="label_hospital">Hospital</string>
+    <string name="label_division">Division</string>
+    <string name="label_district">District</string>
+    <string name="select_date_textview">Select Date</string>
+    <string name="plasma_checkbox_text">Need Plasma (For Plasma Therapy)</string>
+    <string name="error_occured">Error occurred! Try again</string>
+    <string name="hint_enter_district">Enter District</string>
+    <string name="label_phone_number">Phone Number</string>
+    <string name="phone_number_hint">01xxxxxxxxx</string>
+    <string name="label_password">Password</string>
+    <string name="password_hint">******</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="phone_verification">Phone Verification</string>
+    <string name="verify_otp">Verify OTP</string>
+    <string name="label_name">Name</string>
+    <string name="enter_name_hint">Enter Name</string>
+    <string name="label_age_1">Age</string>
+    <string name="enter_age_hint">Enter Age</string>
 
-<!--  common strings ... removing repeats ends  -->
+    <!--  common strings ... removing repeats ends  -->
 
     <string name="dashboard_header">Dashboard</string>
     <string name="dashboard_welcome_to">Welcome to Medicare!</string>
@@ -40,24 +62,14 @@
     <string name="dashboard_text_requestA">From Donors</string>
     <string name="dashboard_text_no_of_donors">Donors</string>
     <string name="dashboard_error_message">Failed to Update Dashboard</string>
-    <string name="dashboard_text_Press_back_one_more_time_to_exit">Press back one more time to exit</string>
 
     <string name="bld_req_name_edittext">Enter Your Name</string>
-    <string name="bld_req_label_age">Age :</string>
     <string name="bld_req_label_name">Name :</string>
     <string name="bld_req_age_edittext">Enter Your Age</string>
-    <string name="bld_req_label_gender">Gender</string>
-    <string name="bld_req_label_blood_grp">Blood Group</string>
-    <string name="bld_req_label_hospital">Hospital</string>
     <string name="bld_req_hospital_edittext">Enter Hospital Name</string>
-    <string name="bld_req_label_spinner_division">Division</string>
-    <string name="bld_req_label_spinner_district">District</string>
     <string name="bld_req_label_date">Date (When needed)</string>
-    <string name="bld_req_date_textview">Select Date</string>
-    <string name="bld_req_plasma_checkbox">Need Plasma (For Plasma Therapy)</string>
     <string name="bld_req_request_btn">Submit</string>
     <string name="bld_req_activity_patient_added">Patient Profile Added Successfully</string>
-    <string name="bld_req_activity_error">Error occurred! Try again</string>
     <string name="bld_req_activity_connection_problem">Connection Problem! Try again</string>
 
     <string name="donor_requests_header">Request from Patients</string>
@@ -66,160 +78,51 @@
     <string name="donor_requests_show_pending_requests">Show Pending Requests</string>
     <string name="donor_response_header">Response from Donors</string>
 
-    <string name="explore_patients_label_bld_grp">Blood Group</string>
-    <string name="explore_patients_label_district">District</string>
     <string name="explore_patients_textview">Search Patients</string>
-    <string name="explore_patients_district_edittext">District</string>
 
     <string name="find_donor_fordonors_label_district">Filter by District</string>
     <string name="find_donor_fordonors_textview">Available Donors</string>
     <string name="find_donor_fordonors_nomatchtextview">No Matching Donor Found</string>
-    <string name="find_donor_fordonors_district_edittext">Enter District</string>
 
     <string name="login_request_textview">Please Login to Your Account</string>
-    <string name="login_label_phone">Phone Number</string>
-    <string name="login_phone_number_edittext">01xxxxxxxxx</string>
-    <string name="login_label_password">Password</string>
-    <string name="login_password_edittext">******</string>
     <string name="login_forgot_password_textview">Forgot Password</string>
     <string name="login_sign_in_button">Sign In</string>
     <string name="login_no_account_textview">Don\'t have an account?</string>
-    <string name="login_sign_up_button">Sign Up</string>
-    <string name="login_activity_on_back_pressed">Press back one more time to exit</string>
     <string name="login_activity_phone_number_edittext">Phone Number Required</string>
     <string name="login_activity_password_edittext">Password Required</string>
     <string name="login_activity_wrong">Wrong Phone or Password</string>
     <string name="login_activity_error_response">An error occurred! Check your connection and try again</string>
 
-
     <string name="my_patients_textview">Patients Found</string>
 
-
     <string name="patient_requests_header">Request From Donors</string>
-
     <string name="patients_response_header">Response From Patients</string>
     <string name="patients_response_type_textView">Responses from the Patients approached</string>
 
-    <string name="phn_ver_header_textview">Phone Verification</string>
-    <string name="phn_ver_phone_text">Phone Number</string>
-    <string name="phn_ver_phone_input">01xxxxxxxxx</string>
     <string name="phn_ver_get_otp_button">Get OTP</string>
 
-    <string name="phn_ver2_header_textview">Phone Verification</string>
-    <string name="phn_ver2_phone_text">Verify OTP</string>
-    <string name="phn_ver2_otp">******</string>
-    <string name="phn_ver2_otp_button">Verify OTP</string>
-
-
-    <string name="search_donor_label_bld_grp">Blood Group</string>
-    <string name="search_donor_label_district">District</string>
-    <string name="search_donor_district_edittext">Enter District</string>
     <string name="search_donor_filter_result">Donors Found</string>
     <string name="reg_heading_textview">User Registration</string>
-    <string name="reg_label_name">Name</string>
-    <string name="reg_name_edittext">Enter Name</string>
-    <string name="reg_label_age">Age</string>
-    <string name="reg_age_edittext">Enter Age</string>
-    <string name="reg_label_gender">Gender</string>
-    <string name="reg_label_blood_grp">Blood Group</string>
-    <string name="reg_label_spinner_division">Division</string>
-    <string name="reg_label_spinner_district">District</string>
-    <string name="reg_label_thana">Thana</string>
-    <string name="reg_thana_edittext">Enter Thana</string>
     <string name="reg_donor_checkbox">I am a Donor</string>
     <string name="reg_plasma_checkbox">I want to Donate Plasma</string>
-    <string name="reg_label_password">Password</string>
-    <string name="reg_password_edittext">******</string>
-    <string name="reg_label_confirm_passord">Confirm Password</string>
-    <string name="reg_confirm_password_edittext">******</string>
-    <string name="reg_sign_up_btn">Sign Up</string>
-
     <string name="update_password_heading_textview">Update Password</string>
     <string name="update_password_label_password">New Password</string>
-    <string name="update_password_password_edittext">******</string>
-    <string name="update_password_label_confirm_password">Confirm Password</string>
-    <string name="update_password_confirm_password_edittext">*******</string>
     <string name="update_password_update_btn">Confirm Update</string>
-
-    <string name="update_patient_heading_textview">Update Profile</string>
-    <string name="update_patient_label_name">Name</string>
-    <string name="update_patient_name_edittext">Enter Name</string>
-    <string name="update_patient_label_age">Age</string>
-    <string name="update_patient_age_edittext">Enter Age</string>
-    <string name="update_patient_label_gender">Gender</string>
-    <string name="update_patient_label_blood_grp">Blood Group</string>
-    <string name="update_patient_label_hospital">Hospital</string>
     <string name="update_patient_hospital_edittext">Enter Hospital</string>
-    <string name="update_patient_label_spinner_division">Division</string>
-    <string name="update_patient_label_spinner_district">District</string>
     <string name="update_patient_label_date">Requirement Date</string>
-    <string name="update_patient_date_textview">Select Date</string>
-    <string name="update_patient_plasma_checkbox">Need Plasma (For Plasma Therapy)</string>
-    <string name="update_patient_request_btn">Update Profile</string>
-    <string name="update_patient_activity_is_required">is required</string>
-    <string name="update_patient_activity_confirm_update">Confirm Update?</string>
-
-    <string name="update_patient_activity_confirm">Yes</string>
-
-    <string name="update_patient_activity_update_failed">Failed to update! Check your connection and try again.</string>
     <string name="update_patient_activity_update_successful">Patient Profile Successfully Updated!</string>
-    <string name="update_patient_activity_update_error">Error occurred! Try again</string>
-
-    <string name="update_heading_textview">Update Profile</string>
-    <string name="update_label_name">Name</string>
-    <string name="update_name_edittext">Enter Name</string>
-    <string name="update_label_spinner_division">Division</string>
-    <string name="update_label_spinner_district">District</string>
-    <string name="update_label_thana">Thana</string>
-    <string name="update_thana_edittext">Enter Thana</string>
-    <string name="update_label_age">Age</string>
-    <string name="update_age_edittext">Enter Age</string>
     <string name="label_donor_role">Role of User (Donor/General User)</string>
     <string name="update_donor_role_radio_group_blood">Blood</string>
     <string name="update_donor_role_radio_group_plasma">Plasma</string>
     <string name="update_donor_role_radio_group_blood_and_plasma">Blood and Plasma</string>
     <string name="update_donor_role_radio_group_none">General User/Acceptor</string>
-    <string name="update_update_btn">Update Profile</string>
-    <string name="update_activity_is_required">is required</string>
-    <string name="update_activity_update_failed">Failed to update! Check your connection and try again.</string>
     <string name="update_activity_update_successful">Profile Successfully Updated!</string>
-    <string name="update_activity_update_error">Error occurred! Try again</string>
-    <string name="update_activity_confirm_update">Confirm Update?</string>
-
-    <string name="update_activity_confirm">Yes</string>
-
     <string name="donor_profile_header">Donor Profile</string>
-    <string name="donor_profile_name">Name</string>
-    <string name="donor_profile_label_age">Age :</string>
-    <string name="donor_profile_age">Age</string>
-    <string name="donor_profile_label_address">Address :</string>
-    <string name="donor_profile_address">Thana, District</string>
-    <string name="donor_profile_label_phone">Phone :</string>
-    <string name="donor_profile_phone">Phone</string>
-    <string name="donor_profile_label_blood_group">Blood Group :</string>
-    <string name="donor_profile_blood_group">Blood Group</string>
     <string name="donor_profile_label_type">Donor Role :</string>
-    <string name="donor_profile_type">Blood/Plasma</string>
-    <string name="donor_profile_accept_button">Accept Request</string>
-    <string name="donor_profile_decline_button">Decline Request</string>
-    <string name="donor_profile_ask_for_help_button">Ask For Help</string>
     <string name="donor_profile_send_request_suggestion">Select a patient to send Donor Request! If your request is accepted, phone number will be visible.</string>
-    <string name="donor_profile_activity_Enter_Password">Enter Password</string>
-    <string name="donor_profile_activity_Wrong_Password">Wrong Password</string>
-
     <string name="donor_profile_activity_send_request">Send Request?</string>
-    <string name="donor_profile_activity_yes">Yes</string>
     <string name="donor_profile_activity_Request_Sent">Request Sent! Wait For Donor\'s Response</string>
-    <string name="donor_profile_activity_Accept_Request">Accept Request</string>
-    <string name="donor_profile_activity_Decline_Request">Decline Request</string>
     <string name="donor_profile_activity_Call_Donor">Call Donor</string>
-    <string name="donor_profile_activity_Send_SMS">Send SMS</string>
-    <string name="donor_profile_activity_Ask_for_Help">Ask For Help</string>
-    <string name="donor_profile_activity_Not_Permitted">Not Permitted!</string>
-    <string name="donor_profile_activity_Accepted">Accepted</string>
-    <string name="donor_profile_activity_Declined">Declined</string>
-    <string name="donor_profile_activity_Pending">Pending</string>
-
     <string name="donor_profile_activity_notification_accepted_1">Request accepted from Patient!</string>
     <string name="donor_profile_activity_notification_accepted_2">has accepted your request. Check Patient Responses</string>
     <string name="donor_profile_activity_notification_declined_1">Request declined from Patient!</string>
@@ -227,20 +130,69 @@
     <string name="donor_profile_activity_notification_incoming_1">Incoming Request from Patient!</string>
     <string name="donor_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Patients</string>
     <string name="donor_profile_activity_image_failed">Profile Image retrieve failed!</string>
-
-
-
-
     <string name="patient_profile_header">Patient Profile</string>
-    <string name="patient_profile_name">Name</string>
-    <string name="patient_profile_label_age">Age :</string>
-    <string name="patient_profile_age">Age</string>
+
+
+
+
+
+
+
+
+
+
+    <string name="reg_label_thana">Thana</string>
+    <string name="reg_thana_edittext">Enter Thana</string>
+    <string name="reg_label_confirm_passord">Confirm Password</string>
+    <string name="update_password_label_confirm_password">Confirm Password</string>
+    <string name="update_password_confirm_password_edittext">*******</string>
+    <string name="update_patient_heading_textview">Update Profile</string>
+
+    <string name="update_patient_request_btn">Update Profile</string>
+    <string name="update_patient_activity_is_required">is required</string>
+    <string name="update_patient_activity_confirm_update">Confirm Update?</string>
+    <string name="update_patient_activity_confirm">Yes</string>
+    <string name="update_patient_activity_update_failed">Failed to update! Check your connection and try again.</string>
+    <string name="update_heading_textview">Update Profile</string>
+    <string name="update_label_thana">Thana</string>
+    <string name="update_thana_edittext">Enter Thana</string>
+
+    <string name="update_update_btn">Update Profile</string>
+    <string name="update_activity_is_required">is required</string>
+    <string name="update_activity_update_failed">Failed to update! Check your connection and try again.</string>
+    <string name="update_activity_confirm_update">Confirm Update?</string>
+    <string name="update_activity_confirm">Yes</string>
+    <string name="donor_profile_label_address">Address :</string>
+    <string name="donor_profile_address">Thana, District</string>
+    <string name="donor_profile_label_phone">Phone :</string>
+    <string name="donor_profile_phone">Phone</string>
+    <string name="donor_profile_label_blood_group">Blood Group :</string>
+    <string name="donor_profile_type">Blood/Plasma</string>
+    <string name="donor_profile_accept_button">Accept Request</string>
+    <string name="donor_profile_decline_button">Decline Request</string>
+    <string name="donor_profile_ask_for_help_button">Ask For Help</string>
+    <string name="donor_profile_activity_Enter_Password">Enter Password</string>
+    <string name="donor_profile_activity_Wrong_Password">Wrong Password</string>
+
+    <string name="donor_profile_activity_yes">Yes</string>
+
+    <string name="donor_profile_activity_Accept_Request">Accept Request</string>
+    <string name="donor_profile_activity_Decline_Request">Decline Request</string>
+
+    <string name="donor_profile_activity_Send_SMS">Send SMS</string>
+    <string name="donor_profile_activity_Ask_for_Help">Ask For Help</string>
+    <string name="donor_profile_activity_Not_Permitted">Not Permitted!</string>
+    <string name="donor_profile_activity_Accepted">Accepted</string>
+    <string name="donor_profile_activity_Declined">Declined</string>
+    <string name="donor_profile_activity_Pending">Pending</string>
+
+
     <string name="patient_profile_label_hospital">Hospital :</string>
     <string name="patient_profile_label_phone">Phone :</string>
-    <string name="patient_profile_hospital">Hospital</string>
+
     <string name="patient_profile_phone">Phone</string>
     <string name="patient_profile_label_blood_group">Blood Group :</string>
-    <string name="patient_profile_blood_group">Blood Group</string>
+
     <string name="patient_profile_label_type">Need :</string>
     <string name="patient_profile_need">Blood/Plasma</string>
     <string name="patient_profile_label_date">Required Date :</string>
@@ -292,15 +244,15 @@
 
     <string name="profile_header">My Profile</string>
     <string name="profile_logout_btn">Logout</string>
-    <string name="profile_name">Name</string>
-    <string name="profile_label_age">Age :</string>
-    <string name="profile_age">Age</string>
+
+
+
     <string name="profile_label_address">Address :</string>
     <string name="profile_address">Thana, District</string>
     <string name="profile_label_phone">Phone :</string>
     <string name="profile_phone">Phone</string>
     <string name="profile_label_blood_group">Blood Group :</string>
-    <string name="profile_blood_group">Blood Group</string>
+
     <string name="profile_label_type">User Role :</string>
     <string name="profile_type">Blood/Plasma</string>
     <string name="profile_blood">Blood Donor</string>

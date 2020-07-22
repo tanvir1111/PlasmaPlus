@@ -149,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
         backCounter++;
         if(backCounter == 1) {
          ;
-            ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.login_activity_on_back_pressed));
+            ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.press_one_more_time));
         }
         if(backCounter == 2) {
             finish();

@@ -473,7 +473,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             backCounter++;
             if (backCounter == 1) {
 
-                ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.dashboard_text_Press_back_one_more_time_to_exit));
+                ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.press_one_more_time));
             }
             if (backCounter == 2) {
                 finish();

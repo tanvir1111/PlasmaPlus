@@ -223,7 +223,7 @@
                     android:layout_marginEnd="32dp"
                     android:background="@drawable/edit_text_dark"
                     android:entries="@array/Dhaka"
-                    android:hint="@string/find_donor_fordonors_district_edittext"
+                    android:hint="@string/hint_enter_district"
                     android:inputType="textPersonName"
                     android:minHeight="40dp"
                     android:padding="10dp"
