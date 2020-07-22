@@ -50,7 +50,9 @@
     <string name="enter_name_hint">এখানে নাম লাগবে</string>
     <string name="label_age_1">বয়স</string>
     <string name="enter_age_hint">এখানে বয়স লাগবে</string>
-
+    <string name="label_thana">থানা</string>
+    <string name="enter_thana_hint">এখানে থানা লাগবে</string>
+    <string name="label_confirm_passord">কনফার্ম পাসওয়ার্ড</string>
     <!--  common strings ... removing repeats ends  -->
 
 
@@ -167,20 +169,20 @@
 
 
 
-    <string name="reg_label_thana">থানা</string>
-    <string name="reg_thana_edittext">এখানে থানা লাগবে</string>
+
+
     <string name="reg_donor_checkbox">আমি একজন দাতা</string>
     <string name="reg_plasma_checkbox">প্লাজমা দিতে ইচ্ছুক</string>
 
 
-    <string name="reg_label_confirm_passord">কনফার্ম পাসওয়ার্ড</string>
+
 
 
 
     <string name="update_password_heading_textview">আপডেট পাসওয়ার্ড</string>
     <string name="update_password_label_password">নতুন পাসওয়ার্ড</string>
 
-    <string name="update_password_label_confirm_password">কনফার্ম পাসওয়ার্ড</string>
+
     <string name="update_password_confirm_password_edittext">*******</string>
     <string name="update_password_update_btn">পরিবর্তন করুন</string>
 
@@ -212,8 +214,8 @@
 
 
 
-    <string name="update_label_thana">থানা</string>
-    <string name="update_thana_edittext">এখানে থানা লাগবে</string>
+
+
 
 
     <string name="label_donor_role">ব্যবহারকারীর ভূমিকা (দাতা/সাধারণ ব্যবহারকারী)</string>

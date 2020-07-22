@@ -144,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/update_label_thana"
+            android:text="@string/label_thana"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="@+id/update_district_spinner"
@@ -162,7 +162,7 @@
 
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/raleway_bold"
-            android:hint="@string/update_thana_edittext"
+            android:hint="@string/enter_thana_hint"
             android:minHeight="40dp"
             android:padding="15dp"
             android:textSize="12sp"

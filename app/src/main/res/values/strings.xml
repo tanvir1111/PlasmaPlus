@@ -51,7 +51,9 @@
     <string name="enter_name_hint">Enter Name</string>
     <string name="label_age_1">Age</string>
     <string name="enter_age_hint">Enter Age</string>
-
+    <string name="label_thana">Thana</string>
+    <string name="enter_thana_hint">Enter Thana</string>
+    <string name="label_confirm_passord">Confirm Password</string>
     <!--  common strings ... removing repeats ends  -->
 
     <string name="dashboard_header">Dashboard</string>
@@ -141,10 +143,10 @@
 
 
 
-    <string name="reg_label_thana">Thana</string>
-    <string name="reg_thana_edittext">Enter Thana</string>
-    <string name="reg_label_confirm_passord">Confirm Password</string>
-    <string name="update_password_label_confirm_password">Confirm Password</string>
+
+
+
+
     <string name="update_password_confirm_password_edittext">*******</string>
     <string name="update_patient_heading_textview">Update Profile</string>
 
@@ -154,8 +156,8 @@
     <string name="update_patient_activity_confirm">Yes</string>
     <string name="update_patient_activity_update_failed">Failed to update! Check your connection and try again.</string>
     <string name="update_heading_textview">Update Profile</string>
-    <string name="update_label_thana">Thana</string>
-    <string name="update_thana_edittext">Enter Thana</string>
+
+
 
     <string name="update_update_btn">Update Profile</string>
     <string name="update_activity_is_required">is required</string>
