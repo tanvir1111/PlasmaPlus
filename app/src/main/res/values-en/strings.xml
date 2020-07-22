@@ -42,7 +42,7 @@
     <string name="label_phone_number">Phone Number</string>
     <string name="phone_number_hint">01xxxxxxxxx</string>
     <string name="label_password">Password</string>
-    <string name="password_hint">******</string>
+
     <string name="sign_up">Sign Up</string>
     <string name="phone_verification">Phone Verification</string>
     <string name="verify_otp">Verify OTP</string>
@@ -53,6 +53,39 @@
     <string name="label_thana">Thana</string>
     <string name="enter_thana_hint">Enter Thana</string>
     <string name="label_confirm_passord">Confirm Password</string>
+    <string name="password_hint">******</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="is_required_txt">is required</string>
+    <string name="yes_txt">Yes</string>
+    <string name="failed_to_update_error">Failed to update! Check your connection and try again.</string>
+    <string name="address_with_colon">Address :</string>
+    <string name="phone_with_colon">Phone :</string>
+    <string name="phone">Phone</string>
+    <string name="blood_group_with_colon">Blood Group :</string>
+    <string name="accept_request">Accept Request</string>
+    <string name="decline_request">Decline Request</string>
+    <string name="ask_for_help">Ask For Help</string>
+    <string name="enter_password_hint">Enter Password</string>
+    <string name="wrong_password_error">Wrong Password</string>
+    <string name="send_sms">Send SMS</string>
+    <string name="not_permitted">Not Permitted!</string>
+    <string name="accepted">Accepted</string>
+    <string name="declined">Declined</string>
+    <string name="pending">Pending</string>
+    <string name="delete_profile">Delete Profile</string>
+    <string name="donate_to_help">Donate to Help</string>
+
+    <string name="ok_txt">OK</string>
+    <string name="proceed">Proceed</string>
+    <string name="go_back">Go Back</string>
+    <string name="delete_profile_are_you_sure">Are you sure? All data and activities associated will be deleted.</string>
+    <string name="delete_failed">Delete Failed!</string>
+    <string name="error_occurred_try_again">Error occurred! Please try again</string>
+    <string name="connection_failed_try_again">Connection failed! Please try again</string>
+    <string name="image_not_found">Image Not found</string>
+    <string name="date_of_requirement">Date of requirement</string>
+    <string name="no_patient_record_found">Add Record to Search</string>
+
     <!--  common strings ... removing repeats ends  -->
 
 
@@ -61,14 +94,11 @@
     <string name="dashboard_welcome_to">Welcome to Medicare!</string>
 
 
-
-
     <string name="dashboard_text_explore">Explore</string>
 
     <string name="dashboard_text_no_of_patients">Patients</string>
 
     <string name="dashboard_text_requestB">From Patients</string>
-
 
     <string name="dashboard_text_requestA">From Donors</string>
     <string name="dashboard_text_no_of_donors">Donors</string>
@@ -83,7 +113,6 @@
     <string name="bld_req_request_btn">Submit</string>
     <string name="bld_req_activity_patient_added">Patient Profile Added Successfully</string>
     <string name="bld_req_activity_connection_problem">Connection Problem! Try again</string>
-
 
     <string name="donor_requests_header">Request from Patients</string>
     <string name="donor_requests_type_textView">Pending Requests</string>
@@ -118,30 +147,30 @@
     <string name="search_donor_filter_result">Donors Found</string>
 
     <string name="reg_heading_textview">User Registration</string>
-
-
-
-
-
-
-
-
     <string name="reg_donor_checkbox">I am a Donor</string>
     <string name="reg_plasma_checkbox">I want to Donate Plasma</string>
-
-
-
-
-
 
     <string name="update_password_heading_textview">Update Password</string>
     <string name="update_password_label_password">New Password</string>
 
-
-    <string name="update_password_confirm_password_edittext">*******</string>
     <string name="update_password_update_btn">Confirm Update</string>
 
-    <string name="update_patient_heading_textview">Update Profile</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -155,16 +184,15 @@
     <string name="update_patient_label_date">Requirement Date</string>
 
 
-    <string name="update_patient_request_btn">Update Profile</string>
-    <string name="update_patient_activity_is_required">is required</string>
-    <string name="update_patient_activity_update_failed">Patient Profile Update Failed!</string>
+
+
     <string name="update_patient_activity_update_successful">Patient Profile Update Successful!</string>
 
-    <string name="update_patient_activity_confirm_update">Confirm Update?</string>
 
-    <string name="update_patient_activity_confirm">Yes</string>
 
-    <string name="update_heading_textview">Update Profile</string>
+
+
+
 
 
 
@@ -176,45 +204,39 @@
     <string name="update_donor_role_radio_group_plasma">Plasma</string>
     <string name="update_donor_role_radio_group_blood_and_plasma">Blood and Plasma</string>
     <string name="update_donor_role_radio_group_none">General User/Acceptor</string>
-    <string name="update_update_btn">Update Profile</string>
-    <string name="update_activity_is_required">is required</string>
-    <string name="update_activity_update_failed">Failed to update! Check your connection and try again.</string>
+
+
+
     <string name="update_activity_update_successful">Profile Successfully Updated!</string>
 
-    <string name="update_activity_confirm_update">Confirm Update?</string>
+    <string name="confirm_update_txt">Confirm Update?</string>
 
-    <string name="update_activity_confirm">Yes</string>
+
 
     <string name="donor_profile_header">Donor Profile</string>
 
 
-    <string name="donor_profile_label_address">Address :</string>
-    <string name="donor_profile_address">Thana, District</string>
-    <string name="donor_profile_label_phone">Phone :</string>
-    <string name="donor_profile_phone">Phone</string>
-    <string name="donor_profile_label_blood_group">Blood Group :</string>
+
+    <string name="thana_district_txt">Thana, District</string>
+
+
+
 
     <string name="donor_profile_label_type">Donor Role :</string>
     <string name="donor_profile_type">Blood/Plasma</string>
-    <string name="donor_profile_accept_button">Accept Request</string>
-    <string name="donor_profile_decline_button">Decline Request</string>
-    <string name="donor_profile_ask_for_help_button">Ask For Help</string>
+
+
+
     <string name="donor_profile_send_request_suggestion">Select a patient to send Donor Request! If your request is accepted, phone number will be visible.</string>
-    <string name="donor_profile_activity_Enter_Password">Enter Password</string>
-    <string name="donor_profile_activity_Wrong_Password">Wrong Password</string>
+
 
     <string name="donor_profile_activity_send_request">Send Request?</string>
-    <string name="donor_profile_activity_yes">Yes</string>
+
     <string name="donor_profile_activity_Request_Sent">Request Sent! Wait For Donor\'s Response</string>
-    <string name="donor_profile_activity_Accept_Request">Accept Request</string>
-    <string name="donor_profile_activity_Decline_Request">Decline Request</string>
+
     <string name="donor_profile_activity_Call_Donor">Call Donor</string>
-    <string name="donor_profile_activity_Send_SMS">Send SMS</string>
-    <string name="donor_profile_activity_Ask_for_Help">Ask For Help</string>
-    <string name="donor_profile_activity_Not_Permitted">Not Permitted!</string>
-    <string name="donor_profile_activity_Accepted">Accepted</string>
-    <string name="donor_profile_activity_Declined">Declined</string>
-    <string name="donor_profile_activity_Pending">Pending</string>
+
+
 
     <string name="donor_profile_activity_notification_accepted_1">Request accepted from Patient!</string>
     <string name="donor_profile_activity_notification_accepted_2">has accepted your request. Check Patient Responses</string>
@@ -230,52 +252,48 @@
 
 
     <string name="patient_profile_label_hospital">Hospital :</string>
-    <string name="patient_profile_label_phone">Phone :</string>
 
-    <string name="patient_profile_phone">Phone</string>
-    <string name="patient_profile_label_blood_group">Blood Group :</string>
+
+
+
 
     <string name="patient_profile_label_type">Need :</string>
     <string name="patient_profile_need">Blood/Plasma</string>
     <string name="patient_profile_label_date">Required Date :</string>
     <string name="patient_profile_date">Date</string>
-    <string name="patient_profile_update_button">Update Profile</string>
-    <string name="patient_profile_delete_button">Delete Profile</string>
-    <string name="patient_profile_donate_button">Donate to Help</string>
-    <string name="patient_profile_activity_Not_Permitted">Not Permitted!</string>
-    <string name="patient_profile_activity_dialog_msg">Enter Password</string>
-    <string name="patient_profile_activity_Wrong_Password">Wrong Password</string>
-    <string name="patient_profile_activity_ok">OK</string>
 
-    <string name="patient_profile_activity_yes">Yes</string>
+
+
+
+
+
+
 
     <string name="patient_profile_activity_Delete_profile_question">Delete Profile?</string>
-    <string name="patient_profile_activity_proceed">Proceed</string>
-    <string name="patient_profile_activity_go_back">Go Back</string>
-    <string name="patient_profile_activity_Confirm_delete">Are you sure? All data and activities associated will be deleted.</string>
-    <string name="patient_profile_activity_Delete">Delete Profile</string>
+
+
+
     <string name="patient_profile_activity_Patient_Record_Deleted">Patient Record Deleted</string>
-    <string name="patient_profile_activity_Delete_Failed">Delete Failed!</string>
+
     <string name="patient_profile_activity_Request_Sent">Request Sent! Wait For Patient\'s Response</string>
-    <string name="patient_profile_activity_Update_Profile">Update Profile</string>
-    <string name="patient_profile_activity_Delete_Profile">Delete Profile</string>
-    <string name="patient_profile_activity_Donate_to_Help">Donate to Help</string>
-    <string name="patient_profile_activity_Accept_Request">Accept Request</string>
-    <string name="patient_profile_activity_Decline_Request">Decline Request</string>
+
+
+
+
+
     <string name="patient_profile_activity_Call_Patient">Call Patient</string>
-    <string name="patient_profile_activity_Send_SMS">Send SMS</string>
-    <string name="patient_profile_activity_Accepted">Accepted</string>
-    <string name="patient_profile_activity_Declined">Declined</string>
-    <string name="patient_profile_activity_Pending">Pending</string>
-    <string name="patient_profile_activity_error">Error occurred! Please try again</string>
-    <string name="patient_profile_activity_connection_failed">Connection failed! Please try again</string>
+
+
+
+
+
+
     <string name="patient_profile_activity_notification_accepted_1">Request accepted from Donor!</string>
     <string name="patient_profile_activity_notification_accepted_2">has accepted your request. Check Donor Responses</string>
     <string name="patient_profile_activity_notification_declined_1">Request declined from Donor!</string>
     <string name="patient_profile_activity_notification_declined_2">has declined your request. Check Donor Responses</string>
     <string name="patient_profile_activity_notification_incoming_1">Incoming Request from Donor!</string>
     <string name="patient_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Donors</string>
-    <string name="patient_profile_activity_image_not_found">Image Not found</string>
 
 
 
@@ -286,11 +304,11 @@
 
 
 
-    <string name="profile_label_address">Address :</string>
+
     <string name="profile_address">Thana, District</string>
-    <string name="profile_label_phone">Phone :</string>
-    <string name="profile_phone">Phone</string>
-    <string name="profile_label_blood_group">Blood Group :</string>
+
+
+
 
     <string name="profile_label_type">User Role :</string>
     <string name="profile_type">Blood/Plasma</string>
@@ -299,36 +317,34 @@
     <string name="profile_blood_and_plasma">Blood and Plasma Donor</string>
     <string name="profile_none">General User</string>
     <string name="profile_id_account_maintenance">Account Maintenance</string>
-    <string name="profile_update_button">Update Profile</string>
+
     <string name="profile_change_password_btn">Change Password</string>
-    <string name="profile_delete_button">Delete Profile</string>
+
     <string name="profile_activity_Not_a_donor">Not a donor</string>
 
-    <string name="profile_activity_Enter_Password">Enter Password</string>
-    <string name="profile_activity_Wrong_Password">Wrong Password</string>
-    <string name="profile_activity_yes">Yes</string>
+
+
+
     <string name="profile_activity_no">No</string>
 
-    <string name="profile_activity_ok">OK</string>
-    <string name="profile_activity_proceed">Proceed</string>
-    <string name="profile_activity_go_back">Go Back</string>
+
+
     <string name="profile_activity_Delete">Delete</string>
-    <string name="profile_activity_Confirm_delete">Are you sure? All data and activities associated will be deleted.</string>
     <string name="profile_activity_Delete_Successful">Profile Successfully Deleted</string>
-    <string name="profile_activity_Delete_Failed">Delete Failed!</string>
-    <string name="profile_activity_error">Error occurred! Please try again</string>
-    <string name="profile_activity_connection_failed">Connection failed! Please try again</string>
+
+
+
     <string name="profile_activity_image_did_not_upload">Image did not upload</string>
     <string name="profile_activity_image_upload_failed">Error! Image upload failed</string>
 
     <string name="profile_activity_image_delete_failed">Error! Image delete failed</string>
-    <string name="profile_activity_image_not_found">Image Not found</string>
 
 
-    <string name="adapter_Accepted">Accepted</string>
-    <string name="adapter_Declined">Declined</string>
-    <string name="adapter_Pending">Pending</string>
-    <string name="adapter_Date">Date of requirement</string>
+
+
+
+
+
 
     <string name="login_language">Change Language (ভাষা পরিবর্তন)</string>
     <string name="add_image">Add Image</string>
@@ -336,16 +352,15 @@
     <string name="delete_image">Delete Image</string>
 
 
-    <string name="my_patients_nomatchtextview">No Patient Record Found</string>
+
     <string name="donor_requests_norecordtextview">No Requests from Patients</string>
     <string name="donor_response_norecordtextview">No Response from Donors</string>
     <string name="explore_patients_norecordtextview">No Patient Record Found</string>
     <string name="patient_requests_norecordtextview">No Requests from Donors</string>
     <string name="patients_response_norecordtextview">No Response from Patients</string>
     <string name="search_donor_norecordtextview">No Donor Found</string>
-    <string name="find_donor_add_patient_btn">Add Record to Search</string>
-    <string name="request_patient_date">Date of requirement</string>
-    <string name="seeking_help_date">Date of requirement</string>
+
+
     <string name="plasma_dialog_header">Please answer the following question to check your eligiblity</string>
     <string name="plasma_question_1">Have you Recovered from COVID-19?</string>
     <string name="plasma_question_4">Do you have any of the mentioned diseases?</string>
@@ -368,6 +383,7 @@
     <string name="bld_req_for_myself_2">Others</string>
 
     <string name="answer_this_question_error">Answer this question</string>
+    <string name="confirm">Confirm</string>
 
 
     <string-array name="division">

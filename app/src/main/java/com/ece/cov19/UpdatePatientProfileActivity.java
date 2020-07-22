@@ -313,17 +313,17 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         if (newName.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_name) + " ";
-            nameEditText.setError(getResources().getString(R.string.label_name)+" "+getResources().getString(R.string.update_patient_activity_is_required));
+            nameEditText.setError(getResources().getString(R.string.label_name)+" "+getResources().getString(R.string.is_required_txt));
         }
         if (newHospital.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_hospital) + " ";
-            hospitalEditText.setError(getResources().getString(R.string.label_hospital)+" "+getResources().getString(R.string.update_patient_activity_is_required));
+            hospitalEditText.setError(getResources().getString(R.string.label_hospital)+" "+getResources().getString(R.string.is_required_txt));
         }
         if (newAge.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_age_1) + " ";
-            ageEditText.setError(getResources().getString(R.string.label_age_1)+" "+getResources().getString(R.string.update_patient_activity_is_required));
+            ageEditText.setError(getResources().getString(R.string.label_age_1)+" "+getResources().getString(R.string.is_required_txt));
         }
         if (newDivision.isEmpty()) {
             emptyfieldChecker = false;
@@ -339,7 +339,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
         }
         else{
-            emptyfield += getResources().getString(R.string.update_activity_is_required);
+            emptyfield += getResources().getString(R.string.is_required_txt);
             ToastCreator.toastCreatorRed(this, emptyfield);
         }
 
@@ -376,7 +376,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
                     updateAlertDialog();
 
                 } else {
-                    ToastCreator.toastCreatorRed(UpdatePatientProfileActivity.this, getResources().getString(R.string.update_patient_activity_update_failed));
+                    ToastCreator.toastCreatorRed(UpdatePatientProfileActivity.this, getResources().getString(R.string.failed_to_update_error));
                 }
             }
 
@@ -392,8 +392,8 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
 private void updateAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdatePatientProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.update_patient_activity_confirm_update));
-        builder.setPositiveButton(getString(R.string.update_patient_activity_confirm), new DialogInterface.OnClickListener() {
+        builder.setMessage(getResources().getString(R.string.confirm_update_txt));
+        builder.setPositiveButton(getString(R.string.confirm_update_txt), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(UpdatePatientProfileActivity.this, ViewPatientProfileActivity.class);
                 intent.putExtra("name",newName);

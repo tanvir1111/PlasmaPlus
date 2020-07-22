@@ -89,11 +89,11 @@ public class ExplorePatientsAdapter extends RecyclerView.Adapter<ExplorePatients
             if (need.toLowerCase().equals("blood") && (loggedInUserDonorInfo.toLowerCase().equals("blood") ||
                     loggedInUserDonorInfo.toLowerCase().equals("blood and plasma"))) {
                 holder.donateTextView.setVisibility(View.VISIBLE);
-                holder.donateTextView.setText(context.getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
+                holder.donateTextView.setText(context.getResources().getString(R.string.donate_to_help));
             } else if (need.toLowerCase().equals("plasma") && (loggedInUserDonorInfo.toLowerCase().equals("plasma") ||
                     loggedInUserDonorInfo.toLowerCase().equals("blood and plasma"))) {
                 holder.donateTextView.setVisibility(View.VISIBLE);
-                holder.donateTextView.setText(context.getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
+                holder.donateTextView.setText(context.getResources().getString(R.string.donate_to_help));
             } else {
                 holder.donateTextView.setVisibility(View.VISIBLE);
                 holder.donateTextView.setText("View Profile");
@@ -118,7 +118,7 @@ public class ExplorePatientsAdapter extends RecyclerView.Adapter<ExplorePatients
         holder.typeTextView.setText(patientDataModel.getNeed());
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());
         holder.locationTextView.setText(patientDataModel.getHospital());
-        holder.dateTextView.setText(context.getResources().getString(R.string.adapter_Date)+"              "+patientDataModel.getDate());
+        holder.dateTextView.setText(context.getResources().getString(R.string.date_of_requirement)+"              "+patientDataModel.getDate());
 
         if(patientDataModel.getGender().toLowerCase().equals("male")) {
             holder.patientImageView.setImageResource(R.drawable.profile_icon_male);

@@ -87,21 +87,21 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
 
         if(userDataModel.getServerMsg().toLowerCase().equals("pending")) {
             holder.acceptButton.setVisibility(View.VISIBLE);
-            holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Pending));
+            holder.acceptButton.setText(context.getResources().getString(R.string.pending));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_orange);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
         else if(userDataModel.getServerMsg().toLowerCase().equals("accepted")){
             holder.acceptButton.setVisibility(View.VISIBLE);
-            holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Accepted));
+            holder.acceptButton.setText(context.getResources().getString(R.string.accepted));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
         else if(userDataModel.getServerMsg().toLowerCase().equals("declined")){
             holder.acceptButton.setVisibility(View.VISIBLE);
-            holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Declined));
+            holder.acceptButton.setText(context.getResources().getString(R.string.declined));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_red);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);

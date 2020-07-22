@@ -85,7 +85,7 @@ public class PatientResponseAdapter extends RecyclerView.Adapter<PatientResponse
         holder.typeTextView.setText(patientDataModel.getNeed());
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());
         holder.locationTextView.setText(patientDataModel.getDistrict());
-        holder.dateTextView.setText(context.getResources().getString(R.string.adapter_Date)+"               "+patientDataModel.getDate());
+        holder.dateTextView.setText(context.getResources().getString(R.string.date_of_requirement)+"               "+patientDataModel.getDate());
         if(patientDataModel.getGender().toLowerCase().equals("male")) {
             holder.patientImageView.setImageResource(R.drawable.profile_icon_male);
         } else {
@@ -94,21 +94,21 @@ public class PatientResponseAdapter extends RecyclerView.Adapter<PatientResponse
 
         if(patientDataModel.getServerMsg().toLowerCase().equals("pending")){
             holder.acceptButton.setVisibility(View.VISIBLE);
-            holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Pending));
+            holder.acceptButton.setText(context.getResources().getString(R.string.pending));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_orange);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
         else if(patientDataModel.getServerMsg().toLowerCase().equals("accepted")){
             holder.acceptButton.setVisibility(View.VISIBLE);
-            holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Accepted));
+            holder.acceptButton.setText(context.getResources().getString(R.string.accepted));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
         else if(patientDataModel.getServerMsg().toLowerCase().equals("declined")){
             holder.acceptButton.setVisibility(View.VISIBLE);
-            holder.acceptButton.setText(context.getResources().getString(R.string.adapter_Declined));
+            holder.acceptButton.setText(context.getResources().getString(R.string.declined));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_red);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);

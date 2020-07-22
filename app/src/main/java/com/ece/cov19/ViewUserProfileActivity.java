@@ -303,7 +303,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
     private void confirmAlertDialog(final Intent intent){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
-        builder.setPositiveButton(getResources().getString(R.string.profile_activity_yes), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 showAlertDialog(intent);
             }
@@ -322,7 +322,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
 //                asking password with alertdialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.profile_activity_Enter_Password));
+        builder.setMessage(getResources().getString(R.string.enter_password_hint));
 
 // Set up the input
         final EditText pass = new EditText(ViewUserProfileActivity.this);
@@ -337,7 +337,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         builder.setView(pass);
 
 // Set up the buttons
-        builder.setPositiveButton(getResources().getString(R.string.profile_activity_ok), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.ok_txt), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -346,7 +346,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else{
-                    ToastCreator.toastCreatorRed(ViewUserProfileActivity.this, getResources().getString(R.string.profile_activity_Wrong_Password));
+                    ToastCreator.toastCreatorRed(ViewUserProfileActivity.this, getResources().getString(R.string.wrong_password_error));
                 }
             }
         });
@@ -366,7 +366,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
     private void logoutAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
-        builder.setPositiveButton(getResources().getString(R.string.profile_activity_yes), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
                 sharedPreferences.edit().clear().apply();
@@ -430,7 +430,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
     private void updateAlertDialog(final Intent intent){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
-        builder.setPositiveButton(getResources().getString(R.string.profile_activity_yes), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 startActivity(intent);
             }
@@ -449,12 +449,12 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
-        builder.setPositiveButton(getResources().getString(R.string.profile_delete_button), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.delete_profile), new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int id) {
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
-                builder.setMessage(getResources().getString(R.string.profile_activity_Enter_Password));
+                builder.setMessage(getResources().getString(R.string.enter_password_hint));
 
                 final EditText pass = new EditText(ViewUserProfileActivity.this);
 
@@ -466,15 +466,15 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                 pass.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
                 builder.setView(pass);
 
-                builder.setPositiveButton(getResources().getString(R.string.profile_activity_ok), new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(getResources().getString(R.string.ok_txt), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                         if(pass.getText().toString().equals(loggedInUserPass)){
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
-                            builder.setMessage(getResources().getString(R.string.profile_activity_Confirm_delete));
-                            builder.setPositiveButton(getResources().getString(R.string.profile_delete_button), new DialogInterface.OnClickListener() {
+                            builder.setMessage(getResources().getString(R.string.delete_profile_are_you_sure));
+                            builder.setPositiveButton(getResources().getString(R.string.delete_profile), new DialogInterface.OnClickListener() {
 
                                 public void onClick(DialogInterface dialog, int id) {
 
@@ -493,14 +493,14 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                                                 ToastCreator.toastCreatorGreen(getApplicationContext(), getResources().getString(R.string.profile_activity_Delete_Successful));
                                             }
                                             else if(response.body().getServerMsg().toLowerCase().equals("failed")){
-                                                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_Delete_Failed));
+                                                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.delete_failed));
 
                                             }
                                         }
 
                                         @Override
                                         public void onFailure(Call<UserDataModel> call, Throwable t) {
-                                            ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_error));
+                                            ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.connection_error));
 
                                         }
                                     });
@@ -517,7 +517,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
                         }
                         else{
-                            ToastCreator.toastCreatorRed(ViewUserProfileActivity.this, getResources().getString(R.string.profile_activity_Wrong_Password));;
+                            ToastCreator.toastCreatorRed(ViewUserProfileActivity.this, getResources().getString(R.string.wrong_password_error));;
                         }
                     }
                 })
@@ -773,7 +773,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
                 }
                 else if(response.body().getServerMsg().toLowerCase().equals("false")){
-                    ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.profile_activity_image_not_found));
+                    ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.image_not_found));
 
                 }
             }

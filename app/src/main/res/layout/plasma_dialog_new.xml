@@ -63,7 +63,7 @@
                     android:id="@+id/q1_yes"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/update_patient_activity_confirm" />
+                    android:text="@string/yes_txt" />
 
                 <RadioButton
                     android:id="@+id/q1_no"
@@ -220,7 +220,7 @@
                 android:fontFamily="@font/montserrat"
 
                 android:padding="10dp"
-                android:text="@string/profile_activity_ok"
+                android:text="@string/ok_txt"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="@+id/plasma_dialog_checkbox"
@@ -264,7 +264,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/montserrat"
         android:padding="10dp"
-        android:text="@string/profile_activity_ok"
+        android:text="@string/ok_txt"
         android:textColor="@color/colorAccent"
         android:textSize="20sp"
         android:visibility="gone"

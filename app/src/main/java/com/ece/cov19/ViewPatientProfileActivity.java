@@ -112,7 +112,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         }
         else {
-            phoneTextView.setText(getResources().getString(R.string.patient_profile_activity_Not_Permitted));
+            phoneTextView.setText(getResources().getString(R.string.not_permitted));
         }
         bloodGroupTextView.setText(bloodGroup);
         hospitalTextView.setText(hospital);
@@ -137,7 +137,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                if(donateToHelpButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.patient_profile_donate_button).toLowerCase())) {
+                if(donateToHelpButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.donate_to_help).toLowerCase())) {
 
                     donateToHelpAlertDialog();
                 }
@@ -148,7 +148,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(updateButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.patient_profile_update_button).toLowerCase())) {
+                if(updateButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.update_profile).toLowerCase())) {
                     Intent intent = new Intent(ViewPatientProfileActivity.this, UpdatePatientProfileActivity.class);
                     intent.putExtra("name", name);
                     intent.putExtra("age", age);
@@ -162,7 +162,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     intent.putExtra("phone", phone);
                     updateAlertDialog(intent);
                 }
-                else if(updateButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Accept_Request))){
+                else if(updateButton.getText().toString().equals(getResources().getString(R.string.accept_request))){
                     requestOperationAlertDialog("accept",phone,getResources().getString(R.string.patient_profile_activity_notification_accepted_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_accepted_2),"DonorResponseActivity");
 
                 }
@@ -177,14 +177,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(deleteButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.patient_profile_delete_button).toLowerCase())) {
+                if(deleteButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.delete_profile).toLowerCase())) {
                     deleteAlertDialog();
                 }
-                else if(deleteButton.getText().toString().equals(getResources().getString(R.string.patient_profile_activity_Decline_Request))){
+                else if(deleteButton.getText().toString().equals(getResources().getString(R.string.decline_request))){
                     requestOperationAlertDialog("decline",phone,getResources().getString(R.string.patient_profile_activity_notification_declined_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_declined_2),"DonorResponseActivity");
 
                 }
-                else if(deleteButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.patient_profile_activity_Send_SMS).toLowerCase())){
+                else if(deleteButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.send_sms).toLowerCase())){
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_SENDTO);
                     intent.setData(Uri.parse("smsto:"));
@@ -216,7 +216,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
 
-        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_yes), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
@@ -242,12 +242,12 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.patient_profile_activity_Delete_profile_question));
 
-        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_proceed), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.proceed), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
-                builder.setMessage(getResources().getString(R.string.patient_profile_activity_dialog_msg));
+                builder.setMessage(getResources().getString(R.string.delete_profile_are_you_sure));
 
 // Set up the input
                 final EditText pass = new EditText(ViewPatientProfileActivity.this);
@@ -262,15 +262,15 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 builder.setView(pass);
 
 // Set up the buttons
-                builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_ok), new DialogInterface.OnClickListener() {
+                builder.setPositiveButton(getResources().getString(R.string.ok_txt), new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
                         if(pass.getText().toString().equals(loggedInUserPass)){
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
-                            builder.setMessage(getResources().getString(R.string.patient_profile_activity_Confirm_delete));
-                            builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_Delete), new DialogInterface.OnClickListener() {
+                            builder.setMessage(getResources().getString(R.string.are_you_sure));
+                            builder.setPositiveButton(getResources().getString(R.string.delete_profile), new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     progressBar.setVisibility(View.VISIBLE);
                                     RetroInterface retroInterface = RetroInstance.getRetro();
@@ -284,21 +284,21 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                                                 finish();
                                             }
                                             else{
-                                                ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Delete_Failed));
+                                                ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.delete_failed));
 
                                             }
                                         }
 
                                         @Override
                                         public void onFailure(Call<PatientDataModel> call, Throwable t) {
-                                            ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error));
+                                            ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.connection_error));
                                         }
                                     });
 
 
                                 }
                             })
-                                    .setNegativeButton(getResources().getString(R.string.patient_profile_activity_go_back), new DialogInterface.OnClickListener() {
+                                    .setNegativeButton(getResources().getString(R.string.go_back), new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             dialog.dismiss();
                                         }
@@ -310,7 +310,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                         }
                         else{
-                            ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Wrong_Password));;
+                            ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.wrong_password_error));;
                         }
                     }
                 });
@@ -348,7 +348,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         builder.setMessage(getResources().getString(R.string.donor_profile_activity_send_request));
 
 
-        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_yes), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 sendRequest();
@@ -372,7 +372,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         builder.setMessage(getResources().getString(R.string.are_you_sure));
 
 
-        builder.setPositiveButton(getResources().getString(R.string.patient_profile_activity_yes), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 requestsOperation(getstatus);
@@ -433,13 +433,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     });
 
                 } else {
-                    ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_connection_failed));
+                    ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.connection_failed_try_again));
                 }
             }
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error));
+                ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.connection_error));
 
             }
         });
@@ -460,9 +460,9 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         if(phone.equals(loggedInUserPhone)){
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Update_Profile));
+                            updateButton.setText(getResources().getString(R.string.confirm_update_txt));
                             deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Delete_Profile));
+                            deleteButton.setText(getResources().getString(R.string.delete_profile));
                         }
                         else if(loggedInUserEligibility.toLowerCase().equals("not_eligible")){
                             donateToHelpButton.setVisibility(View.GONE);
@@ -474,12 +474,12 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             if(need.toLowerCase().equals("blood") && (loggedInUserDonorInfo.toLowerCase().equals("blood")||
                             loggedInUserDonorInfo.toLowerCase().equals("blood and plasma"))) {
                                 donateToHelpButton.setVisibility(View.VISIBLE);
-                                donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
+                                donateToHelpButton.setText(getResources().getString(R.string.donate_to_help));
                             }
                             else if(need.toLowerCase().equals("plasma") && (loggedInUserDonorInfo.toLowerCase().equals("plasma")||
                                     loggedInUserDonorInfo.toLowerCase().equals("blood and plasma"))){
                                 donateToHelpButton.setVisibility(View.VISIBLE);
-                                donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Donate_to_Help));
+                                donateToHelpButton.setText(getResources().getString(R.string.donate_to_help));
                             }
                             else{
                                 donateToHelpButton.setVisibility(View.GONE);
@@ -497,23 +497,23 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         if(getIntent().getStringExtra("activity").equals("PatientResponseActivity")){
 
                             donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Pending));
+                            donateToHelpButton.setText(getResources().getString(R.string.pending));
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                         }
                         else if(phone.equals(loggedInUserPhone)) {
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Update_Profile));
+                            updateButton.setText(getResources().getString(R.string.update_profile));
                             deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Delete_Profile));
+                            deleteButton.setText(getResources().getString(R.string.delete_profile));
                         }
                         else {
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Accept_Request));
+                            updateButton.setText(getResources().getString(R.string.accept_request));
                             deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Decline_Request));
+                            deleteButton.setText(getResources().getString(R.string.decline_request));
                         }
 
 
@@ -522,16 +522,16 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         if(phone.equals(loggedInUserPhone)) {
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Update_Profile));
+                            updateButton.setText(getResources().getString(R.string.update_profile));
                             deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Delete_Profile));
+                            deleteButton.setText(getResources().getString(R.string.delete_profile));
                         }
                         else{
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Send_SMS));
+                            deleteButton.setText(getResources().getString(R.string.send_sms));
                             phoneTextView.setText(phone);
                         }
 
@@ -540,13 +540,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         if(phone.equals(loggedInUserPhone)) {
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Update_Profile));
+                            updateButton.setText(getResources().getString(R.string.update_profile));
                             deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.patient_profile_activity_Delete_Profile));
+                            deleteButton.setText(getResources().getString(R.string.delete_profile));
                         }
                         else{
                             donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.patient_profile_activity_Declined));
+                            donateToHelpButton.setText(getResources().getString(R.string.decline_request));
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                         }
@@ -560,7 +560,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_error));
+                ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.connection_error));
 
             }
         });
@@ -702,14 +702,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     downloadImage(findPatientPhone);
                 }
                 else if(response.body().getServerMsg().toLowerCase().equals("false")){
-                    ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_connection_failed));
+                    ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.connection_failed_try_again));
 
                 }
             }
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error));
+                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.connection_error));
 
             }
         });
@@ -743,7 +743,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error));
+                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.connection_error));
 
 
                 if (gender.toLowerCase().equals("male")) {
@@ -779,14 +779,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                 }
                 else if(response.body().getServerMsg().toLowerCase().equals("false")){
-                    ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_image_not_found));
+                    ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.image_not_found));
 
                 }
             }
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.patient_profile_activity_error));
+                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.connection_error));
 
             }
         });

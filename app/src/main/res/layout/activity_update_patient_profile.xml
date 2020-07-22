@@ -60,7 +60,7 @@
 
 
             android:fontFamily="@font/montserrat_bold"
-            android:text="@string/update_patient_heading_textview"
+            android:text="@string/update_profile"
             android:textColor="@color/textColorDark"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -466,7 +466,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:maxWidth="350dp"
             android:minWidth="320dp"
-            android:text="@string/update_patient_request_btn"
+            android:text="@string/update_profile"
             android:textColor="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/update_patient_plasma_checkbox"

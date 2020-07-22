@@ -42,7 +42,7 @@
     <string name="label_phone_number">মোবাইল নম্বর</string>
     <string name="phone_number_hint">01xxxxxxxxx</string>
     <string name="label_password">পাসওয়ার্ড</string>
-    <string name="password_hint">******</string>
+
     <string name="sign_up">সাইন আপ</string>
     <string name="phone_verification">ফোন ভেরিফিকেশন</string>
     <string name="verify_otp">OTP নিশ্চিত করুন</string>
@@ -53,6 +53,38 @@
     <string name="label_thana">থানা</string>
     <string name="enter_thana_hint">এখানে থানা লাগবে</string>
     <string name="label_confirm_passord">কনফার্ম পাসওয়ার্ড</string>
+    <string name="password_hint">*******</string>
+    <string name="update_profile">প্রোফাইল হালনাগাদ</string>
+    <string name="is_required_txt">বাদ পড়েছে</string>
+    <string name="confirm_update_txt">হালনাগাদ নিশ্চিত?</string>
+    <string name="yes_txt">হ্যাঁ</string>
+    <string name="failed_to_update_error">নেটওয়ার্ক সমস্যা! আপডেট ব্যর্থ হয়েছে</string>
+    <string name="address_with_colon">ঠিকানা :</string>
+    <string name="phone_with_colon">মোবাইল :</string>
+    <string name="phone">মোবাইল</string>
+    <string name="blood_group_with_colon">রক্তের গ্রুপ :</string>
+    <string name="accept_request">আবেদন গ্রহণ করুন</string>
+    <string name="decline_request">আবেদন প্রত্যাখ্যান করুন</string>
+    <string name="ask_for_help">অনুরোধ করুন</string>
+    <string name="enter_password_hint">পাসওয়ার্ড দিন</string>
+    <string name="wrong_password_error">ভুল পাসওয়ার্ড</string>
+    <string name="send_sms">গ্রাহককে এসএমএস করুন</string>
+    <string name="not_permitted">অনুমোদিত নয়</string>
+    <string name="accepted">সম্মত</string>
+    <string name="declined">নাকচ</string>
+    <string name="pending">অমীমাংসিত</string>
+    <string name="delete_profile">প্রোফাইল মুছে ফেলুন</string>
+    <string name="donate_to_help">সাহায্য করুন</string>
+    <string name="ok_txt">ঠিক আছে</string>
+    <string name="proceed">অগ্রসর হোন</string>
+    <string name="go_back">ফিরে যান</string>
+    <string name="delete_profile_are_you_sure">নিশ্চিত? গ্রাহক প্রোফাইলের সমস্ত তথ্য, অনুরোধ ও প্রতিক্রিয়া মুছে যাবে।</string>
+    <string name="delete_failed">মুছে ফেলা ব্যর্থ হয়েছে!</string>
+    <string name="error_occurred_try_again">এরর! আবার চেষ্টা করুন</string>
+    <string name="connection_failed_try_again">নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন</string>
+    <string name="image_not_found">ছবি পাওয়া যায় নি</string>
+    <string name="date_of_requirement">প্রয়োজনের তারিখ</string>
+    <string name="no_patient_record_found">প্রথমে যোগ করুন</string>
     <!--  common strings ... removing repeats ends  -->
 
 
@@ -183,10 +215,9 @@
     <string name="update_password_label_password">নতুন পাসওয়ার্ড</string>
 
 
-    <string name="update_password_confirm_password_edittext">*******</string>
+
     <string name="update_password_update_btn">পরিবর্তন করুন</string>
 
-    <string name="update_patient_heading_textview">আপডেট প্রোফাইল</string>
 
 
 
@@ -200,16 +231,15 @@
     <string name="update_patient_label_date">প্রয়োজনের তারিখ</string>
 
 
-    <string name="update_patient_request_btn">আপডেট প্রোফাইল</string>
-    <string name="update_patient_activity_is_required">বাদ পড়েছে</string>
+
+
     <string name="update_patient_activity_update_successful">আপডেট সফল হয়েছে!</string>
 
-    <string name="update_patient_activity_update_failed">নেটওয়ার্ক সমস্যা! আপডেট ব্যর্থ হয়েছে</string>
-    <string name="update_patient_activity_confirm_update">হালনাগাদ নিশ্চিত?</string>
-    <string name="update_patient_activity_confirm">হ্যাঁ</string>
 
 
-    <string name="update_heading_textview">আপডেট প্রোফাইল</string>
+
+
+
 
 
 
@@ -223,46 +253,45 @@
     <string name="update_donor_role_radio_group_plasma">প্লাজমা</string>
     <string name="update_donor_role_radio_group_blood_and_plasma">ব্লাড এবং প্লাজমা</string>
     <string name="update_donor_role_radio_group_none">সাধারণ ব্যবহারকারী/গ্রাহক</string>
-    <string name="update_update_btn">আপডেট প্রোফাইল</string>
-    <string name="update_activity_is_required">বাদ পড়েছে</string>
-    <string name="update_activity_update_failed">নেটওয়ার্ক সমস্যা! আপডেট ব্যর্থ হয়েছে</string>
+
+
+
     <string name="update_activity_update_successful">আপডেট সফল হয়েছে!</string>
 
-    <string name="update_activity_confirm_update">হালনাগাদ নিশ্চিত?</string>
 
-    <string name="update_activity_confirm">হ্যাঁ</string>
+
+
 
     <string name="donor_profile_header">দাতার প্রোফাইল</string>
 
 
 
-    <string name="donor_profile_label_address">ঠিকানা :</string>
-    <string name="donor_profile_address">থানা, জেলা</string>
-    <string name="donor_profile_label_phone">মোবাইল :</string>
-    <string name="donor_profile_phone">মোবাইল</string>
-    <string name="donor_profile_label_blood_group">রক্তের গ্রুপ :</string>
+
+    <string name="thana_district_txt">থানা, জেলা</string>
+
+
+
 
     <string name="donor_profile_label_type">দাতার ভূমিকা:</string>
     <string name="donor_profile_type">রক্ত / প্লাজমা</string>
-    <string name="donor_profile_accept_button">আবেদন গ্রহন করুন</string>
-    <string name="donor_profile_decline_button">আবেদন প্রত্যাখ্যান করুন</string>
-    <string name="donor_profile_ask_for_help_button">অনুরোধ করুন</string>
+
+
+
     <string name="donor_profile_send_request_suggestion">দাতাকে অনুরোধ পাঠাতে গ্রাহক নির্বাচন করুন</string>
-    <string name="donor_profile_activity_Enter_Password">পাসওয়ার্ড দিন</string>
-    <string name="donor_profile_activity_Wrong_Password">ভুল পাসওয়ার্ড</string>
+
+
 
     <string name="donor_profile_activity_send_request">অনুরোধ পাঠাবেন?</string>
-    <string name="donor_profile_activity_yes">হ্যাঁ</string>
+
     <string name="donor_profile_activity_Request_Sent">আবেদন প্রেরিত হয়েছে!দাতার প্রতিক্রিয়ার জন্য অপেক্ষা করুন</string>
-    <string name="donor_profile_activity_Accept_Request">আবেদন গ্রহন করুন</string>
-    <string name="donor_profile_activity_Decline_Request">আবেদন প্রত্যাখ্যান করুন</string>
+
+
     <string name="donor_profile_activity_Call_Donor">দাতাকে কল করুন</string>
-    <string name="donor_profile_activity_Send_SMS">দাতাকে এসএমএস করুন</string>
-    <string name="donor_profile_activity_Ask_for_Help">অনুরোধ করুন</string>
-    <string name="donor_profile_activity_Not_Permitted">অনুমোদিত নয়</string>
-    <string name="donor_profile_activity_Accepted">সম্মত হয়েছে</string>
-    <string name="donor_profile_activity_Declined">প্রত্যাখ্যান করা হয়েছে</string>
-    <string name="donor_profile_activity_Pending">অমীমাংসিত</string>
+
+
+
+
+
 
     <string name="donor_profile_activity_notification_accepted_1">Request accepted from Patient!</string>
     <string name="donor_profile_activity_notification_accepted_2">has accepted your request. Check Patient Responses</string>
@@ -277,52 +306,52 @@
 
 
     <string name="patient_profile_label_hospital">হাসপাতাল :</string>
-    <string name="patient_profile_label_phone">মোবাইল :</string>
 
-    <string name="patient_profile_phone">মোবাইল</string>
-    <string name="patient_profile_label_blood_group">রক্তের গ্রুপ :</string>
+
+
+
 
     <string name="patient_profile_label_type">প্রয়োজনের ধরণ :</string>
     <string name="patient_profile_need">রক্ত / প্লাজমা</string>
     <string name="patient_profile_label_date">প্রয়োজনের তারিখ :</string>
     <string name="patient_profile_date">তারিখ</string>
-    <string name="patient_profile_update_button">প্রোফাইল হালনাগাদ</string>
-    <string name="patient_profile_delete_button">প্রোফাইল মুছে ফেলুন</string>
-    <string name="patient_profile_donate_button">সাহায্য করুন</string>
-    <string name="patient_profile_activity_Not_Permitted">অনুমোদিত নয়</string>
-    <string name="patient_profile_activity_dialog_msg">পাসওয়ার্ড দিন</string>
-    <string name="patient_profile_activity_Wrong_Password">ভুল পাসওয়ার্ড</string>
-    <string name="patient_profile_activity_ok">ঠিক আছে</string>
 
-    <string name="patient_profile_activity_yes">হ্যাঁ</string>
+
+
+
+
+
+
+
+
 
     <string name="patient_profile_activity_Delete_profile_question">প্রোফাইল মুছে ফেলবেন?</string>
-    <string name="patient_profile_activity_proceed">অগ্রসর হোন</string>
-    <string name="patient_profile_activity_go_back">ফিরে যান</string>
-    <string name="patient_profile_activity_Confirm_delete">নিশ্চিত? গ্রাহক প্রোফাইলের সমস্ত তথ্য, অনুরোধ ও প্রতিক্রিয়া মুছে যাবে।</string>
-    <string name="patient_profile_activity_Delete">ডিলিট প্রোফাইল</string>
+
+
+
+
     <string name="patient_profile_activity_Patient_Record_Deleted">গ্রাহকের তথ্য মুছে ফেলা হয়েছে</string>
-    <string name="patient_profile_activity_Delete_Failed">মুছে ফেলা ব্যর্থ হয়েছে!</string>
+
     <string name="patient_profile_activity_Request_Sent">আবেদন প্রেরিত হয়েছে! গ্রাহকের প্রতিক্রিয়ার জন্য অপেক্ষা করুন</string>
-    <string name="patient_profile_activity_Update_Profile">প্রোফাইল হালনাগাদ</string>
-    <string name="patient_profile_activity_Delete_Profile">প্রোফাইল মুছে ফেলুন</string>
-    <string name="patient_profile_activity_Donate_to_Help">সাহায্য করুন</string>
-    <string name="patient_profile_activity_Accept_Request">আবেদন গ্রহণ করুন</string>
-    <string name="patient_profile_activity_Decline_Request">আবেদন প্রত্যাখ্যান করুন</string>
+
+
+
+
+
     <string name="patient_profile_activity_Call_Patient">গ্রাহককে কল করুন</string>
-    <string name="patient_profile_activity_Send_SMS">গ্রাহককে এসএমএস করুন</string>
-    <string name="patient_profile_activity_Accepted">সম্মত হয়েছে</string>
-    <string name="patient_profile_activity_Declined">প্রত্যাখ্যান করা হয়েছে</string>
-    <string name="patient_profile_activity_Pending">অমীমাংসিত</string>
-    <string name="patient_profile_activity_error">এরর! আবার চেষ্টা করুন</string>
-    <string name="patient_profile_activity_connection_failed">নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন</string>
+
+
+
+
+
+
     <string name="patient_profile_activity_notification_accepted_1">Request accepted from Donor!</string>
     <string name="patient_profile_activity_notification_accepted_2">has accepted your request. Check Donor Responses</string>
     <string name="patient_profile_activity_notification_declined_1">Request declined from Donor!</string>
     <string name="patient_profile_activity_notification_declined_2">has declined your request. Check Donor Responses</string>
     <string name="patient_profile_activity_notification_incoming_1">Incoming Request from Donor!</string>
     <string name="patient_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Donors</string>
-    <string name="patient_profile_activity_image_not_found">ছবি পাওয়া যায় নি</string>
+
 
 
 
@@ -334,11 +363,10 @@
 
 
 
-    <string name="profile_label_address">ঠিকানা :</string>
+
     <string name="profile_address">থানা, জেলা</string>
-    <string name="profile_label_phone">মোবাইল :</string>
-    <string name="profile_phone">মোবাইল</string>
-    <string name="profile_label_blood_group">রক্তের গ্রুপ :</string>
+
+
 
     <string name="profile_label_type">ভূমিকা :</string>
     <string name="profile_type">ব্লাড / প্লাজমা</string>
@@ -347,37 +375,36 @@
     <string name="profile_blood_and_plasma">ব্লাড এবং প্লাজমা দাতা</string>
     <string name="profile_none">সাধারণ ব্যবহারকারী</string>
     <string name="profile_id_account_maintenance">একাউন্ট মেইনটেনেন্স</string>
-    <string name="profile_update_button">প্রোফাইল হালনাগাদ</string>
+
     <string name="profile_change_password_btn">পাসওয়ার্ড পরিবর্তন</string>
-    <string name="profile_delete_button">প্রোফাইল মুছে ফেলুন</string>
+
     <string name="profile_activity_Not_a_donor">দাতা নন</string>
 
-    <string name="profile_activity_Enter_Password">পাসওয়ার্ড দিন</string>
-    <string name="profile_activity_Wrong_Password">ভুল পাসওয়ার্ড</string>
-    <string name="profile_activity_yes">হ্যাঁ</string>
+
+
     <string name="profile_activity_no">না</string>
 
-    <string name="profile_activity_ok">ঠিক আছে</string>
-    <string name="profile_activity_proceed">অগ্রসর হোন</string>
-    <string name="profile_activity_go_back">ফিরে যান</string>
+
+
+
     <string name="profile_activity_Delete">মুছে ফেলুন</string>
-    <string name="profile_activity_Confirm_delete">নিশ্চিত? গ্রাহক প্রোফাইলের সমস্ত তথ্য, অনুরোধ ও প্রতিক্রিয়া মুছে যাবে।</string>
+
     <string name="profile_activity_Delete_Successful">প্রোফাইল মুছে ফেলা সফল হয়েছে</string>
-    <string name="profile_activity_Delete_Failed">মুছে ফেলা ব্যর্থ হয়েছে!</string>
-    <string name="profile_activity_error">এরর! আবার চেষ্টা করুন</string>
-    <string name="profile_activity_connection_failed">নেটওয়ার্ক সমস্যা! আবার চেষ্টা করুন</string>
+
+
+
     <string name="profile_activity_image_did_not_upload">ছবি আপলোড সফল হয় নি</string>
     <string name="profile_activity_image_upload_failed">এরর! ছবি আপলোড ব্যর্থ হয়েছে</string>
 
     <string name="profile_activity_image_delete_failed">এরর! ছবি মুছে ফেলা ব্যর্থ হয়েছে</string>
-    <string name="profile_activity_image_not_found">ছবি পাওয়া যায় নি</string>
 
 
 
-    <string name="adapter_Accepted">সম্মত</string>
-    <string name="adapter_Declined">নাকচ</string>
-    <string name="adapter_Pending">অমীমাংসিত</string>
-    <string name="adapter_Date">প্রয়োজনের তারিখ</string>
+
+
+
+
+
 
     <string name="login_language">Change Language (ভাষা পরিবর্তন)</string>
     <string name="add_image">নতুন ছবি যোগ</string>
@@ -385,16 +412,16 @@
     <string name="delete_image">ছবি মুছে ফেলুন</string>
 
 
-    <string name="my_patients_nomatchtextview">কোনো গ্রাহক পাওয়া যায় নি</string>
+
     <string name="donor_requests_norecordtextview">কোনো গ্রাহকের অনুরোধ নেই</string>
     <string name="donor_response_norecordtextview">কোনো দাতার প্রতিক্রিয়া নেই</string>
     <string name="explore_patients_norecordtextview">কোনো গ্রাহক পাওয়া যায় নি</string>
     <string name="patient_requests_norecordtextview">কোনো দাতার অনুরোধ নেই</string>
     <string name="patients_response_norecordtextview">কোনো গ্রাহকের প্রতিক্রিয়া নেই</string>
     <string name="search_donor_norecordtextview">কোনো দাতা পাওয়া যায় নি</string>
-    <string name="find_donor_add_patient_btn">প্রথমে যোগ করুন</string>
-    <string name="request_patient_date">প্রয়োজনের তারিখ</string>
-    <string name="seeking_help_date">প্রয়োজনের তারিখ</string>
+
+
+
     <string name="plasma_dialog_header">আপনার যোগ্যতা যাচাই করতে দয়া করে নিম্নলিখিত প্রশ্নের উত্তর দিন</string>
     <string name="plasma_question_1">আপনি কি কোভিড-১৯ থেকে আরোগ্য লাভ করেছেন?</string>
     <string name="plasma_question_4">আপনার কি নিম্নলিখিত কোনো রোগ রয়েছে?</string>
@@ -538,6 +565,7 @@
         <item>O-</item>
     </string-array>
     <string name="answer_this_question_error">প্রশ্নটির উত্তর দিন</string>
+    <string name="confirm">নিশ্চিত</string>
 
 
 </resources>

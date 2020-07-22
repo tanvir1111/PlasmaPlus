@@ -310,17 +310,17 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         if (name.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_name) + " ";
-            nameEditText.setError(getResources().getString(R.string.label_name)+" "+getResources().getString(R.string.update_activity_is_required));
+            nameEditText.setError(getResources().getString(R.string.label_name)+" "+getResources().getString(R.string.is_required_txt));
         }
         if (thana.isEmpty()) {
             emptyfieldChecker = false;
-            emptyfield += getResources().getString(R.string.update_label_thana) + " ";
-            thanaEditText.setError(getResources().getString(R.string.update_label_thana)+" "+getResources().getString(R.string.update_activity_is_required));
+            emptyfield += getResources().getString(R.string.label_thana) + " ";
+            thanaEditText.setError(getResources().getString(R.string.label_thana)+" "+getResources().getString(R.string.is_required_txt));
         }
         if (age.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_age_1) + " ";
-            ageEditText.setError(getResources().getString(R.string.label_age_1)+" "+getResources().getString(R.string.update_activity_is_required));
+            ageEditText.setError(getResources().getString(R.string.label_age_1)+" "+getResources().getString(R.string.is_required_txt));
         }
         if (division.isEmpty()) {
             emptyfieldChecker = false;
@@ -337,7 +337,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
 //            retro operations
              updateUserInfo(name, division, district, thana, age,donorInfo);
         } else {
-            emptyfield += getResources().getString(R.string.update_activity_is_required);
+            emptyfield += getResources().getString(R.string.is_required_txt);
             ToastCreator.toastCreatorRed(this,emptyfield);
         }
 
@@ -368,7 +368,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
                 else {
-                    ToastCreator.toastCreatorRed(UpdateUserProfileActivity.this,getResources().getString(R.string.update_activity_update_failed));
+                    ToastCreator.toastCreatorRed(UpdateUserProfileActivity.this,getResources().getString(R.string.failed_to_update_error));
                 }
 
             }
@@ -386,9 +386,9 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
     private void updateAlertDialog() {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(UpdateUserProfileActivity.this);
-        builder.setMessage(getResources().getString(R.string.update_activity_confirm_update));
+        builder.setMessage(getResources().getString(R.string.confirm_update_txt));
 
-        builder.setPositiveButton(getResources().getString(R.string.update_activity_confirm), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
 

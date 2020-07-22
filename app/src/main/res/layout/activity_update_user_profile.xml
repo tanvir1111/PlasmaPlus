@@ -30,7 +30,7 @@
             android:fontFamily="@font/montserrat_bold"
 
 
-            android:text="@string/update_heading_textview"
+            android:text="@string/update_profile"
             android:textColor="@color/textColorDark"
             android:textSize="18sp"
             app:layout_constraintBottom_toBottomOf="@+id/update_back_button"
@@ -274,7 +274,7 @@
             android:fontFamily="@font/montserrat_bold"
             android:maxWidth="350dp"
             android:minWidth="320dp"
-            android:text="@string/update_update_btn"
+            android:text="@string/update_profile"
             android:textColor="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/update_age_edittext"

@@ -93,7 +93,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             phoneTextView.setText(donorphone);
 
         } else {
-            phoneTextView.setText(getResources().getString(R.string.donor_profile_activity_Not_Permitted));
+            phoneTextView.setText(getResources().getString(R.string.not_permitted));
         }
         bloodGroupTextView.setText(bloodGroup);
         addressTextView.setText(address);
@@ -125,7 +125,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         askForHelpBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(askForHelpBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_ask_for_help_button))) {
+                if(askForHelpBtn.getText().toString().equals(getResources().getString(R.string.ask_for_help))) {
                     askForHelpAlertDialog();
                 }
 
@@ -136,7 +136,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         acceptBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Accept_Request))) {
+                if (acceptBtn.getText().toString().equals(getResources().getString(R.string.accept_request))) {
                     requestOperationAlertDialog("accept",donorphone,getResources().getString(R.string.donor_profile_activity_notification_accepted_1),loggedInUserName + " " + getResources().getString(R.string.donor_profile_activity_notification_accepted_2),"PatientResponseActivity");
 
                 } else if (acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Call_Donor))) {
@@ -150,11 +150,11 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         declineBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(declineBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Decline_Request))) {
+                if(declineBtn.getText().toString().equals(getResources().getString(R.string.decline_request))) {
                     requestOperationAlertDialog("decline",donorphone,getResources().getString(R.string.donor_profile_activity_notification_declined_1),loggedInUserName + " " + getResources().getString(R.string.donor_profile_activity_notification_declined_2),"PatientResponseActivity");
 
                 }
-                else if(declineBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Send_SMS))){
+                else if(declineBtn.getText().toString().equals(getResources().getString(R.string.send_sms))){
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_SENDTO);
                     intent.setData(Uri.parse("smsto:"));
@@ -180,7 +180,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         builder.setMessage(getResources().getString(R.string.donor_profile_activity_send_request));
 
 
-        builder.setPositiveButton(getResources().getString(R.string.donor_profile_activity_yes), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 sendRequest();
@@ -204,7 +204,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         builder.setMessage(getResources().getString(R.string.are_you_sure));
 
 
-        builder.setPositiveButton(getResources().getString(R.string.donor_profile_activity_yes), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 requestsOperation(getstatus);
@@ -300,7 +300,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                             declineBtn.setVisibility(View.GONE);
                         } else {
                             askForHelpBtn.setVisibility(View.VISIBLE);
-                            askForHelpBtn.setText(getResources().getString(R.string.donor_profile_ask_for_help_button));
+                            askForHelpBtn.setText(getResources().getString(R.string.ask_for_help));
                             acceptBtn.setVisibility(View.GONE);
                             declineBtn.setVisibility(View.GONE);
                         }
@@ -308,14 +308,14 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     else if (response.body().getServerMsg().toLowerCase().equals("pending")) {
                         if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
-                            askForHelpBtn.setText(getResources().getString(R.string.donor_profile_activity_Pending));
+                            askForHelpBtn.setText(getResources().getString(R.string.pending));
                         }
                         else {
                             askForHelpBtn.setVisibility(View.GONE);
                             acceptBtn.setVisibility(View.VISIBLE);
-                            acceptBtn.setText(getResources().getString(R.string.donor_profile_accept_button));
+                            acceptBtn.setText(getResources().getString(R.string.accept_request));
                             declineBtn.setVisibility(View.VISIBLE);
-                            declineBtn.setText(getResources().getString(R.string.donor_profile_decline_button));
+                            declineBtn.setText(getResources().getString(R.string.decline_request));
                         }
 
                     }
@@ -324,13 +324,13 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         acceptBtn.setVisibility(View.VISIBLE);
                         acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
                         declineBtn.setVisibility(View.VISIBLE);
-                        declineBtn.setText(getResources().getString(R.string.donor_profile_activity_Send_SMS));
+                        declineBtn.setText(getResources().getString(R.string.send_sms));
                         phoneTextView.setText(donorphone);
 
                     }
                     else if (response.body().getServerMsg().toLowerCase().equals("declined")) {
                             askForHelpBtn.setVisibility(View.VISIBLE);
-                            askForHelpBtn.setText(getResources().getString(R.string.donor_profile_activity_Declined));
+                            askForHelpBtn.setText(getResources().getString(R.string.declined));
                             acceptBtn.setVisibility(View.GONE);
                             declineBtn.setVisibility(View.GONE);
                     }
