@@ -85,7 +85,7 @@ public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorRespons
 
 
         holder.donateTextView.setVisibility(View.VISIBLE);
-        holder.donateTextView.setText("Show Response");
+        holder.donateTextView.setText(R.string.show_response);
 
         downloadImage(patientDataModel.getPhone(), holder.patientImageView);
 

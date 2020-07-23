@@ -37,7 +37,7 @@ public class DonorRequestsViewHolder extends RecyclerView.ViewHolder implements 
         dateTextView = itemView.findViewById(R.id.request_patient_date);
 
         acceptButton.setVisibility(View.VISIBLE);
-        acceptButton.setText("View Profile");
+        acceptButton.setText(R.string.view_profile);
         declineButton.setVisibility(View.GONE);
 
         acceptButton.setOnClickListener(this);

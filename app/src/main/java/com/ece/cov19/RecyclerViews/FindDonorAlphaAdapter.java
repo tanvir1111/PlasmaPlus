@@ -111,7 +111,7 @@ public class FindDonorAlphaAdapter extends RecyclerView.Adapter<FindDonorAlphaVi
         downloadImage(patientDataModel.getPhone(), holder.patientImageView);
 
         holder.donateTextView.setVisibility(View.VISIBLE);
-        holder.donateTextView.setText("Select Patient");
+        holder.donateTextView.setText(R.string.select_patient);
         holder.nameTextView.setText(patientDataModel.getName());
         holder.typeTextView.setText(patientDataModel.getNeed());
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());

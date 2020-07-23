@@ -139,7 +139,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="Donate to Help"
+                    android:text="@string/donate_to_help"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
                     android:visibility="gone"

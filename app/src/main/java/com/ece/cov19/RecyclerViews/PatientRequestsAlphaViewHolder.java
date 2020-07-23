@@ -98,7 +98,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
                             userDataModels.add(initialDataModel);
 
                         }
-                        donateTextView.setText("Hide Requests");
+                        donateTextView.setText(R.string.hide_request);
                         //donateTextView.setBackgroundColor(R.drawable.button_style_colored);
                         requestDonorRecyclerView.setVisibility(View.VISIBLE);
                         PatientRequestsBetaAdapter patientRequestsBetaAdapter = new PatientRequestsBetaAdapter(itemView.getContext(), userDataModels);
@@ -108,7 +108,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
                     } else {
 
 
-                        donateTextView.setText("No Requests Found");
+                        donateTextView.setText(R.string.no_requests_found);
                         ToastCreator.toastCreatorRed(view.getContext(),"No data");
                     }
 
@@ -118,7 +118,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
                 @Override
                 public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
                     progressBar.setVisibility(View.GONE);
-                    donateTextView.setText("No Request Found");
+                    donateTextView.setText(R.string.no_requests_found);
                     //ToastCreator.toastCreator(view.getContext(),"Error: "+t.getMessage(),Toast.LENGTH_LONG).show();
                 }
             });
@@ -127,7 +127,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
         else{
             //ToastCreator.toastCreator(view.getContext(),"Pressed again",Toast.LENGTH_SHORT).show();
             visibility = true;
-            donateTextView.setText("View Requests");
+            donateTextView.setText(R.string.view_requests);
             //donateTextView.setBackgroundColor(R.drawable.button_style_green);
             requestDonorRecyclerView.setVisibility(View.GONE);
         }

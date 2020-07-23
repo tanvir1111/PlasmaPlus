@@ -36,7 +36,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageView backbtn;
     private Button pendingbtn,acceptedBtn;
-    private String status="Pending",requestTypeText="Pending Requests";
+    private String status="Pending",requestTypeText=getString(R.string.donor_requests_pending_requests);
     private TextView requestTypeTextView, noRequestTextView;
     private ProgressBar progressBar;
     private int buttonSelector = 0;
@@ -79,7 +79,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 buttonSelector = 1;
                 status="Pending";
-                requestTypeText="Pending Requests";
+                requestTypeText=getString(R.string.donor_requests_pending_requests);
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.GONE);
                 acceptedBtn.setVisibility(View.VISIBLE);
@@ -92,7 +92,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 buttonSelector = 2;
-                requestTypeText="Accepted Requests";
+                requestTypeText=getString(R.string.accepted_requests);
                 status="Accepted";
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.VISIBLE);
@@ -153,7 +153,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 buttonSelector = 1;
                 status="Pending";
-                requestTypeText="Pending Requests";
+                requestTypeText=getString(R.string.donor_requests_pending_requests);
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.GONE);
                 acceptedBtn.setVisibility(View.VISIBLE);
@@ -166,7 +166,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 buttonSelector = 2;
-                requestTypeText="Accepted Requests";
+                requestTypeText=getString(R.string.accepted_requests);
                 status="Accepted";
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.VISIBLE);

@@ -137,7 +137,7 @@
 
 
     <string name="donor_requests_header">গ্রাহক থেকে অনুরোধ</string>
-    <string name="donor_requests_type_textView">অমীমাংসিত অনুরোধ</string>
+    <string name="donor_requests_pending_requests">অমীমাংসিত অনুরোধ</string>
     <string name="donor_requests_show_accepted_requests">সম্মত অনুরোধ দেখুন</string>
     <string name="donor_requests_show_pending_requests">অমীমাংসিত অনুরোধ দেখুন</string>
 
@@ -566,6 +566,17 @@
     </string-array>
     <string name="answer_this_question_error">প্রশ্নটির উত্তর দিন</string>
     <string name="confirm">নিশ্চিত</string>
+    <string name="view_profile">প্রোফাইল দেখুন</string>
+    <string name="show_response">প্রতিক্রিয়া দেখুন</string>
+    <string name="hide_response">প্রতিক্রিয়া লুকান</string>
+    <string name="no_request">অনুরোধ নেই</string>
+    <string name="hide_request">অনুরোধ লুকান</string>
+    <string name="no_requests_found">কোনো অনুরোধ পাওয়া যায়নি</string>
+    <string name="view_requests">অনুরোধ দেখুন</string>
+    <string name="select_patient">গ্রাহক নির্বাচন করুন</string>
+    <string name="accepted_requests">সম্মত অনুরোধ</string>
+    <string name="next">পরবর্তী</string>
+    <string name="forgot_password">পাসওয়ার্ড আপডেট</string>
 
 
 </resources>

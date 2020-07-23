@@ -106,7 +106,7 @@
     <string name="bld_req_activity_connection_problem">Connection Problem! Try again</string>
 
     <string name="donor_requests_header">Request from Patients</string>
-    <string name="donor_requests_type_textView">Pending Requests</string>
+    <string name="donor_requests_pending_requests">Pending Requests</string>
     <string name="donor_requests_show_accepted_requests">Show Accepted Requests</string>
     <string name="donor_requests_show_pending_requests">Show Pending Requests</string>
     <string name="donor_response_header">Response from Donors</string>
@@ -236,6 +236,17 @@
     <string name="bld_req_for_myself_2">Others</string>
     <string name="answer_this_question_error">Answer this question</string>
     <string name="confirm">Confirm</string>
+    <string name="view_profile">View Profile</string>
+    <string name="show_response">Show Response</string>
+    <string name="hide_response">Hide Response</string>
+    <string name="no_request">No Request</string>
+    <string name="hide_request">Hide Requests</string>
+    <string name="no_requests_found">No Requests Found</string>
+    <string name="view_requests">View Requests</string>
+    <string name="select_patient">Select Patient</string>
+    <string name="accepted_requests">Accepted Requests</string>
+    <string name="next">Next</string>
+    <string name="forgot_password">Forgot Password</string>
 
 
     <string-array name="division">

@@ -45,8 +45,8 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
         verification = intent.getStringExtra("verification");
 
        if(verification.toLowerCase().equals("forgotpass")){
-            getOtpBtn.setText("Next");
-            headerTextView.setText("Forgot Password");
+            getOtpBtn.setText(R.string.next);
+            headerTextView.setText(R.string.forgot_password);
         }
 
         getOtpBtn.setOnClickListener(new View.OnClickListener() {

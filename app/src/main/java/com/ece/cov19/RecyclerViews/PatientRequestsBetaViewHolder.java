@@ -38,7 +38,7 @@ public class PatientRequestsBetaViewHolder extends RecyclerView.ViewHolder imple
 
         //itemView.setOnClickListener(this);
         acceptButton.setVisibility(View.VISIBLE);
-        acceptButton.setText("View Profile");
+        acceptButton.setText(R.string.view_profile);
         declineButton.setVisibility(View.GONE);
 
 

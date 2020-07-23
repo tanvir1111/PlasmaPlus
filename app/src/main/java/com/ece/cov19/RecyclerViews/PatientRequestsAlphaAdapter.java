@@ -85,7 +85,7 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
         downloadImage(patientDataModel.getPhone(), holder.patientImageView);
 
         holder.donateTextView.setVisibility(View.VISIBLE);
-        holder.donateTextView.setText("Show Requests");
+        holder.donateTextView.setText(R.string.view_requests);
         holder.nameTextView.setText(patientDataModel.getName());
         holder.typeTextView.setText(patientDataModel.getNeed());
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());

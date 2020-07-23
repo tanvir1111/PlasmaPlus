@@ -80,7 +80,7 @@ public class MyPatientsAdapter extends RecyclerView.Adapter<MyPatientsViewHolder
         downloadImage(patientDataModel.getPhone(), holder.patientImageView);
 
         holder.donateTextView.setVisibility(View.VISIBLE);
-        holder.donateTextView.setText("View Profile");
+        holder.donateTextView.setText(R.string.view_profile);
 
         holder.nameTextView.setText(patientDataModel.getName());
         holder.typeTextView.setText(patientDataModel.getNeed());

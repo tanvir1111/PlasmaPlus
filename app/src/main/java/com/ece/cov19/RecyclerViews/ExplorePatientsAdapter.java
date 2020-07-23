@@ -96,12 +96,12 @@ public class ExplorePatientsAdapter extends RecyclerView.Adapter<ExplorePatients
                 holder.donateTextView.setText(context.getResources().getString(R.string.donate_to_help));
             } else {
                 holder.donateTextView.setVisibility(View.VISIBLE);
-                holder.donateTextView.setText("View Profile");
+                holder.donateTextView.setText(R.string.view_profile);
             }
         }
         else {
             holder.donateTextView.setVisibility(View.VISIBLE);
-            holder.donateTextView.setText("View Profile");
+            holder.donateTextView.setText(R.string.view_profile);
         }
 //        if((LoggedInUserData.loggedInUserDonorInfo.toLowerCase().equals("blood") || LoggedInUserData.loggedInUserDonorInfo.toLowerCase().equals("plasma"))&& loggedInUserEligibility.toLowerCase().equals("eligible") && patientDataModel.getBloodGroup().equals(LoggedInUserData.loggedInUserBloodGroup)){
 //            holder.donateTextView.setVisibility(View.VISIBLE);
@@ -110,7 +110,7 @@ public class ExplorePatientsAdapter extends RecyclerView.Adapter<ExplorePatients
 //        else
 //        {
 //            holder.donateTextView.setVisibility(View.VISIBLE);
-//            holder.donateTextView.setText("View Profile");
+//            holder.donateTextView.setText(R.string.view_profile);
 //        }
 
 
