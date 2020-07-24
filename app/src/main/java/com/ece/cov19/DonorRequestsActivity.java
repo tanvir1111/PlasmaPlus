@@ -129,6 +129,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
             }
         });
         getRequests("Pending");
+        pendingbtn.setEnabled(false);
 
 
         pendingbtn.setOnClickListener(new View.OnClickListener() {
@@ -138,8 +139,12 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 status="Pending";
                 requestTypeText=getResources().getString(R.string.donor_requests_pending_requests);
                 requestTypeTextView.setText(requestTypeText);
-                pendingbtn.setVisibility(View.GONE);
-                acceptedBtn.setVisibility(View.VISIBLE);
+                pendingbtn.setBackgroundResource(R.drawable.button_style_white);
+                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                pendingbtn.setEnabled(false);
+                acceptedBtn.setBackgroundResource(R.drawable.button_style_colored);
+                acceptedBtn.setTextColor(getColor(R.color.textColorWhite));
+                acceptedBtn.setEnabled(true);
                 getRequests(status);
 
             }
@@ -152,8 +157,12 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 requestTypeText=getResources().getString(R.string.accepted_requests);
                 status="Accepted";
                 requestTypeTextView.setText(requestTypeText);
-                pendingbtn.setVisibility(View.VISIBLE);
-                acceptedBtn.setVisibility(View.GONE);
+                pendingbtn.setBackgroundResource(R.drawable.button_style_colored);
+                pendingbtn.setTextColor(getColor(R.color.textColorWhite));
+                pendingbtn.setEnabled(true);
+                acceptedBtn.setBackgroundResource(R.drawable.button_style_white);
+                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                acceptedBtn.setEnabled(false);
                 getRequests(status);
 
             }

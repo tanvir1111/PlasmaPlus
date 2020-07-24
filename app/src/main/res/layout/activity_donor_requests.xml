@@ -48,42 +48,40 @@
 
     <Button
         android:id="@+id/donor_requests_show_accepted_requests"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/button_style_white"
+        android:background="@drawable/button_style_colored"
         android:paddingLeft="15dp"
+
         android:paddingRight="15dp"
         android:text="@string/donor_requests_show_accepted_requests"
-        android:textColor="#000000"
+        android:textColor="@color/textColorWhite"
         android:textSize="10sp"
         android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/donor_requests_show_pending_requests"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/donor_requests_header" />
 
+
     <Button
         android:id="@+id/donor_requests_show_pending_requests"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="32dp"
         android:background="@drawable/button_style_white"
         android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:text="@string/donor_requests_show_pending_requests"
         android:textColor="#000000"
         android:textSize="10sp"
-        android:visibility="gone"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/donor_requests_show_accepted_requests"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donor_requests_header" />
+        app:layout_constraintTop_toTopOf="@+id/donor_requests_show_accepted_requests" />
 
     <ImageView
         android:id="@+id/donor_requests_back_button"
@@ -111,8 +109,6 @@
             android:id="@+id/donor_requests_recyclerview"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-
             android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
