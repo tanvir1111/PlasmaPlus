@@ -1,6 +1,5 @@
 package com.ece.cov19;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -14,7 +13,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RecyclerViews.DonorRequestsAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -36,7 +34,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageView backbtn;
     private Button pendingbtn,acceptedBtn;
-    private String status="Pending",requestTypeText=getString(R.string.donor_requests_pending_requests);
+    private String status="Pending",requestTypeText;
     private TextView requestTypeTextView, noRequestTextView;
     private ProgressBar progressBar;
     private int buttonSelector = 0;
@@ -53,22 +51,14 @@ public class DonorRequestsActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.donor_requests_progressBar);
         noRequestTextView = findViewById(R.id.donor_requests_norecordtextview);
 
+        requestTypeText = getResources().getString(R.string.donor_requests_pending_requests);
+
         patientDataModels = new ArrayList<>();
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = getIntent();
-                String status = intent.getStringExtra("notification");
-
-                if(status == null){
-                    finish();
-                }
-                else if(status.equals("yes")){
-                    Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
-                    startActivity(goBackIntent);
-                    finish();
-                }
+                finish();
             }
         });
         getRequests("Pending");
@@ -79,7 +69,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 buttonSelector = 1;
                 status="Pending";
-                requestTypeText=getString(R.string.donor_requests_pending_requests);
+                requestTypeText=getResources().getString(R.string.donor_requests_pending_requests);
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.GONE);
                 acceptedBtn.setVisibility(View.VISIBLE);
@@ -92,7 +82,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 buttonSelector = 2;
-                requestTypeText=getString(R.string.accepted_requests);
+                requestTypeText=getResources().getString(R.string.accepted_requests);
                 status="Accepted";
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.VISIBLE);
@@ -117,6 +107,8 @@ public class DonorRequestsActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.donor_requests_progressBar);
         noRequestTextView = findViewById(R.id.donor_requests_norecordtextview);
 
+        requestTypeText = getResources().getString(R.string.donor_requests_pending_requests);
+
 
         if(buttonSelector == 1) {
             pendingbtn.setVisibility(View.VISIBLE);
@@ -132,17 +124,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = getIntent();
-                String status = intent.getStringExtra("notification");
-
-                if(status == null){
-                    finish();
-                }
-                else if(status.equals("yes")){
-                    Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
-                    startActivity(goBackIntent);
-                    finish();
-                }
+                finish();
             }
         });
         getRequests("Pending");
@@ -153,7 +135,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
             public void onClick(View view) {
                 buttonSelector = 1;
                 status="Pending";
-                requestTypeText=getString(R.string.donor_requests_pending_requests);
+                requestTypeText=getResources().getString(R.string.donor_requests_pending_requests);
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.GONE);
                 acceptedBtn.setVisibility(View.VISIBLE);
@@ -166,7 +148,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 buttonSelector = 2;
-                requestTypeText=getString(R.string.accepted_requests);
+                requestTypeText=getResources().getString(R.string.accepted_requests);
                 status="Accepted";
                 requestTypeTextView.setText(requestTypeText);
                 pendingbtn.setVisibility(View.VISIBLE);
@@ -182,17 +164,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        Intent intent = getIntent();
-        String status = intent.getStringExtra("notification");
-
-        if(status == null){
-            finish();
-        }
-        else if(status.equals("yes")){
-            Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
-            startActivity(goBackIntent);
-            finish();
-        }
+        finish();
     }
 
     private void getRequests(String status) {
@@ -209,13 +181,13 @@ public class DonorRequestsActivity extends AppCompatActivity {
                     ArrayList<PatientDataModel> initialModels = response.body();
                     requestTypeTextView.setText(requestTypeText+" (" +initialModels.size()+")");
                     for(PatientDataModel initialDataModel : initialModels){
-                        if(initialDataModel.getServerMsg().toLowerCase().equals("no record")){
+                        if(initialDataModel.getServerMsg().equals("No Record")){
                             patientDataModels.clear();
                             requestTypeTextView.setText(requestTypeText+" (" +0+")");
                             noRequestTextView.setVisibility(View.VISIBLE);
                             break;
                         }
-                        else if(initialDataModel.getNeed().toLowerCase().equals("blood") || initialDataModel.getNeed().toLowerCase().equals("plasma")){
+                        else if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
                             patientDataModels.add(initialDataModel);
                         }
                     }
@@ -225,13 +197,13 @@ public class DonorRequestsActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(linearLayoutManager);
                 }
                 else {
-                    ToastCreator.toastCreatorRed(DonorRequestsActivity.this,"No Response");
+                    Toast.makeText(DonorRequestsActivity.this, getResources().getString(R.string.connection_failed_try_again), Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                ToastCreator.toastCreatorRed(DonorRequestsActivity.this,"Error : " +t.getMessage());
+                Toast.makeText(DonorRequestsActivity.this, getResources().getString(R.string.error_occurred_try_again), Toast.LENGTH_SHORT).show();
             }
         });
 
