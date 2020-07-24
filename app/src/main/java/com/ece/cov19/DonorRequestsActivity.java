@@ -36,7 +36,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageView backbtn;
     private Button pendingbtn,acceptedBtn;
-    private String status="Pending",requestTypeText=getString(R.string.donor_requests_pending_requests);
+    private String status="Pending",requestTypeText;
     private TextView requestTypeTextView, noRequestTextView;
     private ProgressBar progressBar;
     private int buttonSelector = 0;
@@ -45,6 +45,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_donor_requests);
+        requestTypeText=getString(R.string.donor_requests_pending_requests);
         recyclerView = findViewById(R.id.donor_requests_recyclerview);
         backbtn=findViewById(R.id.donor_requests_back_button);
         acceptedBtn=findViewById(R.id.donor_requests_show_accepted_requests);

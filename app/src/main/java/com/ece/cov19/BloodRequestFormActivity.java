@@ -44,7 +44,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
     private String gender = "not selected", date = "not selected";
     private ImageView genderMale, backbtn, genderFemale;
     private CheckBox needCheckbox;
-    private Button submitBtn, forMyselfBtn;
+    private Button submitBtn, forMyselfBtn,othersBtn;
     private EditText nameEditText, ageEditText, hospitalEditText;
     private Spinner divisionSpinner, districtSpinner;
     public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
@@ -61,6 +61,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         submitBtn = findViewById(R.id.bld_req_request_btn);
         backbtn = findViewById(R.id.bld_req_back_button);
         forMyselfBtn = findViewById(R.id.bld_req_for_myself);
+        othersBtn=findViewById(R.id.bld_req_others_btn);
 //      editTexts
         nameEditText = findViewById(R.id.bld_req_name_edittext);
         ageEditText = findViewById(R.id.bld_req_age_edittext);
@@ -141,6 +142,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         submitBtn.setOnClickListener(this);
         backbtn.setOnClickListener(this);
         forMyselfBtn.setOnClickListener(this);
+        othersBtn.setOnClickListener(this);
     }
 
     @Override
@@ -188,20 +190,29 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
         switch (v.getId()) {
             case R.id.bld_req_for_myself:
-                if (forMyselfBtn.getText().toString().equals(getResources().getString(R.string.bld_req_for_myself))) {
-                    forMyselfBtn.setText(getResources().getString(R.string.bld_req_for_myself_2));
+                forMyselfBtn.setBackgroundResource(R.drawable.button_style_white);
+                forMyselfBtn.setTextColor(getResources().getColor(R.color.textColorGrey));
+                forMyselfBtn.setEnabled(false);
+                othersBtn.setBackgroundResource(R.drawable.button_style_colored);
+                othersBtn.setTextColor(getColor(R.color.textColorWhite));
+                othersBtn.setEnabled(true);
                     fillAvailableInfo();
-                } else {
-                    forMyselfBtn.setText(getResources().getString(R.string.bld_req_for_myself));
-                    genderFemale.setImageResource(R.drawable.female_icon);
-                    genderMale.setImageResource(R.drawable.male_icon);
-                    selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_not_selected);
-                    selectedBldGrp.setTextColor(ContextCompat.getColor(this,R.color.textColorGrey));
-                    nameEditText.setText("");
-                    ageEditText.setText("");
+                break;
+            case R.id.bld_req_others_btn:
+                othersBtn.setBackgroundResource(R.drawable.button_style_white);
+                othersBtn.setTextColor(getResources().getColor(R.color.textColorGrey));
+                othersBtn.setEnabled(false);
+                forMyselfBtn.setBackgroundResource(R.drawable.button_style_colored);
+                forMyselfBtn.setTextColor(getColor(R.color.textColorWhite));
+                forMyselfBtn.setEnabled(true);
+                genderFemale.setImageResource(R.drawable.female_icon);
+                genderMale.setImageResource(R.drawable.male_icon);
+                selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_not_selected);
+                selectedBldGrp.setTextColor(ContextCompat.getColor(this,R.color.textColorGrey));
+                nameEditText.setText("");
+                ageEditText.setText("");
 
 
-                }
                 break;
 
             case R.id.bld_req_male_icon:
