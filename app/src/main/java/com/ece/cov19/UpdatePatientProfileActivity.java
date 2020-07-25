@@ -393,7 +393,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 private void updateAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdatePatientProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.confirm_update_txt));
-        builder.setPositiveButton(getString(R.string.confirm_update_txt), new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 Intent intent = new Intent(UpdatePatientProfileActivity.this, ViewPatientProfileActivity.class);
                 intent.putExtra("name",newName);

@@ -460,7 +460,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         if(phone.equals(loggedInUserPhone)){
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.confirm_update_txt));
+                            updateButton.setText(getResources().getString(R.string.update_profile));
                             deleteButton.setVisibility(View.VISIBLE);
                             deleteButton.setText(getResources().getString(R.string.delete_profile));
                         }
@@ -501,13 +501,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                         }
-                        else if(phone.equals(loggedInUserPhone)) {
-                            donateToHelpButton.setVisibility(View.GONE);
-                            updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.update_profile));
-                            deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.delete_profile));
-                        }
+
                         else {
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
@@ -519,37 +513,23 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                     }
                     else if(response.body().getServerMsg().equals("Accepted")){
-                        if(phone.equals(loggedInUserPhone)) {
-                            donateToHelpButton.setVisibility(View.GONE);
-                            updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.update_profile));
-                            deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.delete_profile));
-                        }
-                        else{
+
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);
                             deleteButton.setText(getResources().getString(R.string.send_sms));
                             phoneTextView.setText(phone);
-                        }
+
 
                     }
                     else if(response.body().getServerMsg().equals("Declined")){
-                        if(phone.equals(loggedInUserPhone)) {
-                            donateToHelpButton.setVisibility(View.GONE);
-                            updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.update_profile));
-                            deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.delete_profile));
-                        }
-                        else{
+
                             donateToHelpButton.setVisibility(View.VISIBLE);
                             donateToHelpButton.setText(getResources().getString(R.string.decline_request));
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
-                        }
+                        
 
                     }
 
