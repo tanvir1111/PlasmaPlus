@@ -419,7 +419,7 @@
 
                                 <TextView
                                     android:id="@+id/dashboard_text_requests"
-                                    android:layout_width="90dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/requests"

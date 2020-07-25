@@ -72,6 +72,8 @@
     <string name="accepted">Accepted</string>
     <string name="declined">Declined</string>
     <string name="pending">Pending</string>
+    <string name="donated">Donated</string>
+    <string name="not_donated">Not Donated</string>
     <string name="delete_profile">Delete Profile</string>
     <string name="donate_to_help">Donate to Help</string>
 
@@ -303,6 +305,13 @@
     <string name="patient_profile_activity_notification_declined_2">has declined your request. Check Donor Responses</string>
     <string name="patient_profile_activity_notification_incoming_1">Incoming Request from Donor!</string>
     <string name="patient_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Donors</string>
+    <string name="patient_profile_activity_notification_donated_1">Donor Responded as Donation Completed!</string>
+    <string name="patient_profile_activity_notification_donated_2">has marked this Request as Donated.</string>
+    <string name="patient_profile_activity_notification_donated_3">will be deleted after 48 hours. Check Donor Responses</string>
+    <string name="patient_profile_activity_notification_not_donated_1">Donor Responded as Donation Not Completed!</string>
+    <string name="patient_profile_activity_notification_not_donated_2">has marked this Request as Not Donated.</string>
+    <string name="patient_profile_activity_notification_not_donated_3">will be deleted after 7 days from Requirement date. Check Donor Responses</string>
+
 
 
 
@@ -407,6 +416,8 @@
     <string name="blood">Blood</string>
     <string name="plasma">Plasma</string>
     <string name="bloodandplasma">Blood and Plasma</string>
+    <string name="mark_as_donated">Mark As Donated</string>
+    <string name="mark_as_not_donated">Mark As Not Donated</string>
 
 
     <string-array name="division">

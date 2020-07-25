@@ -1,5 +1,6 @@
 package com.ece.cov19;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -59,7 +60,17 @@ public class DonorRequestsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = getIntent();
+                String status = intent.getStringExtra("notification");
+
+                if(status == null){
+                    finish();
+                }
+                else if(status.equals("yes")){
+                    Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+                }
             }
         });
         getRequests("Pending");
@@ -125,7 +136,17 @@ public class DonorRequestsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = getIntent();
+                String status = intent.getStringExtra("notification");
+
+                if(status == null){
+                    finish();
+                }
+                else if(status.equals("yes")){
+                    Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+                }
             }
         });
         getRequests("Pending");
@@ -174,7 +195,18 @@ public class DonorRequestsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        finish();
+        Intent intent = getIntent();
+        String status = intent.getStringExtra("notification");
+
+        if(status == null){
+            finish();
+        }
+        else if(status.equals("yes")){
+            Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
+            startActivity(goBackIntent);
+            finish();
+        }
+
     }
 
     private void getRequests(String status) {

@@ -93,6 +93,12 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_declined_1))){
             resultIntent = new Intent(this, DonorResponseActivity.class);
         }
+        else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_donated_1))){
+            resultIntent = new Intent(this, DonorResponseActivity.class);
+        }
+        else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_not_donated_1))){
+            resultIntent = new Intent(this, DonorResponseActivity.class);
+        }
 
         resultIntent.putExtra("notification","yes");
 

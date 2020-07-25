@@ -73,6 +73,8 @@
     <string name="accepted">সম্মত</string>
     <string name="declined">নাকচ</string>
     <string name="pending">অমীমাংসিত</string>
+    <string name="donated">দান সম্পন্ন হয়েছে</string>
+    <string name="not_donated">দান সম্পন্ন হয়নি</string>
     <string name="delete_profile">প্রোফাইল মুছে ফেলুন</string>
     <string name="donate_to_help">সাহায্য করুন</string>
     <string name="ok_txt">ঠিক আছে</string>
@@ -354,6 +356,13 @@
     <string name="patient_profile_activity_notification_declined_2">has declined your request. Check Donor Responses</string>
     <string name="patient_profile_activity_notification_incoming_1">Incoming Request from Donor!</string>
     <string name="patient_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Donors</string>
+    <string name="patient_profile_activity_notification_donated_1">Donor Responded as Donation Completed!</string>
+    <string name="patient_profile_activity_notification_donated_2">has marked this Request as Donated.</string>
+    <string name="patient_profile_activity_notification_donated_3">will be deleted after 48 hours. Check Donor Responses</string>
+    <string name="patient_profile_activity_notification_not_donated_1">Donor Responded as Donation Not Completed!</string>
+    <string name="patient_profile_activity_notification_not_donated_2">has marked this Request as Not Donated.</string>
+    <string name="patient_profile_activity_notification_not_donated_3">will be deleted after 7 days from Requirement date. Check Donor Responses</string>
+
 
 
 
@@ -583,7 +592,8 @@
     <string name="blood">ব্লাড</string>
     <string name="plasma">প্লাজমা</string>
     <string name="bloodandplasma">ব্লাড ও প্লাজমা</string>
-
+    <string name="mark_as_donated">দান সম্পন্ন হয়েছে</string>
+    <string name="mark_as_not_donated">দান সম্পন্ন হয়নি</string>
 
 
 </resources>

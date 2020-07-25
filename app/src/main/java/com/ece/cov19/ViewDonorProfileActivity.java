@@ -321,19 +321,63 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     }
                     else if (response.body().getServerMsg().toLowerCase().equals("accepted")) {
-                        askForHelpBtn.setVisibility(View.GONE);
-                        acceptBtn.setVisibility(View.VISIBLE);
-                        acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
-                        declineBtn.setVisibility(View.VISIBLE);
-                        declineBtn.setText(getResources().getString(R.string.send_sms));
-                        phoneTextView.setText(donorphone);
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                            askForHelpBtn.setVisibility(View.VISIBLE);
+                            askForHelpBtn.setText(getResources().getString(R.string.accepted));
+                        }
+                        else {
+                            askForHelpBtn.setVisibility(View.GONE);
+                            acceptBtn.setVisibility(View.VISIBLE);
+                            acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
+                            declineBtn.setVisibility(View.VISIBLE);
+                            declineBtn.setText(getResources().getString(R.string.send_sms));
+                            phoneTextView.setText(donorphone);
+                        }
+
+                    }
+
+                    else if (response.body().getServerMsg().toLowerCase().equals("donated")) {
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                            askForHelpBtn.setVisibility(View.VISIBLE);
+                            askForHelpBtn.setText(getResources().getString(R.string.donated));
+                        }
+                        else {
+                            askForHelpBtn.setVisibility(View.GONE);
+                            acceptBtn.setVisibility(View.VISIBLE);
+                            acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
+                            declineBtn.setVisibility(View.VISIBLE);
+                            declineBtn.setText(getResources().getString(R.string.send_sms));
+                            phoneTextView.setText(donorphone);
+                        }
+
+                    }
+
+                    else if (response.body().getServerMsg().toLowerCase().equals("not_donated")) {
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                            askForHelpBtn.setVisibility(View.VISIBLE);
+                            askForHelpBtn.setText(getResources().getString(R.string.not_donated));
+                        }
+                        else {
+                            askForHelpBtn.setVisibility(View.GONE);
+                            acceptBtn.setVisibility(View.VISIBLE);
+                            acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
+                            declineBtn.setVisibility(View.VISIBLE);
+                            declineBtn.setText(getResources().getString(R.string.send_sms));
+                            phoneTextView.setText(donorphone);
+                        }
 
                     }
                     else if (response.body().getServerMsg().toLowerCase().equals("declined")) {
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                            askForHelpBtn.setVisibility(View.VISIBLE);
+                            askForHelpBtn.setText(getResources().getString(R.string.declined));
+                        }
+                        else {
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.declined));
                             acceptBtn.setVisibility(View.GONE);
                             declineBtn.setVisibility(View.GONE);
+                        }
                     }
 
                 }
