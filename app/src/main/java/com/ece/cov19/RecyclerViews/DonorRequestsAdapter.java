@@ -84,6 +84,16 @@ public class DonorRequestsAdapter extends RecyclerView.Adapter<DonorRequestsView
         holder.locationTextView.setText(patientDataModel.getDistrict());
         holder.dateTextView.setText(context.getResources().getString(R.string.date_of_requirement)+"              " + patientDataModel.getDate());
 
+        if(patientDataModel.getNeed().equals("Blood")){
+            holder.typeTextView.setText(holder.itemView.getContext().getResources().getString(R.string.blood));
+        }
+        else if(patientDataModel.getNeed().equals("Plasma")){
+            holder.typeTextView.setText(holder.itemView.getContext().getResources().getString(R.string.plasma));
+        }
+        else if(patientDataModel.getNeed().equals("Blood and Plasma")){
+            holder.typeTextView.setText(holder.itemView.getContext().getResources().getString(R.string.bloodandplasma));
+        }
+
         downloadImage(patientDataModel.getPhone(), holder.patientImageView);
 
         if (patientDataModel.getServerMsg().toLowerCase().equals("pending")) {

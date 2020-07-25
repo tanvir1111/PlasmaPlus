@@ -213,13 +213,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
                 }
                 else if(response.body().getServerMsg().toLowerCase().equals("false")){
-                    ToastCreator.toastCreatorRed(getApplicationContext(),"Connection failed! Please try again");
+                    ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.connection_failed_try_again));
                 }
             }
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(),"Error occurred! Please try again");
+                ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.connection_error));
             }
         });
 
@@ -386,13 +386,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
                 }
                 else if(response.body().getServerMsg().toLowerCase().equals("false")){
-                    ToastCreator.toastCreatorRed(getApplicationContext(),"Connection failed! Please try again");
+                    ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.connection_failed_try_again));
                 }
             }
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(),"Error occurred! Please try again");
+                ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.connection_error));
             }
         });
 

@@ -80,8 +80,15 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
         holder.nameTextView.setText(userDataModel.getName());
         holder.locationTextView.setText(userDataModel.getDistrict());
         holder.bloodTextView.setText(userDataModel.getBloodGroup());
-        holder.donorType.setText(userDataModel.getDonor());
-
+        if(userDataModel.getDonor().equals("Blood")){
+            holder.donorType.setText(holder.itemView.getContext().getResources().getString(R.string.blood));
+        }
+        else if(userDataModel.getDonor().equals("Plasma")){
+            holder.donorType.setText(holder.itemView.getContext().getResources().getString(R.string.plasma));
+        }
+        else if(userDataModel.getDonor().equals("Blood and Plasma")){
+            holder.donorType.setText(holder.itemView.getContext().getResources().getString(R.string.bloodandplasma));
+        }
         downloadImage(userDataModel.getPhone(), holder.donorImageView);
 
 

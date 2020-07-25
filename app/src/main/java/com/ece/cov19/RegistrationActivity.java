@@ -360,7 +360,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 && !formFieldsFeatures.checkIfEmpty(passwordEditText)) {
 
             if (password.length() < 6) {
-                ToastCreator.toastCreatorRed(RegistrationActivity.this, "Password must be of at least 6 characters");
+                ToastCreator.toastCreatorRed(RegistrationActivity.this, getResources().getString(R.string.reg_activity_password_length));
             } else {
                 if (password.equals(confPasswordEditText.getText().toString())) {
 //            retro operations
@@ -369,7 +369,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
 
                 } else {
-                    confPasswordEditText.setError("Password doesn't match");
+                    confPasswordEditText.setError(getResources().getString(R.string.reg_activity_password_no_match));
                     confPasswordEditText.requestFocus();
                 }
             }
@@ -388,21 +388,21 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 if (response.body().getServerMsg().toLowerCase().equals("success")) {
-                    ToastCreator.toastCreatorGreen(RegistrationActivity.this, "Registration Successful!");
+                    ToastCreator.toastCreatorGreen(RegistrationActivity.this, getResources().getString(R.string.reg_activity_registration_success));
 
 //              going to login activity
                     Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                     startActivity(intent);
                     finish();
                 } else {
-                    ToastCreator.toastCreatorRed(RegistrationActivity.this, response.body().getServerMsg());
+                    ToastCreator.toastCreatorRed(RegistrationActivity.this, getResources().getString(R.string.connection_failed_try_again));
                 }
 
             }
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(RegistrationActivity.this, "Failed to register! Check your connection and try again.");
+                ToastCreator.toastCreatorRed(RegistrationActivity.this, getResources().getString(R.string.reg_activity_registration_failed));
             }
         });
 

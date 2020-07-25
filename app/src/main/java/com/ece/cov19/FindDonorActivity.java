@@ -254,14 +254,14 @@ public class FindDonorActivity extends AppCompatActivity {
                 }
 
                 else{
-                    ToastCreator.toastCreatorRed(FindDonorActivity.this,"No Response");
+                    ToastCreator.toastCreatorRed(FindDonorActivity.this,getResources().getString(R.string.connection_failed_try_again));
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                ToastCreator.toastCreatorRed(FindDonorActivity.this,"Error : " +t.getMessage());
+                ToastCreator.toastCreatorRed(FindDonorActivity.this,getResources().getString(R.string.connection_error));
             }
         });
 
@@ -340,14 +340,14 @@ public class FindDonorActivity extends AppCompatActivity {
 
                 else{
 
-                    ToastCreator.toastCreatorRed(FindDonorActivity.this,"No Response");
+                    ToastCreator.toastCreatorRed(FindDonorActivity.this,getResources().getString(R.string.connection_failed_try_again));
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
-                ToastCreator.toastCreatorRed(FindDonorActivity.this,"Error : " +t.getMessage());
+                ToastCreator.toastCreatorRed(FindDonorActivity.this,getResources().getString(R.string.connection_error));
             }
         });
     }

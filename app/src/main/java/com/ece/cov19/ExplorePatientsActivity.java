@@ -218,7 +218,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
                 }
 
                 else{
-                    ToastCreator.toastCreatorRed(ExplorePatientsActivity.this,"No Response");
+                    ToastCreator.toastCreatorRed(ExplorePatientsActivity.this,getResources().getString(R.string.connection_failed_try_again));
 
                 }
             }
@@ -226,7 +226,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
 
-                ToastCreator.toastCreatorRed(ExplorePatientsActivity.this,"Error : " +t.getMessage());
+                ToastCreator.toastCreatorRed(ExplorePatientsActivity.this,getResources().getString(R.string.connection_error));
             }
         });
     }

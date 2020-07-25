@@ -58,7 +58,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
 
                         checkUser();
                 } else {
-                    phoneInput.setError("Invalid Phone Number");
+                    phoneInput.setError(getResources().getString(R.string.phn_ver_activity_invalid_phone));
                     phoneInput.requestFocus();
                 }
             }
@@ -89,7 +89,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
                 if(verification.toLowerCase().equals("forgotpass")) {
                     if (response.body().getServerMsg().toLowerCase().equals("record exists")) {
 
-                        Intent intent = new Intent(PhoneVerificationActivity1.this, RegistrationActivity.class);
+                        Intent intent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
 
                         intent.putExtra("phone", phonenumber);
                         intent.putExtra("verification", verification);
@@ -97,26 +97,26 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
                         finish();
                     }
                     else if(response.body().getServerMsg().toLowerCase().equals("record doesn't exist")){
-                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, "This Phone number is not registered");
+                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, getResources().getString(R.string.phn_ver_activity_not_registered));
                         Intent intent = new Intent(PhoneVerificationActivity1.this, LoginActivity.class);
                         startActivity(intent);
                         finish();
                     }
                     else {
-                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this,  response.body().getServerMsg());
+                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this,  getResources().getString(R.string.connection_failed_try_again));
                     }
                 }
 
 
                 else if(verification.toLowerCase().equals("signup")){
                     if (response.body().getServerMsg().toLowerCase().equals("record exists")) {
-                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, "This phone number is  already registered");
+                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, getResources().getString(R.string.phn_ver_activity_already_registered));
 
                     }
                     else if(response.body().getServerMsg().toLowerCase().equals("record doesn't exist")){
 
 
-                        Intent nextIntent = new Intent(PhoneVerificationActivity1.this, RegistrationActivity.class);
+                        Intent nextIntent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
                         nextIntent.putExtra("phone",phonenumber);
                         nextIntent.putExtra("verification",verification);
                         startActivity(nextIntent);
@@ -124,7 +124,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
 
                     }
                     else {
-                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this,  response.body().getServerMsg());
+                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this,  getResources().getString(R.string.connection_failed_try_again));
                     }
 
 
@@ -136,7 +136,7 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, "An error occurred! Check your connection and try again");
+                ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, getResources().getString(R.string.connection_error));
             }
         });
 

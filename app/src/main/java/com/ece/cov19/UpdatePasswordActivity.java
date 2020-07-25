@@ -59,7 +59,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
 
                 if (password.length() < 6) {
 
-                    ToastCreator.toastCreatorRed(UpdatePasswordActivity.this,"password must be of at least 6 characters");
+                    ToastCreator.toastCreatorRed(UpdatePasswordActivity.this,getResources().getString(R.string.reg_activity_password_length));
                 }
                 else {
                     if(password.equals(confPasswordEditText.getText().toString())){
@@ -67,7 +67,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
                     }
                     else {
 
-                        ToastCreator.toastCreatorRed(UpdatePasswordActivity.this,"Passwords don't match");
+                        ToastCreator.toastCreatorRed(UpdatePasswordActivity.this,getResources().getString(R.string.reg_activity_password_no_match));
                     }
                 }
             }
@@ -84,7 +84,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 String serverMsg = response.body().getServerMsg();
                 if(serverMsg.toLowerCase().equals("success")){
-                    ToastCreator.toastCreatorGreen(UpdatePasswordActivity.this,"Password Updated");
+                    ToastCreator.toastCreatorGreen(UpdatePasswordActivity.this,getResources().getString(R.string.update_password_update_success));
 
 //                    clearing Shared Prefs
                     SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
@@ -98,7 +98,7 @@ public class UpdatePasswordActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(UpdatePasswordActivity.this,"Couldn't Update Password! Check your Connection and try again");
+                ToastCreator.toastCreatorRed(UpdatePasswordActivity.this,getResources().getString(R.string.update_password_update_failed));
 
             }
         });

@@ -67,6 +67,11 @@ public interface RetroInterface {
     Call<DashBoardNumberModel> eligibilityCheck(@Field("phone") String phone);
 
     @FormUrlEncoded
+    @POST("changeEligibility.php")
+    Call<DashBoardNumberModel> eligibilityChange(@Field("phone") String phone, @Field("date") String date);
+
+
+    @FormUrlEncoded
     @POST("ownPatients.php")
     Call<ArrayList<PatientDataModel>> ownPatients(@Field("phone") String phone);
 
@@ -137,7 +142,7 @@ public interface RetroInterface {
     @POST("lookForRequests.php")
     Call<RequestDataModel> requestsOperation(@Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
                                              @Field("patientAge") String patientAge, @Field("patientBloodGroup") String patientBloodGroup,
-                                             @Field("patientPhone") String phone,
+                                             @Field("patientDate") String patientDate, @Field("patientPhone") String phone,
                                              @Field("requestedBy") String requestedBy, @Field("operation") String operation);
     @FormUrlEncoded
     @POST("tokenRegister.php")

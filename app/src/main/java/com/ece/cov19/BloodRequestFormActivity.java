@@ -352,14 +352,14 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                     finish();
                 } else {
 
-                    ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.bld_req_activity_connection_problem));
+                    ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.connection_failed_try_again));
                 }
             }
 
             @Override
             public void onFailure(Call<PatientDataModel> call, Throwable t) {
 
-                ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.error_occured));
+                ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.connection_error));
 
             }
         });

@@ -173,14 +173,14 @@ public class DonorResponseActivity extends AppCompatActivity {
 
                 else{
 
-                    ToastCreator.toastCreatorRed(DonorResponseActivity.this,"No Response");
+                    ToastCreator.toastCreatorRed(DonorResponseActivity.this,getResources().getString(R.string.connection_failed_try_again));
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                ToastCreator.toastCreatorRed(DonorResponseActivity.this,"Error : " +t.getMessage());
+                ToastCreator.toastCreatorRed(DonorResponseActivity.this,getResources().getString(R.string.connection_error));
             }
         });
     }

@@ -160,14 +160,14 @@ public class PatientRequestsActivity extends AppCompatActivity {
                 else{
 
 
-                    ToastCreator.toastCreatorRed(PatientRequestsActivity.this,"No Response");
+                    ToastCreator.toastCreatorRed(PatientRequestsActivity.this,getResources().getString(R.string.connection_failed_try_again));
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                ToastCreator.toastCreatorRed(PatientRequestsActivity.this,"Error : " +t.getMessage());
+                ToastCreator.toastCreatorRed(PatientRequestsActivity.this,getResources().getString(R.string.connection_error));
             }
         });
 
