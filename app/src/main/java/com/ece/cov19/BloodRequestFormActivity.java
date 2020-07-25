@@ -207,8 +207,10 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                 forMyselfBtn.setEnabled(true);
                 genderFemale.setImageResource(R.drawable.female_icon);
                 genderMale.setImageResource(R.drawable.male_icon);
-                selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_not_selected);
-                selectedBldGrp.setTextColor(ContextCompat.getColor(this,R.color.textColorGrey));
+                if(selectedBldGrp!=null) {
+                    selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_not_selected);
+                    selectedBldGrp.setTextColor(ContextCompat.getColor(this, R.color.textColorGrey));
+                }
                 nameEditText.setText("");
                 ageEditText.setText("");
 
