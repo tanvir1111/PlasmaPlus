@@ -82,7 +82,7 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
         patientDataModel = patientDataModels.get(position);
 
 
-        downloadImage(patientDataModel.getPhone(), holder.patientImageView);
+        downloadImage(patientDataModel.getPhone(), holder.patientImageView, patientDataModel.getGender());
 
         holder.donateTextView.setVisibility(View.VISIBLE);
         holder.donateTextView.setText(R.string.view_requests);
@@ -182,7 +182,7 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
 
 
 
-    private void downloadImage(String title, ImageView genderImageView) {
+    private void downloadImage(String title, ImageView genderImageView, String gender) {
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<ImageDataModel> incomingResponse = retroInterface.downloadImage(title);
         incomingResponse.enqueue(new Callback<ImageDataModel>() {
@@ -197,9 +197,9 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
                     showImage(genderImageView, insertBitmap, R.drawable.profile_icon_male);
                 } else if (response.body().getServerMsg().toLowerCase().equals("false")) {
 
-                    if (loggedInUserGender.toLowerCase().equals("male")) {
+                    if (gender.toLowerCase().toLowerCase().equals("male")) {
                         showDrawable(genderImageView, R.drawable.profile_icon_male);
-                    } else if (loggedInUserGender.toLowerCase().equals("female")) {
+                    } else if (gender.toLowerCase().toLowerCase().equals("female")) {
                         showDrawable(genderImageView, R.drawable.profile_icon_female);
                     }
                 }
@@ -208,20 +208,18 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-
                 ToastCreator.toastCreatorRed(context, "Profile Image retrieve failed. " + t.getMessage());
 
 
-                if (loggedInUserGender.toLowerCase().equals("male")) {
+                if (gender.toLowerCase().equals("male")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_male);
-                } else if (loggedInUserGender.toLowerCase().equals("female")) {
+                } else if (gender.toLowerCase().equals("female")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_female);
                 }
             }
         });
 
     }
-
     public void setLocale(String lang) {
         Locale myLocale = new Locale(lang);
         Resources res = context.getResources();

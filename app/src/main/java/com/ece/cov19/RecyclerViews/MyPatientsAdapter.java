@@ -77,7 +77,7 @@ public class MyPatientsAdapter extends RecyclerView.Adapter<MyPatientsViewHolder
         }
         patientDataModel = patientDataModels.get(position);
 
-        downloadImage(patientDataModel.getPhone(), holder.patientImageView);
+        downloadImage(patientDataModel.getPhone(), holder.patientImageView, patientDataModel.getGender());
 
         holder.donateTextView.setVisibility(View.VISIBLE);
         holder.donateTextView.setText(R.string.view_profile);
@@ -176,7 +176,7 @@ public class MyPatientsAdapter extends RecyclerView.Adapter<MyPatientsViewHolder
 
 
 
-    private void downloadImage(String title, ImageView genderImageView) {
+    private void downloadImage(String title, ImageView genderImageView, String gender) {
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<ImageDataModel> incomingResponse = retroInterface.downloadImage(title);
         incomingResponse.enqueue(new Callback<ImageDataModel>() {
@@ -191,9 +191,9 @@ public class MyPatientsAdapter extends RecyclerView.Adapter<MyPatientsViewHolder
                     showImage(genderImageView, insertBitmap, R.drawable.profile_icon_male);
                 } else if (response.body().getServerMsg().toLowerCase().equals("false")) {
 
-                    if (loggedInUserGender.toLowerCase().equals("male")) {
+                    if (gender.toLowerCase().toLowerCase().equals("male")) {
                         showDrawable(genderImageView, R.drawable.profile_icon_male);
-                    } else if (loggedInUserGender.toLowerCase().equals("female")) {
+                    } else if (gender.toLowerCase().toLowerCase().equals("female")) {
                         showDrawable(genderImageView, R.drawable.profile_icon_female);
                     }
                 }
@@ -205,9 +205,9 @@ public class MyPatientsAdapter extends RecyclerView.Adapter<MyPatientsViewHolder
                 ToastCreator.toastCreatorRed(context, "Profile Image retrieve failed. " + t.getMessage());
 
 
-                if (loggedInUserGender.toLowerCase().equals("male")) {
+                if (gender.toLowerCase().equals("male")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_male);
-                } else if (loggedInUserGender.toLowerCase().equals("female")) {
+                } else if (gender.toLowerCase().equals("female")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_female);
                 }
             }
