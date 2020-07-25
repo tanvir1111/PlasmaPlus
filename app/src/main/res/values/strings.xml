@@ -17,7 +17,7 @@
 
 <!--common strings ... removing repeats-->
     <string name="welcome">Welcome</string>
-    <string name="connection_error">Connection Error! Please try after a while</string>
+    <string name="connection_error">Connection Error! Please try again after a while</string>
     <string name="find_a_donor">Find A Donor</string>
     <string name="add_patient">Add Patient</string>
     <string name="requests">Requests</string>

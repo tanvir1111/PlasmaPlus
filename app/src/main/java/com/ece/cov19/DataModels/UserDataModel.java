@@ -34,12 +34,18 @@ public class UserDataModel {
     @SerializedName("password")
     @Expose
     private String password;
+    @SerializedName("eligibility")
+    @Expose
+    private String eligibility;
+    @SerializedName("last_date")
+    @Expose
+    private String last_date;
     @SerializedName("serverMsg")
     @Expose
     private String serverMsg;
 
     public UserDataModel(String name, String phone, String gender, String bloodGroup,
-                         String division, String district, String thana, String age, String donor, String password) {
+                         String division, String district, String thana, String age, String donor, String password, String eligibility, String last_date) {
         this.name = name;
         this.phone = phone;
         this.gender = gender;
@@ -50,6 +56,9 @@ public class UserDataModel {
         this.age = age;
         this.donor = donor;
         this.password = password;
+        this.eligibility = eligibility;
+        this.last_date = last_date;
+
     }
 
     public String getName() {
@@ -130,6 +139,22 @@ public class UserDataModel {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getEligibility() {
+        return eligibility;
+    }
+
+    public void setEligibility(String eligibility) {
+        this.eligibility = eligibility;
+    }
+
+    public String getLast_date() {
+        return last_date;
+    }
+
+    public void setLast_date(String last_date) {
+        this.last_date = last_date;
     }
 
     public String getServerMsg() {
