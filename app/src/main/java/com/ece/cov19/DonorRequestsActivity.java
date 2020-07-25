@@ -213,7 +213,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(DonorRequestsActivity.this, getResources().getString(R.string.error_occurred_try_again), Toast.LENGTH_SHORT).show();
+                Toast.makeText(DonorRequestsActivity.this, getResources().getString(R.string.connection_error), Toast.LENGTH_SHORT).show();
             }
         });
 

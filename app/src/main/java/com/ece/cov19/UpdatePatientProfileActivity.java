@@ -382,7 +382,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
             @Override
             public void onFailure(Call<PatientDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(UpdatePatientProfileActivity.this, getResources().getString(R.string.error_occured));
+                ToastCreator.toastCreatorRed(UpdatePatientProfileActivity.this, getResources().getString(R.string.connection_error));
 
             }
         });

@@ -90,7 +90,15 @@ public class SearchDonorAdapter extends RecyclerView.Adapter<SearchDonorViewHold
         holder.nameTextView.setText(userDataModel.getName());
         holder.locationTextView.setText(userDataModel.getDistrict());
         holder.bloodTextView.setText(userDataModel.getBloodGroup());
-        holder.donortype.setText(userDataModel.getDonor());
+        if(userDataModel.getDonor().equals("Blood")){
+            holder.donortype.setText(holder.itemView.getContext().getResources().getString(R.string.blood));
+        }
+        else if(userDataModel.getDonor().equals("Plasma")){
+            holder.donortype.setText(holder.itemView.getContext().getResources().getString(R.string.plasma));
+        }
+        else if(userDataModel.getDonor().equals("Blood and Plasma")){
+            holder.donortype.setText(holder.itemView.getContext().getResources().getString(R.string.bloodandplasma));
+        }
 
         if(userDataModel.getGender().toLowerCase().equals("male")) {
             holder.donorImageView.setImageResource(R.drawable.profile_icon_male);

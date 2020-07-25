@@ -16,7 +16,7 @@
     <string name="language_dialog_bengali">বাংলা</string>
     <!--common strings ... removing repeats-->
     <string name="welcome">Welcome</string>
-    <string name="connection_error">Connection Failed! Check your connection and try again</string>
+    <string name="connection_error">Connection Error! Please try after a while</string>
     <string name="find_a_donor">Find A Donor</string>
     <string name="add_patient">Add Patient</string>
     <string name="requests">Requests</string>
@@ -143,18 +143,27 @@
     <string name="patients_response_type_textView">Responses from the Patients approached</string>
 
     <string name="phn_ver_get_otp_button">Get OTP</string>
+    <string name="phn_ver_activity_invalid_phone">Invalid Phone Number</string>
+    <string name="phn_ver_activity_not_registered">This Phone number is not registered</string>
+    <string name="phn_ver_activity_already_registered">This Phone number is already registered</string>
+    <string name="phn_ver_activity_verification_success">Phone Number is successfully Verified</string>
+    <string name="phn_ver_activity_verification_failed">Phone Number Verification Failed</string>
 
     <string name="search_donor_filter_result">Donors Found</string>
 
     <string name="reg_heading_textview">User Registration</string>
     <string name="reg_donor_checkbox">I am a Donor</string>
     <string name="reg_plasma_checkbox">I want to Donate Plasma</string>
+    <string name="reg_activity_password_length">Password must be of at least 6 characters</string>
+    <string name="reg_activity_password_no_match">Password does not match</string>
+    <string name="reg_activity_registration_success">Registration Successful!</string>
+    <string name="reg_activity_registration_failed">Failed to register! Check your connection and try again</string>
 
     <string name="update_password_heading_textview">Update Password</string>
     <string name="update_password_label_password">New Password</string>
-
     <string name="update_password_update_btn">Confirm Update</string>
-
+    <string name="update_password_update_failed">Failed to Update Password! Check your connection and try again</string>
+    <string name="update_password_update_success">Password Update Successful!</string>
 
 
 
@@ -395,6 +404,9 @@
     <string name="accepted_requests">Accepted Requests</string>
     <string name="next">Next</string>
     <string name="forgot_password">Forgot Password</string>
+    <string name="blood">Blood</string>
+    <string name="plasma">Plasma</string>
+    <string name="bloodandplasma">Blood and Plasma</string>
 
 
     <string-array name="division">

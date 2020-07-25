@@ -74,7 +74,7 @@
                     android:fontFamily="@font/raleway_bold"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="Plasma"
+                    android:text="@string/plasma"
                     android:textColor="#ffffff"
                     android:textSize="10sp"
                     app:layout_constraintBottom_toTopOf="@+id/seeking_help_child_bld_grp"

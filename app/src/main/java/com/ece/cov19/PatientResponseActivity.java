@@ -33,7 +33,7 @@ public class PatientResponseActivity extends AppCompatActivity {
     private PatientResponseAdapter PatientResponseAdapter;
     private RecyclerView recyclerView;
     private ImageView backbtn;
-    private String status="pending",responseTypeText="Response from Patients Approached";
+    private String status="pending",responseTypeText;
     private TextView responseTypeTextView, noResponseTextView;
     private ProgressBar progressBar;
 
@@ -48,6 +48,7 @@ public class PatientResponseActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.patients_response_progressBar);
         noResponseTextView = findViewById(R.id.patients_response_norecordtextview);
 
+        responseTypeText = getResources().getString(R.string.patients_response_type_textView);
 
         patientDataModels = new ArrayList<>();
 
@@ -84,6 +85,8 @@ public class PatientResponseActivity extends AppCompatActivity {
         responseTypeTextView=findViewById(R.id.patients_response_type_textView);
         progressBar = findViewById(R.id.patients_response_progressBar);
         noResponseTextView = findViewById(R.id.patients_response_norecordtextview);
+        responseTypeText = getResources().getString(R.string.patients_response_type_textView);
+
 
 
         patientDataModels = new ArrayList<>();
@@ -164,14 +167,14 @@ public class PatientResponseActivity extends AppCompatActivity {
                 }
                 else {
 
-                    ToastCreator.toastCreatorRed(PatientResponseActivity.this,"No Response");
+                    ToastCreator.toastCreatorRed(PatientResponseActivity.this,getResources().getString(R.string.connection_failed_try_again));
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
 
-                ToastCreator.toastCreatorRed(PatientResponseActivity.this,"Error: "+t.getMessage());
+                ToastCreator.toastCreatorRed(PatientResponseActivity.this,getResources().getString(R.string.connection_error));
             }
         });
     }

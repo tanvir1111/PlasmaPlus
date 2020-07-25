@@ -179,7 +179,7 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(intent);
                         finish();
                     } else {
-                        ToastCreator.toastCreatorRed(SplashActivity.this, response.body().getServerMsg());
+                        ToastCreator.toastCreatorRed(SplashActivity.this, getResources().getString(R.string.connection_failed_try_again));
 
 //                   going to Login
                         Intent intent = new Intent(SplashActivity.this, LoginActivity.class);

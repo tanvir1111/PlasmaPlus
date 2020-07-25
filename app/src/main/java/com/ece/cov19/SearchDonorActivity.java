@@ -219,14 +219,14 @@ public class SearchDonorActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(linearLayoutManager);
                 } else {
 
-                    ToastCreator.toastCreatorRed(SearchDonorActivity.this,"No Response from Server");
+                    ToastCreator.toastCreatorRed(SearchDonorActivity.this,getResources().getString(R.string.connection_failed_try_again));
 
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
-                ToastCreator.toastCreatorRed(SearchDonorActivity.this,"Error: " + t.getMessage());
+                ToastCreator.toastCreatorRed(SearchDonorActivity.this,getResources().getString(R.string.connection_error));
             }
         });
     }

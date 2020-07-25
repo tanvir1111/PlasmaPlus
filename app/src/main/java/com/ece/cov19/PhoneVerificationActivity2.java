@@ -113,7 +113,7 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
                                 Intent intent = new Intent(PhoneVerificationActivity2.this, RegistrationActivity.class);
                                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 intent.putExtra("phone", phonenumber);
-                                ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, "Verification Successful!");
+                                ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, getResources().getString(R.string.phn_ver_activity_verification_success));
                                 startActivity(intent);
                                 finish();
                             }
@@ -122,13 +122,13 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
                                 Intent intent = new Intent(PhoneVerificationActivity2.this, UpdatePasswordActivity.class);
                                 intent.putExtra("phone", phonenumber);
                                 intent.putExtra("verification", verification);
-                                ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, "Verification Successful!");
+                                ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, getResources().getString(R.string.phn_ver_activity_verification_success));
                                 startActivity(intent);
                                 finish();
                             }
 
                         } else {
-                            ToastCreator.toastCreatorRed(PhoneVerificationActivity2.this, "Verification Failed! Error: "+task.getException().getMessage());
+                            ToastCreator.toastCreatorRed(PhoneVerificationActivity2.this, getResources().getString(R.string.phn_ver_activity_verification_failed));
                         }
                     }
                 });
@@ -163,13 +163,13 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
             if (code != null) {
                 editText.setText(code);
                 verifyCode(code);
-                ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, "Verification Successful!");
+                ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, getResources().getString(R.string.phn_ver_activity_verification_success));
             }
         }
 
         @Override
         public void onVerificationFailed(FirebaseException e) {
-            ToastCreator.toastCreatorRed(PhoneVerificationActivity2.this, "Automatic Verification Failed! Error: "+e.getMessage());
+            ToastCreator.toastCreatorRed(PhoneVerificationActivity2.this, getResources().getString(R.string.phn_ver_activity_verification_failed));
         }
     };
 

@@ -270,13 +270,13 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
 
                 } else {
-                    ToastCreator.toastCreatorRed(ViewDonorProfileActivity.this, "Failed to connect! Please try again!");
+                    ToastCreator.toastCreatorRed(ViewDonorProfileActivity.this, getResources().getString(R.string.connection_failed_try_again));
                 }
             }
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(ViewDonorProfileActivity.this, "Error occured! Please try again!");
+                ToastCreator.toastCreatorRed(ViewDonorProfileActivity.this, getResources().getString(R.string.connection_error));
 
             }
         });
@@ -341,7 +341,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(ViewDonorProfileActivity.this, "Error occurred! Please try again");
+                ToastCreator.toastCreatorRed(ViewDonorProfileActivity.this, getResources().getString(R.string.connection_error));
 
             }
         });

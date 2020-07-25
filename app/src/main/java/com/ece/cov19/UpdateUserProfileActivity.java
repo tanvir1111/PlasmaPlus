@@ -375,7 +375,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(UpdateUserProfileActivity.this,   getResources().getString(R.string.error_occured));
+                ToastCreator.toastCreatorRed(UpdateUserProfileActivity.this,   getResources().getString(R.string.connection_error));
             }
         });
 
