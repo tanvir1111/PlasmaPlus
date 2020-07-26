@@ -386,11 +386,17 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                                 Log.d(TAG, msg);
 
                                 RetroInterface retroInterface = RetroInstance.getRetro();
-                                Call<UserDataModel> incomingResponse = retroInterface.sendToken(LoggedInUserData.loggedInUserPhone,token);
+                                Call<UserDataModel> incomingResponse = retroInterface.deleteToken(LoggedInUserData.loggedInUserPhone,token);
                                 incomingResponse.enqueue(new Callback<UserDataModel>() {
                                     @Override
                                     public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-
+                                        if(response.body().getServerMsg().equals("Success")) {
+                                            loggedInUserPhone = "";
+                                            Intent login = new Intent(ViewUserProfileActivity.this, LoginActivity.class);
+                                            login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                            startActivity(login);
+                                            finish();
+                                        }
                                     }
 
                                     @Override
@@ -404,13 +410,6 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
 
 
-
-                loggedInUserPhone="";
-
-                Intent login= new Intent(ViewUserProfileActivity.this, LoginActivity.class);
-                login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK|Intent.FLAG_ACTIVITY_NEW_TASK);
-                startActivity(login);
-                finish();
 
 
             }

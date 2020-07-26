@@ -150,6 +150,10 @@ public interface RetroInterface {
     Call <UserDataModel> sendToken(@Field("phone") String phone, @Field("token") String token);
 
     @FormUrlEncoded
+    @POST("tokenDelete.php")
+    Call <UserDataModel> deleteToken(@Field("phone") String phone, @Field("token") String token);
+
+    @FormUrlEncoded
     @POST("pushNotification.php")
     Call <UserDataModel> sendNotification(@Field("phone") String phone, @Field("title") String title, @Field("body") String body,
                                           @Field("activity") String activity);
