@@ -44,6 +44,7 @@ import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientDate;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
@@ -211,7 +212,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         notDonatedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requestOperationAlertDialog("not_donate",phone,getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_3), "DonorResponseActivity");
+                requestOperationAlertDialog("not_donate",phone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_3), "DonorResponseActivity");
 
             }
         });
@@ -426,7 +427,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     private void sendRequest() {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<RequestDataModel> requestFromDonor = retroInterface.sendRequest(loggedInUserPhone, findPatientName, findPatientAge, findPatientPhone, findPatientBloodGroup, "donor");
+        Call<RequestDataModel> requestFromDonor = retroInterface.sendRequest(loggedInUserPhone, name, age, bloodGroup, date, phone, "donor", "Pending");
         requestFromDonor.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
@@ -548,15 +549,19 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                             donateToHelpButton.setVisibility(View.VISIBLE);
                             donateToHelpButton.setText(getResources().getString(R.string.accepted));
-                            updateButton.setVisibility(View.GONE);
-                            deleteButton.setVisibility(View.GONE);
-                            donatedButton.setVisibility(View.GONE);
-                            notDonatedButton.setVisibility(View.GONE);
+                            updateButton.setVisibility(View.VISIBLE);
+                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
+                            deleteButton.setVisibility(View.VISIBLE);
+                            deleteButton.setText(getResources().getString(R.string.send_sms));
+                            donatedButton.setVisibility(View.VISIBLE);
+                            notDonatedButton.setVisibility(View.VISIBLE);
+                            phoneTextView.setText(phone);
                         }
 
                         else {
 
-                            donateToHelpButton.setVisibility(View.GONE);
+                            donateToHelpButton.setVisibility(View.VISIBLE);
+                            donateToHelpButton.setText(getResources().getString(R.string.accepted));
                             updateButton.setVisibility(View.VISIBLE);
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);
@@ -575,14 +580,18 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                             donateToHelpButton.setVisibility(View.VISIBLE);
                             donateToHelpButton.setText(getResources().getString(R.string.donated));
-                            updateButton.setVisibility(View.GONE);
-                            deleteButton.setVisibility(View.GONE);
+                            updateButton.setVisibility(View.VISIBLE);
+                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
+                            deleteButton.setVisibility(View.VISIBLE);
+                            deleteButton.setText(getResources().getString(R.string.send_sms));
                             donatedButton.setVisibility(View.GONE);
                             notDonatedButton.setVisibility(View.GONE);
+                            phoneTextView.setText(phone);
                         }
 
                         else {
-                            donateToHelpButton.setVisibility(View.GONE);
+                            donateToHelpButton.setVisibility(View.VISIBLE);
+                            donateToHelpButton.setText(getResources().getString(R.string.donated));
                             updateButton.setVisibility(View.VISIBLE);
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);
@@ -600,14 +609,18 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                             donateToHelpButton.setVisibility(View.VISIBLE);
                             donateToHelpButton.setText(getResources().getString(R.string.not_donated));
-                            updateButton.setVisibility(View.GONE);
-                            deleteButton.setVisibility(View.GONE);
+                            updateButton.setVisibility(View.VISIBLE);
+                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
+                            deleteButton.setVisibility(View.VISIBLE);
+                            deleteButton.setText(getResources().getString(R.string.send_sms));
                             donatedButton.setVisibility(View.GONE);
                             notDonatedButton.setVisibility(View.GONE);
+                            phoneTextView.setText(phone);
                         }
 
                         else {
-                            donateToHelpButton.setVisibility(View.GONE);
+                            donateToHelpButton.setVisibility(View.VISIBLE);
+                            donateToHelpButton.setText(getResources().getString(R.string.not_donated));
                             updateButton.setVisibility(View.VISIBLE);
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);

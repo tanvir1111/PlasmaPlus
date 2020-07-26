@@ -68,7 +68,7 @@
     <string name="ask_for_help">অনুরোধ করুন</string>
     <string name="enter_password_hint">পাসওয়ার্ড দিন</string>
     <string name="wrong_password_error">ভুল পাসওয়ার্ড</string>
-    <string name="send_sms">গ্রাহককে এসএমএস করুন</string>
+    <string name="send_sms">এসএমএস করুন</string>
     <string name="not_permitted">অনুমোদিত নয়</string>
     <string name="accepted">সম্মত</string>
     <string name="declined">নাকচ</string>

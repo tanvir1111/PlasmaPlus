@@ -109,7 +109,6 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
 
 
                         donateTextView.setText(R.string.no_requests_found);
-                        ToastCreator.toastCreatorRed(view.getContext(),"No data");
                     }
 
 

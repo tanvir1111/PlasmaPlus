@@ -240,7 +240,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     private void sendRequest() {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<RequestDataModel> requestFromPatient = retroInterface.sendRequest(donorphone, findPatientName, findPatientAge, findPatientPhone, findPatientBloodGroup, "patient");
+        Call<RequestDataModel> requestFromPatient = retroInterface.sendRequest(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientDate, findPatientPhone, "patient", "Pending");
         requestFromPatient.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
@@ -324,6 +324,11 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.accepted));
+                            acceptBtn.setVisibility(View.VISIBLE);
+                            acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
+                            declineBtn.setVisibility(View.VISIBLE);
+                            declineBtn.setText(getResources().getString(R.string.send_sms));
+                            phoneTextView.setText(donorphone);
                         }
                         else {
                             askForHelpBtn.setVisibility(View.GONE);
@@ -340,6 +345,11 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.donated));
+                            acceptBtn.setVisibility(View.VISIBLE);
+                            acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
+                            declineBtn.setVisibility(View.VISIBLE);
+                            declineBtn.setText(getResources().getString(R.string.send_sms));
+                            phoneTextView.setText(donorphone);
                         }
                         else {
                             askForHelpBtn.setVisibility(View.GONE);
@@ -356,6 +366,11 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.not_donated));
+                            acceptBtn.setVisibility(View.VISIBLE);
+                            acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
+                            declineBtn.setVisibility(View.VISIBLE);
+                            declineBtn.setText(getResources().getString(R.string.send_sms));
+                            phoneTextView.setText(donorphone);
                         }
                         else {
                             askForHelpBtn.setVisibility(View.GONE);

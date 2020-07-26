@@ -108,8 +108,7 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
                         requestDonorRecyclerView.setLayoutManager(linearLayoutManager);
                     } else {
                         progressBar.setVisibility(View.GONE);
-                        donateTextView.setText(R.string.no_request);
-                        ToastCreator.toastCreatorRed(view.getContext(),"No data");
+                        donateTextView.setText(R.string.no_requests_found);
                     }
 
 
@@ -118,8 +117,7 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
                 @Override
                 public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
                     progressBar.setVisibility(View.GONE);
-                    donateTextView.setText(R.string.no_request);
-                    //ToastCreator.toastCreator(view.getContext(),"Error: "+t.getMessage(),Toast.LENGTH_LONG).show();
+                    donateTextView.setText(R.string.no_requests_found);
                 }
             });
 

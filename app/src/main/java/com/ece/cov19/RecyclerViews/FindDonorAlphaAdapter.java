@@ -90,6 +90,7 @@ public class FindDonorAlphaAdapter extends RecyclerView.Adapter<FindDonorAlphaVi
                 FindPatientData.findPatientAge=patientDataModels.get(position).getAge();
                 FindPatientData.findPatientPhone=patientDataModels.get(position).getPhone();
                 FindPatientData.findPatientNeed=patientDataModels.get(position).getNeed();
+                FindPatientData.findPatientDate=patientDataModels.get(position).getDate();
                 recyclerViewClickListener.onClicked(v,position);
             }
         });
@@ -230,7 +231,7 @@ public class FindDonorAlphaAdapter extends RecyclerView.Adapter<FindDonorAlphaVi
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(context, "Profile Image retrieve failed. " + t.getMessage());
+                ToastCreator.toastCreatorRed(context, context.getResources().getString(R.string.donor_profile_activity_image_failed));
 
 
                 if (gender.toLowerCase().equals("male")) {

@@ -102,8 +102,9 @@ public interface RetroInterface {
     @FormUrlEncoded
     @POST("sendRequest.php")
     Call<RequestDataModel> sendRequest( @Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
-                                        @Field("patientAge") String patientAge, @Field("patientPhone") String patientPhone,
-                                        @Field("patientBloodGrp") String patientBloodGrp, @Field("requestedBy") String requester);
+                                        @Field("patientAge") String patientAge, @Field("patientBloodGrp") String patientBloodGrp,
+                                        @Field("patientDate") String patientDate, @Field("patientPhone") String patientPhone,
+                                        @Field("requestedBy") String requestedBy, @Field("operation") String operation);
 
     @FormUrlEncoded
     @POST("checkDonorRequest.php") Call<ArrayList<PatientDataModel>> checkDonorRequest(@Field("phone") String userPhone,@Field("status") String status);
