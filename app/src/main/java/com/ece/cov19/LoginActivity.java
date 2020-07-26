@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.method.PasswordTransformationMethod;
 import android.util.DisplayMetrics;
 import android.view.MenuInflater;
@@ -40,6 +41,7 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
+import static com.ece.cov19.Functions.LoginUser.loginUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -157,6 +159,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void verifyData() {
+        String loginStat;
+
         String phone, password, emptyfield = "all ok";
 
         password = passwordEditText.getText().toString();
@@ -179,74 +183,86 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (emptyfield.toLowerCase().equals("all ok")) {
-            loginUser(phone, password);
+            progressBar.setVisibility(View.VISIBLE);
+           loginUser(LoginActivity.this,phone, password,DashboardActivity.class,"LoginActivity");
+            final Handler handler = new Handler();
+
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    finish();
+                }
+            },5000);
+
+           progressBar.setVisibility(View.GONE);
         }
+
 
     }
 
 //    database operations
 
-    private void loginUser(String phone, String password) {
-
-        progressBar.setVisibility(View.VISIBLE);
-        RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<UserDataModel> sendingData = retroInterface.loginRetroMethod(phone, password);
-        sendingData.enqueue(new Callback<UserDataModel>() {
-            @Override
-            public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-                if (response.body().getServerMsg().toLowerCase().equals("success")) {
-                    progressBar.setVisibility(View.GONE);
-
-                    ToastCreator.toastCreatorGreen(LoginActivity.this, getResources().getString(R.string.welcome)+" " + response.body().getName());
-
-//                  Storing phone and password to shared preferences
-                    SharedPreferences loginSharedPrefs = getSharedPreferences(LOGIN_SHARED_PREFS, MODE_PRIVATE);
-                    SharedPreferences.Editor loginPrefsEditor = loginSharedPrefs.edit();
-                    loginPrefsEditor.putString(LOGIN_USER_PHONE, response.body().getPhone());
-                    loginPrefsEditor.putString(LOGIN_USER_PASS, response.body().getPassword());
-                    loginPrefsEditor.apply();
-
-//              setting all logged in info
-                    loggedInUserName = response.body().getName();
-                    loggedInUserPhone = response.body().getPhone();
-                    loggedInUserGender = response.body().getGender();
-                    loggedInUserBloodGroup = response.body().getBloodGroup();
-                    loggedInUserDivision = response.body().getDivision();
-                    loggedInUserDistrict = response.body().getDistrict();
-                    loggedInUserThana = response.body().getThana();
-                    loggedInUserAge = response.body().getAge();
-                    loggedInUserDonorInfo = response.body().getDonor();
-                    loggedInUserPass = response.body().getPassword();
-
-
-//                  going to Dashboard
-                    Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else if(response.body().getServerMsg().toLowerCase().equals("wrong phone or password")){
-                    progressBar.setVisibility(View.GONE);
-                    ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.login_activity_wrong));
-                }
-
-                else {
-                    progressBar.setVisibility(View.GONE);
-
-                    ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.connection_error));
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<UserDataModel> call, Throwable t) {
-                progressBar.setVisibility(View.GONE);
-
-
-                ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.connection_error));
-            }
-        });
-
-    }
+//    private void loginUser(String phone, String password) {
+//
+//        progressBar.setVisibility(View.VISIBLE);
+//        RetroInterface retroInterface = RetroInstance.getRetro();
+//        Call<UserDataModel> sendingData = retroInterface.loginRetroMethod(phone, password);
+//        sendingData.enqueue(new Callback<UserDataModel>() {
+//            @Override
+//            public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+//                if (response.body().getServerMsg().toLowerCase().equals("success")) {
+//                    progressBar.setVisibility(View.GONE);
+//
+//                    ToastCreator.toastCreatorGreen(LoginActivity.this, getResources().getString(R.string.welcome)+" " + response.body().getName());
+//
+////                  Storing phone and password to shared preferences
+//                    SharedPreferences loginSharedPrefs = getSharedPreferences(LOGIN_SHARED_PREFS, MODE_PRIVATE);
+//                    SharedPreferences.Editor loginPrefsEditor = loginSharedPrefs.edit();
+//                    loginPrefsEditor.putString(LOGIN_USER_PHONE, response.body().getPhone());
+//                    loginPrefsEditor.putString(LOGIN_USER_PASS, response.body().getPassword());
+//                    loginPrefsEditor.apply();
+//
+////              setting all logged in info
+//                    loggedInUserName = response.body().getName();
+//                    loggedInUserPhone = response.body().getPhone();
+//                    loggedInUserGender = response.body().getGender();
+//                    loggedInUserBloodGroup = response.body().getBloodGroup();
+//                    loggedInUserDivision = response.body().getDivision();
+//                    loggedInUserDistrict = response.body().getDistrict();
+//                    loggedInUserThana = response.body().getThana();
+//                    loggedInUserAge = response.body().getAge();
+//                    loggedInUserDonorInfo = response.body().getDonor();
+//                    loggedInUserPass = response.body().getPassword();
+//
+//
+////                  going to Dashboard
+//                    Intent intent = new Intent(LoginActivity.this, DashboardActivity.class);
+//                    startActivity(intent);
+//                    finish();
+//                }
+//                else if(response.body().getServerMsg().toLowerCase().equals("wrong phone or password")){
+//                    progressBar.setVisibility(View.GONE);
+//                    ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.login_activity_wrong));
+//                }
+//
+//                else {
+//                    progressBar.setVisibility(View.GONE);
+//
+//                    ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.connection_error));
+//                }
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<UserDataModel> call, Throwable t) {
+//                progressBar.setVisibility(View.GONE);
+//
+//
+//                ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.connection_error));
+//            }
+//        });
+//
+//    }
 
     public void setLocale(String lang) {
         Locale myLocale = new Locale(lang);

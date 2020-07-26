@@ -95,6 +95,14 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
+        Intent intent=getIntent();
+        if(intent.hasExtra("from")){
+            if(intent.getStringExtra("from").equals("LoginActivity")){
+                intent.putExtra("from","none");
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        }
 
         drawerLayout =findViewById(R.id.drawer_layout);
         navigationView =findViewById(R.id.nav_view);
