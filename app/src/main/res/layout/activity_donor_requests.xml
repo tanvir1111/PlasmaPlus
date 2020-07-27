@@ -40,52 +40,78 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/raleway_bold"
         android:text="@string/donor_requests_pending_requests"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
-        app:layout_constraintTop_toBottomOf="@+id/donor_requests_header" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
-    <Button
-        android:id="@+id/donor_requests_show_accepted_requests"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/linearLayout"
+
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/button_style_colored"
-        android:paddingLeft="15dp"
-
-        android:paddingRight="15dp"
-        android:text="@string/donor_requests_show_accepted_requests"
-        android:textColor="@color/textColorWhite"
-        android:textSize="10sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toTopOf="@+id/donor_requests_type_textView"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/donor_requests_header"
-        app:layout_constraintVertical_bias="0.0" />
-
-
-    <Button
-        android:id="@+id/donor_requests_show_pending_requests"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/button_style_white"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:text="@string/donor_requests_show_pending_requests"
-        android:enabled="false"
-        android:textColor="@color/textColorGrey"
-        android:textSize="10sp"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="@+id/donor_requests_show_accepted_requests"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/donor_requests_show_accepted_requests"
-        app:layout_constraintTop_toTopOf="@+id/donor_requests_show_accepted_requests" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/donor_requests_header">
+
+        <Button
+            android:id="@+id/donor_requests_show_pending_requests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@drawable/tabstyleselected"
+            android:enabled="false"
+            android:fontFamily="@font/raleway_bold"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/pending"
+            android:textColor="@color/textColorDark"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/donor_requests_show_accepted_requests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@drawable/tabstyle_not_selected"
+
+
+            android:enabled="true"
+            android:fontFamily="@font/raleway_bold"
+            android:paddingLeft="15dp"
+
+            android:paddingRight="15dp"
+            android:text="@string/accepted"
+            android:textColor="@color/textColorGrey"
+            android:textSize="12sp"
+
+            />
+
+
+        <Button
+            android:id="@+id/donor_requests_show_declined_requests"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:background="@drawable/tabstyle_not_selected"
+            android:enabled="true"
+            android:fontFamily="@font/raleway_bold"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:text="@string/declined"
+            android:textColor="@color/textColorGrey"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/donor_requests_back_button"
@@ -116,20 +142,23 @@
             android:layout_marginBottom="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ProgressBar
+            android:id="@+id/donor_requests_progressBar"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@+id/donor_requests_recyclerview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/donor_requests_recyclerview" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <ProgressBar
-        android:id="@+id/donor_requests_progressBar"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:layout_constraintEnd_toEndOf="@+id/donor_requests_show_accepted_requests"
-        app:layout_constraintStart_toStartOf="@+id/donor_requests_show_accepted_requests"
-        app:layout_constraintTop_toBottomOf="@+id/donor_requests_type_textView" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
