@@ -384,7 +384,6 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                                 String token = task.getResult().getToken();
                                 String msg = getString(R.string.fcm_token, token);
                                 Log.d(TAG, msg);
-
                                 RetroInterface retroInterface = RetroInstance.getRetro();
                                 Call<UserDataModel> incomingResponse = retroInterface.deleteToken(LoggedInUserData.loggedInUserPhone,token);
                                 incomingResponse.enqueue(new Callback<UserDataModel>() {
