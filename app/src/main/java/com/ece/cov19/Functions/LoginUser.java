@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
 
+import androidx.core.app.ActivityCompat;
+
 import com.ece.cov19.DashboardActivity;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.LoginActivity;
@@ -33,8 +35,17 @@ import static com.ece.cov19.LoginActivity.LOGIN_USER_PASS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PHONE;
 
 public class LoginUser {
-    private static String loginstat;
-    public static void loginUser(Context ctx, String phone, String password,Class<?> toActivity,String from ){
+
+    public static String checkLoginStat(){
+        if(loggedInUserPhone.equals("Didn't Load") || loggedInUserName.equals("Didn't Load") || loggedInUserAge.equals("Didn't Load")
+                || loggedInUserBloodGroup.equals("Didn't Load") || loggedInUserDistrict.equals("Didn't Load") || loggedInUserDivision.equals("Didn't Load")
+                || loggedInUserGender.equals("Didn't Load") || loggedInUserDonorInfo.equals("Didn't Load")||loggedInUserThana.equals("Didn't Load")
+        ){
+            return "failed";
+        }
+        return "success";
+    }
+    public static void loginUser(Context ctx, String phone, String password,Class<?> toActivity){
 
 
         RetroInterface retroInterface = RetroInstance.getRetro();
@@ -64,15 +75,17 @@ public class LoginUser {
                     loggedInUserAge = response.body().getAge();
                     loggedInUserDonorInfo = response.body().getDonor();
                     loggedInUserPass = response.body().getPassword();
-                    loginstat = "successful";
+
 
 
 //                  going to Dashboard
-                    Intent intent = new Intent(ctx, toActivity);
-                    intent.putExtra("from",from);
+                    if(ctx.getClass()!=toActivity) {
+                        Intent intent = new Intent(ctx, toActivity);
+
 
 //                    intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    ctx.startActivity(intent);
+                        ctx.startActivity(intent);
+                    }
 
                 }
                 else if(response.body().getServerMsg().toLowerCase().equals("wrong phone or password")){

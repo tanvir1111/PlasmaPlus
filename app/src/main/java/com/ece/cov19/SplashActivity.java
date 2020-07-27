@@ -17,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.LoginUser;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -149,56 +150,7 @@ public class SplashActivity extends AppCompatActivity {
           phone = sharedPreferences.getString(LOGIN_USER_PHONE, "");
           password= sharedPreferences.getString(LOGIN_USER_PASS, "");
 
-            RetroInterface retroInterface = RetroInstance.getRetro();
-            Call<UserDataModel> sendingData = retroInterface.loginRetroMethod(phone, password);
-            sendingData.enqueue(new Callback<UserDataModel>() {
-                @Override
-                public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-                    if (response.body().getServerMsg().toLowerCase().equals("success")) {
-
-                        progressBar.setVisibility(View.GONE);
-
-
-
-//              setting all logged in info
-                        loggedInUserName = response.body().getName();
-                        loggedInUserPhone = response.body().getPhone();
-                        loggedInUserGender = response.body().getGender();
-                        loggedInUserBloodGroup = response.body().getBloodGroup();
-                        loggedInUserDivision = response.body().getDivision();
-                        loggedInUserDistrict = response.body().getDistrict();
-                        loggedInUserThana = response.body().getThana();
-                        loggedInUserAge = response.body().getAge();
-                        loggedInUserDonorInfo = response.body().getDonor();
-                        loggedInUserPass = response.body().getPassword();
-                        ToastCreator.toastCreatorGreen(SplashActivity.this,getResources().getString(R.string.welcome)+" " + loggedInUserName);
-
-
-//                  going to Dashboard
-                        Intent intent = new Intent(SplashActivity.this, DashboardActivity.class);
-                        startActivity(intent);
-                        finish();
-                    } else {
-                        ToastCreator.toastCreatorRed(SplashActivity.this, getResources().getString(R.string.connection_failed_try_again));
-
-//                   going to Login
-                        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
-
-                    }
-
-                }
-
-                @Override
-                public void onFailure(Call<UserDataModel> call, Throwable t) {
-                    
-                    ToastCreator.toastCreatorRed(SplashActivity.this,getResources().getString(R.string.connection_error));
-
-                }
-            });
-
-
+            LoginUser.loginUser(this,phone,password,DashboardActivity.class);
         } else {
             Intent login = new Intent(SplashActivity.this, LoginActivity.class);
             startActivity(login);

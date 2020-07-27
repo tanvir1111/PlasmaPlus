@@ -418,6 +418,7 @@
     <string name="bloodandplasma">Blood and Plasma</string>
     <string name="mark_as_donated">Mark As Donated</string>
     <string name="mark_as_not_donated">Mark As Not Donated</string>
+    <string name="login_failed">Failed to log in</string>
 
 
     <string-array name="division">

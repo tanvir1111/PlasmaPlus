@@ -594,6 +594,7 @@
     <string name="bloodandplasma">ব্লাড ও প্লাজমা</string>
     <string name="mark_as_donated">দান সম্পন্ন হয়েছে</string>
     <string name="mark_as_not_donated">দান সম্পন্ন হয়নি</string>
+    <string name="login_failed">লগিন ব্যর্থ হয়েছে</string>
 
 
 </resources>
