@@ -184,7 +184,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (emptyfield.toLowerCase().equals("all ok")) {
             progressBar.setVisibility(View.VISIBLE);
-           loginUser(LoginActivity.this,phone, password,DashboardActivity.class,"LoginActivity");
+           loginUser(LoginActivity.this,phone, password,DashboardActivity.class);
             final Handler handler = new Handler();
 
             handler.postDelayed(new Runnable() {

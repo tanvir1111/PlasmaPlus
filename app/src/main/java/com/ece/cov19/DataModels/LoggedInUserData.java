@@ -2,15 +2,15 @@ package com.ece.cov19.DataModels;
 
 public class LoggedInUserData {
     public static String loggedInUserName="Didn't Load";
-    public static String loggedInUserPhone;
-    public static String loggedInUserGender;
-    public static String loggedInUserBloodGroup;
-    public static String loggedInUserDivision;
-    public static String loggedInUserDistrict;
-    public static String loggedInUserThana;
-    public static String loggedInUserAge;
-    public static String loggedInUserDonorInfo;
-    public static String loggedInUserPass;
-    public static String loggedInUserEligibility;
+    public static String loggedInUserPhone="Didn't Load";
+    public static String loggedInUserGender="Didn't Load";
+    public static String loggedInUserBloodGroup="Didn't Load";
+    public static String loggedInUserDivision="Didn't Load";
+    public static String loggedInUserDistrict="Didn't Load";
+    public static String loggedInUserThana="Didn't Load";
+    public static String loggedInUserAge="Didn't Load";
+    public static String loggedInUserDonorInfo="Didn't Load";
+    public static String loggedInUserPass="Didn't Load";
+    public static String loggedInUserEligibility="Didn't Load";
 
 }

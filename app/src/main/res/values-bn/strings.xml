@@ -63,8 +63,8 @@
     <string name="phone_with_colon">মোবাইল :</string>
     <string name="phone">মোবাইল</string>
     <string name="blood_group_with_colon">রক্তের গ্রুপ :</string>
-    <string name="accept_request">আবেদন গ্রহণ করুন</string>
-    <string name="decline_request">আবেদন প্রত্যাখ্যান করুন</string>
+    <string name="accept_request">সম্মতি</string>
+    <string name="decline_request">প্রত্যাখ্যান</string>
     <string name="ask_for_help">অনুরোধ করুন</string>
     <string name="enter_password_hint">পাসওয়ার্ড দিন</string>
     <string name="wrong_password_error">ভুল পাসওয়ার্ড</string>
@@ -594,6 +594,7 @@
     <string name="bloodandplasma">ব্লাড ও প্লাজমা</string>
     <string name="mark_as_donated">দান সম্পন্ন হয়েছে</string>
     <string name="mark_as_not_donated">দান সম্পন্ন হয়নি</string>
+    <string name="login_failed">লগিন ব্যর্থ হয়েছে</string>
 
 
 </resources>

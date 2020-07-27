@@ -63,8 +63,8 @@
     <string name="phone_with_colon">Phone :</string>
     <string name="phone">Phone</string>
     <string name="blood_group_with_colon">Blood Group :</string>
-    <string name="accept_request">Accept Request</string>
-    <string name="decline_request">Decline Request</string>
+    <string name="accept_request">Accept</string>
+    <string name="decline_request">Decline</string>
     <string name="ask_for_help">Ask For Help</string>
     <string name="enter_password_hint">Enter Password</string>
     <string name="wrong_password_error">Wrong Password</string>
@@ -273,6 +273,7 @@
     <string name="bloodandplasma">Blood and Plasma</string>
     <string name="mark_as_donated">Mark As Donated</string>
     <string name="mark_as_not_donated">Mark As Not Donated</string>
+    <string name="login_failed">Failed to log in</string>
 
 
     <string-array name="division">

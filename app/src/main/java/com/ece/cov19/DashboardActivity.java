@@ -37,6 +37,7 @@ import com.ece.cov19.DataModels.DashBoardNumberModel;
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.LoginUser;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -58,6 +59,9 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserEligibility;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
+import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
+import static com.ece.cov19.LoginActivity.LOGIN_USER_PASS;
+import static com.ece.cov19.LoginActivity.LOGIN_USER_PHONE;
 import static com.ece.cov19.SplashActivity.Language_pref;
 import static com.ece.cov19.SplashActivity.Selected_language;
 
@@ -95,14 +99,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
-        Intent intent=getIntent();
-        if(intent.hasExtra("from")){
-            if(intent.getStringExtra("from").equals("LoginActivity")){
-                intent.putExtra("from","none");
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                startActivity(intent);
-            }
-        }
+
 
         drawerLayout =findViewById(R.id.drawer_layout);
         navigationView =findViewById(R.id.nav_view);
@@ -296,6 +293,23 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onResume() {
         super.onResume();
+if(LoginUser.checkLoginStat().equals("failed")){
+    SharedPreferences sharedPreferences = getSharedPreferences(LOGIN_SHARED_PREFS, MODE_PRIVATE);
+    String phone,password;
+
+    if (sharedPreferences.contains(LOGIN_USER_PHONE) && sharedPreferences.contains(LOGIN_USER_PASS)) {
+        phone = sharedPreferences.getString(LOGIN_USER_PHONE, "");
+        password= sharedPreferences.getString(LOGIN_USER_PASS, "");
+
+        LoginUser.loginUser(this,phone,password,DashboardActivity.class);
+    }
+    else {
+        ToastCreator.toastCreatorRed(this,getString(R.string.login_failed));
+        Intent intent=new Intent(this,LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+}
 
 
         nameSplit = loggedInUserName.split("");
@@ -484,7 +498,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.press_one_more_time));
             }
             if (backCounter == 2) {
-                finish();
+                finishAffinity();
+
             }
         }
     }
