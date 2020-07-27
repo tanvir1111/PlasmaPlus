@@ -116,7 +116,7 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
         else if(userDataModel.getServerMsg().toLowerCase().equals("not_donated")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.not_donated));
-            holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_yellow);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }

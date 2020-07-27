@@ -102,7 +102,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         requestedBy="donor";
         if(intent.hasExtra("activity")){
-            if(intent.getStringExtra("activity").equals("DonorRequestsActivity") || intent.getStringExtra("activity").equals("ExplorePatientsActivity")){
+            if(intent.getStringExtra("activity").equals("DonorRequestsActivity")){
                 requestedBy="patient";
             }
             else{
@@ -167,7 +167,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     updateAlertDialog(intent);
                 }
                 else if(updateButton.getText().toString().equals(getResources().getString(R.string.accept_request))){
-                    requestOperationAlertDialog("accept",phone,getResources().getString(R.string.patient_profile_activity_notification_accepted_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_accepted_2),"DonorResponseActivity");
+                    requestOperationAlertDialog("accept",phone,getResources().getString(R.string.patient_profile_activity_notification_accepted_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_accepted_2),"DonorResponseActivity","");
 
                 }
                 else if(updateButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.patient_profile_activity_Call_Patient).toLowerCase())){
@@ -185,7 +185,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     deleteAlertDialog();
                 }
                 else if(deleteButton.getText().toString().equals(getResources().getString(R.string.decline_request))){
-                    requestOperationAlertDialog("decline",phone,getResources().getString(R.string.patient_profile_activity_notification_declined_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_declined_2),"DonorResponseActivity");
+                    requestOperationAlertDialog("decline",phone,getResources().getString(R.string.patient_profile_activity_notification_declined_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_declined_2),"DonorResponseActivity","");
 
                 }
                 else if(deleteButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.send_sms).toLowerCase())){
@@ -203,16 +203,31 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         donatedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(donatedButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.mark_as_donated).toLowerCase())){
-                    requestOperationAlertDialog("donate",phone,getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2)+ " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_3), "DonorResponseActivity");
+                if(donatedButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.mark_as_donated).toLowerCase())) {
+                    if (requestedBy.equals("donor")) {
+                        requestOperationAlertDialog("donate", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_3), "PatientRequestsActivity","donor");
+                    }
+                    else if(requestedBy.equals("patient")){
+                        requestOperationAlertDialog("donate", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_3), "DonorResponseActivity","patient");
+
+                    }
                 }
+
             }
         });
 
         notDonatedButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requestOperationAlertDialog("not_donate",phone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_3), "DonorResponseActivity");
+                if(notDonatedButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.mark_as_not_donated).toLowerCase())) {
+                    if (requestedBy.equals("donor")) {
+                        requestOperationAlertDialog("not_donate",phone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_3), "PatientRequestsActivity","donor");
+                    }
+                    else if(requestedBy.equals("patient")){
+                        requestOperationAlertDialog("not_donate",phone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_3), "DonorResponseActivity","patient");
+
+                    }
+                }
 
             }
         });
@@ -386,7 +401,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
     }
 
-    private void requestOperationAlertDialog(String getstatus, String phonenumber, String title, String body, String activity) {
+    private void requestOperationAlertDialog(String getstatus, String phonenumber, String title, String body, String activity, String hidden) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
@@ -398,7 +413,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 requestsOperation(getstatus);
 
                 RetroInterface retroInterface = RetroInstance.getRetro();
-                Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phonenumber,title,body,activity);
+                Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phonenumber,title,body,activity,hidden);
                 incomingResponse.enqueue(new Callback<UserDataModel>() {
                     @Override
                     public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -439,7 +454,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,getResources().getString(R.string.patient_profile_activity_notification_incoming_1),loggedInUserName+" "+getResources().getString(R.string.patient_profile_activity_notification_incoming_2),"PatientRequestsActivity");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone,getResources().getString(R.string.patient_profile_activity_notification_incoming_1),loggedInUserName+" "+getResources().getString(R.string.patient_profile_activity_notification_incoming_2),"PatientRequestsActivity","");
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
@@ -452,14 +467,23 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         }
                     });
 
-                } else {
+                }
+                else if(response.body().getServerMsg().equals("This Request Already exists! Wait for Response")){
+                    ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.already_exists));
+                    progressBar.setVisibility(View.GONE);
+
+                }
+                else{
                     ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.connection_failed_try_again));
+                    progressBar.setVisibility(View.GONE);
+
                 }
             }
 
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
                 ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.connection_error));
+                progressBar.setVisibility(View.GONE);
 
             }
         });
@@ -470,7 +494,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     private void requestsOperation(String operation) {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup, date, phone,requestedBy, operation);
+        Call<RequestDataModel> lookforRequestFromDonor = retroInterface.requestsOperation(loggedInUserPhone, name, age, bloodGroup, date, phone, need, requestedBy, operation);
         lookforRequestFromDonor.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
@@ -486,7 +510,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             donatedButton.setVisibility(View.GONE);
                             notDonatedButton.setVisibility(View.GONE);
                         }
-                        else if(loggedInUserEligibility.toLowerCase().equals("not_eligible")){
+                        else if(loggedInUserEligibility.toLowerCase().equals("not_eligible") || loggedInUserEligibility.toLowerCase().equals("not_available")){
                             donateToHelpButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
@@ -663,6 +687,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
                 ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.connection_error));
+                progressBar.setVisibility(View.GONE);
 
             }
         });

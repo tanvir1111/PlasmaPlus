@@ -75,6 +75,7 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
             FindPatientData.findPatientBloodGroup = patientDataModels.get(pos).getBloodGroup();
             FindPatientData.findPatientName=patientDataModels.get(pos).getName();
             FindPatientData.findPatientAge=patientDataModels.get(pos).getAge();
+            FindPatientData.findPatientDate=patientDataModels.get(pos).getDate();
             FindPatientData.findPatientPhone=patientDataModels.get(pos).getPhone();
             FindPatientData.findPatientNeed=patientDataModels.get(pos).getNeed();
 

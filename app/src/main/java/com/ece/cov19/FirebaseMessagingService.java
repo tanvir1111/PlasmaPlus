@@ -29,7 +29,7 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class FirebaseMessagingService extends com.google.firebase.messaging.FirebaseMessagingService {
 
-
+    private String requestedBy;
     private PendingIntent resultPendingIntent;
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -42,6 +42,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         String CHANNEL_ID = "Medicare Notification";
         CharSequence name = "Medicare";
         String Description = "Medicare Notification channel";
+        requestedBy = remoteMessage.getData().get("hidden");
 
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         int importance = NotificationManager.IMPORTANCE_HIGH;
@@ -94,10 +95,20 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
             resultIntent = new Intent(this, DonorResponseActivity.class);
         }
         else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_donated_1))){
-            resultIntent = new Intent(this, DonorResponseActivity.class);
+            if(requestedBy.equals("donor")){
+                resultIntent = new Intent(this, PatientRequestsActivity.class);
+            }
+            else if(requestedBy.equals("patient")){
+                resultIntent = new Intent(this, DonorResponseActivity.class);
+            }
         }
         else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_not_donated_1))){
-            resultIntent = new Intent(this, DonorResponseActivity.class);
+            if(requestedBy.equals("donor")){
+                resultIntent = new Intent(this, PatientRequestsActivity.class);
+            }
+            else if(requestedBy.equals("patient")){
+                resultIntent = new Intent(this, DonorResponseActivity.class);
+            }
         }
 
         resultIntent.putExtra("notification","yes");

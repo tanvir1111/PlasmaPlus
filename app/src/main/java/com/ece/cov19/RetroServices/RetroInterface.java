@@ -143,8 +143,9 @@ public interface RetroInterface {
     @POST("lookForRequests.php")
     Call<RequestDataModel> requestsOperation(@Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
                                              @Field("patientAge") String patientAge, @Field("patientBloodGroup") String patientBloodGroup,
-                                             @Field("patientDate") String patientDate, @Field("patientPhone") String phone,
-                                             @Field("requestedBy") String requestedBy, @Field("operation") String operation);
+                                             @Field("patientDate") String patientDate, @Field("patientPhone") String patientPhone,
+                                             @Field("patientNeed") String patientNeed, @Field("requestedBy") String requestedBy,
+                                             @Field("operation") String operation);
     @FormUrlEncoded
     @POST("tokenRegister.php")
     Call <UserDataModel> sendToken(@Field("phone") String phone, @Field("token") String token);
@@ -156,7 +157,7 @@ public interface RetroInterface {
     @FormUrlEncoded
     @POST("pushNotification.php")
     Call <UserDataModel> sendNotification(@Field("phone") String phone, @Field("title") String title, @Field("body") String body,
-                                          @Field("activity") String activity);
+                                          @Field("activity") String activity, @Field("hidden") String hidden);
 
     @FormUrlEncoded
     @POST("checkNotification.php")

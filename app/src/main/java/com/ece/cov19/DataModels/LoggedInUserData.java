@@ -12,5 +12,4 @@ public class LoggedInUserData {
     public static String loggedInUserDonorInfo="Didn't Load";
     public static String loggedInUserPass="Didn't Load";
     public static String loggedInUserEligibility="Didn't Load";
-
 }
