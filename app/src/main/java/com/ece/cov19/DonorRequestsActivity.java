@@ -40,7 +40,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private DonorRequestsAdapter donorRequestsAdapter;
     private RecyclerView recyclerView;
     private ImageView backbtn;
-    private Button pendingbtn,acceptedBtn;
+    private Button pendingbtn,acceptedBtn,declinedBtn;
     private String status="Pending",requestTypeText;
     private TextView requestTypeTextView, noRequestTextView;
     private ProgressBar progressBar;
@@ -55,6 +55,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         backbtn=findViewById(R.id.donor_requests_back_button);
         acceptedBtn=findViewById(R.id.donor_requests_show_accepted_requests);
         pendingbtn=findViewById(R.id.donor_requests_show_pending_requests);
+        declinedBtn=findViewById(R.id.donor_requests_show_declined_requests);
         requestTypeTextView=findViewById(R.id.donor_requests_type_textView);
         progressBar = findViewById(R.id.donor_requests_progressBar);
         noRequestTextView = findViewById(R.id.donor_requests_norecordtextview);
@@ -89,12 +90,15 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 status="Pending";
                 requestTypeText=getResources().getString(R.string.donor_requests_pending_requests);
                 requestTypeTextView.setText(requestTypeText);
-                pendingbtn.setBackgroundResource(R.drawable.button_style_white);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                pendingbtn.setBackgroundResource(R.drawable.tabstyleselected);
+                pendingbtn.setTextColor(getColor(R.color.textColorDark));
                 pendingbtn.setEnabled(false);
-                acceptedBtn.setBackgroundResource(R.drawable.button_style_colored);
-                acceptedBtn.setTextColor(getColor(R.color.textColorWhite));
+                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
                 acceptedBtn.setEnabled(true);
+                declinedBtn.setEnabled(true);
                 getRequests(status);
 
             }
@@ -106,12 +110,35 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 requestTypeText=getResources().getString(R.string.accepted_requests);
                 status="Accepted";
                 requestTypeTextView.setText(requestTypeText);
-                pendingbtn.setBackgroundResource(R.drawable.button_style_colored);
-                pendingbtn.setTextColor(getColor(R.color.textColorWhite));
-                pendingbtn.setEnabled(true);
-                acceptedBtn.setBackgroundResource(R.drawable.button_style_white);
-                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                acceptedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                acceptedBtn.setTextColor(getColor(R.color.textColorDark));
                 acceptedBtn.setEnabled(false);
+                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
+                pendingbtn.setEnabled(true);
+                declinedBtn.setEnabled(true);
+                getRequests(status);
+
+
+            }
+        });
+        declinedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requestTypeText=getResources().getString(R.string.accepted_requests);
+                status="Declined";
+                requestTypeTextView.setText(requestTypeText);
+                declinedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                declinedBtn.setTextColor(getColor(R.color.textColorDark));
+                declinedBtn.setEnabled(false);
+                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                pendingbtn.setEnabled(true);
+                acceptedBtn.setEnabled(true);
                 getRequests(status);
 
 
@@ -129,6 +156,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         backbtn=findViewById(R.id.donor_requests_back_button);
         acceptedBtn=findViewById(R.id.donor_requests_show_accepted_requests);
         pendingbtn=findViewById(R.id.donor_requests_show_pending_requests);
+        declinedBtn=findViewById(R.id.donor_requests_show_declined_requests);
         requestTypeTextView=findViewById(R.id.donor_requests_type_textView);
         progressBar = findViewById(R.id.donor_requests_progressBar);
         noRequestTextView = findViewById(R.id.donor_requests_norecordtextview);
@@ -177,6 +205,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         pendingbtn.setEnabled(false);
 
 
+
         pendingbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -184,12 +213,15 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 status="Pending";
                 requestTypeText=getResources().getString(R.string.donor_requests_pending_requests);
                 requestTypeTextView.setText(requestTypeText);
-                pendingbtn.setBackgroundResource(R.drawable.button_style_white);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                pendingbtn.setBackgroundResource(R.drawable.tabstyleselected);
+                pendingbtn.setTextColor(getColor(R.color.textColorDark));
                 pendingbtn.setEnabled(false);
-                acceptedBtn.setBackgroundResource(R.drawable.button_style_colored);
-                acceptedBtn.setTextColor(getColor(R.color.textColorWhite));
+                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
                 acceptedBtn.setEnabled(true);
+                declinedBtn.setEnabled(true);
                 getRequests(status);
 
             }
@@ -198,17 +230,40 @@ public class DonorRequestsActivity extends AppCompatActivity {
         acceptedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 requestTypeText=getResources().getString(R.string.accepted_requests);
                 status="Accepted";
                 requestTypeTextView.setText(requestTypeText);
-                pendingbtn.setBackgroundResource(R.drawable.button_style_colored);
-                pendingbtn.setTextColor(getColor(R.color.textColorWhite));
-                pendingbtn.setEnabled(true);
-                acceptedBtn.setBackgroundResource(R.drawable.button_style_white);
-                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                acceptedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                acceptedBtn.setTextColor(getColor(R.color.textColorDark));
                 acceptedBtn.setEnabled(false);
+                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
+                pendingbtn.setEnabled(true);
+                declinedBtn.setEnabled(true);
                 getRequests(status);
+
+
+            }
+        });
+        declinedBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                requestTypeText=getResources().getString(R.string.declined);
+                status="Declined";
+                requestTypeTextView.setText(requestTypeText);
+                declinedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                declinedBtn.setTextColor(getColor(R.color.textColorDark));
+                declinedBtn.setEnabled(false);
+                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                pendingbtn.setEnabled(true);
+                acceptedBtn.setEnabled(true);
+                getRequests(status);
+
 
             }
         });
@@ -254,6 +309,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
                             break;
                         }
                         else if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
+                            noRequestTextView.setVisibility(View.GONE);
                             patientDataModels.add(initialDataModel);
                         }
                     }
