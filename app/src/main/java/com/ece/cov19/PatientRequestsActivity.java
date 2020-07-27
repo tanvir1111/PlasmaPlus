@@ -182,7 +182,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
 
                 else{
 
-
+                    myPatientRequestProgressBar.setVisibility(View.GONE);
                     ToastCreator.toastCreatorRed(PatientRequestsActivity.this,getResources().getString(R.string.connection_failed_try_again));
 
                 }
@@ -190,6 +190,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
+                myPatientRequestProgressBar.setVisibility(View.GONE);
                 ToastCreator.toastCreatorRed(PatientRequestsActivity.this,getResources().getString(R.string.connection_error));
             }
         });

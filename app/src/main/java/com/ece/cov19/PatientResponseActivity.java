@@ -187,14 +187,14 @@ public class PatientResponseActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(linearLayoutManager);
                 }
                 else {
-
+                    progressBar.setVisibility(View.GONE);
                     ToastCreator.toastCreatorRed(PatientResponseActivity.this,getResources().getString(R.string.connection_failed_try_again));
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-
+                progressBar.setVisibility(View.GONE);
                 ToastCreator.toastCreatorRed(PatientResponseActivity.this,getResources().getString(R.string.connection_error));
             }
         });

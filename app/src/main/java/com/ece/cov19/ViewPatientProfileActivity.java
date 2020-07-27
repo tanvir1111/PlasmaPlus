@@ -37,6 +37,8 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -63,6 +65,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     String name, age, gender, bloodGroup, hospital, division, district, date, need, phone,requestedBy;
     Bitmap insertBitmap;
     Uri imageUri;
+    String formattedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +132,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
 
         requestsOperation("getStatus");
+
+        Calendar c = Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
+        formattedDate = df.format(c.getTime());
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -320,6 +327,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                                                 finish();
                                             }
                                             else{
+                                                progressBar.setVisibility(View.GONE);
                                                 ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.delete_failed));
 
                                             }
@@ -327,6 +335,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                                         @Override
                                         public void onFailure(Call<PatientDataModel> call, Throwable t) {
+                                            progressBar.setVisibility(View.GONE);
                                             ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.connection_error));
                                         }
                                     });
@@ -577,8 +586,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);
                             deleteButton.setText(getResources().getString(R.string.send_sms));
-                            donatedButton.setVisibility(View.VISIBLE);
-                            notDonatedButton.setVisibility(View.VISIBLE);
+                            if(formattedDate.equals(date)) {
+                                donatedButton.setVisibility(View.VISIBLE);
+                                notDonatedButton.setVisibility(View.VISIBLE);
+                            }
                             phoneTextView.setText(phone);
                         }
 
@@ -590,8 +601,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);
                             deleteButton.setText(getResources().getString(R.string.send_sms));
-                            donatedButton.setVisibility(View.VISIBLE);
-                            notDonatedButton.setVisibility(View.VISIBLE);
+                            if(formattedDate.equals(date)) {
+                                donatedButton.setVisibility(View.VISIBLE);
+                                notDonatedButton.setVisibility(View.VISIBLE);
+                            }
                             phoneTextView.setText(phone);
                         }
 

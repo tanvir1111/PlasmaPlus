@@ -596,7 +596,7 @@
     <string name="mark_as_not_donated">দান সম্পন্ন হয়নি</string>
     <string name="login_failed">লগিন ব্যর্থ হয়েছে</string>
     <string name="already_exists">ইতিমধ্যে একটি অনুরোধ এসেছে!</string>
-
+    <string name="splash_retry">আবার চেষ্টা করুন</string>
 
 
 </resources>

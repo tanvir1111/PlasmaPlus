@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ProgressBar;
 
 import androidx.core.app.ActivityCompat;
 
@@ -54,7 +56,6 @@ public class LoginUser {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 if (response.body().getServerMsg().toLowerCase().equals("success")) {
-
                     ToastCreator.toastCreatorGreen(ctx, ctx.getResources().getString(R.string.welcome)+" " + response.body().getName());
 
 //                  Storing phone and password to shared preferences
@@ -89,12 +90,10 @@ public class LoginUser {
 
                 }
                 else if(response.body().getServerMsg().toLowerCase().equals("wrong phone or password")){
-
                     ToastCreator.toastCreatorRed(ctx,ctx.getResources().getString(R.string.login_activity_wrong));
                 }
 
                 else {
-
 
                     ToastCreator.toastCreatorRed(ctx,ctx.getResources().getString(R.string.connection_error));
                 }
@@ -103,8 +102,6 @@ public class LoginUser {
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-
-
 
                 ToastCreator.toastCreatorRed(ctx,ctx.getResources().getString(R.string.connection_error));
             }

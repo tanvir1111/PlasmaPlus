@@ -240,7 +240,7 @@ public class SearchDonorActivity extends AppCompatActivity {
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
                 } else {
-
+                    progressBar.setVisibility(View.GONE);
                     ToastCreator.toastCreatorRed(SearchDonorActivity.this,getResources().getString(R.string.connection_failed_try_again));
 
                 }
@@ -248,6 +248,7 @@ public class SearchDonorActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
                 ToastCreator.toastCreatorRed(SearchDonorActivity.this,getResources().getString(R.string.connection_error));
             }
         });

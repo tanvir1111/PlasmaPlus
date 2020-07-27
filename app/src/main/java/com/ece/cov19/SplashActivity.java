@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -44,6 +45,7 @@ import static com.ece.cov19.LoginActivity.LOGIN_USER_PHONE;
 
 public class SplashActivity extends AppCompatActivity {
 
+    Button tryAgain;
     ProgressBar progressBar;
     SharedPreferences langPrefs;
     String lang="not set";
@@ -56,6 +58,8 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         progressBar = findViewById(R.id.splash_progress_bar);
+        tryAgain = findViewById(R.id.splash_retry);
+
         final Handler handler = new Handler();
 
         handler.postDelayed(new Runnable() {

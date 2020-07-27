@@ -14,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.ScrollView;
@@ -40,6 +41,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private Button singUp;
     private Spinner divisionSpinner, districtSpinner;
     private RadioGroup donorRoleRadioGrp;
+    private ProgressBar progressBar;
     FormFieldsFeatures formFieldsFeatures = new FormFieldsFeatures();
     public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
 
@@ -60,6 +62,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         thanaEditText = findViewById(R.id.reg_thana_edittext);
         passwordEditText = findViewById(R.id.reg_password_edittext);
         confPasswordEditText = findViewById(R.id.reg_confirm_password_edittext);
+        progressBar = findViewById(R.id.reg_progress_bar);
 
 
 //      buttons
@@ -381,13 +384,14 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 //    database operations
 
     private void registerUser(String name, String phone, String division, String district, String bloodGroup, String thana, String age, String password) {
-
+        progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<UserDataModel> sendingData = retroInterface.registerRetroMethod(name, phone, gender, bloodGroup, division, district, thana, age, donorInfo, password);
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                 if (response.body().getServerMsg().toLowerCase().equals("success")) {
+                    progressBar.setVisibility(View.GONE);
                     ToastCreator.toastCreatorGreen(RegistrationActivity.this, getResources().getString(R.string.reg_activity_registration_success));
 
 //              going to login activity
@@ -395,6 +399,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                     startActivity(intent);
                     finish();
                 } else {
+                    progressBar.setVisibility(View.GONE);
                     ToastCreator.toastCreatorRed(RegistrationActivity.this, getResources().getString(R.string.connection_failed_try_again));
                 }
 
@@ -402,6 +407,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
                 ToastCreator.toastCreatorRed(RegistrationActivity.this, getResources().getString(R.string.reg_activity_registration_failed));
             }
         });

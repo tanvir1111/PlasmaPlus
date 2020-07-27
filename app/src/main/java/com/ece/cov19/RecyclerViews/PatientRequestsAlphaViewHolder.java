@@ -108,7 +108,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
                         requestDonorRecyclerView.setLayoutManager(linearLayoutManager);
                     } else {
 
-
+                        progressBar.setVisibility(View.GONE);
                         donateTextView.setText(R.string.no_requests_found);
                     }
 
@@ -125,6 +125,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
 
         }
         else{
+            progressBar.setVisibility(View.GONE);
             //ToastCreator.toastCreator(view.getContext(),"Pressed again",Toast.LENGTH_SHORT).show();
             visibility = true;
             donateTextView.setText(R.string.view_requests);

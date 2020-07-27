@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -53,6 +54,7 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
     private Button button;
     private EditText editText;
     private ImageView backButton;
+    private ProgressBar progressBar;
     String verification, phonenumber;
 
 
@@ -65,6 +67,7 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
         editText = findViewById(R.id.phn_ver2_otp);
         button = findViewById(R.id.phn_ver2_otp_button);
         backButton = findViewById(R.id.phn_ver2_back_button);
+        progressBar = findViewById(R.id.phn_ver2_progress_bar);
         mAuth = FirebaseAuth.getInstance();
 
         Intent intent = getIntent();
@@ -85,6 +88,7 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
                     return;
                 }
                 verifyCode(code);
+                progressBar.setVisibility(View.VISIBLE);
             }
         });
 
@@ -128,6 +132,7 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
                             }
 
                         } else {
+                            progressBar.setVisibility(View.GONE);
                             ToastCreator.toastCreatorRed(PhoneVerificationActivity2.this, getResources().getString(R.string.phn_ver_activity_verification_failed));
                         }
                     }
@@ -155,6 +160,7 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
         public void onCodeSent(String s, PhoneAuthProvider.ForceResendingToken forceResendingToken) {
             super.onCodeSent(s, forceResendingToken);
             verificationId = s;
+            progressBar.setVisibility(View.VISIBLE);
         }
 
         @Override
@@ -163,12 +169,14 @@ public class PhoneVerificationActivity2 extends AppCompatActivity {
             if (code != null) {
                 editText.setText(code);
                 verifyCode(code);
+                progressBar.setVisibility(View.GONE);
                 ToastCreator.toastCreatorGreen(PhoneVerificationActivity2.this, getResources().getString(R.string.phn_ver_activity_verification_success));
             }
         }
 
         @Override
         public void onVerificationFailed(FirebaseException e) {
+            progressBar.setVisibility(View.GONE);
             ToastCreator.toastCreatorRed(PhoneVerificationActivity2.this, getResources().getString(R.string.phn_ver_activity_verification_failed));
         }
     };

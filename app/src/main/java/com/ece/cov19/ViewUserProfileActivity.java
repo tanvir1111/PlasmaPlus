@@ -28,6 +28,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.ece.cov19.DataModels.ImageDataModel;
@@ -70,6 +71,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
     private TextView nameTextView, phoneTextView, bloodGroupTextView, addressTextView, ageTextView, donorInfoTextView;
     private ImageView genderImageView,backbtn,profileImageView;
     private Button logoutBtn,updateInfoBtn,updatePasswordBtn, deleteBtn;
+    private ProgressBar progressBar;
     Bitmap insertBitmap;
     Uri imageUri;
 
@@ -91,6 +93,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         updateInfoBtn=findViewById(R.id.profile_update_button);
         updatePasswordBtn=findViewById(R.id.profile_change_password_btn);
         deleteBtn = findViewById(R.id.profile_delete_button);
+        progressBar = findViewById(R.id.profile_progressBar);
 
 //      setting logged in user info
         nameTextView.setText(loggedInUserName);
@@ -225,6 +228,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         updateInfoBtn=findViewById(R.id.profile_update_button);
         updatePasswordBtn=findViewById(R.id.profile_change_password_btn);
         deleteBtn = findViewById(R.id.profile_delete_button);
+        progressBar = findViewById(R.id.profile_progressBar);
 
 //      setting logged in user info
         nameTextView.setText(loggedInUserName);

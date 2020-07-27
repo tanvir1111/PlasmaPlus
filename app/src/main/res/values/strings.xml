@@ -274,7 +274,8 @@
     <string name="mark_as_donated">Mark As Donated</string>
     <string name="mark_as_not_donated">Mark As Not Donated</string>
     <string name="login_failed">Failed to log in</string>
-    <string name="already_exists">You already have a Request!</string>
+    <string name="already_exists">Already have a Request!</string>
+    <string name="splash_retry">Try Again</string>
 
 
     <string-array name="division">
