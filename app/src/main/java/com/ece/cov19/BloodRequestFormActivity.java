@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.ece.cov19.DataModels.FindPatientData;
+import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.Functions.FormFieldsFeatures;
 import com.ece.cov19.Functions.ToastCreator;
@@ -27,6 +29,7 @@ import com.ece.cov19.RetroServices.RetroInterface;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -158,6 +161,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         final int year = calendar.get(Calendar.YEAR);
         final int month = calendar.get(Calendar.MONTH);
         final int day = calendar.get(Calendar.DAY_OF_MONTH);
+
         DatePickerDialog datePicker =
                 new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
                     @Override
@@ -168,11 +172,12 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                         calendar.set(year, month, dayOfMonth);
                         date = sdf.format(calendar.getTime());
-
                         selectDate.setText(date); // set the date
                     }
                 }, year, month, day); // set date picker to current date
-
+        datePicker.getDatePicker().setMinDate(calendar.getTime().getTime());
+        calendar.add(Calendar.DATE, 30);
+        datePicker.getDatePicker().setMaxDate(calendar.getTime().getTime());
         datePicker.show();
 
         datePicker.setOnCancelListener(new DialogInterface.OnCancelListener() {

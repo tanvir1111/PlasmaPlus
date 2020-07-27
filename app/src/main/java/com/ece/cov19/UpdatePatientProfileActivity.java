@@ -273,6 +273,11 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
                 }, year, month, day); // set date picker to current date
 
         datePicker.show();
+        datePicker.getDatePicker().setMinDate(calendar.getTime().getTime());
+        calendar.add(Calendar.DATE, 30);
+        datePicker.getDatePicker().setMaxDate(calendar.getTime().getTime());
+        datePicker.show();
+
 
         datePicker.setOnCancelListener(new DialogInterface.OnCancelListener() {
             @Override
