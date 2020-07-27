@@ -44,7 +44,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private String status="Pending",requestTypeText;
     private TextView requestTypeTextView, noRequestTextView;
     private ProgressBar progressBar;
-    private int buttonSelector = 0;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,12 +85,16 @@ public class DonorRequestsActivity extends AppCompatActivity {
         pendingbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buttonSelector = 1;
+
                 status="Pending";
                 requestTypeText=getResources().getString(R.string.donor_requests_pending_requests);
                 requestTypeTextView.setText(requestTypeText);
-                pendingbtn.setVisibility(View.GONE);
-                acceptedBtn.setVisibility(View.VISIBLE);
+                pendingbtn.setBackgroundResource(R.drawable.button_style_white);
+                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                pendingbtn.setEnabled(false);
+                acceptedBtn.setBackgroundResource(R.drawable.button_style_colored);
+                acceptedBtn.setTextColor(getColor(R.color.textColorWhite));
+                acceptedBtn.setEnabled(true);
                 getRequests(status);
 
             }
@@ -99,13 +103,17 @@ public class DonorRequestsActivity extends AppCompatActivity {
         acceptedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buttonSelector = 2;
                 requestTypeText=getResources().getString(R.string.accepted_requests);
                 status="Accepted";
                 requestTypeTextView.setText(requestTypeText);
-                pendingbtn.setVisibility(View.VISIBLE);
-                acceptedBtn.setVisibility(View.GONE);
+                pendingbtn.setBackgroundResource(R.drawable.button_style_colored);
+                pendingbtn.setTextColor(getColor(R.color.textColorWhite));
+                pendingbtn.setEnabled(true);
+                acceptedBtn.setBackgroundResource(R.drawable.button_style_white);
+                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                acceptedBtn.setEnabled(false);
                 getRequests(status);
+
 
             }
         });
@@ -145,14 +153,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         }
 
 
-        if(buttonSelector == 1) {
-            pendingbtn.setVisibility(View.VISIBLE);
-            acceptedBtn.setVisibility(View.GONE);
-        }
-        else if(buttonSelector == 2){
-            pendingbtn.setVisibility(View.GONE);
-            acceptedBtn.setVisibility(View.VISIBLE);
-        }
+
 
         patientDataModels = new ArrayList<>();
 
@@ -179,7 +180,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         pendingbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buttonSelector = 1;
+
                 status="Pending";
                 requestTypeText=getResources().getString(R.string.donor_requests_pending_requests);
                 requestTypeTextView.setText(requestTypeText);
@@ -197,7 +198,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         acceptedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                buttonSelector = 2;
+
                 requestTypeText=getResources().getString(R.string.accepted_requests);
                 status="Accepted";
                 requestTypeTextView.setText(requestTypeText);
@@ -262,13 +263,13 @@ public class DonorRequestsActivity extends AppCompatActivity {
                     recyclerView.setLayoutManager(linearLayoutManager);
                 }
                 else {
-                    Toast.makeText(DonorRequestsActivity.this, getResources().getString(R.string.connection_failed_try_again), Toast.LENGTH_SHORT).show();
+                    ToastCreator.toastCreatorRed(DonorRequestsActivity.this,getResources().getString(R.string.connection_failed_try_again));
                 }
             }
 
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
-                Toast.makeText(DonorRequestsActivity.this, getResources().getString(R.string.connection_error), Toast.LENGTH_SHORT).show();
+                ToastCreator.toastCreatorRed(DonorRequestsActivity.this, getResources().getString(R.string.connection_error));
             }
         });
 
