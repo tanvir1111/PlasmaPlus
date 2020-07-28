@@ -225,10 +225,13 @@ public class ExplorePatientsActivity extends AppCompatActivity {
                     if(initialModels.size() == 0){
                         noRecordTextView.setVisibility(View.VISIBLE);
                     }
-                    for(PatientDataModel initialDataModel : initialModels){
+                    else {
+                        noRecordTextView.setVisibility(View.GONE);
+                        for (PatientDataModel initialDataModel : initialModels) {
 
-                        patientDataModels.add(initialDataModel);
+                            patientDataModels.add(initialDataModel);
 
+                        }
                     }
 
 

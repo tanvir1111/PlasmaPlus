@@ -174,6 +174,9 @@ public class DonorResponseActivity extends AppCompatActivity {
                     if(initialModels.size() == 0){
                         noResponseTextView.setVisibility(View.VISIBLE);
                     }
+                    else {
+                        noResponseTextView.setVisibility(View.GONE);
+                    }
 
                     for(PatientDataModel initialDataModel : initialModels) {
 

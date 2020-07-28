@@ -163,6 +163,9 @@ public class PatientRequestsActivity extends AppCompatActivity {
                     if(initialModels.size() == 0){
                         noRequestTextView.setVisibility(View.VISIBLE);
                     }
+                    else {
+                        noRequestTextView.setVisibility(View.GONE);
+                    }
                     for(PatientDataModel initialDataModel : initialModels){
 
                         patientDataModels.add(initialDataModel);

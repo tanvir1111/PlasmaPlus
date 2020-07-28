@@ -226,10 +226,11 @@ public class SearchDonorActivity extends AppCompatActivity {
                         noRecordTextView.setVisibility(View.VISIBLE);
                     } else {
                         filterResult.setText(filterResultText + " (" + initialModels.size() + ")");
+                        noRecordTextView.setVisibility(View.GONE);
                     }
 
                     for (UserDataModel initialDataModel : initialModels) {
-                        if (initialDataModel.getDonor().toLowerCase().equals("blood") || initialDataModel.getDonor().toLowerCase().equals("plasma")) {
+                        if (initialDataModel.getDonor().toLowerCase().equals("blood") || initialDataModel.getDonor().toLowerCase().equals("plasma")|| initialDataModel.getDonor().toLowerCase().equals("blood and plasma")) {
                             userDataModels.add(initialDataModel);
                         }
                     }

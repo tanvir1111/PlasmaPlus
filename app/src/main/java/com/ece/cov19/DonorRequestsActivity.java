@@ -127,7 +127,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
         declinedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requestTypeText=getResources().getString(R.string.accepted_requests);
+                requestTypeText=getResources().getString(R.string.declined_requests);
                 status="Declined";
                 requestTypeTextView.setText(requestTypeText);
                 declinedBtn.setBackgroundResource(R.drawable.tabstyleselected);

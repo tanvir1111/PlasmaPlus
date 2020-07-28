@@ -544,6 +544,7 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
+    <string name="declined_requests">Declined Requests</string>
 
 
 </resources>
