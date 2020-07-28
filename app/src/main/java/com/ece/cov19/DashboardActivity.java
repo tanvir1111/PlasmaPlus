@@ -69,13 +69,15 @@ import static com.ece.cov19.SplashActivity.Selected_language;
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
     private String[] nameSplit;
     private CardView findDonorCardView, addPatientCardView, requestsCardView, responsesCardView, fromDonorsCardView,
-            fromPatientsCardView, exploreCardView, myPatientsCardView, allDonorsCardView, allPatientsCardView;
+            fromPatientsCardView, exploreCardView, myPatientsCardView, allDonorsCardView, allPatientsCardView,
+            exploreCCardView, exploreDCardView, exploreECardView, exploreFCardView;
     private TextView findDonorText, addPatientText, requestsText, responsesText,fromDonorsText,fromPatientsText, exploreText,
             myPatientsText,allDonorsText,allPatientsText;
     private ImageView dashboardDrawerBtn, dashboardGenderIcon, findDonorImage, addPatientImage, requestsImage, responsesImage,fromDonorsImage,fromPatientsImage, exploreImage,
             myPatientsImage,allDonorsImage,allPatientsImage;
     private TextView dashboard, numberOfPatients,numberOfDonors,numberOfPatientsText,numberOfDonorsText,numberOfRequestsFromDonors,
-            numberOfRequestsFromPatients,numberOfRequestsFromDonorsText,numberOfRequestsFromPatientsText;
+            numberOfRequestsFromPatients,numberOfRequestsFromDonorsText,numberOfRequestsFromPatientsText, exploreCText, exploreDText,
+            exploreEText, exploreFText;
 
 
     private ProgressBar progressBar;
@@ -119,6 +121,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         myPatientsCardView=findViewById(R.id.cardView_myPatients);
         allDonorsCardView=findViewById(R.id.cardView_exploreA);
         allPatientsCardView=findViewById(R.id.cardView_exploreB);
+        exploreCCardView=findViewById(R.id.cardView_exploreC);
+        exploreDCardView=findViewById(R.id.cardView_exploreD);
+        exploreECardView=findViewById(R.id.cardView_exploreE);
+        exploreFCardView=findViewById(R.id.cardView_exploreF);
 
 
         numberOfDonors=findViewById(R.id.dashboard_no_of_donors);
@@ -129,6 +135,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         numberOfRequestsFromDonorsText=findViewById(R.id.dashboard_text_no_of_requests_from_donors);
         numberOfRequestsFromPatients=findViewById(R.id.dashboard_no_of_requests_from_patients);
         numberOfRequestsFromPatientsText=findViewById(R.id.dashboard_text_no_of_requests_from_patients);
+        exploreCText=findViewById(R.id.dashboard_text_exploreC);
+        exploreDText=findViewById(R.id.dashboard_text_exploreD);
+        exploreEText=findViewById(R.id.dashboard_text_exploreE);
+        exploreFText=findViewById(R.id.dashboard_text_exploreF);
 
 
         nameSplit = loggedInUserName.split("");
@@ -286,6 +296,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         myPatientsCardView.setOnClickListener(this);
         allDonorsCardView.setOnClickListener(this);
         allPatientsCardView.setOnClickListener(this);
+        exploreCCardView.setOnClickListener(this);
+        exploreDCardView.setOnClickListener(this);
+        exploreECardView.setOnClickListener(this);
+        exploreFCardView.setOnClickListener(this);
+        exploreCText.setOnClickListener(this);
+        exploreDText.setOnClickListener(this);
+        exploreEText.setOnClickListener(this);
+        exploreFText.setOnClickListener(this);
+
+
 
 
     }
@@ -435,6 +455,14 @@ if(LoginUser.checkLoginStat().equals("failed")){
         myPatientsCardView.setOnClickListener(this);
         allDonorsCardView.setOnClickListener(this);
         allPatientsCardView.setOnClickListener(this);
+        exploreCCardView.setOnClickListener(this);
+        exploreDCardView.setOnClickListener(this);
+        exploreECardView.setOnClickListener(this);
+        exploreFCardView.setOnClickListener(this);
+        exploreCText.setOnClickListener(this);
+        exploreDText.setOnClickListener(this);
+        exploreEText.setOnClickListener(this);
+        exploreFText.setOnClickListener(this);
 
     }
 
@@ -626,8 +654,16 @@ if(LoginUser.checkLoginStat().equals("failed")){
                     slideDown(fromDonorsCardView);
                     if(!loggedInUserDonorInfo.toLowerCase().equals("none")) {
                         slideDown(fromPatientsCardView);
+                        slideDown(exploreCCardView);
+                        slideDown(exploreDCardView);
+                        slideDown(exploreECardView);
+                        slideDown(exploreFCardView);
                     } else {
                         slideDownInactive(fromPatientsCardView);
+                        slideDown(exploreCCardView);
+                        slideDown(exploreDCardView);
+                        slideDown(exploreECardView);
+                        slideDown(exploreFCardView);
                     }
                     numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.requests));
                     numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.requests));
@@ -641,6 +677,10 @@ if(LoginUser.checkLoginStat().equals("failed")){
                     requestResponseSwitcher = 0;
                     slideUp(fromDonorsCardView);
                     slideUp(fromPatientsCardView);
+                    slideUp(exploreCCardView);
+                    slideUp(exploreDCardView);
+                    slideUp(exploreECardView);
+                    slideUp(exploreFCardView);
                     break;
                 }
                 break;
@@ -653,8 +693,16 @@ if(LoginUser.checkLoginStat().equals("failed")){
                     slideDown(fromDonorsCardView);
                     if(!loggedInUserDonorInfo.toLowerCase().equals("none")) {
                         slideDown(fromPatientsCardView);
+                        slideDown(exploreCCardView);
+                        slideDown(exploreDCardView);
+                        slideDown(exploreECardView);
+                        slideDown(exploreFCardView);
                     } else {
                         slideDownInactive(fromPatientsCardView);
+                        slideDown(exploreCCardView);
+                        slideDown(exploreDCardView);
+                        slideDown(exploreECardView);
+                        slideDown(exploreFCardView);
                     }
                     numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.responses));
                     numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.responses));
@@ -667,6 +715,10 @@ if(LoginUser.checkLoginStat().equals("failed")){
                     requestResponseSwitcher = 0;
                     slideUp(fromDonorsCardView);
                     slideUp(fromPatientsCardView);
+                    slideUp(exploreCCardView);
+                    slideUp(exploreDCardView);
+                    slideUp(exploreECardView);
+                    slideUp(exploreFCardView);
                     break;
                 }
                 break;
@@ -710,6 +762,10 @@ if(LoginUser.checkLoginStat().equals("failed")){
                     exploreSwitcher=1;
                     slideDown(allDonorsCardView);
                     slideDown(allPatientsCardView);
+                    slideDown(exploreCCardView);
+                    slideDown(exploreDCardView);
+                    slideDown(exploreECardView);
+                    slideDown(exploreFCardView);
                     numberOfDonors.setText(noOfDonors);
                     numberOfPatients.setText(noOfPatients);
                     break;
@@ -718,6 +774,10 @@ if(LoginUser.checkLoginStat().equals("failed")){
                     exploreSwitcher=0;
                     slideUp(allDonorsCardView);
                     slideUp(allPatientsCardView);
+                    slideUp(exploreCCardView);
+                    slideUp(exploreDCardView);
+                    slideUp(exploreECardView);
+                    slideUp(exploreFCardView);
                     break;
                 }
                 break;
@@ -733,6 +793,26 @@ if(LoginUser.checkLoginStat().equals("failed")){
             case R.id.cardView_exploreB:
                 Intent allPatientsIntent=new Intent(DashboardActivity.this, ExplorePatientsActivity.class);
                 startActivity(allPatientsIntent);
+                break;
+            case R.id.cardView_exploreC:
+            case R.id.dashboard_text_exploreC:
+                Intent exploreCIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://corona.gov.bd"));
+                startActivity(exploreCIntent);
+                break;
+            case R.id.cardView_exploreD:
+            case R.id.dashboard_text_exploreD:
+                Intent exploreDIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.worldometers.info/coronavirus"));
+                startActivity(exploreDIntent);
+                break;
+            case R.id.cardView_exploreE:
+            case R.id.dashboard_text_exploreE:
+                Intent exploreEIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://covid19.who.int"));
+                startActivity(exploreEIntent);
+                break;
+            case R.id.cardView_exploreF:
+            case R.id.dashboard_text_exploreF:
+                Intent exploreFIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:10655"));
+                startActivity(exploreFIntent);
                 break;
 
             case R.id.dashboard_text_my_patients:

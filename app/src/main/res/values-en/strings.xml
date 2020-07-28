@@ -555,6 +555,13 @@
     <string name="declined_responses">Declined Responses</string>
     <string name="donated_responses">Donated Responses</string>
     <string name="not_donated_responses">Not Donated Responses</string>
+    <string name="dashboard_text_explore_website">Explore Website</string>
+    <string name="dashboard_text_exploreC">corona.gov.bd</string>
+    <string name="dashboard_text_exploreD">worldometers.info</string>
+    <string name="dashboard_text_exploreE">covid19.who.int</string>
+    <string name="dashboard_text_explore_call">Call IEDCR</string>
+    <string name="dashboard_text_exploreF">10655</string>
+
 
 
 </resources>
