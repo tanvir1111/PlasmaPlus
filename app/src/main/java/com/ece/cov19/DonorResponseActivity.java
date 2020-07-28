@@ -45,7 +45,7 @@ public class DonorResponseActivity extends AppCompatActivity {
     private TextView donorResponseTextView, noResponseTextView;
     private ImageView backbtn;
     private Button pendingbtn,acceptedBtn,declinedBtn,donatedBtn,notDonatedBtn,allBtn;
-    private String status="Pending",requestTypeText;
+    private String status,requestTypeText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

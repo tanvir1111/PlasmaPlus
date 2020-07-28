@@ -39,7 +39,7 @@ public class PatientResponseActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageView backbtn;
     private Button pendingbtn,acceptedBtn,declinedBtn,donatedBtn,notDonatedBtn,allBtn;
-    private String status="pending",responseTypeText;
+    private String status,responseTypeText;
     private TextView patientResponseTextView, noResponseTextView;
     private ProgressBar progressBar;
 

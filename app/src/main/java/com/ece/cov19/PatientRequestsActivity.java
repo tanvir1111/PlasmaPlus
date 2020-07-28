@@ -40,7 +40,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
     private Button pendingbtn,acceptedBtn,declinedBtn,donatedBtn,notDonatedBtn,allBtn;
     private ImageView backbtn;
     private TextView noRequestTextView, patientRequestsTextView;
-    private String status="Pending",requestTypeText;
+    private String status,requestTypeText;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {

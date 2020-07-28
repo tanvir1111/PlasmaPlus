@@ -41,7 +41,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ImageView backbtn;
     private Button pendingbtn,acceptedBtn,declinedBtn,donatedBtn,notDonatedBtn,allBtn;
-    private String status="Pending",requestTypeText;
+    private String status,requestTypeText;
     private TextView requestTypeTextView, noRequestTextView;
     private ProgressBar progressBar;
 
