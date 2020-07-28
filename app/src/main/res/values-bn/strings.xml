@@ -598,7 +598,16 @@
     <string name="already_exists">ইতিমধ্যে একটি অনুরোধ এসেছে!</string>
     <string name="splash_retry">আবার চেষ্টা করুন</string>
     <string name="declined_requests">নাকচকৃত অনুরোধ</string>
+    <string name="donated_requests">দানকৃত‍ অনুরোধ</string>
+    <string name="not_donated_requests">দানবিহীন অনুরোধ</string>
+    <string name="all_requests">সকল অনুরোধ</string>
     <string name="all">সকল</string>
+    <string name="all_responses">সকল প্রতিক্রিয়া</string>
+    <string name="pending_responses">অমীমাংসিত প্রতিক্রিয়া</string>
+    <string name="accepted_responses">সম্মত প্রতিক্রিয়া</string>
+    <string name="declined_responses">নাকচকৃত প্রতিক্রিয়া</string>
+    <string name="donated_responses">দানকৃত‍ প্রতিক্রিয়া</string>
+    <string name="not_donated_responses">দানবিহীন প্রতিক্রিয়া</string>
 
 
 </resources>

@@ -35,16 +35,127 @@
         app:layout_constraintTop_toTopOf="@+id/patients_response_back_button" />
 
 
+    <HorizontalScrollView
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+
+        android:scrollbars="none"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/patients_response_header">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/patients_response_show_All_requests"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+
+
+                android:background="@drawable/tabstyleselected"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_bold"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/all"
+                android:textColor="@color/textColorDark"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/patients_response_show_pending_requests"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+
+
+                android:background="@drawable/tabstyle_not_selected"
+                android:enabled="true"
+                android:fontFamily="@font/raleway_bold"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/pending"
+                android:textColor="@color/textColorGrey"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/patients_response_show_accepted_requests"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+
+
+                android:background="@drawable/tabstyle_not_selected"
+
+
+                android:enabled="true"
+                android:fontFamily="@font/raleway_bold"
+                android:paddingLeft="15dp"
+
+                android:paddingRight="15dp"
+                android:text="@string/accepted"
+                android:textColor="@color/textColorGrey"
+                android:textSize="12sp"
+
+                />
+
+            <Button
+                android:id="@+id/patients_response_show_donated_requests"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/tabstyle_not_selected"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_bold"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/donated"
+                android:textColor="@color/textColorGrey"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/patients_response_show_not_donated_requests"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/tabstyle_not_selected"
+                android:enabled="false"
+                android:fontFamily="@font/raleway_bold"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/not_donated"
+                android:textColor="@color/textColorGrey"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/patients_response_show_declined_requests"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+
+                android:background="@drawable/tabstyle_not_selected"
+                android:enabled="true"
+                android:fontFamily="@font/raleway_bold"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/declined"
+                android:textColor="@color/textColorGrey"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
     <TextView
         android:id="@+id/patients_response_type_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:fontFamily="@font/raleway_bold"
-        android:text="@string/patients_response_type_textView"
+        android:text="@string/all_requests"
         app:layout_constraintStart_toStartOf="@+id/patients_response_constraintLayout_recycler"
-        app:layout_constraintTop_toBottomOf="@+id/patients_response_header" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
     <ImageView
         android:id="@+id/patients_response_back_button"

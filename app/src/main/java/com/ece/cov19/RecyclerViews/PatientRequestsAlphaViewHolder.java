@@ -82,7 +82,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
 
             progressBar.setVisibility(View.VISIBLE);
             RetroInterface retroInterface = RetroInstance.getRetro();
-            Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.checkPatientRequest(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone());
+            Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.requestsFromDonorsBeta(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone());
             //ToastCreator.toastCreator(view.getContext(), patientDataModel.getName()+patientDataModel.getAge()+patientDataModel.getBloodGroup()+patientDataModel.getPhone(), Toast.LENGTH_SHORT).show();
             incomingResponse.enqueue(new Callback<ArrayList<UserDataModel>>() {
                 @Override
@@ -119,7 +119,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
                 public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
                     progressBar.setVisibility(View.GONE);
                     donateTextView.setText(R.string.no_requests_found);
-                    //ToastCreator.toastCreator(view.getContext(),"Error: "+t.getMessage(),Toast.LENGTH_LONG).show();
+                    //Toast.makeText(view.getContext(),"Error: "+t.getMessage(),Toast.LENGTH_LONG).show();
                 }
             });
 

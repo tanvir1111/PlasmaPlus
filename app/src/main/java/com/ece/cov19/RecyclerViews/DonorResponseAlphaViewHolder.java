@@ -86,7 +86,7 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
 
             progressBar.setVisibility(View.VISIBLE);
             RetroInterface retroInterface = RetroInstance.getRetro();
-            Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.checkDonorResponse(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone());
+            Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.responsesFromDonorsBeta(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone());
             incomingResponse.enqueue(new Callback<ArrayList<UserDataModel>>() {
                 @Override
                 public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {

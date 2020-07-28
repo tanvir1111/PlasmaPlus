@@ -545,7 +545,16 @@
         <item>O-</item>
     </string-array>
     <string name="declined_requests">Declined Requests</string>
+    <string name="donated_requests">Donated Requests</string>
+    <string name="not_donated_requests">Not Donated Requests</string>
+    <string name="all_requests">All Requests</string>
     <string name="all">All</string>
+    <string name="all_responses">All Responses</string>
+    <string name="pending_responses">Pending Responses</string>
+    <string name="accepted_responses">Accepted Responses</string>
+    <string name="declined_responses">Declined Responses</string>
+    <string name="donated_responses">Donated Responses</string>
+    <string name="not_donated_responses">Not Donated Responses</string>
 
 
 </resources>

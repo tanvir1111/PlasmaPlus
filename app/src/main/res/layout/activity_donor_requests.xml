@@ -42,7 +42,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/raleway_bold"
-        android:text="@string/donor_requests_pending_requests"
+        android:text="@string/all_requests"
         app:layout_constraintStart_toStartOf="@+id/constraintLayout4"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
 
