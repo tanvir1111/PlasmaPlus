@@ -48,7 +48,7 @@
 
     <HorizontalScrollView
         android:id="@+id/linearLayout"
-
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -90,7 +90,7 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:text="@string/pending"
-                android:textColor="@color/textColorDark"
+                android:textColor="@color/textColorGrey"
                 android:textSize="12sp" />
 
             <Button
@@ -124,7 +124,7 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:text="@string/donated"
-                android:textColor="@color/textColorDark"
+                android:textColor="@color/textColorGrey"
                 android:textSize="12sp" />
 
             <Button
@@ -138,7 +138,7 @@
                 android:paddingLeft="15dp"
                 android:paddingRight="15dp"
                 android:text="@string/not_donated"
-                android:textColor="@color/textColorDark"
+                android:textColor="@color/textColorGrey"
                 android:textSize="12sp" />
 
             <Button
