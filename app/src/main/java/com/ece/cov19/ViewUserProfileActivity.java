@@ -133,6 +133,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                logoutBtn.setEnabled(false);
 
                logoutAlertDialog();
             }
@@ -267,6 +268,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         logoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                logoutBtn.setEnabled(false);
               logoutAlertDialog();
             }
         });
@@ -299,6 +301,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         updateInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                updateInfoBtn.setEnabled(false);
                 Intent intent=new Intent(ViewUserProfileActivity.this, UpdateUserProfileActivity.class);
                 updateAlertDialog(intent);
 
@@ -309,6 +312,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent= new Intent(ViewUserProfileActivity.this, UpdatePasswordActivity.class);
+                updatePasswordBtn.setEnabled(false);
                 intent.putExtra("phone", loggedInUserPhone);
                 confirmAlertDialog(intent);
 
@@ -318,7 +322,9 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                deleteBtn.setEnabled(false);
                 deleteProfileAlertDialog();
+
             }
         });
     }
@@ -327,18 +333,22 @@ public class ViewUserProfileActivity extends AppCompatActivity {
     private void confirmAlertDialog(final Intent intent){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
+
         builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 showAlertDialog(intent);
+
             }
         })
                 .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
+                        updatePasswordBtn.setEnabled(true);
                     }
                 });
 
         AlertDialog alertDialog=builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
     }
 
@@ -368,9 +378,11 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                 if(pass.getText().toString().equals(loggedInUserPass)){
 
                     startActivity(intent);
+                    updatePasswordBtn.setEnabled(true);
                 }
                 else{
                     ToastCreator.toastCreatorRed(ViewUserProfileActivity.this, getResources().getString(R.string.wrong_password_error));
+                    updatePasswordBtn.setEnabled(true);
                 }
             }
         });
@@ -378,10 +390,13 @@ public class ViewUserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+                updatePasswordBtn.setEnabled(true);
             }
         });
+        AlertDialog alertDialog =builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
 
-        builder.show();
+        alertDialog.show();
 
     }
 
@@ -392,8 +407,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         builder.setMessage(getResources().getString(R.string.are_you_sure));
         builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
-                sharedPreferences.edit().clear().apply();
+
 
                 FirebaseInstanceId.getInstance().getInstanceId()
                         .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -414,6 +428,8 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                                     @Override
                                     public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
                                         if(response.body().getServerMsg().equals("Success")) {
+                                            SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
+                                            sharedPreferences.edit().clear().apply();
                                             loggedInUserPhone = "";
                                             Intent login = new Intent(ViewUserProfileActivity.this, LoginActivity.class);
                                             login.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -424,7 +440,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
                                     @Override
                                     public void onFailure(Call<UserDataModel> call, Throwable t) {
-
+                                    logoutBtn.setEnabled(true);
                                     }
                                 });
 
@@ -440,10 +456,13 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                 .setNegativeButton(getResources().getString(R.string.profile_activity_no), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
+                        logoutBtn.setEnabled(true);
+
                     }
                 });
 
         AlertDialog alertDialog=builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
 
     }
@@ -455,15 +474,19 @@ public class ViewUserProfileActivity extends AppCompatActivity {
         builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 startActivity(intent);
+                updateInfoBtn.setEnabled(true);
             }
         })
                 .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
+                        updateInfoBtn.setEnabled(true);
+
                     }
                 });
 
         AlertDialog alertDialog=builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
     }
 
@@ -505,6 +528,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                                         @Override
                                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+
                                             if(response.body().getServerMsg().toLowerCase().equals("success")){
                                                 SharedPreferences sharedPreferences=getSharedPreferences(LOGIN_SHARED_PREFS,MODE_PRIVATE);
                                                 sharedPreferences.edit().clear().apply();
@@ -513,17 +537,20 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                                                 startActivity(login);
                                                 finish();
                                                 ToastCreator.toastCreatorGreen(getApplicationContext(), getResources().getString(R.string.profile_activity_Delete_Successful));
+
                                             }
                                             else if(response.body().getServerMsg().toLowerCase().equals("failed")){
                                                 ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.delete_failed));
 
+
                                             }
+                                            deleteBtn.setEnabled(true);
                                         }
 
                                         @Override
                                         public void onFailure(Call<UserDataModel> call, Throwable t) {
                                             ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.connection_error));
-
+                                            deleteBtn.setEnabled(true);
                                         }
                                     });
                                 }
@@ -531,25 +558,30 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                                     .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             dialog.dismiss();
+                                            deleteBtn.setEnabled(true);
                                         }
                                     });
 
                             AlertDialog finalDialog=builder.create();
+                            finalDialog.setCanceledOnTouchOutside(false);
                             finalDialog.show();
 
                         }
                         else{
-                            ToastCreator.toastCreatorRed(ViewUserProfileActivity.this, getResources().getString(R.string.wrong_password_error));;
+                            ToastCreator.toastCreatorRed(ViewUserProfileActivity.this, getResources().getString(R.string.wrong_password_error));
+                            deleteBtn.setEnabled(true);
                         }
                     }
                 })
                         .setNegativeButton(getResources().getString(R.string.profile_activity_no), new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 dialog.dismiss();
+                                deleteBtn.setEnabled(true);
                             }
                         });
 
                 AlertDialog passDialog=builder.create();
+                passDialog.setCanceledOnTouchOutside(false);
                 passDialog.show();
 
             }
@@ -557,10 +589,12 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                 .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
+                        deleteBtn.setEnabled(true);
                     }
                 });
 
         AlertDialog firstDialog = builder.create();
+        firstDialog.setCanceledOnTouchOutside(false);
         firstDialog.show();
     }
 
@@ -581,6 +615,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
                 });
 
         AlertDialog alertDialog=builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
 
     }

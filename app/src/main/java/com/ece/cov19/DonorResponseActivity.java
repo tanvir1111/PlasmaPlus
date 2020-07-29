@@ -101,19 +101,19 @@ public class DonorResponseActivity extends AppCompatActivity {
                 allBtn.setEnabled(false);
                 acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(true);
+                acceptedBtn.setEnabled(false);
                 declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(true);
+                declinedBtn.setEnabled(false);
                 pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(true);
+                pendingbtn.setEnabled(false);
                 donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(true);
+                donatedBtn.setEnabled(false);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(false);
                 myPatientsSearch(status);
 
             }
@@ -131,19 +131,19 @@ public class DonorResponseActivity extends AppCompatActivity {
                 pendingbtn.setEnabled(false);
                 acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(true);
+                acceptedBtn.setEnabled(false);
                 declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(true);
+                declinedBtn.setEnabled(false);
                 allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(true);
+                allBtn.setEnabled(false);
                 donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(true);
+                donatedBtn.setEnabled(false);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(false);
                 myPatientsSearch(status);
 
             }
@@ -162,17 +162,17 @@ public class DonorResponseActivity extends AppCompatActivity {
                 pendingbtn.setTextColor(getColor(R.color.textColorGrey));
                 declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(true);
-                declinedBtn.setEnabled(true);
+                pendingbtn.setEnabled(false);
+                declinedBtn.setEnabled(false);
                 allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(true);
+                allBtn.setEnabled(false);
                 donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(true);
+                donatedBtn.setEnabled(false);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(false);
                 myPatientsSearch(status);
 
 
@@ -191,17 +191,17 @@ public class DonorResponseActivity extends AppCompatActivity {
                 pendingbtn.setTextColor(getColor(R.color.textColorGrey));
                 acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(true);
-                acceptedBtn.setEnabled(true);
+                pendingbtn.setEnabled(false);
+                acceptedBtn.setEnabled(false);
                 allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(true);
+                allBtn.setEnabled(false);
                 donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(true);
+                donatedBtn.setEnabled(false);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(false);
                 myPatientsSearch(status);
 
 
@@ -221,19 +221,19 @@ public class DonorResponseActivity extends AppCompatActivity {
                 donatedBtn.setEnabled(false);
                 acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(true);
+                acceptedBtn.setEnabled(false);
                 declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(true);
+                declinedBtn.setEnabled(false);
                 allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(true);
+                allBtn.setEnabled(false);
                 pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(true);
+                pendingbtn.setEnabled(false);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(false);
                 myPatientsSearch(status);
 
             }
@@ -250,19 +250,19 @@ public class DonorResponseActivity extends AppCompatActivity {
                 notDonatedBtn.setEnabled(false);
                 acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(true);
+                acceptedBtn.setEnabled(false);
                 declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(true);
+                declinedBtn.setEnabled(false);
                 allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(true);
+                allBtn.setEnabled(false);
                 donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(true);
+                donatedBtn.setEnabled(false);
                 pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(true);
+                pendingbtn.setEnabled(false);
                 myPatientsSearch(status);
 
             }
@@ -342,19 +342,19 @@ public class DonorResponseActivity extends AppCompatActivity {
                 allBtn.setEnabled(false);
                 acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(true);
+                acceptedBtn.setEnabled(false);
                 declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(true);
+                declinedBtn.setEnabled(false);
                 pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(true);
+                pendingbtn.setEnabled(false);
                 donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(true);
+                donatedBtn.setEnabled(false);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(false);
                 myPatientsSearch(status);
 
             }
@@ -372,19 +372,19 @@ public class DonorResponseActivity extends AppCompatActivity {
                 pendingbtn.setEnabled(false);
                 acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(true);
+                acceptedBtn.setEnabled(false);
                 declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(true);
+                declinedBtn.setEnabled(false);
                 allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(true);
+                allBtn.setEnabled(false);
                 donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(true);
+                donatedBtn.setEnabled(false);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(false);
                 myPatientsSearch(status);
 
             }
@@ -403,17 +403,17 @@ public class DonorResponseActivity extends AppCompatActivity {
                 pendingbtn.setTextColor(getColor(R.color.textColorGrey));
                 declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(true);
-                declinedBtn.setEnabled(true);
+                pendingbtn.setEnabled(false);
+                declinedBtn.setEnabled(false);
                 allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(true);
+                allBtn.setEnabled(false);
                 donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(true);
+                donatedBtn.setEnabled(false);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(false);
                 myPatientsSearch(status);
 
 
@@ -432,17 +432,17 @@ public class DonorResponseActivity extends AppCompatActivity {
                 pendingbtn.setTextColor(getColor(R.color.textColorGrey));
                 acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(true);
-                acceptedBtn.setEnabled(true);
+                pendingbtn.setEnabled(false);
+                acceptedBtn.setEnabled(false);
                 allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(true);
+                allBtn.setEnabled(false);
                 donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(true);
+                donatedBtn.setEnabled(false);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(false);
                 myPatientsSearch(status);
 
 
@@ -462,19 +462,19 @@ public class DonorResponseActivity extends AppCompatActivity {
                 donatedBtn.setEnabled(false);
                 acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(true);
+                acceptedBtn.setEnabled(false);
                 declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(true);
+                declinedBtn.setEnabled(false);
                 allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(true);
+                allBtn.setEnabled(false);
                 pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(true);
+                pendingbtn.setEnabled(false);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(false);
                 myPatientsSearch(status);
 
             }
@@ -491,19 +491,19 @@ public class DonorResponseActivity extends AppCompatActivity {
                 notDonatedBtn.setEnabled(false);
                 acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(true);
+                acceptedBtn.setEnabled(false);
                 declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(true);
+                declinedBtn.setEnabled(false);
                 allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(true);
+                allBtn.setEnabled(false);
                 donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(true);
+                donatedBtn.setEnabled(false);
                 pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
                 pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(true);
+                pendingbtn.setEnabled(false);
                 myPatientsSearch(status);
 
             }
@@ -542,7 +542,35 @@ public class DonorResponseActivity extends AppCompatActivity {
         ownPatients.enqueue(new Callback<ArrayList<PatientDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
+
                 ProgressBar.setVisibility(View.GONE);
+                pendingbtn.setEnabled(true);
+                acceptedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(true);
+                declinedBtn.setEnabled(true);
+                allBtn.setEnabled(true);
+                donatedBtn.setEnabled(true);
+                if(status.equals("any")){
+                    allBtn.setEnabled(false);
+                }
+                if(status.equals("Pending")){
+                    pendingbtn.setEnabled(false);
+                }
+                if(status.equals("Accepted")){
+                    acceptedBtn.setEnabled(false);
+                }
+                if(status.equals("Donated")){
+                    donatedBtn.setEnabled(false);
+                }
+
+                if(status.equals("Not Donated")){
+                    notDonatedBtn.setEnabled(false);
+                }
+
+                if(status.equals("Declined")){
+                    declinedBtn.setEnabled(false);
+                }
+
 
                 if(response.isSuccessful()){
 
@@ -582,6 +610,33 @@ public class DonorResponseActivity extends AppCompatActivity {
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
                 ProgressBar.setVisibility(View.GONE);
                 ToastCreator.toastCreatorRed(DonorResponseActivity.this,getResources().getString(R.string.connection_error));
+                pendingbtn.setEnabled(true);
+                acceptedBtn.setEnabled(true);
+                notDonatedBtn.setEnabled(true);
+                declinedBtn.setEnabled(true);
+                allBtn.setEnabled(true);
+                donatedBtn.setEnabled(true);
+                if(status.equals("any")){
+                    allBtn.setEnabled(false);
+                }
+                if(status.equals("Pending")){
+                    pendingbtn.setEnabled(false);
+                }
+                if(status.equals("Accepted")){
+                    acceptedBtn.setEnabled(false);
+                }
+                if(status.equals("Donated")){
+                    donatedBtn.setEnabled(false);
+                }
+
+                if(status.equals("Not Donated")){
+                    notDonatedBtn.setEnabled(false);
+                }
+
+                if(status.equals("Declined")){
+                    declinedBtn.setEnabled(false);
+                }
+
             }
         });
     }

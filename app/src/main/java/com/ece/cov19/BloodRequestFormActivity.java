@@ -250,6 +250,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
 
             case R.id.bld_req_request_btn:
+                submitBtn.setEnabled(false);
                 verifydata();
                 break;
             case R.id.bld_req_back_button:
@@ -338,6 +339,9 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
             registerPatient(name, age, gender, bloodGroup, hospital, division, district, date, need, phone);
         }
+        else {
+            submitBtn.setEnabled(true);
+        }
 
 
     }
@@ -354,10 +358,12 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                     ToastCreator.toastCreatorGreen(BloodRequestFormActivity.this, getResources().getString(R.string.bld_req_activity_patient_added));
                     Intent intent = new Intent(BloodRequestFormActivity.this, DashboardActivity.class);
                     startActivity(intent);
+                    submitBtn.setEnabled(true);
                     finish();
                 } else {
 
                     ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.connection_failed_try_again));
+                    submitBtn.setEnabled(true);
                 }
             }
 
@@ -365,6 +371,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
             public void onFailure(Call<PatientDataModel> call, Throwable t) {
 
                 ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.connection_error));
+                submitBtn.setEnabled(true);
 
             }
         });
