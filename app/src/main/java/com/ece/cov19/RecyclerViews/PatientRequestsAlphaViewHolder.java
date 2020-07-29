@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ClickTimeChecker;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
@@ -55,83 +56,81 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
         donateTextView.setOnClickListener(this);
 
 
-
-
-}
+    }
 
     @Override
     public void onClick(View view) {
+        if (ClickTimeChecker.clickTimeChecker()) {
+            if (visibility == true) {
+                // ToastCreator.toastCreator(view.getContext(),"Pressed",Toast.LENGTH_SHORT).show();
+                visibility = false;
+                pos = getAdapterPosition();
 
-        if(visibility == true){
-           // ToastCreator.toastCreator(view.getContext(),"Pressed",Toast.LENGTH_SHORT).show();
-            visibility = false;
-            pos = getAdapterPosition();
+                patientDataModel = patientDataModels.get(pos);
 
-            patientDataModel = patientDataModels.get(pos);
+                FindPatientData.findPatientPosition = pos;
+                FindPatientData.findPatientBloodGroup = patientDataModels.get(pos).getBloodGroup();
+                FindPatientData.findPatientName = patientDataModels.get(pos).getName();
+                FindPatientData.findPatientAge = patientDataModels.get(pos).getAge();
+                FindPatientData.findPatientDate = patientDataModels.get(pos).getDate();
+                FindPatientData.findPatientPhone = patientDataModels.get(pos).getPhone();
 
-            FindPatientData.findPatientPosition = pos;
-            FindPatientData.findPatientBloodGroup = patientDataModels.get(pos).getBloodGroup();
-            FindPatientData.findPatientName=patientDataModels.get(pos).getName();
-            FindPatientData.findPatientAge=patientDataModels.get(pos).getAge();
-            FindPatientData.findPatientDate=patientDataModels.get(pos).getDate();
-            FindPatientData.findPatientPhone=patientDataModels.get(pos).getPhone();
+                UserDataModel userDataModel;
+                ArrayList<UserDataModel> userDataModels;
+                userDataModels = new ArrayList<>();
 
-            UserDataModel userDataModel;
-            ArrayList<UserDataModel> userDataModels;
-            userDataModels = new ArrayList<>();
-
-            progressBar.setVisibility(View.VISIBLE);
-            RetroInterface retroInterface = RetroInstance.getRetro();
-            Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.requestsFromDonorsBeta(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone());
-            //ToastCreator.toastCreator(view.getContext(), patientDataModel.getName()+patientDataModel.getAge()+patientDataModel.getBloodGroup()+patientDataModel.getPhone(), Toast.LENGTH_SHORT).show();
-            incomingResponse.enqueue(new Callback<ArrayList<UserDataModel>>() {
-                @Override
-                public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {
-                    progressBar.setVisibility(View.GONE);
-                    userDataModels.clear();
-
-                    if(response.isSuccessful()){
-
-
-                        ArrayList<UserDataModel> initialModels = response.body();
-                        for(UserDataModel initialDataModel : initialModels){
-
-                            userDataModels.add(initialDataModel);
-
-                        }
-                        donateTextView.setText(R.string.hide_request);
-                        //donateTextView.setBackgroundColor(R.drawable.button_style_colored);
-                        requestDonorRecyclerView.setVisibility(View.VISIBLE);
-                        PatientRequestsBetaAdapter patientRequestsBetaAdapter = new PatientRequestsBetaAdapter(itemView.getContext(), userDataModels);
-                        requestDonorRecyclerView.setAdapter(patientRequestsBetaAdapter);
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(itemView.getContext());
-                        requestDonorRecyclerView.setLayoutManager(linearLayoutManager);
-                    } else {
-
+                progressBar.setVisibility(View.VISIBLE);
+                RetroInterface retroInterface = RetroInstance.getRetro();
+                Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.requestsFromDonorsBeta(patientDataModel.getName(), patientDataModel.getAge(), patientDataModel.getBloodGroup(), patientDataModel.getPhone());
+                //ToastCreator.toastCreator(view.getContext(), patientDataModel.getName()+patientDataModel.getAge()+patientDataModel.getBloodGroup()+patientDataModel.getPhone(), Toast.LENGTH_SHORT).show();
+                incomingResponse.enqueue(new Callback<ArrayList<UserDataModel>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {
                         progressBar.setVisibility(View.GONE);
-                        donateTextView.setText(R.string.no_requests_found);
+                        userDataModels.clear();
+
+                        if (response.isSuccessful()) {
+
+
+                            ArrayList<UserDataModel> initialModels = response.body();
+                            for (UserDataModel initialDataModel : initialModels) {
+
+                                userDataModels.add(initialDataModel);
+
+                            }
+                            donateTextView.setText(R.string.hide_request);
+                            //donateTextView.setBackgroundColor(R.drawable.button_style_colored);
+                            requestDonorRecyclerView.setVisibility(View.VISIBLE);
+                            PatientRequestsBetaAdapter patientRequestsBetaAdapter = new PatientRequestsBetaAdapter(itemView.getContext(), userDataModels);
+                            requestDonorRecyclerView.setAdapter(patientRequestsBetaAdapter);
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(itemView.getContext());
+                            requestDonorRecyclerView.setLayoutManager(linearLayoutManager);
+                        } else {
+
+                            progressBar.setVisibility(View.GONE);
+                            donateTextView.setText(R.string.no_requests_found);
+                        }
+
+
                     }
 
+                    @Override
+                    public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
+                        progressBar.setVisibility(View.GONE);
+                        donateTextView.setText(R.string.no_requests_found);
+                        //Toast.makeText(view.getContext(),"Error: "+t.getMessage(),Toast.LENGTH_LONG).show();
+                    }
+                });
 
-                }
-
-                @Override
-                public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
-                    progressBar.setVisibility(View.GONE);
-                    donateTextView.setText(R.string.no_requests_found);
-                    //Toast.makeText(view.getContext(),"Error: "+t.getMessage(),Toast.LENGTH_LONG).show();
-                }
-            });
+            } else {
+                progressBar.setVisibility(View.GONE);
+                //ToastCreator.toastCreator(view.getContext(),"Pressed again",Toast.LENGTH_SHORT).show();
+                visibility = true;
+                donateTextView.setText(R.string.view_requests);
+                //donateTextView.setBackgroundColor(R.drawable.button_style_green);
+                requestDonorRecyclerView.setVisibility(View.GONE);
+            }
 
         }
-        else{
-            progressBar.setVisibility(View.GONE);
-            //ToastCreator.toastCreator(view.getContext(),"Pressed again",Toast.LENGTH_SHORT).show();
-            visibility = true;
-            donateTextView.setText(R.string.view_requests);
-            //donateTextView.setBackgroundColor(R.drawable.button_style_green);
-            requestDonorRecyclerView.setVisibility(View.GONE);
-        }
-
     }
 }

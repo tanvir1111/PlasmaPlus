@@ -87,6 +87,7 @@ public class SearchDonorActivity extends AppCompatActivity {
         bloodgrpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                bloodgrpSpinner.setEnabled(false);
                 donorSearch();
             }
 
@@ -165,6 +166,7 @@ public class SearchDonorActivity extends AppCompatActivity {
         bloodgrpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                bloodgrpSpinner.setEnabled(false);
                 donorSearch();
             }
 
@@ -218,6 +220,7 @@ public class SearchDonorActivity extends AppCompatActivity {
         searchDonor.enqueue(new Callback<ArrayList<UserDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {
+                bloodgrpSpinner.setEnabled(true);
                 progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     ArrayList<UserDataModel> initialModels = response.body();
@@ -250,6 +253,7 @@ public class SearchDonorActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
+                bloodgrpSpinner.setEnabled(true);
                 ToastCreator.toastCreatorRed(SearchDonorActivity.this,getResources().getString(R.string.connection_error));
             }
         });

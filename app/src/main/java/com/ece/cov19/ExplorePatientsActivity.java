@@ -82,6 +82,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         bloodgrpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                bloodgrpSpinner.setEnabled(false);
                 allPatientsSearch();
             }
 
@@ -157,6 +158,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
         bloodgrpSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                bloodgrpSpinner.setEnabled(false);
                 allPatientsSearch();
             }
 
@@ -216,8 +218,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {
                 progressBar.setVisibility(View.GONE);
-
-
+                bloodgrpSpinner.setEnabled(true);
 
                 if(response.isSuccessful()){
                     ArrayList<PatientDataModel> initialModels = response.body();
@@ -251,6 +252,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
                 progressBar.setVisibility(View.GONE);
+                bloodgrpSpinner.setEnabled(true);
                 ToastCreator.toastCreatorRed(ExplorePatientsActivity.this,getResources().getString(R.string.connection_error));
             }
         });

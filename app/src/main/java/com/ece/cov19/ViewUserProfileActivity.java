@@ -333,6 +333,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
     private void confirmAlertDialog(final Intent intent){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
+        builder.setCancelable(false);
 
         builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
@@ -357,6 +358,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 //                asking password with alertdialog
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.enter_password_hint));
+        builder.setCancelable(false);
 
 // Set up the input
         final EditText pass = new EditText(ViewUserProfileActivity.this);
@@ -405,6 +407,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
     private void logoutAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
+        builder.setCancelable(false);
         builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
 
@@ -471,6 +474,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
     private void updateAlertDialog(final Intent intent){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
+        builder.setCancelable(false);
         builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 startActivity(intent);
@@ -494,12 +498,14 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
+        builder.setCancelable(false);
         builder.setPositiveButton(getResources().getString(R.string.delete_profile), new DialogInterface.OnClickListener() {
 
             public void onClick(DialogInterface dialog, int id) {
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
                 builder.setMessage(getResources().getString(R.string.enter_password_hint));
+                builder.setCancelable(false);
 
                 final EditText pass = new EditText(ViewUserProfileActivity.this);
 
@@ -519,6 +525,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
                             builder.setMessage(getResources().getString(R.string.delete_profile_are_you_sure));
+                            builder.setCancelable(false);
                             builder.setPositiveButton(getResources().getString(R.string.delete_profile), new DialogInterface.OnClickListener() {
 
                                 public void onClick(DialogInterface dialog, int id) {
@@ -603,6 +610,7 @@ public class ViewUserProfileActivity extends AppCompatActivity {
     private void deleteImageAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(ViewUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
+        builder.setCancelable(false);
         builder.setPositiveButton(getResources().getString(R.string.profile_activity_Delete), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 deleteImage(loggedInUserPhone);

@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
 
+import com.ece.cov19.Functions.ClickTimeChecker;
 import com.ece.cov19.R;
 
 
@@ -49,7 +50,9 @@ public class FindDonorAlphaViewHolder extends RecyclerView.ViewHolder implements
 
     @Override
     public void onClick(View view) {
-        findPatientViewHolderViewClickListener.onClicked(view, getAdapterPosition());
+        if(ClickTimeChecker.clickTimeChecker()) {
+            findPatientViewHolderViewClickListener.onClicked(view, getAdapterPosition());
+        }
 
     }
 }

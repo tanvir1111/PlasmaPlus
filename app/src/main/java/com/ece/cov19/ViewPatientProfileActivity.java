@@ -149,6 +149,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(View view)
             {
                 if(donateToHelpButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.donate_to_help).toLowerCase())) {
+                    donatedButton.setEnabled(false);
 
                     donateToHelpAlertDialog();
                 }
@@ -160,6 +161,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(updateButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.update_profile).toLowerCase())) {
+                    updateButton.setEnabled(false);
                     Intent intent = new Intent(ViewPatientProfileActivity.this, UpdatePatientProfileActivity.class);
                     intent.putExtra("name", name);
                     intent.putExtra("age", age);
@@ -174,6 +176,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     updateAlertDialog(intent);
                 }
                 else if(updateButton.getText().toString().equals(getResources().getString(R.string.accept_request))){
+                    updateButton.setEnabled(false);
                     requestOperationAlertDialog("accept",phone,getResources().getString(R.string.patient_profile_activity_notification_accepted_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_accepted_2),"DonorResponseActivity","");
 
                 }
@@ -189,9 +192,11 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(deleteButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.delete_profile).toLowerCase())) {
+                    deleteButton.setEnabled(false);
                     deleteAlertDialog();
                 }
                 else if(deleteButton.getText().toString().equals(getResources().getString(R.string.decline_request))){
+                    deleteButton.setEnabled(false);
                     requestOperationAlertDialog("decline",phone,getResources().getString(R.string.patient_profile_activity_notification_declined_1),loggedInUserName +" "+getResources().getString(R.string.patient_profile_activity_notification_declined_2),"DonorResponseActivity","");
 
                 }
@@ -257,6 +262,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     private void updateAlertDialog(final Intent intent) {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
+        builder.setCancelable(false);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
 
         builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
@@ -264,6 +270,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
 
                 startActivity(intent);
+                updateButton.setEnabled(true);
                 finish();
 
             }
@@ -272,10 +279,12 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+                updateButton.setEnabled(true);
             }
         });
-
-        builder.show();
+AlertDialog alertDialog=builder.create();
+alertDialog.setCanceledOnTouchOutside(false);
+alertDialog.show();
 
     }
 
@@ -284,6 +293,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.patient_profile_activity_Delete_profile_question));
+        builder.setCancelable(false);
 
         builder.setPositiveButton(getResources().getString(R.string.proceed), new DialogInterface.OnClickListener() {
             @Override
@@ -291,6 +301,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                 final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
                 builder.setMessage(getResources().getString(R.string.delete_profile_are_you_sure));
+                builder.setCancelable(false);
 
 // Set up the input
                 final EditText pass = new EditText(ViewPatientProfileActivity.this);
@@ -313,6 +324,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                             AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
                             builder.setMessage(getResources().getString(R.string.are_you_sure));
+                            builder.setCancelable(false);
                             builder.setPositiveButton(getResources().getString(R.string.delete_profile), new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
                                     progressBar.setVisibility(View.VISIBLE);
@@ -322,6 +334,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                                         @Override
                                         public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
                                             progressBar.setVisibility(View.GONE);
+                                            deleteButton.setEnabled(true);
                                             if(response.body().getServerMsg().toLowerCase().equals("success")){
                                                 ToastCreator.toastCreatorGreen(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Patient_Record_Deleted));
                                                 finish();
@@ -330,12 +343,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                                                 progressBar.setVisibility(View.GONE);
                                                 ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.delete_failed));
 
+
                                             }
                                         }
 
                                         @Override
                                         public void onFailure(Call<PatientDataModel> call, Throwable t) {
                                             progressBar.setVisibility(View.GONE);
+                                            deleteButton.setEnabled(true);
                                             ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.connection_error));
                                         }
                                     });
@@ -346,6 +361,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                                     .setNegativeButton(getResources().getString(R.string.go_back), new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             dialog.dismiss();
+                                            deleteButton.setEnabled(true);
                                         }
                                     });
 
@@ -355,7 +371,9 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                         }
                         else{
-                            ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.wrong_password_error));;
+                            ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.wrong_password_error));
+                            deleteButton.setEnabled(true);
+
                         }
                     }
                 });
@@ -363,20 +381,27 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         dialog.cancel();
+                        deleteButton.setEnabled(true);
                     }
                 });
-
-                builder.show();
+AlertDialog alertDialog=builder.create();
+alertDialog.setCanceledOnTouchOutside(false);
+                alertDialog.show();
             }
         });
         builder.setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+                deleteButton.setEnabled(true);
             }
         });
+        AlertDialog alertDialog=builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
 
-        builder.show();
+        alertDialog.show();
+
+
 
 
 
@@ -391,6 +416,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
 
         builder.setMessage(getResources().getString(R.string.donor_profile_activity_send_request));
+        builder.setCancelable(false);
 
 
         builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
@@ -403,10 +429,12 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+                donatedButton.setEnabled(true);
             }
         });
-
-        builder.show();
+AlertDialog alertDialog =builder.create();
+alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
 
     }
 
@@ -414,7 +442,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewPatientProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
-
+        builder.setCancelable(false);
 
         builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             @Override
@@ -441,10 +469,14 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+                updateButton.setEnabled(true);
+
+                deleteButton.setEnabled(true);
             }
         });
-
-        builder.show();
+AlertDialog alertDialog=builder.create();
+alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
 
     }
 
@@ -456,6 +488,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
+                donateToHelpButton.setEnabled(true);
                 if (response.body().getServerMsg().toLowerCase().equals("success")) {
                     ToastCreator.toastCreatorGreen(ViewPatientProfileActivity.this, getResources().getString(R.string.patient_profile_activity_Request_Sent));
 
@@ -493,6 +526,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
                 ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.connection_error));
                 progressBar.setVisibility(View.GONE);
+                donateToHelpButton.setEnabled(true);
 
             }
         });
@@ -508,6 +542,8 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
+                updateButton.setEnabled(true);
+                deleteButton.setEnabled(true);
                 if(response.isSuccessful()){
                     if(response.body().getServerMsg().toLowerCase().equals("no requests")){
                         if(phone.equals(loggedInUserPhone)){
@@ -701,6 +737,8 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
                 ToastCreator.toastCreatorRed(ViewPatientProfileActivity.this, getResources().getString(R.string.connection_error));
                 progressBar.setVisibility(View.GONE);
+                updateButton.setEnabled(true);
+                deleteButton.setEnabled(true);
 
             }
         });

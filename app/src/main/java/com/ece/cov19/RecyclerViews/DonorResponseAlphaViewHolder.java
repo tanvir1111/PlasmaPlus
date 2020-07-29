@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ClickTimeChecker;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
@@ -63,73 +64,73 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
     public void onClick(View view) {
 
 
+        if (ClickTimeChecker.clickTimeChecker()) {
+            if (visibility == true) {
+                // ToastCreator.toastCreator(view.getContext(),"Pressed",Toast.LENGTH_SHORT).show();
+                visibility = false;
+                pos = getAdapterPosition();
 
-        if(visibility == true){
-           // ToastCreator.toastCreator(view.getContext(),"Pressed",Toast.LENGTH_SHORT).show();
-            visibility = false;
-            pos = getAdapterPosition();
+                patientDataModel = patientDataModels.get(pos);
 
-            patientDataModel = patientDataModels.get(pos);
-
-            FindPatientData.findPatientPosition = pos;
-            FindPatientData.findPatientBloodGroup = patientDataModels.get(pos).getBloodGroup();
-            FindPatientData.findPatientName=patientDataModels.get(pos).getName();
-            FindPatientData.findPatientAge=patientDataModels.get(pos).getAge();
-            FindPatientData.findPatientDate=patientDataModels.get(pos).getDate();
-            FindPatientData.findPatientPhone=patientDataModels.get(pos).getPhone();
-            FindPatientData.findPatientNeed=patientDataModels.get(pos).getNeed();
+                FindPatientData.findPatientPosition = pos;
+                FindPatientData.findPatientBloodGroup = patientDataModels.get(pos).getBloodGroup();
+                FindPatientData.findPatientName = patientDataModels.get(pos).getName();
+                FindPatientData.findPatientAge = patientDataModels.get(pos).getAge();
+                FindPatientData.findPatientDate = patientDataModels.get(pos).getDate();
+                FindPatientData.findPatientPhone = patientDataModels.get(pos).getPhone();
+                FindPatientData.findPatientNeed = patientDataModels.get(pos).getNeed();
 
 
-            UserDataModel userDataModel;
-            ArrayList<UserDataModel> userDataModels;
-            userDataModels = new ArrayList<>();
+                UserDataModel userDataModel;
+                ArrayList<UserDataModel> userDataModels;
+                userDataModels = new ArrayList<>();
 
-            progressBar.setVisibility(View.VISIBLE);
-            RetroInterface retroInterface = RetroInstance.getRetro();
-            Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.responsesFromDonorsBeta(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone());
-            incomingResponse.enqueue(new Callback<ArrayList<UserDataModel>>() {
-                @Override
-                public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {
-                    progressBar.setVisibility(View.GONE);
-                    userDataModels.clear();
+                progressBar.setVisibility(View.VISIBLE);
+                RetroInterface retroInterface = RetroInstance.getRetro();
+                Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.responsesFromDonorsBeta(patientDataModel.getName(), patientDataModel.getAge(), patientDataModel.getBloodGroup(), patientDataModel.getPhone());
+                incomingResponse.enqueue(new Callback<ArrayList<UserDataModel>>() {
+                    @Override
+                    public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {
+                        progressBar.setVisibility(View.GONE);
+                        userDataModels.clear();
 
-                    if(response.isSuccessful()){
-                        ArrayList<UserDataModel> initialModels = response.body();
-                        for(UserDataModel initialDataModel : initialModels){
+                        if (response.isSuccessful()) {
+                            ArrayList<UserDataModel> initialModels = response.body();
+                            for (UserDataModel initialDataModel : initialModels) {
 
-                            userDataModels.add(initialDataModel);
+                                userDataModels.add(initialDataModel);
 
+                            }
+                            donateTextView.setText(R.string.hide_response);
+                            //donateTextView.setBackgroundColor(R.drawable.button_style_colored);
+                            requestDonorRecyclerView.setVisibility(View.VISIBLE);
+                            DonorResponseBetaAdapter donorResponseBetaAdapter = new DonorResponseBetaAdapter(itemView.getContext(), userDataModels);
+                            requestDonorRecyclerView.setAdapter(donorResponseBetaAdapter);
+                            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(itemView.getContext());
+                            requestDonorRecyclerView.setLayoutManager(linearLayoutManager);
+                        } else {
+                            progressBar.setVisibility(View.GONE);
+                            donateTextView.setText(R.string.no_requests_found);
                         }
-                        donateTextView.setText(R.string.hide_response);
-                        //donateTextView.setBackgroundColor(R.drawable.button_style_colored);
-                        requestDonorRecyclerView.setVisibility(View.VISIBLE);
-                        DonorResponseBetaAdapter donorResponseBetaAdapter = new DonorResponseBetaAdapter(itemView.getContext(), userDataModels);
-                        requestDonorRecyclerView.setAdapter(donorResponseBetaAdapter);
-                        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(itemView.getContext());
-                        requestDonorRecyclerView.setLayoutManager(linearLayoutManager);
-                    } else {
+
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
                         progressBar.setVisibility(View.GONE);
                         donateTextView.setText(R.string.no_requests_found);
                     }
+                });
 
+            } else {
 
-                }
-
-                @Override
-                public void onFailure(Call<ArrayList<UserDataModel>> call, Throwable t) {
-                    progressBar.setVisibility(View.GONE);
-                    donateTextView.setText(R.string.no_requests_found);
-                }
-            });
+                visibility = true;
+                donateTextView.setText(R.string.show_response);
+                //donateTextView.setBackgroundColor(R.drawable.button_style_green);
+                requestDonorRecyclerView.setVisibility(View.GONE);
+            }
 
         }
-        else{
-
-            visibility = true;
-            donateTextView.setText(R.string.show_response);
-            //donateTextView.setBackgroundColor(R.drawable.button_style_green);
-            requestDonorRecyclerView.setVisibility(View.GONE);
-        }
-
     }
 }

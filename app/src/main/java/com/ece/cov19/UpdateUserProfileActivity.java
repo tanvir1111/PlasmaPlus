@@ -108,6 +108,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
                         if (radioButton.isChecked()) {
 
                             final AlertDialog.Builder builder = new AlertDialog.Builder(UpdateUserProfileActivity.this);
+                            builder.setCancelable(false);
 
                             LayoutInflater inflater = LayoutInflater.from(UpdateUserProfileActivity.this);
                             View plasmaDialog = inflater.inflate(R.layout.plasma_dialog_new, null);
@@ -266,6 +267,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                updateBtn.setEnabled(false);
                 updateAlertDialog();
             }
         });
@@ -311,24 +313,29 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_name) + " ";
             nameEditText.setError(getResources().getString(R.string.label_name)+" "+getResources().getString(R.string.is_required_txt));
+            updateBtn.setEnabled(true);
         }
         if (thana.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_thana) + " ";
             thanaEditText.setError(getResources().getString(R.string.label_thana)+" "+getResources().getString(R.string.is_required_txt));
+            updateBtn.setEnabled(true);
         }
         if (age.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_age_1) + " ";
             ageEditText.setError(getResources().getString(R.string.label_age_1)+" "+getResources().getString(R.string.is_required_txt));
+            updateBtn.setEnabled(true);
         }
         if (division.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_division) + " ";
+            updateBtn.setEnabled(true);
         }
         if (district.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_district) + " ";
+            updateBtn.setEnabled(true);
         }
 
 
@@ -338,6 +345,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
              updateUserInfo(name, division, district, thana, age,donorInfo);
         } else {
             emptyfield += getResources().getString(R.string.is_required_txt);
+            updateBtn.setEnabled(true);
             ToastCreator.toastCreatorRed(this,emptyfield);
         }
 
@@ -350,7 +358,9 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+                updateBtn.setEnabled(true);
                 if (response.body().getServerMsg().toLowerCase().equals("success")) {
+
                     ToastCreator.toastCreatorGreen(UpdateUserProfileActivity.this, getResources().getString(R.string.update_activity_update_successful));
 //                    update logged in Data
                     loggedInUserName=name;
@@ -375,6 +385,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
+                updateBtn.setEnabled(true);
                 ToastCreator.toastCreatorRed(UpdateUserProfileActivity.this,   getResources().getString(R.string.connection_error));
             }
         });
@@ -387,6 +398,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(UpdateUserProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.confirm_update_txt));
+        builder.setCancelable(false);
 
         builder.setPositiveButton(getResources().getString(R.string.confirm), new DialogInterface.OnClickListener() {
             @Override
@@ -399,10 +411,13 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+                updateBtn.setEnabled(true);
             }
         });
 
-        builder.show();
+        AlertDialog alertDialog=builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
 
     }
 }

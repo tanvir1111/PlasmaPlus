@@ -129,6 +129,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(askForHelpBtn.getText().toString().equals(getResources().getString(R.string.ask_for_help))) {
                     askForHelpAlertDialog();
+                    askForHelpBtn.setEnabled(false);
                 }
 
 
@@ -139,6 +140,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (acceptBtn.getText().toString().equals(getResources().getString(R.string.accept_request))) {
+                    acceptBtn.setEnabled(false);
                     requestOperationAlertDialog("accept",donorphone,getResources().getString(R.string.donor_profile_activity_notification_accepted_1),loggedInUserName + " " + getResources().getString(R.string.donor_profile_activity_notification_accepted_2),"PatientResponseActivity","");
 
                 } else if (acceptBtn.getText().toString().equals(getResources().getString(R.string.donor_profile_activity_Call_Donor))) {
@@ -153,6 +155,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(declineBtn.getText().toString().equals(getResources().getString(R.string.decline_request))) {
+                    declineBtn.setEnabled(false);
                     requestOperationAlertDialog("decline",donorphone,getResources().getString(R.string.donor_profile_activity_notification_declined_1),loggedInUserName + " " + getResources().getString(R.string.donor_profile_activity_notification_declined_2),"PatientResponseActivity","");
 
                 }
@@ -180,7 +183,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewDonorProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.donor_profile_activity_send_request));
-
+        builder.setCancelable(false);
 
         builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             @Override
@@ -193,10 +196,13 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+                askForHelpBtn.setEnabled(true);
             }
         });
 
-        builder.show();
+        AlertDialog alertDialog=builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
 
     }
 
@@ -204,7 +210,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
         final AlertDialog.Builder builder = new AlertDialog.Builder(ViewDonorProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
-
+        builder.setCancelable(false);
 
         builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
             @Override
@@ -222,6 +228,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     @Override
                     public void onFailure(Call<UserDataModel> call, Throwable t) {
 
+
                     }
                 });
                 
@@ -231,10 +238,15 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 dialog.cancel();
+                acceptBtn.setEnabled(true);
+                declineBtn.setEnabled(true);
+
             }
         });
+        AlertDialog alertDialog=builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
 
-        builder.show();
+        alertDialog.show();
 
     }
 
@@ -246,6 +258,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
+                askForHelpBtn.setEnabled(true);
                 if (response.body().getServerMsg().equals("Success")) {
                     ToastCreator.toastCreatorGreen(ViewDonorProfileActivity.this, getResources().getString(R.string.donor_profile_activity_Request_Sent));
                     progressBar.setVisibility(View.GONE);
@@ -289,6 +302,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
                 ToastCreator.toastCreatorRed(ViewDonorProfileActivity.this, getResources().getString(R.string.connection_error));
                 progressBar.setVisibility(View.GONE);
+                askForHelpBtn.setEnabled(true);
 
             }
         });
@@ -304,6 +318,9 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
                 progressBar.setVisibility(View.GONE);
+                acceptBtn.setEnabled(true);
+                declineBtn.setEnabled(true);
+
                 if (response.isSuccessful()) {
                     if(response.body().getServerMsg().toLowerCase().equals("no requests")) {
                         if(donorphone.equals(loggedInUserPhone)){
@@ -414,6 +431,8 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
             public void onFailure(Call<RequestDataModel> call, Throwable t) {
                 ToastCreator.toastCreatorRed(ViewDonorProfileActivity.this, getResources().getString(R.string.connection_error));
                 progressBar.setVisibility(View.GONE);
+                acceptBtn.setEnabled(true);
+                declineBtn.setEnabled(true);
 
             }
         });
