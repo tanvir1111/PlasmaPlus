@@ -138,7 +138,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         exploreCText=findViewById(R.id.dashboard_text_exploreC);
         exploreDText=findViewById(R.id.dashboard_text_exploreD);
         exploreEText=findViewById(R.id.dashboard_text_exploreE);
-        exploreFText=findViewById(R.id.dashboard_text_exploreF);
+        exploreFText=findViewById(R.id.dashboard_text_exploreF0);
 
 
         nameSplit = loggedInUserName.split("");
@@ -148,6 +148,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         fromPatientsCardView.setVisibility(View.GONE);
         allDonorsCardView.setVisibility(View.GONE);
         allPatientsCardView.setVisibility(View.GONE);
+        exploreCCardView.setVisibility(View.GONE);
+        exploreDCardView.setVisibility(View.GONE);
+        exploreECardView.setVisibility(View.GONE);
+        exploreFCardView.setVisibility(View.GONE);
+
 
 
         downloadImage(loggedInUserPhone);
@@ -393,12 +398,20 @@ if(LoginUser.checkLoginStat().equals("failed")){
                     exploreSwitcher=1;
                     allDonorsCardView.setVisibility(View.VISIBLE);
                     allPatientsCardView.setVisibility(View.VISIBLE);
+                    exploreCCardView.setVisibility(View.VISIBLE);
+                    exploreDCardView.setVisibility(View.VISIBLE);
+                    exploreECardView.setVisibility(View.VISIBLE);
+                    exploreFCardView.setVisibility(View.VISIBLE);
 
                 }
                 else if(exploreSwitcher==0) {
                     exploreSwitcher=0;
                     allDonorsCardView.setVisibility(View.GONE);
                     allPatientsCardView.setVisibility(View.GONE);
+                    exploreCCardView.setVisibility(View.GONE);
+                    exploreDCardView.setVisibility(View.GONE);
+                    exploreECardView.setVisibility(View.GONE);
+                    exploreFCardView.setVisibility(View.GONE);
                 }
 
 
@@ -654,16 +667,8 @@ if(LoginUser.checkLoginStat().equals("failed")){
                     slideDown(fromDonorsCardView);
                     if(!loggedInUserDonorInfo.toLowerCase().equals("none")) {
                         slideDown(fromPatientsCardView);
-                        slideDown(exploreCCardView);
-                        slideDown(exploreDCardView);
-                        slideDown(exploreECardView);
-                        slideDown(exploreFCardView);
                     } else {
                         slideDownInactive(fromPatientsCardView);
-                        slideDown(exploreCCardView);
-                        slideDown(exploreDCardView);
-                        slideDown(exploreECardView);
-                        slideDown(exploreFCardView);
                     }
                     numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.requests));
                     numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.requests));
@@ -677,10 +682,6 @@ if(LoginUser.checkLoginStat().equals("failed")){
                     requestResponseSwitcher = 0;
                     slideUp(fromDonorsCardView);
                     slideUp(fromPatientsCardView);
-                    slideUp(exploreCCardView);
-                    slideUp(exploreDCardView);
-                    slideUp(exploreECardView);
-                    slideUp(exploreFCardView);
                     break;
                 }
                 break;
@@ -693,16 +694,8 @@ if(LoginUser.checkLoginStat().equals("failed")){
                     slideDown(fromDonorsCardView);
                     if(!loggedInUserDonorInfo.toLowerCase().equals("none")) {
                         slideDown(fromPatientsCardView);
-                        slideDown(exploreCCardView);
-                        slideDown(exploreDCardView);
-                        slideDown(exploreECardView);
-                        slideDown(exploreFCardView);
                     } else {
                         slideDownInactive(fromPatientsCardView);
-                        slideDown(exploreCCardView);
-                        slideDown(exploreDCardView);
-                        slideDown(exploreECardView);
-                        slideDown(exploreFCardView);
                     }
                     numberOfRequestsFromDonorsText.setText(getResources().getString(R.string.responses));
                     numberOfRequestsFromPatientsText.setText(getResources().getString(R.string.responses));
@@ -715,10 +708,6 @@ if(LoginUser.checkLoginStat().equals("failed")){
                     requestResponseSwitcher = 0;
                     slideUp(fromDonorsCardView);
                     slideUp(fromPatientsCardView);
-                    slideUp(exploreCCardView);
-                    slideUp(exploreDCardView);
-                    slideUp(exploreECardView);
-                    slideUp(exploreFCardView);
                     break;
                 }
                 break;
@@ -810,7 +799,7 @@ if(LoginUser.checkLoginStat().equals("failed")){
                 startActivity(exploreEIntent);
                 break;
             case R.id.cardView_exploreF:
-            case R.id.dashboard_text_exploreF:
+            case R.id.dashboard_text_exploreF0:
                 Intent exploreFIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:10655"));
                 startActivity(exploreFIntent);
                 break;

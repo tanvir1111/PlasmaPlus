@@ -75,8 +75,8 @@
 
                         <ImageView
                             android:id="@+id/dashboard_gender_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
 
                             android:scaleType="centerCrop"
                             android:src="@drawable/profile_icon_male"
@@ -152,7 +152,7 @@
 
                                 <TextView
                                     android:id="@+id/dashboard_text_exploreC"
-                                    android:layout_width="80dp"
+                                    android:layout_width="85dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="16dp"
@@ -223,7 +223,7 @@
 
                                 <TextView
                                     android:id="@+id/dashboard_text_exploreD"
-                                    android:layout_width="80dp"
+                                    android:layout_width="85dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="16dp"
@@ -267,7 +267,7 @@
 
                                 <TextView
                                     android:id="@+id/dashboard_text_exploreE"
-                                    android:layout_width="80dp"
+                                    android:layout_width="85dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="16dp"
@@ -324,13 +324,26 @@
 
 
                                 <TextView
-                                    android:id="@+id/dashboard_text_exploreF"
-                                    android:layout_width="80dp"
+                                    android:id="@+id/dashboard_text_exploreF0"
+                                    android:layout_width="100dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
                                     android:layout_marginTop="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_explore_call"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="18dp"
+                                    app:layout_constraintStart_toEndOf="@+id/dashboard_img_exploreF"
+                                    app:layout_constraintTop_toTopOf="parent" />
+
+                                <TextView
+                                    android:id="@+id/dashboard_text_exploreF1"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="40dp"
+                                    android:fontFamily="@font/montserrat_bold"
+                                    android:text="@string/dashboard_text_explore_iedcr"
                                     android:textColor="@color/colorAccent"
                                     android:textSize="18dp"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_img_exploreF"
@@ -357,7 +370,7 @@
                                     android:text="@string/dashboard_text_exploreF"
                                     android:textColor="#FF5722"
                                     android:textSize="36dp"
-                                    app:layout_constraintStart_toEndOf="@+id/dashboard_text_exploreF"
+                                    app:layout_constraintStart_toEndOf="@+id/dashboard_text_exploreF0"
                                     app:layout_constraintTop_toTopOf="parent" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.cardview.widget.CardView>
