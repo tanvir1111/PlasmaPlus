@@ -288,7 +288,8 @@
     <string name="donated_responses">Donated Responses</string>
     <string name="not_donated_responses">Not Donated Responses</string>
     <string name="dashboard_text_explore_website">Explore Website</string>
-    <string name="dashboard_text_explore_call">Call IEDCR</string>
+    <string name="dashboard_text_explore_call">Call</string>
+    <string name="dashboard_text_explore_iedcr">IEDCR</string>
     <string name="dashboard_text_exploreC">corona.gov.bd</string>
     <string name="dashboard_text_exploreD">worldometers.info</string>
     <string name="dashboard_text_exploreE">covid19.who.int</string>
