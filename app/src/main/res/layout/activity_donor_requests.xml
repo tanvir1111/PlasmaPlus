@@ -65,7 +65,7 @@
 
             <Button
                 android:id="@+id/donor_requests_show_All_requests"
-                android:layout_width="150dp"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
 
 
@@ -80,7 +80,7 @@
 
             <Button
                 android:id="@+id/donor_requests_show_pending_requests"
-                android:layout_width="150dp"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
 
 
@@ -95,7 +95,7 @@
 
             <Button
                 android:id="@+id/donor_requests_show_accepted_requests"
-                android:layout_width="150dp"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
 
 
@@ -115,7 +115,7 @@
 
             <Button
                 android:id="@+id/donor_requests_show_donated_requests"
-                android:layout_width="150dp"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
 
                 android:background="@drawable/tabstyle_not_selected"
@@ -129,7 +129,7 @@
 
             <Button
                 android:id="@+id/donor_requests_show_not_donated_requests"
-                android:layout_width="150dp"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
 
                 android:background="@drawable/tabstyle_not_selected"
@@ -143,7 +143,7 @@
 
             <Button
                 android:id="@+id/donor_requests_show_declined_requests"
-                android:layout_width="150dp"
+                android:layout_width="135dp"
                 android:layout_height="wrap_content"
 
                 android:background="@drawable/tabstyle_not_selected"
