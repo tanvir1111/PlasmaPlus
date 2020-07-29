@@ -32,14 +32,16 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
     RecyclerView requestDonorRecyclerView;
     PatientDataModel patientDataModel;
     ArrayList<PatientDataModel> patientDataModels;
+    String status;
 
     int pos;
     boolean visibility = true;
 
 
-    public DonorResponseAlphaViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels) {
+    public DonorResponseAlphaViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels, String status) {
         super(itemView);
         this.patientDataModels = patientDataModels;
+        this.status = status;
 
         nameTextView = itemView.findViewById(R.id.seeking_help_name);
         donateTextView = itemView.findViewById(R.id.seeking_help_donate_btn);
@@ -86,7 +88,7 @@ public class DonorResponseAlphaViewHolder extends RecyclerView.ViewHolder implem
 
             progressBar.setVisibility(View.VISIBLE);
             RetroInterface retroInterface = RetroInstance.getRetro();
-            Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.responsesFromDonorsBeta(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone());
+            Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.responsesFromDonorsBeta(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone(),status);
             incomingResponse.enqueue(new Callback<ArrayList<UserDataModel>>() {
                 @Override
                 public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {

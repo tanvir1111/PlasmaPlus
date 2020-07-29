@@ -32,12 +32,14 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
     RecyclerView requestDonorRecyclerView;
     PatientDataModel patientDataModel;
     ArrayList<PatientDataModel> patientDataModels;
+    String status;
     int pos;
     boolean visibility = true;
 
-    public PatientRequestsAlphaViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels) {
+    public PatientRequestsAlphaViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels, String status) {
         super(itemView);
         this.patientDataModels = patientDataModels;
+        this.status = status;
 
         nameTextView = itemView.findViewById(R.id.seeking_help_name);
         donateTextView = itemView.findViewById(R.id.seeking_help_donate_btn);
@@ -82,7 +84,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
 
             progressBar.setVisibility(View.VISIBLE);
             RetroInterface retroInterface = RetroInstance.getRetro();
-            Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.requestsFromDonorsBeta(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone());
+            Call<ArrayList<UserDataModel>> incomingResponse = retroInterface.requestsFromDonorsBeta(patientDataModel.getName(),patientDataModel.getAge(),patientDataModel.getBloodGroup(),patientDataModel.getPhone(),status);
             //ToastCreator.toastCreator(view.getContext(), patientDataModel.getName()+patientDataModel.getAge()+patientDataModel.getBloodGroup()+patientDataModel.getPhone(), Toast.LENGTH_SHORT).show();
             incomingResponse.enqueue(new Callback<ArrayList<UserDataModel>>() {
                 @Override
@@ -95,7 +97,6 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
 
                         ArrayList<UserDataModel> initialModels = response.body();
                         for(UserDataModel initialDataModel : initialModels){
-
                             userDataModels.add(initialDataModel);
 
                         }

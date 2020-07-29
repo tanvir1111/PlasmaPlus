@@ -535,7 +535,7 @@ public class DonorResponseActivity extends AppCompatActivity {
         ArrayList<PatientDataModel> patientDataModels;
         DonorResponseAlphaAdapter donorResponseAlphaAdapter;
         patientDataModels = new ArrayList<>();
-        donorResponseAlphaAdapter = new DonorResponseAlphaAdapter(getApplicationContext(), patientDataModels);
+        donorResponseAlphaAdapter = new DonorResponseAlphaAdapter(getApplicationContext(), patientDataModels, status);
 
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<ArrayList<PatientDataModel>> ownPatients = retroInterface.responsesFromDonorsAlpha(LoggedInUserData.loggedInUserPhone, status);

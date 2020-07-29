@@ -118,7 +118,8 @@ public interface RetroInterface {
     @FormUrlEncoded
     @POST("requestsFromDonorsBeta.php")
     Call<ArrayList<UserDataModel>> requestsFromDonorsBeta(@Field("name") String name,@Field("age") String age,
-                                                       @Field("bloodGroup") String bloodgroup, @Field("phone") String phone);
+                                                       @Field("bloodGroup") String bloodgroup, @Field("phone") String phone,
+                                                          @Field("status") String status);
 
     @FormUrlEncoded
     @POST("responsesFromDonorsAlpha.php")
@@ -127,7 +128,8 @@ public interface RetroInterface {
     @FormUrlEncoded
     @POST("responsesFromDonorsBeta.php")
     Call<ArrayList<UserDataModel>> responsesFromDonorsBeta(@Field("name") String name,@Field("age") String age,
-                                                      @Field("bloodGroup") String bloodgroup, @Field("phone") String phone);
+                                                      @Field("bloodGroup") String bloodgroup, @Field("phone") String phone,
+                                                           @Field("status") String status);
 
     @FormUrlEncoded
     @POST("requestsFromPatients.php") Call<ArrayList<PatientDataModel>> requestsFromPatients(@Field("phone") String phone, @Field("status") String status);

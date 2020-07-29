@@ -47,6 +47,7 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
     public Context context;
     public PatientDataModel patientDataModel;
     public ArrayList<PatientDataModel> patientDataModels;
+    public String status;
 
     public static final String Language_pref="Language";
     public static final String Selected_language="Selected Language";
@@ -55,9 +56,10 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
     Bitmap insertBitmap;
 
 
-    public PatientRequestsAlphaAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
+    public PatientRequestsAlphaAdapter(Context context, ArrayList<PatientDataModel> patientDataModels, String status) {
         this.context = context;
         this.patientDataModels = patientDataModels;
+        this.status = status;
     }
 
     @NonNull
@@ -66,7 +68,7 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.seeking_help_child, parent, false);
-        PatientRequestsAlphaViewHolder patientRequestsAlphaViewHolder = new PatientRequestsAlphaViewHolder(view, patientDataModels);
+        PatientRequestsAlphaViewHolder patientRequestsAlphaViewHolder = new PatientRequestsAlphaViewHolder(view, patientDataModels, status);
         return patientRequestsAlphaViewHolder;
     }
 

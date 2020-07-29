@@ -532,7 +532,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
         ArrayList<PatientDataModel> patientDataModels;
         PatientRequestsAlphaAdapter patientRequestsAlphaAdapter;
         patientDataModels = new ArrayList<>();
-        patientRequestsAlphaAdapter = new PatientRequestsAlphaAdapter(getApplicationContext(), patientDataModels);
+        patientRequestsAlphaAdapter = new PatientRequestsAlphaAdapter(getApplicationContext(), patientDataModels, status);
 
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<ArrayList<PatientDataModel>> incomingResponse = retroInterface.requestsFromDonorsAlpha(LoggedInUserData.loggedInUserPhone, status);

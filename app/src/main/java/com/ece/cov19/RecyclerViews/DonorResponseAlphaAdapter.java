@@ -49,7 +49,7 @@ public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorRespons
     public Context context;
     public PatientDataModel patientDataModel;
     public ArrayList<PatientDataModel> patientDataModels;
-
+    public String status;
     public static final String Language_pref="Language";
     public static final String Selected_language="Selected Language";
     SharedPreferences langPrefs;
@@ -57,9 +57,10 @@ public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorRespons
     Bitmap insertBitmap;
     Uri imageUri;
 
-    public DonorResponseAlphaAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
+    public DonorResponseAlphaAdapter(Context context, ArrayList<PatientDataModel> patientDataModels , String status) {
         this.context = context;
         this.patientDataModels = patientDataModels;
+        this.status = status;
     }
 
     @NonNull
@@ -68,7 +69,7 @@ public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorRespons
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.seeking_help_child, parent, false);
-        DonorResponseAlphaViewHolder donorResponseAlphaViewHolder = new DonorResponseAlphaViewHolder(view, patientDataModels);
+        DonorResponseAlphaViewHolder donorResponseAlphaViewHolder = new DonorResponseAlphaViewHolder(view, patientDataModels, status);
 
         return donorResponseAlphaViewHolder;
     }
