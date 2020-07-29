@@ -339,6 +339,9 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
             registerPatient(name, age, gender, bloodGroup, hospital, division, district, date, need, phone);
         }
+        else {
+            submitBtn.setEnabled(true);
+        }
 
 
     }

@@ -151,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
 
         backCounter++;
         if(backCounter == 1) {
-         ;
+
             ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.press_one_more_time));
         }
         if(backCounter == 2) {
@@ -174,12 +174,14 @@ public class LoginActivity extends AppCompatActivity {
             phoneNumberEditText.setError(getResources().getString(R.string.login_activity_phone_number_edittext));
             phoneNumberEditText.requestFocus();
             emptyfield = "phone number";
+            signInbtn.setEnabled(true);
         }
 
         if (password.isEmpty()) {
             passwordEditText.setError(getResources().getString(R.string.login_activity_password_edittext));
             passwordEditText.requestFocus();
             emptyfield = "password";
+            signInbtn.setEnabled(true);
         }
 
         if (emptyfield.toLowerCase().equals("all ok")) {
