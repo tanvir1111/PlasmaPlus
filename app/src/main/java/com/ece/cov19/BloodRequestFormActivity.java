@@ -22,6 +22,7 @@ import android.widget.TextView;
 import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.Functions.ClickTimeChecker;
 import com.ece.cov19.Functions.FormFieldsFeatures;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
@@ -119,7 +120,9 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         selectDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(ClickTimeChecker.clickTimeChecker()) {
                 chooseDate();
+                }
             }
         });
 
@@ -192,7 +195,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View v) {
 
-
+        if(ClickTimeChecker.clickTimeChecker()) {
         switch (v.getId()) {
             case R.id.bld_req_for_myself:
                 forMyselfBtn.setBackgroundResource(R.drawable.button_style_white);
@@ -201,7 +204,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                 othersBtn.setBackgroundResource(R.drawable.button_style_colored);
                 othersBtn.setTextColor(getColor(R.color.textColorWhite));
                 othersBtn.setEnabled(true);
-                    fillAvailableInfo();
+                fillAvailableInfo();
                 break;
             case R.id.bld_req_others_btn:
                 othersBtn.setBackgroundResource(R.drawable.button_style_white);
@@ -212,7 +215,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                 forMyselfBtn.setEnabled(true);
                 genderFemale.setImageResource(R.drawable.female_icon);
                 genderMale.setImageResource(R.drawable.male_icon);
-                if(selectedBldGrp!=null) {
+                if (selectedBldGrp != null) {
                     selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_not_selected);
                     selectedBldGrp.setTextColor(ContextCompat.getColor(this, R.color.textColorGrey));
                 }
@@ -256,7 +259,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
             case R.id.bld_req_back_button:
                 finish();
                 break;
-
+        }
 
         }
     }

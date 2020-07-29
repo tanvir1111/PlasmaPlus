@@ -241,6 +241,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
                 break;
             case R.id.update_patient_request_btn:
+                updateBtn.setEnabled(false);
                 verifydata();
                 break;
             case R.id.update_patient_back_button:
@@ -319,32 +320,38 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_name) + " ";
             nameEditText.setError(getResources().getString(R.string.label_name)+" "+getResources().getString(R.string.is_required_txt));
+            updateBtn.setEnabled(true);
         }
         if (newHospital.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_hospital) + " ";
             hospitalEditText.setError(getResources().getString(R.string.label_hospital)+" "+getResources().getString(R.string.is_required_txt));
+            updateBtn.setEnabled(true);
         }
         if (newAge.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_age_1) + " ";
+            updateBtn.setEnabled(true);
             ageEditText.setError(getResources().getString(R.string.label_age_1)+" "+getResources().getString(R.string.is_required_txt));
         }
         if (newDivision.isEmpty()) {
             emptyfieldChecker = false;
+            updateBtn.setEnabled(true);
             emptyfield += getResources().getString(R.string.label_division) + " ";
         }
         if (newDistrict.isEmpty()) {
             emptyfieldChecker = false;
+            updateBtn.setEnabled(true);
             emptyfield += getResources().getString(R.string.label_district) + " ";
         }
 
-        if(emptyfieldChecker == true){
-            updatePatient(name, age, bloodGroup, phone, newName, newAge, newGender, newBloodGroup, newHospital, newDivision, newDistrict, newDate, newNeed);
+        if(emptyfieldChecker){
+            updateAlertDialog();
 
         }
         else{
             emptyfield += getResources().getString(R.string.is_required_txt);
+            updateBtn.setEnabled(true);
             ToastCreator.toastCreatorRed(this, emptyfield);
         }
 
@@ -377,8 +384,24 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         sendingData.enqueue(new Callback<PatientDataModel>() {
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
+                updateBtn.setEnabled(true);
                 if (response.body().getServerMsg().toLowerCase().equals("success")) {
-                    updateAlertDialog();
+
+                    Intent intent = new Intent(UpdatePatientProfileActivity.this, ViewPatientProfileActivity.class);
+                    intent.putExtra("name",newName);
+                    intent.putExtra("age",newAge);
+                    intent.putExtra("gender",newGender);
+                    intent.putExtra("blood_group",newBloodGroup);
+                    intent.putExtra("hospital",newHospital);
+                    intent.putExtra("division",newDivision);
+                    intent.putExtra("district",newDistrict);
+                    intent.putExtra("date",newDate);
+                    intent.putExtra("need",newNeed);
+                    intent.putExtra("phone",phone);
+                    intent.putExtra("activity","UpdatePatientProfileActivity");
+                    ToastCreator.toastCreatorGreen(UpdatePatientProfileActivity.this, getResources().getString(R.string.update_patient_activity_update_successful));
+                    startActivity(intent);
+                    finish();
 
                 } else {
                     ToastCreator.toastCreatorRed(UpdatePatientProfileActivity.this, getResources().getString(R.string.failed_to_update_error));
@@ -398,32 +421,22 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 private void updateAlertDialog(){
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdatePatientProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.confirm_update_txt));
+    builder.setCancelable(false);
         builder.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                Intent intent = new Intent(UpdatePatientProfileActivity.this, ViewPatientProfileActivity.class);
-                intent.putExtra("name",newName);
-                intent.putExtra("age",newAge);
-                intent.putExtra("gender",newGender);
-                intent.putExtra("blood_group",newBloodGroup);
-                intent.putExtra("hospital",newHospital);
-                intent.putExtra("division",newDivision);
-                intent.putExtra("district",newDistrict);
-                intent.putExtra("date",newDate);
-                intent.putExtra("need",newNeed);
-                intent.putExtra("phone",phone);
-                intent.putExtra("activity","UpdatePatientProfileActivity");
-                ToastCreator.toastCreatorGreen(UpdatePatientProfileActivity.this, getResources().getString(R.string.update_patient_activity_update_successful));
-                startActivity(intent);
-                finish();
+                updatePatient(name, age, bloodGroup, phone, newName, newAge, newGender, newBloodGroup, newHospital, newDivision, newDistrict, newDate, newNeed);
+
             }
         })
                 .setNegativeButton(getString(R.string.cancel), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         dialog.dismiss();
+                        updateBtn.setEnabled(true);
                     }
                 });
 
         AlertDialog alertDialog=builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
         alertDialog.show();
 
     }

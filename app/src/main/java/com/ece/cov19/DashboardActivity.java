@@ -37,6 +37,7 @@ import com.ece.cov19.DataModels.DashBoardNumberModel;
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.UserDataModel;
+import com.ece.cov19.Functions.ClickTimeChecker;
 import com.ece.cov19.Functions.LoginUser;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
@@ -551,6 +552,7 @@ if(LoginUser.checkLoginStat().equals("failed")){
     private void languageAlertDialog(String lang){
         AlertDialog.Builder builder = new AlertDialog.Builder(DashboardActivity.this);
         builder.setMessage(getResources().getString(R.string.are_you_sure));
+        builder.setCancelable(false);
         builder.setPositiveButton(getResources().getString(R.string.change_language), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                setLocale(lang);
@@ -636,6 +638,7 @@ if(LoginUser.checkLoginStat().equals("failed")){
 
     @Override
     public void onClick(View view) {
+        if(ClickTimeChecker.clickTimeChecker()) {
         switch(view.getId()){
             case R.id.dashboard_drawer_btn:
                 drawerLayout.openDrawer(Gravity.LEFT);
@@ -827,6 +830,7 @@ if(LoginUser.checkLoginStat().equals("failed")){
                 });
 
         }
+    }
     }
 
     private Bitmap scaleImage(Bitmap bitmap) {

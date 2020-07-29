@@ -137,6 +137,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                     if (radioButton.isChecked()) {
 
                         final AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);
+                        builder.setCancelable(false);
 
                         LayoutInflater inflater = LayoutInflater.from(RegistrationActivity.this);
                         View plasmaDialog = inflater.inflate(R.layout.plasma_dialog_new, null);

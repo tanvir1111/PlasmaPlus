@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.Functions.ClickTimeChecker;
 import com.ece.cov19.Functions.LoginUser;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RecyclerViews.DonorRequestsAdapter;
@@ -89,118 +90,121 @@ public class DonorRequestsActivity extends AppCompatActivity {
         allBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(ClickTimeChecker.clickTimeChecker()) {
 
-                status="any";
-                requestTypeText=getResources().getString(R.string.all_requests);
-                requestTypeTextView.setText(requestTypeText);
-                allBtn.setBackgroundResource(R.drawable.tabstyleselected);
-                allBtn.setTextColor(getColor(R.color.textColorDark));
-                allBtn.setEnabled(false);
-                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(false);
-                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(false);
-                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(false);
-                donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(false);
-                notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(false);
-                getRequests(status);
-
+                    status = "any";
+                    requestTypeText = getResources().getString(R.string.all_requests);
+                    requestTypeTextView.setText(requestTypeText);
+                    allBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                    allBtn.setTextColor(getColor(R.color.textColorDark));
+                    allBtn.setEnabled(false);
+                    acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    acceptedBtn.setEnabled(false);
+                    declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    declinedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    declinedBtn.setEnabled(false);
+                    pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                    pendingbtn.setEnabled(false);
+                    donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    donatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    donatedBtn.setEnabled(false);
+                    notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    notDonatedBtn.setEnabled(false);
+                    getRequests(status);
+                }
             }
         });
 
         pendingbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                status="Pending";
-                requestTypeText=getResources().getString(R.string.donor_requests_pending_requests);
-                requestTypeTextView.setText(requestTypeText);
-                pendingbtn.setBackgroundResource(R.drawable.tabstyleselected);
-                pendingbtn.setTextColor(getColor(R.color.textColorDark));
-                pendingbtn.setEnabled(false);
-                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(false);
-                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(false);
-                allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(false);
-                donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(false);
-                notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(false);
-                getRequests(status);
-
+                if(ClickTimeChecker.clickTimeChecker()) {
+                    status = "Pending";
+                    requestTypeText = getResources().getString(R.string.donor_requests_pending_requests);
+                    requestTypeTextView.setText(requestTypeText);
+                    pendingbtn.setBackgroundResource(R.drawable.tabstyleselected);
+                    pendingbtn.setTextColor(getColor(R.color.textColorDark));
+                    pendingbtn.setEnabled(false);
+                    acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    acceptedBtn.setEnabled(false);
+                    declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    declinedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    declinedBtn.setEnabled(false);
+                    allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    allBtn.setTextColor(getColor(R.color.textColorGrey));
+                    allBtn.setEnabled(false);
+                    donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    donatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    donatedBtn.setEnabled(false);
+                    notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    notDonatedBtn.setEnabled(false);
+                    getRequests(status);
+                }
             }
         });
 
         acceptedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requestTypeText=getResources().getString(R.string.accepted_requests);
-                status="Accepted";
-                requestTypeTextView.setText(requestTypeText);
-                acceptedBtn.setBackgroundResource(R.drawable.tabstyleselected);
-                acceptedBtn.setTextColor(getColor(R.color.textColorDark));
-                acceptedBtn.setEnabled(false);
-                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(false);
-                declinedBtn.setEnabled(false);
-                allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(false);
-                donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(false);
-                notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(false);
-                getRequests(status);
-
+                if(ClickTimeChecker.clickTimeChecker()) {
+                    requestTypeText = getResources().getString(R.string.accepted_requests);
+                    status = "Accepted";
+                    requestTypeTextView.setText(requestTypeText);
+                    acceptedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                    acceptedBtn.setTextColor(getColor(R.color.textColorDark));
+                    acceptedBtn.setEnabled(false);
+                    pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                    declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    declinedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    pendingbtn.setEnabled(false);
+                    declinedBtn.setEnabled(false);
+                    allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    allBtn.setTextColor(getColor(R.color.textColorGrey));
+                    allBtn.setEnabled(false);
+                    donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    donatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    donatedBtn.setEnabled(false);
+                    notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    notDonatedBtn.setEnabled(false);
+                    getRequests(status);
+                }
 
             }
         });
         declinedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requestTypeText=getResources().getString(R.string.declined_requests);
-                status="Declined";
-                requestTypeTextView.setText(requestTypeText);
-                declinedBtn.setBackgroundResource(R.drawable.tabstyleselected);
-                declinedBtn.setTextColor(getColor(R.color.textColorDark));
-                declinedBtn.setEnabled(false);
-                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(false);
-                acceptedBtn.setEnabled(false);
-                allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(false);
-                donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(false);
-                notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(false);
-                getRequests(status);
-
+                if(ClickTimeChecker.clickTimeChecker()) {
+                    requestTypeText = getResources().getString(R.string.declined_requests);
+                    status = "Declined";
+                    requestTypeTextView.setText(requestTypeText);
+                    declinedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                    declinedBtn.setTextColor(getColor(R.color.textColorDark));
+                    declinedBtn.setEnabled(false);
+                    pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                    acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    pendingbtn.setEnabled(false);
+                    acceptedBtn.setEnabled(false);
+                    allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    allBtn.setTextColor(getColor(R.color.textColorGrey));
+                    allBtn.setEnabled(false);
+                    donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    donatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    donatedBtn.setEnabled(false);
+                    notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    notDonatedBtn.setEnabled(false);
+                    getRequests(status);
+                }
 
             }
         });
@@ -208,59 +212,59 @@ public class DonorRequestsActivity extends AppCompatActivity {
         donatedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                status="Donated";
-                requestTypeText=getResources().getString(R.string.donated_requests);
-                requestTypeTextView.setText(requestTypeText);
-                donatedBtn.setBackgroundResource(R.drawable.tabstyleselected);
-                donatedBtn.setTextColor(getColor(R.color.textColorDark));
-                donatedBtn.setEnabled(false);
-                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(false);
-                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(false);
-                allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(false);
-                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(false);
-                notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(false);
-                getRequests(status);
-
+                if(ClickTimeChecker.clickTimeChecker()) {
+                    status = "Donated";
+                    requestTypeText = getResources().getString(R.string.donated_requests);
+                    requestTypeTextView.setText(requestTypeText);
+                    donatedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                    donatedBtn.setTextColor(getColor(R.color.textColorDark));
+                    donatedBtn.setEnabled(false);
+                    acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    acceptedBtn.setEnabled(false);
+                    declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    declinedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    declinedBtn.setEnabled(false);
+                    allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    allBtn.setTextColor(getColor(R.color.textColorGrey));
+                    allBtn.setEnabled(false);
+                    pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                    pendingbtn.setEnabled(false);
+                    notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    notDonatedBtn.setEnabled(false);
+                    getRequests(status);
+                }
             }
         });
         notDonatedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                status="Not Donated";
-                requestTypeText=getResources().getString(R.string.not_donated_requests);
-                requestTypeTextView.setText(requestTypeText);
-                notDonatedBtn.setBackgroundResource(R.drawable.tabstyleselected);
-                notDonatedBtn.setTextColor(getColor(R.color.textColorDark));
-                notDonatedBtn.setEnabled(false);
-                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(false);
-                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(false);
-                allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(false);
-                donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(false);
-                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(false);
-                getRequests(status);
-
+                if(ClickTimeChecker.clickTimeChecker()) {
+                    status = "Not Donated";
+                    requestTypeText = getResources().getString(R.string.not_donated_requests);
+                    requestTypeTextView.setText(requestTypeText);
+                    notDonatedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                    notDonatedBtn.setTextColor(getColor(R.color.textColorDark));
+                    notDonatedBtn.setEnabled(false);
+                    acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    acceptedBtn.setEnabled(false);
+                    declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    declinedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    declinedBtn.setEnabled(false);
+                    allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    allBtn.setTextColor(getColor(R.color.textColorGrey));
+                    allBtn.setEnabled(false);
+                    donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    donatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    donatedBtn.setEnabled(false);
+                    pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                    pendingbtn.setEnabled(false);
+                    getRequests(status);
+                }
             }
         });
 
@@ -329,37 +333,37 @@ public class DonorRequestsActivity extends AppCompatActivity {
         allBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                status="any";
-                requestTypeText=getResources().getString(R.string.all_requests);
-                requestTypeTextView.setText(requestTypeText);
-                allBtn.setBackgroundResource(R.drawable.tabstyleselected);
-                allBtn.setTextColor(getColor(R.color.textColorDark));
-                allBtn.setEnabled(false);
-                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(false);
-                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(false);
-                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(false);
-                donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(false);
-                notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(false);
-                getRequests(status);
-
+                if(ClickTimeChecker.clickTimeChecker()) {
+                    status = "any";
+                    requestTypeText = getResources().getString(R.string.all_requests);
+                    requestTypeTextView.setText(requestTypeText);
+                    allBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                    allBtn.setTextColor(getColor(R.color.textColorDark));
+                    allBtn.setEnabled(false);
+                    acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    acceptedBtn.setEnabled(false);
+                    declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    declinedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    declinedBtn.setEnabled(false);
+                    pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                    pendingbtn.setEnabled(false);
+                    donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    donatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    donatedBtn.setEnabled(false);
+                    notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    notDonatedBtn.setEnabled(false);
+                    getRequests(status);
+                }
             }
         });
 
         pendingbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(ClickTimeChecker.clickTimeChecker()) {
                 status="Pending";
                 requestTypeText=getResources().getString(R.string.donor_requests_pending_requests);
                 requestTypeTextView.setText(requestTypeText);
@@ -383,63 +387,66 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 notDonatedBtn.setEnabled(false);
                 getRequests(status);
 
-            }
+            }}
         });
 
         acceptedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                status="Accepted";
-                requestTypeText=getResources().getString(R.string.accepted_requests);
-                requestTypeTextView.setText(requestTypeText);
-                acceptedBtn.setBackgroundResource(R.drawable.tabstyleselected);
-                acceptedBtn.setTextColor(getColor(R.color.textColorDark));
-                acceptedBtn.setEnabled(false);
-                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(false);
-                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(false);
-                allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(false);
-                donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(false);
-                notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(false);
-                getRequests(status);
-
+                if(ClickTimeChecker.clickTimeChecker()) {
+                    status = "Accepted";
+                    requestTypeText = getResources().getString(R.string.accepted_requests);
+                    requestTypeTextView.setText(requestTypeText);
+                    acceptedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                    acceptedBtn.setTextColor(getColor(R.color.textColorDark));
+                    acceptedBtn.setEnabled(false);
+                    pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                    pendingbtn.setEnabled(false);
+                    declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    declinedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    declinedBtn.setEnabled(false);
+                    allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    allBtn.setTextColor(getColor(R.color.textColorGrey));
+                    allBtn.setEnabled(false);
+                    donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    donatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    donatedBtn.setEnabled(false);
+                    notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    notDonatedBtn.setEnabled(false);
+                    getRequests(status);
+                }
 
             }
         });
         declinedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                requestTypeText=getResources().getString(R.string.declined_requests);
-                status="Declined";
-                requestTypeTextView.setText(requestTypeText);
-                declinedBtn.setBackgroundResource(R.drawable.tabstyleselected);
-                declinedBtn.setTextColor(getColor(R.color.textColorDark));
-                declinedBtn.setEnabled(false);
-                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(false);
-                acceptedBtn.setEnabled(false);
-                allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(false);
-                donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                donatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                donatedBtn.setEnabled(false);
-                notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(false);
-                getRequests(status);
+                if(ClickTimeChecker.clickTimeChecker()) {
+                    requestTypeText = getResources().getString(R.string.declined_requests);
+                    status = "Declined";
+                    requestTypeTextView.setText(requestTypeText);
+                    declinedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                    declinedBtn.setTextColor(getColor(R.color.textColorDark));
+                    declinedBtn.setEnabled(false);
+                    pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                    acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    pendingbtn.setEnabled(false);
+                    acceptedBtn.setEnabled(false);
+                    allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    allBtn.setTextColor(getColor(R.color.textColorGrey));
+                    allBtn.setEnabled(false);
+                    donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    donatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    donatedBtn.setEnabled(false);
+                    notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    notDonatedBtn.setEnabled(false);
+                    getRequests(status);
+                }
 
 
             }
@@ -448,63 +455,66 @@ public class DonorRequestsActivity extends AppCompatActivity {
         donatedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(ClickTimeChecker.clickTimeChecker()) {
 
-                status="Donated";
-                requestTypeText=getResources().getString(R.string.donated_requests);
-                requestTypeTextView.setText(requestTypeText);
-                donatedBtn.setBackgroundResource(R.drawable.tabstyleselected);
-                donatedBtn.setTextColor(getColor(R.color.textColorDark));
-                donatedBtn.setEnabled(false);
-                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                acceptedBtn.setEnabled(false);
-                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setEnabled(false);
-                allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                allBtn.setTextColor(getColor(R.color.textColorGrey));
-                allBtn.setEnabled(false);
-                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(false);
-                notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
-                notDonatedBtn.setEnabled(false);
-                getRequests(status);
+                    status = "Donated";
+                    requestTypeText = getResources().getString(R.string.donated_requests);
+                    requestTypeTextView.setText(requestTypeText);
+                    donatedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                    donatedBtn.setTextColor(getColor(R.color.textColorDark));
+                    donatedBtn.setEnabled(false);
+                    acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    acceptedBtn.setEnabled(false);
+                    declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    declinedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    declinedBtn.setEnabled(false);
+                    allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    allBtn.setTextColor(getColor(R.color.textColorGrey));
+                    allBtn.setEnabled(false);
+                    pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                    pendingbtn.setEnabled(false);
+                    notDonatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    notDonatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    notDonatedBtn.setEnabled(false);
+                    getRequests(status);
+                }
 
             }
         });
         notDonatedBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(ClickTimeChecker.clickTimeChecker()) {
+                    status = "Not Donated";
+                    requestTypeText = getResources().getString(R.string.not_donated_requests);
+                    requestTypeTextView.setText(requestTypeText);
+                    notDonatedBtn.setBackgroundResource(R.drawable.tabstyleselected);
+                    notDonatedBtn.setTextColor(getColor(R.color.textColorDark));
 
-                status="Not Donated";
-                requestTypeText=getResources().getString(R.string.not_donated_requests);
-                requestTypeTextView.setText(requestTypeText);
-                notDonatedBtn.setBackgroundResource(R.drawable.tabstyleselected);
-                notDonatedBtn.setTextColor(getColor(R.color.textColorDark));
+                    acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    declinedBtn.setTextColor(getColor(R.color.textColorGrey));
 
-                acceptedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                acceptedBtn.setTextColor(getColor(R.color.textColorGrey));
-                declinedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                declinedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    allBtn.setTextColor(getColor(R.color.textColorGrey));
 
-                allBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                allBtn.setTextColor(getColor(R.color.textColorGrey));
+                    donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    donatedBtn.setTextColor(getColor(R.color.textColorGrey));
 
-                donatedBtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                donatedBtn.setTextColor(getColor(R.color.textColorGrey));
+                    pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
+                    pendingbtn.setTextColor(getColor(R.color.textColorGrey));
+                    pendingbtn.setEnabled(false);
+                    acceptedBtn.setEnabled(false);
+                    notDonatedBtn.setEnabled(false);
+                    declinedBtn.setEnabled(false);
+                    allBtn.setEnabled(false);
+                    donatedBtn.setEnabled(false);
 
-                pendingbtn.setBackgroundResource(R.drawable.tabstyle_not_selected);
-                pendingbtn.setTextColor(getColor(R.color.textColorGrey));
-                pendingbtn.setEnabled(false);
-                acceptedBtn.setEnabled(false);
-                notDonatedBtn.setEnabled(false);
-                declinedBtn.setEnabled(false);
-                allBtn.setEnabled(false);
-                donatedBtn.setEnabled(false);
-
-                getRequests(status);
+                    getRequests(status);
+                }
 
             }
         });

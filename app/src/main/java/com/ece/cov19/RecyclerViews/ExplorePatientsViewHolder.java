@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.Functions.ClickTimeChecker;
 import com.ece.cov19.R;
 import com.ece.cov19.ViewPatientProfileActivity;
 
@@ -43,30 +44,32 @@ public class ExplorePatientsViewHolder extends RecyclerView.ViewHolder implement
 
     @Override
     public void onClick(View view) {
-        pos = getAdapterPosition();
-        Context c = view.getContext();
+        if (ClickTimeChecker.clickTimeChecker()) {
+            pos = getAdapterPosition();
+            Context c = view.getContext();
 
-        patientDataModel = patientDataModels.get(pos);
-        FindPatientData.findPatientPosition = pos;
-        FindPatientData.findPatientBloodGroup = patientDataModels.get(pos).getBloodGroup();
-        FindPatientData.findPatientName=patientDataModels.get(pos).getName();
-        FindPatientData.findPatientAge=patientDataModels.get(pos).getAge();
-        FindPatientData.findPatientPhone=patientDataModels.get(pos).getPhone();
-        Intent intent = new Intent(view.getContext(), ViewPatientProfileActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            patientDataModel = patientDataModels.get(pos);
+            FindPatientData.findPatientPosition = pos;
+            FindPatientData.findPatientBloodGroup = patientDataModels.get(pos).getBloodGroup();
+            FindPatientData.findPatientName = patientDataModels.get(pos).getName();
+            FindPatientData.findPatientAge = patientDataModels.get(pos).getAge();
+            FindPatientData.findPatientPhone = patientDataModels.get(pos).getPhone();
+            Intent intent = new Intent(view.getContext(), ViewPatientProfileActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
-        intent.putExtra("name",patientDataModel.getName());
-        intent.putExtra("phone",patientDataModel.getPhone());
-        intent.putExtra("blood_group",patientDataModel.getBloodGroup());
-        intent.putExtra("hospital",patientDataModel.getHospital());
-        intent.putExtra("age",patientDataModel.getAge());
-        intent.putExtra("need",patientDataModel.getNeed());
-        intent.putExtra("gender",patientDataModel.getGender());
-        intent.putExtra("date",patientDataModel.getDate());
-        intent.putExtra("district",patientDataModel.getDistrict());
-        intent.putExtra("division",patientDataModel.getDivision());
-        intent.putExtra("activity","ExplorePatientsActivity");
+            intent.putExtra("name", patientDataModel.getName());
+            intent.putExtra("phone", patientDataModel.getPhone());
+            intent.putExtra("blood_group", patientDataModel.getBloodGroup());
+            intent.putExtra("hospital", patientDataModel.getHospital());
+            intent.putExtra("age", patientDataModel.getAge());
+            intent.putExtra("need", patientDataModel.getNeed());
+            intent.putExtra("gender", patientDataModel.getGender());
+            intent.putExtra("date", patientDataModel.getDate());
+            intent.putExtra("district", patientDataModel.getDistrict());
+            intent.putExtra("division", patientDataModel.getDivision());
+            intent.putExtra("activity", "ExplorePatientsActivity");
 
-        c.startActivity(intent);
+            c.startActivity(intent);
+        }
     }
 }

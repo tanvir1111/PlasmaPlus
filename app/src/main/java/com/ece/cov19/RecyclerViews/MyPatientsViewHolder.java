@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.PatientDataModel;
+import com.ece.cov19.Functions.ClickTimeChecker;
 import com.ece.cov19.R;
 import com.ece.cov19.ViewPatientProfileActivity;
 
@@ -44,7 +45,7 @@ public class MyPatientsViewHolder extends RecyclerView.ViewHolder implements Vie
 
     @Override
     public void onClick(View view) {
-
+        if(ClickTimeChecker.clickTimeChecker()) {
         pos = getAdapterPosition();
         Context c = view.getContext();
 
@@ -65,5 +66,6 @@ public class MyPatientsViewHolder extends RecyclerView.ViewHolder implements Vie
         intent.putExtra("activity","MyPatientsActivity");
 
         c.startActivity(intent);
+    }
     }
 }
