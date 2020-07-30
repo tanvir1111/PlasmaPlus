@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Medicare</string>
+    <string name="app_name">Plasma+</string>
     <string name="fcm_token">FCM Token: %s</string>
 
-    <string name="navheader_title">Medicare</string>
+    <string name="navheader_title">PLASMA+</string>
     <string name="navheadersubtitle">Plasma and Blood Banking App</string>
     <string name="navheaderdesc">Navigation Header</string>
     <string name="profile">View Profile</string>
@@ -93,7 +93,7 @@
 
 
     <string name="dashboard_header">Dashboard</string>
-    <string name="dashboard_welcome_to">Welcome to Medicare!</string>
+    <string name="dashboard_welcome_to">Welcome to Plasma+!</string>
 
 
     <string name="dashboard_text_explore">Explore</string>

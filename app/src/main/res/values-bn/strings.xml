@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">Medicare</string>
+    <string name="app_name">Plasma+</string>
     <string name="fcm_token">FCM Token: %s</string>
 
-    <string name="navheader_title">মেডিকেয়ার</string>
+    <string name="navheader_title">প্লাজমা+</string>
     <string name="navheadersubtitle">প্লাজমা এন্ড ব্লাড ব্যাংকিং অ্যাপ</string>
     <string name="navheaderdesc">নেভিগেশন হেডার</string>
     <string name="profile">প্রোফাইল</string>
@@ -94,7 +94,7 @@
 
 
     <string name="dashboard_header">মূল পাতা</string>
-    <string name="dashboard_welcome_to">মেডিকেয়ারে স্বাগতম!</string>
+    <string name="dashboard_welcome_to">প্লাজমা+ এ স্বাগতম!</string>
 
 
 
