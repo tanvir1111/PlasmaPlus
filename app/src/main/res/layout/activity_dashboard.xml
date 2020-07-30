@@ -172,7 +172,7 @@
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_exploreC"
                                     android:textColor="#673AB7"
-                                    android:textSize="18dp"
+                                    android:textSize="14dp"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_text_exploreC"
                                     app:layout_constraintTop_toTopOf="parent" />
 

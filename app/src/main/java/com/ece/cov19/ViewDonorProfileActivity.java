@@ -45,7 +45,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
     private TextView nameTextView, phoneTextView, bloodGroupTextView, addressTextView, ageTextView, donorInfoTextView, sendRequestSuggestion;
     private ImageView genderImageView;
-    private Button askForHelpBtn, acceptBtn, declineBtn;
+    private Button askForHelpBtn, acceptBtn, declineBtn, confirmBtn;
     private ImageView backbtn;
     private ProgressBar progressBar;
     String name, age, bloodGroup, donorphone, donorInfo, address,requestedBy;
@@ -69,6 +69,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
         acceptBtn = findViewById(R.id.donor_profile_accept_button);
         declineBtn = findViewById(R.id.donor_profile_decline_button);
         backbtn = findViewById(R.id.donor_profile_back_button);
+        confirmBtn = findViewById(R.id.donor_profile_confirm_donation_button);
         sendRequestSuggestion = findViewById(R.id.donor_profile_send_request_suggestion);
         progressBar = findViewById(R.id.donor_profile_progressBar);
 
@@ -169,6 +170,18 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                 }
 
             }
+        });
+
+        confirmBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (requestedBy.equals("donor")) {
+                    requestOperationAlertDialog("confirm",donorphone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_3), "PatientRequestsActivity","donor");
+                }
+                else if(requestedBy.equals("patient")){
+                    requestOperationAlertDialog("confirm",donorphone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_3), "DonorResponseActivity","patient");
+
+                }            }
         });
 
     }
