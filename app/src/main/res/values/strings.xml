@@ -263,6 +263,7 @@
     <string name="no_request">No Request</string>
     <string name="hide_request">Hide Requests</string>
     <string name="no_requests_found">No Requests Found</string>
+    <string name="no_response_found">No Response Found</string>
     <string name="view_requests">View Requests</string>
     <string name="select_patient">Select Patient</string>
     <string name="accepted_requests">Accepted Requests</string>

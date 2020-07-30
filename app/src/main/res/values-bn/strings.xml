@@ -583,7 +583,9 @@
     <string name="hide_response">প্রতিক্রিয়া লুকান</string>
     <string name="no_request">অনুরোধ নেই</string>
     <string name="hide_request">অনুরোধ লুকান</string>
-    <string name="no_requests_found">কোনো অনুরোধ পাওয়া যায়নি</string>
+    <string name="no_requests_found">অনুরোধ নেই</string>
+    <string name="no_response_found">প্রতিক্রিয়া নেই</string>
+
     <string name="view_requests">অনুরোধ দেখুন</string>
     <string name="select_patient">গ্রাহক নির্বাচন করুন</string>
     <string name="accepted_requests">সম্মত অনুরোধ</string>

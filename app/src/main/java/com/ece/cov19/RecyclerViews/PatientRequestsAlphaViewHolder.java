@@ -110,7 +110,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
                     } else {
 
                         progressBar.setVisibility(View.GONE);
-                        donateTextView.setText(R.string.no_requests_found);
+                        donateTextView.setText(R.string.no_response_found);
                     }
 
 
