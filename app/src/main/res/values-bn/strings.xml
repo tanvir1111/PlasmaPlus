@@ -615,7 +615,7 @@
     <string name="dashboard_text_exploreD">worldometers.info</string>
     <string name="dashboard_text_exploreE">covid19.who.int</string>
     <string name="dashboard_text_exploreF">10655</string>
-
+    <string name="cancel_donation">অনুরোধ বাতিল করুন</string>
 
 
 </resources>

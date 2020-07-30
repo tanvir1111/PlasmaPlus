@@ -37,8 +37,10 @@ import com.theartofdev.edmodo.cropper.CropImageView;
 import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -61,11 +63,12 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     private TextView nameTextView, phoneTextView, bloodGroupTextView, hospitalTextView, ageTextView, needTextView,dateTextView;
     private ImageView genderImageView,backbtn;
     private ProgressBar progressBar;
-    Button donateToHelpButton, updateButton, deleteButton, donatedButton, notDonatedButton;
+    Button donateToHelpButton, updateButton, deleteButton, donatedButton, notDonatedButton, cancelButton;
     String name, age, gender, bloodGroup, hospital, division, district, date, need, phone,requestedBy;
     Bitmap insertBitmap;
     Uri imageUri;
-    String formattedDate;
+    String formattedDate, formattedDateNext;
+    Date varDate, varFormattedDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,6 +88,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         donateToHelpButton = findViewById(R.id.patient_profile_donate_button);
         donatedButton = findViewById(R.id.patient_profile_donated_button);
         notDonatedButton = findViewById(R.id.patient_profile_not_donated_button);
+        cancelButton = findViewById(R.id.patient_profile_cancel_button);
         dateTextView=findViewById(R.id.patient_profile_date);
         progressBar = findViewById(R.id.patient_profile_progressBar);
 
@@ -136,6 +140,15 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         Calendar c = Calendar.getInstance();
         SimpleDateFormat df = new SimpleDateFormat("dd-MM-yyyy");
         formattedDate = df.format(c.getTime());
+        c.add(Calendar.DATE, -1);
+        formattedDateNext = df.format(c.getTime());
+
+        try {
+            varDate = df.parse(date);
+            varFormattedDate = df.parse(formattedDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -241,6 +254,19 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     }
                 }
 
+            }
+        });
+
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (requestedBy.equals("donor")) {
+                    requestOperationAlertDialog("not_donate",phone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_3), "PatientRequestsActivity","donor");
+                }
+                else if(requestedBy.equals("patient")){
+                    requestOperationAlertDialog("not_donate",phone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_3), "DonorResponseActivity","patient");
+
+                }
             }
         });
 
@@ -622,9 +648,13 @@ alertDialog.setCanceledOnTouchOutside(false);
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);
                             deleteButton.setText(getResources().getString(R.string.send_sms));
-                            if(formattedDate.equals(date)) {
+                            if(formattedDate.equals(date) || formattedDateNext.equals(date)) {
                                 donatedButton.setVisibility(View.VISIBLE);
                                 notDonatedButton.setVisibility(View.VISIBLE);
+                            }
+                            if(varFormattedDate.before(varDate)) {
+                                cancelButton.setVisibility(View.VISIBLE);
+                                cancelButton.setText(getResources().getString(R.string.cancel_donation));
                             }
                             phoneTextView.setText(phone);
                         }
@@ -637,9 +667,13 @@ alertDialog.setCanceledOnTouchOutside(false);
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);
                             deleteButton.setText(getResources().getString(R.string.send_sms));
-                            if(formattedDate.equals(date)) {
+                            if(formattedDate.equals(date) || formattedDateNext.equals(date)) {
                                 donatedButton.setVisibility(View.VISIBLE);
                                 notDonatedButton.setVisibility(View.VISIBLE);
+                            }
+                            if(varFormattedDate.before(varDate)) {
+                                cancelButton.setVisibility(View.VISIBLE);
+                                cancelButton.setText(getResources().getString(R.string.cancel_donation));
                             }
                             phoneTextView.setText(phone);
                         }

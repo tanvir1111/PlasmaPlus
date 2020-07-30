@@ -313,7 +313,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toStartOf="@+id/patient_profile_delete_button"
                 app:layout_constraintStart_toStartOf="@+id/cardView"
-                app:layout_constraintTop_toBottomOf="@+id/patient_profile_donate_button" />
+                app:layout_constraintTop_toBottomOf="@+id/patient_profile_cancel_button" />
 
             <Button
                 android:id="@+id/patient_profile_delete_button"
@@ -333,7 +333,7 @@
                 android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="@+id/cardView"
                 app:layout_constraintStart_toEndOf="@+id/patient_profile_update_button"
-                app:layout_constraintTop_toBottomOf="@+id/patient_profile_donate_button" />
+                app:layout_constraintTop_toBottomOf="@+id/patient_profile_cancel_button" />
 
             <Button
                 android:id="@+id/patient_profile_donate_button"
@@ -374,6 +374,26 @@
                 app:layout_constraintEnd_toEndOf="@+id/patient_profile_update_button"
                 app:layout_constraintStart_toStartOf="@+id/patient_profile_update_button"
                 app:layout_constraintTop_toBottomOf="@+id/patient_profile_update_button" />
+
+            <Button
+                android:id="@+id/patient_profile_cancel_button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_style_orange"
+                android:elevation="10dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/cancel_donation"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="10sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/patient_profile_donate_button"
+                app:layout_constraintStart_toStartOf="@+id/patient_profile_donate_button"
+                app:layout_constraintTop_toBottomOf="@+id/patient_profile_donate_button" />
 
             <Button
                 android:id="@+id/patient_profile_not_donated_button"
