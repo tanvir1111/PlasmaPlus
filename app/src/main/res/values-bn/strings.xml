@@ -75,6 +75,9 @@
     <string name="pending">অমীমাংসিত</string>
     <string name="donated">দান সম্পন্ন হয়েছে</string>
     <string name="not_donated">দান সম্পন্ন হয়নি</string>
+    <string name="confirmed">দান নিশ্চিত হয়েছে</string>
+    <string name="not_confirmed">দান নিশ্চিত হয়নি</string>
+    <string name="canceled">দান বাতিল হয়েছে</string>
     <string name="delete_profile">প্রোফাইল মুছে ফেলুন</string>
     <string name="donate_to_help">সাহায্য করুন</string>
     <string name="ok_txt">ঠিক আছে</string>
@@ -302,6 +305,10 @@
     <string name="donor_profile_activity_notification_accepted_2">has accepted your request. Check Patient Responses</string>
     <string name="donor_profile_activity_notification_declined_1">Request declined from Patient!</string>
     <string name="donor_profile_activity_notification_declined_2">has declined your request. Check Patient Responses</string>
+    <string name="donor_profile_activity_notification_confirmed_1">Donation confirmed by Patient!</string>
+    <string name="donor_profile_activity_notification_confirmed_2">has confirmed your donation. Check Patient Responses</string>
+    <string name="donor_profile_activity_notification_not_confirmed_1">Donation declined by Patient!</string>
+    <string name="donor_profile_activity_notification_not_confirmed_2">has declined your donation. Check Patient Responses</string>
     <string name="donor_profile_activity_notification_incoming_1">Incoming Request from Patient!</string>
     <string name="donor_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Patients</string>
     <string name="donor_profile_activity_image_failed">প্রোফাইলের ছবি ডাউনলোড ব্যর্থ হয়েছে!</string>
@@ -362,6 +369,9 @@
     <string name="patient_profile_activity_notification_not_donated_1">Donor Responded as Donation Not Completed!</string>
     <string name="patient_profile_activity_notification_not_donated_2">has marked this Request as Not Donated.</string>
     <string name="patient_profile_activity_notification_not_donated_3">will be deleted after 7 days from Requirement date. Check Requests from Donors</string>
+    <string name="patient_profile_activity_notification_canceled_1">Donor Responded as Donation Canceled!</string>
+    <string name="patient_profile_activity_notification_canceled_2">has marked this Request as Canceled.</string>
+    <string name="patient_profile_activity_notification_canceled_3">will be deleted after 7 days from Requirement date. Check Requests from Donors</string>
 
 
 
@@ -619,6 +629,8 @@
     <string name="dashboard_text_exploreF">১০৬৫৫</string>
     <string name="cancel_donation">দান বাতিল করুন</string>
     <string name="confirm_donation">দান নিশ্চিত করুন</string>
+    <string name="decline_donation">দান বাতিল করুন</string>
+
 
 
 </resources>

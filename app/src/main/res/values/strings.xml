@@ -75,6 +75,9 @@
     <string name="pending">Pending</string>
     <string name="donated">Donated</string>
     <string name="not_donated">Not Donated</string>
+    <string name="confirmed">Donation Confirmed</string>
+    <string name="not_confirmed">Donation Declined</string>
+    <string name="canceled">Canceled</string>
     <string name="delete_profile">Delete Profile</string>
     <string name="donate_to_help">Donate to Help</string>
     <string name="ok_txt">OK</string>
@@ -177,6 +180,10 @@
     <string name="donor_profile_activity_notification_accepted_2">has accepted your request. Check Patient Responses</string>
     <string name="donor_profile_activity_notification_declined_1">Request declined from Patient!</string>
     <string name="donor_profile_activity_notification_declined_2">has declined your request. Check Patient Responses</string>
+    <string name="donor_profile_activity_notification_confirmed_1">Donation confirmed by Patient!</string>
+    <string name="donor_profile_activity_notification_confirmed_2">has confirmed your donation. Check Patient Responses</string>
+    <string name="donor_profile_activity_notification_not_confirmed_1">Donation declined by Patient!</string>
+    <string name="donor_profile_activity_notification_not_confirmed_2">has declined your donation. Check Patient Responses</string>
     <string name="donor_profile_activity_notification_incoming_1">Incoming Request from Patient!</string>
     <string name="donor_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Patients</string>
     <string name="donor_profile_activity_image_failed">Profile Image retrieve failed!</string>
@@ -204,7 +211,10 @@
     <string name="patient_profile_activity_notification_donated_3">will be deleted after 48 hours. Check Requests from Donors</string>
     <string name="patient_profile_activity_notification_not_donated_1">Donor Responded as Donation Not Completed!</string>
     <string name="patient_profile_activity_notification_not_donated_2">has marked this Request as Not Donated.</string>
-    <string name="patient_profile_activity_notification_not_donated_3">will be deleted after 7 days from Requirement date. Check Requests from Donorss</string>
+    <string name="patient_profile_activity_notification_not_donated_3">will be deleted after 7 days from Requirement date. Check Requests from Donors</string>
+    <string name="patient_profile_activity_notification_canceled_1">Donor Responded as Donation Canceled!</string>
+    <string name="patient_profile_activity_notification_canceled_2">has marked this Request as Canceled.</string>
+    <string name="patient_profile_activity_notification_canceled_3">will be deleted after 7 days from Requirement date. Check Requests from Donors</string>
 
     <string name="profile_header">My Profile</string>
     <string name="profile_logout_btn">Logout</string>
@@ -297,6 +307,7 @@
     <string name="dashboard_text_exploreF">10655</string>
     <string name="cancel_donation">Cancel Donation</string>
     <string name="confirm_donation">Confirm Donation</string>
+    <string name="decline_donation">Decline Donation</string>
 
 
     <string-array name="division">

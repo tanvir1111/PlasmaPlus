@@ -11,7 +11,9 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-39dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -272,7 +274,7 @@
 
             <Button
                 android:id="@+id/donor_profile_decline_button"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_colored"
@@ -315,7 +317,7 @@
 
             <Button
                 android:id="@+id/donor_profile_accept_button"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_green"
@@ -335,7 +337,7 @@
 
             <Button
                 android:id="@+id/donor_profile_confirm_donation_button"
-                android:layout_width="wrap_content"
+                android:layout_width="120dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_orange"
@@ -349,9 +351,29 @@
                 android:textColor="#ffffff"
                 android:textSize="10sp"
                 android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="@+id/cardView"
+                app:layout_constraintEnd_toStartOf="@+id/donor_profile_decline_donation_button"
                 app:layout_constraintStart_toStartOf="@+id/cardView"
-                app:layout_constraintTop_toBottomOf="@+id/donor_profile_ask_for_help_button" />
+                app:layout_constraintTop_toBottomOf="@+id/donor_profile_accept_button" />
+
+            <Button
+                android:id="@+id/donor_profile_decline_donation_button"
+                android:layout_width="120dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/button_style_purple"
+                android:elevation="10dp"
+                android:fontFamily="@font/raleway_bold"
+                android:gravity="center"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp"
+                android:text="@string/decline_donation"
+                android:textAlignment="center"
+                android:textColor="#ffffff"
+                android:textSize="10sp"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="@+id/cardView"
+                app:layout_constraintStart_toEndOf="@+id/donor_profile_confirm_donation_button"
+                app:layout_constraintTop_toBottomOf="@+id/donor_profile_decline_button" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

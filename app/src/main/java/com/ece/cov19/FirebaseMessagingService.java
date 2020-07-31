@@ -79,12 +79,10 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.donor_profile_activity_notification_incoming_1))){
             resultIntent = new Intent(this, DonorRequestsActivity.class);
         }
-        else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.donor_profile_activity_notification_accepted_1))){
+        else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.donor_profile_activity_notification_accepted_1)) || remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.donor_profile_activity_notification_declined_1))){
             resultIntent = new Intent(this, PatientResponseActivity.class);
         }
-        else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.donor_profile_activity_notification_declined_1))){
-            resultIntent = new Intent(this, PatientResponseActivity.class);
-        }
+
         else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_incoming_1))){
             resultIntent = new Intent(this, PatientRequestsActivity.class);
         }
@@ -94,7 +92,7 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
         else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_declined_1))){
             resultIntent = new Intent(this, DonorResponseActivity.class);
         }
-        else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_donated_1))){
+        else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_donated_1)) || remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_not_donated_1)) || remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_canceled_1))){
             if(requestedBy.equals("donor")){
                 resultIntent = new Intent(this, PatientRequestsActivity.class);
             }
@@ -102,12 +100,12 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
                 resultIntent = new Intent(this, DonorResponseActivity.class);
             }
         }
-        else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.patient_profile_activity_notification_not_donated_1))){
+        else if(remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.donor_profile_activity_notification_confirmed_1)) || remoteMessage.getNotification().getTitle().equals(getResources().getString(R.string.donor_profile_activity_notification_not_confirmed_1))){
             if(requestedBy.equals("donor")){
-                resultIntent = new Intent(this, PatientRequestsActivity.class);
+                resultIntent = new Intent(this, PatientResponseActivity.class);
             }
             else if(requestedBy.equals("patient")){
-                resultIntent = new Intent(this, DonorResponseActivity.class);
+                resultIntent = new Intent(this, DonorRequestsActivity.class);
             }
         }
 
