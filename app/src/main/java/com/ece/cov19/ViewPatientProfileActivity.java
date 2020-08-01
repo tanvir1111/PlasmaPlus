@@ -249,10 +249,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(donatedButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.mark_as_donated).toLowerCase())) {
                     if (requestedBy.equals("donor")) {
-                        requestOperationAlertDialog("donate", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_3), "PatientRequestsActivity","donor");
+                        requestOperationAlertDialog("donate", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2), "PatientRequestsActivity","donor");
                     }
                     else if(requestedBy.equals("patient")){
-                        requestOperationAlertDialog("donate", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_3), "DonorResponseActivity","patient");
+                        requestOperationAlertDialog("donate", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2), "DonorResponseActivity","patient");
 
                     }
                 }
@@ -265,10 +265,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(notDonatedButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.mark_as_not_donated).toLowerCase())) {
                     if (requestedBy.equals("donor")) {
-                        requestOperationAlertDialog("not_donate",phone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_3), "PatientRequestsActivity","donor");
+                        requestOperationAlertDialog("not_donate",phone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2), "PatientRequestsActivity","donor");
                     }
                     else if(requestedBy.equals("patient")){
-                        requestOperationAlertDialog("not_donate",phone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_3), "DonorResponseActivity","patient");
+                        requestOperationAlertDialog("not_donate",phone,getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2), "DonorResponseActivity","patient");
 
                     }
                 }
@@ -280,10 +280,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (requestedBy.equals("donor")) {
-                    requestOperationAlertDialog("cancel",phone,getResources().getString(R.string.patient_profile_activity_notification_canceled_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_3), "PatientRequestsActivity","donor");
+                    requestOperationAlertDialog("cancel",phone,getResources().getString(R.string.patient_profile_activity_notification_canceled_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_2), "PatientRequestsActivity","donor");
                 }
                 else if(requestedBy.equals("patient")){
-                    requestOperationAlertDialog("cancel",phone,getResources().getString(R.string.patient_profile_activity_notification_canceled_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_2) + " " + name + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_3), "DonorResponseActivity","patient");
+                    requestOperationAlertDialog("cancel",phone,getResources().getString(R.string.patient_profile_activity_notification_canceled_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_2), "DonorResponseActivity","patient");
 
                 }
             }

@@ -127,6 +127,20 @@ public class DonorResponseBetaAdapter extends RecyclerView.Adapter<DonorResponse
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
+        else if(userDataModel.getServerMsg().toLowerCase().equals("confirmed")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText(context.getResources().getString(R.string.confirmed));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
+        else if(userDataModel.getServerMsg().toLowerCase().equals("not_confirmed")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText(context.getResources().getString(R.string.not_confirmed));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_yellow);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
 
 
         //ToastCreator.toastCreator(holder.itemView.getContext(), userDataModel.getServerMsg(), Toast.LENGTH_SHORT).show();

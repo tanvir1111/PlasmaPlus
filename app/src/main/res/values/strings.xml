@@ -75,8 +75,8 @@
     <string name="pending">Pending</string>
     <string name="donated">Donated</string>
     <string name="not_donated">Not Donated</string>
-    <string name="confirmed">Donation Confirmed</string>
-    <string name="not_confirmed">Donation Declined</string>
+    <string name="confirmed">Confirmed</string>
+    <string name="not_confirmed">Rejected</string>
     <string name="canceled">Canceled</string>
     <string name="delete_profile">Delete Profile</string>
     <string name="donate_to_help">Donate to Help</string>
@@ -93,7 +93,7 @@
     <!--  common strings ... removing repeats ends  -->
 
     <string name="dashboard_header">Dashboard</string>
-    <string name="dashboard_welcome_to">Welcome to Plasma+!</string>
+    <string name="dashboard_welcome_to">Welcome to Plasma+</string>
     <string name="dashboard_text_explore">Explore</string>
     <string name="dashboard_text_no_of_patients">Patients</string>
     <string name="dashboard_text_requestB">From Patients</string>
@@ -176,16 +176,16 @@
     <string name="donor_profile_activity_send_request">Send Request?</string>
     <string name="donor_profile_activity_Request_Sent">Request Sent! Wait For Donor\'s Response</string>
     <string name="donor_profile_activity_Call_Donor">Call Donor</string>
-    <string name="donor_profile_activity_notification_accepted_1">Request accepted from Patient!</string>
-    <string name="donor_profile_activity_notification_accepted_2">has accepted your request. Check Patient Responses</string>
-    <string name="donor_profile_activity_notification_declined_1">Request declined from Patient!</string>
-    <string name="donor_profile_activity_notification_declined_2">has declined your request. Check Patient Responses</string>
-    <string name="donor_profile_activity_notification_confirmed_1">Donation confirmed by Patient!</string>
-    <string name="donor_profile_activity_notification_confirmed_2">has confirmed your donation. Check Patient Responses</string>
-    <string name="donor_profile_activity_notification_not_confirmed_1">Donation declined by Patient!</string>
-    <string name="donor_profile_activity_notification_not_confirmed_2">has declined your donation. Check Patient Responses</string>
+    <string name="donor_profile_activity_notification_accepted_1">Request Accepted from Patient!</string>
+    <string name="donor_profile_activity_notification_accepted_2">has accepted your request. Check Response from Patients.</string>
+    <string name="donor_profile_activity_notification_declined_1">Request Declined from Patient!</string>
+    <string name="donor_profile_activity_notification_declined_2">has declined your request. Check Response from Patients.</string>
+    <string name="donor_profile_activity_notification_confirmed_1">Donation Confirmed by Patient!</string>
+    <string name="donor_profile_activity_notification_confirmed_2">has confirmed your donation. Check Response from Patients.</string>
+    <string name="donor_profile_activity_notification_not_confirmed_1">Donation Declined by Patient!</string>
+    <string name="donor_profile_activity_notification_not_confirmed_2">has declined your donation. Check Response from Patients.</string>
     <string name="donor_profile_activity_notification_incoming_1">Incoming Request from Patient!</string>
-    <string name="donor_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Patients</string>
+    <string name="donor_profile_activity_notification_incoming_2">has sent you a request. Check Request from Patients.</string>
     <string name="donor_profile_activity_image_failed">Profile Image retrieve failed!</string>
     <string name="patient_profile_header">Patient Profile</string>
     <string name="donor_profile_type">Blood/Plasma</string>
@@ -200,21 +200,29 @@
     <string name="patient_profile_activity_Patient_Record_Deleted">Patient Record Deleted</string>
     <string name="patient_profile_activity_Request_Sent">Request Sent! Wait For Patient\'s Response</string>
     <string name="patient_profile_activity_Call_Patient">Call Patient</string>
-    <string name="patient_profile_activity_notification_accepted_1">Request accepted from Donor!</string>
-    <string name="patient_profile_activity_notification_accepted_2">has accepted your request. Check Donor Responses</string>
-    <string name="patient_profile_activity_notification_declined_1">Request declined from Donor!</string>
-    <string name="patient_profile_activity_notification_declined_2">has declined your request. Check Donor Responses</string>
+    <string name="patient_profile_activity_notification_accepted_1">Request Accepted from Donor!</string>
+    <string name="patient_profile_activity_notification_accepted_2">has accepted your request. Check Response from Patients.</string>
+    <string name="patient_profile_activity_notification_declined_1">Request Declined from Donor!</string>
+    <string name="patient_profile_activity_notification_declined_2">has declined your request. Check Response from Patients.</string>
     <string name="patient_profile_activity_notification_incoming_1">Incoming Request from Donor!</string>
-    <string name="patient_profile_activity_notification_incoming_2">has sent you a request. Check Requests from Donors</string>
+    <string name="patient_profile_activity_notification_incoming_2">has sent you a request. Check Request from Donors.</string>
     <string name="patient_profile_activity_notification_donated_1">Donor Responded as Donation Completed!</string>
-    <string name="patient_profile_activity_notification_donated_2">has marked this Request as Donated.</string>
-    <string name="patient_profile_activity_notification_donated_3">will be deleted after 48 hours. Check Requests from Donors</string>
+    <string name="patient_profile_activity_notification_donated_2">has marked this Request as Donated. Check Request from Donors.</string>
     <string name="patient_profile_activity_notification_not_donated_1">Donor Responded as Donation Not Completed!</string>
-    <string name="patient_profile_activity_notification_not_donated_2">has marked this Request as Not Donated.</string>
-    <string name="patient_profile_activity_notification_not_donated_3">will be deleted after 7 days from Requirement date. Check Requests from Donors</string>
+    <string name="patient_profile_activity_notification_not_donated_2">has marked this Request as Not Donated. Check Request from Donors.</string>
     <string name="patient_profile_activity_notification_canceled_1">Donor Responded as Donation Canceled!</string>
-    <string name="patient_profile_activity_notification_canceled_2">has marked this Request as Canceled.</string>
-    <string name="patient_profile_activity_notification_canceled_3">will be deleted after 7 days from Requirement date. Check Requests from Donors</string>
+    <string name="patient_profile_activity_notification_canceled_2">has marked this Request as Canceled. Check Request from Donors.</string>
+    <string name="patient_profile_activity_notification_auto_not_donated">Patient has Received Donation!</string>
+    <string name="patient_profile_activity_notification_auto_declined">Patient has Declined Received Donation!</string>
+    <string name="patient_profile_activity_notification_no_response_from_donor">You did not Respond to a Patient Donation!</string>
+    <string name="patient_profile_activity_notification_no_response_from_patient">Donation Request has been Declined!</string>
+    <string name="patient_profile_activity_notification_profile_expire_1">Patient will expire in 48 hours</string>
+    <string name="patient_profile_activity_notification_profile_expire_2">Patient will expire in 7 days</string>
+    <string name="patient_profile_activity_notification_profile_delete">Patient Profile has been Deleted</string>
+
+
+
+
 
     <string name="profile_header">My Profile</string>
     <string name="profile_logout_btn">Logout</string>
