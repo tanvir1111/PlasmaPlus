@@ -275,6 +275,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                         Intent intent = new Intent(getApplicationContext(), PatientResponseActivity.class);
                         startActivity(intent);
                     }
+                    if(nameOfActivity.equals("MyPatientsActivity")) {
+                        Intent intent = new Intent(getApplicationContext(), MyPatientsActivity.class);
+                        startActivity(intent);
+                    }
                 }
 
             }

@@ -511,8 +511,6 @@ public class PatientRequestsActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
 
-        finish();
-
         Intent intent = getIntent();
         String status = intent.getStringExtra("notification");
 
