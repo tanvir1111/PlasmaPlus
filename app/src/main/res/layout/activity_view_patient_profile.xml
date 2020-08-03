@@ -296,7 +296,7 @@
 
             <Button
                 android:id="@+id/patient_profile_update_button"
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
@@ -317,7 +317,7 @@
 
             <Button
                 android:id="@+id/patient_profile_delete_button"
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_colored"
@@ -337,7 +337,7 @@
 
             <Button
                 android:id="@+id/patient_profile_donate_button"
-                android:layout_width="wrap_content"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_blue"
@@ -357,7 +357,7 @@
 
             <Button
                 android:id="@+id/patient_profile_donated_button"
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_orange"
@@ -377,7 +377,7 @@
 
             <Button
                 android:id="@+id/patient_profile_cancel_button"
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_orange"
@@ -397,7 +397,7 @@
 
             <Button
                 android:id="@+id/patient_profile_not_donated_button"
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_purple"

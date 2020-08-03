@@ -241,7 +241,7 @@
 
             <Button
                 android:id="@+id/donor_profile_ask_for_help_button"
-                android:layout_width="wrap_content"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_blue"
@@ -274,7 +274,7 @@
 
             <Button
                 android:id="@+id/donor_profile_decline_button"
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_colored"
@@ -317,7 +317,7 @@
 
             <Button
                 android:id="@+id/donor_profile_accept_button"
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_green"
@@ -337,7 +337,7 @@
 
             <Button
                 android:id="@+id/donor_profile_confirm_donation_button"
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_orange"
@@ -357,7 +357,7 @@
 
             <Button
                 android:id="@+id/donor_profile_decline_donation_button"
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/button_style_purple"
