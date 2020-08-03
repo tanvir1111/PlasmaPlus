@@ -213,6 +213,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
 
                 ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.dashboard_error_message));
+                loadingView.setVisibility(View.GONE);
+
 
             }
         });
@@ -234,13 +236,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
                 }
                 else if(response.body().getServerMsg().toLowerCase().equals("false")){
-                    ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.connection_failed_try_again));
                 }
             }
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.connection_error));
             }
         });
 
@@ -285,7 +285,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.connection_error));
             }
         });
 
@@ -426,6 +425,7 @@ if(LoginUser.checkLoginStat().equals("failed")){
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
 
                 ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.dashboard_error_message));
+                loadingView.setVisibility(View.GONE);
 
             }
         });
@@ -446,13 +446,11 @@ if(LoginUser.checkLoginStat().equals("failed")){
 
                 }
                 else if(response.body().getServerMsg().toLowerCase().equals("false")){
-                    ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.connection_failed_try_again));
                 }
             }
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.connection_error));
             }
         });
 
@@ -845,18 +843,13 @@ if(LoginUser.checkLoginStat().equals("failed")){
         int bounding = dpToPx(150);
 
 
-        // Determine how much to scale: the dimension requiring less scaling is
-        // closer to the its side. This way the image always stays inside your
-        // bounding box AND either x/y axis touches it.
         float xScale = ((float) bounding) / width;
         float yScale = ((float) bounding) / height;
         float scale = (xScale <= yScale) ? xScale : yScale;
 
-        // Create a matrix for the scaling and add the scaling data
         Matrix matrix = new Matrix();
         matrix.postScale(scale, scale);
 
-        // Create a new bitmap and convert it to a format understood by the ImageView
         Bitmap scaledBitmap = Bitmap.createBitmap(bitmap, 0, 0, width, height, matrix, true);
 
         return scaledBitmap;

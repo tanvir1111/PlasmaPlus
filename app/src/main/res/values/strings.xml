@@ -306,12 +306,12 @@
     <string name="declined_responses">Declined Responses</string>
     <string name="donated_responses">Donated Responses</string>
     <string name="not_donated_responses">Not Donated Responses</string>
-    <string name="dashboard_text_explore_website">Visit Website</string>
+    <string name="dashboard_text_explore_website">Visit</string>
     <string name="dashboard_text_explore_call">Call</string>
     <string name="dashboard_text_explore_iedcr">IEDCR</string>
-    <string name="dashboard_text_exploreC">Corona Update BD</string>
-    <string name="dashboard_text_exploreD">Worldwide Update</string>
-    <string name="dashboard_text_exploreE">WHO COVID-19</string>
+    <string name="dashboard_text_exploreC">COVID-19 Update BD</string>
+    <string name="dashboard_text_exploreD">COVID-19 Update Worldwide</string>
+    <string name="dashboard_text_exploreE">WHO on COVID-19</string>
     <string name="dashboard_text_exploreF">10655</string>
     <string name="cancel_donation">Cancel Donation</string>
     <string name="confirm_donation">Confirm Donation</string>

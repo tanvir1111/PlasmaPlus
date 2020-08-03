@@ -623,12 +623,12 @@
     <string name="declined_responses">নাকচকৃত প্রতিক্রিয়া</string>
     <string name="donated_responses">দানকৃত‍ প্রতিক্রিয়া</string>
     <string name="not_donated_responses">দানবিহীন প্রতিক্রিয়া</string>
-    <string name="dashboard_text_explore_website">ব্রাউজ ওয়েবসাইট</string>
+    <string name="dashboard_text_explore_website">দেখুন</string>
     <string name="dashboard_text_explore_call">কল</string>
     <string name="dashboard_text_explore_iedcr">আইইডিসিআর</string>
-    <string name="dashboard_text_exploreC">করোনা আপডেট বিডি</string>
-    <string name="dashboard_text_exploreD">বিশ্বব্যাপী আপডেট</string>
-    <string name="dashboard_text_exploreE">ডাব্লিউএইচও</string>
+    <string name="dashboard_text_exploreC">করোনা বাংলাদেশ পরিস্থিতি</string>
+    <string name="dashboard_text_exploreD">করোনা বিশ্ব পরিস্থিতি</string>
+    <string name="dashboard_text_exploreE">ডাব্লিউএইচও তথ্য</string>
     <string name="dashboard_text_exploreF">১০৬৫৫</string>
     <string name="cancel_donation">দান বাতিল করুন</string>
     <string name="confirm_donation">দান নিশ্চিত করুন</string>

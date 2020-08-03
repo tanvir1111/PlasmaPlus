@@ -19,7 +19,7 @@
         android:contentDescription="@string/navheaderdesc"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@mipmap/help" />
+        app:srcCompat="@mipmap/app_icon_bordered" />
 
     <TextView
         android:id="@+id/textView2"

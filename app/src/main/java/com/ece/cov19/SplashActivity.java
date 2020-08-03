@@ -45,8 +45,8 @@ import static com.ece.cov19.LoginActivity.LOGIN_USER_PHONE;
 
 public class SplashActivity extends AppCompatActivity {
 
-    Button tryAgain;
-    ProgressBar progressBar;
+    public static Button tryAgain;
+    public static ProgressBar progressBar;
     SharedPreferences langPrefs;
     String lang="not set";
     public static final String Language_pref="Language";
@@ -74,6 +74,26 @@ public class SplashActivity extends AppCompatActivity {
                 }
             }
         },1000);
+
+        tryAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tryAgain.setVisibility(View.GONE);
+                progressBar.setVisibility(View.VISIBLE);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        langPrefs=getSharedPreferences(Language_pref,MODE_PRIVATE);
+                        if(langPrefs.contains(Selected_language)){
+                            setLocale(langPrefs.getString(Selected_language,""));
+
+                        }else {
+                            languageAlertDialog();
+                        }
+                    }
+                },1000);
+            }
+        });
     }
 
     private void setLocale(String selected_language) {

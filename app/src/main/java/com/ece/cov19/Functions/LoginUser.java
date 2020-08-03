@@ -35,8 +35,11 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
 import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PASS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PHONE;
+import static com.ece.cov19.SplashActivity.progressBar;
+import static com.ece.cov19.SplashActivity.tryAgain;
 
 public class LoginUser {
+
 
     public static String checkLoginStat(){
         if(loggedInUserPhone.equals("Didn't Load") || loggedInUserName.equals("Didn't Load") || loggedInUserAge.equals("Didn't Load")
@@ -96,6 +99,8 @@ public class LoginUser {
                 else {
 
                     ToastCreator.toastCreatorRed(ctx,ctx.getResources().getString(R.string.connection_error));
+                    progressBar.setVisibility(View.GONE);
+                    tryAgain.setVisibility(View.VISIBLE);
                 }
 
             }
@@ -104,6 +109,8 @@ public class LoginUser {
             public void onFailure(Call<UserDataModel> call, Throwable t) {
 
                 ToastCreator.toastCreatorRed(ctx,ctx.getResources().getString(R.string.connection_error));
+                progressBar.setVisibility(View.GONE);
+                tryAgain.setVisibility(View.VISIBLE);
             }
         });
 

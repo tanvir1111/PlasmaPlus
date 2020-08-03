@@ -72,7 +72,17 @@ public class MyPatientsActivity extends AppCompatActivity {
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent intent = getIntent();
+                String status = intent.getStringExtra("notification");
+
+                if(status == null){
+                    finish();
+                }
+                else if(status.equals("yes")){
+                    Intent goBackIntent = new Intent(getApplicationContext(), DashboardActivity.class);
+                    startActivity(goBackIntent);
+                    finish();
+                }
             }
         });
 
@@ -141,7 +151,7 @@ public class MyPatientsActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        
+
         Intent intent = getIntent();
         String status = intent.getStringExtra("notification");
 
