@@ -150,7 +150,7 @@
 
                     <TextView
                         android:id="@+id/profile_age"
-                        android:layout_width="0dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
 
                         android:layout_marginStart="16dp"
@@ -180,8 +180,9 @@
 
                     <TextView
                         android:id="@+id/profile_address"
-                        android:layout_width="0dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:fontFamily="@font/montserrat"
                         android:text="@string/profile_address"
@@ -191,7 +192,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/profile_age"
-                        app:layout_constraintTop_toTopOf="@+id/profile_label_address"
+                        app:layout_constraintTop_toBottomOf="@+id/profile_age"
                         app:layout_constraintVertical_bias="0.0" />
 
                     <TextView
@@ -211,8 +212,9 @@
 
                     <TextView
                         android:id="@+id/profile_type"
-                        android:layout_width="0dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:fontFamily="@font/montserrat"
                         android:text="@string/profile_type"
@@ -222,7 +224,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/profile_blood_group"
-                        app:layout_constraintTop_toTopOf="@+id/profile_label_type" />
+                        app:layout_constraintTop_toBottomOf="@+id/profile_blood_group" />
 
                     <TextView
                         android:id="@+id/profile_label_phone"
@@ -238,8 +240,9 @@
 
                     <TextView
                         android:id="@+id/profile_phone"
-                        android:layout_width="0dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:fontFamily="@font/montserrat"
                         android:text="@string/phone"
@@ -249,7 +252,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/profile_address"
-                        app:layout_constraintTop_toTopOf="@+id/profile_label_phone" />
+                        app:layout_constraintTop_toBottomOf="@+id/profile_address" />
 
                     <TextView
                         android:id="@+id/profile_label_blood_group"
@@ -265,8 +268,9 @@
 
                     <TextView
                         android:id="@+id/profile_blood_group"
-                        android:layout_width="0dp"
+                        android:layout_width="150dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:layout_marginEnd="16dp"
                         android:fontFamily="@font/montserrat"
                         android:text="@string/label_blood_grp"
@@ -276,7 +280,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/profile_phone"
-                        app:layout_constraintTop_toTopOf="@+id/profile_label_blood_group" />
+                        app:layout_constraintTop_toBottomOf="@+id/profile_phone" />
 
                     <ImageView
                         android:id="@+id/profile_image_upload"
