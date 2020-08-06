@@ -185,10 +185,8 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         if (emptyfield.toLowerCase().equals("all ok")) {
-            progressBar.setVisibility(View.VISIBLE);
            loginUser(phone, password);
 
-           progressBar.setVisibility(View.GONE);
         }
 
 

@@ -1,6 +1,20 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 android {
+    signingConfigs {
+        debug {
+            keyPassword '15111997'
+            storePassword '15111997'
+            keyAlias 'key0'
+            storeFile file('/Users/khalid/Documents/GitHub/keystore_copy')
+        }
+        release {
+            storeFile file('/Users/khalid/Documents/GitHub/keystore_copy')
+            storePassword '15111997'
+            keyAlias 'key0'
+            keyPassword '15111997'
+        }
+    }
     compileSdkVersion 30
     buildToolsVersion "30.0.0"
     compileOptions {
@@ -12,16 +26,22 @@ android {
         applicationId "com.ece.cov19"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 6
-        versionName "1.6"
+        versionCode 7
+        versionName "1.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
