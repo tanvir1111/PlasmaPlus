@@ -138,16 +138,18 @@
 
                     <TextView
                         android:id="@+id/patient_profile_age"
-                        android:layout_width="150dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
 
-                        android:layout_marginStart="16dp"
+                        android:layout_marginStart="96dp"
+                        android:layout_marginEnd="24dp"
                         android:fontFamily="@font/montserrat"
                         android:text="@string/label_age_1"
                         android:textColor="@color/textColorDark"
                         android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/patient_profile_label_age"
-                        app:layout_constraintStart_toEndOf="@+id/patient_profile_label_date"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/patient_profile_label_age"
                         app:layout_constraintTop_toTopOf="@+id/patient_profile_label_age"
                         app:layout_constraintVertical_bias="0.0" />
 
@@ -165,10 +167,10 @@
 
                     <TextView
                         android:id="@+id/patient_profile_hospital"
-                        android:layout_width="150dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="32dp"
+                        android:layout_marginEnd="24dp"
                         android:fontFamily="@font/montserrat"
                         android:maxWidth="160dp"
                         android:text="@string/label_hospital"
@@ -195,10 +197,10 @@
 
                     <TextView
                         android:id="@+id/patient_profile_need"
-                        android:layout_width="150dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="32dp"
+                        android:layout_marginEnd="24dp"
                         android:fontFamily="@font/montserrat"
                         android:text="@string/patient_profile_need"
                         android:textColor="@color/textColorDark"
@@ -222,9 +224,10 @@
 
                     <TextView
                         android:id="@+id/patient_profile_phone"
-                        android:layout_width="150dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
+                        android:layout_marginEnd="24dp"
                         android:fontFamily="@font/montserrat"
                         android:text="@string/phone"
                         android:textColor="@color/textColorDark"
@@ -250,10 +253,10 @@
 
                     <TextView
                         android:id="@+id/patient_profile_blood_group"
-                        android:layout_width="150dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="32dp"
+                        android:layout_marginEnd="24dp"
                         android:fontFamily="@font/montserrat"
                         android:text="@string/label_blood_grp"
                         android:textColor="@color/textColorDark"
@@ -281,14 +284,14 @@
 
                     <TextView
                         android:id="@+id/patient_profile_date"
-                        android:layout_width="150dp"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="32dp"
+                        android:layout_marginEnd="24dp"
                         android:fontFamily="@font/montserrat"
                         android:text="@string/patient_profile_date"
                         android:textColor="@color/textColorDark"
-                        android:textSize="16sp"
+                        android:textSize="14sp"
                         app:layout_constraintBottom_toBottomOf="@+id/patient_profile_label_date"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
