@@ -233,7 +233,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         newDivision = divisionSpinner.getSelectedItem().toString();
         newDistrict = districtSpinner.getSelectedItem().toString();
         newHospital = hospitalEditText.getText().toString();
-        
+
         phone = loggedInUserPhone;
 
         if (needCheckbox.isChecked()) {
@@ -309,9 +309,9 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
 
     //    database operations
-    private void updatePatient(String name, String age, String bloodGroup, String phone, String newName, String newAge, String newGender, String newBloodGroup, String newHospital, String newDivision, String newDistrict, String newDate, String newNeed) {
+    private void updatePatient(String name, String age, String bloodGroup, String phone, String newName, String newAge, String newGender, String newHospital, String newDivision, String newDistrict, String newDate, String newNeed) {
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<PatientDataModel> sendingData = retroInterface.updatePatientProfile(name, age, bloodGroup, phone, newName, newAge, newGender, newBloodGroup, newHospital, newDivision, newDistrict, newDate, newNeed);
+        Call<PatientDataModel> sendingData = retroInterface.updatePatientProfile(name, age, bloodGroup, phone, newName, newAge, newGender, newHospital, newDivision, newDistrict, newDate, newNeed);
         sendingData.enqueue(new Callback<PatientDataModel>() {
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
@@ -322,7 +322,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
                     intent.putExtra("name",newName);
                     intent.putExtra("age",newAge);
                     intent.putExtra("gender",newGender);
-                    intent.putExtra("blood_group",newBloodGroup);
+                    intent.putExtra("blood_group",bloodGroup);
                     intent.putExtra("hospital",newHospital);
                     intent.putExtra("division",newDivision);
                     intent.putExtra("district",newDistrict);
@@ -355,7 +355,7 @@ private void updateAlertDialog(){
     builder.setCancelable(false);
         builder.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                updatePatient(name, age, bloodGroup, phone, newName, newAge, newGender, newBloodGroup, newHospital, newDivision, newDistrict, newDate, newNeed);
+                updatePatient(name, age, bloodGroup, phone, newName, newAge, newGender, newHospital, newDivision, newDistrict, newDate, newNeed);
 
             }
         })

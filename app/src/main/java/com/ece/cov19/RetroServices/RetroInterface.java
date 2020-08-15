@@ -81,7 +81,7 @@ public interface RetroInterface {
 
 
                                                 @Field("newname") String newName, @Field("newage") String newaAge, @Field("newgender") String newGender,
-                                                @Field("newblood_group") String newBloodGroup, @Field("newhospital") String newHospital,
+                                                @Field("newhospital") String newHospital,
                                                 @Field("newdivision") String newDivision, @Field("newdistrict") String newDistrict,
                                                 @Field("newdate") String newDate, @Field("newneed") String newNeed);
 
