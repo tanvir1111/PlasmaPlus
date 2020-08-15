@@ -180,179 +180,19 @@
             app:layout_constraintTop_toTopOf="@+id/update_patient_male_icon"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
-            android:id="@+id/update_patient_label_blood_grp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/label_blood_grp"
-            android:textColor="@color/textColorDark"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/update_patient_label_gender"
-            app:layout_constraintTop_toBottomOf="@+id/update_patient_male_icon" />
-
-
-        <TextView
-            android:id="@+id/update_patient_bld_a_positive"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-
-            android:background="@drawable/blood_grp_not_selected"
-            android:fontFamily="@font/montserrat"
-            android:textColor="@color/textColorGrey"
-
-            android:textAlignment="center"
-            android:gravity="center"
-            android:text="A+"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/update_patient_label_blood_grp"
-            app:layout_constraintTop_toBottomOf="@+id/update_patient_label_blood_grp" />
-
-        <TextView
-            android:id="@+id/update_patient_bld_a_negative"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/textColorGrey"
-            android:background="@drawable/blood_grp_not_selected"
-            android:fontFamily="@font/montserrat"
-
-
-            android:gravity="center"
-            android:text="A-"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/update_patient_bld_a_positive"
-            app:layout_constraintStart_toEndOf="@+id/update_patient_bld_a_positive"
-            app:layout_constraintTop_toTopOf="@+id/update_patient_bld_a_positive" />
-
-        <TextView
-            android:id="@+id/update_patient_bld_b_positive"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/textColorGrey"
-            android:background="@drawable/blood_grp_not_selected"
-            android:fontFamily="@font/montserrat"
-
-
-            android:gravity="center"
-            android:text="B+"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/update_patient_bld_a_negative"
-            app:layout_constraintStart_toEndOf="@+id/update_patient_bld_a_negative"
-            app:layout_constraintTop_toTopOf="@+id/update_patient_bld_a_negative" />
-
-        <TextView
-            android:id="@+id/update_patient_bld_b_negative"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/textColorGrey"
-            android:background="@drawable/blood_grp_not_selected"
-            android:fontFamily="@font/montserrat"
-
-
-            android:gravity="center"
-            android:text="B-"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/update_patient_bld_b_positive"
-            app:layout_constraintStart_toEndOf="@+id/update_patient_bld_b_positive"
-            app:layout_constraintTop_toTopOf="@+id/update_patient_bld_b_positive" />
-
-        <TextView
-            android:id="@+id/update_patient_bld_o_positive"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/textColorGrey"
-            android:background="@drawable/blood_grp_not_selected"
-            android:fontFamily="@font/montserrat"
-
-
-            android:gravity="center"
-            android:text="O+"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/update_patient_bld_b_negative"
-            app:layout_constraintStart_toEndOf="@+id/update_patient_bld_b_negative"
-            app:layout_constraintTop_toTopOf="@+id/update_patient_bld_b_negative" />
-
-        <TextView
-            android:id="@+id/update_patient_bld_o_negative"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
-            android:textColor="@color/textColorGrey"
-            android:background="@drawable/blood_grp_not_selected"
-            android:fontFamily="@font/montserrat"
-            android:gravity="center"
-
-
-            android:text="O-"
-            android:textAlignment="center"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/update_patient_bld_o_positive"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/update_patient_bld_o_positive"
-            app:layout_constraintTop_toTopOf="@+id/update_patient_bld_o_positive"
-            app:layout_constraintVertical_bias="0.0" />
-
-        <TextView
-            android:id="@+id/update_patient_bld_ab_positive"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/textColorGrey"
-            android:background="@drawable/blood_grp_not_selected"
-            android:fontFamily="@font/montserrat"
-            android:textAlignment="center"
-            android:gravity="center"
-
-            android:text="AB+"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/update_patient_bld_a_positive"
-            app:layout_constraintStart_toStartOf="@+id/update_patient_bld_a_positive"
-            app:layout_constraintTop_toBottomOf="@+id/update_patient_bld_a_positive" />
-
-        <TextView
-            android:id="@+id/update_patient_bld_ab_negative"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/blood_grp_not_selected"
-            android:textColor="@color/textColorGrey"
-            android:fontFamily="@font/montserrat"
-            android:paddingLeft="10dp"
-            android:paddingTop="15dp"
-            android:paddingRight="10dp"
-            android:paddingBottom="15dp"
-
-
-            android:text="AB-"
-            android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/update_patient_bld_ab_positive"
-            app:layout_constraintStart_toEndOf="@+id/update_patient_bld_ab_positive"
-            app:layout_constraintTop_toTopOf="@+id/update_patient_bld_ab_positive" />
 
         <TextView
             android:id="@+id/update_patient_label_hospital"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/montserrat_bold"
             android:text="@string/label_hospital"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/update_patient_label_blood_grp"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/update_patient_label_blood_grp"
-            app:layout_constraintTop_toBottomOf="@+id/update_patient_bld_ab_positive" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/update_patient_male_icon" />
 
         <EditText
             android:id="@+id/update_patient_hospital_edittext"

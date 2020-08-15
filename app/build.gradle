@@ -6,10 +6,10 @@ android {
             keyPassword '15111997'
             storePassword '15111997'
             keyAlias 'key0'
-            storeFile file('/Users/khalid/Documents/GitHub/keystore_copy')
+            storeFile file('/Users/khalid/Documents/Projects/Plasma+/keystore_copy')
         }
         release {
-            storeFile file('/Users/khalid/Documents/GitHub/keystore_copy')
+            storeFile file('/Users/khalid/Documents/Projects/Plasma+/keystore_copy')
             storePassword '15111997'
             keyAlias 'key0'
             keyPassword '15111997'
@@ -26,8 +26,8 @@ android {
         applicationId "com.ece.cov19"
         minSdkVersion 23
         targetSdkVersion 30
-        versionCode 8
-        versionName "1.8"
+        versionCode 9
+        versionName "1.9"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }

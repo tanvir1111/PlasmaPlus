@@ -36,7 +36,6 @@ import retrofit2.Response;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class UpdatePatientProfileActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
     private TextView selectDate, labelBloodGroup, labelGender, labelDate;
     private String name, age, gender, bloodGroup, hospital, division, district, date, need, phone, newName, newAge, newBloodGroup = "not selected", newDivision, newDistrict, newHospital, newNeed, newGender, newDate;
     private ImageView genderMale, backbtn, genderFemale;
@@ -72,16 +71,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 //      Date section
         labelDate = findViewById(R.id.update_patient_label_date);
         selectDate = findViewById(R.id.update_patient_date_textview);
-        /*blood group textviews*/
-        labelBloodGroup = findViewById(R.id.update_patient_label_blood_grp);
-        aPositive = findViewById(R.id.update_patient_bld_a_positive);
-        bPositive = findViewById(R.id.update_patient_bld_b_positive);
-        oPositive = findViewById(R.id.update_patient_bld_o_positive);
-        abPositive = findViewById(R.id.update_patient_bld_ab_positive);
-        aNegative = findViewById(R.id.update_patient_bld_a_negative);
-        bNegative = findViewById(R.id.update_patient_bld_b_negative);
-        oNegative = findViewById(R.id.update_patient_bld_o_negative);
-        abNegative = findViewById(R.id.update_patient_bld_ab_negative);
+
 
         /*        Gender Imageviews*/
         labelGender = findViewById(R.id.update_patient_label_gender);
@@ -131,8 +121,6 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
             genderMale.setImageResource(R.drawable.male_icon);
         }
 
-        setPreviousBloodGroup();
-
 
 
         //      Districts spinner as per selected division
@@ -163,52 +151,11 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         });
 
 
-//        all OnclickListeners
-        aPositive.setOnClickListener(this);
-        bPositive.setOnClickListener(this);
-        oPositive.setOnClickListener(this);
-        abPositive.setOnClickListener(this);
-        aNegative.setOnClickListener(this);
-        bNegative.setOnClickListener(this);
-        oNegative.setOnClickListener(this);
-        abNegative.setOnClickListener(this);
+
         genderMale.setOnClickListener(this);
         genderFemale.setOnClickListener(this);
         updateBtn.setOnClickListener(this);
         backbtn.setOnClickListener(this);
-    }
-
-    private void setPreviousBloodGroup() {
-        switch (bloodGroup) {
-            case "A+":
-                selectedBldGrp = aPositive;
-                break;
-            case "A-":
-                selectedBldGrp = aNegative;
-                break;
-            case "AB+":
-                selectedBldGrp = abPositive;
-                break;
-            case "AB-":
-                selectedBldGrp = abNegative;
-                break;
-            case "B+":
-                selectedBldGrp = bPositive;
-                break;
-            case "B-":
-                selectedBldGrp = bNegative;
-                break;
-            case "O+":
-                selectedBldGrp = oPositive;
-                break;
-            case "O-":
-                selectedBldGrp = oNegative;
-                break;
-
-
-        }
-        selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_selected);
-        selectedBldGrp.setTextColor(Color.WHITE);
     }
 
 
@@ -226,19 +173,6 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
                 genderFemale.setImageResource(R.drawable.female_icon_selected);
                 genderMale.setImageResource(R.drawable.male_icon);
                 newGender = "female";
-                break;
-            case R.id.update_patient_bld_a_positive:
-            case R.id.update_patient_bld_b_positive:
-            case R.id.update_patient_bld_o_positive:
-            case R.id.update_patient_bld_ab_positive:
-            case R.id.update_patient_bld_a_negative:
-            case R.id.update_patient_bld_b_negative:
-            case R.id.update_patient_bld_o_negative:
-            case R.id.update_patient_bld_ab_negative:
-
-                selectedBldGrp = formFieldsFeatures.bloodGroupSelection(this, (TextView) v, selectedBldGrp);
-
-
                 break;
             case R.id.update_patient_request_btn:
                 updateBtn.setEnabled(false);
@@ -299,10 +233,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         newDivision = divisionSpinner.getSelectedItem().toString();
         newDistrict = districtSpinner.getSelectedItem().toString();
         newHospital = hospitalEditText.getText().toString();
-
-        if (selectedBldGrp != null) {
-            newBloodGroup = selectedBldGrp.getText().toString();
-        }
+        
         phone = loggedInUserPhone;
 
         if (needCheckbox.isChecked()) {
