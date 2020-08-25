@@ -498,17 +498,24 @@ if(LoginUser.checkLoginStat().equals("failed")){
             languageAlertDialog("bn");
         }
         else if (id == R.id.shareApp){
-            Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
-            Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-            try {
-                startActivity(goToMarket);
-            } catch (ActivityNotFoundException e) {
-                startActivity(new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
-            }
+            Intent shareIntent=new Intent((Intent.ACTION_SEND));
+            shareIntent.setType("text/plain");
+            String shareBody="Blood and Plasma Banking solution app: Plasma+\n http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName();
+            String shareSub="Plasma+";
+            shareIntent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
+            shareIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
+            startActivity(Intent.createChooser(shareIntent,"Share Using"));
+//            Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
+//            Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+//            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+//                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+//                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+//            try {
+//                startActivity(goToMarket);
+//            } catch (ActivityNotFoundException e) {
+//                startActivity(new Intent(Intent.ACTION_VIEW,
+//                        Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
+//            }
         }
         else if (id == R.id.emailUs){
 
