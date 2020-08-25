@@ -307,8 +307,8 @@
     <string name="donated_responses">Donated Responses</string>
     <string name="not_donated_responses">Not Donated Responses</string>
     <string name="dashboard_text_explore_website">Visit</string>
-    <string name="dashboard_text_explore_call">Call</string>
-    <string name="dashboard_text_explore_iedcr">IEDCR</string>
+    <string name="dashboard_text_explore_call">Call IEDCR</string>
+
     <string name="dashboard_text_exploreC">COVID-19 Update BD</string>
     <string name="dashboard_text_exploreD">COVID-19 Update Worldwide</string>
     <string name="dashboard_text_exploreE">WHO on COVID-19</string>
