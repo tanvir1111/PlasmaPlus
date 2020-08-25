@@ -633,7 +633,8 @@
     <string name="cancel_donation">দান বাতিল করুন</string>
     <string name="confirm_donation">দান নিশ্চিত করুন</string>
     <string name="decline_donation">দান বাতিল করুন</string>
-
+    <string name="how_many_bags_units_of_blood_is_needed">কত ব্যাগ রক্ত লাগবে?</string>
+    <string name="quantity_of_blood_needed_in_units">প্রয়োজনীয় রক্তের পরিমাণ</string>
 
 
 </resources>

@@ -44,7 +44,7 @@ public interface RetroInterface {
                                                 @Field("blood_group") String bloodGroup, @Field("hospital") String hospital,
                                                 @Field("division") String division, @Field("district") String district,
                                                 @Field("date") String date, @Field("need") String need,
-                                                @Field("phone") String phone);
+                                                @Field("phone") String phone,@Field("amountOfBloodNeeded") String amountOfBloodNeeded);
 
 
 

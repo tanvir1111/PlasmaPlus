@@ -477,6 +477,41 @@
         app:layout_constraintStart_toStartOf="@+id/bld_req_district_spinner"
         app:layout_constraintTop_toBottomOf="@+id/bld_req_district_spinner" />
 
+    <TextView
+        android:id="@+id/bld_req_number_of_unit_required"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/quantity_of_blood_needed_in_units"
+        android:textColor="@color/textColorDark"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_plasma_checkbox"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_plasma_checkbox"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_plasma_checkbox" />
+
+    <EditText
+        android:id="@+id/bld_req_number_of_unit_editText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/edit_text_dark"
+        android:gravity="center_vertical"
+        android:hint="@string/how_many_bags_units_of_blood_is_needed"
+        android:minHeight="40dp"
+        android:inputType="number"
+        android:maxLength="2"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:textColor="@color/textColorDark"
+        android:textSize="15sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_number_of_unit_required"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_number_of_unit_required"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_number_of_unit_required" />
+
     <CheckBox
         android:id="@+id/bld_req_plasma_checkbox"
         android:layout_width="match_parent"
@@ -509,7 +544,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/bld_req_plasma_checkbox"
         app:layout_constraintStart_toStartOf="@+id/bld_req_plasma_checkbox"
-        app:layout_constraintTop_toBottomOf="@+id/bld_req_plasma_checkbox" />
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_number_of_unit_editText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

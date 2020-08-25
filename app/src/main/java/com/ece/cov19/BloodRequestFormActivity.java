@@ -13,6 +13,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -44,12 +45,12 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class BloodRequestFormActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
-    private TextView selectDate, labelBloodGroup, labelGender, labelDate;
+    private TextView selectDate, labelBloodGroup, labelGender, labelDate,amountOfBloodLabel;
     private String gender = "not selected", date = "not selected";
     private ImageView genderMale, backbtn, genderFemale;
     private CheckBox needCheckbox;
     private Button submitBtn, forMyselfBtn,othersBtn;
-    private EditText nameEditText, ageEditText, hospitalEditText;
+    private EditText nameEditText, ageEditText, hospitalEditText,amountOfBloodEditText;
     private Spinner divisionSpinner, districtSpinner;
     public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
 
@@ -70,6 +71,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         nameEditText = findViewById(R.id.bld_req_name_edittext);
         ageEditText = findViewById(R.id.bld_req_age_edittext);
         hospitalEditText = findViewById(R.id.bld_req_hospital_edittext);
+        amountOfBloodEditText=findViewById(R.id.bld_req_number_of_unit_editText);
 
         //        spinners
         divisionSpinner = findViewById(R.id.bld_req_division_spinner);
@@ -91,6 +93,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         bNegative = findViewById(R.id.bld_req_bld_b_negative);
         oNegative = findViewById(R.id.bld_req_bld_o_negative);
         abNegative = findViewById(R.id.bld_req_bld_ab_negative);
+        amountOfBloodLabel=findViewById(R.id.bld_req_number_of_unit_required);
 
         /*        Gender Imageviews*/
         labelGender = findViewById(R.id.bld_req_label_gender);
@@ -99,6 +102,20 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
 
         //      Districts spinner as per selected division
+        needCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    amountOfBloodEditText.setVisibility(View.GONE);
+                    amountOfBloodLabel.setVisibility(View.GONE);
+
+                }
+                else {
+                    amountOfBloodLabel.setVisibility(View.VISIBLE);
+                    amountOfBloodEditText.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         divisionSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -317,6 +334,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
     private void verifydata() {
         String name, phone, division, district, bloodGroup = "not selected", hospital, need, age;
+        String amountOfBloodNeeded="0";
         name = nameEditText.getText().toString();
         age = ageEditText.getText().toString();
         division = divisionSpinner.getSelectedItem().toString();
@@ -329,8 +347,19 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
         if (needCheckbox.isChecked()) {
             need = "Plasma";
+            amountOfBloodNeeded="0";
         } else {
             need = "Blood";
+            if(!formFieldsFeatures.checkIfEmpty(amountOfBloodEditText)) {
+                if(Integer.parseInt(amountOfBloodEditText.getText().toString())<=0||Integer.parseInt(amountOfBloodEditText.getText().toString())>10){
+                    amountOfBloodEditText.setError("Enter a valid number");
+                    amountOfBloodEditText.requestFocus();
+                    amountOfBloodNeeded="invalid";
+                }
+                else {
+                    amountOfBloodNeeded =amountOfBloodEditText.getText().toString();
+                }
+            }
         }
 
 //
@@ -339,8 +368,13 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         if (!formFieldsFeatures.checkIfEmpty(nameEditText) && !formFieldsFeatures.checkIfEmpty(ageEditText)
                 && !formFieldsFeatures.checkIfEmpty(hospitalEditText) && !formFieldsFeatures.checkIfEmpty(this, labelBloodGroup, bloodGroup)
                 && !formFieldsFeatures.checkIfEmpty(this, labelGender, gender) && !formFieldsFeatures.checkIfEmpty(this, labelDate, date)) {
+            if(!amountOfBloodNeeded.equals("invalid")) {
 
-            registerPatient(name, age, gender, bloodGroup, hospital, division, district, date, need, phone);
+                registerPatient(name, age, gender, bloodGroup, hospital, division, district, date, need, phone, amountOfBloodNeeded);
+            }
+            else {
+                submitBtn.setEnabled(true);
+            }
         }
         else {
             submitBtn.setEnabled(true);
@@ -351,9 +385,9 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
 
     //    database operations
-    private void registerPatient(String name, String age, String gender, String bloodGroup, String hospital, String division, String district, String date, String need, String phone) {
+    private void registerPatient(String name, String age, String gender, String bloodGroup, String hospital, String division, String district, String date, String need, String phone,String amountOfBloodNeeded) {
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<PatientDataModel> sendingData = retroInterface.registerPatientRetro(name, age, gender, bloodGroup, hospital, division, district, date, need, phone);
+        Call<PatientDataModel> sendingData = retroInterface.registerPatientRetro(name, age, gender, bloodGroup, hospital, division, district, date, need, phone,amountOfBloodNeeded);
         sendingData.enqueue(new Callback<PatientDataModel>() {
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
