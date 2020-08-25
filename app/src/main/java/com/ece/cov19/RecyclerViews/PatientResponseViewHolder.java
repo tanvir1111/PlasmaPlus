@@ -62,6 +62,7 @@ public class PatientResponseViewHolder extends RecyclerView.ViewHolder implement
             intent.putExtra("date", patientDataModel.getDate());
             intent.putExtra("need", patientDataModel.getNeed());
             intent.putExtra("phone", patientDataModel.getPhone());
+            intent.putExtra("amountOfBloodNeeded",patientDataModel.getAmountOfBloodNeeded());
             intent.putExtra("activity", "PatientResponseActivity");
 
             c.startActivity(intent);

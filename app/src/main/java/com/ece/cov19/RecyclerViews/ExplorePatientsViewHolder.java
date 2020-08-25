@@ -67,6 +67,7 @@ public class ExplorePatientsViewHolder extends RecyclerView.ViewHolder implement
             intent.putExtra("date", patientDataModel.getDate());
             intent.putExtra("district", patientDataModel.getDistrict());
             intent.putExtra("division", patientDataModel.getDivision());
+            intent.putExtra("amountOfBloodNeeded",patientDataModel.getAmountOfBloodNeeded());
             intent.putExtra("activity", "ExplorePatientsActivity");
 
             c.startActivity(intent);

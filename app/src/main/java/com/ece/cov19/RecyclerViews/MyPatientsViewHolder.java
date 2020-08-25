@@ -63,6 +63,7 @@ public class MyPatientsViewHolder extends RecyclerView.ViewHolder implements Vie
         intent.putExtra("date",patientDataModel.getDate());
         intent.putExtra("district",patientDataModel.getDistrict());
         intent.putExtra("division",patientDataModel.getDivision());
+        intent.putExtra("amountOfBloodNeeded",patientDataModel.getAmountOfBloodNeeded());
         intent.putExtra("activity","MyPatientsActivity");
 
         c.startActivity(intent);

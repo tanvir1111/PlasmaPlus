@@ -67,7 +67,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
     private ImageView genderImageView,backbtn;
     private ProgressBar progressBar;
     Button donateToHelpButton, updateButton, deleteButton, donatedButton, notDonatedButton, cancelButton;
-    String name, age, gender, bloodGroup, hospital, division, district, date, need, phone,requestedBy;
+    String name, age, gender, bloodGroup, hospital, division, district, date, need, phone,requestedBy,amountOfBloodNeeded;
     Bitmap insertBitmap;
     Uri imageUri;
     String formattedDate, formattedDateNext;
@@ -109,6 +109,8 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         date = intent.getStringExtra("date");
         need = intent.getStringExtra("need");
         phone = intent.getStringExtra("phone");
+        amountOfBloodNeeded=intent.getStringExtra("amountOfBloodNeeded");
+
 
         requestedBy="donor";
         if(intent.hasExtra("activity")){
@@ -131,7 +133,11 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         bloodGroupTextView.setText(bloodGroup);
         hospitalTextView.setText(hospital);
         ageTextView.setText(age);
-        needTextView.setText(need);
+        if(amountOfBloodNeeded.equals("0")) {
+            needTextView.setText(need);
+        }else {
+            needTextView.setText(need + " ("+amountOfBloodNeeded+ " units)");
+        }
         dateTextView.setText(date);
 
 

@@ -66,6 +66,7 @@ if(ClickTimeChecker.clickTimeChecker()) {
     intent.putExtra("date", patientDataModel.getDate());
     intent.putExtra("need", patientDataModel.getNeed());
     intent.putExtra("phone", patientDataModel.getPhone());
+    intent.putExtra("amountOfBloodNeeded",patientDataModel.getAmountOfBloodNeeded());
     intent.putExtra("activity", "DonorRequestsActivity");
 
     c.startActivity(intent);

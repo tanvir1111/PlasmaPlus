@@ -36,6 +36,10 @@ public class PatientDataModel {
     @SerializedName("date")
     @Expose
     private String date;
+
+    @SerializedName("amountOfBloodNeeded")
+    @Expose
+    private String amountOfBloodNeeded;
     @SerializedName("serverMsg")
     @Expose
     private String serverMsg;
@@ -122,6 +126,13 @@ public class PatientDataModel {
 
     public String getDate() {
         return date;
+    }
+    public String getAmountOfBloodNeeded() {
+        return amountOfBloodNeeded;
+    }
+
+    public void setAmountOfBloodNeeded(String amountOfBloodNeeded) {
+        this.amountOfBloodNeeded = amountOfBloodNeeded;
     }
 
     public void setDate(String date) {
