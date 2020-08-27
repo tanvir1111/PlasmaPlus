@@ -20,8 +20,6 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.ece.cov19.DataModels.FindPatientData;
-import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.Functions.ClickTimeChecker;
 import com.ece.cov19.Functions.FormFieldsFeatures;
@@ -31,7 +29,6 @@ import com.ece.cov19.RetroServices.RetroInterface;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;

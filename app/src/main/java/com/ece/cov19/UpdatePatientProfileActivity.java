@@ -11,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -36,17 +37,18 @@ import retrofit2.Response;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class UpdatePatientProfileActivity extends AppCompatActivity implements View.OnClickListener {
-    private TextView selectDate, labelBloodGroup, labelGender, labelDate;
+    private TextView selectDate, labelBloodGroup, labelGender, labelDate,amountOfBloodLabel;
     private String name, age, gender, bloodGroup, hospital, division, district, date, need, phone, newName, newAge, newBloodGroup = "not selected", newDivision, newDistrict, newHospital, newNeed, newGender, newDate;
     private ImageView genderMale, backbtn, genderFemale;
     private CheckBox needCheckbox;
     private Button updateBtn;
-    private EditText nameEditText, ageEditText, hospitalEditText;
+    private EditText nameEditText, ageEditText, hospitalEditText,amountOfBloodEditText;
     private Spinner divisionSpinner, districtSpinner;
     public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
 
             R.array.Barisal, R.array.Sylhet};
     FormFieldsFeatures formFieldsFeatures = new FormFieldsFeatures();
+    private String amountOfBloodNeeded;
 
 
     @Override
@@ -54,12 +56,14 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_patient_profile);
 
+        amountOfBloodLabel=findViewById(R.id.update_patient_number_of_unit_required);
         updateBtn = findViewById(R.id.update_patient_request_btn);
         backbtn = findViewById(R.id.update_patient_back_button);
 //      editTexts
         nameEditText = findViewById(R.id.update_patient_name_edittext);
         ageEditText = findViewById(R.id.update_patient_age_edittext);
         hospitalEditText = findViewById(R.id.update_patient_hospital_edittext);
+        amountOfBloodEditText=findViewById(R.id.update_patient_number_of_unit_editText);
 
         //        spinners
         divisionSpinner = findViewById(R.id.update_patient_division_spinner);
@@ -94,9 +98,15 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         date = intent.getStringExtra("date");
         need = intent.getStringExtra("need");
         phone = intent.getStringExtra("phone");
+        amountOfBloodNeeded=intent.getStringExtra("amountOfBloodNeeded");
+        if(amountOfBloodNeeded!="0"){
+            amountOfBloodEditText.setText(amountOfBloodNeeded);
+        }
 
         if(need.toLowerCase().equals("plasma")){
             needCheckbox.setChecked(true);
+            amountOfBloodEditText.setVisibility(View.GONE);
+            amountOfBloodLabel.setVisibility(View.GONE);
         }
         ArrayAdapter arrayAdapter = (ArrayAdapter) divisionSpinner.getAdapter();
 
@@ -122,6 +132,20 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         }
 
 
+        needCheckbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
+                if(b){
+                    amountOfBloodEditText.setVisibility(View.GONE);
+                    amountOfBloodLabel.setVisibility(View.GONE);
+
+                }
+                else {
+                    amountOfBloodLabel.setVisibility(View.VISIBLE);
+                    amountOfBloodEditText.setVisibility(View.VISIBLE);
+                }
+            }
+        });
 
         //      Districts spinner as per selected division
 
@@ -225,6 +249,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
     private void verifydata() {
 
+        String amountOfBloodNeeded="0";
         String emptyfield = "";
         boolean emptyfieldChecker = true;
 
@@ -237,9 +262,20 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         phone = loggedInUserPhone;
 
         if (needCheckbox.isChecked()) {
+            amountOfBloodNeeded="0";
             newNeed = "Plasma";
         } else {
             newNeed = "Blood";
+            if(!formFieldsFeatures.checkIfEmpty(amountOfBloodEditText)) {
+                if(Integer.parseInt(amountOfBloodEditText.getText().toString())<=0||Integer.parseInt(amountOfBloodEditText.getText().toString())>10){
+                    amountOfBloodEditText.setError("Enter a valid number");
+                    amountOfBloodEditText.requestFocus();
+                    amountOfBloodNeeded="invalid";
+                }
+                else {
+                    amountOfBloodNeeded =amountOfBloodEditText.getText().toString();
+                }
+            }
         }
 
 
@@ -277,7 +313,12 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         }
 
         if(emptyfieldChecker){
-            updateAlertDialog();
+            if(!amountOfBloodNeeded.equals("invalid")) {
+                updateAlertDialog(amountOfBloodNeeded);
+            }
+            else {
+                updateBtn.setEnabled(true);
+            }
 
         }
         else{
@@ -309,9 +350,9 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
 
     //    database operations
-    private void updatePatient(String name, String age, String bloodGroup, String phone, String newName, String newAge, String newGender, String newHospital, String newDivision, String newDistrict, String newDate, String newNeed) {
+    private void updatePatient(String name, String age, String bloodGroup, String phone, String newName, String newAge, String newGender, String newHospital, String newDivision, String newDistrict, String newDate, String newNeed,String newAmountOfBlood) {
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<PatientDataModel> sendingData = retroInterface.updatePatientProfile(name, age, bloodGroup, phone, newName, newAge, newGender, newHospital, newDivision, newDistrict, newDate, newNeed);
+        Call<PatientDataModel> sendingData = retroInterface.updatePatientProfile(name, age, bloodGroup, phone, newName, newAge, newGender, newHospital, newDivision, newDistrict, newDate, newNeed,newAmountOfBlood);
         sendingData.enqueue(new Callback<PatientDataModel>() {
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
@@ -329,6 +370,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
                     intent.putExtra("date",newDate);
                     intent.putExtra("need",newNeed);
                     intent.putExtra("phone",phone);
+                    intent.putExtra("amountOfBloodNeeded",newAmountOfBlood);
                     intent.putExtra("activity","UpdatePatientProfileActivity");
                     ToastCreator.toastCreatorGreen(UpdatePatientProfileActivity.this, getResources().getString(R.string.update_patient_activity_update_successful));
                     startActivity(intent);
@@ -349,13 +391,13 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
     }
 
 
-private void updateAlertDialog(){
+private void updateAlertDialog(String amountOfBlood){
         AlertDialog.Builder builder = new AlertDialog.Builder(UpdatePatientProfileActivity.this);
         builder.setMessage(getResources().getString(R.string.confirm_update_txt));
     builder.setCancelable(false);
         builder.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                updatePatient(name, age, bloodGroup, phone, newName, newAge, newGender, newHospital, newDivision, newDistrict, newDate, newNeed);
+                updatePatient(name, age, bloodGroup, phone, newName, newAge, newGender, newHospital, newDivision, newDistrict, newDate, newNeed,amountOfBlood);
 
             }
         })

@@ -211,6 +211,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     intent.putExtra("date", date);
                     intent.putExtra("need", need);
                     intent.putExtra("phone", phone);
+                    intent.putExtra("amountOfBloodNeeded",amountOfBloodNeeded);
                     updateAlertDialog(intent);
                 }
                 else if(updateButton.getText().toString().equals(getResources().getString(R.string.accept_request))){

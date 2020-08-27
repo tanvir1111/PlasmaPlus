@@ -249,13 +249,15 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                 incomingResponse.enqueue(new Callback<UserDataModel>() {
                     @Override
                     public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-
+                        acceptBtn.setEnabled(true);
+                        declineBtn.setEnabled(true);
                     }
 
                     @Override
                     public void onFailure(Call<UserDataModel> call, Throwable t) {
 
-
+                        acceptBtn.setEnabled(true);
+                        declineBtn.setEnabled(true);
                     }
                 });
 
