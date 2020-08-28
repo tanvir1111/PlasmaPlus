@@ -20,7 +20,6 @@ import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.Functions.FormFieldsFeatures;
@@ -35,11 +34,11 @@ import retrofit2.Response;
 public class RegistrationActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView aPositive, aNegative, bPositive, bNegative, oPositive, oNegative, abPositive, abNegative, selectedBldGrp;
     private TextView labelGender, labelBloodGroup;
-    private EditText nameEditText, ageEditText, thanaEditText, passwordEditText, confPasswordEditText;
+    private EditText nameEditText, ageEditText,  passwordEditText, confPasswordEditText;
     private String gender = "not selected", donorInfo = "None";
     private ImageView genderMale, genderFemale, backbtn;
     private Button singUp;
-    private Spinner divisionSpinner, districtSpinner;
+    private Spinner divisionSpinner, districtSpinner,thanaSpinner;
     private RadioGroup donorRoleRadioGrp;
     private ProgressBar progressBar;
     FormFieldsFeatures formFieldsFeatures = new FormFieldsFeatures();
@@ -59,7 +58,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 //        all editTexts
         nameEditText = findViewById(R.id.reg_name_edittext);
         ageEditText = findViewById(R.id.reg_age_edittext);
-        thanaEditText = findViewById(R.id.reg_thana_edittext);
+
         passwordEditText = findViewById(R.id.reg_password_edittext);
         confPasswordEditText = findViewById(R.id.reg_confirm_password_edittext);
         progressBar = findViewById(R.id.reg_progress_bar);
@@ -72,7 +71,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 //        spinners
         divisionSpinner = findViewById(R.id.reg_division_spinner);
         districtSpinner = findViewById(R.id.reg_district_spinner);
-
+        thanaSpinner = findViewById(R.id.reg_thana_spinner);
 
         /*blood group textviews*/
         labelBloodGroup = findViewById(R.id.reg_label_blood_grp);
@@ -125,6 +124,24 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
 
             }
         });
+        districtSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                int i= getResources().getIdentifier(districtSpinner.getSelectedItem().toString()+"_t","array",getPackageName());
+                ArrayAdapter<String> adpter = new ArrayAdapter<String>(
+                        RegistrationActivity.this,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        getResources().getStringArray(i));
+                thanaSpinner.setAdapter(adpter);
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+      //thana ops   getResources().getStringArray(i));
 
 
 //        donorcheckbox setting donor info blood/plasma/na
@@ -322,7 +339,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
     private void verifyData() {
         String name, phone, division, bloodGroup = "not selected", district, thana, age, password;
         name = nameEditText.getText().toString();
-        thana = thanaEditText.getText().toString();
+        thana = thanaSpinner.getSelectedItem().toString();
         age = ageEditText.getText().toString();
         password = passwordEditText.getText().toString();
         division = divisionSpinner.getSelectedItem().toString();
@@ -360,7 +377,6 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         if (!formFieldsFeatures.checkIfEmpty(nameEditText) && !formFieldsFeatures.checkIfEmpty(ageEditText)
                 && !formFieldsFeatures.checkIfEmpty(this, labelGender, gender)
                 && !formFieldsFeatures.checkIfEmpty(this, labelBloodGroup, bloodGroup)
-                && !formFieldsFeatures.checkIfEmpty(thanaEditText)
                 && !formFieldsFeatures.checkIfEmpty(passwordEditText)) {
 
             if (password.length() < 6) {

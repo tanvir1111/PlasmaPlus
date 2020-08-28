@@ -344,19 +344,21 @@
             app:layout_constraintStart_toStartOf="@+id/reg_district_spinner"
             app:layout_constraintTop_toBottomOf="@+id/reg_district_spinner" />
 
-        <EditText
-            android:id="@+id/reg_thana_edittext"
+        <Spinner
+            android:id="@+id/reg_thana_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
 
-            android:background="@drawable/edit_text_dark"
+            android:minHeight="50dp"
+
             android:fontFamily="@font/montserrat"
             android:hint="@string/enter_thana_hint"
-            android:minHeight="40dp"
-            android:padding="15dp"
+
+
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="@+id/reg_label_thana"
             app:layout_constraintStart_toStartOf="@+id/reg_label_thana"
@@ -474,10 +476,10 @@
             android:textColor="@color/textColorDark"
 
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/reg_thana_edittext"
+            app:layout_constraintEnd_toEndOf="@+id/reg_thana_spinner"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/reg_thana_edittext"
-            app:layout_constraintTop_toBottomOf="@+id/reg_thana_edittext" />
+            app:layout_constraintStart_toStartOf="@+id/reg_thana_spinner"
+            app:layout_constraintTop_toBottomOf="@+id/reg_thana_spinner" />
 
 
         <RadioGroup

@@ -40,9 +40,9 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
 
 public class UpdateUserProfileActivity extends AppCompatActivity {
 
-    private EditText nameEditText, thanaEditText, ageEditText;
+    private EditText nameEditText, ageEditText;
     private RadioGroup bloodRadioGroup;
-    private Spinner divisionSpinner, districtSpinner;
+    private Spinner divisionSpinner, districtSpinner,thanaSpinner;
     private String donorInfo;
     private ImageView backbtn;
     private boolean dischanged=false;
@@ -56,7 +56,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_update_user_profile);
         nameEditText = findViewById(R.id.update_name_edittext);
-        thanaEditText = findViewById(R.id.update_thana_edittext);
+        thanaSpinner = findViewById(R.id.update_thana_spinner);
         ageEditText = findViewById(R.id.update_age_edittext);
 
         divisionSpinner = findViewById(R.id.update_division_spinner);
@@ -73,7 +73,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
 
 //     setting up current data
         nameEditText.setText(loggedInUserName);
-        thanaEditText.setText(loggedInUserThana);
+
         ageEditText.setText(loggedInUserAge);
         ArrayAdapter arrayAdapter = (ArrayAdapter) divisionSpinner.getAdapter();
 
@@ -263,6 +263,24 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
             }
         });
 
+        districtSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+                int i= getResources().getIdentifier(districtSpinner.getSelectedItem().toString()+"_t","array",getPackageName());
+                ArrayAdapter<String> adpter = new ArrayAdapter<String>(
+                        UpdateUserProfileActivity.this,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        getResources().getStringArray(i));
+                thanaSpinner.setAdapter(adpter);
+                thanaSpinner.setSelection(adpter.getPosition(loggedInUserThana));
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 // all current data set
         updateBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -280,7 +298,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         String name,  division, district, thana, age, emptyfield="";
         Boolean emptyfieldChecker=true;
         name = nameEditText.getText().toString();
-        thana = thanaEditText.getText().toString();
+        thana = thanaSpinner.getSelectedItem().toString();
         age = ageEditText.getText().toString();
 
         division = divisionSpinner.getSelectedItem().toString();
@@ -315,12 +333,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
             nameEditText.setError(getResources().getString(R.string.label_name)+" "+getResources().getString(R.string.is_required_txt));
             updateBtn.setEnabled(true);
         }
-        if (thana.isEmpty()) {
-            emptyfieldChecker = false;
-            emptyfield += getResources().getString(R.string.label_thana) + " ";
-            thanaEditText.setError(getResources().getString(R.string.label_thana)+" "+getResources().getString(R.string.is_required_txt));
-            updateBtn.setEnabled(true);
-        }
+
         if (age.isEmpty()) {
             emptyfieldChecker = false;
             emptyfield += getResources().getString(R.string.label_age_1) + " ";
