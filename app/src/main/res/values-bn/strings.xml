@@ -73,11 +73,11 @@
     <string name="accepted">সম্মত</string>
     <string name="declined">নাকচ</string>
     <string name="pending">অমীমাংসিত</string>
-    <string name="donated">দান সম্পন্ন হয়েছে</string>
-    <string name="not_donated">দান সম্পন্ন হয়নি</string>
-    <string name="confirmed">দান সম্পন্ন হয়েছে</string>
-    <string name="not_confirmed">দান সম্পন্ন হয়নি</string>
-    <string name="canceled">দান বাতিল হয়েছে</string>
+    <string name="donated">দানকৃত</string>
+    <string name="not_donated">অসম্পন্ন</string>
+    <string name="confirmed">নিশ্চিত</string>
+    <string name="not_confirmed">অনিশ্চিত</string>
+    <string name="canceled">বাতিলকৃত</string>
     <string name="delete_profile">প্রোফাইল মুছে ফেলুন</string>
     <string name="donate_to_help">সাহায্য করুন</string>
     <string name="ok_txt">ঠিক আছে</string>
