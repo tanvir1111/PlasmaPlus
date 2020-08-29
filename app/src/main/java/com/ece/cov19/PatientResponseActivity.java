@@ -236,7 +236,7 @@ public class PatientResponseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                status="Not Donated";
+                status="Not_Donated";
                 responseTypeText=getResources().getString(R.string.not_donated_responses);
                 patientResponseTextView.setText(responseTypeText);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyleselected);
@@ -476,7 +476,7 @@ public class PatientResponseActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                status="Not Donated";
+                status="Not_Donated";
                 responseTypeText=getResources().getString(R.string.not_donated_responses);
                 patientResponseTextView.setText(responseTypeText);
                 notDonatedBtn.setBackgroundResource(R.drawable.tabstyleselected);
@@ -550,7 +550,7 @@ public class PatientResponseActivity extends AppCompatActivity {
                     donatedBtn.setEnabled(false);
                 }
 
-                if(status.equals("Not Donated")){
+                if(status.equals("Not_Donated")){
                     notDonatedBtn.setEnabled(false);
                 }
 
@@ -610,7 +610,7 @@ public class PatientResponseActivity extends AppCompatActivity {
                     donatedBtn.setEnabled(false);
                 }
 
-                if(status.equals("Not Donated")){
+                if(status.equals("Not_Donated")){
                     notDonatedBtn.setEnabled(false);
                 }
 

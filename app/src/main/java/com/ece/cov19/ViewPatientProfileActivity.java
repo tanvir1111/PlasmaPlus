@@ -707,9 +707,8 @@ alertDialog.setCanceledOnTouchOutside(false);
 
                     }
 
-                    else if(response.body().getServerMsg().equals("Donated")){
+                    else if(response.body().getServerMsg().equals("Donated")||response.body().getServerMsg().equals("Confirmed")){
 
-                        if(getIntent().getStringExtra("activity").equals("PatientResponseActivity")){
 
                             donateToHelpButton.setVisibility(View.VISIBLE);
                             donateToHelpButton.setText(getResources().getString(R.string.donated));
@@ -720,28 +719,16 @@ alertDialog.setCanceledOnTouchOutside(false);
                             donatedButton.setVisibility(View.GONE);
                             notDonatedButton.setVisibility(View.GONE);
                             phoneTextView.setText(phone);
-                        }
 
-                        else {
-                            donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.donated));
-                            updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
-                            deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.send_sms));
-                            donatedButton.setVisibility(View.GONE);
-                            notDonatedButton.setVisibility(View.GONE);
-                            phoneTextView.setText(phone);
-                        }
 
                     }
 
-                    else if(response.body().getServerMsg().equals("Not_Donated")){
+                    else if(response.body().getServerMsg().equals("Not_Donated")|| response.body().getServerMsg().equals("Not_Confirmed")){
 
-                        if(getIntent().getStringExtra("activity").equals("PatientResponseActivity")){
+
 
                             donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.not_donated));
+                            donateToHelpButton.setText(R.string.not_donated);
                             updateButton.setVisibility(View.VISIBLE);
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);
@@ -749,105 +736,25 @@ alertDialog.setCanceledOnTouchOutside(false);
                             donatedButton.setVisibility(View.GONE);
                             notDonatedButton.setVisibility(View.GONE);
                             phoneTextView.setText(phone);
-                        }
 
-                        else {
-                            donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.not_donated));
-                            updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
-                            deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.send_sms));
-                            donatedButton.setVisibility(View.GONE);
-                            notDonatedButton.setVisibility(View.GONE);
-                            phoneTextView.setText(phone);
-                        }
-
-                    }
-
-                    else if(response.body().getServerMsg().equals("Confirmed")){
-
-                        if(getIntent().getStringExtra("activity").equals("PatientResponseActivity")){
-
-                            donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.confirmed));
-                            updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
-                            deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.send_sms));
-                            donatedButton.setVisibility(View.GONE);
-                            notDonatedButton.setVisibility(View.GONE);
-                            phoneTextView.setText(phone);
-                        }
-
-                        else {
-                            donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.confirmed));
-                            updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
-                            deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.send_sms));
-                            donatedButton.setVisibility(View.GONE);
-                            notDonatedButton.setVisibility(View.GONE);
-                            phoneTextView.setText(phone);
-                        }
 
                     }
 
 
-                    else if(response.body().getServerMsg().equals("Not_Confirmed")){
 
-                        if(getIntent().getStringExtra("activity").equals("PatientResponseActivity")){
 
-                            donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.not_confirmed));
-                            updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
-                            deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.send_sms));
-                            donatedButton.setVisibility(View.GONE);
-                            notDonatedButton.setVisibility(View.GONE);
-                            phoneTextView.setText(phone);
-                        }
 
-                        else {
-                            donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.not_confirmed));
-                            updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
-                            deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.send_sms));
-                            donatedButton.setVisibility(View.GONE);
-                            notDonatedButton.setVisibility(View.GONE);
-                            phoneTextView.setText(phone);
-                        }
+                    else if(response.body().getServerMsg().equals("Declined") || response.body().getServerMsg().equals("Canceled")) {
+
+                        donateToHelpButton.setVisibility(View.VISIBLE);
+                        donateToHelpButton.setText(getResources().getString(R.string.declined));
+                        updateButton.setVisibility(View.GONE);
+                        deleteButton.setVisibility(View.GONE);
+                        donatedButton.setVisibility(View.GONE);
+                        notDonatedButton.setVisibility(View.GONE);
+
 
                     }
-
-                    else if(response.body().getServerMsg().equals("Declined")){
-                        if(getIntent().getStringExtra("activity").equals("PatientResponseActivity")){
-
-                            donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.declined));
-                            updateButton.setVisibility(View.GONE);
-                            deleteButton.setVisibility(View.GONE);
-                            donatedButton.setVisibility(View.GONE);
-                            notDonatedButton.setVisibility(View.GONE);
-                        }
-
-                        else {
-
-                            donateToHelpButton.setVisibility(View.VISIBLE);
-                            donateToHelpButton.setText(getResources().getString(R.string.declined));
-                            updateButton.setVisibility(View.GONE);
-                            deleteButton.setVisibility(View.GONE);
-                            donatedButton.setVisibility(View.GONE);
-                            notDonatedButton.setVisibility(View.GONE);
-                        }
-
-                    }
-
-
                 }
 
             }

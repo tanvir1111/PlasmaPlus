@@ -417,7 +417,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     }
 
                     else if (response.body().getServerMsg().toLowerCase().equals("donated")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")||getIntent().getStringExtra("activity").equals("PatientRequestsActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.donated));
                             acceptBtn.setVisibility(View.VISIBLE);

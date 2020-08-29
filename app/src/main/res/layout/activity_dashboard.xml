@@ -140,16 +140,14 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardView_exploreC"
                             android:layout_width="0dp"
-                            android:layout_height="80dp"
-                            android:layout_marginStart="16dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
-                            android:layout_marginEnd="16dp"
                             android:elevation="10dp"
                             android:visibility="gone"
                             app:cardBackgroundColor="#FFFFFF"
                             app:cardCornerRadius="30dp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/cardView_myPatients"
+                            app:layout_constraintStart_toStartOf="@+id/cardView_explore"
                             app:layout_constraintTop_toBottomOf="@+id/cardView_exploreB">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -159,40 +157,49 @@
 
                                 <TextView
                                     android:id="@+id/dashboard_text_exploreC"
-                                    android:layout_width="0dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="16dp"
+                                    android:layout_marginBottom="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_explore_website"
                                     android:textAlignment="center"
                                     android:textColor="@color/colorAccent"
-                                    android:textSize="18dp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/dashboard_img_exploreC"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/dashboard_text_exploreC2"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_img_exploreC"
-                                    app:layout_constraintTop_toTopOf="@+id/dashboard_img_exploreC" />
+                                    app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
                                     android:id="@+id/dashboard_text_exploreC2"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
                                     android:layout_marginEnd="16dp"
+                                    android:layout_marginBottom="16dp"
+
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_exploreC"
                                     android:textAlignment="center"
-
                                     android:textColor="#673AB7"
-                                    android:textSize="18dp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/dashboard_text_exploreC"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_text_exploreC"
-                                    app:layout_constraintTop_toTopOf="@+id/dashboard_text_exploreC" />
+                                    app:layout_constraintTop_toTopOf="parent" />
 
                                 <ImageView
                                     android:id="@+id/dashboard_img_exploreC"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
-                                    android:layout_marginStart="32dp"
+                                    android:layout_marginStart="24dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginBottom="16dp"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
@@ -211,8 +218,8 @@
                             android:visibility="gone"
                             app:cardBackgroundColor="#FFFFFF"
                             app:cardCornerRadius="30dp"
-                            app:layout_constraintEnd_toEndOf="@+id/cardView_exploreC"
-                            app:layout_constraintStart_toStartOf="@+id/cardView_exploreC"
+                            app:layout_constraintEnd_toEndOf="@+id/cardView_myPatients"
+                            app:layout_constraintStart_toStartOf="@+id/cardView_explore"
                             app:layout_constraintTop_toBottomOf="@+id/cardView_exploreC">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -225,36 +232,43 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
                                     android:layout_marginEnd="16dp"
-                                    android:textAlignment="center"
+                                    android:layout_marginBottom="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_exploreD"
+                                    android:textAlignment="center"
                                     android:textColor="#673AB7"
-                                    android:textSize="18dp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/dashboard_text_exploreD"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_text_exploreD"
-                                    app:layout_constraintTop_toTopOf="@+id/dashboard_text_exploreD" />
+                                    app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
                                     android:id="@+id/dashboard_text_exploreD"
-                                    android:layout_width="0dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginBottom="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_explore_website"
                                     android:textAlignment="center"
                                     android:textColor="@color/colorAccent"
-                                    android:textSize="18dp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/dashboard_img_exploreD"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/dashboard_text_exploreD2"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_img_exploreD"
-                                    app:layout_constraintTop_toTopOf="@+id/dashboard_img_exploreD" />
+                                    app:layout_constraintTop_toTopOf="parent" />
 
                                 <ImageView
                                     android:id="@+id/dashboard_img_exploreD"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
-                                    android:layout_marginStart="32dp"
+                                    android:layout_marginStart="24dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginBottom="16dp"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
@@ -272,8 +286,8 @@
                             android:visibility="gone"
                             app:cardBackgroundColor="#FFFFFF"
                             app:cardCornerRadius="30dp"
-                            app:layout_constraintEnd_toEndOf="@+id/cardView_exploreD"
-                            app:layout_constraintStart_toStartOf="@+id/cardView_exploreD"
+                            app:layout_constraintEnd_toEndOf="@+id/cardView_myPatients"
+                            app:layout_constraintStart_toStartOf="@+id/cardView_explore"
                             app:layout_constraintTop_toBottomOf="@+id/cardView_exploreD">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -283,23 +297,28 @@
 
                                 <TextView
                                     android:id="@+id/dashboard_text_exploreE"
-                                    android:layout_width="0dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginBottom="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_explore_website"
-                                    android:textColor="@color/colorAccent"
                                     android:textAlignment="center"
-                                    android:textSize="18dp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/dashboard_img_exploreE"
+                                    android:textColor="@color/colorAccent"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/dashboard_text_exploreE2"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_img_exploreE"
-                                    app:layout_constraintTop_toTopOf="@+id/dashboard_img_exploreE" />
+                                    app:layout_constraintTop_toTopOf="parent" />
 
                                 <ImageView
                                     android:id="@+id/dashboard_img_exploreE"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
-                                    android:layout_marginStart="32dp"
+                                    android:layout_marginStart="24dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginBottom="16dp"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
@@ -311,16 +330,18 @@
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
                                     android:layout_marginEnd="16dp"
+                                    android:layout_marginBottom="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_exploreE"
                                     android:textAlignment="center"
                                     android:textColor="#673AB7"
-                                    android:textSize="18dp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/dashboard_text_exploreE"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_text_exploreE"
-                                    app:layout_constraintTop_toTopOf="@+id/dashboard_text_exploreE" />
+                                    app:layout_constraintTop_toTopOf="parent" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -334,8 +355,8 @@
                             android:visibility="gone"
                             app:cardBackgroundColor="#FFFFFF"
                             app:cardCornerRadius="30dp"
-                            app:layout_constraintEnd_toEndOf="@+id/cardView_exploreE"
-                            app:layout_constraintStart_toStartOf="@+id/cardView_exploreE"
+                            app:layout_constraintEnd_toEndOf="@+id/cardView_myPatients"
+                            app:layout_constraintStart_toStartOf="@+id/cardView_explore"
                             app:layout_constraintTop_toBottomOf="@+id/cardView_exploreE">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -345,24 +366,30 @@
 
                                 <TextView
                                     android:id="@+id/dashboard_text_exploreF0"
-                                    android:layout_width="0dp"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
+
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginBottom="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_explore_call"
                                     android:textAlignment="center"
                                     android:textColor="@color/colorAccent"
-                                    android:textSize="18dp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/dashboard_img_exploreF"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/dashboard_text_exploreF2"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_img_exploreF"
-                                    app:layout_constraintTop_toTopOf="@+id/dashboard_img_exploreF" />
+                                    app:layout_constraintTop_toTopOf="parent" />
 
 
                                 <ImageView
                                     android:id="@+id/dashboard_img_exploreF"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
-                                    android:layout_marginStart="32dp"
+                                    android:layout_marginStart="24dp"
+                                    android:layout_marginTop="16dp"
+                                    android:layout_marginBottom="16dp"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
@@ -373,17 +400,19 @@
                                     android:id="@+id/dashboard_text_exploreF2"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginStart="24dp"
+                                    android:layout_marginStart="16dp"
+                                    android:layout_marginTop="16dp"
                                     android:layout_marginEnd="16dp"
+                                    android:layout_marginBottom="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_exploreF"
                                     android:textAlignment="center"
                                     android:textColor="#FF5722"
-                                    android:textSize="36dp"
-                                    app:layout_constraintBottom_toBottomOf="@+id/dashboard_text_exploreF0"
+                                    android:textSize="24sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="parent"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_text_exploreF0"
-                                    app:layout_constraintTop_toTopOf="@+id/dashboard_text_exploreF0" />
+                                    app:layout_constraintTop_toTopOf="parent" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -468,14 +497,14 @@
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardView_exploreA"
-                            android:layout_width="368dp"
-                            android:layout_height="80dp"
-                            android:layout_marginStart="16dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:visibility="gone"
                             app:cardBackgroundColor="#FFFFFF"
                             app:cardCornerRadius="30dp"
-                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="@+id/cardView_myPatients"
+                            app:layout_constraintStart_toStartOf="@+id/cardView_explore"
                             app:layout_constraintTop_toBottomOf="@+id/cardView_explore">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -487,33 +516,38 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
-                                    android:layout_marginTop="48dp"
+                                    android:layout_marginBottom="8dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_no_of_donors"
                                     android:textColor="@color/colorAccent"
                                     android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="@+id/dashboard_no_of_donors"
                                     app:layout_constraintStart_toStartOf="@+id/dashboard_no_of_donors"
-                                    app:layout_constraintTop_toTopOf="parent" />
+                                    app:layout_constraintTop_toBottomOf="@+id/dashboard_no_of_donors" />
 
                                 <TextView
                                     android:id="@+id/dashboard_no_of_donors"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginEnd="80dp"
-                                    android:fontFamily="@font/montserrat_bold"
 
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginEnd="40dp"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:text="0"
                                     android:textColor="@color/colorAccent"
                                     android:textSize="30sp"
+                                    app:layout_constraintBottom_toTopOf="@+id/dashboard_text_no_of_donors"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.6"
+                                    app:layout_constraintStart_toEndOf="@+id/dashboard_text_explore_all_donors"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <ImageView
                                     android:id="@+id/dashboard_img_explore_all_donors"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
-                                    android:layout_marginStart="32dp"
+                                    android:layout_marginStart="24dp"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
@@ -522,14 +556,16 @@
 
                                 <TextView
                                     android:id="@+id/dashboard_text_explore_all_donors"
-                                    android:layout_width="80dp"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/explore_donors"
                                     android:textColor="@color/colorAccent"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/dashboard_text_no_of_donors"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_img_explore_all_donors"
                                     app:layout_constraintTop_toTopOf="parent" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -581,8 +617,8 @@
 
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardView_exploreB"
-                            android:layout_width="368dp"
-                            android:layout_height="80dp"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:elevation="10dp"
                             android:visibility="gone"
@@ -601,33 +637,38 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
-                                    android:layout_marginTop="44dp"
+                                    android:layout_marginBottom="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_no_of_patients"
                                     android:textColor="@color/colorAccent"
                                     android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="@+id/dashboard_no_of_patients"
                                     app:layout_constraintStart_toStartOf="@+id/dashboard_no_of_patients"
-                                    app:layout_constraintTop_toTopOf="parent" />
+                                    app:layout_constraintTop_toBottomOf="@+id/dashboard_no_of_patients" />
 
                                 <TextView
                                     android:id="@+id/dashboard_no_of_patients"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
-                                    android:layout_marginEnd="80dp"
+                                    android:layout_marginTop="8dp"
+                                    android:layout_marginEnd="40dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="0"
                                     android:textColor="@color/colorAccent"
                                     android:textSize="30sp"
+                                    app:layout_constraintBottom_toTopOf="@+id/dashboard_text_no_of_patients"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.6"
+                                    app:layout_constraintStart_toEndOf="@+id/dashboard_text_explore_all_patients"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <ImageView
                                     android:id="@+id/dashboard_img_explore_all_patients"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
-                                    android:layout_marginStart="32dp"
+                                    android:layout_marginStart="24dp"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
@@ -636,14 +677,17 @@
 
                                 <TextView
                                     android:id="@+id/dashboard_text_explore_all_patients"
-                                    android:layout_width="80dp"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/explore_patients"
                                     android:textColor="@color/colorAccent"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/dashboard_text_no_of_patients"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_img_explore_all_patients"
                                     app:layout_constraintTop_toTopOf="parent" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -694,15 +738,14 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardView_requestB"
                             android:layout_width="0dp"
-                            android:layout_height="80dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="8dp"
                             android:visibility="gone"
                             app:cardBackgroundColor="#FFFFFF"
                             app:cardCornerRadius="30dp"
-                            app:layout_constraintEnd_toEndOf="@+id/cardView_requestA"
-                            app:layout_constraintStart_toStartOf="@+id/cardView_requestA"
-                            app:layout_constraintTop_toBottomOf="@+id/cardView_requestA"
-                            tools:visibility="gone">
+                            app:layout_constraintEnd_toEndOf="@+id/cardView_responses"
+                            app:layout_constraintStart_toStartOf="@+id/cardView_requests"
+                            app:layout_constraintTop_toBottomOf="@+id/cardView_requestA">
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
@@ -712,22 +755,25 @@
                                     android:id="@+id/dashboard_img_requestB"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
-                                    android:layout_marginStart="32dp"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_marginStart="24dp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
                                     app:srcCompat="@mipmap/hospital_bed_2" />
 
                                 <TextView
                                     android:id="@+id/dashboard_text_requestB"
-                                    android:layout_width="75dp"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_requestB"
                                     android:textColor="@color/colorAccent"
-                                    android:textSize="17dp"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/dashboard_text_no_of_requests_from_patients"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_img_requestB"
                                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -735,13 +781,17 @@
                                     android:id="@+id/dashboard_no_of_requests_from_patients"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginEnd="80dp"
+                                    android:layout_marginTop="8dp"
+
+                                    android:layout_marginEnd="40dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="5"
-
                                     android:textColor="@color/colorAccent"
                                     android:textSize="30sp"
+                                    app:layout_constraintBottom_toTopOf="@+id/dashboard_text_no_of_requests_from_patients"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.6"
+                                    app:layout_constraintStart_toEndOf="@+id/dashboard_text_requestB"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <TextView
@@ -749,14 +799,15 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
-                                    android:layout_marginTop="44dp"
+                                    android:layout_marginBottom="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/requests"
                                     android:textColor="@color/colorAccent"
                                     android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="@+id/dashboard_no_of_requests_from_patients"
                                     app:layout_constraintStart_toStartOf="@+id/dashboard_no_of_requests_from_patients"
-                                    app:layout_constraintTop_toTopOf="parent" />
+                                    app:layout_constraintTop_toBottomOf="@+id/dashboard_no_of_requests_from_patients" />
                             </androidx.constraintlayout.widget.ConstraintLayout>
                         </androidx.cardview.widget.CardView>
 
@@ -842,7 +893,7 @@
                         <androidx.cardview.widget.CardView
                             android:id="@+id/cardView_requestA"
                             android:layout_width="0dp"
-                            android:layout_height="80dp"
+                            android:layout_height="wrap_content"
                             android:layout_marginTop="16dp"
                             android:elevation="10dp"
                             android:visibility="gone"
@@ -851,7 +902,7 @@
                             app:layout_constraintEnd_toEndOf="@+id/cardView_responses"
                             app:layout_constraintStart_toStartOf="@+id/cardView_requests"
                             app:layout_constraintTop_toBottomOf="@+id/cardView_requests"
-                            tools:visibility="gone">
+                            >
 
                             <androidx.constraintlayout.widget.ConstraintLayout
                                 android:layout_width="match_parent"
@@ -862,33 +913,39 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
 
-                                    android:layout_marginTop="44dp"
+                                    android:layout_marginBottom="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/requests"
                                     android:textColor="@color/colorAccent"
                                     android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintEnd_toEndOf="@+id/dashboard_no_of_requests_from_donors"
                                     app:layout_constraintStart_toStartOf="@+id/dashboard_no_of_requests_from_donors"
-                                    app:layout_constraintTop_toTopOf="parent" />
+                                    app:layout_constraintTop_toBottomOf="@+id/dashboard_no_of_requests_from_donors"
+                                    app:layout_constraintVertical_bias="0.0" />
 
                                 <TextView
                                     android:id="@+id/dashboard_no_of_requests_from_donors"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginEnd="80dp"
-                                    android:fontFamily="@font/montserrat_bold"
+                                    android:layout_marginTop="8dp"
 
+                                    android:layout_marginEnd="40dp"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:text="0"
                                     android:textColor="@color/colorAccent"
                                     android:textSize="30sp"
+                                    app:layout_constraintBottom_toTopOf="@+id/dashboard_text_no_of_requests_from_donors"
                                     app:layout_constraintEnd_toEndOf="parent"
+                                    app:layout_constraintHorizontal_bias="0.6"
+                                    app:layout_constraintStart_toEndOf="@+id/dashboard_text_requestA"
                                     app:layout_constraintTop_toTopOf="parent" />
 
                                 <ImageView
                                     android:id="@+id/dashboard_img_requestA"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
-                                    android:layout_marginStart="32dp"
+                                    android:layout_marginStart="24dp"
                                     app:layout_constraintBottom_toBottomOf="parent"
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent"
@@ -897,14 +954,17 @@
 
                                 <TextView
                                     android:id="@+id/dashboard_text_requestA"
-                                    android:layout_width="70dp"
+                                    android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_marginStart="16dp"
-                                    android:layout_marginTop="16dp"
+                                    android:layout_marginEnd="16dp"
                                     android:fontFamily="@font/montserrat_bold"
                                     android:text="@string/dashboard_text_requestA"
                                     android:textColor="@color/colorAccent"
-                                    android:textSize="18dp"
+                                    android:textSize="18sp"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toStartOf="@+id/dashboard_text_no_of_requests_from_donors"
+                                    app:layout_constraintHorizontal_bias="0.0"
                                     app:layout_constraintStart_toEndOf="@+id/dashboard_img_requestA"
                                     app:layout_constraintTop_toTopOf="parent" />
                             </androidx.constraintlayout.widget.ConstraintLayout>

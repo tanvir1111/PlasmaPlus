@@ -73,10 +73,10 @@
     <string name="declined">Declined</string>
     <string name="pending">Pending</string>
     <string name="donated">Donated</string>
-    <string name="not_donated">Not Donated</string>
-    <string name="confirmed">Confirmed</string>
-    <string name="not_confirmed">Rejected</string>
-    <string name="canceled">Canceled</string>
+    <string name="not_donated">Did not donate</string>
+    <string name="confirmed">Donated</string>
+    <string name="not_confirmed">Did not donate</string>
+    <string name="canceled">Declined</string>
     <string name="delete_profile">Delete Profile</string>
     <string name="donate_to_help">Donate to Help</string>
 

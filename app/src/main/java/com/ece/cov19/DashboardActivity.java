@@ -23,6 +23,7 @@ import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Base64;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -552,6 +553,13 @@ if(LoginUser.checkLoginStat().equals("failed")){
                 finishAffinity();
 
             }
+            final Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                   backCounter--;
+                }
+            }, 5000);
         }
     }
 

@@ -75,8 +75,8 @@
     <string name="pending">অমীমাংসিত</string>
     <string name="donated">দান সম্পন্ন হয়েছে</string>
     <string name="not_donated">দান সম্পন্ন হয়নি</string>
-    <string name="confirmed">দান নিশ্চিত হয়েছে</string>
-    <string name="not_confirmed">দান নিশ্চিত হয়নি</string>
+    <string name="confirmed">দান সম্পন্ন হয়েছে</string>
+    <string name="not_confirmed">দান সম্পন্ন হয়নি</string>
     <string name="canceled">দান বাতিল হয়েছে</string>
     <string name="delete_profile">প্রোফাইল মুছে ফেলুন</string>
     <string name="donate_to_help">সাহায্য করুন</string>
