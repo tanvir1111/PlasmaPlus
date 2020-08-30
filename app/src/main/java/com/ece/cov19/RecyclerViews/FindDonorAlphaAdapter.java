@@ -91,6 +91,8 @@ public class FindDonorAlphaAdapter extends RecyclerView.Adapter<FindDonorAlphaVi
                 FindPatientData.findPatientPhone=patientDataModels.get(position).getPhone();
                 FindPatientData.findPatientNeed=patientDataModels.get(position).getNeed();
                 FindPatientData.findPatientDate=patientDataModels.get(position).getDate();
+                FindPatientData.findPatientDistrict=patientDataModels.get(position).getDistrict();
+                FindPatientData.findPatientDivision=patientDataModels.get(position).getDivision();
                 recyclerViewClickListener.onClicked(v,position);
             }
         });

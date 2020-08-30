@@ -37,9 +37,13 @@ import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientDistrict;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientDivision;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientNeed;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDistrict;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDivision;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PASS;
@@ -63,6 +67,13 @@ public class FindDonorActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_donor);
+        findPatientName="";
+        findPatientAge="";
+        findPatientPhone="";
+        findPatientBloodGroup="any";
+        findPatientDistrict="";
+        findPatientDivision="";
+        findPatientNeed="";
 
         addPatientCardView = findViewById(R.id.add_patient_cardView);
         numberOfPatients = findViewById(R.id.find_donor_number_of_patients);
@@ -153,6 +164,9 @@ public class FindDonorActivity extends AppCompatActivity {
         findPatientAge="";
         findPatientPhone="";
         findPatientBloodGroup="any";
+        findPatientDistrict="";
+        findPatientDivision="";
+        findPatientNeed="";
         if(LoginUser.checkLoginStat().equals("failed")){
             SharedPreferences sharedPreferences = getSharedPreferences(LOGIN_SHARED_PREFS, MODE_PRIVATE);
             String phone,password;
@@ -221,7 +235,6 @@ public class FindDonorActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-
         finish();
     }
 
@@ -317,7 +330,7 @@ public class FindDonorActivity extends AppCompatActivity {
 
         userDataModels.clear();
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<ArrayList<UserDataModel>> findDonor = retroInterface.findDonor(bloodGroup,district,loggedInUserPhone);
+        Call<ArrayList<UserDataModel>> findDonor = retroInterface.findDonor(bloodGroup,district,loggedInUserPhone,findPatientDistrict,findPatientDivision);
         findDonor.enqueue(new Callback<ArrayList<UserDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<UserDataModel>> call, Response<ArrayList<UserDataModel>> response) {

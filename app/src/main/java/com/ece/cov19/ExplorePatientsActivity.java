@@ -36,6 +36,8 @@ import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientNeed;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDistrict;
+import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDivision;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PASS;
@@ -213,7 +215,7 @@ public class ExplorePatientsActivity extends AppCompatActivity {
 
         patientDataModels.clear();
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<ArrayList<PatientDataModel>> searchDonor = retroInterface.searchPatients(bloodgroup,district,loggedInUserPhone);
+        Call<ArrayList<PatientDataModel>> searchDonor = retroInterface.searchPatients(bloodgroup,district,loggedInUserPhone,loggedInUserDistrict,loggedInUserDivision);
         searchDonor.enqueue(new Callback<ArrayList<PatientDataModel>>() {
             @Override
             public void onResponse(Call<ArrayList<PatientDataModel>> call, Response<ArrayList<PatientDataModel>> response) {

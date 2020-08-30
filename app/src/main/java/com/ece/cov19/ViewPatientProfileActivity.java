@@ -131,12 +131,23 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             phoneTextView.setText(getResources().getString(R.string.not_permitted));
         }
         bloodGroupTextView.setText(bloodGroup);
-        hospitalTextView.setText(hospital);
+        hospitalTextView.setText(hospital+", "+district);
         ageTextView.setText(age);
         if(amountOfBloodNeeded.equals("0")) {
-            needTextView.setText(need);
+            if(need.toLowerCase().equals("blood")){
+                needTextView.setText(getString(R.string.blood));
+            }
+            else {
+                needTextView.setText(getString(R.string.plasma));
+            }
+
         }else {
-            needTextView.setText(need + " ("+amountOfBloodNeeded+ " units)");
+            if(need.toLowerCase().equals("blood")){
+                needTextView.setText(getString(R.string.blood)+ " ("+amountOfBloodNeeded+ " " +getString(R.string.unit)+ ")");
+            }
+            else {
+                needTextView.setText(getString(R.string.plasma));
+            }
         }
         dateTextView.setText(date);
 

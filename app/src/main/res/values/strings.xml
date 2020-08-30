@@ -313,8 +313,9 @@
     <string name="cancel_donation">Cancel Donation</string>
     <string name="confirm_donation">Confirm Donation</string>
     <string name="decline_donation">Decline Donation</string>
-    <string name="how_many_bags_units_of_blood_is_needed">How many bags(units) of blood is needed?</string>
-    <string name="quantity_of_blood_needed_in_units">" Amount of Blood needed(in units)"</string>
+    <string name="how_many_bags_units_of_blood_is_needed">How many bags (units) of blood are needed?</string>
+    <string name="quantity_of_blood_needed_in_units">"Required Blood unit"</string>
+    <string name="unit">Units</string>
 
 
     <string-array name="division">

@@ -3,7 +3,7 @@
     <string name="fcm_token">FCM Token: %s</string>
 
     <string name="navheader_title">প্লাজমা+</string>
-    <string name="navheadersubtitle">প্লাজমা এন্ড ব্লাড ব্যাংকিং অ্যাপ</string>
+    <string name="navheadersubtitle">প্লাজমা এন্ড রক্ত ব্যাংকিং অ্যাপ</string>
     <string name="navheaderdesc">নেভিগেশন হেডার</string>
     <string name="profile">প্রোফাইল</string>
 
@@ -257,9 +257,9 @@
 
 
     <string name="label_donor_role">ব্যবহারকারীর ভূমিকা (দাতা/সাধারণ ব্যবহারকারী)</string>
-    <string name="update_donor_role_radio_group_blood">ব্লাড</string>
+    <string name="update_donor_role_radio_group_blood">রক্ত</string>
     <string name="update_donor_role_radio_group_plasma">প্লাজমা</string>
-    <string name="update_donor_role_radio_group_blood_and_plasma">ব্লাড এবং প্লাজমা</string>
+    <string name="update_donor_role_radio_group_blood_and_plasma">রক্ত এবং প্লাজমা</string>
     <string name="update_donor_role_radio_group_none">সাধারণ ব্যবহারকারী/গ্রাহক</string>
 
 
@@ -394,10 +394,10 @@
 
 
     <string name="profile_label_type">ভূমিকা :</string>
-    <string name="profile_type">ব্লাড / প্লাজমা</string>
-    <string name="profile_blood">ব্লাড দাতা</string>
+    <string name="profile_type">রক্ত / প্লাজমা</string>
+    <string name="profile_blood">রক্ত দাতা</string>
     <string name="profile_plasma">প্লাজমা দাতা</string>
-    <string name="profile_blood_and_plasma">ব্লাড এবং প্লাজমা দাতা</string>
+    <string name="profile_blood_and_plasma">রক্ত এবং প্লাজমা দাতা</string>
     <string name="profile_none">সাধারণ ব্যবহারকারী</string>
     <string name="profile_id_account_maintenance">একাউন্ট মেইনটেনেন্স</string>
 
@@ -603,9 +603,9 @@
     <string name="accepted_requests">সম্মত অনুরোধ</string>
     <string name="next">পরবর্তী</string>
     <string name="forgot_password">পাসওয়ার্ড আপডেট</string>
-    <string name="blood">ব্লাড</string>
+    <string name="blood">রক্ত</string>
     <string name="plasma">প্লাজমা</string>
-    <string name="bloodandplasma">ব্লাড ও প্লাজমা</string>
+    <string name="bloodandplasma">রক্ত ও প্লাজমা</string>
     <string name="mark_as_donated">দান সম্পন্ন হয়েছে</string>
     <string name="mark_as_not_donated">দান সম্পন্ন হয়নি</string>
     <string name="login_failed">লগিন ব্যর্থ হয়েছে</string>
@@ -634,6 +634,6 @@
     <string name="decline_donation">দান বাতিল করুন</string>
     <string name="how_many_bags_units_of_blood_is_needed">কত ব্যাগ রক্ত লাগবে?</string>
     <string name="quantity_of_blood_needed_in_units">প্রয়োজনীয় রক্তের পরিমাণ</string>
-
+    <string name="unit">ব্যাগ</string>
 
 </resources>
