@@ -718,7 +718,7 @@ alertDialog.setCanceledOnTouchOutside(false);
 
                     }
 
-                    else if(response.body().getServerMsg().equals("Donated")||response.body().getServerMsg().equals("Confirmed")){
+                    else if(response.body().getServerMsg().equals("Donated")){
 
 
                             donateToHelpButton.setVisibility(View.VISIBLE);
@@ -734,7 +734,24 @@ alertDialog.setCanceledOnTouchOutside(false);
 
                     }
 
-                    else if(response.body().getServerMsg().equals("Not_Donated")|| response.body().getServerMsg().equals("Not_Confirmed")){
+                    else if(response.body().getServerMsg().equals("Confirmed")){
+
+
+                        donateToHelpButton.setVisibility(View.VISIBLE);
+                        donateToHelpButton.setText(getResources().getString(R.string.confirmed));
+                        updateButton.setVisibility(View.VISIBLE);
+                        updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
+                        deleteButton.setVisibility(View.VISIBLE);
+                        deleteButton.setText(getResources().getString(R.string.send_sms));
+                        donatedButton.setVisibility(View.GONE);
+                        notDonatedButton.setVisibility(View.GONE);
+                        phoneTextView.setText(phone);
+
+
+                    }
+
+
+                    else if(response.body().getServerMsg().equals("Not_Donated")){
 
 
 
@@ -751,11 +768,25 @@ alertDialog.setCanceledOnTouchOutside(false);
 
                     }
 
+                    else if(response.body().getServerMsg().equals("Not_Confirmed")) {
+
+
+                        donateToHelpButton.setVisibility(View.VISIBLE);
+                        donateToHelpButton.setText(R.string.not_confirmed);
+                        updateButton.setVisibility(View.VISIBLE);
+                        updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
+                        deleteButton.setVisibility(View.VISIBLE);
+                        deleteButton.setText(getResources().getString(R.string.send_sms));
+                        donatedButton.setVisibility(View.GONE);
+                        notDonatedButton.setVisibility(View.GONE);
+                        phoneTextView.setText(phone);
+                    }
 
 
 
 
-                    else if(response.body().getServerMsg().equals("Declined") || response.body().getServerMsg().equals("Canceled")) {
+
+                    else if(response.body().getServerMsg().equals("Declined")) {
 
                         donateToHelpButton.setVisibility(View.VISIBLE);
                         donateToHelpButton.setText(getResources().getString(R.string.declined));
@@ -764,6 +795,20 @@ alertDialog.setCanceledOnTouchOutside(false);
                         donatedButton.setVisibility(View.GONE);
                         notDonatedButton.setVisibility(View.GONE);
 
+
+                    }
+
+                    else if(response.body().getServerMsg().equals("Canceled")) {
+
+                        donateToHelpButton.setVisibility(View.VISIBLE);
+                        donateToHelpButton.setText(getResources().getString(R.string.canceled));
+                        updateButton.setVisibility(View.VISIBLE);
+                        updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
+                        deleteButton.setVisibility(View.VISIBLE);
+                        deleteButton.setText(getResources().getString(R.string.send_sms));
+                        donatedButton.setVisibility(View.GONE);
+                        notDonatedButton.setVisibility(View.GONE);
+                        phoneTextView.setText(phone);
 
                     }
                 }

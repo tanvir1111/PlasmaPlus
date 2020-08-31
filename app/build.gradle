@@ -6,10 +6,10 @@ android {
             keyPassword '15111997'
             storePassword '15111997'
             keyAlias 'key0'
-            storeFile file('F:\\Github\\keystore\\keystore_copy.jpg')
+            storeFile file('/Users/Khalid/Documents/Projects/Plasma+/keystore')
         }
         release {
-            storeFile file('F:\\Github\\keystore\\keystore_copy.jpg')
+            storeFile file('/Users/Khalid/Documents/Projects/Plasma+/keystore')
             storePassword '15111997'
             keyAlias 'key0'
             keyPassword '15111997'
@@ -71,6 +71,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'org.jsoup:jsoup:1.11.1'
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+
 
 }

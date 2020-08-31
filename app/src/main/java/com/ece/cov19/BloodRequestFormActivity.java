@@ -212,20 +212,20 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         if(ClickTimeChecker.clickTimeChecker()) {
         switch (v.getId()) {
             case R.id.bld_req_for_myself:
-                forMyselfBtn.setBackgroundResource(R.drawable.button_style_white);
-                forMyselfBtn.setTextColor(getResources().getColor(R.color.textColorGrey));
+                forMyselfBtn.setBackgroundResource(R.drawable.button_style_colored);
+                forMyselfBtn.setTextColor(getResources().getColor(R.color.textColorWhite));
                 forMyselfBtn.setEnabled(false);
-                othersBtn.setBackgroundResource(R.drawable.button_style_colored);
-                othersBtn.setTextColor(getColor(R.color.textColorWhite));
+                othersBtn.setBackgroundResource(R.drawable.button_style_white);
+                othersBtn.setTextColor(getColor(R.color.textColorGrey));
                 othersBtn.setEnabled(true);
                 fillAvailableInfo();
                 break;
             case R.id.bld_req_others_btn:
-                othersBtn.setBackgroundResource(R.drawable.button_style_white);
-                othersBtn.setTextColor(getResources().getColor(R.color.textColorGrey));
+                othersBtn.setBackgroundResource(R.drawable.button_style_colored);
+                othersBtn.setTextColor(getResources().getColor(R.color.textColorWhite));
                 othersBtn.setEnabled(false);
-                forMyselfBtn.setBackgroundResource(R.drawable.button_style_colored);
-                forMyselfBtn.setTextColor(getColor(R.color.textColorWhite));
+                forMyselfBtn.setBackgroundResource(R.drawable.button_style_white);
+                forMyselfBtn.setTextColor(getColor(R.color.textColorGrey));
                 forMyselfBtn.setEnabled(true);
                 genderFemale.setImageResource(R.drawable.female_icon);
                 genderMale.setImageResource(R.drawable.male_icon);

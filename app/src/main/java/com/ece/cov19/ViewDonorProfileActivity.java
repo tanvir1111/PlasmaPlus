@@ -539,6 +539,31 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         }
                     }
 
+                    else if (response.body().getServerMsg().toLowerCase().equals("canceled")) {
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                            askForHelpBtn.setVisibility(View.VISIBLE);
+                            askForHelpBtn.setText(getResources().getString(R.string.canceled));
+                            acceptBtn.setVisibility(View.VISIBLE);
+                            acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
+                            declineBtn.setVisibility(View.VISIBLE);
+                            declineBtn.setText(getResources().getString(R.string.send_sms));
+                            confirmBtn.setVisibility(View.GONE);
+                            cancelBtn.setVisibility(View.GONE);
+                            phoneTextView.setText(donorphone);
+                        }
+                        else {
+                            askForHelpBtn.setVisibility(View.VISIBLE);
+                            askForHelpBtn.setText(getResources().getString(R.string.canceled));
+                            acceptBtn.setVisibility(View.VISIBLE);
+                            acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
+                            declineBtn.setVisibility(View.VISIBLE);
+                            declineBtn.setText(getResources().getString(R.string.send_sms));
+                            confirmBtn.setVisibility(View.GONE);
+                            cancelBtn.setVisibility(View.GONE);
+                            phoneTextView.setText(donorphone);
+                        }
+                    }
+
                 }
 
             }

@@ -3,11 +3,19 @@ package com.ece.cov19;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
@@ -23,7 +31,13 @@ import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
+import org.json.JSONObject;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+
+import java.io.IOException;
 import java.util.Locale;
+import java.util.concurrent.ExecutionException;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -51,50 +65,26 @@ public class SplashActivity extends AppCompatActivity {
     String lang="not set";
     public static final String Language_pref="Language";
     public static final String Selected_language="Selected Language";
+    String currentVersion, latestVersion;
+    Dialog dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+
         progressBar = findViewById(R.id.splash_progress_bar);
         tryAgain = findViewById(R.id.splash_retry);
 
-        final Handler handler = new Handler();
-
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-              langPrefs=getSharedPreferences(Language_pref,MODE_PRIVATE);
-                if(langPrefs.contains(Selected_language)){
-                    setLocale(langPrefs.getString(Selected_language,""));
-
-                }else {
-                    languageAlertDialog();
-                }
-            }
-        },1000);
-
-        tryAgain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tryAgain.setVisibility(View.GONE);
-                progressBar.setVisibility(View.VISIBLE);
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        langPrefs=getSharedPreferences(Language_pref,MODE_PRIVATE);
-                        if(langPrefs.contains(Selected_language)){
-                            setLocale(langPrefs.getString(Selected_language,""));
-
-                        }else {
-                            languageAlertDialog();
-                        }
-                    }
-                },1000);
-            }
-        });
+        getCurrentVersion();
     }
+
 
     private void setLocale(String selected_language) {
         Locale myLocale = new Locale(selected_language);
@@ -183,5 +173,141 @@ public class SplashActivity extends AppCompatActivity {
 
 
 
+    }
+
+
+
+
+    private void getCurrentVersion() {
+        PackageManager pm = this.getPackageManager();
+        PackageInfo pInfo = null;
+
+        try {
+            pInfo = pm.getPackageInfo(this.getPackageName(), 0);
+
+        } catch (PackageManager.NameNotFoundException e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        currentVersion = pInfo.versionName;
+
+        VersionChecker versionChecker = new VersionChecker();
+        try {
+            latestVersion = versionChecker.execute().get().toString();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    class VersionChecker extends AsyncTask<String, String, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(String... params) {
+
+            try {
+                Document doc = Jsoup.connect("https://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName()).get();
+                latestVersion = doc.getElementsByClass("htlgb").get(6).text();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return latestVersion;
+        }
+
+        @Override
+        protected void onPostExecute(String version) {
+            if(latestVersion!=null) {
+                if (!currentVersion.equalsIgnoreCase(latestVersion)){
+                    if(!isFinishing()){ //This would help to prevent Error : BinderProxy@45d459c0 is not valid; is your activity running? error
+                        showUpdateDialog();
+                    }
+                }
+                else{
+                    checkSharedPref();
+                }
+            }
+            else{
+                progressBar.setVisibility(View.GONE);
+            }
+            super.onPostExecute(version);
+        }
+    }
+
+
+    private void checkSharedPref(){
+        final Handler handler = new Handler();
+
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                langPrefs = getSharedPreferences(Language_pref, MODE_PRIVATE);
+                if (langPrefs.contains(Selected_language)) {
+                    setLocale(langPrefs.getString(Selected_language, ""));
+
+                } else {
+                    languageAlertDialog();
+                }
+            }
+        }, 1000);
+
+        tryAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tryAgain.setVisibility(View.GONE);
+                progressBar.setVisibility(View.VISIBLE);
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        langPrefs = getSharedPreferences(Language_pref, MODE_PRIVATE);
+                        if (langPrefs.contains(Selected_language)) {
+                            setLocale(langPrefs.getString(Selected_language, ""));
+
+                        } else {
+                            languageAlertDialog();
+                        }
+                    }
+                }, 1000);
+            }
+        });
+    }
+
+    private void showUpdateDialog(){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("A New Update is Available");
+        builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
+                Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+                goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                        Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                        Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+                try {
+                    startActivity(goToMarket);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
+                }
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finishAffinity();
+            }
+        });
+
+        builder.setCancelable(false);
+        dialog = builder.show();
     }
 }
