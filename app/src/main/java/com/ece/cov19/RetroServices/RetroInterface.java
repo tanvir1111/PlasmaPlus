@@ -11,9 +11,14 @@ import java.util.ArrayList;
 import retrofit2.Call;
 import retrofit2.http.Field;
 import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface RetroInterface {
+
+    @GET("appVer.php")
+    Call<UserDataModel> latestVersion();
+
     @FormUrlEncoded
     @POST("registration.php")
     Call<UserDataModel> registerRetroMethod(@Field("name") String name, @Field("phone") String phone, @Field("gender") String gender,

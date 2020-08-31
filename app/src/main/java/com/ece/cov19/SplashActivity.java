@@ -8,6 +8,7 @@ import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -24,12 +25,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.Functions.LoginUser;
 import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
+import com.google.android.play.core.appupdate.AppUpdateManager;
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
+import com.google.android.play.core.install.model.AppUpdateType;
+import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 
 import org.json.JSONObject;
 import org.jsoup.Jsoup;
@@ -73,6 +81,8 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
+
+
     }
 
     @Override
@@ -82,7 +92,14 @@ public class SplashActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.splash_progress_bar);
         tryAgain = findViewById(R.id.splash_retry);
 
-        getCurrentVersion();
+        checkForUpdate();
+
+        tryAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                checkForUpdate();
+            }
+        });
     }
 
 
@@ -175,34 +192,55 @@ public class SplashActivity extends AppCompatActivity {
 
     }
 
+    private void checkForUpdate(){
+        RetroInterface retroInterface = RetroInstance.getRetro();
+        Call<UserDataModel> versionCheck = retroInterface.latestVersion();
+        versionCheck.enqueue(new Callback<UserDataModel>() {
+            @Override
+            public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
 
+                if(response.body().getServerMsg() != null) {
+                    latestVersion = response.body().getServerMsg();
+                    currentVersion = getCurrentVersion();
+                    if (!currentVersion.equals(latestVersion)){
+                        showUpdateDialog();
+                    }
+                    else{
+                        checkSharedPref();
+                    }
 
+                }
 
-    private void getCurrentVersion() {
+            }
+
+            @Override
+            public void onFailure(Call<UserDataModel> call, Throwable t) {
+                progressBar.setVisibility(View.GONE);
+                tryAgain.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    private String getCurrentVersion(){
         PackageManager pm = this.getPackageManager();
         PackageInfo pInfo = null;
-
+        String ver;
         try {
-            pInfo = pm.getPackageInfo(this.getPackageName(), 0);
+            pInfo =  pm.getPackageInfo(this.getPackageName(),0);
 
         } catch (PackageManager.NameNotFoundException e1) {
             // TODO Auto-generated catch block
             e1.printStackTrace();
         }
-        currentVersion = pInfo.versionName;
+        ver = pInfo.versionName;
 
-        VersionChecker versionChecker = new VersionChecker();
-        try {
-            latestVersion = versionChecker.execute().get().toString();
-        } catch (ExecutionException e) {
-            e.printStackTrace();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        return ver;
 
     }
 
-    class VersionChecker extends AsyncTask<String, String, String> {
+
+    //Not Used
+    private class GetLatestVersion extends AsyncTask<String, String, JSONObject> {
 
         @Override
         protected void onPreExecute() {
@@ -210,36 +248,33 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         @Override
-        protected String doInBackground(String... params) {
+        protected JSONObject doInBackground(String... params) {
 
-            try {
-                Document doc = Jsoup.connect("https://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName()).get();
-                latestVersion = doc.getElementsByClass("htlgb").get(6).text();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
 
-            return latestVersion;
+            return new JSONObject();
         }
 
         @Override
-        protected void onPostExecute(String version) {
-            if(latestVersion!=null) {
-                if (!currentVersion.equalsIgnoreCase(latestVersion)){
-                    if(!isFinishing()){ //This would help to prevent Error : BinderProxy@45d459c0 is not valid; is your activity running? error
-                        showUpdateDialog();
-                    }
-                }
-                else{
-                    checkSharedPref();
-                }
+        protected void onPostExecute(JSONObject jsonObject) {
+
+            try {
+//It retrieves the latest version by scraping the content of current version from play store at runtime
+                Document doc = Jsoup.connect("https://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName()).get();
+                latestVersion = doc.getElementsByClass("htlgb").get(6).text();
+
+            }catch (Exception e){
+                e.printStackTrace();
+
             }
-            else{
-                progressBar.setVisibility(View.GONE);
-            }
-            super.onPostExecute(version);
         }
     }
+
+
+
+
+
+
+
 
 
     private void checkSharedPref(){
@@ -258,28 +293,11 @@ public class SplashActivity extends AppCompatActivity {
             }
         }, 1000);
 
-        tryAgain.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                tryAgain.setVisibility(View.GONE);
-                progressBar.setVisibility(View.VISIBLE);
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        langPrefs = getSharedPreferences(Language_pref, MODE_PRIVATE);
-                        if (langPrefs.contains(Selected_language)) {
-                            setLocale(langPrefs.getString(Selected_language, ""));
-
-                        } else {
-                            languageAlertDialog();
-                        }
-                    }
-                }, 1000);
-            }
-        });
     }
 
     private void showUpdateDialog(){
+
+
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("A New Update is Available");
         builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
@@ -309,5 +327,6 @@ public class SplashActivity extends AppCompatActivity {
 
         builder.setCancelable(false);
         dialog = builder.show();
+
     }
 }

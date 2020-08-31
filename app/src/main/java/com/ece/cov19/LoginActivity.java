@@ -155,7 +155,7 @@ public class LoginActivity extends AppCompatActivity {
             ToastCreator.toastCreatorRed(LoginActivity.this,getResources().getString(R.string.press_one_more_time));
         }
         if(backCounter == 2) {
-            finish();
+            finishAffinity();
         }
     }
 
