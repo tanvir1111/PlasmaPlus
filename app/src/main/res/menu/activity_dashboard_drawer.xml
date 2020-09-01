@@ -4,6 +4,7 @@
     tools:showIn="nav_view">
 
     <group>
+
         <item
             android:id="@+id/profile"
             android:title="@string/profile" />
@@ -32,6 +33,10 @@
                 android:id="@+id/emailUs"
                 android:icon="@drawable/ic_menu_send"
                 android:title="@string/emailUs" />
+            <item
+                android:id="@+id/sendReview"
+                android:icon="@android:drawable/ic_menu_edit"
+                android:title="@string/send_review" />
         </menu>
     </item>
 

@@ -532,6 +532,12 @@ if(LoginUser.checkLoginStat().equals("failed")){
             startActivityForResult(intent,200);
         }
 
+        else if(id == R.id.sendReview){
+            Uri uri = Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSd_PgXtE8sYdaxCIp4pPXM6IqU7ZvoA963iBksFejGIOUYH6g/viewform?usp=sf_link");
+            Intent review = new Intent(Intent.ACTION_VIEW, uri);
+            startActivity(review);
+        }
+
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }

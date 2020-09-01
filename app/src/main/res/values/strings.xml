@@ -8,7 +8,7 @@
 
     <string name="profile">View Profile</string>
     <string name="contact_us">Contact Us</string>
-    <string name="shareApp">Share this App</string>
+    <string name="shareApp">Share</string>
     <string name="emailUs">Email Us</string>
     <string name="language_dialog_message">Select Language (ভাষা নির্বাচন করুন)</string>
     <string name="language_dialog_english">English</string>
@@ -316,6 +316,7 @@
     <string name="how_many_bags_units_of_blood_is_needed">How many bags (units) of blood are needed?</string>
     <string name="quantity_of_blood_needed_in_units">"Required Blood unit"</string>
     <string name="unit">Units</string>
+    <string name="send_review">Send Review</string>
 
 
     <string-array name="division">
