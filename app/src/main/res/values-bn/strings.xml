@@ -637,5 +637,7 @@
     <string name="unit">ব্যাগ</string>
     <string name="send_review">মতামত দিন</string>
     <string name="rate_app">রেটিং করুন</string>
+    <string name="successful">সফল</string>
+    <string name="failed">ব্যর্থ</string>
 
 </resources>

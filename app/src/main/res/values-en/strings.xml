@@ -583,6 +583,8 @@
     <string name="unit">Units</string>
     <string name="send_review">Send Review</string>
     <string name="rate_app">Rate App</string>
+    <string name="successful">Successful</string>
+    <string name="failed">Failed</string>
 
 
 </resources>
