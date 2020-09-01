@@ -10,7 +10,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.app.Dialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -30,7 +32,9 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -46,6 +50,9 @@ import com.ece.cov19.RetroServices.RetroInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.play.core.review.ReviewInfo;
+import com.google.android.play.core.review.ReviewManager;
+import com.google.android.play.core.review.ReviewManagerFactory;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
@@ -87,6 +94,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
+    private ReviewInfo reviewInfo = null;
 
     public int backCounter;
     public int requestResponseSwitcher;
@@ -533,9 +541,35 @@ if(LoginUser.checkLoginStat().equals("failed")){
         }
 
         else if(id == R.id.sendReview){
+
             Uri uri = Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSd_PgXtE8sYdaxCIp4pPXM6IqU7ZvoA963iBksFejGIOUYH6g/viewform?usp=sf_link");
             Intent review = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(review);
+
+        }
+
+        else if(id == R.id.rateApp){
+
+
+            ReviewManager manager = ReviewManagerFactory.create(getApplicationContext());
+            com.google.android.play.core.tasks.Task<ReviewInfo> request = manager.requestReviewFlow();
+
+            request.addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    reviewInfo = task.getResult();
+
+
+                } else {
+                    reviewInfo = null;
+                }
+            });
+
+
+            com.google.android.play.core.tasks.Task<Void> flow = manager.launchReviewFlow(this, reviewInfo);
+            flow.addOnCompleteListener(task -> {
+
+            });
+
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);
@@ -961,4 +995,9 @@ if(LoginUser.checkLoginStat().equals("failed")){
         });
 
     }
+
+
 }
+
+
+

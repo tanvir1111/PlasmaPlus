@@ -636,5 +636,6 @@
     <string name="quantity_of_blood_needed_in_units">প্রয়োজনীয় রক্তের পরিমাণ</string>
     <string name="unit">ব্যাগ</string>
     <string name="send_review">মতামত দিন</string>
+    <string name="rate_app">রেটিং করুন</string>
 
 </resources>

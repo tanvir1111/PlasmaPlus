@@ -37,6 +37,10 @@
                 android:id="@+id/sendReview"
                 android:icon="@android:drawable/ic_menu_edit"
                 android:title="@string/send_review" />
+            <item
+                android:id="@+id/rateApp"
+                android:icon="@android:drawable/btn_star"
+                android:title="@string/rate_app" />
         </menu>
     </item>
 

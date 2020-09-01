@@ -582,6 +582,7 @@
     <string name="quantity_of_blood_needed_in_units">Required Blood Unit</string>
     <string name="unit">Units</string>
     <string name="send_review">Send Review</string>
+    <string name="rate_app">Rate App</string>
 
 
 </resources>
