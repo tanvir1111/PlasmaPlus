@@ -317,6 +317,8 @@
     <string name="quantity_of_blood_needed_in_units">"Required Blood unit"</string>
     <string name="unit">Units</string>
     <string name="send_review">Send Review</string>
+    <string name="successful">Successful</string>
+    <string name="failed">Failed</string>
 
 
     <string-array name="division">
