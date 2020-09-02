@@ -206,9 +206,11 @@
         android:id="@+id/bld_req_male_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
         android:src="@drawable/male_icon"
+        app:layout_constraintEnd_toStartOf="@+id/bld_req_female_icon"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/bld_req_label_gender"
         app:layout_constraintTop_toBottomOf="@+id/bld_req_label_gender" />
 
@@ -216,9 +218,12 @@
         android:id="@+id/bld_req_female_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="92dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="32dp"
         android:src="@drawable/female_icon"
         app:layout_constraintBottom_toBottomOf="@+id/bld_req_male_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.69"
         app:layout_constraintStart_toEndOf="@+id/bld_req_male_icon"
         app:layout_constraintTop_toTopOf="@+id/bld_req_male_icon"
         app:layout_constraintVertical_bias="0.0" />
@@ -488,10 +493,10 @@
         android:text="@string/quantity_of_blood_needed_in_units"
         android:textColor="@color/textColorDark"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/bld_req_plasma_checkbox"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_radiogroup"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/bld_req_plasma_checkbox"
-        app:layout_constraintTop_toBottomOf="@+id/bld_req_plasma_checkbox" />
+        app:layout_constraintStart_toStartOf="@+id/bld_req_radiogroup"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_radiogroup" />
 
     <EditText
         android:id="@+id/bld_req_number_of_unit_editText"
@@ -514,24 +519,10 @@
         app:layout_constraintStart_toStartOf="@+id/bld_req_number_of_unit_required"
         app:layout_constraintTop_toBottomOf="@+id/bld_req_number_of_unit_required" />
 
-    <CheckBox
-        android:id="@+id/bld_req_plasma_checkbox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:fontFamily="@font/montserrat"
-        android:text="@string/plasma_checkbox_text"
-        android:textColor="@color/textColorDark"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/bld_req_date_textview"
-        app:layout_constraintStart_toStartOf="@+id/bld_req_date_textview"
-        app:layout_constraintTop_toBottomOf="@+id/bld_req_radiogroup" />
 
     <Button
         android:id="@+id/bld_req_request_btn"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
@@ -544,8 +535,8 @@
         android:text="@string/bld_req_request_btn"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/bld_req_plasma_checkbox"
-        app:layout_constraintStart_toStartOf="@+id/bld_req_plasma_checkbox"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bld_req_number_of_unit_editText" />
 
     <TextView
@@ -566,8 +557,8 @@
         android:id="@+id/bld_req_radiogroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/bld_req_label_type"
         app:layout_constraintStart_toStartOf="@+id/bld_req_label_type"
         app:layout_constraintTop_toBottomOf="@+id/bld_req_label_type">
 
