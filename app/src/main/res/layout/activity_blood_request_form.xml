@@ -519,7 +519,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:fontFamily="@font/montserrat"
         android:text="@string/plasma_checkbox_text"
@@ -527,7 +527,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="@+id/bld_req_date_textview"
         app:layout_constraintStart_toStartOf="@+id/bld_req_date_textview"
-        app:layout_constraintTop_toBottomOf="@+id/bld_req_date_textview" />
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_radiogroup" />
 
     <Button
         android:id="@+id/bld_req_request_btn"
@@ -547,6 +547,48 @@
         app:layout_constraintEnd_toEndOf="@+id/bld_req_plasma_checkbox"
         app:layout_constraintStart_toStartOf="@+id/bld_req_plasma_checkbox"
         app:layout_constraintTop_toBottomOf="@+id/bld_req_number_of_unit_editText" />
+
+    <TextView
+        android:id="@+id/bld_req_label_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/montserrat_bold"
+        android:text="@string/bld_req_type"
+        android:textColor="@color/textColorDark"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_date_textview"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_date_textview"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_date_textview" />
+
+    <RadioGroup
+        android:id="@+id/bld_req_radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/bld_req_label_type"
+        app:layout_constraintStart_toStartOf="@+id/bld_req_label_type"
+        app:layout_constraintTop_toBottomOf="@+id/bld_req_label_type">
+
+        <RadioButton
+            android:id="@+id/bld_req_blood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/blood" />
+
+        <RadioButton
+            android:id="@+id/bld_req_plasma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/plasma" />
+
+        <RadioButton
+            android:id="@+id/bld_req_blood_and_plasma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bloodandplasma" />
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

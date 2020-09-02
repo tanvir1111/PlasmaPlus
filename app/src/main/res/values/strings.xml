@@ -320,6 +320,7 @@
     <string name="rate_app">Rate App</string>
     <string name="successful">Successful</string>
     <string name="failed">Failed</string>
+    <string name="bld_req_type">Requirement Type</string>
 
 
     <string-array name="division">
