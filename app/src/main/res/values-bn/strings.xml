@@ -639,5 +639,6 @@
     <string name="rate_app">রেটিং করুন</string>
     <string name="successful">সফল</string>
     <string name="failed">ব্যর্থ</string>
+    <string name="bld_req_type">প্রয়োজনের ধরণ</string>
 
 </resources>

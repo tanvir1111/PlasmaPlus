@@ -17,6 +17,8 @@ import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -49,6 +51,8 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
     private Button submitBtn, forMyselfBtn,othersBtn;
     private EditText nameEditText, ageEditText, hospitalEditText,amountOfBloodEditText;
     private Spinner divisionSpinner, districtSpinner;
+    private RadioGroup radioGroup;
+    private RadioButton bloodRadio, plasmaRadio, bloodandplasmaRadio;
     public int divisionResourceIds[] = {R.array.Dhaka, R.array.Rajshahi, R.array.Rangpur, R.array.Khulna, R.array.Chittagong, R.array.Mymensingh,
 
             R.array.Barisal, R.array.Sylhet};
@@ -74,7 +78,10 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         divisionSpinner = findViewById(R.id.bld_req_division_spinner);
         districtSpinner = findViewById(R.id.bld_req_district_spinner);
 
-
+        radioGroup = findViewById(R.id.bld_req_radiogroup);
+        bloodRadio = findViewById(R.id.bld_req_blood);
+        plasmaRadio = findViewById(R.id.bld_req_plasma);
+        bloodandplasmaRadio = findViewById(R.id.bld_req_blood_and_plasma);
         needCheckbox = findViewById(R.id.bld_req_plasma_checkbox);
 
 //      Date section
