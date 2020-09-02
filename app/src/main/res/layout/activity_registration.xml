@@ -137,10 +137,10 @@
             android:layout_marginTop="8dp"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
-            android:textColor="@color/textColorGrey"
-            android:textAlignment="center"
             android:gravity="center"
             android:text="A+"
+            android:textAlignment="center"
+            android:textColor="@color/textColorGrey"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="@+id/reg_label_blood_grp"
             app:layout_constraintTop_toBottomOf="@+id/reg_label_blood_grp" />
@@ -149,15 +149,19 @@
             android:id="@+id/reg_bld_a_negative"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
-            android:textColor="@color/textColorGrey"
-            android:textAlignment="center"
             android:gravity="center"
             android:text="A-"
+            android:textAlignment="center"
+            android:textColor="@color/textColorGrey"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/reg_bld_a_positive"
+            app:layout_constraintBottom_toTopOf="@+id/reg_bld_ab_positive"
+            app:layout_constraintEnd_toStartOf="@+id/reg_bld_b_positive"
+            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toEndOf="@+id/reg_bld_a_positive"
             app:layout_constraintTop_toTopOf="@+id/reg_bld_a_positive" />
 
@@ -165,17 +169,19 @@
             android:id="@+id/reg_bld_b_positive"
             android:layout_width="50dp"
             android:layout_height="50dp"
+
+
             android:layout_marginStart="8dp"
-            android:textColor="@color/textColorGrey"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
-
-
-            android:textAlignment="center"
             android:gravity="center"
             android:text="B+"
+            android:textAlignment="center"
+            android:textColor="@color/textColorGrey"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/reg_bld_a_negative"
+            app:layout_constraintEnd_toStartOf="@+id/reg_bld_b_negative"
             app:layout_constraintStart_toEndOf="@+id/reg_bld_a_negative"
             app:layout_constraintTop_toTopOf="@+id/reg_bld_a_negative" />
 
@@ -183,17 +189,19 @@
             android:id="@+id/reg_bld_b_negative"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/textColorGrey"
+
+
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
-
-
-            android:textAlignment="center"
             android:gravity="center"
             android:text="B-"
+            android:textAlignment="center"
+            android:textColor="@color/textColorGrey"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/reg_bld_b_positive"
+            app:layout_constraintEnd_toStartOf="@+id/reg_bld_o_positive"
             app:layout_constraintStart_toEndOf="@+id/reg_bld_b_positive"
             app:layout_constraintTop_toTopOf="@+id/reg_bld_b_positive" />
 
@@ -201,71 +209,69 @@
             android:id="@+id/reg_bld_o_positive"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:textColor="@color/textColorGrey"
+
+
+            android:layout_marginEnd="32dp"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
-
-
-            android:textAlignment="center"
             android:gravity="center"
             android:text="O+"
+            android:textAlignment="center"
+            android:textColor="@color/textColorGrey"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/reg_bld_b_negative"
-            app:layout_constraintStart_toEndOf="@+id/reg_bld_b_negative"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/reg_bld_b_negative" />
 
         <TextView
             android:id="@+id/reg_bld_o_negative"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
-            android:textColor="@color/textColorGrey"
+            android:layout_marginTop="16dp"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
 
 
-            android:textAlignment="center"
             android:gravity="center"
             android:text="O-"
+            android:textAlignment="center"
+            android:textColor="@color/textColorGrey"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="@+id/reg_bld_o_positive"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintEnd_toEndOf="@+id/reg_bld_a_positive"
             app:layout_constraintStart_toEndOf="@+id/reg_bld_o_positive"
-            app:layout_constraintTop_toTopOf="@+id/reg_bld_o_positive" />
+            app:layout_constraintStart_toStartOf="@+id/reg_bld_a_positive"
+            app:layout_constraintTop_toBottomOf="@+id/reg_bld_a_positive" />
 
         <TextView
             android:id="@+id/reg_bld_ab_positive"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:textColor="@color/textColorGrey"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
-            android:textAlignment="center"
             android:gravity="center"
             android:text="AB+"
+            android:textAlignment="center"
+            android:textColor="@color/textColorGrey"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/reg_bld_a_positive"
-            app:layout_constraintStart_toStartOf="@+id/reg_bld_a_positive"
-            app:layout_constraintTop_toBottomOf="@+id/reg_bld_a_positive" />
+            app:layout_constraintEnd_toEndOf="@+id/reg_bld_a_negative"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/reg_bld_a_negative"
+            tools:layout_editor_absoluteY="493dp" />
 
         <TextView
             android:id="@+id/reg_bld_ab_negative"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginStart="8dp"
             android:background="@drawable/blood_grp_not_selected"
-            android:textColor="@color/textColorGrey"
             android:fontFamily="@font/montserrat"
-            android:textAlignment="center"
             android:gravity="center"
             android:text="AB-"
+            android:textAlignment="center"
+            android:textColor="@color/textColorGrey"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/reg_bld_ab_positive"
-            app:layout_constraintStart_toEndOf="@+id/reg_bld_ab_positive"
+            app:layout_constraintEnd_toEndOf="@+id/reg_bld_b_positive"
+            app:layout_constraintStart_toStartOf="@+id/reg_bld_b_positive"
             app:layout_constraintTop_toTopOf="@+id/reg_bld_ab_positive" />
 
         <TextView

@@ -290,7 +290,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         nameEditText.setText(loggedInUserName);
         ageEditText.setText(loggedInUserAge);
         String bloodGroup = loggedInUserBloodGroup;
-        String gender = loggedInUserGender;
+        gender = loggedInUserGender;
         if (gender.toLowerCase().toLowerCase().equals("male")) {
             genderFemale.setImageResource(R.drawable.female_icon);
             genderMale.setImageResource(R.drawable.male_icon_selected);
