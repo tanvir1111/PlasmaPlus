@@ -550,7 +550,6 @@ if(LoginUser.checkLoginStat().equals("failed")){
 
         else if(id == R.id.rateApp){
 
-
             ReviewManager manager = ReviewManagerFactory.create(getApplicationContext());
             com.google.android.play.core.tasks.Task<ReviewInfo> request = manager.requestReviewFlow();
 

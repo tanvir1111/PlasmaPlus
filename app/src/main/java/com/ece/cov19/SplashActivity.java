@@ -296,13 +296,27 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void showUpdateDialog(){
-
-
         final AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("A New Update is Available");
-        builder.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+
+        LayoutInflater inflater=LayoutInflater.from(this);
+        View langDialogView=  inflater.inflate(R.layout.update_dialog,null);
+        TextView exit=langDialogView.findViewById(R.id.update_dialog_exit);
+        TextView update=langDialogView.findViewById(R.id.update_dialog_update);
+        builder.setCancelable(false);
+        builder.setView(langDialogView);
+
+        AlertDialog alertDialog=builder.create();
+        alertDialog.show();
+        exit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
+            public void onClick(View view) {
+
+                    finishAffinity();
+            }
+        });
+        update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
                 Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
                 goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
@@ -317,16 +331,6 @@ public class SplashActivity extends AppCompatActivity {
                 dialog.dismiss();
             }
         });
-
-        builder.setNegativeButton("Exit", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                finishAffinity();
-            }
-        });
-
-        builder.setCancelable(false);
-        dialog = builder.show();
 
     }
 }

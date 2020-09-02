@@ -216,13 +216,15 @@
                 android:id="@+id/plasma_dialog_ok_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
-                android:fontFamily="@font/montserrat"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
 
+                android:fontFamily="@font/montserrat"
                 android:padding="10dp"
                 android:text="@string/ok_txt"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/plasma_dialog_checkbox"
                 app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_checkbox" />
 
@@ -230,13 +232,15 @@
                 android:id="@+id/plasma_dialog_cancel_textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/montserrat"
-                android:padding="10dp"
 
+                android:padding="10dp"
                 android:text="@string/cancel"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/plasma_dialog_checkbox"
                 app:layout_constraintTop_toBottomOf="@+id/plasma_dialog_checkbox" />
 
