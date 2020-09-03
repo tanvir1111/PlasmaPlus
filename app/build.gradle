@@ -6,10 +6,10 @@ android {
             keyPassword '15111997'
             storePassword '15111997'
             keyAlias 'key0'
-            storeFile file('F:\\OneDrive\\Documents\\AndroidStudioProjects\\keystore')
+            storeFile file('/Users/Khalid/Documents/Projects/Plasma+/keystore')
         }
         release {
-            storeFile file('F:\\OneDrive\\Documents\\AndroidStudioProjects\\keystore')
+            storeFile file('/Users/Khalid/Documents/Projects/Plasma+/keystore')
             storePassword '15111997'
             keyAlias 'key0'
             keyPassword '15111997'

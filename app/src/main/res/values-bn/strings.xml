@@ -640,5 +640,9 @@
     <string name="successful">সফল</string>
     <string name="failed">ব্যর্থ</string>
     <string name="bld_req_type">প্রয়োজনের ধরণ</string>
+    <string name="update_patient_label_type">প্রয়োজনের ধরণ</string>
+    <string name="select_req_type">প্রয়োজনের ধরণ লাগবে</string>
+    <string name="amount_required">ইউনিট লাগবে</string>
+    <string name="enter_valid_number">সঠিক নম্বর দিন</string>
 
 </resources>

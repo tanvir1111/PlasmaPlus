@@ -111,7 +111,6 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         phone = intent.getStringExtra("phone");
         amountOfBloodNeeded=intent.getStringExtra("amountOfBloodNeeded");
 
-
         requestedBy="donor";
         if(intent.hasExtra("activity")){
             if(intent.getStringExtra("activity").equals("DonorRequestsActivity")){

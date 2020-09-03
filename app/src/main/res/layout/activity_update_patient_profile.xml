@@ -163,20 +163,20 @@
             android:id="@+id/update_patient_male_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="96dp"
             android:layout_marginTop="16dp"
             android:src="@drawable/male_icon"
-            app:layout_constraintStart_toEndOf="@+id/update_patient_label_gender"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/update_patient_label_gender" />
 
         <ImageView
             android:id="@+id/update_patient_female_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="92dp"
+            android:layout_marginEnd="96dp"
             android:src="@drawable/female_icon"
             app:layout_constraintBottom_toBottomOf="@+id/update_patient_male_icon"
-            app:layout_constraintStart_toEndOf="@+id/update_patient_male_icon"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/update_patient_male_icon"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -279,20 +279,41 @@
             app:layout_constraintStart_toStartOf="@+id/update_patient_district_spinner"
             app:layout_constraintTop_toBottomOf="@+id/update_patient_district_spinner" />
 
-        <CheckBox
-            android:id="@+id/update_patient_plasma_checkbox"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/update_patient_label_type"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="32dp"
-            android:fontFamily="@font/montserrat"
-            android:text="@string/plasma_checkbox_text"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/montserrat_bold"
+            android:text="@string/update_patient_label_type"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/update_patient_date_textview"
-            app:layout_constraintStart_toStartOf="@+id/update_patient_date_textview"
+            app:layout_constraintEnd_toEndOf="@+id/update_patient_district_spinner"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/update_patient_district_spinner"
             app:layout_constraintTop_toBottomOf="@+id/update_patient_date_textview" />
+
+        <RadioGroup
+            android:id="@+id/update_patient_radiogroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="@+id/update_patient_label_type"
+            app:layout_constraintTop_toBottomOf="@+id/update_patient_label_type">
+
+            <RadioButton
+                android:id="@+id/update_patient_blood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/blood" />
+
+            <RadioButton
+                android:id="@+id/update_patient_plasma"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/plasma" />
+
+        </RadioGroup>
 
         <TextView
             android:id="@+id/update_patient_number_of_unit_required"
@@ -303,10 +324,8 @@
             android:text="@string/quantity_of_blood_needed_in_units"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/update_patient_plasma_checkbox"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/update_patient_plasma_checkbox"
-            app:layout_constraintTop_toBottomOf="@+id/update_patient_plasma_checkbox" />
+            app:layout_constraintStart_toStartOf="@+id/update_patient_radiogroup"
+            app:layout_constraintTop_toBottomOf="@+id/update_patient_radiogroup" />
 
         <EditText
             android:id="@+id/update_patient_number_of_unit_editText"

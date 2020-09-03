@@ -1,5 +1,6 @@
 package com.ece.cov19;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -354,33 +355,33 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
 
     if(radioGroup.getCheckedRadioButtonId()==-1){
-    TextView labelRequirement=findViewById(R.id.bld_req_label_type);
-    labelRequirement.setError("Select requirement");
-    labelRequirement.requestFocus();
-    need="Not Selected";
+            TextView labelRequirement=findViewById(R.id.bld_req_label_type);
+            labelRequirement.setError(getResources().getString(R.string.select_req_type));
+            labelRequirement.requestFocus();
+            need="Not Selected";
 
-    }
-    else if(radioGroup.getCheckedRadioButtonId()==R.id.bld_req_plasma){
-        need="Plasma";
-        amountOfBloodNeeded="0";
-    }
-    else {
-        RadioButton radioButton=findViewById(radioGroup.getCheckedRadioButtonId());
-        need=radioButton.getText().toString();
-
-        if(!formFieldsFeatures.checkIfEmpty(amountOfBloodEditText)) {
-        if(Integer.parseInt(amountOfBloodEditText.getText().toString())<=0||Integer.parseInt(amountOfBloodEditText.getText().toString())>10){
-            amountOfBloodEditText.setError("Enter a valid number");
-            amountOfBloodEditText.requestFocus();
-            amountOfBloodNeeded="invalid";
-
+        }
+        else if(radioGroup.getCheckedRadioButtonId()==R.id.bld_req_plasma){
+            need="Plasma";
+            amountOfBloodNeeded="0";
         }
         else {
-            amountOfBloodNeeded =amountOfBloodEditText.getText().toString();
-        }
-    }
+            RadioButton radioButton=findViewById(radioGroup.getCheckedRadioButtonId());
+            need=radioButton.getText().toString();
 
-    }
+            if(!formFieldsFeatures.checkIfEmpty(amountOfBloodEditText)) {
+                if(Integer.parseInt(amountOfBloodEditText.getText().toString())<=0||Integer.parseInt(amountOfBloodEditText.getText().toString())>10){
+                    amountOfBloodEditText.setError(getResources().getString(R.string.enter_valid_number));
+                    amountOfBloodEditText.requestFocus();
+                    amountOfBloodNeeded="invalid";
+
+                }
+                else {
+                    amountOfBloodNeeded =amountOfBloodEditText.getText().toString();
+                }
+            }
+
+        }
 
 
 
@@ -389,7 +390,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                 && !formFieldsFeatures.checkIfEmpty(this, labelGender, gender) && !formFieldsFeatures.checkIfEmpty(this, labelDate, date)) {
             if(!amountOfBloodNeeded.equals("invalid") && !need.equals("Not Selected")) {
 
-                registerPatient(name, age, gender, bloodGroup, hospital, division, district, date, need, phone, amountOfBloodNeeded);
+                registerPatientAlertDialog(name, age, gender, bloodGroup, hospital, division, district, date, need, phone, amountOfBloodNeeded);
 //                Toast.makeText(this, name+age+ gender+ bloodGroup+ hospital+division+ district+ date+ need+ phone+ amountOfBloodNeeded, Toast.LENGTH_SHORT).show();
             }
             else {
@@ -403,6 +404,26 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
     }
 
+    private void registerPatientAlertDialog(String name, String age, String gender, String bloodGroup, String hospital, String division, String district, String date, String need, String phone,String amountOfBlood) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(BloodRequestFormActivity.this);
+        builder.setMessage(getResources().getString(R.string.are_you_sure));
+        builder.setCancelable(false);
+        builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                registerPatient(name, age, gender, bloodGroup, hospital, division, district, date, need, phone, amountOfBloodNeeded);
+
+            }
+        })
+                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog alertDialog=builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
+    }
 
     //    database operations
     private void registerPatient(String name, String age, String gender, String bloodGroup, String hospital, String division, String district, String date, String need, String phone,String amountOfBlood) {

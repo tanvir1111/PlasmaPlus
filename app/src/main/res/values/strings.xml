@@ -321,6 +321,11 @@
     <string name="successful">Successful</string>
     <string name="failed">Failed</string>
     <string name="bld_req_type">Requirement Type</string>
+    <string name="update_patient_label_type">Requirement Type</string>
+    <string name="select_req_type">Select Requirement</string>
+    <string name="amount_required">Amount is required</string>
+    <string name="enter_valid_number">Enter a valid number</string>
+
 
 
     <string-array name="division">

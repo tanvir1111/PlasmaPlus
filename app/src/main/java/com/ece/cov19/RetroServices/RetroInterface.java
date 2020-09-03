@@ -82,8 +82,8 @@ public interface RetroInterface {
 
     @FormUrlEncoded
     @POST("updatePatientProfile.php")
-    Call<PatientDataModel> updatePatientProfile(@Field("name") String name, @Field("age") String age, @Field("blood_group") String bloodGroup, @Field("phone") String phone,
-
+    Call<PatientDataModel> updatePatientProfile(@Field("name") String name, @Field("age") String age, @Field("blood_group") String bloodGroup, @Field("need") String need,
+                                                @Field("phone") String phone,
 
                                                 @Field("newname") String newName, @Field("newage") String newaAge, @Field("newgender") String newGender,
                                                 @Field("newhospital") String newHospital,
