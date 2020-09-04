@@ -670,8 +670,6 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.donor_profile_activity_image_failed));
-
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {
                     genderImageView.setImageResource(R.drawable.profile_icon_male);

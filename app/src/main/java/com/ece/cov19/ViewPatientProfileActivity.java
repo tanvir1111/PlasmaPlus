@@ -1002,7 +1002,6 @@ alertDialog.setCanceledOnTouchOutside(false);
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.connection_error));
 
 
                 if (gender.toLowerCase().equals("male")) {

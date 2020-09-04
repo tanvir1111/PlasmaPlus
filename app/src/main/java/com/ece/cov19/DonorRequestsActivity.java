@@ -409,9 +409,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
                             noRequestTextView.setVisibility(View.VISIBLE);
                             break;
                         }
-                        else if(initialDataModel.getServerMsg().equals("Failed")){
-                            ToastCreator.toastCreatorRed(DonorRequestsActivity.this,getResources().getString(R.string.connection_failed_try_again));
-                        }
+
                         else if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
                             noRequestTextView.setVisibility(View.GONE);
                             patientDataModels.add(initialDataModel);

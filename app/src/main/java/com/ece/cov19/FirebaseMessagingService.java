@@ -39,9 +39,9 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
     public void showNotification(RemoteMessage remoteMessage) {
         int NOTIFICATION_ID = 0;
-        String CHANNEL_ID = "Medicare Notification";
-        CharSequence name = "Medicare";
-        String Description = "Medicare Notification channel";
+        String CHANNEL_ID = "Plasma+ Notification";
+        CharSequence name = "Plasma+";
+        String Description = "Plasma+ Notification channel";
         requestedBy = remoteMessage.getData().get("hidden");
 
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
@@ -156,7 +156,6 @@ public class FirebaseMessagingService extends com.google.firebase.messaging.Fire
 
             @Override
             public void onFailure(Call<UserDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.connection_error));
             }
         });
 

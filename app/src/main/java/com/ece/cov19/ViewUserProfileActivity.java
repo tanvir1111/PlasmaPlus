@@ -802,7 +802,6 @@ public class ViewUserProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(getApplicationContext(), getResources().getString(R.string.image_retrieve_failed));
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {

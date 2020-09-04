@@ -289,7 +289,6 @@ public class FindDonorActivity extends AppCompatActivity {
 
                 else{
                     patientProgressBar.setVisibility(View.GONE);
-                    ToastCreator.toastCreatorRed(FindDonorActivity.this,getResources().getString(R.string.connection_failed_try_again));
 
                 }
             }
@@ -297,7 +296,6 @@ public class FindDonorActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<ArrayList<PatientDataModel>> call, Throwable t) {
                 patientProgressBar.setVisibility(View.GONE);
-                ToastCreator.toastCreatorRed(FindDonorActivity.this,getResources().getString(R.string.connection_error));
             }
         });
 

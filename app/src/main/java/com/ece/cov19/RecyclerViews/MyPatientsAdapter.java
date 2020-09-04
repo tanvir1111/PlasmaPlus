@@ -202,7 +202,6 @@ public class MyPatientsAdapter extends RecyclerView.Adapter<MyPatientsViewHolder
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-                ToastCreator.toastCreatorRed(context, context.getResources().getString(R.string.donor_profile_activity_image_failed));
 
 
                 if (gender.toLowerCase().equals("male")) {

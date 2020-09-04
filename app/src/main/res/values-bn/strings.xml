@@ -466,6 +466,8 @@
 
     <string name="bld_req_for_myself">আমি গ্রাহক</string>
     <string name="bld_req_for_myself_2">অন্য কেউ</string>
+    <string name="rating_successful">রেটিং সফল হয়েছে</string>
+    <string name="rating_failed">রেটিং সফল হয়নি</string>
 
 
     <string-array name="division">

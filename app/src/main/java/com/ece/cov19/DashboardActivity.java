@@ -37,6 +37,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ece.cov19.DataModels.DashBoardNumberModel;
 import com.ece.cov19.DataModels.ImageDataModel;
@@ -53,6 +54,7 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
 import com.google.android.play.core.review.ReviewManagerFactory;
+import com.google.android.play.core.tasks.OnFailureListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
@@ -94,7 +96,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
-    private ReviewInfo reviewInfo = null;
+    private ReviewInfo reviewInfo;
+    private ReviewManager manager;
 
     public int backCounter;
     public int requestResponseSwitcher;
@@ -220,8 +223,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
-
-                ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.dashboard_error_message));
                 loadingView.setVisibility(View.GONE);
 
 
@@ -433,7 +434,6 @@ if(LoginUser.checkLoginStat().equals("failed")){
             @Override
             public void onFailure(Call<DashBoardNumberModel> call, Throwable t) {
 
-                ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.dashboard_error_message));
                 loadingView.setVisibility(View.GONE);
 
             }
@@ -550,24 +550,7 @@ if(LoginUser.checkLoginStat().equals("failed")){
 
         else if(id == R.id.rateApp){
 
-            ReviewManager manager = ReviewManagerFactory.create(getApplicationContext());
-            com.google.android.play.core.tasks.Task<ReviewInfo> request = manager.requestReviewFlow();
-
-            request.addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    reviewInfo = task.getResult();
-
-
-                } else {
-                    reviewInfo = null;
-                }
-            });
-
-
-            com.google.android.play.core.tasks.Task<Void> flow = manager.launchReviewFlow(this, reviewInfo);
-            flow.addOnCompleteListener(task -> {
-
-            });
+            inAppReview();
 
         }
 
@@ -600,6 +583,43 @@ if(LoginUser.checkLoginStat().equals("failed")){
                 }
             }, 5000);
         }
+    }
+
+
+
+
+    private void inAppReview(){
+
+        manager = ReviewManagerFactory.create(this);
+        com.google.android.play.core.tasks.Task<ReviewInfo> request = manager.requestReviewFlow()
+                .addOnCompleteListener(new com.google.android.play.core.tasks.OnCompleteListener<ReviewInfo>() {
+            @Override
+            public void onComplete(@NonNull com.google.android.play.core.tasks.Task<ReviewInfo> task) {
+                if(task.isSuccessful()){
+                    reviewInfo = task.getResult();
+
+                    manager.launchReviewFlow(DashboardActivity.this, reviewInfo)
+                            .addOnCompleteListener(new com.google.android.play.core.tasks.OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull com.google.android.play.core.tasks.Task<Void> task) {
+                                    ToastCreator.toastCreatorGreen(getApplicationContext(),getResources().getString(R.string.rating_successful));
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(Exception e) {
+                            ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.rating_failed));
+                        }
+                    });
+                }
+            }
+        })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(Exception e) {
+                        ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.rating_failed));
+                    }
+                });
     }
 
 
@@ -981,8 +1001,6 @@ if(LoginUser.checkLoginStat().equals("failed")){
 
             @Override
             public void onFailure(Call<ImageDataModel> call, Throwable t) {
-
-                ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.image_retrieve_failed));
 
 
                 if (loggedInUserGender.toLowerCase().equals("male")) {
