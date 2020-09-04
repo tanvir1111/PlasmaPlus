@@ -372,7 +372,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         }
                     }
                     else if (response.body().getServerMsg().toLowerCase().equals("pending")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.pending));
                             acceptBtn.setVisibility(View.GONE);
@@ -392,7 +392,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     }
                     else if (response.body().getServerMsg().toLowerCase().equals("accepted")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.accepted));
                             acceptBtn.setVisibility(View.VISIBLE);
@@ -417,7 +417,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     }
 
                     else if (response.body().getServerMsg().toLowerCase().equals("donated")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")||getIntent().getStringExtra("activity").equals("PatientRequestsActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")||getIntent().getStringExtra("activity").equals("PatientRequestsActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.donated));
                             acceptBtn.setVisibility(View.VISIBLE);
@@ -444,7 +444,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     }
 
                     else if (response.body().getServerMsg().toLowerCase().equals("not_donated")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.not_donated));
                             acceptBtn.setVisibility(View.VISIBLE);
@@ -469,7 +469,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     }
 
                     else if (response.body().getServerMsg().toLowerCase().equals("confirmed")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.confirmed));
                             acceptBtn.setVisibility(View.VISIBLE);
@@ -494,7 +494,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     }
 
                     else if (response.body().getServerMsg().toLowerCase().equals("not_confirmed")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.not_confirmed));
                             acceptBtn.setVisibility(View.VISIBLE);
@@ -521,7 +521,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
 
                     else if (response.body().getServerMsg().toLowerCase().equals("declined")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.declined));
                             acceptBtn.setVisibility(View.GONE);
@@ -540,7 +540,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     }
 
                     else if (response.body().getServerMsg().toLowerCase().equals("canceled")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.canceled));
                             acceptBtn.setVisibility(View.VISIBLE);
