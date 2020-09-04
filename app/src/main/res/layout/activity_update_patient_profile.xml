@@ -15,11 +15,11 @@
             style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            android:minHeight="40dp"
+            android:layout_marginEnd="24dp"
             android:entries="@array/division"
+            android:minHeight="40dp"
             app:layout_constraintEnd_toEndOf="@+id/update_patient_hospital_edittext"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/update_patient_hospital_edittext"
@@ -88,7 +88,7 @@
             android:id="@+id/update_patient_name_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_dark"
@@ -125,7 +125,7 @@
             android:id="@+id/update_patient_age_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="32dp"
             android:background="@drawable/edit_text_dark"
@@ -198,9 +198,9 @@
             android:id="@+id/update_patient_hospital_edittext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="24dp"
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/montserrat"
             android:gravity="center_vertical"
@@ -232,12 +232,12 @@
 
         <Spinner
             android:id="@+id/update_patient_district_spinner"
+            style="@style/Widget.AppCompat.Spinner.Underlined"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
-            style="@style/Widget.AppCompat.Spinner.Underlined"
+            android:layout_marginEnd="24dp"
             android:minHeight="40dp"
             app:layout_constraintEnd_toEndOf="@+id/update_patient_hospital_edittext"
             app:layout_constraintHorizontal_bias="0.49"
@@ -249,9 +249,9 @@
             android:id="@+id/update_patient_date_textview"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="24dp"
             android:background="@drawable/edit_text_dark"
             android:fontFamily="@font/montserrat"
             android:gravity="center_vertical"
@@ -279,41 +279,6 @@
             app:layout_constraintStart_toStartOf="@+id/update_patient_district_spinner"
             app:layout_constraintTop_toBottomOf="@+id/update_patient_district_spinner" />
 
-        <TextView
-            android:id="@+id/update_patient_label_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:fontFamily="@font/montserrat_bold"
-            android:text="@string/update_patient_label_type"
-            android:textColor="@color/textColorDark"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="@+id/update_patient_district_spinner"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/update_patient_district_spinner"
-            app:layout_constraintTop_toBottomOf="@+id/update_patient_date_textview" />
-
-        <RadioGroup
-            android:id="@+id/update_patient_radiogroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:layout_constraintStart_toStartOf="@+id/update_patient_label_type"
-            app:layout_constraintTop_toBottomOf="@+id/update_patient_label_type">
-
-            <RadioButton
-                android:id="@+id/update_patient_blood"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/blood" />
-
-            <RadioButton
-                android:id="@+id/update_patient_plasma"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/plasma" />
-
-        </RadioGroup>
 
         <TextView
             android:id="@+id/update_patient_number_of_unit_required"
@@ -324,22 +289,22 @@
             android:text="@string/quantity_of_blood_needed_in_units"
             android:textColor="@color/textColorDark"
             android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="@+id/update_patient_radiogroup"
-            app:layout_constraintTop_toBottomOf="@+id/update_patient_radiogroup" />
+            app:layout_constraintStart_toStartOf="@+id/update_patient_date_textview"
+            app:layout_constraintTop_toBottomOf="@+id/update_patient_date_textview" />
 
         <EditText
             android:id="@+id/update_patient_number_of_unit_editText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="24dp"
             android:background="@drawable/edit_text_dark"
             android:gravity="center_vertical"
             android:hint="@string/how_many_bags_units_of_blood_is_needed"
-            android:minHeight="40dp"
             android:inputType="number"
             android:maxLength="2"
+            android:minHeight="40dp"
             android:paddingLeft="15dp"
             android:paddingRight="15dp"
             android:textColor="@color/textColorDark"
@@ -361,8 +326,8 @@
             android:text="@string/update_profile"
             android:textColor="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="@+id/update_patient_number_of_unit_editText"
-            app:layout_constraintStart_toStartOf="@+id/update_patient_number_of_unit_editText"
+            app:layout_constraintEnd_toEndOf="@+id/update_patient_date_textview"
+            app:layout_constraintStart_toStartOf="@+id/update_patient_date_textview"
             app:layout_constraintTop_toBottomOf="@+id/update_patient_number_of_unit_editText"
             app:layout_constraintVertical_bias="1.0" />
 

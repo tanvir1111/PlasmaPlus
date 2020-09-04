@@ -88,7 +88,7 @@ public interface RetroInterface {
                                                 @Field("newname") String newName, @Field("newage") String newaAge, @Field("newgender") String newGender,
                                                 @Field("newhospital") String newHospital,
                                                 @Field("newdivision") String newDivision, @Field("newdistrict") String newDistrict,
-                                                @Field("newdate") String newDate, @Field("newneed") String newNeed,@Field("newAmountOfBlood") String newAmountOfBlood);
+                                                @Field("newdate") String newDate, @Field("newAmountOfBlood") String newAmountOfBlood);
 
     @FormUrlEncoded
     @POST("deletePatientProfile.php")
