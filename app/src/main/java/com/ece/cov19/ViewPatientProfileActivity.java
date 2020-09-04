@@ -545,7 +545,7 @@ alertDialog.setCanceledOnTouchOutside(false);
     private void sendRequest() {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<RequestDataModel> requestFromDonor = retroInterface.sendRequest(loggedInUserPhone, name, age, bloodGroup, date, phone, "donor", "Pending");
+        Call<RequestDataModel> requestFromDonor = retroInterface.sendRequest(loggedInUserPhone, name, age, bloodGroup, date, phone, need, "donor", "Pending");
         requestFromDonor.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {

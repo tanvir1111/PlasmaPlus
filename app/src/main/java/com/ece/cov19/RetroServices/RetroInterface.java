@@ -109,6 +109,7 @@ public interface RetroInterface {
     Call<RequestDataModel> sendRequest( @Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
                                         @Field("patientAge") String patientAge, @Field("patientBloodGrp") String patientBloodGrp,
                                         @Field("patientDate") String patientDate, @Field("patientPhone") String patientPhone,
+                                        @Field("patientNeed") String patientNeed,
                                         @Field("requestedBy") String requestedBy, @Field("operation") String operation);
 
 

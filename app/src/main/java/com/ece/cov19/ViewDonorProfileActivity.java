@@ -284,7 +284,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
     private void sendRequest() {
         progressBar.setVisibility(View.VISIBLE);
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<RequestDataModel> requestFromPatient = retroInterface.sendRequest(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientDate, findPatientPhone, "patient", "Pending");
+        Call<RequestDataModel> requestFromPatient = retroInterface.sendRequest(donorphone, findPatientName, findPatientAge, findPatientBloodGroup, findPatientDate, findPatientPhone,findPatientNeed, "patient", "Pending");
         requestFromPatient.enqueue(new Callback<RequestDataModel>() {
             @Override
             public void onResponse(Call<RequestDataModel> call, Response<RequestDataModel> response) {
