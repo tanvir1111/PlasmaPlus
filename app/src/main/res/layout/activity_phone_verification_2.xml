@@ -69,7 +69,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_marginStart="32dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/montserrat_bold"
         android:text="@string/verify_otp"
@@ -87,6 +87,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
 
+        android:layout_marginTop="24dp"
         android:background="@drawable/edit_text_dark"
         android:fontFamily="@font/raleway_bold"
         android:hint="@string/password_hint"
@@ -96,19 +97,18 @@
         android:padding="15dp"
         android:textColor="@color/textColorDark"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/phn_ver2_otp_button"
         app:layout_constraintStart_toStartOf="@+id/phn_ver2_otp_button"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintTop_toBottomOf="@+id/phn_ver2_phone_text" />
 
     <Button
 
         android:id="@+id/phn_ver2_otp_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="24dp"
         android:background="@drawable/button_style_colored"
         android:fontFamily="@font/montserrat_bold"
         android:maxWidth="350dp"
@@ -116,9 +116,10 @@
         android:text="@string/verify_otp"
         android:textColor="#ffffff"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.592" />
+        app:layout_constraintTop_toBottomOf="@+id/phn_ver2_otp"
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

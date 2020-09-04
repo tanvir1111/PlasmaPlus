@@ -41,10 +41,8 @@ import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 
 public class UpdatePatientProfileActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView selectDate, labelBloodGroup, labelGender, labelDate,amountOfBloodLabel;
-    private String name, age, gender, bloodGroup, hospital, division, district, date, need, phone, newName, newAge, newBloodGroup = "not selected", newDivision, newDistrict, newHospital, newNeed, newGender, newDate;
+    private String name, age, gender, bloodGroup, hospital, division, district, date, need, phone, newName, newAge, newDivision, newDistrict, newHospital,  newGender, newDate;
     private ImageView genderMale, backbtn, genderFemale;
-    private RadioGroup radioGroup;
-    private RadioButton bloodRadio, plasmaRadio;
     private Button updateBtn;
     private EditText nameEditText, ageEditText, hospitalEditText,amountOfBloodEditText;
     private Spinner divisionSpinner, districtSpinner;
@@ -69,9 +67,6 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         hospitalEditText = findViewById(R.id.update_patient_hospital_edittext);
         amountOfBloodEditText=findViewById(R.id.update_patient_number_of_unit_editText);
 
-        radioGroup = findViewById(R.id.update_patient_radiogroup);
-        bloodRadio = findViewById(R.id.update_patient_blood);
-        plasmaRadio = findViewById(R.id.update_patient_plasma);
 
         //        spinners
         divisionSpinner = findViewById(R.id.update_patient_division_spinner);
@@ -134,28 +129,18 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
             genderMale.setImageResource(R.drawable.male_icon);
         }
 
-        if(need.equals("Blood")){
-            bloodRadio.setChecked(true);
+        if(need.equals("Plasma")){
+            amountOfBloodEditText.setVisibility(View.GONE);
+            amountOfBloodLabel.setVisibility(View.GONE);
         }
-        else if(need.equals("Plasma")){
-            plasmaRadio.setChecked(true);
-
+        else {
+            amountOfBloodLabel.setVisibility(View.VISIBLE);
+            amountOfBloodEditText.setVisibility(View.VISIBLE);
         }
 
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                if(i==R.id.update_patient_plasma){
-                    amountOfBloodLabel.setVisibility(View.GONE);
-                    amountOfBloodEditText.setVisibility(View.GONE);
-                }
-                else {
-                    amountOfBloodEditText.setVisibility(View.VISIBLE);
-                    amountOfBloodLabel.setVisibility(View.VISIBLE);
-                }
-            }
-        });
+
+
 
         //      Districts spinner as per selected division
 
@@ -259,7 +244,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
     private void verifydata() {
 
-        String amountOfBloodNeeded="0";
+
         String emptyfield = "";
         boolean emptyfieldChecker = true;
 
@@ -270,22 +255,9 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
         newHospital = hospitalEditText.getText().toString();
 
         phone = loggedInUserPhone;
-
-
-        if(radioGroup.getCheckedRadioButtonId()==-1){
-            TextView labelRequirement=findViewById(R.id.update_patient_label_type);
-            labelRequirement.setError(getResources().getString(R.string.select_req_type));
-            labelRequirement.requestFocus();
-            newNeed="Not Selected";
-
-        }
-        else if(radioGroup.getCheckedRadioButtonId()==R.id.update_patient_plasma){
-            newNeed="Plasma";
-            amountOfBloodNeeded="0";
-        }
-        else {
-            newNeed="Blood";
-
+        if(need.equals("Plasma")) {
+            amountOfBloodNeeded = "0";
+        }else {
             if(!formFieldsFeatures.checkIfEmpty(amountOfBloodEditText)) {
                 if(Integer.parseInt(amountOfBloodEditText.getText().toString())<=0||Integer.parseInt(amountOfBloodEditText.getText().toString())>10){
                     amountOfBloodEditText.setError(getResources().getString(R.string.enter_valid_number));
@@ -302,8 +274,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
                 amountOfBloodEditText.requestFocus();
                 amountOfBloodNeeded="invalid";
             }
-
-        }
+}
 
 
 
@@ -381,9 +352,9 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
 
 
     //    database operations
-    private void updatePatient(String name, String age, String bloodGroup, String need, String phone, String newName, String newAge, String newGender, String newHospital, String newDivision, String newDistrict, String newDate, String newNeed,String newAmountOfBlood) {
+    private void updatePatient(String name, String age, String bloodGroup, String need, String phone, String newName, String newAge, String newGender, String newHospital, String newDivision, String newDistrict, String newDate,String newAmountOfBlood) {
         RetroInterface retroInterface = RetroInstance.getRetro();
-        Call<PatientDataModel> sendingData = retroInterface.updatePatientProfile(name, age, bloodGroup, need, phone, newName, newAge, newGender, newHospital, newDivision, newDistrict, newDate, newNeed,newAmountOfBlood);
+        Call<PatientDataModel> sendingData = retroInterface.updatePatientProfile(name, age, bloodGroup, need, phone, newName, newAge, newGender, newHospital, newDivision, newDistrict, newDate, newAmountOfBlood);
         sendingData.enqueue(new Callback<PatientDataModel>() {
             @Override
             public void onResponse(Call<PatientDataModel> call, Response<PatientDataModel> response) {
@@ -399,7 +370,7 @@ public class UpdatePatientProfileActivity extends AppCompatActivity implements V
                     intent.putExtra("division",newDivision);
                     intent.putExtra("district",newDistrict);
                     intent.putExtra("date",newDate);
-                    intent.putExtra("need",newNeed);
+                    intent.putExtra("need",need);
                     intent.putExtra("phone",phone);
                     intent.putExtra("amountOfBloodNeeded",newAmountOfBlood);
                     intent.putExtra("activity","UpdatePatientProfileActivity");
@@ -428,7 +399,7 @@ private void updateAlertDialog(String amountOfBlood){
     builder.setCancelable(false);
         builder.setPositiveButton(getString(R.string.confirm), new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                updatePatient(name, age, bloodGroup, need, phone, newName, newAge, newGender, newHospital, newDivision, newDistrict, newDate, newNeed,amountOfBlood);
+                updatePatient(name, age, bloodGroup, need, phone, newName, newAge, newGender, newHospital, newDivision, newDistrict, newDate,amountOfBlood);
 
             }
         })

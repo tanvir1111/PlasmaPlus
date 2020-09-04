@@ -305,13 +305,13 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
         district = districtSpinner.getSelectedItem().toString();
         RadioButton selectedRadiobtn= findViewById(bloodRadioGroup.getCheckedRadioButtonId());
         switch (selectedRadiobtn.getText().toString()){
-            case "ব্লাড":
+            case "রক্ত":
                 donorInfo = "Blood";
                 break;
             case "প্লাজমা":
                 donorInfo = "Plasma";
                 break;
-            case "ব্লাড এবং প্লাজমা":
+            case "রক্ত এবং প্লাজমা":
                 donorInfo = "Blood and Plasma";
                 break;
             case "সাধারণ ব্যবহারকারী/গ্রাহক":
