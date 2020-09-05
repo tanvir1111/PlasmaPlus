@@ -78,20 +78,16 @@ import static com.ece.cov19.SplashActivity.Selected_language;
 
 
 public class DashboardActivity extends AppCompatActivity implements View.OnClickListener, NavigationView.OnNavigationItemSelectedListener{
-    private String[] nameSplit;
+
     private CardView findDonorCardView, addPatientCardView, requestsCardView, responsesCardView, fromDonorsCardView,
             fromPatientsCardView, exploreCardView, myPatientsCardView, allDonorsCardView, allPatientsCardView,
             exploreCCardView, exploreDCardView, exploreECardView, exploreFCardView;
-    private TextView findDonorText, addPatientText, requestsText, responsesText,fromDonorsText,fromPatientsText, exploreText,
-            myPatientsText,allDonorsText,allPatientsText;
-    private ImageView dashboardDrawerBtn, dashboardGenderIcon, findDonorImage, addPatientImage, requestsImage, responsesImage,fromDonorsImage,fromPatientsImage, exploreImage,
-            myPatientsImage,allDonorsImage,allPatientsImage;
-    private TextView dashboard, numberOfPatients,numberOfDonors,numberOfPatientsText,numberOfDonorsText,numberOfRequestsFromDonors,
+
+    private ImageView dashboardDrawerBtn, dashboardGenderIcon;
+    private TextView dashboard, numberOfPatients,numberOfDonors,numberOfRequestsFromDonors,
             numberOfRequestsFromPatients,numberOfRequestsFromDonorsText,numberOfRequestsFromPatientsText, exploreCText, exploreDText,
             exploreEText, exploreFText;
 
-
-    private ProgressBar progressBar;
     private ConstraintLayout loadingView;
 
     private DrawerLayout drawerLayout;
@@ -120,7 +116,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         navigationView =findViewById(R.id.nav_view);
         loadingView=findViewById(R.id.loadingView);
         dashboard=findViewById(R.id.dashboard_header);
-        progressBar=findViewById(R.id.dashboard_progress_bar);
+
         dashboardGenderIcon=findViewById(R.id.dashboard_gender_icon);
         dashboardDrawerBtn=findViewById(R.id.dashboard_drawer_btn);
 
@@ -141,9 +137,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
 
         numberOfDonors=findViewById(R.id.dashboard_no_of_donors);
-        numberOfDonorsText=findViewById(R.id.dashboard_text_no_of_donors);
         numberOfPatients=findViewById(R.id.dashboard_no_of_patients);
-        numberOfPatientsText=findViewById(R.id.dashboard_text_no_of_patients);
         numberOfRequestsFromDonors=findViewById(R.id.dashboard_no_of_requests_from_donors);
         numberOfRequestsFromDonorsText=findViewById(R.id.dashboard_text_no_of_requests_from_donors);
         numberOfRequestsFromPatients=findViewById(R.id.dashboard_no_of_requests_from_patients);
@@ -154,7 +148,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         exploreFText=findViewById(R.id.dashboard_text_exploreF0);
 
 
-        nameSplit = loggedInUserName.split("");
+
         loadingView.setVisibility(View.VISIBLE);
 
         fromDonorsCardView.setVisibility(View.GONE);
@@ -241,11 +235,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     } else if (response.body().getEligibility().toLowerCase().equals("not_eligible")) {
                         loggedInUserEligibility = "not_eligible";
                     }
-                    //ToastCreator.toastCreatorGreen(getApplicationContext(),loggedInUserEligibility);
-
-
-                }
-                else if(response.body().getServerMsg().toLowerCase().equals("false")){
                 }
             }
 
@@ -351,7 +340,7 @@ if(LoginUser.checkLoginStat().equals("failed")){
 }
 
 
-        nameSplit = loggedInUserName.split("");
+
         loadingView.setVisibility(View.VISIBLE);
 
 
@@ -365,8 +354,6 @@ if(LoginUser.checkLoginStat().equals("failed")){
             @Override
             public void onResponse(Call<DashBoardNumberModel> call, Response<DashBoardNumberModel> response) {
                 loadingView.setVisibility(View.GONE);
-
-
                 noOfDonors = response.body().getNumberOfDonors();
                 noOfPatients = response.body().getNumberOfPatients();
                 noOfRequestsFromDonors = response.body().getNumberOfRequestsFromDonors();
@@ -514,17 +501,7 @@ if(LoginUser.checkLoginStat().equals("failed")){
             shareIntent.putExtra(Intent.EXTRA_SUBJECT,shareSub);
             shareIntent.putExtra(Intent.EXTRA_TEXT,shareBody);
             startActivity(Intent.createChooser(shareIntent,"Share Using"));
-//            Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
-//            Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
-//            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
-//                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
-//                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-//            try {
-//                startActivity(goToMarket);
-//            } catch (ActivityNotFoundException e) {
-//                startActivity(new Intent(Intent.ACTION_VIEW,
-//                        Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
-//            }
+
         }
         else if (id == R.id.emailUs){
 
@@ -536,21 +513,29 @@ if(LoginUser.checkLoginStat().equals("failed")){
             intent.putExtra(Intent.EXTRA_EMAIL, new String[]{email});
             intent.putExtra(Intent.EXTRA_SUBJECT, subject);
             intent.putExtra(Intent.EXTRA_TEXT, body);
-            //intent.setData(Uri.parse("mailto:"+id+"?cc="+"&subject="+Uri.encode(subject)+"&body="+Uri.encode(body)));
             startActivityForResult(intent,200);
         }
 
         else if(id == R.id.sendReview){
-
             Uri uri = Uri.parse("https://docs.google.com/forms/d/e/1FAIpQLSd_PgXtE8sYdaxCIp4pPXM6IqU7ZvoA963iBksFejGIOUYH6g/viewform?usp=sf_link");
             Intent review = new Intent(Intent.ACTION_VIEW, uri);
             startActivity(review);
-
         }
 
         else if(id == R.id.rateApp){
 
-            inAppReview();
+            Uri uri = Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName());
+            Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
+            goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
+                    Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
+                    Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
+            startActivity(goToMarket);
+//            try {
+//                startActivity(goToMarket);
+//            } catch (ActivityNotFoundException e) {
+//                startActivity(new Intent(Intent.ACTION_VIEW,
+//                        Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
+//            }
 
         }
 
@@ -570,57 +555,55 @@ if(LoginUser.checkLoginStat().equals("failed")){
             if (backCounter == 1) {
 
                 ToastCreator.toastCreatorRed(DashboardActivity.this,getResources().getString(R.string.press_one_more_time));
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        backCounter--;
+                    }
+                }, 3000);
             }
             if (backCounter == 2) {
                 finishAffinity();
 
             }
-            final Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                   backCounter--;
-                }
-            }, 5000);
+
         }
     }
 
-
-
-
-    private void inAppReview(){
-
-        manager = ReviewManagerFactory.create(this);
-        com.google.android.play.core.tasks.Task<ReviewInfo> request = manager.requestReviewFlow()
-                .addOnCompleteListener(new com.google.android.play.core.tasks.OnCompleteListener<ReviewInfo>() {
-            @Override
-            public void onComplete(@NonNull com.google.android.play.core.tasks.Task<ReviewInfo> task) {
-                if(task.isSuccessful()){
-                    reviewInfo = task.getResult();
-
-                    manager.launchReviewFlow(DashboardActivity.this, reviewInfo)
-                            .addOnCompleteListener(new com.google.android.play.core.tasks.OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull com.google.android.play.core.tasks.Task<Void> task) {
-                                    ToastCreator.toastCreatorGreen(getApplicationContext(),getResources().getString(R.string.rating_successful));
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(Exception e) {
-                            ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.rating_failed));
-                        }
-                    });
-                }
-            }
-        })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(Exception e) {
-                        ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.rating_failed));
-                    }
-                });
-    }
+//    private void inAppReview(){
+//
+//        manager = ReviewManagerFactory.create(this);
+//        com.google.android.play.core.tasks.Task<ReviewInfo> request = manager.requestReviewFlow()
+//                .addOnCompleteListener(new com.google.android.play.core.tasks.OnCompleteListener<ReviewInfo>() {
+//            @Override
+//            public void onComplete(@NonNull com.google.android.play.core.tasks.Task<ReviewInfo> task) {
+//                if(task.isSuccessful()){
+//                    reviewInfo = task.getResult();
+//
+//                    manager.launchReviewFlow(DashboardActivity.this, reviewInfo)
+//                            .addOnCompleteListener(new com.google.android.play.core.tasks.OnCompleteListener<Void>() {
+//                                @Override
+//                                public void onComplete(@NonNull com.google.android.play.core.tasks.Task<Void> task) {
+//                                    ToastCreator.toastCreatorGreen(getApplicationContext(),getResources().getString(R.string.rating_successful));
+//                                }
+//                            })
+//                            .addOnFailureListener(new OnFailureListener() {
+//                        @Override
+//                        public void onFailure(Exception e) {
+//                            ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.rating_failed));
+//                        }
+//                    });
+//                }
+//            }
+//        })
+//                .addOnFailureListener(new OnFailureListener() {
+//                    @Override
+//                    public void onFailure(Exception e) {
+//                        ToastCreator.toastCreatorRed(getApplicationContext(),getResources().getString(R.string.rating_failed));
+//                    }
+//                });
+//    }
 
 
 

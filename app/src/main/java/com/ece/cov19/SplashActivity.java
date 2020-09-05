@@ -240,42 +240,34 @@ public class SplashActivity extends AppCompatActivity {
 
 
     //Not Used
-    private class GetLatestVersion extends AsyncTask<String, String, JSONObject> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected JSONObject doInBackground(String... params) {
-
-
-            return new JSONObject();
-        }
-
-        @Override
-        protected void onPostExecute(JSONObject jsonObject) {
-
-            try {
-//It retrieves the latest version by scraping the content of current version from play store at runtime
-                Document doc = Jsoup.connect("https://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName()).get();
-                latestVersion = doc.getElementsByClass("htlgb").get(6).text();
-
-            }catch (Exception e){
-                e.printStackTrace();
-
-            }
-        }
-    }
-
-
-
-
-
-
-
-
+//    private class GetLatestVersion extends AsyncTask<String, String, JSONObject> {
+//
+//        @Override
+//        protected void onPreExecute() {
+//            super.onPreExecute();
+//        }
+//
+//        @Override
+//        protected JSONObject doInBackground(String... params) {
+//
+//
+//            return new JSONObject();
+//        }
+//
+//        @Override
+//        protected void onPostExecute(JSONObject jsonObject) {
+//
+//            try {
+////It retrieves the latest version by scraping the content of current version from play store at runtime
+//                Document doc = Jsoup.connect("https://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName()).get();
+//                latestVersion = doc.getElementsByClass("htlgb").get(6).text();
+//
+//            }catch (Exception e){
+//                e.printStackTrace();
+//
+//            }
+//        }
+//    }
 
     private void checkSharedPref(){
         final Handler handler = new Handler();
@@ -317,17 +309,18 @@ public class SplashActivity extends AppCompatActivity {
         update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Uri uri = Uri.parse("market://details?id=" + getApplicationContext().getPackageName());
+                Uri uri =  Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName());
                 Intent goToMarket = new Intent(Intent.ACTION_VIEW, uri);
                 goToMarket.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY |
                         Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
                         Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
-                try {
-                    startActivity(goToMarket);
-                } catch (ActivityNotFoundException e) {
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
-                }
+                startActivity(goToMarket);
+//                try {
+//                    startActivity(goToMarket);
+//                } catch (ActivityNotFoundException e) {
+//                    startActivity(new Intent(Intent.ACTION_VIEW,
+//                            Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
+//                }
                 dialog.dismiss();
             }
         });

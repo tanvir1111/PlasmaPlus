@@ -332,9 +332,6 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
         }
         selectedBldGrp = formFieldsFeatures.bloodGroupSelection(this,selectedBldGrp ,oldSelection );
-//        selectedBldGrp.setBackgroundResource(R.drawable.blood_grp_selected);
-//        selectedBldGrp.setTextColor(Color.WHITE);
-
 
     }
 
@@ -391,7 +388,6 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
             if(!amountOfBloodNeeded.equals("invalid") && !need.equals("Not Selected")) {
 
                 registerPatientAlertDialog(name, age, gender, bloodGroup, hospital, division, district, date, need, phone, amountOfBloodNeeded);
-//                Toast.makeText(this, name+age+ gender+ bloodGroup+ hospital+division+ district+ date+ need+ phone+ amountOfBloodNeeded, Toast.LENGTH_SHORT).show();
             }
             else {
                 submitBtn.setEnabled(true);
@@ -458,5 +454,3 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
 
 }
-
-
