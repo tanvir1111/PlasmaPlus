@@ -873,20 +873,20 @@ if(LoginUser.checkLoginStat().equals("failed")){
                 startActivity(viewMyPatientsIntent);
                 break;
 
-            case R.id.dashboard_header:
-                RetroInterface retroInterface = RetroInstance.getRetro();
-                Call<UserDataModel> incomingResponse = retroInterface.sendNotification(loggedInUserPhone,getResources().getString(R.string.dashboard_header),getResources().getString(R.string.dashboard_welcome_to),"DashboardActivity","");
-                incomingResponse.enqueue(new Callback<UserDataModel>() {
-                    @Override
-                    public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<UserDataModel> call, Throwable t) {
-
-                    }
-                });
+//            case R.id.dashboard_header:
+//                RetroInterface retroInterface = RetroInstance.getRetro();
+//                Call<UserDataModel> incomingResponse = retroInterface.sendNotification(loggedInUserPhone,getResources().getString(R.string.dashboard_header),getResources().getString(R.string.dashboard_welcome_to),"DashboardActivity","");
+//                incomingResponse.enqueue(new Callback<UserDataModel>() {
+//                    @Override
+//                    public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
+//
+//                    }
+//
+//                    @Override
+//                    public void onFailure(Call<UserDataModel> call, Throwable t) {
+//
+//                    }
+//                });
 
         }
     }
