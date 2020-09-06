@@ -592,5 +592,6 @@
     <string name="enter_valid_number">Enter a valid number</string>
     <string name="rating_successful">Rating Successful</string>
     <string name="rating_failed">Rating Failed</string>
+    <string name="claimed">Claimed</string>
 
 </resources>

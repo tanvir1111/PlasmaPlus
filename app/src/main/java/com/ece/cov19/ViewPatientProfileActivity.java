@@ -266,10 +266,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(donatedButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.mark_as_donated).toLowerCase())) {
                     if (requestedBy.equals("donor")) {
-                        requestOperationAlertDialog("donate", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2), "PatientRequestsActivity","donor");
+                        requestOperationAlertDialog("claim", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2), "PatientRequestsActivity","donor");
                     }
                     else if(requestedBy.equals("patient")){
-                        requestOperationAlertDialog("donate", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2), "DonorResponseActivity","patient");
+                        requestOperationAlertDialog("claim", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2), "DonorResponseActivity","patient");
 
                     }
                 }
@@ -664,13 +664,15 @@ alertDialog.setCanceledOnTouchOutside(false);
                         }
 
                         else {
-                            donateToHelpButton.setVisibility(View.GONE);
-                            updateButton.setVisibility(View.VISIBLE);
-                            updateButton.setText(getResources().getString(R.string.accept_request));
-                            deleteButton.setVisibility(View.VISIBLE);
-                            deleteButton.setText(getResources().getString(R.string.decline_request));
-                            donatedButton.setVisibility(View.GONE);
-                            notDonatedButton.setVisibility(View.GONE);
+                            if(requestedBy.equals("patient")) {
+                                donateToHelpButton.setVisibility(View.GONE);
+                                updateButton.setVisibility(View.VISIBLE);
+                                updateButton.setText(getResources().getString(R.string.accept_request));
+                                deleteButton.setVisibility(View.VISIBLE);
+                                deleteButton.setText(getResources().getString(R.string.decline_request));
+                                donatedButton.setVisibility(View.GONE);
+                                notDonatedButton.setVisibility(View.GONE);
+                            }
                         }
 
 
@@ -689,8 +691,10 @@ alertDialog.setCanceledOnTouchOutside(false);
                                 notDonatedButton.setVisibility(View.VISIBLE);
                             }
                             if(varFormattedDate.before(varDate)) {
-                                cancelButton.setVisibility(View.VISIBLE);
-                                cancelButton.setText(getResources().getString(R.string.cancel_donation));
+                                if(requestedBy.equals("patient")) {
+                                    cancelButton.setVisibility(View.VISIBLE);
+                                    cancelButton.setText(getResources().getString(R.string.cancel_donation));
+                                }
                             }
                             phoneTextView.setText(phone);
                         }
@@ -708,8 +712,10 @@ alertDialog.setCanceledOnTouchOutside(false);
                                 notDonatedButton.setVisibility(View.VISIBLE);
                             }
                             if(varFormattedDate.before(varDate)) {
-                                cancelButton.setVisibility(View.VISIBLE);
-                                cancelButton.setText(getResources().getString(R.string.cancel_donation));
+                                if(requestedBy.equals("patient")) {
+                                    cancelButton.setVisibility(View.VISIBLE);
+                                    cancelButton.setText(getResources().getString(R.string.cancel_donation));
+                                }
                             }
                             phoneTextView.setText(phone);
                         }

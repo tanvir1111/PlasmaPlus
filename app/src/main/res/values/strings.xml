@@ -75,7 +75,7 @@
     <string name="pending">Pending</string>
     <string name="donated">Donated</string>
     <string name="not_donated">Not Donated</string>
-    <string name="confirmed">Confirmed</string>
+    <string name="claimed">Claimed</string>
     <string name="not_confirmed">Not Confirmed</string>
     <string name="canceled">Declined</string>
     <string name="delete_profile">Delete Profile</string>
@@ -1218,4 +1218,5 @@
         <item>O+</item>
         <item>O-</item>
     </string-array>
+    <string name="confirmed">Confirmed</string>
 </resources>

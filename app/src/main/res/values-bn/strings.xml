@@ -646,5 +646,6 @@
     <string name="select_req_type">প্রয়োজনের ধরণ লাগবে</string>
     <string name="amount_required">ইউনিট লাগবে</string>
     <string name="enter_valid_number">সঠিক নম্বর দিন</string>
+    <string name="claimed">দাবীকৃত</string>
 
 </resources>
