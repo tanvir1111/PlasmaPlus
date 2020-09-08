@@ -2,13 +2,7 @@ package com.ece.cov19;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.app.Dialog;
-import android.app.ProgressDialog;
-import android.content.ActivityNotFoundException;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentSender;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -16,7 +10,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
@@ -25,42 +18,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.Functions.LoginUser;
-import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
-import com.google.android.play.core.appupdate.AppUpdateInfo;
-import com.google.android.play.core.appupdate.AppUpdateManager;
-import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.model.AppUpdateType;
-import com.google.android.play.core.install.model.UpdateAvailability;
-import com.google.android.play.core.tasks.Task;
-
-import org.json.JSONObject;
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-
-import java.io.IOException;
 import java.util.Locale;
-import java.util.concurrent.ExecutionException;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
-
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserAge;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserBloodGroup;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDistrict;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDivision;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDonorInfo;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPass;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserThana;
 import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PASS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PHONE;
@@ -74,7 +39,7 @@ public class SplashActivity extends AppCompatActivity {
     public static final String Language_pref="Language";
     public static final String Selected_language="Selected Language";
     String currentVersion, latestVersion;
-    Dialog dialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -239,35 +204,6 @@ public class SplashActivity extends AppCompatActivity {
     }
 
 
-    //Not Used
-//    private class GetLatestVersion extends AsyncTask<String, String, JSONObject> {
-//
-//        @Override
-//        protected void onPreExecute() {
-//            super.onPreExecute();
-//        }
-//
-//        @Override
-//        protected JSONObject doInBackground(String... params) {
-//
-//
-//            return new JSONObject();
-//        }
-//
-//        @Override
-//        protected void onPostExecute(JSONObject jsonObject) {
-//
-//            try {
-////It retrieves the latest version by scraping the content of current version from play store at runtime
-//                Document doc = Jsoup.connect("https://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName()).get();
-//                latestVersion = doc.getElementsByClass("htlgb").get(6).text();
-//
-//            }catch (Exception e){
-//                e.printStackTrace();
-//
-//            }
-//        }
-//    }
 
     private void checkSharedPref(){
         final Handler handler = new Handler();
@@ -315,13 +251,8 @@ public class SplashActivity extends AppCompatActivity {
                         Intent.FLAG_ACTIVITY_NEW_DOCUMENT |
                         Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 startActivity(goToMarket);
-//                try {
-//                    startActivity(goToMarket);
-//                } catch (ActivityNotFoundException e) {
-//                    startActivity(new Intent(Intent.ACTION_VIEW,
-//                            Uri.parse("http://play.google.com/store/apps/details?id=" + getApplicationContext().getPackageName())));
-//                }
-                dialog.dismiss();
+
+
             }
         });
 
