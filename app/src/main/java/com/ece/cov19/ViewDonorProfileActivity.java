@@ -355,7 +355,10 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                 acceptBtn.setEnabled(true);
                 declineBtn.setEnabled(true);
                 if (response.isSuccessful()) {
-                    if(response.body().getServerMsg().toLowerCase().equals("no requests")) {
+                    if (response.body().getServerMsg().isEmpty()) {
+                        Toast.makeText(ViewDonorProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                    }
+                   else if(response.body().getServerMsg().toLowerCase().equals("no requests")) {
                         if(donorphone.equals(loggedInUserPhone)){
                             askForHelpBtn.setVisibility(View.GONE);
                             acceptBtn.setVisibility(View.GONE);
@@ -423,7 +426,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     else if (response.body().getServerMsg().toLowerCase().equals("claimed")) {
                         if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")||getIntent().getStringExtra("activity").equals("PatientRequestsActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
-                            askForHelpBtn.setText("Claimed");
+                            askForHelpBtn.setText(getString(R.string.claimed));
                             acceptBtn.setVisibility(View.VISIBLE);
                             acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
                             declineBtn.setVisibility(View.VISIBLE);
@@ -501,31 +504,6 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     }
 
-                    else if (response.body().getServerMsg().toLowerCase().equals("not_confirmed")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
-                            askForHelpBtn.setVisibility(View.VISIBLE);
-                            askForHelpBtn.setText(getResources().getString(R.string.not_confirmed));
-                            acceptBtn.setVisibility(View.VISIBLE);
-                            acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
-                            declineBtn.setVisibility(View.VISIBLE);
-                            declineBtn.setText(getResources().getString(R.string.send_sms));
-                            confirmBtn.setVisibility(View.GONE);
-                            cancelBtn.setVisibility(View.GONE);
-                            phoneTextView.setText(donorphone);
-                        }
-                        else {
-                            askForHelpBtn.setVisibility(View.GONE);
-                            acceptBtn.setVisibility(View.VISIBLE);
-                            acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
-                            declineBtn.setVisibility(View.VISIBLE);
-                            declineBtn.setText(getResources().getString(R.string.send_sms));
-                            confirmBtn.setVisibility(View.GONE);
-                            cancelBtn.setVisibility(View.GONE);
-                            phoneTextView.setText(donorphone);
-                        }
-
-                    }
-
 
 
                     else if (response.body().getServerMsg().toLowerCase().equals("declined")) {
@@ -570,6 +548,10 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                             cancelBtn.setVisibility(View.GONE);
                             phoneTextView.setText(donorphone);
                         }
+                    }
+
+                    else {
+                        Toast.makeText(ViewDonorProfileActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
                     }
 
                 }
