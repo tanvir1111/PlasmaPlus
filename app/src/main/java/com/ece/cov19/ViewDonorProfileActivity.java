@@ -355,7 +355,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                 acceptBtn.setEnabled(true);
                 declineBtn.setEnabled(true);
                 if (response.isSuccessful()) {
-                    Toast.makeText(ViewDonorProfileActivity.this, findPatientNeed, Toast.LENGTH_SHORT).show();
+
                     if (response.body().getServerMsg().isEmpty()) {
                         Toast.makeText(ViewDonorProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                     }
@@ -376,7 +376,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         }
                     }
                     else if (response.body().getServerMsg().toLowerCase().equals("pending")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") ||getIntent().getStringExtra("activity").equals("PatientRequestsActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.pending));
                             acceptBtn.setVisibility(View.GONE);
@@ -400,7 +400,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     }
                     else if (response.body().getServerMsg().toLowerCase().equals("accepted")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") ||getIntent().getStringExtra("activity").equals("PatientRequestsActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.accepted));
                             acceptBtn.setVisibility(View.VISIBLE);
@@ -433,13 +433,13 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                             declineBtn.setVisibility(View.VISIBLE);
                             declineBtn.setText(getResources().getString(R.string.send_sms));
 
-                            if(requestedBy.equals("patient")) {
+
                                 confirmBtn.setVisibility(View.VISIBLE);
                                 confirmBtn.setText(getResources().getString(R.string.confirm_donation));
                                 cancelBtn.setVisibility(View.VISIBLE);
                                 cancelBtn.setText(getResources().getString(R.string.decline_donation));
                                 phoneTextView.setText(donorphone);
-                            }
+
                         }
                         else {
                             askForHelpBtn.setVisibility(View.GONE);
@@ -455,7 +455,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     }
 
                     else if (response.body().getServerMsg().toLowerCase().equals("not_donated")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")||getIntent().getStringExtra("activity").equals("PatientRequestsActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.not_donated));
                             acceptBtn.setVisibility(View.VISIBLE);
@@ -481,7 +481,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
                     else if (response.body().getServerMsg().toLowerCase().equals("donated")) {
 
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("PatientRequestsActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.donated));
                             acceptBtn.setVisibility(View.VISIBLE);
@@ -508,7 +508,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
 
 
                     else if (response.body().getServerMsg().toLowerCase().equals("declined")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") ||getIntent().getStringExtra("activity").equals("PatientRequestsActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.declined));
                             acceptBtn.setVisibility(View.GONE);
@@ -527,7 +527,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     }
 
                     else if (response.body().getServerMsg().toLowerCase().equals("canceled")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") ||getIntent().getStringExtra("activity").equals("PatientRequestsActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.canceled));
                             acceptBtn.setVisibility(View.VISIBLE);
