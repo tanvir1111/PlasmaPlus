@@ -355,6 +355,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                 acceptBtn.setEnabled(true);
                 declineBtn.setEnabled(true);
                 if (response.isSuccessful()) {
+                    Toast.makeText(ViewDonorProfileActivity.this, findPatientNeed, Toast.LENGTH_SHORT).show();
                     if (response.body().getServerMsg().isEmpty()) {
                         Toast.makeText(ViewDonorProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
                     }

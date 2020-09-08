@@ -54,6 +54,7 @@ public class ExplorePatientsViewHolder extends RecyclerView.ViewHolder implement
             FindPatientData.findPatientName = patientDataModels.get(pos).getName();
             FindPatientData.findPatientAge = patientDataModels.get(pos).getAge();
             FindPatientData.findPatientPhone = patientDataModels.get(pos).getPhone();
+            FindPatientData.findPatientNeed=patientDataModels.get(pos).getNeed();
             Intent intent = new Intent(view.getContext(), ViewPatientProfileActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 

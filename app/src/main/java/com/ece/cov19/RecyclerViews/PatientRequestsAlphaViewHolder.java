@@ -77,6 +77,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
             FindPatientData.findPatientAge=patientDataModels.get(pos).getAge();
             FindPatientData.findPatientDate=patientDataModels.get(pos).getDate();
             FindPatientData.findPatientPhone=patientDataModels.get(pos).getPhone();
+            FindPatientData.findPatientNeed=patientDataModels.get(pos).getNeed();
 
             UserDataModel userDataModel;
             ArrayList<UserDataModel> userDataModels;
