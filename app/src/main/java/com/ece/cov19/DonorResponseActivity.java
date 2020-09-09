@@ -404,11 +404,12 @@ public class DonorResponseActivity extends AppCompatActivity {
                     }
                     else {
                         noResponseTextView.setVisibility(View.GONE);
-                    }
 
-                    for(PatientDataModel initialDataModel : initialModels) {
 
-                        patientDataModels.add(initialDataModel);
+                        for (PatientDataModel initialDataModel : initialModels) {
+
+                            patientDataModels.add(initialDataModel);
+                        }
                     }
 
                     RecyclerView.setAdapter(donorResponseAlphaAdapter);

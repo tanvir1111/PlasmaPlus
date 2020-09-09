@@ -9,7 +9,7 @@
     android:layout_marginLeft="16dp"
     android:layout_marginTop="8dp"
     android:layout_marginRight="16dp"
-    android:layout_marginBottom="10dp"
+    android:layout_marginBottom="8dp"
     app:cardCornerRadius="30dp"
     app:cardElevation="10dp">
 
@@ -21,11 +21,12 @@
             android:id="@+id/cardView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="16dp"
             app:cardCornerRadius="40dp"
+            app:layout_constraintBottom_toBottomOf="@+id/request_patient_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@+id/request_patient_name"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -75,9 +76,7 @@
             android:textColor="@android:color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/request_patient_date"
-            app:layout_constraintEnd_toEndOf="@+id/request_patient_location"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/request_patient_child_location_image"
+            app:layout_constraintStart_toStartOf="@+id/request_patient_name"
             app:layout_constraintTop_toBottomOf="@+id/request_patient_location"
             app:layout_constraintVertical_bias="0.0" />
 
@@ -89,7 +88,6 @@
 
 
             android:layout_marginTop="16dp"
-            android:layout_marginEnd="12dp"
             android:layout_marginBottom="16dp"
             android:background="@drawable/button_style_red"
             android:elevation="10dp"
@@ -100,8 +98,7 @@
             android:textColor="@android:color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/request_patient_date"
-            app:layout_constraintEnd_toStartOf="@+id/request_patient_child_bld_grp"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintEnd_toEndOf="@+id/request_patient_child_bld_grp"
             app:layout_constraintStart_toEndOf="@+id/request_patient_accept_btn"
             app:layout_constraintTop_toBottomOf="@+id/request_patient_location"
             app:layout_constraintVertical_bias="0.0" />
@@ -110,10 +107,8 @@
             android:id="@+id/request_patient_child_bld_grp"
             android:layout_width="60dp"
             android:layout_height="60dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
 
+            android:layout_marginEnd="16dp"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
@@ -121,38 +116,38 @@
             android:text="AB+"
             android:textColor="@color/colorAccent"
             android:textSize="14sp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/request_patient_decline_btn"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/request_patient_type"
-            app:layout_constraintTop_toBottomOf="@+id/request_patient_type"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/request_patient_type" />
 
         <TextView
             android:id="@+id/request_patient_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat"
-            android:text="Tanvir Ahmmad"
+            android:text="sdjfbjdfn fd foj cj fjf jsf sjd sj j jsa dja dj asdj as"
             android:textColor="@color/textColorDark"
             android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/request_patient_child_bld_grp"
             app:layout_constraintStart_toEndOf="@+id/cardView3"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/request_patient_type" />
 
         <TextView
             android:id="@+id/request_patient_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/button_style_colored"
             android:fontFamily="@font/raleway_bold"
+
+
             android:paddingLeft="20dp"
-
-
             android:paddingRight="20dp"
-            android:text="@string/plasma"
+            android:text="@string/update_donor_role_radio_group_blood_and_plasma"
             android:textColor="#ffffff"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -172,14 +167,14 @@
 
         <TextView
             android:id="@+id/request_patient_location"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="32dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/raleway"
             android:maxWidth="140dp"
-            android:text="Jessore"
+            android:text="ajsnjas djsa ds dsja dsaj dasj dsakj dsja dkas ds d sd"
             android:textColor="@color/textColorGrey"
             android:textSize="12sp"
             app:layout_constraintEnd_toStartOf="@+id/request_patient_child_bld_grp"

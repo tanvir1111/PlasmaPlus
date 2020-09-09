@@ -381,7 +381,7 @@ public class PatientResponseActivity extends AppCompatActivity {
                 if(response.isSuccessful()) {
                     patientDataModels.clear();
                     ArrayList<PatientDataModel> initialModels = response.body();
-                    patientResponseTextView.setText(responseTypeText+" (" +initialModels.size()+")");
+
 
                     for(PatientDataModel initialDataModel : initialModels){
 
@@ -396,6 +396,7 @@ public class PatientResponseActivity extends AppCompatActivity {
                             patientDataModels.add(initialDataModel);
                         }
                     }
+                    patientResponseTextView.setText(responseTypeText+" (" +patientDataModels.size()+")");
 
                     PatientResponseAdapter = new PatientResponseAdapter(getApplicationContext(), patientDataModels);
                     recyclerView.setAdapter(PatientResponseAdapter);

@@ -399,7 +399,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
 
                     patientDataModels.clear();
                     ArrayList<PatientDataModel> initialModels = response.body();
-                    requestTypeTextView.setText(requestTypeText+" (" +initialModels.size()+")");
+
 
                     for(PatientDataModel initialDataModel : initialModels){
 
@@ -415,6 +415,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
                             patientDataModels.add(initialDataModel);
                         }
                     }
+                    requestTypeTextView.setText(requestTypeText+" (" +patientDataModels.size()+")");
                     donorRequestsAdapter = new DonorRequestsAdapter(getApplicationContext(), patientDataModels);
                     recyclerView.setAdapter(donorRequestsAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());

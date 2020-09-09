@@ -1,21 +1,16 @@
 package com.ece.cov19.Functions;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
 
-import androidx.core.app.ActivityCompat;
-
-import com.ece.cov19.DashboardActivity;
 import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.LoginActivity;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
+import com.ece.cov19.SplashActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -93,7 +88,14 @@ public class LoginUser {
 
                 }
                 else if(response.body().getServerMsg().toLowerCase().equals("wrong phone or password")){
-                    ToastCreator.toastCreatorRed(ctx,ctx.getResources().getString(R.string.login_activity_wrong));
+                    if(ctx.getClass()== SplashActivity.class){
+                        Intent intent=new Intent(ctx,LoginActivity.class);
+                        ctx.startActivity(intent);
+                        ((SplashActivity) ctx).finishAffinity();
+                    }
+                    else {
+                        ToastCreator.toastCreatorRed(ctx, ctx.getResources().getString(R.string.login_activity_wrong));
+                    }
                 }
 
                 else {

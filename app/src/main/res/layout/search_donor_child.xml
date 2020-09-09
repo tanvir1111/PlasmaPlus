@@ -6,10 +6,10 @@
     android:id="@+id/dashboard_cardView_1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="24dp"
-    android:layout_marginTop="16dp"
-    android:layout_marginRight="24dp"
-    android:layout_marginBottom="18dp"
+    android:layout_marginLeft="16dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="8dp"
     app:cardCornerRadius="30dp"
     app:cardElevation="5dp">
 
@@ -23,10 +23,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="24dp"
             app:cardCornerRadius="60dp"
+            app:layout_constraintBottom_toBottomOf="@+id/donor_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="@+id/donor_name"
+            app:layout_constraintVertical_bias="0.0">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -48,14 +49,15 @@
             android:id="@+id/donor_child_donor_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
             android:background="@drawable/button_style_colored"
+
+
             android:fontFamily="@font/raleway_bold"
-
-
             android:paddingLeft="20dp"
             android:paddingRight="20dp"
-            android:text="@string/plasma"
+            android:text="Blood and Plasma"
             android:textColor="#ffffff"
             android:textSize="10sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -68,7 +70,7 @@
 
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="32dp"
             android:background="@drawable/blood_grp_not_selected"
             android:fontFamily="@font/montserrat"
             android:gravity="center"
@@ -78,51 +80,56 @@
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/donor_child_donor_type"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/donor_child_donor_type" />
 
         <TextView
             android:id="@+id/donor_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
             android:fontFamily="@font/montserrat"
             android:text="Tanvir Ahmmad"
             android:textColor="@color/textColorDark"
             android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/donor_child_bld_grp"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/cardView3"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/donor_child_donor_type" />
 
         <ImageView
             android:id="@+id/donor_child_location_image"
             android:layout_width="12dp"
             android:layout_height="12dp"
-            android:layout_marginTop="8dp"
             android:scaleType="fitXY"
             android:src="@drawable/location_icon"
+            app:layout_constraintBottom_toBottomOf="@+id/donor_location"
             app:layout_constraintEnd_toEndOf="@+id/donor_name"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/donor_name"
-            app:layout_constraintTop_toBottomOf="@+id/donor_name" />
+            app:layout_constraintTop_toTopOf="@+id/donor_location" />
 
         <TextView
             android:id="@+id/donor_location"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginEnd="32dp"
-            android:maxWidth="140dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
 
+            android:layout_marginBottom="24dp"
             android:fontFamily="@font/raleway"
-            android:text="Jessore"
+            android:maxWidth="140dp"
+            android:text="sfdfdsfdsfdsfsdfdsfdsfds ds fdsf sf dsf dsfsdf dsfdsfdsfsdf sdfds df ds fsdf sdf dsf dsf"
             android:textColor="@color/textColorGrey"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/donor_child_location_image"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/donor_child_bld_grp"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/donor_child_location_image"
-            app:layout_constraintTop_toTopOf="@+id/donor_child_location_image" />
+            app:layout_constraintTop_toBottomOf="@+id/donor_name"
+            app:layout_constraintVertical_bias="0.0" />
 
         <TextView
             android:id="@+id/donor_child_details_btn"

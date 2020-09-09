@@ -33,7 +33,10 @@ import retrofit2.Response;
 
 import static com.ece.cov19.DataModels.FindPatientData.findPatientAge;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientBloodGroup;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientDistrict;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientDivision;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientName;
+import static com.ece.cov19.DataModels.FindPatientData.findPatientNeed;
 import static com.ece.cov19.DataModels.FindPatientData.findPatientPhone;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDistrict;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDivision;
@@ -137,6 +140,9 @@ public class SearchDonorActivity extends AppCompatActivity {
         findPatientAge="";
         findPatientPhone="";
         findPatientBloodGroup="any";
+        findPatientDistrict="";
+        findPatientDivision="";
+        findPatientNeed="";
         if(LoginUser.checkLoginStat().equals("failed")){
             SharedPreferences sharedPreferences = getSharedPreferences(LOGIN_SHARED_PREFS, MODE_PRIVATE);
             String phone,password;
@@ -226,18 +232,19 @@ public class SearchDonorActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 if (response.isSuccessful()) {
                     ArrayList<UserDataModel> initialModels = response.body();
-                    if (initialModels.size() == 0) {
-                        filterResult.setText(filterResultText + " (" + initialModels.size() + ")");
-                        noRecordTextView.setVisibility(View.VISIBLE);
-                    } else {
-                        filterResult.setText(filterResultText + " (" + initialModels.size() + ")");
-                        noRecordTextView.setVisibility(View.GONE);
-                    }
+
 
                     for (UserDataModel initialDataModel : initialModels) {
                         if (initialDataModel.getDonor().toLowerCase().equals("blood") || initialDataModel.getDonor().toLowerCase().equals("plasma")|| initialDataModel.getDonor().toLowerCase().equals("blood and plasma")) {
                             userDataModels.add(initialDataModel);
                         }
+                    }
+                    if (initialModels.size() == 0) {
+                        filterResult.setText(filterResultText + " (" + userDataModels.size() + ")");
+                        noRecordTextView.setVisibility(View.VISIBLE);
+                    } else {
+                        filterResult.setText(filterResultText + " (" + userDataModels.size() + ")");
+                        noRecordTextView.setVisibility(View.GONE);
                     }
 
                     searchDonorAdapter = new SearchDonorAdapter(getApplicationContext(), userDataModels);

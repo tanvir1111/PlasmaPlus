@@ -376,7 +376,7 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         }
                     }
                     else if (response.body().getServerMsg().toLowerCase().equals("pending")) {
-                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity") ||getIntent().getStringExtra("activity").equals("PatientRequestsActivity") || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
+                        if(getIntent().getStringExtra("activity").equals("DonorResponseActivity")  || getIntent().getStringExtra("activity").equals("FindDonorActivity")){
                             askForHelpBtn.setVisibility(View.VISIBLE);
                             askForHelpBtn.setText(getResources().getString(R.string.pending));
                             acceptBtn.setVisibility(View.GONE);
@@ -387,12 +387,12 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         else {
                             askForHelpBtn.setVisibility(View.GONE);
 
-                            if(requestedBy.equals("donor")) {
+
                                 acceptBtn.setVisibility(View.VISIBLE);
                                 acceptBtn.setText(getResources().getString(R.string.accept_request));
                                 declineBtn.setVisibility(View.VISIBLE);
                                 declineBtn.setText(getResources().getString(R.string.decline_request));
-                            }
+
 
                             confirmBtn.setVisibility(View.GONE);
                             cancelBtn.setVisibility(View.GONE);

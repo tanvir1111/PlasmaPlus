@@ -92,11 +92,6 @@ public class FindDonorActivity extends AppCompatActivity {
         donorProgressBar =findViewById(R.id.find_donor_fordonors_progress_bar);
         backbtn=findViewById(R.id.find_donor_fordonors_back_button);
 
-        findPatientName="";
-        findPatientAge="";
-        findPatientPhone="";
-        findPatientBloodGroup="any";
-
         myPatients=patientTextView.getText().toString();
         availableDonors=donorTextView.getText().toString();
 
@@ -106,7 +101,6 @@ public class FindDonorActivity extends AppCompatActivity {
 
 
 
-        FindPatientData.findPatientBloodGroup = "any";
         findPatient();
         findDonor();
 
@@ -338,7 +332,7 @@ public class FindDonorActivity extends AppCompatActivity {
 
                 if(response.isSuccessful()){
                     ArrayList<UserDataModel> initialModels = response.body();
-                    donorTextView.setText(availableDonors+ " (" +initialModels.size()+ ")");
+
 
                     if(initialModels.size() == 0){
                         noMatchTextView.setVisibility(View.VISIBLE);
@@ -368,6 +362,9 @@ public class FindDonorActivity extends AppCompatActivity {
                         filterTextView.setVisibility(View.GONE);
                         districtEditText.setVisibility(View.GONE);
                         noMatchTextView.setVisibility(View.VISIBLE);
+                    }
+                    else {
+                        donorTextView.setText(availableDonors+ " (" +userDataModels.size()+ ")");
                     }
 
                     donorRecyclerView.setAdapter(findDonorBetaAdapter);
