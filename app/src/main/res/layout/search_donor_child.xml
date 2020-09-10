@@ -69,7 +69,7 @@
         <TextView
             android:id="@+id/donor_child_bld_grp"
             android:layout_width="60dp"
-            android:layout_height="wrap_content"
+            android:layout_height="60dp"
 
             android:layout_marginEnd="16dp"
             android:background="@drawable/blood_grp_not_selected"
