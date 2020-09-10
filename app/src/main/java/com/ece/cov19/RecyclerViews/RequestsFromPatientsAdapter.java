@@ -9,7 +9,6 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.Base64;
 import android.util.DisplayMetrics;
@@ -17,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -25,7 +23,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -38,9 +35,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 
-public class DonorRequestsAdapter extends RecyclerView.Adapter<DonorRequestsViewHolder> {
+public class RequestsFromPatientsAdapter extends RecyclerView.Adapter<RequestsFromPatientsViewHolder> {
 
     public Context context;
     public PatientDataModel patientDataModel;
@@ -53,23 +49,23 @@ public class DonorRequestsAdapter extends RecyclerView.Adapter<DonorRequestsView
     Bitmap insertBitmap;
     Uri imageUri;
 
-    public DonorRequestsAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
+    public RequestsFromPatientsAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
         this.context = context;
         this.patientDataModels = patientDataModels;
     }
 
     @NonNull
     @Override
-    public DonorRequestsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RequestsFromPatientsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.request_patient_child, parent, false);
-        DonorRequestsViewHolder donorRequestsViewHolder = new DonorRequestsViewHolder(view, patientDataModels);
-        return donorRequestsViewHolder;
+        RequestsFromPatientsViewHolder requestsFromPatientsViewHolder = new RequestsFromPatientsViewHolder(view, patientDataModels);
+        return requestsFromPatientsViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DonorRequestsViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RequestsFromPatientsViewHolder holder, int position) {
 
         langPrefs=context.getSharedPreferences(Language_pref,MODE_PRIVATE);
         if(langPrefs.contains(Selected_language)){

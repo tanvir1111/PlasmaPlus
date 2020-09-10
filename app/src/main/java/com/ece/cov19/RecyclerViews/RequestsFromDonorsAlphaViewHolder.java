@@ -4,7 +4,6 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -13,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ece.cov19.DataModels.FindPatientData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
-import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -24,7 +22,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class RequestsFromDonorsAlphaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView nameTextView, donateTextView, typeTextView, bloodTextView, locationTextView, dateTextView;
     ImageView patientImageView;
@@ -36,7 +34,7 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
     int pos;
     boolean visibility = true;
 
-    public PatientRequestsAlphaViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels, String status) {
+    public RequestsFromDonorsAlphaViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels, String status) {
         super(itemView);
         this.patientDataModels = patientDataModels;
         this.status = status;
@@ -104,8 +102,8 @@ public class PatientRequestsAlphaViewHolder extends RecyclerView.ViewHolder impl
                         donateTextView.setText(R.string.hide_request);
                         //donateTextView.setBackgroundColor(R.drawable.button_style_colored);
                         requestDonorRecyclerView.setVisibility(View.VISIBLE);
-                        PatientRequestsBetaAdapter patientRequestsBetaAdapter = new PatientRequestsBetaAdapter(itemView.getContext(), userDataModels);
-                        requestDonorRecyclerView.setAdapter(patientRequestsBetaAdapter);
+                        RequestsFromDonorsBetaAdapter requestsFromDonorsBetaAdapter = new RequestsFromDonorsBetaAdapter(itemView.getContext(), userDataModels);
+                        requestDonorRecyclerView.setAdapter(requestsFromDonorsBetaAdapter);
                         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(itemView.getContext());
                         requestDonorRecyclerView.setLayoutManager(linearLayoutManager);
                     } else {

@@ -25,7 +25,7 @@
             android:name=".MyPatientsActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".PatientRequestsActivity"
+            android:name=".RequestsFromDonorsActivity"
             android:screenOrientation="nosensor" />
         <activity
             android:name=".DonorResponseActivity"
@@ -40,7 +40,7 @@
             android:name=".UpdateUserProfileActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".DonorRequestsActivity"
+            android:name=".RequestsFromPatientsActivity"
             android:screenOrientation="nosensor" />
         <activity
             android:name=".SearchDonorActivity"

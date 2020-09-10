@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -18,7 +17,7 @@ import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.Functions.ClickTimeChecker;
 import com.ece.cov19.Functions.LoginUser;
 import com.ece.cov19.Functions.ToastCreator;
-import com.ece.cov19.RecyclerViews.DonorRequestsAdapter;
+import com.ece.cov19.RecyclerViews.RequestsFromPatientsAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -33,12 +32,12 @@ import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PASS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PHONE;
 
-public class DonorRequestsActivity extends AppCompatActivity {
+public class RequestsFromPatientsActivity extends AppCompatActivity {
 
     private Button addPatientBtn;
     private PatientDataModel patientDataModel;
     private ArrayList<PatientDataModel> patientDataModels;
-    private DonorRequestsAdapter donorRequestsAdapter;
+    private RequestsFromPatientsAdapter requestsFromPatientsAdapter;
     private RecyclerView recyclerView;
     private ImageView backbtn;
     private Button pendingbtn, successfulBtn, failedBtn,allBtn;
@@ -50,7 +49,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_donor_requests);
+        setContentView(R.layout.activity_requests_from_patients);
         requestTypeText=getString(R.string.all);
         recyclerView = findViewById(R.id.donor_requests_recyclerview);
         backbtn=findViewById(R.id.donor_requests_back_button);
@@ -192,7 +191,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        setContentView(R.layout.activity_donor_requests);
+        setContentView(R.layout.activity_requests_from_patients);
         recyclerView = findViewById(R.id.donor_requests_recyclerview);
         backbtn=findViewById(R.id.donor_requests_back_button);
         successfulBtn =findViewById(R.id.donor_requests_show_successful_requests);
@@ -213,7 +212,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 phone = sharedPreferences.getString(LOGIN_USER_PHONE, "");
                 password= sharedPreferences.getString(LOGIN_USER_PASS, "");
 
-                LoginUser.loginUser(this,phone,password,DonorRequestsActivity.class);
+                LoginUser.loginUser(this,phone,password, RequestsFromPatientsActivity.class);
             }
             else {
                 ToastCreator.toastCreatorRed(this,getString(R.string.login_failed));
@@ -416,14 +415,14 @@ public class DonorRequestsActivity extends AppCompatActivity {
                         }
                     }
                     requestTypeTextView.setText(requestTypeText+" (" +patientDataModels.size()+")");
-                    donorRequestsAdapter = new DonorRequestsAdapter(getApplicationContext(), patientDataModels);
-                    recyclerView.setAdapter(donorRequestsAdapter);
+                    requestsFromPatientsAdapter = new RequestsFromPatientsAdapter(getApplicationContext(), patientDataModels);
+                    recyclerView.setAdapter(requestsFromPatientsAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
                 }
                 else {
                     progressBar.setVisibility(View.GONE);
-                    ToastCreator.toastCreatorRed(DonorRequestsActivity.this,getResources().getString(R.string.connection_failed_try_again));
+                    ToastCreator.toastCreatorRed(RequestsFromPatientsActivity.this,getResources().getString(R.string.connection_failed_try_again));
                 }
             }
 
@@ -447,7 +446,7 @@ public class DonorRequestsActivity extends AppCompatActivity {
                 }
 
                 progressBar.setVisibility(View.GONE);
-                ToastCreator.toastCreatorRed(DonorRequestsActivity.this, getResources().getString(R.string.connection_error));
+                ToastCreator.toastCreatorRed(RequestsFromPatientsActivity.this, getResources().getString(R.string.connection_error));
             }
         });
 

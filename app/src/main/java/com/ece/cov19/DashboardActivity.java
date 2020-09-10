@@ -10,9 +10,6 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
-import android.app.Dialog;
-import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -32,12 +29,8 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.ece.cov19.DataModels.DashBoardNumberModel;
 import com.ece.cov19.DataModels.ImageDataModel;
@@ -53,8 +46,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.play.core.review.ReviewInfo;
 import com.google.android.play.core.review.ReviewManager;
-import com.google.android.play.core.review.ReviewManagerFactory;
-import com.google.android.play.core.tasks.OnFailureListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 
@@ -68,7 +59,6 @@ import static android.content.ContentValues.TAG;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserDonorInfo;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserEligibility;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserName;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserPhone;
 import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PASS;
@@ -258,12 +248,12 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     nameOfActivity = response.body().getServerMsg();
 
 
-                    if(nameOfActivity.equals("DonorRequestsActivity")) {
-                        Intent intent = new Intent(getApplicationContext(), DonorRequestsActivity.class);
+                    if(nameOfActivity.equals("RequestsFromPatientsActivity")) {
+                        Intent intent = new Intent(getApplicationContext(), RequestsFromPatientsActivity.class);
                         startActivity(intent);
                     }
-                    if(nameOfActivity.equals("PatientRequestsActivity")) {
-                        Intent intent = new Intent(getApplicationContext(), PatientRequestsActivity.class);
+                    if(nameOfActivity.equals("RequestsFromDonorsActivity")) {
+                        Intent intent = new Intent(getApplicationContext(), RequestsFromDonorsActivity.class);
                         startActivity(intent);
                     }
                     if(nameOfActivity.equals("DonorResponseActivity")) {
@@ -778,7 +768,7 @@ if(LoginUser.checkLoginStat().equals("failed")){
             case R.id.dashboard_img_requestA:
             case R.id.cardView_requestA:
                 if(requestResponseSwitcher == 1) {
-                    Intent checkPatientRequestsIntent = new Intent(DashboardActivity.this, PatientRequestsActivity.class);
+                    Intent checkPatientRequestsIntent = new Intent(DashboardActivity.this, RequestsFromDonorsActivity.class);
                     startActivity(checkPatientRequestsIntent);
                     break;
                 }
@@ -792,7 +782,7 @@ if(LoginUser.checkLoginStat().equals("failed")){
             case R.id.dashboard_img_requestB:
             case R.id.cardView_requestB:
                 if(requestResponseSwitcher == 1) {
-                    Intent checkDonorRequestsIntent = new Intent(DashboardActivity.this, DonorRequestsActivity.class);
+                    Intent checkDonorRequestsIntent = new Intent(DashboardActivity.this, RequestsFromPatientsActivity.class);
                     startActivity(checkDonorRequestsIntent);
                     break;
 

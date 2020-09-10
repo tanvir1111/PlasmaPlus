@@ -113,7 +113,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         requestedBy = "donor";
         if (intent.hasExtra("activity")) {
-            if (intent.getStringExtra("activity").equals("DonorRequestsActivity")) {
+            if (intent.getStringExtra("activity").equals("RequestsFromPatientsActivity")) {
                 requestedBy = "patient";
             } else {
                 requestedBy = "donor";
@@ -257,7 +257,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (donatedButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.mark_as_donated).toLowerCase())) {
                     if (requestedBy.equals("donor")) {
-                        requestOperationAlertDialog("claim", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2), "PatientRequestsActivity", "donor");
+                        requestOperationAlertDialog("claim", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2), "RequestsFromDonorsActivity", "donor");
                     } else if (requestedBy.equals("patient")) {
                         requestOperationAlertDialog("claim", phone, getResources().getString(R.string.patient_profile_activity_notification_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_donated_2), "DonorResponseActivity", "patient");
 
@@ -272,7 +272,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (notDonatedButton.getText().toString().toLowerCase().equals(getResources().getString(R.string.mark_as_not_donated).toLowerCase())) {
                     if (requestedBy.equals("donor")) {
-                        requestOperationAlertDialog("not_donate", phone, getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2), "PatientRequestsActivity", "donor");
+                        requestOperationAlertDialog("not_donate", phone, getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2), "RequestsFromDonorsActivity", "donor");
                     } else if (requestedBy.equals("patient")) {
                         requestOperationAlertDialog("not_donate", phone, getResources().getString(R.string.patient_profile_activity_notification_not_donated_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_not_donated_2), "DonorResponseActivity", "patient");
 
@@ -286,7 +286,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (requestedBy.equals("donor")) {
-                    requestOperationAlertDialog("cancel", phone, getResources().getString(R.string.patient_profile_activity_notification_canceled_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_2), "PatientRequestsActivity", "donor");
+                    requestOperationAlertDialog("cancel", phone, getResources().getString(R.string.patient_profile_activity_notification_canceled_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_2), "RequestsFromDonorsActivity", "donor");
                 } else if (requestedBy.equals("patient")) {
                     requestOperationAlertDialog("cancel", phone, getResources().getString(R.string.patient_profile_activity_notification_canceled_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_2), "DonorResponseActivity", "patient");
 
@@ -538,7 +538,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
 
                     RetroInterface retroInterface = RetroInstance.getRetro();
-                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone, getResources().getString(R.string.patient_profile_activity_notification_incoming_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_incoming_2), "PatientRequestsActivity", "");
+                    Call<UserDataModel> incomingResponse = retroInterface.sendNotification(phone, getResources().getString(R.string.patient_profile_activity_notification_incoming_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_incoming_2), "RequestsFromDonorsActivity", "");
                     incomingResponse.enqueue(new Callback<UserDataModel>() {
                         @Override
                         public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {

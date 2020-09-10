@@ -1209,6 +1209,7 @@
 
 
     <string-array name="BloodGroup">
+        <item>Any</item>
         <item>A+</item>
         <item>A-</item>
         <item>AB+</item>

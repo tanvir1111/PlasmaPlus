@@ -42,7 +42,7 @@ import retrofit2.Response;
 import static android.content.Context.MODE_PRIVATE;
 import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
 
-public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientRequestsAlphaViewHolder> {
+public class RequestsFromDonorsAlphaAdapter extends RecyclerView.Adapter<RequestsFromDonorsAlphaViewHolder> {
 
     public Context context;
     public PatientDataModel patientDataModel;
@@ -56,7 +56,7 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
     Bitmap insertBitmap;
 
 
-    public PatientRequestsAlphaAdapter(Context context, ArrayList<PatientDataModel> patientDataModels, String status) {
+    public RequestsFromDonorsAlphaAdapter(Context context, ArrayList<PatientDataModel> patientDataModels, String status) {
         this.context = context;
         this.patientDataModels = patientDataModels;
         this.status = status;
@@ -64,16 +64,16 @@ public class PatientRequestsAlphaAdapter extends RecyclerView.Adapter<PatientReq
 
     @NonNull
     @Override
-    public PatientRequestsAlphaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RequestsFromDonorsAlphaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.seeking_help_child, parent, false);
-        PatientRequestsAlphaViewHolder patientRequestsAlphaViewHolder = new PatientRequestsAlphaViewHolder(view, patientDataModels, status);
+        RequestsFromDonorsAlphaViewHolder patientRequestsAlphaViewHolder = new RequestsFromDonorsAlphaViewHolder(view, patientDataModels, status);
         return patientRequestsAlphaViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PatientRequestsAlphaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RequestsFromDonorsAlphaViewHolder holder, int position) {
 
 
         langPrefs=context.getSharedPreferences(Language_pref,MODE_PRIVATE);

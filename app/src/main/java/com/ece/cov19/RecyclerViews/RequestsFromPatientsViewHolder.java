@@ -16,7 +16,7 @@ import com.ece.cov19.ViewPatientProfileActivity;
 
 import java.util.ArrayList;
 
-public class DonorRequestsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class RequestsFromPatientsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView nameTextView, typeTextView, bloodTextView, locationTextView, acceptButton, declineButton, dateTextView;
     ImageView patientImageView;
@@ -24,7 +24,7 @@ public class DonorRequestsViewHolder extends RecyclerView.ViewHolder implements 
     ArrayList<PatientDataModel> patientDataModels;
     int pos;
 
-    public DonorRequestsViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels) {
+    public RequestsFromPatientsViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels) {
         super(itemView);
         this.patientDataModels = patientDataModels;
 
@@ -67,10 +67,10 @@ if(ClickTimeChecker.clickTimeChecker()) {
     intent.putExtra("need", patientDataModel.getNeed());
     intent.putExtra("phone", patientDataModel.getPhone());
     intent.putExtra("amountOfBloodNeeded",patientDataModel.getAmountOfBloodNeeded());
-    intent.putExtra("activity", "DonorRequestsActivity");
+    intent.putExtra("activity", "RequestsFromPatientsActivity");
 
     c.startActivity(intent);
-    //((DonorRequestsActivity)c).finish();
+    //((RequestsFromPatientsActivity)c).finish();
 }
     }
 

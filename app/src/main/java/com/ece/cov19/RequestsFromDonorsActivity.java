@@ -17,7 +17,7 @@ import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.Functions.LoginUser;
 import com.ece.cov19.Functions.ToastCreator;
-import com.ece.cov19.RecyclerViews.PatientRequestsAlphaAdapter;
+import com.ece.cov19.RecyclerViews.RequestsFromDonorsAlphaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -31,7 +31,7 @@ import static com.ece.cov19.LoginActivity.LOGIN_SHARED_PREFS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PASS;
 import static com.ece.cov19.LoginActivity.LOGIN_USER_PHONE;
 
-public class PatientRequestsActivity extends AppCompatActivity {
+public class RequestsFromDonorsActivity extends AppCompatActivity {
 
 
     private RecyclerView myPatientRequestRecyclerView;
@@ -44,7 +44,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_patient_requests);
+        setContentView(R.layout.activity_requests_from_donors);
 
         myPatientRequestRecyclerView = findViewById(R.id.patient_requests_recyclerview);
         myPatientRequestProgressBar=findViewById(R.id.patient_requests_progress_bar);
@@ -184,7 +184,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
     @Override
     protected void onResume(){
         super.onResume();
-        setContentView(R.layout.activity_patient_requests);
+        setContentView(R.layout.activity_requests_from_donors);
 
         myPatientRequestRecyclerView = findViewById(R.id.patient_requests_recyclerview);
         myPatientRequestProgressBar=findViewById(R.id.patient_requests_progress_bar);
@@ -209,7 +209,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
                 phone = sharedPreferences.getString(LOGIN_USER_PHONE, "");
                 password= sharedPreferences.getString(LOGIN_USER_PASS, "");
 
-                LoginUser.loginUser(this,phone,password,PatientRequestsActivity.class);
+                LoginUser.loginUser(this,phone,password, RequestsFromDonorsActivity.class);
             }
             else {
                 ToastCreator.toastCreatorRed(this,getString(R.string.login_failed));
@@ -358,9 +358,9 @@ public class PatientRequestsActivity extends AppCompatActivity {
         myPatientRequestProgressBar.setVisibility(View.VISIBLE);
 
         ArrayList<PatientDataModel> patientDataModels;
-        PatientRequestsAlphaAdapter patientRequestsAlphaAdapter;
+        RequestsFromDonorsAlphaAdapter requestsFromDonorsAlphaAdapter;
         patientDataModels = new ArrayList<>();
-        patientRequestsAlphaAdapter = new PatientRequestsAlphaAdapter(getApplicationContext(), patientDataModels, status);
+        requestsFromDonorsAlphaAdapter = new RequestsFromDonorsAlphaAdapter(getApplicationContext(), patientDataModels, status);
 
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<ArrayList<PatientDataModel>> incomingResponse = retroInterface.requestsFromDonorsAlpha(LoggedInUserData.loggedInUserPhone, status);
@@ -410,7 +410,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
 
                     }
 
-                    myPatientRequestRecyclerView.setAdapter(patientRequestsAlphaAdapter);
+                    myPatientRequestRecyclerView.setAdapter(requestsFromDonorsAlphaAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
                     myPatientRequestRecyclerView.setLayoutManager(linearLayoutManager);
@@ -420,7 +420,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
                 else{
 
                     myPatientRequestProgressBar.setVisibility(View.GONE);
-                    ToastCreator.toastCreatorRed(PatientRequestsActivity.this,getResources().getString(R.string.connection_failed_try_again));
+                    ToastCreator.toastCreatorRed(RequestsFromDonorsActivity.this,getResources().getString(R.string.connection_failed_try_again));
 
                 }
             }
@@ -446,7 +446,7 @@ public class PatientRequestsActivity extends AppCompatActivity {
 
 
                 myPatientRequestProgressBar.setVisibility(View.GONE);
-                ToastCreator.toastCreatorRed(PatientRequestsActivity.this,getResources().getString(R.string.connection_error));
+                ToastCreator.toastCreatorRed(RequestsFromDonorsActivity.this,getResources().getString(R.string.connection_error));
             }
         });
 

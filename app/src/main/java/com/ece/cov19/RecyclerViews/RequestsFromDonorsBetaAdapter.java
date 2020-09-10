@@ -13,7 +13,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -21,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.ImageDataModel;
 import com.ece.cov19.DataModels.UserDataModel;
-import com.ece.cov19.Functions.ToastCreator;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
@@ -32,9 +30,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
-
-public class PatientRequestsBetaAdapter extends RecyclerView.Adapter<PatientRequestsBetaViewHolder>{
+public class RequestsFromDonorsBetaAdapter extends RecyclerView.Adapter<RequestsFromDonorsBetaViewHolder>{
 
     public Context context;
     public UserDataModel userDataModel;
@@ -42,7 +38,7 @@ public class PatientRequestsBetaAdapter extends RecyclerView.Adapter<PatientRequ
 
     Bitmap insertBitmap;
     Uri imageUri;
-    public PatientRequestsBetaAdapter(Context context, ArrayList<UserDataModel> userDataModels) {
+    public RequestsFromDonorsBetaAdapter(Context context, ArrayList<UserDataModel> userDataModels) {
         this.context = context;
         this.userDataModels = userDataModels;
     }
@@ -50,16 +46,16 @@ public class PatientRequestsBetaAdapter extends RecyclerView.Adapter<PatientRequ
 
     @NonNull
     @Override
-    public PatientRequestsBetaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public RequestsFromDonorsBetaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View view = layoutInflater.inflate(R.layout.request_donor_child, parent, false);
-        PatientRequestsBetaViewHolder patientRequestsBetaViewHolder = new PatientRequestsBetaViewHolder(view, userDataModels);
-        return patientRequestsBetaViewHolder;
+        RequestsFromDonorsBetaViewHolder requestsFromDonorsBetaViewHolder = new RequestsFromDonorsBetaViewHolder(view, userDataModels);
+        return requestsFromDonorsBetaViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PatientRequestsBetaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull RequestsFromDonorsBetaViewHolder holder, int position) {
 
         userDataModel = userDataModels.get(position);
 

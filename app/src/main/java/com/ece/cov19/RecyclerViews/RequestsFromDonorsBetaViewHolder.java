@@ -17,7 +17,7 @@ import com.ece.cov19.ViewDonorProfileActivity;
 import java.util.ArrayList;
 
 
-public class PatientRequestsBetaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class RequestsFromDonorsBetaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     TextView nameTextView, locationTextView, bloodTextView,donorType, acceptButton, declineButton;
     ImageView donorImageView, locationImageView;
@@ -25,7 +25,7 @@ public class PatientRequestsBetaViewHolder extends RecyclerView.ViewHolder imple
     ArrayList<UserDataModel> userDataModels;
     int pos;
 
-    public PatientRequestsBetaViewHolder(@NonNull View itemView, ArrayList<UserDataModel> userDataModels) {
+    public RequestsFromDonorsBetaViewHolder(@NonNull View itemView, ArrayList<UserDataModel> userDataModels) {
         super(itemView);
         this.userDataModels = userDataModels;
         nameTextView = itemView.findViewById(R.id.request_donor_name);
@@ -66,7 +66,7 @@ public class PatientRequestsBetaViewHolder extends RecyclerView.ViewHolder imple
             intent.putExtra("age", userDataModel.getAge());
             intent.putExtra("donorinfo", userDataModel.getDonor());
             intent.putExtra("gender", userDataModel.getGender());
-            intent.putExtra("activity", "PatientRequestsActivity");
+            intent.putExtra("activity", "RequestsFromDonorsActivity");
 
             c.startActivity(intent);
 
