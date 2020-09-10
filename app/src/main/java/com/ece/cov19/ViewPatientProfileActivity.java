@@ -139,7 +139,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
         } else {
             if (need.toLowerCase().equals("blood")) {
-                needTextView.setText(getString(R.string.blood) + " (" + amountOfBloodNeeded + " " + getString(R.string.unit) + ")");
+                if(amountOfBloodNeeded.equals("1")){
+                    needTextView.setText(getString(R.string.blood) + " (" + amountOfBloodNeeded + " " + getString(R.string.unit) + ")");
+                }
+                else {
+                    needTextView.setText(getString(R.string.blood) + " (" + amountOfBloodNeeded + " " + getString(R.string.units) + ")");
+                }
+
             } else {
                 needTextView.setText(getString(R.string.plasma));
             }

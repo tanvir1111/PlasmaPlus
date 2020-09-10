@@ -281,9 +281,9 @@
     <string name="no_response_found">No Response Found</string>
     <string name="view_requests">View Requests</string>
     <string name="select_patient">Select Patient</string>
-    <string name="accepted_requests">Accepted Requests</string>
+    <string name="accepted_requests">Successful Requests</string>
     <string name="declined_requests">Declined Requests</string>
-    <string name="donated_requests">Donated Requests</string>
+    <string name="donated_requests">Failed Requests</string>
     <string name="not_donated_requests">Not Donated Requests</string>
     <string name="all_requests">All Requests</string>
     <string name="next">Next</string>
@@ -299,9 +299,9 @@
     <string name="all">All</string>
     <string name="all_responses">All Responses</string>
     <string name="pending_responses">Pending Responses</string>
-    <string name="accepted_responses">Accepted Responses</string>
+    <string name="accepted_responses">Successful Responses</string>
     <string name="declined_responses">Declined Responses</string>
-    <string name="donated_responses">Donated Responses</string>
+    <string name="donated_responses">Failed Responses</string>
     <string name="not_donated_responses">Not Donated Responses</string>
     <string name="dashboard_text_explore_website">Visit</string>
     <string name="dashboard_text_explore_call">Call IEDCR</string>
@@ -315,7 +315,9 @@
     <string name="decline_donation">Decline Donation</string>
     <string name="how_many_bags_units_of_blood_is_needed">How many bags (units) of blood are needed?</string>
     <string name="quantity_of_blood_needed_in_units">"Required Blood unit"</string>
-    <string name="unit">Units</string>
+    <string name="unit">Unit</string>
+    <string name="units">Units</string>
+
     <string name="send_review">Send Review</string>
     <string name="rate_app">Rate App</string>
     <string name="successful">Successful</string>
