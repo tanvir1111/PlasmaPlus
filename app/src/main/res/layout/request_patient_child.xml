@@ -108,7 +108,7 @@
         <TextView
             android:id="@+id/request_patient_child_bld_grp"
             android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_height="wrap_content"
 
             android:layout_marginEnd="16dp"
             android:background="@drawable/blood_grp_not_selected"
@@ -118,7 +118,7 @@
             android:text="AB+"
             android:textColor="@color/colorAccent"
             android:textSize="14sp"
-            app:layout_constraintBottom_toTopOf="@+id/request_patient_decline_btn"
+            app:layout_constraintBottom_toTopOf="@+id/request_patient_date"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/request_patient_type" />
 
