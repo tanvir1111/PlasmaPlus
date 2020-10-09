@@ -29,6 +29,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -85,6 +86,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     private ReviewInfo reviewInfo;
     private ReviewManager manager;
 
+    private Button xRay;
+
     public int backCounter;
     public int requestResponseSwitcher;
     public int requestResponseCardViewSwitcher;
@@ -137,6 +140,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         exploreEText=findViewById(R.id.dashboard_text_exploreE);
         exploreFText=findViewById(R.id.dashboard_text_exploreF0);
 
+        xRay=findViewById(R.id.dashboard_button_x_ray);
+
 
 
         loadingView.setVisibility(View.VISIBLE);
@@ -153,6 +158,14 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
 
         downloadImage(loggedInUserPhone);
+
+        xRay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(DashboardActivity.this,XRayActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
 

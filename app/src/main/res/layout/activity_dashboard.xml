@@ -1004,6 +1004,28 @@
                         </androidx.cardview.widget.CardView>
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
+                <Button
+                    android:id="@+id/dashboard_button_x_ray"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/button_style_white"
+                    android:elevation="10dp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:maxWidth="350dp"
+                    android:minWidth="320dp"
+                    android:text="Detect Covid 19 with your chest x-ray"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/cardView2"
+                    app:layout_constraintVertical_bias="0.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

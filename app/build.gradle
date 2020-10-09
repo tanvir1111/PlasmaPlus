@@ -2,12 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 android {
     signingConfigs {
-        debug {
-            keyPassword '15111997'
-            storePassword '15111997'
-            keyAlias 'key0'
-            storeFile file('F:\\Github\\keystore\\keystore_copy.jpg')
-        }
+
         release {
             storeFile file('F:\\Github\\keystore\\keystore_copy.jpg')
             storePassword '15111997'
@@ -16,7 +11,7 @@ android {
         }
     }
     compileSdkVersion 30
-    buildToolsVersion "30.0.0"
+    buildToolsVersion "30.0.2"
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -51,6 +46,9 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    aaptOptions {
+        noCompress "tflite"
+    }
 
 }
 
@@ -73,6 +71,9 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
     implementation 'org.jsoup:jsoup:1.11.1'
+    implementation('org.tensorflow:tensorflow-lite:0.0.0-nightly') { changing = true }
+    implementation('org.tensorflow:tensorflow-lite-gpu:0.0.0-nightly') { changing = true }
+    implementation('org.tensorflow:tensorflow-lite-support:0.0.0-nightly') { changing = true }
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 
 

@@ -79,6 +79,9 @@
             android:name=".UpdatePatientProfileActivity"
             android:screenOrientation="nosensor" />
         <activity
+            android:name=".XRayActivity"
+            android:screenOrientation="nosensor" />
+        <activity
             android:name=".SplashActivity"
             android:screenOrientation="nosensor"
             android:theme="@style/Theme.AppCompat.NoActionBar">
