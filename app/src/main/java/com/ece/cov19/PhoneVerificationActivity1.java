@@ -86,48 +86,45 @@ public class PhoneVerificationActivity1 extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
 
-                if(verification.toLowerCase().equals("forgotpass")) {
-                    if (response.body().getServerMsg().toLowerCase().equals("record exists")) {
+                if(response.body() != null) {
+                    if (verification.toLowerCase().equals("forgotpass")) {
+                        if (response.body().getServerMsg().toLowerCase().equals("record exists")) {
 
-                        Intent intent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
+                            Intent intent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
 
-                        intent.putExtra("phone", phonenumber);
-                        intent.putExtra("verification", verification);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else if(response.body().getServerMsg().toLowerCase().equals("record doesn't exist")){
-                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, getResources().getString(R.string.phn_ver_activity_not_registered));
-                        Intent intent = new Intent(PhoneVerificationActivity1.this, LoginActivity.class);
-                        startActivity(intent);
-                        finish();
-                    }
-                    else {
-                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this,  getResources().getString(R.string.connection_failed_try_again));
-                    }
-                }
-
-
-                else if(verification.toLowerCase().equals("signup")){
-                    if (response.body().getServerMsg().toLowerCase().equals("record exists")) {
-                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, getResources().getString(R.string.phn_ver_activity_already_registered));
-
-                    }
-                    else if(response.body().getServerMsg().toLowerCase().equals("record doesn't exist")){
-
-
-                        Intent nextIntent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
-                        nextIntent.putExtra("phone",phonenumber);
-                        nextIntent.putExtra("verification",verification);
-                        startActivity(nextIntent);
-                        finish();
-
-                    }
-                    else {
-                        ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this,  getResources().getString(R.string.connection_failed_try_again));
+                            intent.putExtra("phone", phonenumber);
+                            intent.putExtra("verification", verification);
+                            startActivity(intent);
+                            finish();
+                        } else if (response.body().getServerMsg().toLowerCase().equals("record doesn't exist")) {
+                            ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, getResources().getString(R.string.phn_ver_activity_not_registered));
+                            Intent intent = new Intent(PhoneVerificationActivity1.this, LoginActivity.class);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, getResources().getString(R.string.connection_failed_try_again));
+                        }
                     }
 
+                    else if (verification.toLowerCase().equals("signup")) {
+                        if (response.body().getServerMsg().toLowerCase().equals("record exists")) {
+                            ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, getResources().getString(R.string.phn_ver_activity_already_registered));
 
+                        } else if (response.body().getServerMsg().toLowerCase().equals("record doesn't exist")) {
+
+
+                            Intent nextIntent = new Intent(PhoneVerificationActivity1.this, PhoneVerificationActivity2.class);
+                            nextIntent.putExtra("phone", phonenumber);
+                            nextIntent.putExtra("verification", verification);
+                            startActivity(nextIntent);
+                            finish();
+
+                        } else {
+                            ToastCreator.toastCreatorRed(PhoneVerificationActivity1.this, getResources().getString(R.string.connection_failed_try_again));
+                        }
+
+
+                    }
                 }
 
 

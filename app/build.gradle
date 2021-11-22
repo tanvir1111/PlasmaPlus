@@ -4,7 +4,7 @@ android {
     signingConfigs {
 
         release {
-            storeFile file('F:\\Github\\keystore\\keystore_copy.jpg')
+            storeFile file('C:\\Users\\Medspire\\Documents\\Projects\\Plasma+\\keystore')
             storePassword '15111997'
             keyAlias 'key0'
             keyPassword '15111997'

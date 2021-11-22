@@ -232,11 +232,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onResponse(Call<DashBoardNumberModel> call, Response<DashBoardNumberModel> response) {
 
-                if(response.body().getServerMsg().toLowerCase().equals("true")) {
-                    if (response.body().getEligibility().toLowerCase().equals("eligible")) {
-                        loggedInUserEligibility = "eligible";
-                    } else if (response.body().getEligibility().toLowerCase().equals("not_eligible")) {
-                        loggedInUserEligibility = "not_eligible";
+                if(response.body() != null) {
+                    if (response.body().getServerMsg().toLowerCase().equals("true")) {
+                        if (response.body().getEligibility().toLowerCase().equals("eligible")) {
+                            loggedInUserEligibility = "eligible";
+                        } else if (response.body().getEligibility().toLowerCase().equals("not_eligible")) {
+                            loggedInUserEligibility = "not_eligible";
+                        }
                     }
                 }
             }
@@ -324,22 +326,23 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     @Override
     protected void onResume() {
         super.onResume();
-if(LoginUser.checkLoginStat().equals("failed")){
-    SharedPreferences sharedPreferences = getSharedPreferences(LOGIN_SHARED_PREFS, MODE_PRIVATE);
-    String phone,password;
 
-    if (sharedPreferences.contains(LOGIN_USER_PHONE) && sharedPreferences.contains(LOGIN_USER_PASS)) {
-        phone = sharedPreferences.getString(LOGIN_USER_PHONE, "");
-        password= sharedPreferences.getString(LOGIN_USER_PASS, "");
+        if(LoginUser.checkLoginStat().equals("failed")){
+            SharedPreferences sharedPreferences = getSharedPreferences(LOGIN_SHARED_PREFS, MODE_PRIVATE);
+            String phone,password;
 
-        LoginUser.loginUser(this,phone,password,DashboardActivity.class);
-    }
-    else {
-        ToastCreator.toastCreatorRed(this,getString(R.string.login_failed));
-        Intent intent=new Intent(this,LoginActivity.class);
-        startActivity(intent);
-        finish();
-    }
+            if (sharedPreferences.contains(LOGIN_USER_PHONE) && sharedPreferences.contains(LOGIN_USER_PASS)) {
+                phone = sharedPreferences.getString(LOGIN_USER_PHONE, "");
+                password= sharedPreferences.getString(LOGIN_USER_PASS, "");
+
+                LoginUser.loginUser(this,phone,password,DashboardActivity.class);
+            }
+            else {
+                ToastCreator.toastCreatorRed(this,getString(R.string.login_failed));
+                Intent intent=new Intent(this,LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
 }
 
 
@@ -966,20 +969,20 @@ if(LoginUser.checkLoginStat().equals("failed")){
             @Override
             public void onResponse(Call<ImageDataModel> call, Response<ImageDataModel> response) {
 
-                if(response.body().getServerMsg().toLowerCase().equals("true")){
-                    String image = response.body().getImage();
-                    byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
-                    insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
-                    insertBitmap = scaleImage(insertBitmap);
-                    showImage(dashboardGenderIcon, insertBitmap, R.drawable.profile_icon_male);
-                }
+                if(response.body() != null) {
+                    if (response.body().getServerMsg().toLowerCase().equals("true")) {
+                        String image = response.body().getImage();
+                        byte[] imageByte = Base64.decode(image, Base64.DEFAULT);
+                        insertBitmap = BitmapFactory.decodeByteArray(imageByte, 0, imageByte.length);
+                        insertBitmap = scaleImage(insertBitmap);
+                        showImage(dashboardGenderIcon, insertBitmap, R.drawable.profile_icon_male);
+                    } else if (response.body().getServerMsg().toLowerCase().equals("false")) {
 
-                else if(response.body().getServerMsg().toLowerCase().equals("false")) {
-
-                    if (loggedInUserGender.toLowerCase().equals("male")) {
-                        showDrawable(dashboardGenderIcon,R.drawable.profile_icon_male);
-                    } else if (loggedInUserGender.toLowerCase().equals("female")) {
-                        showDrawable(dashboardGenderIcon,R.drawable.profile_icon_female);
+                        if (loggedInUserGender.toLowerCase().equals("male")) {
+                            showDrawable(dashboardGenderIcon, R.drawable.profile_icon_male);
+                        } else if (loggedInUserGender.toLowerCase().equals("female")) {
+                            showDrawable(dashboardGenderIcon, R.drawable.profile_icon_female);
+                        }
                     }
                 }
 

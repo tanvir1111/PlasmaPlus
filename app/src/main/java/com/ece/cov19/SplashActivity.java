@@ -164,7 +164,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
 
-                if(response.body().getServerMsg() != null) {
+                if(response.body() != null) {
                     latestVersion = response.body().getServerMsg();
                     currentVersion = getCurrentVersion();
                     if (!currentVersion.equals(latestVersion)){

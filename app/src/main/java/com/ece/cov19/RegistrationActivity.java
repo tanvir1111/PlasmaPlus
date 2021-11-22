@@ -407,17 +407,20 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         sendingData.enqueue(new Callback<UserDataModel>() {
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
-                if (response.body().getServerMsg().toLowerCase().equals("success")) {
-                    progressBar.setVisibility(View.GONE);
-                    ToastCreator.toastCreatorGreen(RegistrationActivity.this, getResources().getString(R.string.reg_activity_registration_success));
+
+                if(response.body() != null) {
+                    if (response.body().getServerMsg().toLowerCase().equals("success")) {
+                        progressBar.setVisibility(View.GONE);
+                        ToastCreator.toastCreatorGreen(RegistrationActivity.this, getResources().getString(R.string.reg_activity_registration_success));
 
 //              going to login activity
-                    Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                } else {
-                    progressBar.setVisibility(View.GONE);
-                    ToastCreator.toastCreatorRed(RegistrationActivity.this, getResources().getString(R.string.connection_failed_try_again));
+                        Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
+                        startActivity(intent);
+                        finish();
+                    } else {
+                        progressBar.setVisibility(View.GONE);
+                        ToastCreator.toastCreatorRed(RegistrationActivity.this, getResources().getString(R.string.connection_failed_try_again));
+                    }
                 }
 
             }

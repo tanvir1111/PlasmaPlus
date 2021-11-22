@@ -3,6 +3,7 @@ package com.ece.cov19.Functions;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.util.Log;
 import android.view.View;
 
 import com.ece.cov19.DataModels.UserDataModel;
@@ -37,10 +38,11 @@ public class LoginUser {
 
 
     public static String checkLoginStat(){
+
+
         if(loggedInUserPhone.equals("Didn't Load") || loggedInUserName.equals("Didn't Load") || loggedInUserAge.equals("Didn't Load")
                 || loggedInUserBloodGroup.equals("Didn't Load") || loggedInUserDistrict.equals("Didn't Load") || loggedInUserDivision.equals("Didn't Load")
-                || loggedInUserGender.equals("Didn't Load") || loggedInUserDonorInfo.equals("Didn't Load")||loggedInUserThana.equals("Didn't Load")
-        ){
+                || loggedInUserGender.equals("Didn't Load") || loggedInUserDonorInfo.equals("Didn't Load")||loggedInUserThana.equals("Didn't Load")) {
             return "failed";
         }
         return "success";
