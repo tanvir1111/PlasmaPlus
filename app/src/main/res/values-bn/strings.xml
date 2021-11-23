@@ -648,5 +648,6 @@
     <string name="amount_required">ইউনিট লাগবে</string>
     <string name="enter_valid_number">সঠিক নম্বর দিন</string>
     <string name="claimed">দাবীকৃত</string>
+    <string name="patient_already_exists">রোগীর তথ্য আগে থেকেই আছে</string>
 
 </resources>

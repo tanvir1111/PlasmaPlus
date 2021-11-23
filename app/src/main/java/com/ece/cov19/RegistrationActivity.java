@@ -3,6 +3,7 @@ package com.ece.cov19;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -385,7 +386,7 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
                 if (password.equals(confPasswordEditText.getText().toString())) {
 //            retro operations
 
-                    registerUser(name, phone, division, district, bloodGroup, thana, age, password);
+                    registerUserAlertDialog(name, phone, division, district, bloodGroup, thana, age, password);
 
 
                 } else {
@@ -396,6 +397,27 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
         }
 
 
+    }
+
+    private void registerUserAlertDialog(String name, String phone, String division, String district, String bloodGroup, String thana, String age, String password) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(RegistrationActivity.this);
+        builder.setMessage(getResources().getString(R.string.are_you_sure));
+        builder.setCancelable(false);
+        builder.setPositiveButton(getResources().getString(R.string.yes_txt), new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                registerUser(name, phone, division, district, bloodGroup, thana, age, password);
+
+            }
+        })
+                .setNegativeButton(getResources().getString(R.string.cancel), new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog alertDialog=builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
     }
 
 //    database operations

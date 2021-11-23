@@ -184,6 +184,7 @@ public class FindDonorActivity extends AppCompatActivity {
         donorTextView.setVisibility(View.GONE);
         filterTextView.setVisibility(View.GONE);
         districtEditText.setVisibility(View.GONE);
+        noMatchTextView.setVisibility(View.GONE);
 
 
         FindPatientData.findPatientBloodGroup = "any";
@@ -305,6 +306,7 @@ public class FindDonorActivity extends AppCompatActivity {
         districtEditText.setVisibility(View.VISIBLE);
         noMatchTextView.setVisibility(View.GONE);
 
+
         ArrayList<UserDataModel> userDataModels;
         FindDonorBetaAdapter findDonorBetaAdapter;
         userDataModels = new ArrayList<>();
@@ -358,9 +360,7 @@ public class FindDonorActivity extends AppCompatActivity {
                     }
 
                     if(userDataModels.size() == 0){
-                        donorTextView.setVisibility(View.GONE);
-                        filterTextView.setVisibility(View.GONE);
-                        districtEditText.setVisibility(View.GONE);
+                        donorTextView.setText(availableDonors+ " (" +userDataModels.size()+ ")");
                         noMatchTextView.setVisibility(View.VISIBLE);
                     }
                     else {

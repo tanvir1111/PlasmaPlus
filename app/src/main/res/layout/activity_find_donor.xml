@@ -55,6 +55,20 @@
                 android:background="#FAFAFA"
                 >
 
+                <TextView
+                    android:id="@+id/find_donor_fordonors_nomatchtextview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:text="@string/find_donor_fordonors_nomatchtextview"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="24sp"
+                    android:visibility="visible"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/find_donor_fordonors_district_edittext" />
+
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout3"
                     android:layout_width="match_parent"
@@ -199,20 +213,6 @@
                     android:text="@string/find_donor_fordonors_textview"
                     android:textColor="@color/textColorDark"
                     android:textSize="17sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
-
-                <TextView
-                    android:id="@+id/find_donor_fordonors_nomatchtextview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="48dp"
-                    android:fontFamily="@font/montserrat_bold"
-                    android:text="@string/find_donor_fordonors_nomatchtextview"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="24sp"
-                    android:visibility="gone"
-                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/constraintLayout3" />
 

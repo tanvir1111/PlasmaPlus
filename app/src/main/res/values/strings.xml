@@ -1222,4 +1222,5 @@
         <item>O-</item>
     </string-array>
     <string name="confirmed">Confirmed</string>
+    <string name="patient_already_exists">Patient Already Exists</string>
 </resources>

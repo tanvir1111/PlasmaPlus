@@ -434,7 +434,15 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                     startActivity(intent);
                     submitBtn.setEnabled(true);
                     finish();
-                } else {
+                }
+
+                else if(response.body().getServerMsg().toLowerCase().equals("exists")) {
+
+                    ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.patient_already_exists));
+                    submitBtn.setEnabled(true);
+                }
+
+                else {
 
                     ToastCreator.toastCreatorRed(BloodRequestFormActivity.this, getResources().getString(R.string.connection_failed_try_again));
                     submitBtn.setEnabled(true);
