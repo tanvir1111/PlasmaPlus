@@ -11,14 +11,14 @@ db.connect((err) => {
 
 })
 
-app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.json({limit: '50mb'}));
+app.use(express.urlencoded({extended: true, limit: '50mb'}));
 
 const appRoutes = require("./app/routes/app.routes")
 const dashboardRoutes = require("./app/routes/dashboard.routes")
 const donorRoutes = require("./app/routes/donor.routes")
 const initdbRoutes = require("./app/routes/initdb.routes")
-const loginRoutes = require("./app/routes/login.routes")
+const userRoutes = require("./app/routes/user.routes")
 const patientRoutes = require("./app/routes/patient.routes")
 const requestRoutes = require("./app/routes/request.routes")
 const responseRoutes = require("./app/routes/response.routes")
@@ -28,7 +28,7 @@ app.use("/",appRoutes)
 app.use("/",dashboardRoutes)
 app.use("/",donorRoutes)
 app.use("/",initdbRoutes)
-app.use("/",loginRoutes)
+app.use("/",userRoutes)
 app.use("/",patientRoutes)
 app.use("/",requestRoutes)
 app.use("/",responseRoutes)

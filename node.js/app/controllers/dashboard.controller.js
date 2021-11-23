@@ -108,19 +108,3 @@ module.exports.checkNotification = (req, res) => {
 
     }
 }
-
-module.exports.imageDownload = (req, res) => {
-
-    if(req.body.title == null){
-
-        console.log("Phone null")
-        res.status(200).json({serverMsg: "false"})
-
-    }
-    else{
-        console.log("Image for Phone found: "+req.body.title)
-        res.status(200).json({serverMsg: "false"})
-
-    }
-
-}

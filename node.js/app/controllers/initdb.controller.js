@@ -3,7 +3,7 @@ const db = require("../models/db.js")
 
 module.exports.createUserTable = (req,res) => {
 
-    var sql = "CREATE TABLE IF NOT EXISTS users (id INT(12) AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), phone VARCHAR(255), gender VARCHAR(255), blood_group VARCHAR(255), division VARCHAR(255), district VARCHAR(255), thana VARCHAR(255), age VARCHAR(255), donor VARCHAR(255), password VARCHAR(255))"
+    var sql = "CREATE TABLE IF NOT EXISTS users (id INT(12) AUTO_INCREMENT PRIMARY KEY, name VARCHAR(255), phone VARCHAR(255), gender VARCHAR(255), blood_group VARCHAR(255), division VARCHAR(255), district VARCHAR(255), thana VARCHAR(255), age VARCHAR(255), donor VARCHAR(255), password VARCHAR(255), image VARCHAR(16384))"
     
     db.query(sql, (err, result) => {
         

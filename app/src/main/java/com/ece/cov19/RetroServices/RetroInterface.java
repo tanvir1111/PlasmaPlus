@@ -37,7 +37,9 @@ public interface RetroInterface {
 
     @FormUrlEncoded
     @POST("updateUserInfo.php")
-    Call<UserDataModel> updateUser(@Field("phone") String phone, @Field("name") String name, @Field("division") String division, @Field("district") String district, @Field("thana") String thana, @Field("age") String age, @Field("donor") String donorInfo);
+    Call<UserDataModel> updateUser(@Field("phone") String phone, @Field("name") String name, @Field("division") String division,
+                                   @Field("district") String district, @Field("thana") String thana, @Field("age") String age,
+                                   @Field("donor") String donorInfo);
 
     @FormUrlEncoded
     @POST("updateUserPassword.php")
