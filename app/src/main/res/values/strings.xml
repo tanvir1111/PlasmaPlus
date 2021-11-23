@@ -1223,4 +1223,5 @@
     </string-array>
     <string name="confirmed">Confirmed</string>
     <string name="patient_already_exists">Patient Already Exists</string>
+    <string name="no_response_from_server">No Response from Server</string>
 </resources>

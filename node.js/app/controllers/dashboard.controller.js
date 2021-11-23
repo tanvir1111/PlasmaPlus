@@ -15,12 +15,12 @@ module.exports.dashboardNumbers = (req, res) =>{
         console.log({numberOfDonors: data[0][0].donorCount, 
             numberOfPatients: data[1][0].patientCount, numberOfMyPatients: data[2][0].myPatientCount,
             numberOfRequestsFromDonors: 0, numberOfRequestsFromPatients: 0, 
-            numberOfResponseFromDonors: 0, numberOfResponseFromPatients: 0})
+            numberOfResponsesFromDonors: 0, numberOfResponsesFromPatients: 0})
 
         res.status(200).json({numberOfDonors: data[0][0].donorCount, 
             numberOfPatients: data[1][0].patientCount, numberOfMyPatients: data[2][0].myPatientCount,
             numberOfRequestsFromDonors: 0, numberOfRequestsFromPatients: 0, 
-            numberOfResponseFromDonors: 0, numberOfResponseFromPatients: 0})
+            numberOfResponsesFromDonors: 0, numberOfResponsesFromPatients: 0})
         
     })
 
@@ -64,12 +64,12 @@ module.exports.dashboardNumbers2 = (req, res) => {
                     console.log({numberOfDonors: donorCount, 
                         numberOfPatients: patientCount, numberOfMyPatients: myPatientCount,
                         numberOfRequestsFromDonors: 0, numberOfRequestsFromPatients: 0, 
-                        numberOfResponseFromDonors: 0, numberOfResponseFromPatients: 0})
+                        numberOfResponsesFromDonors: 0, numberOfResponsesFromPatients: 0})
             
                     res.status(200).json({numberOfDonors: donorCount, 
                         numberOfPatients: patientCount, numberOfMyPatients: myPatientCount,
                         numberOfRequestsFromDonors: 0, numberOfRequestsFromPatients: 0, 
-                        numberOfResponseFromDonors: 0, numberOfResponseFromPatients: 0})
+                        numberOfResponsesFromDonors: 0, numberOfResponsesFromPatients: 0})
                     
                 })
                 

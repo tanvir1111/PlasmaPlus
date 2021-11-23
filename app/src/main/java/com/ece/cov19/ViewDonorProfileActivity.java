@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Base64;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -354,10 +355,11 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 acceptBtn.setEnabled(true);
                 declineBtn.setEnabled(true);
-                if (response.isSuccessful()) {
+
+                if (response.body() != null) {
 
                     if (response.body().getServerMsg().isEmpty()) {
-                        Toast.makeText(ViewDonorProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewDonorProfileActivity.this, getResources().getString(R.string.no_response_from_server), Toast.LENGTH_SHORT).show();
                     }
                    else if(response.body().getServerMsg().toLowerCase().equals("no requests")) {
                         if(donorphone.equals(loggedInUserPhone)){
@@ -552,8 +554,13 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                     }
 
                     else {
-                        Toast.makeText(ViewDonorProfileActivity.this, "Something Went Wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewDonorProfileActivity.this, getResources().getString(R.string.no_response_from_server), Toast.LENGTH_SHORT).show();
                     }
+
+                }
+
+                else{
+                    Toast.makeText(ViewDonorProfileActivity.this, getResources().getString(R.string.no_response_from_server), Toast.LENGTH_SHORT).show();
 
                 }
 

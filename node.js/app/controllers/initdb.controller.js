@@ -43,6 +43,17 @@ module.exports.createTokenTable = (req, res) => {
     });
 }
 
+module.exports.createRequestTable = (req, res) => {
+
+    var sql = "CREATE TABLE IF NOT EXISTS requests (id BIGINT (20) NOT NULL AUTO_INCREMENT, datetime TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP, donorPhone VARCHAR(255), patientName VARCHAR(255), patientAge VARCHAR(255), patientBloodGrp VARCHAR(255), patientDate VARCHAR(255), patientPhone VARCHAR(255), patientNeed VARCHAR(255), requestedBy VARCHAR(255), status VARCHAR(255), PRIMARY KEY (id))"
+
+    db.query(sql, (err, result) => {
+
+        if(err) throw err
+        console.log("TABLE 'requests' created successfully!")
+        res.status(200).send("TABLE 'requests' created successfully!")
+    })
+}
 
 module.exports.dropTables = (req,res) => {
 

@@ -8,6 +8,8 @@ app.get("/createPatientTable", initdbController.createPatientTable)
 
 app.get("/createTokenTable", initdbController.createTokenTable)
 
+app.get("/createRequestTable", initdbController.createRequestTable)
+
 app.get("/dropTables", initdbController.dropTables)
 
 module.exports = app

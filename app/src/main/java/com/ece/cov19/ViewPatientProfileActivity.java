@@ -590,9 +590,9 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                 progressBar.setVisibility(View.GONE);
                 updateButton.setEnabled(true);
                 deleteButton.setEnabled(true);
-                if (response.isSuccessful()) {
+                if (response.body() != null) {
                     if (response.body().getServerMsg().isEmpty()) {
-                        Toast.makeText(ViewPatientProfileActivity.this, "Something went wrong", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.no_response_from_server), Toast.LENGTH_SHORT).show();
                     }
                     else if (response.body().getServerMsg().toLowerCase().equals("no requests")) {
                         if (phone.equals(loggedInUserPhone)) {
@@ -759,6 +759,10 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         phoneTextView.setText(phone);
 
                     }
+                }
+                else{
+                    Toast.makeText(ViewPatientProfileActivity.this, getResources().getString(R.string.no_response_from_server), Toast.LENGTH_SHORT).show();
+
                 }
 
             }

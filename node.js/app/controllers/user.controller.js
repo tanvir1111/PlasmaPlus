@@ -55,7 +55,7 @@ module.exports.registration = (req,res) => {
 
         }
         else{
-            res.status(400).json({serverMsg: "failure"})
+            res.status(200).json({serverMsg: "failure"})
 
         }
         console.log({data: data, fields: fields})
