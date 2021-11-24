@@ -9,4 +9,8 @@ app.post("/ownPatients.php", patientController.ownPatients)
 
 app.post("/searchPatients.php", patientController.searchPatients)
 
+app.post("/updatePatientProfile.php", patientController.updatePatient)
+
+app.post("/deletePatientProfile.php", patientController.deletePatient)
+
 module.exports = app

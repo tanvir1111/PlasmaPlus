@@ -46,16 +46,6 @@ public interface RetroInterface {
     Call<UserDataModel> updatePassword(@Field("phone") String loggedInUserPhone, @Field("password") String password);
 
 
-    @FormUrlEncoded
-    @POST("patientData.php")
-    Call<PatientDataModel> registerPatientRetro(@Field("name") String name, @Field("age") String age, @Field("gender") String gender,
-                                                @Field("blood_group") String bloodGroup, @Field("hospital") String hospital,
-                                                @Field("division") String division, @Field("district") String district,
-                                                @Field("date") String date, @Field("need") String need,
-                                                @Field("phone") String phone,@Field("amountOfBloodNeeded") String amountOfBloodNeeded);
-
-
-
 
     @FormUrlEncoded
     @POST("searchDonor.php")
@@ -85,15 +75,25 @@ public interface RetroInterface {
     @POST("ownPatients.php")
     Call<ArrayList<PatientDataModel>> ownPatients(@Field("phone") String phone);
 
+
+    @FormUrlEncoded
+    @POST("patientData.php")
+    Call<PatientDataModel> registerPatientRetro(@Field("name") String name, @Field("age") String age, @Field("gender") String gender,
+                                                @Field("blood_group") String bloodGroup, @Field("hospital") String hospital,
+                                                @Field("division") String division, @Field("district") String district,
+                                                @Field("date") String date, @Field("need") String need,
+                                                @Field("phone") String phone,@Field("amountOfBloodNeeded") String amountOfBloodNeeded);
+
+
     @FormUrlEncoded
     @POST("updatePatientProfile.php")
     Call<PatientDataModel> updatePatientProfile(@Field("name") String name, @Field("age") String age, @Field("blood_group") String bloodGroup, @Field("need") String need,
                                                 @Field("phone") String phone,
 
-                                                @Field("newname") String newName, @Field("newage") String newaAge, @Field("newgender") String newGender,
+                                                @Field("newname") String newName, @Field("newage") String newAge, @Field("newgender") String newGender,
                                                 @Field("newhospital") String newHospital,
                                                 @Field("newdivision") String newDivision, @Field("newdistrict") String newDistrict,
-                                                @Field("newdate") String newDate, @Field("newAmountOfBlood") String newAmountOfBlood);
+                                                @Field("newdate") String newDate, @Field("newAmountOfBloodNeeded") String newAmountOfBloodNeeded);
 
     @FormUrlEncoded
     @POST("deletePatientProfile.php")

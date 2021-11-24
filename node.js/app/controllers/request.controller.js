@@ -52,7 +52,7 @@ module.exports.sendRequest = (req, res) => {
 
                 var values2 = [req.body.donorPhone, req.body.patientName, req.body.patientAge, 
                     req.body.patientBloodGrp, req.body.patientDate, req.body.patientPhone, 
-                    req.body.patientNeed, req.body.requestedBy, req.body.status]
+                    req.body.patientNeed, req.body.requestedBy, req.body.operation]
             
                 db.query(sql2,[values2], (err, result2) => {
             

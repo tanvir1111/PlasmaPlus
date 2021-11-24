@@ -93,18 +93,3 @@ module.exports.donorEligibility = (req, res) => {
 
     }
 }
-
-
-module.exports.checkNotification = (req, res) => {
-
-    if(req.body.phone == null){
-
-        console.log("Phone null")
-    }
-    else{
-
-        console.log("Notification for Phone found: "+req.body.phone)
-        res.status(200).json({serverMsg: "No Notifications"})
-
-    }
-}

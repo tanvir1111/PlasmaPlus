@@ -256,32 +256,33 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             @Override
             public void onResponse(Call<UserDataModel> call, Response<UserDataModel> response) {
 
-                if(response.body().getServerMsg().equals("No Notifications")){
+                if(response.body() != null) {
+                    if (response.body().getServerMsg().equals("No Notifications")) {
 
-                }
-                else{
-                    nameOfActivity = response.body().getServerMsg();
+                    } else {
+                        nameOfActivity = response.body().getServerMsg();
 
 
-                    if(nameOfActivity.equals("RequestsFromPatientsActivity")) {
-                        Intent intent = new Intent(getApplicationContext(), RequestsFromPatientsActivity.class);
-                        startActivity(intent);
-                    }
-                    if(nameOfActivity.equals("RequestsFromDonorsActivity")) {
-                        Intent intent = new Intent(getApplicationContext(), RequestsFromDonorsActivity.class);
-                        startActivity(intent);
-                    }
-                    if(nameOfActivity.equals("DonorResponseActivity")) {
-                        Intent intent = new Intent(getApplicationContext(), DonorResponseActivity.class);
-                        startActivity(intent);
-                    }
-                    if(nameOfActivity.equals("PatientResponseActivity")) {
-                        Intent intent = new Intent(getApplicationContext(), PatientResponseActivity.class);
-                        startActivity(intent);
-                    }
-                    if(nameOfActivity.equals("MyPatientsActivity")) {
-                        Intent intent = new Intent(getApplicationContext(), MyPatientsActivity.class);
-                        startActivity(intent);
+                        if (nameOfActivity.equals("RequestsFromPatientsActivity")) {
+                            Intent intent = new Intent(getApplicationContext(), RequestsFromPatientsActivity.class);
+                            startActivity(intent);
+                        }
+                        if (nameOfActivity.equals("RequestsFromDonorsActivity")) {
+                            Intent intent = new Intent(getApplicationContext(), RequestsFromDonorsActivity.class);
+                            startActivity(intent);
+                        }
+                        if (nameOfActivity.equals("DonorResponseActivity")) {
+                            Intent intent = new Intent(getApplicationContext(), DonorResponseActivity.class);
+                            startActivity(intent);
+                        }
+                        if (nameOfActivity.equals("PatientResponseActivity")) {
+                            Intent intent = new Intent(getApplicationContext(), PatientResponseActivity.class);
+                            startActivity(intent);
+                        }
+                        if (nameOfActivity.equals("MyPatientsActivity")) {
+                            Intent intent = new Intent(getApplicationContext(), MyPatientsActivity.class);
+                            startActivity(intent);
+                        }
                     }
                 }
 

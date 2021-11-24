@@ -75,3 +75,58 @@ module.exports.searchPatients = (req, res) => {
     })
 
 }
+
+module.exports.updatePatient = (req, res) => {
+
+    var sql = "DELETE FROM requests WHERE patientName = ? AND patientAge = ? AND patientBloodGrp = ? AND patientPhone = ?"
+    db.query(sql, [req.body.name, req.body.age, req.body.blood_group, req.body.phone], (err, result) => {
+    
+    
+        var sql2 = "UPDATE patients SET name = ?, age = ?, gender = ?, hospital = ?, division = ?, district = ?, date = ?, amountOfBloodNeeded = ? WHERE name = ? AND age = ? AND blood_group = ? AND phone = ?"
+
+        db.query(sql2, [req.body.newname, req.body.newage, req.body.newgender, req.body.newhospital,
+        req.body.newdivision, req.body.newdistrict, req.body.newdate, req.body.newAmountOfBloodNeeded,
+        req.body.name, req.body.age, req.body.blood_group, req.body.phone], (err, result2) => {
+    
+            if(err) throw err
+            
+            if(result2.affectedRows > 0){
+    
+                console.log("Update Patient Success: "+req.body.phone)
+                res.status(200).json({serverMsg: "Success"})
+            }
+    
+            else{
+                console.log("Update Patient Failure: "+req.body.phone)
+                res.status(200).json({serverMsg: "Failure"})
+            }
+        })
+    })
+
+   
+}
+
+module.exports.deletePatient = (req, res) => {
+
+
+    var sql = "DELETE FROM requests WHERE patientName = ? AND patientAge = ? AND patientBloodGrp = ? AND patientPhone = ?"
+    db.query(sql, [req.body.name, req.body.age, req.body.blood_group, req.body.phone], (err, result) => {
+
+
+        var sql2 = "DELETE FROM patients WHERE name = ? AND age = ? AND blood_group = ? AND phone = ?"
+            db.query(sql2, [req.body.name, req.body.age, req.body.blood_group, req.body.phone], (err, result2) => {
+        
+                if(result2.affectedRows > 0){
+        
+                    console.log("Delete Patient Success: "+req.body.phone)
+                    res.status(200).json({serverMsg: "Success"})
+                }
+                else{
+                    console.log("Delete Patient Failed: "+req.body.phone)
+                    res.status(200).json({serverMsg: "Failed"})
+                }
+            })
+
+    })
+   
+}

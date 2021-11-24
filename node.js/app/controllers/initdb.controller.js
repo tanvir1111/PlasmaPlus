@@ -55,6 +55,20 @@ module.exports.createRequestTable = (req, res) => {
     })
 }
 
+module.exports.createNotificationTable = (req, res) => {
+
+    var sql = "CREATE TABLE IF NOT EXISTS notifications (phone VARCHAR(255), activity VARCHAR(255), PRIMARY KEY (phone))"
+
+    db.query(sql, (err, result) => {
+
+        if(err) throw err
+        console.log("TABLE 'notifications' created successfully!")
+        res.status(200).send("TABLE 'notifications' created successfully!")
+
+    })
+}
+   
+
 module.exports.dropTables = (req,res) => {
 
     var sql = "DROP TABLE users";    

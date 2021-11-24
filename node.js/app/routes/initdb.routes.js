@@ -10,6 +10,8 @@ app.get("/createTokenTable", initdbController.createTokenTable)
 
 app.get("/createRequestTable", initdbController.createRequestTable)
 
+app.get("/createNotificationTable", initdbController.createNotificationTable)
+
 app.get("/dropTables", initdbController.dropTables)
 
 module.exports = app
