@@ -399,7 +399,6 @@ public class RequestsFromPatientsActivity extends AppCompatActivity {
                     patientDataModels.clear();
                     ArrayList<PatientDataModel> initialModels = response.body();
 
-
                     for(PatientDataModel initialDataModel : initialModels){
 
                         if(initialDataModel.getServerMsg().equals("No Record")){
@@ -414,6 +413,8 @@ public class RequestsFromPatientsActivity extends AppCompatActivity {
                             patientDataModels.add(initialDataModel);
                         }
                     }
+
+
                     requestTypeTextView.setText(requestTypeText+" (" +patientDataModels.size()+")");
                     requestsFromPatientsAdapter = new RequestsFromPatientsAdapter(getApplicationContext(), patientDataModels);
                     recyclerView.setAdapter(requestsFromPatientsAdapter);

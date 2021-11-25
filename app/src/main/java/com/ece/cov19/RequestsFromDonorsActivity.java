@@ -403,11 +403,12 @@ public class RequestsFromDonorsActivity extends AppCompatActivity {
                     }
                     else {
                         noRequestTextView.setVisibility(View.GONE);
-                    }
-                    for(PatientDataModel initialDataModel : initialModels){
 
-                        patientDataModels.add(initialDataModel);
+                        for (PatientDataModel initialDataModel : initialModels) {
 
+                            patientDataModels.add(initialDataModel);
+
+                        }
                     }
 
                     myPatientRequestRecyclerView.setAdapter(requestsFromDonorsAlphaAdapter);

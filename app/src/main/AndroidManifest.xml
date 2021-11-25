@@ -28,10 +28,10 @@
             android:name=".RequestsFromDonorsActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".DonorResponseActivity"
+            android:name=".ResponsesFromDonorsActivity"
             android:screenOrientation="nosensor" />
         <activity
-            android:name=".PatientResponseActivity"
+            android:name=".ResponsesFromPatientsActivity"
             android:screenOrientation="nosensor" />
         <activity
             android:name=".UpdatePasswordActivity"

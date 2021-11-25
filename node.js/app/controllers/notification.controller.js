@@ -42,22 +42,20 @@ module.exports.sendNotification = (req, res) => {
         })
 
 
-
-
-        var sql = "SELECT * FROM notifications WHERE phone = ?"
-        db.query(sql, [result[i].phone], (err, result) => {
+        var sql2 = "SELECT * FROM notifications WHERE phone = ?"
+        db.query(sql2, [req.body.phone], (err, result2) => {
 
           if(err) throw err
 
-          if(result.length == 0){
+          if(result2.length == 0){
 
-              var sql2 = "INSERT INTO notifications (phone, activity) VALUES (?)"
-              var values = [req.result[i].phone, req.body.activity]
-              db.query(sql2, [values], (err, result2) => {
+              var sql3 = "INSERT INTO notifications (phone, activity) VALUES (?)"
+              var values = [req.body.phone, req.body.activity]
+              db.query(sql3, [values], (err, result3) => {
               
                 if(err) throw err
                 
-                if(result2.affectedRows > 0){
+                if(result3.affectedRows > 0){
 
                   console.log('Notification inserted')
 
@@ -66,12 +64,12 @@ module.exports.sendNotification = (req, res) => {
           }
           else{
 
-              var sql2 = "UPDATE notifications SET activity = ? WHERE phone = ?"
-              db.query(sql2, [req.result[i].phone, req.body.activity], (err, result2) => {
+              var sql3 = "UPDATE notifications SET activity = ? WHERE phone = ?"
+              db.query(sql3, [req.body.phone, req.body.activity], (err, result3) => {
               
                 if(err) throw err
 
-                if(result2.affectedRows > 0){
+                if(result3.affectedRows > 0){
                   
                   console.log('Notification inserted')
 
@@ -80,6 +78,8 @@ module.exports.sendNotification = (req, res) => {
           }
 
       })
+
+
 
     }
   }
@@ -118,7 +118,7 @@ module.exports.checkNotification = (req, res) => {
     }
 
     else{
-      console.log("No Notification Found!")
+      console.log("Check Notification: No Notification Found!")
       res.status(200).json({serverMsg: "No Notifications"})
     }
 
@@ -140,7 +140,7 @@ module.exports.deleteNotification = (req, res) => {
     }
     else{
 
-      console.log("Not Notification Found!")
+      console.log("Delete Notification: No Notification Found!")
       res.status(200).json({serverMsg: "No Notifications"})
     }
   })

@@ -272,11 +272,11 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                             startActivity(intent);
                         }
                         if (nameOfActivity.equals("DonorResponseActivity")) {
-                            Intent intent = new Intent(getApplicationContext(), DonorResponseActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), ResponsesFromDonorsActivity.class);
                             startActivity(intent);
                         }
                         if (nameOfActivity.equals("PatientResponseActivity")) {
-                            Intent intent = new Intent(getApplicationContext(), PatientResponseActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), ResponsesFromPatientsActivity.class);
                             startActivity(intent);
                         }
                         if (nameOfActivity.equals("MyPatientsActivity")) {
@@ -790,7 +790,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                     break;
                 }
                 if (requestResponseSwitcher == 2) {
-                    Intent viewDonorResIntent=new Intent(DashboardActivity.this, DonorResponseActivity.class);
+                    Intent viewDonorResIntent=new Intent(DashboardActivity.this, ResponsesFromDonorsActivity.class);
                     startActivity(viewDonorResIntent);
                     break;
                 }
@@ -805,7 +805,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
                 }
                 if (requestResponseSwitcher == 2) {
-                    Intent viewPatientResIntent=new Intent(DashboardActivity.this, PatientResponseActivity.class);
+                    Intent viewPatientResIntent=new Intent(DashboardActivity.this, ResponsesFromPatientsActivity.class);
                     startActivity(viewPatientResIntent);
                     break;
 
