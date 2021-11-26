@@ -6,6 +6,7 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
@@ -35,12 +36,12 @@ import retrofit2.Response;
 
 import static android.content.Context.MODE_PRIVATE;
 
-public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorResponseAlphaViewHolder> {
+public class ResponsesFromPatientsAdapter extends RecyclerView.Adapter<ResponsesFromPatientsViewHolder> {
 
     public Context context;
     public PatientDataModel patientDataModel;
     public ArrayList<PatientDataModel> patientDataModels;
-    public String status;
+
     public static final String Language_pref="Language";
     public static final String Selected_language="Selected Language";
     SharedPreferences langPrefs;
@@ -48,36 +49,31 @@ public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorRespons
     Bitmap insertBitmap;
     Uri imageUri;
 
-    public DonorResponseAlphaAdapter(Context context, ArrayList<PatientDataModel> patientDataModels , String status) {
+    public ResponsesFromPatientsAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
         this.context = context;
         this.patientDataModels = patientDataModels;
-        this.status = status;
     }
 
     @NonNull
     @Override
-    public DonorResponseAlphaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ResponsesFromPatientsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.seeking_help_child, parent, false);
-        DonorResponseAlphaViewHolder donorResponseAlphaViewHolder = new DonorResponseAlphaViewHolder(view, patientDataModels, status);
-
-        return donorResponseAlphaViewHolder;
+        View view = layoutInflater.inflate(R.layout.request_patient_child, parent, false);
+        ResponsesFromPatientsViewHolder responsesFromPatientsViewHolder = new ResponsesFromPatientsViewHolder(view, patientDataModels);
+        return responsesFromPatientsViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull DonorResponseAlphaViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ResponsesFromPatientsViewHolder holder, int position) {
 
         langPrefs=context.getSharedPreferences(Language_pref,MODE_PRIVATE);
         if(langPrefs.contains(Selected_language)){
             setLocale(langPrefs.getString(Selected_language,""));
 
         }
+
         patientDataModel = patientDataModels.get(position);
-
-
-        holder.donateTextView.setVisibility(View.VISIBLE);
-        holder.donateTextView.setText(R.string.show_response);
 
         downloadImage(patientDataModel.getPhone(), holder.patientImageView, patientDataModel.getGender());
 
@@ -89,15 +85,74 @@ public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorRespons
         else if(patientDataModel.getNeed().equals("Plasma")){
             holder.typeTextView.setText(holder.itemView.getContext().getResources().getString(R.string.plasma));
         }
+        else if(patientDataModel.getNeed().equals("Blood and Plasma")){
+            holder.typeTextView.setText(holder.itemView.getContext().getResources().getString(R.string.bloodandplasma));
+        }
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());
-        holder.locationTextView.setText(patientDataModel.getHospital());
-        holder.dateTextView.setText(context.getResources().getString(R.string.date_of_requirement)+"              "+patientDataModel.getDate());
+        holder.locationTextView.setText(patientDataModel.getDistrict());
+        holder.dateTextView.setText(context.getResources().getString(R.string.date_of_requirement)+"               "+patientDataModel.getDate());
         if(patientDataModel.getGender().toLowerCase().equals("male")) {
             holder.patientImageView.setImageResource(R.drawable.profile_icon_male);
         } else {
             holder.patientImageView.setImageResource(R.drawable.profile_icon_female);
         }
 
+        if(patientDataModel.getServerMsg().toLowerCase().equals("pending")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText(context.getResources().getString(R.string.pending));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_orange);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
+        else if(patientDataModel.getServerMsg().toLowerCase().equals("accepted")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText(context.getResources().getString(R.string.accepted));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
+        else if(patientDataModel.getServerMsg().toLowerCase().equals("declined")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText(context.getResources().getString(R.string.declined));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_red);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
+        else if(patientDataModel.getServerMsg().toLowerCase().equals("donated")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText(context.getResources().getString(R.string.donated));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
+        else if(patientDataModel.getServerMsg().toLowerCase().equals("not_donated")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText(context.getResources().getString(R.string.not_donated));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_yellow);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
+
+        else if(patientDataModel.getServerMsg().toLowerCase().equals("claimed")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText(context.getResources().getString(R.string.claimed));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
+        else if(patientDataModel.getServerMsg().toLowerCase().equals("not_confirmed")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText(context.getResources().getString(R.string.not_confirmed));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_yellow);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        } else if(patientDataModel.getServerMsg().toLowerCase().equals("canceled")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText(context.getResources().getString(R.string.canceled));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_yellow);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
 
 
     }
@@ -227,4 +282,5 @@ public class DonorResponseAlphaAdapter extends RecyclerView.Adapter<DonorRespons
         langPrefsEditor.apply();
 
     }
+
 }

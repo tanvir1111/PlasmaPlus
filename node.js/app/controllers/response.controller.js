@@ -1,5 +1,5 @@
 const db = require("../models/db.js")
-
+const async = require("async")
 
 module.exports.responsesFromDonorsAlpha = (req, res) => {
 
@@ -30,20 +30,23 @@ module.exports.responsesFromDonorsAlpha = (req, res) => {
         if(result.length > 0){
 
             var responseValues = []
+            var length = result.length
 
-            for(var i=0;i<result.length;i++){
+            async.forEachOf(result, (result, i, callback) => {
 
-                var sql2 = "SELECT * FROM patients WHERE phone = ?"
-    
-                db.query(sql2, [result[i].patientPhone], (err, result2) => {
+                var sql2 = "SELECT * FROM patients WHERE name = '" + result.patientName + "' AND age = '" + result.patientAge + "' AND blood_group = '" + result.patientBloodGrp + "' AND date = '"+ result.patientDate +"' AND phone = '" + result.patientPhone + "' AND need = '"+ result.patientNeed+"'"
+                var serverMsg = result.status
+
+                db.query(sql2, [result.patientPhone], (err, result2) => {
             
                     if(err) throw err
         
                     if(result2.length > 0){
         
+                        result2[0].serverMsg = serverMsg
                         responseValues.push(result2[0])
                         
-                        if(i == result.length){
+                        if(i == length-1){
 
                             console.log(responseValues)
                             res.status(200).json(responseValues)
@@ -51,11 +54,17 @@ module.exports.responsesFromDonorsAlpha = (req, res) => {
                     }
                     else{
                         console.log({serverMsg: "No Record"})
-                        res.status(200).json([])
+                        res.status(200).json([{serverMsg: "No Record"}])
 
                     }
                 })
-            }
+
+            }, function(err){
+
+                if(err) throw err
+            })
+            
+
 
             
         }
@@ -98,13 +107,15 @@ module.exports.responsesFromDonorsBeta = (req, res) => {
         if(result.length > 0){
 
             var responseValues = []
+            
+            var length = result.length
 
-            for(var i=0;i<result.length;i++){
+            async.forEachOf(result, (result, i, callback) => {
 
                 var sql2 = "SELECT * FROM users WHERE phone = ?"
-                var serverMsg = result[i].status
+                var serverMsg = result.status
     
-                db.query(sql2, [result[i].donorPhone], (err, result2) => {
+                db.query(sql2, [result.donorPhone], (err, result2) => {
             
                     if(err) throw err
         
@@ -113,7 +124,7 @@ module.exports.responsesFromDonorsBeta = (req, res) => {
                         result2[0].serverMsg = serverMsg
                         responseValues.push(result2[0])
                         
-                        if(i == result.length){
+                        if(i == length-1){
 
                             console.log(responseValues)
                             res.status(200).json(responseValues)
@@ -124,7 +135,12 @@ module.exports.responsesFromDonorsBeta = (req, res) => {
                         res.status(200).json([])
                     }
                 })
-            }
+
+            }, function(err){
+
+                if(err) throw err
+            })
+            
 
         }
 
@@ -169,12 +185,14 @@ module.exports.responsesFromPatients = (req, res) => {
 
             var responseValues = []
 
-            for(var i=0;i<result.length;i++){
+            var length = result.length
 
-                var sql2 = "SELECT * FROM patients WHERE phone = ?"
-                var serverMsg = result[i].status
+            async.forEachOf(result, (result, i, callback) => {
 
-                db.query(sql2, [result[i].patientPhone], (err, result2) => {
+                var sql2 = "SELECT * FROM patients WHERE name = '" + result.patientName + "' AND age = '" + result.patientAge + "' AND blood_group = '" + result.patientBloodGrp + "' AND date = '"+ result.patientDate +"' AND phone = '" + result.patientPhone + "' AND need = '"+ result.patientNeed+"'"
+                var serverMsg = result.status
+
+                db.query(sql2, [result.patientPhone], (err, result2) => {
             
                     if(err) throw err
         
@@ -183,7 +201,7 @@ module.exports.responsesFromPatients = (req, res) => {
                         result2[0].serverMsg = serverMsg
                         responseValues.push(result2[0])
                         
-                        if(i == result.length){
+                        if(i == length-1){
 
                             console.log(responseValues)
                             res.status(200).json(responseValues)
@@ -195,7 +213,11 @@ module.exports.responsesFromPatients = (req, res) => {
 
                     }
                 })
-            }
+
+            }, function(err){
+
+                if(err) throw err
+            })
 
             
         }

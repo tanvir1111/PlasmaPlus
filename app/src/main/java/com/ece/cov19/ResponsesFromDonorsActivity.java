@@ -17,7 +17,7 @@ import com.ece.cov19.DataModels.LoggedInUserData;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.Functions.LoginUser;
 import com.ece.cov19.Functions.ToastCreator;
-import com.ece.cov19.RecyclerViews.DonorResponseAlphaAdapter;
+import com.ece.cov19.RecyclerViews.ResponsesFromDonorsAlphaAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -361,9 +361,9 @@ public class ResponsesFromDonorsActivity extends AppCompatActivity {
         ProgressBar.setVisibility(View.VISIBLE);
 
         ArrayList<PatientDataModel> patientDataModels;
-        DonorResponseAlphaAdapter donorResponseAlphaAdapter;
+        ResponsesFromDonorsAlphaAdapter responsesFromDonorsAlphaAdapter;
         patientDataModels = new ArrayList<>();
-        donorResponseAlphaAdapter = new DonorResponseAlphaAdapter(getApplicationContext(), patientDataModels, status);
+        responsesFromDonorsAlphaAdapter = new ResponsesFromDonorsAlphaAdapter(getApplicationContext(), patientDataModels, status);
 
         RetroInterface retroInterface = RetroInstance.getRetro();
         Call<ArrayList<PatientDataModel>> ownPatients = retroInterface.responsesFromDonorsAlpha(LoggedInUserData.loggedInUserPhone, status);
@@ -412,7 +412,7 @@ public class ResponsesFromDonorsActivity extends AppCompatActivity {
                         }
                     }
 
-                    RecyclerView.setAdapter(donorResponseAlphaAdapter);
+                    RecyclerView.setAdapter(responsesFromDonorsAlphaAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
                     RecyclerView.setLayoutManager(linearLayoutManager);

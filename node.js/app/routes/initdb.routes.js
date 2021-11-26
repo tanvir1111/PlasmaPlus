@@ -2,6 +2,8 @@ const express = require("express")
 const app = express()
 const initdbController = require("../controllers/initdb.controller")
 
+app.get("createTables", initdbController.createTables)
+
 app.get("/createUserTable", initdbController.createUserTable)
 
 app.get("/createPatientTable", initdbController.createPatientTable)

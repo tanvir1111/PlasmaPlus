@@ -1,9 +1,6 @@
 package com.ece.cov19.RecyclerViews;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -16,150 +13,145 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.ece.cov19.DataModels.ImageDataModel;
-import com.ece.cov19.DataModels.PatientDataModel;
-import com.ece.cov19.Functions.ToastCreator;
+import com.ece.cov19.DataModels.UserDataModel;
 import com.ece.cov19.R;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-import static android.content.Context.MODE_PRIVATE;
-import static com.ece.cov19.DataModels.LoggedInUserData.loggedInUserGender;
-
-public class PatientResponseAdapter extends RecyclerView.Adapter<PatientResponseViewHolder> {
+public class ResponsesFromDonorsBetaAdapter extends RecyclerView.Adapter<ResponsesFromDonorsBetaViewHolder>{
 
     public Context context;
-    public PatientDataModel patientDataModel;
-    public ArrayList<PatientDataModel> patientDataModels;
+    public UserDataModel userDataModel;
+    public ArrayList<UserDataModel> userDataModels;
 
-    public static final String Language_pref="Language";
-    public static final String Selected_language="Selected Language";
-    SharedPreferences langPrefs;
 
     Bitmap insertBitmap;
     Uri imageUri;
+    int pos;
 
-    public PatientResponseAdapter(Context context, ArrayList<PatientDataModel> patientDataModels) {
+
+    public ResponsesFromDonorsBetaAdapter(Context context, ArrayList<UserDataModel> userDataModels) {
         this.context = context;
-        this.patientDataModels = patientDataModels;
+        this.userDataModels = userDataModels;
+
     }
+
 
     @NonNull
     @Override
-    public PatientResponseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ResponsesFromDonorsBetaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
-        View view = layoutInflater.inflate(R.layout.request_patient_child, parent, false);
-        PatientResponseViewHolder patientResponseViewHolder = new PatientResponseViewHolder(view, patientDataModels);
-        return patientResponseViewHolder;
+        View view = layoutInflater.inflate(R.layout.request_donor_child, parent, false);
+        ResponsesFromDonorsBetaViewHolder responsesFromDonorsBetaViewHolder = new ResponsesFromDonorsBetaViewHolder(view, userDataModels);
+
+        return responsesFromDonorsBetaViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PatientResponseViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ResponsesFromDonorsBetaViewHolder holder, int position) {
 
-        langPrefs=context.getSharedPreferences(Language_pref,MODE_PRIVATE);
-        if(langPrefs.contains(Selected_language)){
-            setLocale(langPrefs.getString(Selected_language,""));
+        userDataModel = userDataModels.get(position);
 
+
+        holder.nameTextView.setText(userDataModel.getName());
+        holder.locationTextView.setText(userDataModel.getDistrict());
+        holder.bloodTextView.setText(userDataModel.getBloodGroup());
+        if(userDataModel.getDonor().equals("Blood")){
+            holder.donorType.setText(holder.itemView.getContext().getResources().getString(R.string.blood));
         }
-
-        patientDataModel = patientDataModels.get(position);
-
-        downloadImage(patientDataModel.getPhone(), holder.patientImageView, patientDataModel.getGender());
-
-
-        holder.nameTextView.setText(patientDataModel.getName());
-        if(patientDataModel.getNeed().equals("Blood")){
-            holder.typeTextView.setText(holder.itemView.getContext().getResources().getString(R.string.blood));
+        else if(userDataModel.getDonor().equals("Plasma")){
+            holder.donorType.setText(holder.itemView.getContext().getResources().getString(R.string.plasma));
         }
-        else if(patientDataModel.getNeed().equals("Plasma")){
-            holder.typeTextView.setText(holder.itemView.getContext().getResources().getString(R.string.plasma));
+        else if(userDataModel.getDonor().equals("Blood and Plasma")){
+            holder.donorType.setText(holder.itemView.getContext().getResources().getString(R.string.bloodandplasma));
         }
-        holder.bloodTextView.setText(patientDataModel.getBloodGroup());
-        holder.locationTextView.setText(patientDataModel.getDistrict());
-        holder.dateTextView.setText(context.getResources().getString(R.string.date_of_requirement)+"               "+patientDataModel.getDate());
-        if(patientDataModel.getGender().toLowerCase().equals("male")) {
-            holder.patientImageView.setImageResource(R.drawable.profile_icon_male);
-        } else {
-            holder.patientImageView.setImageResource(R.drawable.profile_icon_female);
-        }
+        downloadImage(userDataModel.getPhone(), holder.donorImageView, userDataModel.getGender());
 
-        if(patientDataModel.getServerMsg().toLowerCase().equals("pending")){
+
+        if(userDataModel.getServerMsg().toLowerCase().equals("pending")) {
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.pending));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_orange);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
-        else if(patientDataModel.getServerMsg().toLowerCase().equals("accepted")){
+        else if(userDataModel.getServerMsg().toLowerCase().equals("accepted")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.accepted));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
-        else if(patientDataModel.getServerMsg().toLowerCase().equals("declined")){
-            holder.acceptButton.setVisibility(View.VISIBLE);
-            holder.acceptButton.setText(context.getResources().getString(R.string.declined));
-            holder.acceptButton.setBackgroundResource(R.drawable.button_style_red);
-            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
-            holder.declineButton.setVisibility(View.GONE);
-        }
-        else if(patientDataModel.getServerMsg().toLowerCase().equals("donated")){
+        else if(userDataModel.getServerMsg().toLowerCase().equals("donated")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.donated));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
-        else if(patientDataModel.getServerMsg().toLowerCase().equals("not_donated")){
+        else if(userDataModel.getServerMsg().toLowerCase().equals("not_donated")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.not_donated));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_yellow);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
-
-        else if(patientDataModel.getServerMsg().toLowerCase().equals("claimed")){
+        else if(userDataModel.getServerMsg().toLowerCase().equals("declined")){
+            holder.acceptButton.setVisibility(View.VISIBLE);
+            holder.acceptButton.setText(context.getResources().getString(R.string.declined));
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_red);
+            holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
+            holder.declineButton.setVisibility(View.GONE);
+        }
+        else if(userDataModel.getServerMsg().toLowerCase().equals("claimed")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.claimed));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_green);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
-        else if(patientDataModel.getServerMsg().toLowerCase().equals("not_confirmed")){
+        else if(userDataModel.getServerMsg().toLowerCase().equals("not_confirmed")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.not_confirmed));
             holder.acceptButton.setBackgroundResource(R.drawable.button_style_yellow);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
-        } else if(patientDataModel.getServerMsg().toLowerCase().equals("canceled")){
+        }    else if(userDataModel.getServerMsg().toLowerCase().equals("canceled")){
             holder.acceptButton.setVisibility(View.VISIBLE);
             holder.acceptButton.setText(context.getResources().getString(R.string.canceled));
-            holder.acceptButton.setBackgroundResource(R.drawable.button_style_yellow);
+            holder.acceptButton.setBackgroundResource(R.drawable.button_style_red);
             holder.acceptButton.setTextColor(Color.parseColor("#FFFFFF"));
             holder.declineButton.setVisibility(View.GONE);
         }
 
 
+        //ToastCreator.toastCreator(holder.itemView.getContext(), userDataModel.getServerMsg(), Toast.LENGTH_SHORT).show();
+
+            if(userDataModel.getGender().toLowerCase().equals("male")) {
+            holder.donorImageView.setImageResource(R.drawable.profile_icon_male);
+        } else {
+            holder.donorImageView.setImageResource(R.drawable.profile_icon_female);
+        }
+        holder.locationImageView.setImageResource(R.drawable.location_icon);
+
     }
 
     @Override
     public int getItemCount() {
-        return patientDataModels.size();
+        return userDataModels.size();
     }
 
     private Bitmap scaleImage(Bitmap bitmap) {
@@ -265,21 +257,6 @@ public class PatientResponseAdapter extends RecyclerView.Adapter<PatientResponse
                 }
             }
         });
-
-    }
-
-    public void setLocale(String lang) {
-        Locale myLocale = new Locale(lang);
-        Resources res = context.getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.locale = myLocale;
-        res.updateConfiguration(conf, dm);
-
-        langPrefs = context.getSharedPreferences(Language_pref,MODE_PRIVATE);
-        SharedPreferences.Editor langPrefsEditor = langPrefs.edit();
-        langPrefsEditor.putString(Selected_language, lang);
-        langPrefsEditor.apply();
 
     }
 

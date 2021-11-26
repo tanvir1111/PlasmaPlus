@@ -58,7 +58,10 @@ app.use("/",responseRoutes)
 app.use("/",notificationRoutes)
 
 app.get("/", (req,res) => {
-    res.json({message: "Welcome! You are now connected to Plasma+ API."});
+
+    var date = new Date()
+    var dateString = ("0" + date.getDate()).slice(-2)+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+date.getFullYear()
+    res.status(200).json({date: dateString, message: "Welcome! You are now connected to Plasma+ API."});
 });
 
 

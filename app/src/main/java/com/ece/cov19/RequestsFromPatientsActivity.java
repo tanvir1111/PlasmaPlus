@@ -408,7 +408,7 @@ public class RequestsFromPatientsActivity extends AppCompatActivity {
                             break;
                         }
 
-                        else if(initialDataModel.getNeed().equals("Blood") || initialDataModel.getNeed().equals("Plasma")){
+                        else{
                             noRequestTextView.setVisibility(View.GONE);
                             patientDataModels.add(initialDataModel);
                         }

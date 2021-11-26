@@ -95,6 +95,9 @@ public class RequestsFromDonorsAlphaAdapter extends RecyclerView.Adapter<Request
         else if(patientDataModel.getNeed().equals("Plasma")){
             holder.typeTextView.setText(holder.itemView.getContext().getResources().getString(R.string.plasma));
         }
+        else if(patientDataModel.getNeed().equals("Blood and Plasma")){
+            holder.typeTextView.setText(holder.itemView.getContext().getResources().getString(R.string.bloodandplasma));
+        }
         holder.bloodTextView.setText(patientDataModel.getBloodGroup());
         holder.locationTextView.setText(patientDataModel.getHospital());
         holder.dateTextView.setText(context.getResources().getString(R.string.date_of_requirement)+"              "+patientDataModel.getDate());

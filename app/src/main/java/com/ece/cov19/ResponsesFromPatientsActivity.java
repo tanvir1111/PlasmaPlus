@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ece.cov19.DataModels.PatientDataModel;
 import com.ece.cov19.Functions.LoginUser;
 import com.ece.cov19.Functions.ToastCreator;
-import com.ece.cov19.RecyclerViews.PatientResponseAdapter;
+import com.ece.cov19.RecyclerViews.ResponsesFromPatientsAdapter;
 import com.ece.cov19.RetroServices.RetroInstance;
 import com.ece.cov19.RetroServices.RetroInterface;
 
@@ -34,7 +34,7 @@ import static com.ece.cov19.LoginActivity.LOGIN_USER_PHONE;
 public class ResponsesFromPatientsActivity extends AppCompatActivity {
 
     private ArrayList<PatientDataModel> patientDataModels;
-    private PatientResponseAdapter PatientResponseAdapter;
+    private ResponsesFromPatientsAdapter ResponsesFromPatientsAdapter;
     private RecyclerView recyclerView;
     private ImageView backbtn;
     private Button pendingbtn, successfulBtn, failedBtn,allBtn;
@@ -390,15 +390,15 @@ public class ResponsesFromPatientsActivity extends AppCompatActivity {
                             patientResponseTextView.setText(responseTypeText+" (0)");
                             break;
                         }
-                        else if(initialDataModel.getNeed().toLowerCase().equals("blood") || initialDataModel.getNeed().toLowerCase().equals("plasma")){
+                        else{
                             noResponseTextView.setVisibility(View.GONE);
                             patientDataModels.add(initialDataModel);
                         }
                     }
                     patientResponseTextView.setText(responseTypeText+" (" +patientDataModels.size()+")");
 
-                    PatientResponseAdapter = new PatientResponseAdapter(getApplicationContext(), patientDataModels);
-                    recyclerView.setAdapter(PatientResponseAdapter);
+                    ResponsesFromPatientsAdapter = new ResponsesFromPatientsAdapter(getApplicationContext(), patientDataModels);
+                    recyclerView.setAdapter(ResponsesFromPatientsAdapter);
                     LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
                     recyclerView.setLayoutManager(linearLayoutManager);
                 }

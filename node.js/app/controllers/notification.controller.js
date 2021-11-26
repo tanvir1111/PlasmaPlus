@@ -1,6 +1,6 @@
 const db = require("../models/db.js");
 const admin = require("../models/firebase.js")
-
+const async = require("async")
 
 module.exports.sendNotification = (req, res) => {
         
@@ -11,7 +11,9 @@ module.exports.sendNotification = (req, res) => {
 
     if(result.length > 0){
 
-      for(var i=0;i<result.length;i++){
+      var length = result.length
+
+      async.forEachOf(result, (result, i, callback) => {
 
         const message = {
     
@@ -24,7 +26,7 @@ module.exports.sendNotification = (req, res) => {
             hidden: req.body.hidden
           },
     
-          token: result[i].token
+          token: result.token
     
         }
   
@@ -76,12 +78,18 @@ module.exports.sendNotification = (req, res) => {
                 }
               })
           }
-
+          
+        
+      }, 
+      function(err){
+        if(err) throw err
       })
 
+      
 
 
-    }
+
+    })
   }
     else{
       console.log('No token found')

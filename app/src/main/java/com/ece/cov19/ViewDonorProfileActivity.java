@@ -388,14 +388,10 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                         }
                         else {
                             askForHelpBtn.setVisibility(View.GONE);
-
-
-                                acceptBtn.setVisibility(View.VISIBLE);
-                                acceptBtn.setText(getResources().getString(R.string.accept_request));
-                                declineBtn.setVisibility(View.VISIBLE);
-                                declineBtn.setText(getResources().getString(R.string.decline_request));
-
-
+                            acceptBtn.setVisibility(View.VISIBLE);
+                            acceptBtn.setText(getResources().getString(R.string.accept_request));
+                            declineBtn.setVisibility(View.VISIBLE);
+                            declineBtn.setText(getResources().getString(R.string.decline_request));
                             confirmBtn.setVisibility(View.GONE);
                             cancelBtn.setVisibility(View.GONE);
                         }
@@ -434,13 +430,11 @@ public class ViewDonorProfileActivity extends AppCompatActivity {
                             acceptBtn.setText(getResources().getString(R.string.donor_profile_activity_Call_Donor));
                             declineBtn.setVisibility(View.VISIBLE);
                             declineBtn.setText(getResources().getString(R.string.send_sms));
-
-
-                                confirmBtn.setVisibility(View.VISIBLE);
-                                confirmBtn.setText(getResources().getString(R.string.confirm_donation));
-                                cancelBtn.setVisibility(View.VISIBLE);
-                                cancelBtn.setText(getResources().getString(R.string.decline_donation));
-                                phoneTextView.setText(donorphone);
+                            confirmBtn.setVisibility(View.VISIBLE);
+                            confirmBtn.setText(getResources().getString(R.string.confirm_donation));
+                            cancelBtn.setVisibility(View.VISIBLE);
+                            cancelBtn.setText(getResources().getString(R.string.decline_donation));
+                            phoneTextView.setText(donorphone);
 
                         }
                         else {

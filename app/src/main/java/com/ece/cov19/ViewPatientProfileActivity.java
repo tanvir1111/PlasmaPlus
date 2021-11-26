@@ -133,11 +133,16 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
         if (amountOfBloodNeeded.equals("0")) {
             if (need.toLowerCase().equals("blood")) {
                 needTextView.setText(getString(R.string.blood));
-            } else {
+            }
+            else if (need.toLowerCase().equals("plasma")){
                 needTextView.setText(getString(R.string.plasma));
             }
+            else if (need.toLowerCase().equals("blood and plasma")){
+                needTextView.setText(getString(R.string.bloodandplasma));
+            }
 
-        } else {
+        }
+        else {
             if (need.toLowerCase().equals("blood")) {
                 if(amountOfBloodNeeded.equals("1")){
                     needTextView.setText(getString(R.string.blood) + " (" + amountOfBloodNeeded + " " + getString(R.string.unit) + ")");
@@ -146,8 +151,13 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     needTextView.setText(getString(R.string.blood) + " (" + amountOfBloodNeeded + " " + getString(R.string.units) + ")");
                 }
 
-            } else {
+            }
+            else if (need.toLowerCase().equals("plasma")){
                 needTextView.setText(getString(R.string.plasma));
+            }
+            else if (need.toLowerCase().equals("blood and plasma")){
+                needTextView.setText(getString(R.string.bloodandplasma));
+
             }
         }
         dateTextView.setText(date);
@@ -205,6 +215,17 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             }
         });
 
+        cancelButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (requestedBy.equals("donor")) {
+                    requestOperationAlertDialog("cancel", phone, getResources().getString(R.string.patient_profile_activity_notification_canceled_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_2), "RequestsFromDonorsActivity", "donor");
+                } else if (requestedBy.equals("patient")) {
+                    requestOperationAlertDialog("cancel", phone, getResources().getString(R.string.patient_profile_activity_notification_canceled_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_2), "DonorResponseActivity", "patient");
+
+                }
+            }
+        });
 
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -288,17 +309,6 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
             }
         });
 
-        cancelButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (requestedBy.equals("donor")) {
-                    requestOperationAlertDialog("cancel", phone, getResources().getString(R.string.patient_profile_activity_notification_canceled_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_2), "RequestsFromDonorsActivity", "donor");
-                } else if (requestedBy.equals("patient")) {
-                    requestOperationAlertDialog("cancel", phone, getResources().getString(R.string.patient_profile_activity_notification_canceled_1), loggedInUserName + " " + getResources().getString(R.string.patient_profile_activity_notification_canceled_2), "DonorResponseActivity", "patient");
-
-                }
-            }
-        });
 
 
     }
@@ -597,6 +607,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                     else if (response.body().getServerMsg().toLowerCase().equals("no requests")) {
                         if (phone.equals(loggedInUserPhone)) {
                             donateToHelpButton.setVisibility(View.GONE);
+                            cancelButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.VISIBLE);
                             updateButton.setText(getResources().getString(R.string.update_profile));
                             deleteButton.setVisibility(View.VISIBLE);
@@ -606,28 +617,35 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         }
                         else if (loggedInUserEligibility.toLowerCase().equals("not_eligible") || loggedInUserEligibility.toLowerCase().equals("not_available")) {
                             donateToHelpButton.setVisibility(View.GONE);
+                            cancelButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                             donatedButton.setVisibility(View.GONE);
                             notDonatedButton.setVisibility(View.GONE);
-                        } else if (bloodGroup.equals(loggedInUserBloodGroup)) {
+                        }
+                        else if (bloodGroup.equals(loggedInUserBloodGroup)) {
                             if (need.toLowerCase().equals("blood") && (loggedInUserDonorInfo.toLowerCase().equals("blood") ||
                                     loggedInUserDonorInfo.toLowerCase().equals("blood and plasma"))) {
                                 donateToHelpButton.setVisibility(View.VISIBLE);
                                 donateToHelpButton.setText(getResources().getString(R.string.donate_to_help));
-                            } else if (need.toLowerCase().equals("plasma") && (loggedInUserDonorInfo.toLowerCase().equals("plasma") ||
+                            }
+                            else if (need.toLowerCase().equals("plasma") && (loggedInUserDonorInfo.toLowerCase().equals("plasma") ||
                                     loggedInUserDonorInfo.toLowerCase().equals("blood and plasma"))) {
                                 donateToHelpButton.setVisibility(View.VISIBLE);
                                 donateToHelpButton.setText(getResources().getString(R.string.donate_to_help));
-                            } else {
+                            }
+                            else {
                                 donateToHelpButton.setVisibility(View.GONE);
                             }
+                            cancelButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                             donatedButton.setVisibility(View.GONE);
                             notDonatedButton.setVisibility(View.GONE);
-                        } else {
+                        }
+                        else {
                             donateToHelpButton.setVisibility(View.GONE);
+                            cancelButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                             donatedButton.setVisibility(View.GONE);
@@ -638,6 +656,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                             donateToHelpButton.setVisibility(View.VISIBLE);
                             donateToHelpButton.setText(getResources().getString(R.string.pending));
+                            cancelButton.setVisibility(View.GONE);
                             updateButton.setVisibility(View.GONE);
                             deleteButton.setVisibility(View.GONE);
                             donatedButton.setVisibility(View.GONE);
@@ -645,6 +664,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         } else {
                             if (requestedBy.equals("patient")) {
                                 donateToHelpButton.setVisibility(View.GONE);
+                                cancelButton.setVisibility(View.GONE);
                                 updateButton.setVisibility(View.VISIBLE);
                                 updateButton.setText(getResources().getString(R.string.accept_request));
                                 deleteButton.setVisibility(View.VISIBLE);
@@ -694,52 +714,11 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         }
 
 
-                    } else if (response.body().getServerMsg().equals("Donated")) {
-
-
-                        donateToHelpButton.setVisibility(View.VISIBLE);
-                        donateToHelpButton.setText(getResources().getString(R.string.donated));
-                        updateButton.setVisibility(View.VISIBLE);
-                        updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
-                        deleteButton.setVisibility(View.VISIBLE);
-                        deleteButton.setText(getResources().getString(R.string.send_sms));
-                        donatedButton.setVisibility(View.GONE);
-                        notDonatedButton.setVisibility(View.GONE);
-                        phoneTextView.setText(phone);
-
-
-                    } else if (response.body().getServerMsg().equals("Claimed")) {
-
-
-                        donateToHelpButton.setVisibility(View.VISIBLE);
-                        donateToHelpButton.setText(getResources().getString(R.string.claimed));
-                        updateButton.setVisibility(View.VISIBLE);
-                        updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
-                        deleteButton.setVisibility(View.VISIBLE);
-                        deleteButton.setText(getResources().getString(R.string.send_sms));
-                        donatedButton.setVisibility(View.GONE);
-                        notDonatedButton.setVisibility(View.GONE);
-                        phoneTextView.setText(phone);
-
-
-                    } else if (response.body().getServerMsg().equals("Not_Donated")) {
-
-
-                        donateToHelpButton.setVisibility(View.VISIBLE);
-                        donateToHelpButton.setText(R.string.not_donated);
-                        updateButton.setVisibility(View.VISIBLE);
-                        updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
-                        deleteButton.setVisibility(View.VISIBLE);
-                        deleteButton.setText(getResources().getString(R.string.send_sms));
-                        donatedButton.setVisibility(View.GONE);
-                        notDonatedButton.setVisibility(View.GONE);
-                        phoneTextView.setText(phone);
-
-
                     } else if (response.body().getServerMsg().equals("Declined")) {
 
                         donateToHelpButton.setVisibility(View.VISIBLE);
                         donateToHelpButton.setText(getResources().getString(R.string.declined));
+                        cancelButton.setVisibility(View.GONE);
                         updateButton.setVisibility(View.GONE);
                         deleteButton.setVisibility(View.GONE);
                         donatedButton.setVisibility(View.GONE);
@@ -750,6 +729,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
 
                         donateToHelpButton.setVisibility(View.VISIBLE);
                         donateToHelpButton.setText(getResources().getString(R.string.canceled));
+                        cancelButton.setVisibility(View.GONE);
                         updateButton.setVisibility(View.VISIBLE);
                         updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                         deleteButton.setVisibility(View.VISIBLE);
@@ -757,6 +737,51 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                         donatedButton.setVisibility(View.GONE);
                         notDonatedButton.setVisibility(View.GONE);
                         phoneTextView.setText(phone);
+
+                    } else if (response.body().getServerMsg().equals("Claimed")) {
+
+
+                        donateToHelpButton.setVisibility(View.VISIBLE);
+                        donateToHelpButton.setText(getResources().getString(R.string.claimed));
+                        cancelButton.setVisibility(View.GONE);
+                        updateButton.setVisibility(View.VISIBLE);
+                        updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
+                        deleteButton.setVisibility(View.VISIBLE);
+                        deleteButton.setText(getResources().getString(R.string.send_sms));
+                        donatedButton.setVisibility(View.GONE);
+                        notDonatedButton.setVisibility(View.GONE);
+                        phoneTextView.setText(phone);
+
+
+                    } else if (response.body().getServerMsg().equals("Donated")) {
+
+
+                        donateToHelpButton.setVisibility(View.VISIBLE);
+                        donateToHelpButton.setText(getResources().getString(R.string.donated));
+                        cancelButton.setVisibility(View.GONE);
+                        updateButton.setVisibility(View.VISIBLE);
+                        updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
+                        deleteButton.setVisibility(View.VISIBLE);
+                        deleteButton.setText(getResources().getString(R.string.send_sms));
+                        donatedButton.setVisibility(View.GONE);
+                        notDonatedButton.setVisibility(View.GONE);
+                        phoneTextView.setText(phone);
+
+
+                    }  else if (response.body().getServerMsg().equals("Not_Donated")) {
+
+
+                        donateToHelpButton.setVisibility(View.VISIBLE);
+                        donateToHelpButton.setText(R.string.not_donated);
+                        cancelButton.setVisibility(View.GONE);
+                        updateButton.setVisibility(View.VISIBLE);
+                        updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
+                        deleteButton.setVisibility(View.VISIBLE);
+                        deleteButton.setText(getResources().getString(R.string.send_sms));
+                        donatedButton.setVisibility(View.GONE);
+                        notDonatedButton.setVisibility(View.GONE);
+                        phoneTextView.setText(phone);
+
 
                     }
                 }

@@ -1,6 +1,6 @@
 const db = require("../models/db.js")
-
-
+const admin = require("../models/firebase.js")
+var async = require('async')
 
 module.exports.receiveRequest = (req, res) => {
 
@@ -36,7 +36,7 @@ module.exports.receiveRequest = (req, res) => {
         var sql = "UPDATE requests SET status = 'Accepted' WHERE donorPhone = ? AND patientName = ? AND patientAge = ? AND patientBloodGrp = ? AND patientDate = ? AND patientPhone = ? AND patientNeed = ? AND requestedBy = ?"
     
         db.query(sql, [req.body.donorPhone, req.body.patientName, req.body.patientAge, 
-            req.body.patientBloodGrp, req.body.patientDate, req.body.patientPhone. 
+            req.body.patientBloodGroup, req.body.patientDate, req.body.patientPhone, 
             req.body.patientNeed, req.body.requestedBy], (err, result) => {
     
                 if(err) throw err
@@ -44,6 +44,119 @@ module.exports.receiveRequest = (req, res) => {
 
                     console.log({serverMsg: "Accepted"})
                     res.status(200).json({serverMsg: "Accepted"})
+
+                    var sql2 = "UPDATE users SET eligibility = 'not_eligible' WHERE phone = ?"
+                    db.query(sql2, [req.body.donorPhone], (err, result2) => {
+            
+                        if(err) throw err
+                        if(result2.affectedRows > 0){
+            
+                            console.log({serverMsg: "Donor "+req.body.donorPhone+" is now set as not_eligible"})
+                            
+
+                            var sql3 = "SELECT * FROM tokens WHERE phone IN (SELECT patientPhone AS phone FROM requests WHERE donorPhone = ? AND patientPhone != ? AND status = 'Pending')"
+                            db.query(sql3,[req.body.donorPhone, req.body.patientPhone], (err, result3) => {
+                            
+                                if(err) throw err
+                            
+                                if(result3.length > 0){
+                        
+                                var length = result3.length
+                        
+                                async.forEachOf(result3, (result, i, callback) => {
+                                    var message;
+                                    if(req.body.requestedBy = "patient"){
+                                        message = {
+                                
+                                            notification: {
+                                                title: "Request declined from donor!",
+                                                body: "Your Request has been declined by donor."
+                                                },
+                                            data: {
+                                                activity: "DonorResponseActivity",
+                                                hidden: ""
+                                            },
+                                        
+                                            token: result.token
+                                        
+                                            }
+                                    }
+                                    else if(req.body.requestedBy = "donor"){
+                                        message = {
+                                
+                                            notification: {
+                                                title: "Request declined from patient!",
+                                                body: "Your Request has been declined by patient."
+                                                },
+                                            data: {
+                                                activity: "PatientResponseActivity",
+                                                hidden: ""
+                                            },
+                                        
+                                            token: result.token
+                                        
+                                            }
+                                    }
+                                    
+                                    admin.messaging().send(message)
+                                    .then((response) => {
+                                
+                                    console.log('Successfully sent message:', response)
+                                
+                                    if(i == length-1){
+                        
+                                        var sql4 = "UPDATE requests SET status = 'Declined' WHERE donorPhone = ? AND status = 'Pending'"
+                        
+                        
+                                        db.query(sql4, [req.body.donorPhone], (err, result) => {
+                                    
+                                                if(err) throw err
+                                                if(result.affectedRows > 0){
+                                
+                                                    console.log({serverMsg: "Declined"})
+                        
+                                                }
+                                
+                                                else{
+                                
+                                                    console.log({serverMsg: "Failed to decline request"})
+                                                }
+                                
+                                        })                    
+                        
+                                    }
+                                    })
+                                    .catch((error) => {
+                                    console.log('Error sending message:', error)
+                                
+                                    })
+                        
+                                }, 
+                                function(err){
+                                    if(err) throw err
+                                })
+                                }
+                        
+                                else{
+                                console.log('No token found')
+                                }
+                        
+                        
+                            })
+                        
+                            
+        
+            
+                        }
+                        else{
+                            console.log({servermsg: "Donor eligibility change failed"})
+                        }
+                    })
+
+                   
+
+                      
+
                 }
 
                 else{
@@ -53,6 +166,10 @@ module.exports.receiveRequest = (req, res) => {
                 }
 
         })
+
+       
+
+
         
     }
 
@@ -61,7 +178,7 @@ module.exports.receiveRequest = (req, res) => {
         var sql = "UPDATE requests SET status = 'Declined' WHERE donorPhone = ? AND patientName = ? AND patientAge = ? AND patientBloodGrp = ? AND patientDate = ? AND patientPhone = ? AND patientNeed = ? AND requestedBy = ?"
     
         db.query(sql, [req.body.donorPhone, req.body.patientName, req.body.patientAge, 
-            req.body.patientBloodGrp, req.body.patientDate, req.body.patientPhone. 
+            req.body.patientBloodGroup, req.body.patientDate, req.body.patientPhone, 
             req.body.patientNeed, req.body.requestedBy], (err, result) => {
     
                 if(err) throw err
@@ -80,28 +197,198 @@ module.exports.receiveRequest = (req, res) => {
         })
     }
 
-    else if(req.body.operation == "confirm"){
+    else if(req.body.operation == "cancel"){
         
-    }
+        var sql = "UPDATE requests SET status = 'Canceled' WHERE donorPhone = ? AND patientName = ? AND patientAge = ? AND patientBloodGrp = ? AND patientDate = ? AND patientPhone = ? AND patientNeed = ? AND requestedBy = ?"
 
-    else if(req.body.operation == "not_confirm"){
-        
+        db.query(sql, [req.body.donorPhone, req.body.patientName, req.body.patientAge, 
+            req.body.patientBloodGroup, req.body.patientDate, req.body.patientPhone, 
+            req.body.patientNeed, req.body.requestedBy], (err, result) => {
+    
+                if(err) throw err
+                if(result.affectedRows > 0){
+
+                    console.log({serverMsg: "Canceled"})
+                    res.status(200).json({serverMsg: "Canceled"})
+
+                    var sql2 = "UPDATE users SET eligibility = 'eligible' WHERE phone = ?"
+                    db.query(sql2, [req.body.donorPhone], (err, results) => {
+
+                        if(err) throw err
+                        if(result.affectedRows > 0){
+                            console.log({serverMsg: "Donor "+req.body.donorPhone+" is now set as eligible"})
+                        }
+                        else{
+                            console.log({servermsg: "Donor eligibility change failed"})
+                        }
+                    })
+                }
+
+                else{
+
+                    console.log({serverMsg: "Failed to cancel request"})
+                    res.status(200).json({serverMsg: "Accepted"})
+                
+                }
+
+        })
     }
 
     else if(req.body.operation == "claim"){
         
+        var sql = "UPDATE requests SET status = 'Claimed' WHERE donorPhone = ? AND patientName = ? AND patientAge = ? AND patientBloodGrp = ? AND patientDate = ? AND patientPhone = ? AND patientNeed = ? AND requestedBy = ?"
+    
+        db.query(sql, [req.body.donorPhone, req.body.patientName, req.body.patientAge, 
+            req.body.patientBloodGroup, req.body.patientDate, req.body.patientPhone, 
+            req.body.patientNeed, req.body.requestedBy], (err, result) => {
+    
+                if(err) throw err
+                if(result.affectedRows > 0){
+
+                    console.log({serverMsg: "Claimed"})
+                    res.status(200).json({serverMsg: "Claimed"})
+
+                    var date = new Date()
+
+                    if(req.body.patientNeed == "Blood" || req.body.patientNeed == "Blood and Plasma"){
+
+                        date.setDate(date.getDate() + 90)
+                    }
+                    else if(req.body.patientNeed == "Plasma"){
+
+                        date.setDate(date.getDate() + 7)
+                    }
+            
+
+                    var dateString = ("0" + date.getDate()).slice(-2)+"-"+("0" + (date.getMonth() + 1)).slice(-2)+"-"+date.getFullYear()
+    
+
+                    var sql2 = "UPDATE users SET eligibility = 'not_available' , eligible_date = ? WHERE phone = ?"
+                    db.query(sql2, [dateString, req.body.donorPhone], (err, results) => {
+
+                        if(err) throw err
+                        if(result.affectedRows > 0){
+                            console.log({serverMsg: "Donor "+req.body.donorPhone+" is now set as not_available"})
+                        }
+                        else{
+                            console.log({servermsg: "Donor eligibility change failed"})
+                        }
+                    })
+                }
+
+                else{
+
+                    console.log({serverMsg: "Failed to claim request"})
+                    res.status(200).json({serverMsg: "Accepted"})
+                }
+
+        })
     }
 
     else if(req.body.operation == "not_donate"){
         
+        var sql = "UPDATE requests SET status = 'Not_Donated' WHERE donorPhone = ? AND patientName = ? AND patientAge = ? AND patientBloodGrp = ? AND patientDate = ? AND patientPhone = ? AND patientNeed = ? AND requestedBy = ?"
+    
+        db.query(sql, [req.body.donorPhone, req.body.patientName, req.body.patientAge, 
+            req.body.patientBloodGroup, req.body.patientDate, req.body.patientPhone, 
+            req.body.patientNeed, req.body.requestedBy], (err, result) => {
+    
+                if(err) throw err
+                if(result.affectedRows > 0){
+
+                    console.log({serverMsg: "Not_Donated"})
+                    res.status(200).json({serverMsg: "Not_Donated"})
+
+                    var sql2 = "UPDATE users SET eligibility = 'eligible' WHERE phone = ?"
+                    db.query(sql2, [req.body.donorPhone], (err, results) => {
+
+                        if(err) throw err
+                        if(result.affectedRows > 0){
+                            console.log({serverMsg: "Donor "+req.body.donorPhone+" is now set as eligible"})
+                        }
+                        else{
+                            console.log({servermsg: "Donor eligibility change failed"})
+                        }
+                    })
+                }
+
+                else{
+
+                    console.log({serverMsg: "Failed to not-donate request"})
+                    res.status(200).json({serverMsg: "Accepted"})
+                }
+
+        })
     }
 
-    else if(req.body.operation == "cancel"){
+
+    else if(req.body.operation == "confirm"){
+        
+        var sql = "UPDATE requests SET status = 'Donated' WHERE donorPhone = ? AND patientName = ? AND patientAge = ? AND patientBloodGrp = ? AND patientDate = ? AND patientPhone = ? AND patientNeed = ? AND requestedBy = ?"
+    
+        db.query(sql, [req.body.donorPhone, req.body.patientName, req.body.patientAge, 
+            req.body.patientBloodGroup, req.body.patientDate, req.body.patientPhone, 
+            req.body.patientNeed, req.body.requestedBy], (err, result) => {
+    
+                if(err) throw err
+                if(result.affectedRows > 0){
+
+                    console.log({serverMsg: "Donated"})
+                    res.status(200).json({serverMsg: "Donated"})
+
+                }
+
+                else{
+
+                    console.log({serverMsg: "Failed to confirm request"})
+                    res.status(200).json({serverMsg: "Claimed"})
+                }
+
+        })
+    }
+
+    else if(req.body.operation == "not_confirm"){
+
+        var sql = "UPDATE requests SET status = 'Not_Donated' WHERE donorPhone = ? AND patientName = ? AND patientAge = ? AND patientBloodGrp = ? AND patientDate = ? AND patientPhone = ? AND patientNeed = ? AND requestedBy = ?"
+    
+        db.query(sql, [req.body.donorPhone, req.body.patientName, req.body.patientAge, 
+            req.body.patientBloodGroup, req.body.patientDate, req.body.patientPhone, 
+            req.body.patientNeed, req.body.requestedBy], (err, result) => {
+    
+                if(err) throw err
+                if(result.affectedRows > 0){
+
+                    console.log({serverMsg: "Not_Donated"})
+                    res.status(200).json({serverMsg: "Not_Donated"})
+
+                    var sql2 = "UPDATE users SET eligibility = 'eligible' WHERE phone = ?"
+                    db.query(sql2, [req.body.donorPhone], (err, results) => {
+
+                        if(err) throw err
+                        if(result.affectedRows > 0){
+                            console.log({serverMsg: "Donor "+req.body.donorPhone+" is now set as eligible"})
+                        }
+                        else{
+                            console.log({servermsg: "Donor eligibility change failed"})
+                        }
+                    })
+                }
+
+                else{
+
+                    console.log({serverMsg: "Failed to not-confirm request"})
+                    res.status(200).json({serverMsg: "Claimed"})
+                }
+
+        })
         
     }
+
     
 
 }
+
+
 module.exports.sendRequest = (req, res) => {
 
 
@@ -178,19 +465,25 @@ module.exports.requestsFromDonorsAlpha = (req, res) => {
 
             var responseValues = []
 
-            for(var i=0;i<result.length;i++){
+            var length = result.length
 
-                var sql2 = "SELECT * FROM patients WHERE phone = ?"
-    
-                db.query(sql2, [result[i].patientPhone], (err, result2) => {
+            
+            async.forEachOf(result, (result, i, callback) => {
+
+
+                var sql2 = "SELECT * FROM patients WHERE name = '" + result.patientName + "' AND age = '" + result.patientAge + "' AND blood_group = '" + result.patientBloodGrp + "' AND date = '"+ result.patientDate +"' AND phone = '" + result.patientPhone + "' AND need = '"+ result.patientNeed+"'"
+                var serverMsg = result.status
+
+                db.query(sql2, [result.patientPhone], (err, result2) => {
             
                     if(err) throw err
         
                     if(result2.length > 0){
         
+                        result2[0].serverMsg = serverMsg
                         responseValues.push(result2[0])
                         
-                        if(i == result.length){
+                        if(i == length-1){
 
                             console.log(responseValues)
                             res.status(200).json(responseValues)
@@ -198,11 +491,18 @@ module.exports.requestsFromDonorsAlpha = (req, res) => {
                     }
                     else{
                         console.log({serverMsg: "No Record"})
-                        res.status(200).json([])
+                        res.status(200).json([{serverMsg: "No Record"}])
 
                     }
                 })
-            }
+
+            }, 
+            
+            function(err){
+                if(err){
+                    throw err;
+                }
+            })
 
             
         }
@@ -246,12 +546,14 @@ module.exports.requestsFromDonorsBeta = (req, res) => {
 
             var responseValues = []
 
-            for(var i=0;i<result.length;i++){
+            var length = result.length
+
+            async.forEachOf(result, (result, i, callback) => {
 
                 var sql2 = "SELECT * FROM users WHERE phone = ?"
-                var serverMsg = result[i].status
+                var serverMsg = result.status
     
-                db.query(sql2, [result[i].donorPhone], (err, result2) => {
+                db.query(sql2, [result.donorPhone], (err, result2) => {
             
                     if(err) throw err
         
@@ -260,7 +562,7 @@ module.exports.requestsFromDonorsBeta = (req, res) => {
                         result2[0].serverMsg = serverMsg
                         responseValues.push(result2[0])
                         
-                        if(i == result.length){
+                        if(i == length-1){
 
                             console.log(responseValues)
                             res.status(200).json(responseValues)
@@ -271,7 +573,11 @@ module.exports.requestsFromDonorsBeta = (req, res) => {
                         res.status(200).json([])
                     }
                 })
-            }
+
+            }, function(err){
+
+                if(err) throw err
+            })
 
         }
 
@@ -314,13 +620,16 @@ module.exports.requestsFromPatients = (req, res) => {
         if(result.length > 0){
 
             var responseValues = []
+            var length = result.length
 
-            for(var i=0;i<result.length;i++){
+            
+            async.forEachOf(result, (result, i, callback) => {
 
-                var sql2 = "SELECT * FROM patients WHERE phone = ?"
-                var serverMsg = result[i].status
 
-                db.query(sql2, [result[i].patientPhone], (err, result2) => {
+                var sql2 = "SELECT * FROM patients WHERE name = '" + result.patientName + "' AND age = '" + result.patientAge + "' AND blood_group = '" + result.patientBloodGrp + "' AND date = '"+ result.patientDate +"' AND phone = '" + result.patientPhone + "' AND need = '"+ result.patientNeed+"'"
+                var serverMsg = result.status
+
+                db.query(sql2, [result.patientPhone], (err, result2) => {
             
                     if(err) throw err
         
@@ -329,7 +638,7 @@ module.exports.requestsFromPatients = (req, res) => {
                         result2[0].serverMsg = serverMsg
                         responseValues.push(result2[0])
                         
-                        if(i == result.length){
+                        if(i == length-1){
 
                             console.log(responseValues)
                             res.status(200).json(responseValues)
@@ -341,7 +650,15 @@ module.exports.requestsFromPatients = (req, res) => {
 
                     }
                 })
-            }
+
+            }, 
+            
+            function(err){
+                if(err){
+                    throw err;
+                }
+            })
+        
 
             
         }

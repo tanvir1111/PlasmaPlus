@@ -16,7 +16,7 @@ import com.ece.cov19.ViewPatientProfileActivity;
 
 import java.util.ArrayList;
 
-public class PatientResponseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class ResponsesFromPatientsViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
     TextView nameTextView, typeTextView, bloodTextView, locationTextView, acceptButton, declineButton, dateTextView;
     ImageView patientImageView;
@@ -24,7 +24,7 @@ public class PatientResponseViewHolder extends RecyclerView.ViewHolder implement
     ArrayList<PatientDataModel> patientDataModels;
     int pos;
 
-    public PatientResponseViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels) {
+    public ResponsesFromPatientsViewHolder(@NonNull View itemView, ArrayList<PatientDataModel> patientDataModels) {
         super(itemView);
         this.patientDataModels = patientDataModels;
 

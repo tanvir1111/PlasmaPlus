@@ -110,14 +110,19 @@ public interface RetroInterface {
 
 
     @FormUrlEncoded
+    @POST("lookForRequests.php")
+    Call<RequestDataModel> requestsOperation(@Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
+                                             @Field("patientAge") String patientAge, @Field("patientBloodGroup") String patientBloodGroup,
+                                             @Field("patientDate") String patientDate, @Field("patientPhone") String patientPhone,
+                                             @Field("patientNeed") String patientNeed, @Field("requestedBy") String requestedBy,
+                                             @Field("operation") String operation);
+    @FormUrlEncoded
     @POST("sendRequest.php")
     Call<RequestDataModel> sendRequest( @Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
                                         @Field("patientAge") String patientAge, @Field("patientBloodGrp") String patientBloodGrp,
                                         @Field("patientDate") String patientDate, @Field("patientPhone") String patientPhone,
-                                        @Field("patientNeed") String patientNeed,
-                                        @Field("requestedBy") String requestedBy, @Field("operation") String operation);
-
-
+                                        @Field("patientNeed") String patientNeed, @Field("requestedBy") String requestedBy,
+                                        @Field("operation") String operation);
 
 
 
@@ -133,6 +138,13 @@ public interface RetroInterface {
                                                           @Field("status") String status);
 
     @FormUrlEncoded
+    @POST("requestsFromPatients.php") Call<ArrayList<PatientDataModel>> requestsFromPatients(@Field("phone") String phone, @Field("status") String status);
+
+
+
+
+
+    @FormUrlEncoded
     @POST("responsesFromDonorsAlpha.php")
     Call<ArrayList<PatientDataModel>> responsesFromDonorsAlpha(@Field("phone") String phone, @Field("status") String status);
 
@@ -141,11 +153,6 @@ public interface RetroInterface {
     Call<ArrayList<UserDataModel>> responsesFromDonorsBeta(@Field("name") String name,@Field("age") String age,
                                                       @Field("bloodGroup") String bloodgroup, @Field("phone") String phone,
                                                            @Field("status") String status);
-
-    @FormUrlEncoded
-    @POST("requestsFromPatients.php") Call<ArrayList<PatientDataModel>> requestsFromPatients(@Field("phone") String phone, @Field("status") String status);
-
-
 
     @FormUrlEncoded
     @POST("responsesFromPatients.php") Call<ArrayList<PatientDataModel>> responsesFromPatients(@Field("phone") String phone, @Field("status") String status);
@@ -164,13 +171,7 @@ public interface RetroInterface {
     Call<ArrayList<UserDataModel>> getPatientRequest(@Field("name") String name,@Field("age") String age,
                                                        @Field("bloodGroup") String bloodgroup, @Field("phone") String phone);
 
-    @FormUrlEncoded
-    @POST("lookForRequests.php")
-    Call<RequestDataModel> requestsOperation(@Field("donorPhone") String donorPhone, @Field("patientName") String patientName,
-                                             @Field("patientAge") String patientAge, @Field("patientBloodGroup") String patientBloodGroup,
-                                             @Field("patientDate") String patientDate, @Field("patientPhone") String patientPhone,
-                                             @Field("patientNeed") String patientNeed, @Field("requestedBy") String requestedBy,
-                                             @Field("operation") String operation);
+
     @FormUrlEncoded
     @POST("tokenRegister.php")
     Call <UserDataModel> sendToken(@Field("phone") String phone, @Field("token") String token);

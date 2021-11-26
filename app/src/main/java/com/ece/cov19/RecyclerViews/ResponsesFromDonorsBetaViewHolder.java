@@ -19,7 +19,7 @@ import com.ece.cov19.ViewDonorProfileActivity;
 import java.util.ArrayList;
 
 
-public class DonorResponseBetaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+public class ResponsesFromDonorsBetaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     TextView nameTextView, locationTextView, bloodTextView,donorType, acceptButton, declineButton;
     ImageView donorImageView, locationImageView;
@@ -29,7 +29,7 @@ public class DonorResponseBetaViewHolder extends RecyclerView.ViewHolder impleme
 
 
 
-    public DonorResponseBetaViewHolder(@NonNull View itemView, ArrayList<UserDataModel> userDataModels) {
+    public ResponsesFromDonorsBetaViewHolder(@NonNull View itemView, ArrayList<UserDataModel> userDataModels) {
         super(itemView);
         this.userDataModels = userDataModels;
 

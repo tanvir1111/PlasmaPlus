@@ -76,7 +76,7 @@
     <string name="not_donated">Not Donated</string>
     <string name="confirmed">Confirmed</string>
     <string name="not_confirmed">Not Confirmed</string>
-    <string name="canceled">Declined</string>
+    <string name="canceled">Canceled</string>
     <string name="delete_profile">Delete Profile</string>
     <string name="donate_to_help">Donate to Help</string>
 
