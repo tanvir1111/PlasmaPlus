@@ -41,10 +41,6 @@ public class PatientDataModel {
     @Expose
     private String amountOfBloodNeeded;
 
-    @SerializedName("donationStatus")
-    @Expose
-    private String donationStatus;
-
     @SerializedName("serverMsg")
     @Expose
     private String serverMsg;
@@ -134,14 +130,6 @@ public class PatientDataModel {
     }
     public String getAmountOfBloodNeeded() {
         return amountOfBloodNeeded;
-    }
-
-    public String getDonationStatus() {
-        return donationStatus;
-    }
-
-    public void setDonationStatus(String donationStatus) {
-        this.donationStatus = donationStatus;
     }
 
     public void setAmountOfBloodNeeded(String amountOfBloodNeeded) {

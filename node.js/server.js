@@ -30,10 +30,25 @@ httpsServer.listen(8443, function(){
 const db = require("./app/models/db.js")
 
 db.connect((err) => {
-    if(err) throw err;
+
+    if(err) {                                     
+        console.log('error when connecting to db:', err);
+        setTimeout(handleDisconnect, 2000);
+    }  
+        
     console.log("Connected to MySQL database 'cov19'!");
 
 })
+
+db.on('error', function(err) {
+  console.log('db error', err);
+  if(err.code === 'PROTOCOL_CONNECTION_LOST') {
+    handleDisconnect();                         
+  } else {                                      
+    throw err;                                  
+  }
+});
+
 
 
 app.use(express.json({limit: '50mb'}));
