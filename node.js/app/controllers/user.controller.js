@@ -44,7 +44,7 @@ module.exports.registration = (req,res) => {
         req.body.thana, 
         req.body.age, 
         req.body.donor, 
-        req.body.password
+        req.body.password,
     ]
     db.query(sql, [values], (err, data, fields) => {
 

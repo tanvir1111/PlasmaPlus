@@ -31,11 +31,7 @@ const db = require("./app/models/db.js")
 
 db.connect((err) => {
 
-  if(err) {                                     
-      console.log('error when connecting to db:', err);
-    
-  }  
-      
+  if(err) throw err
   console.log("Connected to MySQL database 'cov19'!");
 
 })

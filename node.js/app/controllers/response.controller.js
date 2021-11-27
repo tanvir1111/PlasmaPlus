@@ -4,22 +4,22 @@ const async = require("async")
 module.exports.responsesFromDonorsAlpha = (req, res) => {
 
 
-    var sql = "SELECT * FROM requests"
+    var sql = "SELECT DISTINCT * FROM requests"
 
     if(req.body.status == "any"){
-        sql = "SELECT * FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'patient'"
+        sql = "SELECT DISTINCT patientName, patientAge, patientBloodGrp, patientDate, patientPhone, patientNeed FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'patient'"
 
     }
     else if(req.body.status == "Pending"){
-        sql = "SELECT * FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'patient' AND status = 'Pending'"
+        sql = "SELECT DISTINCT patientName, patientAge, patientBloodGrp, patientDate, patientPhone, patientNeed FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'patient' AND status = 'Pending'"
 
     }
     else if(req.body.status == "Successful"){
-        sql = "SELECT * FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'patient' AND status = 'Accepted' OR status = 'Claimed' OR status = 'Confirmed'"
+        sql = "SELECT DISTINCT patientName, patientAge, patientBloodGrp, patientDate, patientPhone, patientNeed FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'patient' AND status = 'Accepted' OR status = 'Claimed' OR status = 'Confirmed'"
 
     }
     else if(req.body.status == "Failed"){
-        sql = "SELECT * FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'patient' AND status = 'Declined' OR status = 'Canceled' OR status = 'Not_Confirmed'"
+        sql = "SELECT DISTINCT patientName, patientAge, patientBloodGrp, patientDate, patientPhone, patientNeed FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'patient' AND status = 'Declined' OR status = 'Canceled' OR status = 'Not_Confirmed'"
 
     }
 

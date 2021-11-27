@@ -684,7 +684,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);
                             deleteButton.setText(getResources().getString(R.string.send_sms));
-                            if (varFormattedDate.equals(varDate) || varFormattedDate.before(varFormattedDateNext)) {
+                            if (varFormattedDate.equals(varDate) || varDate.before(varFormattedDate)) {
                                 donatedButton.setVisibility(View.VISIBLE);
                                 notDonatedButton.setVisibility(View.VISIBLE);
                             }
@@ -702,7 +702,7 @@ public class ViewPatientProfileActivity extends AppCompatActivity {
                             updateButton.setText(getResources().getString(R.string.patient_profile_activity_Call_Patient));
                             deleteButton.setVisibility(View.VISIBLE);
                             deleteButton.setText(getResources().getString(R.string.send_sms));
-                            if (varFormattedDate.equals(varDate) || varFormattedDate.before(varFormattedDateNext)) {
+                            if (varFormattedDate.equals(varDate) || varDate.before(varFormattedDate)) {
                                 donatedButton.setVisibility(View.VISIBLE);
                                 notDonatedButton.setVisibility(View.VISIBLE);
                             }

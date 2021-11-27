@@ -269,6 +269,9 @@ module.exports.receiveRequest = (req, res) => {
                         if(err) throw err
                         if(result.affectedRows > 0){
                             console.log({serverMsg: "Donor "+req.body.donorPhone+" is now set as not_available"})
+
+            
+
                         }
                         else{
                             console.log({servermsg: "Donor eligibility change failed"})
@@ -335,6 +338,38 @@ module.exports.receiveRequest = (req, res) => {
 
                     console.log({serverMsg: "Donated"})
                     res.status(200).json({serverMsg: "Donated"})
+
+                    var sql2 = "UPDATE requests SET status = 'Not_Donated' WHERE patientName = ? AND patientAge = ? AND patientBloodGrp = ? AND patientDate = ? AND patientPhone = ? AND patientNeed = ? AND (status = 'Claimed' OR status = 'Accepted')"
+                    db.query(sql2, (err, result) => {
+
+                        if(result.affectedRows > 0){
+
+                            console.log({serverMsg: "Claimed and Accepted requests UPDATED to Not_Donated"})
+                        }
+                        else{
+
+                            console.log({serverMsg: "Found no extra Claimed/Accepted requests"})
+
+                        }
+
+                        var sql3 = "UPDATE requests SET status = 'Declined' WHERE patientName = ? AND patientAge = ? AND patientBloodGrp = ? AND patientDate = ? AND patientPhone = ? AND patientNeed = ? AND status = 'Pending'"
+                        db.query(sql3, (err, result) => {
+    
+                            if(result.affectedRows > 0){
+    
+                                console.log({serverMsg: "Pending requests UPDATED to Declined"})
+                            }
+                            else{
+    
+                                console.log({serverMsg: "Found no extra Pending requests"})
+    
+                            }
+    
+                            
+                        })
+
+                        
+                    })
 
                 }
 
@@ -441,19 +476,19 @@ module.exports.requestsFromDonorsAlpha = (req, res) => {
     var sql = "SELECT * FROM requests"
 
     if(req.body.status == "any"){
-        sql = "SELECT * FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'donor'"
+        sql = "SELECT DISTINCT patientName, patientAge, patientBloodGrp, patientDate, patientPhone, patientNeed FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'donor'"
 
     }
     else if(req.body.status == "Pending"){
-        sql = "SELECT * FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'donor' AND status = 'Pending'"
+        sql = "SELECT DISTINCT patientName, patientAge, patientBloodGrp, patientDate, patientPhone, patientNeed FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'donor' AND status = 'Pending'"
 
     }
     else if(req.body.status == "Successful"){
-        sql = "SELECT * FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'donor' AND status = 'Accepted' OR status = 'Claimed' OR status = 'Confirmed'"
+        sql = "SELECT DISTINCT patientName, patientAge, patientBloodGrp, patientDate, patientPhone, patientNeed FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'donor' AND status = 'Accepted' OR status = 'Claimed' OR status = 'Confirmed'"
 
     }
     else if(req.body.status == "Failed"){
-        sql = "SELECT * FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'donor' AND status = 'Declined' OR status = 'Canceled' OR status = 'Not_Confirmed'"
+        sql = "SELECT DISTINCT patientName, patientAge, patientBloodGrp, patientDate, patientPhone, patientNeed FROM requests WHERE patientPhone = '"+req.body.phone+"' AND requestedBy = 'donor' AND status = 'Declined' OR status = 'Canceled' OR status = 'Not_Confirmed'"
 
     }
 
