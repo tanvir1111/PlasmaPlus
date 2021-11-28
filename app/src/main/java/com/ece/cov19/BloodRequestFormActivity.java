@@ -9,6 +9,7 @@ import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -199,6 +200,9 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                         calendar.set(year, month, dayOfMonth);
                         date = sdf.format(calendar.getTime());
                         selectDate.setText(date); // set the date
+                        Log.d("convertedDate","Before conversion: "+date);
+                        englishDateFormatter(date);
+
                     }
                 }, year, month, day); // set date picker to current date
         datePicker.getDatePicker().setMinDate(calendar.getTime().getTime());
@@ -457,6 +461,85 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
             }
         });
+
+    }
+
+    public String englishStringConverter(String eng){
+
+        char[] charArray = eng.toCharArray();
+        StringBuilder stringBuilder = new StringBuilder(charArray.length);
+
+
+        for (int i=0; i<charArray.length; i++ ){
+
+            char character = charArray[i];
+
+            switch (character){
+
+                case '-':
+                    stringBuilder.append("-");
+                    break;
+                case '০':
+                    stringBuilder.append("0");
+                    break;
+                case '১':
+                    stringBuilder.append("1");
+                    break;
+                case '২':
+                    stringBuilder.append("2");
+                    break;
+                case '৩':
+                    stringBuilder.append("3");
+                    break;
+                case '৪':
+                    stringBuilder.append("4");
+                    break;
+                case '৫':
+                    stringBuilder.append("5");
+                    break;
+                case '৬':
+                    stringBuilder.append("6");
+                    break;
+                case '৭':
+                    stringBuilder.append("7");
+                    break;
+                case '৮':
+                    stringBuilder.append("8");
+                    break;
+                case '৯':
+                    stringBuilder.append("9");
+                    break;
+                default:
+                    stringBuilder.append(character);
+            }
+        }
+
+        return stringBuilder.toString();
+    }
+
+
+
+    public void englishDateFormatter(String eng){
+
+
+        String[] units = eng.split("-");
+        String convertedDate = new String();
+
+        for(int i=0;i<units.length;i++){
+
+            if(i == 0){
+                convertedDate += englishStringConverter(units[i]);
+
+            }
+            else{
+                convertedDate += '-'+englishStringConverter(units[i]);
+
+            }
+
+        }
+
+        Log.d("convertedDate","Date: "+convertedDate);
+
 
     }
 
