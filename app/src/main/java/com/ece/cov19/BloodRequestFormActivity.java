@@ -368,7 +368,20 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         }
         else {
             RadioButton radioButton=findViewById(radioGroup.getCheckedRadioButtonId());
-            need=radioButton.getText().toString();
+            switch (radioButton.getText().toString()) {
+                case "রক্ত":
+                    need = "Blood";
+                    break;
+                case "প্লাজমা":
+                    need = "Plasma";
+                    break;
+                case "রক্ত ও প্লাজমা":
+                    need = "Blood and Plasma";
+                    break;
+                default:
+                    need = radioButton.getText().toString();
+                    break;
+            }
 
             if(!formFieldsFeatures.checkIfEmpty(amountOfBloodEditText)) {
                 if(Integer.parseInt(amountOfBloodEditText.getText().toString())<=0||Integer.parseInt(amountOfBloodEditText.getText().toString())>10){

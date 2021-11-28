@@ -349,25 +349,36 @@ public class RegistrationActivity extends AppCompatActivity implements View.OnCl
             bloodGroup = selectedBldGrp.getText().toString();
         }
 
-        RadioButton selectedRadiobtn = findViewById(donorRoleRadioGrp.getCheckedRadioButtonId());
-        switch (selectedRadiobtn.getText().toString()) {
-            case "ব্লাড":
-                donorInfo = "Blood";
-                break;
-            case "প্লাজমা":
-                donorInfo = "Plasma";
-                break;
-            case "ব্লাড এবং প্লাজমা":
-                donorInfo = "Blood and Plasma";
-                break;
-            case "সাধারণ ব্যবহারকারী/গ্রাহক":
-            case "General User/Acceptor":
-                donorInfo = "None";
-                break;
-            default:
-                donorInfo = selectedRadiobtn.getText().toString();
-                break;
+
+        if(donorRoleRadioGrp.getCheckedRadioButtonId()==-1) {
+            TextView labelRequirement = findViewById(R.id.bld_req_label_type);
+            labelRequirement.setError(getResources().getString(R.string.select_req_type));
+            labelRequirement.requestFocus();
         }
+        else {
+
+            RadioButton selectedRadiobtn = findViewById(donorRoleRadioGrp.getCheckedRadioButtonId());
+
+            switch (selectedRadiobtn.getText().toString()) {
+                case "রক্ত":
+                    donorInfo = "Blood";
+                    break;
+                case "প্লাজমা":
+                    donorInfo = "Plasma";
+                    break;
+                case "রক্ত এবং প্লাজমা":
+                    donorInfo = "Blood and Plasma";
+                    break;
+                case "সাধারণ ব্যবহারকারী/গ্রাহক":
+                case "General User/Acceptor":
+                    donorInfo = "None";
+                    break;
+                default:
+                    donorInfo = selectedRadiobtn.getText().toString();
+                    break;
+            }
+        }
+
         Intent i = getIntent();
         phone = i.getExtras().get("phone").toString();
 
