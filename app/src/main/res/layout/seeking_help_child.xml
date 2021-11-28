@@ -98,7 +98,6 @@
                     android:text="AB+"
                     android:textColor="@color/colorAccent"
                     android:textSize="14sp"
-                    app:layout_constraintBottom_toTopOf="@+id/seeking_help_date"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/seeking_help_type" />
 
@@ -149,9 +148,10 @@
                     android:text="@string/donate_to_help"
                     android:textColor="@color/colorPrimary"
                     android:textSize="14sp"
-                    android:visibility="gone"
+                    android:visibility="visible"
+                    app:layout_constraintEnd_toStartOf="@+id/seeking_help_child_bld_grp"
                     app:layout_constraintStart_toStartOf="@+id/seeking_help_child_location_image"
-                    app:layout_constraintTop_toBottomOf="@+id/seeking_help_location" />
+                    app:layout_constraintTop_toBottomOf="@+id/seeking_help_child_bld_grp" />
 
                 <ImageView
                     android:id="@+id/seeking_help_child_location_image"
@@ -168,16 +168,17 @@
                     android:id="@+id/seeking_help_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="56dp"
+                    android:layout_marginTop="8dp"
                     android:background="@drawable/background_side_nav_bar"
                     android:fontFamily="@font/montserrat"
                     android:paddingLeft="30dp"
                     android:text="@string/date_of_requirement"
                     android:textColor="#FFFFFF"
                     android:textSize="10sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/seeking_help_location" />
+                    app:layout_constraintTop_toBottomOf="@+id/seeking_help_donate_btn" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

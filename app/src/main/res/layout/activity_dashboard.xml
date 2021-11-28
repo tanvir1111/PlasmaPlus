@@ -1017,7 +1017,7 @@
                     android:fontFamily="@font/montserrat_bold"
                     android:maxWidth="350dp"
                     android:minWidth="320dp"
-                    android:text="Detect Covid 19 with your chest x-ray"
+                    android:text="@string/detect_covid_19_msg"
                     android:textColor="@color/colorAccent"
                     android:textSize="12sp"
                     app:layout_constraintBottom_toBottomOf="parent"

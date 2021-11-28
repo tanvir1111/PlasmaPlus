@@ -1,17 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 android {
-    signingConfigs {
 
-        release {
-            storeFile file('C:\\Users\\Medspire\\Documents\\Projects\\Plasma+\\keystore')
-            storePassword '15111997'
-            keyAlias 'key0'
-            keyPassword '15111997'
-        }
-    }
-    compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    compileSdkVersion 31
+    buildToolsVersion "30.0.3"
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -20,9 +12,11 @@ android {
     defaultConfig {
         applicationId "com.ece.cov19"
         minSdkVersion 22
-        targetSdkVersion 30
+
+        targetSdkVersion 31
         versionCode 17
         versionName "1.17"
+
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -43,11 +37,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
         }
     }
-    aaptOptions {
-        noCompress "tflite"
+    androidResources {
+        noCompress 'tflite'
     }
 
 }
@@ -66,7 +59,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
     implementation 'com.squareup.retrofit2:retrofit:2.1.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'

@@ -596,5 +596,6 @@
     <string name="claimed">Claimed</string>
     <string name="patient_already_exists">Patient Already Exists</string>
     <string name="no_response_from_server">No Response from Server</string>
+    <string name="detect_covid_19_msg">Detect Covid 19 with your chest x-ray</string>
 
 </resources>

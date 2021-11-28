@@ -650,5 +650,6 @@
     <string name="claimed">দাবীকৃত</string>
     <string name="patient_already_exists">রোগীর তথ্য আগে থেকেই আছে</string>
     <string name="no_response_from_server">সার্ভার থেকে রেসপন্স নেই</string>
+    <string name="detect_covid_19_msg">" আপনার বুকের এক্স-রে দিয়ে কোভিড 19 শনাক্ত করুন"</string>
 
 </resources>

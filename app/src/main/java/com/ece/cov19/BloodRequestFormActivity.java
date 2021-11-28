@@ -199,9 +199,10 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
                         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
                         calendar.set(year, month, dayOfMonth);
                         date = sdf.format(calendar.getTime());
+                        date = englishDateFormatter(date);
                         selectDate.setText(date); // set the date
                         Log.d("convertedDate","Before conversion: "+date);
-                        englishDateFormatter(date);
+
 
                     }
                 }, year, month, day); // set date picker to current date
@@ -532,7 +533,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
 
 
 
-    public void englishDateFormatter(String eng){
+    public String englishDateFormatter(String eng){
 
 
         String[] units = eng.split("-");
@@ -554,6 +555,7 @@ public class BloodRequestFormActivity extends AppCompatActivity implements View.
         Log.d("convertedDate","Date: "+convertedDate);
 
 
+        return convertedDate;
     }
 
 
