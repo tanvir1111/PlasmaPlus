@@ -4,9 +4,11 @@ A free Android application designed to connect blood and plasma donors with thos
 
 ## Features
 - Connects blood and plasma donors with recipients in need.
-- User verification to ensure the safety and credibility of donors and recipients.
+- Data privacy
+- Quick user registration & profile creation
 - Location-based filtering for finding donors.
 - Real-time notifications for new donation requests and responses.
+- Eligibility check for donors
 
 ## Installation
 To run this project locally, follow these steps:
@@ -33,3 +35,37 @@ To run this project locally, follow these steps:
 
    ```
 4. **Build and Run**: Once dependencies are added, build and run the app on an Android emulator or a physical device.
+
+## Screens of the app
+
+<br />
+<p align="center">
+  <img src="screenshots/Featured.png" alt="Logo" width="640" height="360">
+  <br>
+  <br>
+  <br>
+  <br>
+  <img src="app/src/main/res/drawable/splash.png" alt="Logo" width="180" height="360">
+  <img src="screenshots/IMG_20200715_232505.jpg" alt="Logo" width="180" height="360">
+  <img src="screenshots/IMG_20200804_140228.jpg" alt="Logo" width="180" height="360">
+  <img src="screenshots/IMG_20200715_232441.jpg" alt="Logo" width="180" height="360">
+  <br>
+  <br>
+  <img src="screenshots/IMG_20200804_140132.jpg" alt="Logo" width="180" height="360">
+  <img src="screenshots/IMG_20200715_232530.jpg" alt="Logo" width="180" height="360">
+  <img src="screenshots/IMG_20200804_140105.jpg" alt="Logo" width="180" height="360">
+  <img src="screenshots/IMG_20200804_135928.jpg" alt="Logo" width="180" height="360">
+
+  <br>
+  <br>
+  <img src="screenshots/IMG_20200804_140009.jpg" alt="Logo" width="180" height="360">
+  <img src="screenshots/IMG_20200804_140157.jpg" alt="Logo" width="180" height="360">
+  <img src="screenshots/IMG_20200804_140121.jpg" alt="Logo" width="180" height="360">
+  <img src="screenshots/IMG_20200804_140209.jpg" alt="Logo" width="180" height="360">
+ 
+  <br>
+  <br>
+  <br>
+ 
+
+</p>
